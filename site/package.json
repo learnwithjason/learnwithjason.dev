@@ -1,0 +1,30 @@
+{
+  "name": "site",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "develop": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean"
+  },
+  "dependencies": {
+    "@emotion/core": "^10.0.16",
+    "@mdx-js/mdx": "^1.4.0",
+    "@mdx-js/react": "^1.4.0",
+    "axios": "^0.19.0",
+    "dotenv": "^8.0.0",
+    "gatsby": "^2.4.2",
+    "gatsby-plugin-manifest": "^2.2.9",
+    "gatsby-plugin-mdx": "^1.0.33",
+    "gatsby-plugin-react-helmet": "^3.1.5",
+    "gatsby-plugin-theme-ui": "^0.2.34",
+    "gatsby-theme-video-blog": "*",
+    "polished": "^3.4.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-helmet": "^5.2.1",
+    "theme-ui": "^0.2.36"
+  }
+}

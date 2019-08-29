@@ -1,0 +1,34 @@
+{
+  "name": "gatsby-theme-video-blog",
+  "version": "1.0.0",
+  "license": "MIT",
+  "dependencies": {
+    "@emotion/core": "^10.0.15",
+    "@mdx-js/mdx": "^1.2.2",
+    "@mdx-js/react": "^1.2.2",
+    "gatsby-image": "^2.2.14",
+    "gatsby-plugin-mdx": "^1.0.23",
+    "gatsby-plugin-react-helmet": "^3.1.3",
+    "gatsby-plugin-theme-ui": "^0.2.33",
+    "polished": "^3.4.1",
+    "react-helmet": "^5.2.1",
+    "theme-ui": "^0.2.33"
+  },
+  "peerDependencies": {
+    "dotenv": "^8.0.0",
+    "gatsby": "^2.4.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "devDependencies": {
+    "dotenv": "^8.0.0",
+    "semantic-release": "^15.13.3",
+    "webpack-bundle-analyzer": "^3.0.3"
+  },
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "gatsby-theme"
+  ],
+  "main": "index.js"
+}
