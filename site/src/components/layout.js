@@ -6,7 +6,7 @@ import Helmet from 'react-helmet';
 import { transparentize } from 'polished';
 import Header from './header';
 
-const Layout = ({ children }) => {
+const Layout = ({ children, pathContext: { frontmatter = {} } = {} }) => {
   const {
     site: {
       siteMetadata: { title, description },
@@ -73,10 +73,13 @@ const Layout = ({ children }) => {
           },
         }}
       />
-      <Helmet>
+      <Helmet titleTemplate="%s · Learn With Jason">
         <html lang="en" />
-        <title>{title}</title>
-        <meta name="description" content={description} />
+        <title>{frontmatter.title || title}</title>
+        <meta
+          name="description"
+          content={frontmatter.description || description}
+        />
       </Helmet>
       <Header title={title} />
       <div

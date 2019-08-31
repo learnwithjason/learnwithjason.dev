@@ -4,6 +4,16 @@ require('dotenv').config({
 
 module.exports = {
   plugins: [
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
+    'gatsby-plugin-react-helmet',
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: 'content',
+        name: 'content',
+      },
+    },
     {
       resolve: 'gatsby-theme-video-blog',
       options: {},
@@ -27,6 +37,14 @@ module.exports = {
         defaultLayouts: {
           default: require.resolve('./src/components/layout.js'),
         },
+        gatsbyRemarkPlugins: [
+          {
+            resolve: 'gatsby-remark-autolink-headers',
+            options: {
+              icon: false,
+            },
+          },
+        ],
       },
     },
   ],

@@ -7,6 +7,7 @@ import TwitchButton from './twitch-button';
 
 const Header = ({ title }) => {
   const [colorMode, setColorMode] = useColorMode('light');
+
   return (
     <header
       sx={{
@@ -57,6 +58,10 @@ const Header = ({ title }) => {
             text: 'Episodes',
           },
           {
+            href: '/schedule',
+            text: 'Schedule',
+          },
+          {
             href: '/about',
             text: 'About',
           },
@@ -72,6 +77,7 @@ const Header = ({ title }) => {
             <Component
               key={page.href}
               sx={{
+                '&&': { color: 'white' },
                 variant: 'video-blog.header.link',
               }}
               {...props}

@@ -1,3 +1,5 @@
+import { transparentize } from 'polished';
+
 const defaultFontStack = [
   '-apple-system',
   'BlinkMacSystemFont',
@@ -81,8 +83,9 @@ export default {
     secondary: colors.purple[2],
     accent: colors.yellow[3],
     muted: colors.teal[1],
-    text: colors.gray[4],
+    text: colors.gray[5],
     heading: colors.purple[6],
+    link: colors.purple[5],
     modes: {
       dark: {
         ...colors,
@@ -92,6 +95,7 @@ export default {
         accent: colors.yellow[3],
         muted: colors.teal[1],
         text: colors.blue[0],
+        link: colors.yellow[3],
         heading: 'white',
       },
     },
@@ -117,12 +121,99 @@ export default {
   },
   radii: [0, 2, 5, 10],
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
+  styles: {
+    h1: {
+      color: 'heading',
+      lineHeight: 'heading',
+      m: 0,
+      mt: 4,
+      '&:first-child': {
+        mt: 0,
+      },
+    },
+    h2: {
+      color: 'heading',
+      lineHeight: 'heading',
+      m: 0,
+      mt: 4,
+      '&:first-child': {
+        mt: 0,
+      },
+    },
+    h3: {
+      color: 'heading',
+      lineHeight: 'heading',
+      m: 0,
+      mt: 4,
+      '&:first-child': {
+        mt: 0,
+      },
+    },
+    h4: {
+      color: 'heading',
+      lineHeight: 'heading',
+      m: 0,
+      mt: 4,
+      '&:first-child': {
+        mt: 0,
+      },
+    },
+    h5: {
+      color: 'heading',
+      lineHeight: 'heading',
+      m: 0,
+      mt: 4,
+      '&:first-child': {
+        mt: 0,
+      },
+    },
+    h6: {
+      color: 'heading',
+      lineHeight: 'heading',
+      m: 0,
+      mt: 4,
+      '&:first-child': {
+        mt: 0,
+      },
+    },
+  },
 
   // namespace variants under the theme name
   'video-blog': {
     layout: {
       root: {
         color: 'text',
+        lineHeight: 'body',
+        'h1,h2,h3,h4,h5,h6': {
+          lineHeight: 'heading',
+        },
+        table: {
+          tableLayout: 'fixed',
+          width: '100%',
+          borderCollapse: 'collapse',
+          border: '1px solid',
+          borderColor: 'primary',
+        },
+        th: {
+          backgroundColor: 'text',
+          color: 'background',
+        },
+        'th, td': {
+          border: '1px solid',
+          borderColor: 'text',
+          p: 3,
+        },
+        'tbody tr': {
+          '&:nth-of-type(even)': {
+            background: t => transparentize(0.75, t.colors.primary),
+          },
+        },
+        code: {
+          fontSize: 2,
+        },
+        a: {
+          color: 'link',
+        },
       },
     },
     video: {

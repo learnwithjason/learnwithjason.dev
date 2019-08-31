@@ -40,6 +40,9 @@ const VideoPreview = ({ video, latest = false }) => {
           mt: [0, 0, -20],
           p: ['5vw', '5vw', 20],
           variant: 'video-blog.latest-video',
+          a: {
+            color: 'white',
+          },
         },
       }}
     >

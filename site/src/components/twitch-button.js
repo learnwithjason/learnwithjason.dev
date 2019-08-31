@@ -31,11 +31,9 @@ const TwitchButton = ({ username, colorMode }) => {
     checkLiveStatus();
   }, [username]);
 
-  const url = live ? username : `${username}/events`;
-
-  return (
+  return live ? (
     <a
-      href={`https://twitch.tv/${url}`}
+      href={`https://twitch.tv/${username}`}
       sx={{
         variant: 'video-blog.header.link',
         '::before': {
@@ -56,9 +54,9 @@ const TwitchButton = ({ username, colorMode }) => {
         },
       }}
     >
-      {live ? 'Watch Live Now!' : 'Upcoming Streams'}
+      Watch Live Now!
     </a>
-  );
+  ) : null;
 };
 
 export default TwitchButton;
