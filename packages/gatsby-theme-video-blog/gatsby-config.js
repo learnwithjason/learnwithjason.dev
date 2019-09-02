@@ -1,4 +1,6 @@
-module.exports = options => ({
+const isProd = process.env.NODE_ENV === 'production';
+
+module.exports = ({ projectId, dataset, token }) => ({
   siteMetadata: {
     title: 'Learn With Jason — live coding with friends!',
     description: `
@@ -9,24 +11,16 @@ module.exports = options => ({
   },
   plugins: [
     'gatsby-plugin-react-helmet',
-    // 'gatsby-interface-video',
-    // {
-    //   resolve: 'gatsby-source-video-youtube',
-    //   options,
-    // },
-    // 'gatsby-plugin-sharp',
-    // 'gatsby-transformer-sharp',
-    // {
-    //   resolve: 'gatsby-source-filesystem',
-    //   options: {
-    //     path: 'content/videos',
-    //     name: 'videos',
-    //   },
-    // },
-    // {
-    //   resolve: 'gatsby-plugin-mdx',
-    //   options: {},
-    // },
     'gatsby-plugin-theme-ui',
+    {
+      resolve: 'gatsby-source-sanity',
+      options: {
+        projectId,
+        dataset,
+        token,
+        overlayDrafts: !isProd,
+        watchMode: !isProd,
+      },
+    },
   ],
 });

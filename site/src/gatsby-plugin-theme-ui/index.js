@@ -216,11 +216,6 @@ export default {
         },
       },
     },
-    video: {
-      h1: {
-        fontSize: 4,
-      },
-    },
     header: {
       link: {
         bg: 'primary',

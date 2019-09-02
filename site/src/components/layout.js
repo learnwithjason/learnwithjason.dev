@@ -6,7 +6,7 @@ import Helmet from 'react-helmet';
 import { transparentize } from 'polished';
 import Header from './header';
 
-const Layout = ({ children, pathContext: { frontmatter = {} } = {} }) => {
+const Layout = ({ children, pageContext: { frontmatter = {} } = {} }) => {
   const {
     site: {
       siteMetadata: { title, description },
@@ -43,7 +43,7 @@ const Layout = ({ children, pathContext: { frontmatter = {} } = {} }) => {
             ${transparentize(0.8, t.colors.teal[2])}
           )
         `,
-        'a, button': {
+        'a, button, summary': {
           ':active,:focus': {
             outline: t => `2px solid ${t.colors.primary}`,
             outlineOffset: '2px',

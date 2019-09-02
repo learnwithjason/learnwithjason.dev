@@ -1,15 +1,17 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui';
-// import Image from 'gatsby-image';
 import { Link } from 'gatsby';
+import Image from 'gatsby-image';
 import { transparentize } from 'polished';
 
-const VideoPreview = ({ video, latest = false }) => {
+const VideoPreview = ({ video, basePath, latest = false }) => {
+  const link = `/${basePath}/${video.slug}`.replace(/\/+/, '/');
+
   return (
     <div
       key={video.id}
       sx={{
-        mt: 0,
+        mt: [4, 0],
         border: '1px solid',
         borderColor: 'transparent',
         variant: 'video-blog.preview',
@@ -65,7 +67,7 @@ const VideoPreview = ({ video, latest = false }) => {
       )}
       <div sx={{ variant: 'video-blog.preview-image' }}>
         <Link
-          to={`/${video.videoID}`}
+          to={link}
           sx={{
             display: 'block',
             ':active, :focus': {
@@ -76,8 +78,8 @@ const VideoPreview = ({ video, latest = false }) => {
             variant: 'video-blog.preview-image-link',
           }}
         >
-          <img
-            src={video.image}
+          <Image
+            fluid={video.image.fluid}
             alt={video.title}
             sx={{
               border: '1px solid',
@@ -103,7 +105,7 @@ const VideoPreview = ({ video, latest = false }) => {
             variant: 'video-blog.preview-heading',
           }}
         >
-          {video.title.replace(' — Learn With Jason', '')}
+          {video.title} (with {video.guest.map(({ name }) => name).join(', ')})
         </h2>
         {latest && (
           <div
@@ -114,7 +116,7 @@ const VideoPreview = ({ video, latest = false }) => {
           />
         )}
         <Link
-          to={`/${video.videoID}`}
+          to={link}
           sx={{
             color: latest ? 'white' : 'text',
             display: 'block',

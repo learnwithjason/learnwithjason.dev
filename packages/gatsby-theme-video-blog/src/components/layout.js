@@ -2,7 +2,6 @@
 import { jsx, Styled } from 'theme-ui';
 import { Global } from '@emotion/core';
 import Helmet from 'react-helmet';
-import { transparentize } from 'polished';
 import { graphql, useStaticQuery } from 'gatsby';
 
 const Layout = ({ children }) => {

@@ -10,13 +10,17 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        path: 'content',
-        name: 'content',
+        path: 'static',
+        name: 'static',
       },
     },
     {
       resolve: 'gatsby-theme-video-blog',
-      options: {},
+      options: {
+        projectId: process.env.SANITY_PROJECT_ID,
+        dataset: process.env.SANITY_DATASET,
+        token: process.env.SANITY_TOKEN,
+      },
     },
     {
       resolve: 'gatsby-plugin-manifest',

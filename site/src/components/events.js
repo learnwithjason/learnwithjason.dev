@@ -39,7 +39,7 @@ const Event = ({ event }) => {
         <Image fluid={event.image.sharp.fluid} alt={title} />
       </div>
       <div>
-        <h2 sx={{ m: 0 }}>{title}</h2>
+        <h2 sx={{ m: 0, mt: [3, 0] }}>{title}</h2>
         <p sx={{ m: 0, mt: 2 }}>{event.description}</p>
         <p sx={{ m: 0, mt: 2 }}>
           <a href={`https://twitch.tv/events/${event.originalID}`}>
