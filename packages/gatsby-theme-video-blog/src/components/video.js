@@ -68,12 +68,16 @@ const Video = ({
           </a>
         ))}
       </li>
-      <li>
-        <strong>Demo:</strong> <a href={demo}>{demo}</a>
-      </li>
-      <li>
-        <strong>Repo:</strong> <a href={repo}>{repo}</a>
-      </li>
+      {demo && (
+        <li>
+          <strong>Demo:</strong> <a href={demo}>{demo}</a>
+        </li>
+      )}
+      {repo && (
+        <li>
+          <strong>Repo:</strong> <a href={repo}>{repo}</a>
+        </li>
+      )}
     </ul>
 
     <h2>Links & Resources</h2>
