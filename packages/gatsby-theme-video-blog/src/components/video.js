@@ -29,7 +29,7 @@ const Video = ({
     }}
   >
     <SEO
-      title={title}
+      title={`${title} (with ${guest.map(g => g.name).join()})`}
       description={description}
       image={image.fluid.src}
       author={{ twitter: '@jlengstorf' }}
