@@ -7,6 +7,7 @@ export const query = graphql`
   query($slug: String) {
     videoEpisode(slug: { eq: $slug }) {
       title
+      slug
       date
       description
       body

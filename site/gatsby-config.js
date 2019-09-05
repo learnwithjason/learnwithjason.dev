@@ -3,6 +3,15 @@ require('dotenv').config({
 });
 
 module.exports = {
+  siteMetadata: {
+    title: 'Learn With Jason — live coding with friends!',
+    description: `
+      Join Jason Lengstorf as he pair programs with 
+      brilliant folks from the community to build 
+      something live in about 90 minutes.
+    `,
+    baseUrl: 'https://learnwithjason.dev',
+  },
   plugins: [
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',

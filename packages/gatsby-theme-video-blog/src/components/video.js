@@ -2,15 +2,18 @@
 import { jsx } from 'theme-ui';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import YouTube from 'react-youtube';
+import SEO from './seo';
 
 const Video = ({
   title,
+  slug,
   description,
   guest,
   demo,
   repo,
   links,
   body,
+  image,
   youtubeID,
 }) => (
   <article
@@ -25,6 +28,13 @@ const Video = ({
       },
     }}
   >
+    <SEO
+      title={title}
+      description={description}
+      image={image.fluid.src}
+      author={{ twitter: '@jlengstorf' }}
+      path={`/${slug}`}
+    />
     <YouTube
       videoId={youtubeID}
       containerClassName="video-blog-embed-wrapper"
