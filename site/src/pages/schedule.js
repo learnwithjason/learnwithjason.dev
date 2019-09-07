@@ -26,16 +26,12 @@ const Upcoming = () => {
     }
   `);
 
-  const futureEvents = data.allEvent.nodes.filter(
-    event => new Date(event.start) >= new Date(),
-  );
-
   return (
     <Layout>
       <Helmet>
         <title>Upcoming Episodes</title>
       </Helmet>
-      <Events events={futureEvents} />
+      <Events events={data.allEvent.nodes} />
     </Layout>
   );
 };
