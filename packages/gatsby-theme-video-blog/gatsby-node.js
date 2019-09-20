@@ -50,7 +50,7 @@ exports.createSchemaCustomization = ({ actions, schema, getNode }) => {
           },
         },
         guest: {
-          type: '[VideoGuest!]!',
+          type: '[VideoGuest!]',
           extensions: {
             link: { by: 'sanityRef' },
           },
@@ -105,23 +105,36 @@ exports.onCreateNode = async ({
   const nodePicker = {
     SanityEpisode: {
       type: 'VideoEpisode',
-      createNode: async node => {
-        debug(`Creating a new VideoEpisode from ${node._id}`);
+      createNode: async ({
+        _id,
+        date,
+        demo,
+        description,
+        guest = [],
+        image,
+        links,
+        repo,
+        slug,
+        title,
+        transcript = '',
+        youtubeID,
+      }) => {
+        debug(`Creating a new VideoEpisode from ${_id}`);
 
         return {
-          id: createNodeId(`VideoEpisode-${node._id}`),
-          parent: node._id,
-          date: node.date,
-          youtubeID: node.youtubeID,
-          title: node.title,
-          slug: node.slug.current,
-          demo: node.demo,
-          imageRef: node.image.asset._ref,
-          repo: node.repo,
-          links: node.links,
-          guest: node.guest.map(g => g._ref),
-          description: node.description,
-          rawBody: node.transcript || '',
+          id: createNodeId(`VideoEpisode-${_id}`),
+          parent: _id,
+          slug: slug.current,
+          imageRef: image.asset._ref,
+          guest: guest.map(g => g._ref),
+          rawBody: transcript,
+          date,
+          youtubeID,
+          title,
+          demo,
+          repo,
+          links,
+          description,
         };
       },
     },

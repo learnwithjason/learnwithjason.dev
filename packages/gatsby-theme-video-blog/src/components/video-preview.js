@@ -105,7 +105,8 @@ const VideoPreview = ({ video, basePath, latest = false }) => {
             variant: 'video-blog.preview-heading',
           }}
         >
-          {video.title} (with {video.guest.map(({ name }) => name).join(', ')})
+          {video.title} (with{' '}
+          {(video.guest || []).map(({ name }) => name).join(', ')})
         </h2>
         {latest && (
           <div
