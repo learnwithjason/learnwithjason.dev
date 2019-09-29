@@ -6,6 +6,8 @@ import { transparentize } from 'polished';
 
 const VideoPreview = ({ video, basePath, latest = false }) => {
   const link = `/${basePath}/${video.slug}`.replace(/\/+/, '/');
+  const guests = (video.guest || []).map(({ name }) => name);
+  const hasGuest = guests.length > 0;
 
   return (
     <div
@@ -105,8 +107,8 @@ const VideoPreview = ({ video, basePath, latest = false }) => {
             variant: 'video-blog.preview-heading',
           }}
         >
-          {video.title} (with{' '}
-          {(video.guest || []).map(({ name }) => name).join(', ')})
+          {video.title}
+          {hasGuest && ` (with ${guests.join()})`}
         </h2>
         {latest && (
           <div
