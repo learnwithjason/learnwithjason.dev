@@ -48,6 +48,7 @@ exports.createSchemaCustomization = ({ actions, schema, getNode }) => {
           type: 'Boolean!',
           resolve: source => new Date(source.date) >= new Date(),
         },
+        hidden: { type: 'Boolean!', resolve: source => Boolean(source.hidden) },
         image: {
           type: 'SanityImageAsset!',
           resolve: async (source, _args) => {
@@ -95,12 +96,7 @@ exports.createSchemaCustomization = ({ actions, schema, getNode }) => {
   ]);
 };
 
-exports.onCreateNode = async ({
-  node,
-  actions,
-  createNodeId,
-  createContentDigest,
-}) => {
+exports.onCreateNode = async ({ node, actions, createNodeId }) => {
   // We only want to make changes when we find these kinds of nodes.
   const allowedTypes = ['SanityEpisode', 'SanityGuest'];
   if (!allowedTypes.includes(node.internal.type)) {
@@ -125,8 +121,14 @@ exports.onCreateNode = async ({
         title,
         transcript = '',
         youtubeID,
+        isFuture,
+        hidden,
       }) => {
         debug(`Creating a new VideoEpisode from ${_id}`);
+
+        if (slug === 'art-direction-for-developers') {
+          console.log(node);
+        }
 
         return {
           id: createNodeId(`VideoEpisode-${_id}`),
@@ -142,6 +144,8 @@ exports.onCreateNode = async ({
           repo,
           links,
           description,
+          isFuture,
+          hidden,
         };
       },
     },
@@ -184,7 +188,7 @@ exports.onCreateNode = async ({
     parent: node.id,
     internal: {
       type,
-      contentDigest: createContentDigest(newNode),
+      contentDigest: node.internal.contentDigest,
       ...extraInternals,
     },
   });
@@ -196,12 +200,12 @@ exports.createPages = async (
 ) => {
   const result = await graphql(`
     {
-      allVideoEpisode(
-        filter: { youtubeID: { ne: null }, isFuture: { eq: false } }
-      ) {
+      allVideoEpisode(filter: { hidden: { eq: false } }) {
         nodes {
+          id
           slug
           isFuture
+          youtubeID
         }
       }
     }
@@ -212,7 +216,7 @@ exports.createPages = async (
   }
 
   const past = result.data.allVideoEpisode.nodes.filter(
-    episode => !episode.isFuture,
+    episode => !episode.isFuture && episode.youtubeID,
   );
 
   past.forEach(({ slug }) => {
@@ -221,6 +225,19 @@ exports.createPages = async (
       path: path.join(basePath, slug),
       component: require.resolve('./src/templates/video-template.js'),
       context: { slug, basePath },
+    });
+  });
+
+  const upcoming = result.data.allVideoEpisode.nodes.filter(
+    episode => episode.isFuture,
+  );
+
+  upcoming.forEach(({ id, slug }) => {
+    debug(`creating a page for ${slug}`);
+    actions.createPage({
+      path: path.join(basePath, slug),
+      component: require.resolve('./src/templates/event-template.js'),
+      context: { pageID: id, slug, basePath },
     });
   });
 

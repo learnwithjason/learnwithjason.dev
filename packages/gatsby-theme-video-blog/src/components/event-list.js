@@ -2,6 +2,7 @@
 import { jsx } from 'theme-ui';
 import { useEffect, useState } from 'react';
 import Image from 'gatsby-image';
+import { Link } from 'gatsby';
 
 const Event = ({ title, description, guest, date, image, basePath, slug }) => {
   const [calendarLink, setCalendarLink] = useState(false);
@@ -65,10 +66,19 @@ const Event = ({ title, description, guest, date, image, basePath, slug }) => {
         {localeDate}
       </p>
       <div>
-        <Image fluid={image.fluid} alt={title} />
+        <Link to={`/${basePath}/${slug}`.replace(/\/+/g, '/')}>
+          <Image fluid={image.fluid} alt={title} />
+        </Link>
       </div>
       <div>
-        <h2 sx={{ m: 0, mt: [3, 0] }}>{title}</h2>
+        <h2 sx={{ m: 0, mt: [3, 0] }}>
+          <Link
+            to={`/${basePath}/${slug}`.replace(/\/+/g, '/')}
+            sx={{ '&&': { color: 'heading' }, textDecoration: 'none' }}
+          >
+            {title}
+          </Link>
+        </h2>
         <p
           sx={{
             fontSize: 0,
@@ -92,7 +102,7 @@ const Event = ({ title, description, guest, date, image, basePath, slug }) => {
         {calendarLink && (
           <a
             href={calendarLink}
-            sx={{ variant: 'button' }}
+            sx={{ variant: 'button', py: 2 }}
             target="_blank"
             rel="noopener noreferrer"
           >

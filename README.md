@@ -1,17 +1,16 @@
-# Dual-Sourcing Data in Gatsby
+# learnwithjason.dev
 
-This is a proof-of-concept to demonstrate how Gatsby themes + schema customization enable the creation of generic types that can source data from multiple back-ends.
+This is the website and CMS for [learnwithjason.dev][lwj].
 
-## How to run this repo
+There are three parts to this site:
+1. A [Sanity][sanity] instance that manages the episode and guest information
+2. A [Gatsby theme][theme] that handles the heavy lifting of sourcing Sanity data and creating pages in Gatsby
+3. A Gatsby site that implements [Theme UI][theme-ui] to style up the site
 
-```sh
-# clone the repo and move into it
-git clone git@github.com:jlengstorf/gatsby-dual-sourcing-data.git
-cd gatsby-dual-sourcing-data/
+For more information on building themes, check out my [egghead course][egghead].
 
-# install dependencies
-yarn
-
-# start the site
-yarn workspace site develop
-```
+[lwj]: https://learnwithjason.dev
+[sanity]: https://sanity.io
+[theme]: https://www.gatsbyjs.org/docs/themes/
+[theme-ui]: https://theme-ui.com
+[egghead]: https://egghead.io/courses/gatsby-theme-authoring?af=azvpe4

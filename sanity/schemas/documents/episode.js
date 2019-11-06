@@ -9,6 +9,12 @@ export default {
       title: 'Title',
     },
     {
+      title: 'Hide this episode on the website',
+      name: 'hidden',
+      type: 'boolean',
+      options: { layout: 'checkbox' },
+    },
+    {
       name: 'slug',
       type: 'slug',
       title: 'Slug',
