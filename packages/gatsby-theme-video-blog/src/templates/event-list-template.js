@@ -6,7 +6,7 @@ import EventList from '../components/event-list';
 export const query = graphql`
   {
     allVideoEpisode(
-      sort: { order: DESC, fields: date }
+      sort: { order: ASC, fields: date }
       filter: { isFuture: { eq: true }, hidden: { eq: false } }
     ) {
       nodes {
