@@ -1,18 +1,19 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import Layout from '../components/layout';
-import VideoList from '../components/video-list';
+import EventList from '../components/event-list';
 
 export const query = graphql`
   {
     allVideoEpisode(
       sort: { order: DESC, fields: date }
-      filter: { youtubeID: { ne: null }, isFuture: { eq: false } }
+      filter: { isFuture: { eq: true } }
     ) {
       nodes {
         id
         title
         slug
+        date
         guest {
           name
           twitter
@@ -28,10 +29,10 @@ export const query = graphql`
   }
 `;
 
-const VideoListTemplate = ({ data, pageContext: { basePath } }) => (
+const EventListTemplate = ({ data, pageContext: { basePath } }) => (
   <Layout>
-    <VideoList videos={data.allVideoEpisode.nodes} basePath={basePath} />
+    <EventList videos={data.allVideoEpisode.nodes} basePath={basePath} />
   </Layout>
 );
 
-export default VideoListTemplate;
+export default EventListTemplate;

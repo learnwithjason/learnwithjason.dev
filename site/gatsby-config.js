@@ -13,16 +13,7 @@ module.exports = {
     baseUrl: 'https://learnwithjason.dev',
   },
   plugins: [
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-sharp',
     'gatsby-plugin-react-helmet',
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        path: 'static',
-        name: 'static',
-      },
-    },
     {
       resolve: 'gatsby-theme-video-blog',
       options: {

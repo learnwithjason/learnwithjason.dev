@@ -9,12 +9,6 @@ export default {
       title: 'Title',
     },
     {
-      name: 'youtubeID',
-      type: 'string',
-      title: 'YouTube ID',
-      description: 'Just the ID, not the full URL.',
-    },
-    {
       name: 'slug',
       type: 'slug',
       title: 'Slug',
@@ -25,15 +19,32 @@ export default {
       },
     },
     {
+      name: 'image',
+      type: 'episodeImage',
+      title: 'Image',
+    },
+    {
+      name: 'description',
+      type: 'text',
+      title: 'Episode Description',
+      description: 'For Google SEO, previews, etc. — a brief overview.',
+    },
+    {
       name: 'date',
       type: 'datetime',
-      title: 'Recording Date',
+      title: 'Episode Date',
     },
     {
       name: 'guest',
       type: 'array',
       title: 'Guest(s)',
       of: [{ type: 'reference', to: [{ type: 'guest' }] }],
+    },
+    {
+      name: 'youtubeID',
+      type: 'string',
+      title: 'YouTube ID',
+      description: 'Just the ID, not the full URL.',
     },
     {
       name: 'demo',
@@ -53,17 +64,6 @@ export default {
       title: 'Links and Resources',
       description: 'Links to anything that was mentioned during the episode.',
       of: [{ type: 'url' }],
-    },
-    {
-      name: 'image',
-      type: 'episodeImage',
-      title: 'Image',
-    },
-    {
-      name: 'description',
-      type: 'text',
-      title: 'Episode Description',
-      description: 'For Google SEO, previews, etc. — a brief overview.',
     },
     {
       name: 'transcript',

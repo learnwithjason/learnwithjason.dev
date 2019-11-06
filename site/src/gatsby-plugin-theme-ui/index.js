@@ -178,6 +178,22 @@ export default {
     },
   },
 
+  button: {
+    // specificity haaaaaaaack
+    '&&': { color: 'heading' },
+    bg: 'primary',
+    borderRadius: 6,
+    display: 'inline-block',
+    fontSize: 2,
+    fontWeight: 'bold',
+    mb: 4,
+    mt: 2,
+    py: 3,
+    px: 4,
+    textDecoration: 'none',
+    textTransform: 'uppercase',
+  },
+
   // namespace variants under the theme name
   'video-blog': {
     layout: {
