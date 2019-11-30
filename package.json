@@ -3,5 +3,8 @@
   "workspaces": [
     "packages/*",
     "site"
-  ]
+  ],
+  "scripts": {
+    "develop": "yarn workspace site develop"
+  }
 }

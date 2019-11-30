@@ -38,18 +38,24 @@ const Event = ({ title, description, guest, date, image, slug, basePath }) => {
     link.searchParams.set('details', description);
     link.searchParams.set('location', 'https://twitch.tv/jlengstorf');
     link.searchParams.set('dates', `${start}/${end}`);
-    link.searchParams.set('ctz', `America/Los_Angeles`);
 
     setCalendarLink(link.toString());
   }, [date, title, description]);
+
+  const seoDescription = description.replace(
+    / \(https:\/\/twitter.com\/.*?\)/g,
+    '',
+  );
 
   return (
     <Fragment>
       <SEO
         title={`${title} (with ${guest.map(g => g.name).join()})`}
-        description={description}
+        description={`${localeDate} — ${seoDescription}`}
         image={image.fluid.src}
+        guest={guest}
         author={{ twitter: '@LWJShow' }}
+        date={date}
         path={`/${basePath}/${slug}`.replace(/\/+/g, '/')}
       />
       <div

@@ -18,7 +18,7 @@ module.exports = ({ projectId, dataset, token }) => ({
         projectId,
         dataset,
         token,
-        overlayDrafts: !isProd,
+        overlayDrafts: false,
         watchMode: !isProd,
       },
     },
