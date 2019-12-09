@@ -1,22 +1,30 @@
-# example netlify.toml
 [build]
   command = "yarn workspace site build"
-  functions = "functions"
+  functions = "site/functions"
   publish = "site/public"
 
-  ## Uncomment to use this redirect for Single Page Applications like create-react-app. 
-  ## Not needed for static site generators.
+[dev] 
+  command = "yarn develop" # Command to start your dev server
+  targetPort = 8008 # port the app runs on
+  port = 53091 # port Netlify Dev runs on
+  functionsPort = 34568
+  publish = "site/public" # Folder with the static content for _redirect file
+
 [[redirects]]
   from = "https://learnwithjason.netlify.com/*"
   to = "https://www.learnwithjason.dev/:splat"
   status = 301
   force = true
-  
-  ## (optional) Settings for Netlify Dev
-  ## https://github.com/netlify/netlify-dev-plugin#project-detection
-  #[dev] 
-  #  command = "yarn start" # Command to start your dev server
-  #  port = 3000 # Port that the dev server will be listening on
-  #  publish = "dist" # Folder with the static content for _redirect file
-  
-  ## more info on configuring this file: https://www.netlify.com/docs/netlify-toml-reference/ 
+
+[[redirects]]
+  from = "/commands/*"
+  to = "/.netlify/functions/command-:splat"
+  status = 200
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+[[plugins]]
+  type = "netlify-plugin-gatsby-cache"

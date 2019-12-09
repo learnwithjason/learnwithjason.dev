@@ -127,7 +127,7 @@ export default {
       lineHeight: 'heading',
       m: 0,
       mt: 4,
-      '&:first-child': {
+      '&:first-of-type': {
         mt: 0,
       },
     },
@@ -136,7 +136,7 @@ export default {
       lineHeight: 'heading',
       m: 0,
       mt: 4,
-      '&:first-child': {
+      '&:first-of-type': {
         mt: 0,
       },
     },
@@ -145,7 +145,7 @@ export default {
       lineHeight: 'heading',
       m: 0,
       mt: 4,
-      '&:first-child': {
+      '&:first-of-type': {
         mt: 0,
       },
     },
@@ -154,7 +154,7 @@ export default {
       lineHeight: 'heading',
       m: 0,
       mt: 4,
-      '&:first-child': {
+      '&:first-of-type': {
         mt: 0,
       },
     },
@@ -163,7 +163,7 @@ export default {
       lineHeight: 'heading',
       m: 0,
       mt: 4,
-      '&:first-child': {
+      '&:first-of-type': {
         mt: 0,
       },
     },
@@ -172,7 +172,7 @@ export default {
       lineHeight: 'heading',
       m: 0,
       mt: 4,
-      '&:first-child': {
+      '&:first-of-type': {
         mt: 0,
       },
     },
