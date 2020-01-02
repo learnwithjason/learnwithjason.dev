@@ -126,10 +126,6 @@ exports.onCreateNode = async ({ node, actions, createNodeId }) => {
       }) => {
         debug(`Creating a new VideoEpisode from ${_id}`);
 
-        if (slug === 'art-direction-for-developers') {
-          console.log(node);
-        }
-
         return {
           id: createNodeId(`VideoEpisode-${_id}`),
           parent: _id,
@@ -200,7 +196,7 @@ exports.createPages = async (
 ) => {
   const result = await graphql(`
     {
-      allVideoEpisode(filter: { hidden: { eq: false } }) {
+      allVideoEpisode(limit: 1000, filter: { hidden: { eq: false } }) {
         nodes {
           id
           slug
