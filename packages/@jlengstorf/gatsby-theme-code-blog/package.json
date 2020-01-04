@@ -1,0 +1,20 @@
+{
+  "name": "@jlengstorf/gatsby-theme-code-blog",
+  "version": "0.0.1",
+  "description": "A theme based on gatsby-theme-blog-core for building a code blog.",
+  "main": "gatsby-config.js",
+  "repository": "https://github.com/jlengstorf/learnwithjason.dev.git",
+  "author": "Jason Lengstorf <jason@lengstorf.com> (https://lengstorf.com)",
+  "license": "MIT",
+  "dependencies": {
+    "@theme-ui/color": "^0.2.53",
+    "@theme-ui/prism": "^0.2.50",
+    "gatsby-theme-blog-core": "^1.0.46"
+  },
+  "peerDependencies": {
+    "@emotion/core": "^10.0.16",
+    "@mdx-js/mdx": "^1.4.0",
+    "gatsby-plugin-theme-ui": "^0.2.34",
+    "theme-ui": "^0.2.36"
+  }
+}

@@ -34,8 +34,8 @@ const Layout = ({ children, pageContext: { frontmatter = {} } = {} }) => {
           ),
           linear-gradient(
             180deg,
-            ${transparentize(0.75, t.colors.muted)},
-            ${transparentize(1, t.colors.muted)}
+            ${transparentize(0.75, t.colors.teal[1])},
+            ${transparentize(1, t.colors.teal[1])}
           ),
           linear-gradient(
             90deg,

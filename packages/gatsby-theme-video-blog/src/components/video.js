@@ -46,12 +46,12 @@ const Video = ({
         sx={{
           backgroundColor: 'background',
           backgroundImage: t => `
-          linear-gradient(
-            ${t.colors.background},
-            ${t.colors.secondary},
-            ${t.colors.background}
-          )
-        `,
+            linear-gradient(
+              ${t.colors.background},
+              ${t.colors.secondary},
+              ${t.colors.background}
+            )
+          `,
           border: '1px solid',
           borderColor: 'background',
           height: '100%',

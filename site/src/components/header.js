@@ -62,6 +62,10 @@ const Header = ({ title }) => {
             text: 'Schedule',
           },
           {
+            href: '/blog',
+            text: 'Blog',
+          },
+          {
             href: '/about',
             text: 'About',
           },

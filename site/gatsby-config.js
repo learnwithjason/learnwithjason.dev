@@ -14,6 +14,7 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-react-helmet',
+    '@jlengstorf/gatsby-theme-code-blog',
     {
       resolve: 'gatsby-theme-video-blog',
       options: {
@@ -48,7 +49,18 @@ module.exports = {
               icon: false,
             },
           },
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              // should this be configurable by the end-user?
+              maxWidth: 1380,
+              linkImagesToOriginal: false,
+            },
+          },
+          { resolve: `gatsby-remark-copy-linked-files` },
+          { resolve: `gatsby-remark-smartypants` },
         ],
+        remarkPlugins: [require(`remark-slug`)],
       },
     },
   ],

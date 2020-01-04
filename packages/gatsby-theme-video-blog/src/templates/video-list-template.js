@@ -2,6 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import Layout from '../components/layout';
 import VideoList from '../components/video-list';
+import IntroBlock from '../components/intro-block.mdx';
 
 export const query = graphql`
   {
@@ -34,6 +35,7 @@ export const query = graphql`
 
 const VideoListTemplate = ({ data, pageContext: { basePath } }) => (
   <Layout>
+    <IntroBlock />
     <VideoList videos={data.allVideoEpisode.nodes} basePath={basePath} />
   </Layout>
 );

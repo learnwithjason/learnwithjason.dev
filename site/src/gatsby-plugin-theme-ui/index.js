@@ -1,3 +1,4 @@
+import nightOwl from '@theme-ui/prism/presets/night-owl.json';
 import { transparentize } from 'polished';
 
 const defaultFontStack = [
@@ -82,8 +83,9 @@ export default {
     primary: colors.magenta[3],
     secondary: colors.purple[2],
     accent: colors.yellow[3],
-    muted: colors.teal[1],
+    muted: colors.blue[4],
     text: colors.gray[5],
+    textLight: colors.gray[4],
     heading: colors.purple[6],
     link: colors.purple[5],
     modes: {
@@ -95,6 +97,7 @@ export default {
         accent: colors.yellow[3],
         muted: colors.teal[1],
         text: colors.blue[0],
+        textLight: colors.blue[1],
         link: colors.yellow[3],
         heading: 'white',
       },
@@ -124,15 +127,20 @@ export default {
   styles: {
     h1: {
       color: 'heading',
+      fontSize: 4,
       lineHeight: 'heading',
       m: 0,
       mt: 4,
       '&:first-of-type': {
         mt: 0,
       },
+      '@media (min-width: 750px)': {
+        fontSize: 6,
+      },
     },
     h2: {
       color: 'heading',
+      fontSize: 5,
       lineHeight: 'heading',
       m: 0,
       mt: 4,
@@ -142,6 +150,7 @@ export default {
     },
     h3: {
       color: 'heading',
+      fontSize: 4,
       lineHeight: 'heading',
       m: 0,
       mt: 4,
@@ -152,6 +161,7 @@ export default {
     h4: {
       color: 'heading',
       lineHeight: 'heading',
+      fontSize: 3,
       m: 0,
       mt: 4,
       '&:first-of-type': {
@@ -175,6 +185,18 @@ export default {
       '&:first-of-type': {
         mt: 0,
       },
+    },
+    pre: {
+      fontSize: 1,
+      overflowX: 'scroll',
+      mx: '-5vw',
+      p: 3,
+      '@media (min-width: calc(54ch + 10vw))': {
+        borderRadius: 2,
+      },
+    },
+    code: {
+      ...nightOwl,
     },
   },
 
