@@ -1187,6 +1187,11 @@
   dependencies:
     core-js "^2.5.7"
 
+"@jlengstorf/get-share-image@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@jlengstorf/get-share-image/-/get-share-image-0.0.1.tgz#68f26ce9c53c533f31842465b20a7f77895da4ba"
+  integrity sha512-clYUEiG5S48HAAclxvVHa1njhRXZA4WcvJHn9S58zm7n1+E2Ni8NLZoJ7GVgY7FFt2J7WtFOqSS4cgAPWrtSiw==
+
 "@mdx-js/mdx@^1.2.2", "@mdx-js/mdx@^1.4.0", "@mdx-js/mdx@^1.5.1":
   version "1.5.3"
   resolved "https://registry.yarnpkg.com/@mdx-js/mdx/-/mdx-1.5.3.tgz#d0092d4e177331d4eaa65d60fa1f37e42fb251ea"
