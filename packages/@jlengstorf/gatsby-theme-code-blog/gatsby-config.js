@@ -5,6 +5,7 @@ module.exports = {
     description: 'TKTK',
   },
   plugins: [
+    'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-theme-blog-core',
       options: {

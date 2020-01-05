@@ -37,7 +37,7 @@ export default ({ data }) => {
             </Link>
           </h2>
           <p sx={{ mt: 2 }}>{post.excerpt}</p>
-          <p
+          <div
             sx={{
               display: 'flex',
               fontSize: 1,
@@ -55,7 +55,7 @@ export default ({ data }) => {
             >
               {post.tags.map(tag => (
                 <li
-                  key={`${post.id}-${post.tag}`}
+                  key={`${post.id}-${tag}`}
                   sx={{
                     my: 0,
                     mr: 2,
@@ -88,7 +88,7 @@ export default ({ data }) => {
               ))}
             </ul>
             <Link to={post.slug}>read this post &rarr;</Link>
-          </p>
+          </div>
         </article>
       ))}
     </Layout>
