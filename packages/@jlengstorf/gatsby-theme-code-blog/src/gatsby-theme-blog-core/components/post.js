@@ -57,7 +57,9 @@ const Post = ({ data: { blogPost, previous, next } }) => {
     tagline: blogPost.tags.map(tag => `#${tag}`).join(' '),
     cloudName: 'jlengstorf',
     imagePublicID: 'lwj/blog-post-card',
-    font: 'futura',
+    titleFont: 'lwj-title.otf',
+    titleExtraConfig: '_line_spacing_-10',
+    taglineFont: 'lwj-tagline.otf',
     textColor: '232129',
   });
 
