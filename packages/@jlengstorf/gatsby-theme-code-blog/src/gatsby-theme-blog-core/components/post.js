@@ -105,6 +105,13 @@ const Post = ({ data: { blogPost, previous, next } }) => {
           '.gatsby-resp-image-wrapper': {
             mx: '-5vw !important',
           },
+          code: {
+            bg: 'background',
+            border: '1px solid',
+            borderColor: alpha('text', 0.25),
+            borderRadius: 4,
+            p: '2px 5px',
+          },
         }}
       >
         <MDXRenderer>{blogPost.body}</MDXRenderer>

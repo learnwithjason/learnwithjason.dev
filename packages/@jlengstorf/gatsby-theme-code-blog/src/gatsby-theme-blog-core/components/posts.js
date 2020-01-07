@@ -23,6 +23,9 @@ export default ({ data }) => {
             sx={{
               fontSize: 3,
               m: 0,
+              '@media (min-width: 750px)': {
+                fontSize: 4,
+              },
             }}
           >
             <Link

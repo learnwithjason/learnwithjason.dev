@@ -25,6 +25,7 @@ export default ({
         borderColor: alpha('text', 0.25),
         borderStyle: 'solid',
         borderWidth: border ? 1 : 0,
+        display: 'block',
         height: 'auto',
         width: '100%',
       },
@@ -34,7 +35,7 @@ export default ({
     {(caption || credit) && (
       <figcaption
         sx={{
-          mt: 2,
+          mt: 1,
           px: '5vw',
           pb: 2,
           color: 'textLight',
@@ -48,7 +49,7 @@ export default ({
           <small
             sx={{
               display: 'block',
-              mt: 2,
+              mt: 1,
               color: 'textLight',
               fontSize: '9px',
               fontStyle: 'normal',
