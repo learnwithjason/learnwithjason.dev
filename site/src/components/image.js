@@ -16,7 +16,7 @@ export default ({
       maxWidth: 'calc(100% + 10vw)',
       width: 'auto',
       '.gatsby-resp-image-wrapper': {
-        mx: '0 !important',
+        mx: 'auto !important',
       },
       p: {
         m: 0,
@@ -28,6 +28,7 @@ export default ({
         display: 'block',
         height: 'auto',
         width: '100%',
+        mx: 'auto',
       },
     }}
   >
