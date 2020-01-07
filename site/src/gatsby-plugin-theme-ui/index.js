@@ -144,9 +144,6 @@ export default {
       lineHeight: 'heading',
       m: 0,
       mt: 4,
-      '&:first-of-type': {
-        mt: 0,
-      },
     },
     h3: {
       color: 'heading',

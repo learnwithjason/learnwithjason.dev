@@ -1,5 +1,5 @@
 ---
-date: 2020-01-06
+date: 2020-01-04
 
 title: Add Text Overlays to Images Using Cloudinary
 excerpt: >
@@ -57,7 +57,13 @@ The change here is this string:
 - `arial_64:` configures the text overlay to use Arial at 64pt
 - `Ready%20to%20party` is the URL-encoded text we want to display
 
-If we visit this URL in our browser, we can see the text overlaid on the image:
+<Aside>
+
+  **Heads up!** Cloudinary supports several fonts by default — there’s no list available, so you’ll have to just try a font out and see if it works. If the font you’d like to use isn’t available by default, you can [upload custom fonts for use with Cloudinary text overlays](/blog/upload-custom-fonts-cloudinary-node/) as well.
+
+</Aside>
+
+If we open this URL in a browser, we’ll see the text overlaid on the image:
 
 <Image credit="ipet photo" creditLink="https://unsplash.com/photos/wehqRK6J6eo">
 
@@ -133,4 +139,7 @@ Now it looks pretty good!
 
 ## What to do next
 
-To take your text overlays to the next level, try [using a custom font for Cloudinary text overlays](/blog/upload-custom-font-cloudinary-node/).
+To take your text overlays to the next level, try:
+
+- [using a custom font for Cloudinary text overlays](/blog/upload-custom-font-cloudinary-node/)
+- [creating custom social media cards automatically using text overlays](/blog/auto-generate-social-image/)

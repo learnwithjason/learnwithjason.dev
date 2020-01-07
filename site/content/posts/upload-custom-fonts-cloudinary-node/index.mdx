@@ -14,13 +14,18 @@ tags:
 - cloudinary
 ---
 
+import Aside from '../../../src/components/aside';
 import Image from '../../../src/components/image';
 
-Unfortunately, the web UI for Cloudinary doesn't seem to work for uploading custom fonts. This script will allow you to upload an OTF or TTF to use when adding text overlays to images.
+If you want to use custom fonts with Cloudinary, you need to upload them as authenticated assets. This script will allow you to upload an OTF or TTF to use when adding text overlays to images.
 
-**IMPORTANT:** make sure you have the appropriate licenses to upload the fonts.
+<Aside warning>
 
-## Install
+  **IMPORTANT:** only upload fonts if you have the appropriate licenses.
+
+</Aside>
+
+## Create a project and install dependencies
 
 Make sure you've created a folder, initialized the Node project, and installed the `cloudinary` Node SDK:
 
@@ -143,6 +148,12 @@ This sets a few things for our text:
 - **`co_white`** — set the text color to white
 - **`l_text:Tahu!.ttf_70`** — `l_text` is the overlay config, then we use the custom font's public ID, then `_70` to set the font size
 - **`:Have%20you%20been%20to%20Machu%20Picchu%3F`** — we can set any text we want here — the text needs to be URI-encoded
+
+<Aside>
+
+  **Heads up!** If you want more details on what’s going on here, I wrote a full post on [how text overlays work in Cloudinary](/blog/add-text-overlay-cloudinary/).
+
+</Aside>
 
 Once we've added this to the URL, it looks like this:
 
