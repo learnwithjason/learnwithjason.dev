@@ -1,0 +1,109 @@
+---
+date: 2020-01-03
+
+title: Access Query String Parameters in Serverless Functions
+excerpt: >
+  How do you use query parameter arguments in a serverless function? This fast tutorial will show you how to get values from query string parameters.
+
+tags:
+  - front-end
+  - serverless
+  - jamstack
+---
+
+TKTK intro
+
+## Write the serverless function
+
+To start, let’s create a serverless function that will allow us to boop our friends. Create a file called `boop-a-friend.js` in the `functions` folder of your project and write the following code inside:
+
+```js
+exports.handler = async () => {
+  // TODO get this value from the query string
+  const boopee = 'Jason';
+
+  return {
+    statusCode: 200,
+    body: `You booped ${boopee} on the nose. Boop!`,
+  };
+};
+```
+
+Run `netlify dev` and visit `[http://localhost:9999/.netlify/functions/boop-a-friend](http://localhost:9999/.netlify/functions/boop-a-friend)` and we see the return text, "You booped Jason on the nose. Boop!"
+
+We want to be able to choose who we boop, though, and we want to do that from the browser — meaning we'll be using the `GET` method to call our serverless function. In practice, it will look like this:
+
+```text
+http://localhost:9999/.netlify/functions/boop-a-friend?boopee=Marisa
+```
+
+We're using a [query string](https://en.wikipedia.org/wiki/Query_string) (the `?boopee=Marisa` part) to set our `boopee` value to "Marisa", because that's who we want to boop.
+
+Next, we need to use the query string value in our serverless function.
+
+## Retrieve values from query strings in serverless functions
+
+Because we're using [Netlify Functions](https://www.netlify.com/products/functions/?utm_source=learnwithjason&utm_medium=sls-query-string-jl&utm_campaign=devex), we receive the `event` as the first argument to our serverless function, and it contains a property called `queryStringParameters`, which contains any query string values as an object.
+
+What this looks like in practice is that if we call our serverless function using the query string above:
+
+```text
+http://localhost:9999/.netlify/functions/boop-a-friend?boopee=Marisa
+```
+
+We can access query parameters in our serverless function by making the following changes:
+
+```diff
+- exports.handler = async () => {
++ exports.handler = async event => {
++   console.log(event.queryStringParameters);
+
+    // TODO get this value from the query string
+    const boopee = 'Jason';
+
+    return {
+      statusCode: 200,
+      body: `You booped ${boopee} on the nose. Boop!`,
+    };
+  };
+```
+
+When we run `netlify dev` and call our function, the logs will show us the following output:
+
+```text
+Request from ::1: GET /.netlify/functions/boop-a-friend?boopee=Marisa
+[Object: null prototype] { boopee: 'Marisa' }
+Response with status 200 in 0 ms.
+```
+
+Our `boopee` is there!
+
+Now we can use it by making a few more adjustments to our code:
+
+```diff
+  exports.handler = async event => {
+-   console.log(event.queryStringParameters);
+-
+-   // TODO get this value from the query string
+-   const boopee = 'Jason';
++   const querystring = event.queryStringParameters;
++   const boopee = querystring.boopee || 'a friend';
+
+    return {
+      statusCode: 200,
+      body: `You booped ${boopee} on the nose. Boop!`,
+    };
+  };
+```
+
+Now we can call our function by visiting `[http://localhost:9999/.netlify/functions/boop-a-friend?boopee=Marisa](http://localhost:9999/.netlify/functions/boop-a-friend?boopee=Marisa)` and we'll see that we're booping Marisa, just like we wanted to!
+
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ef0b5ca6-ddc9-4d2f-8d46-6a6b12ecbdb6/Screen_Shot_2019-12-31_at_1.21.41_PM.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ef0b5ca6-ddc9-4d2f-8d46-6a6b12ecbdb6/Screen_Shot_2019-12-31_at_1.21.41_PM.png)
+
+And if we don't add a query string, we fall back to some default text:
+
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0ca9dde1-6b00-4fe9-8b42-b33a7fab077a/Screen_Shot_2019-12-31_at_1.22.23_PM.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0ca9dde1-6b00-4fe9-8b42-b33a7fab077a/Screen_Shot_2019-12-31_at_1.22.23_PM.png)
+
+## What to do next
+
+TKTK
