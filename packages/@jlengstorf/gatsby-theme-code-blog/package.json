@@ -7,7 +7,7 @@
   "author": "Jason Lengstorf <jason@lengstorf.com> (https://lengstorf.com)",
   "license": "MIT",
   "dependencies": {
-    "@jlengstorf/get-share-image": "^0.2.0",
+    "@jlengstorf/get-share-image": "^0.3.0",
     "@theme-ui/color": "^0.2.53",
     "@theme-ui/prism": "^0.2.50",
     "gatsby-theme-blog-core": "^1.0.46"
