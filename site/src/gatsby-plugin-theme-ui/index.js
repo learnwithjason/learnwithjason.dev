@@ -88,6 +88,7 @@ export default {
     textLight: colors.gray[4],
     heading: colors.purple[6],
     link: colors.purple[5],
+    nav: colors.purple[5],
     modes: {
       dark: {
         ...colors,
@@ -99,6 +100,7 @@ export default {
         text: colors.blue[0],
         textLight: colors.blue[1],
         link: colors.yellow[3],
+        nav: colors.purple[4],
         heading: 'white',
       },
     },
@@ -253,7 +255,7 @@ export default {
     },
     header: {
       link: {
-        bg: 'primary',
+        bg: 'nav',
         color: 'white',
         display: 'block',
         fontSize: [1, 2],
