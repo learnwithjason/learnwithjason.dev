@@ -28,7 +28,7 @@
     "gatsby-remark-images": "^3.1.39",
     "gatsby-remark-smartypants": "^2.1.19",
     "gatsby-theme-video-blog": "*",
-    "netlify-plugin-gatsby-cache": "^0.2.0",
+    "netlify-plugin-gatsby-cache": "^0.2.1-canary.12",
     "netlify-plugin-pastel": "^0.0.1",
     "polished": "^3.4.1",
     "react": "^16.8.6",
