@@ -196,7 +196,7 @@ exports.createPages = async (
 ) => {
   const result = await graphql(`
     {
-      allVideoEpisode(limit: 1000, filter: { hidden: { eq: false } }) {
+      allVideoEpisode(limit: 1000, filter: { hidden: { ne: true } }) {
         nodes {
           id
           slug
