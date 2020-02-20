@@ -63,5 +63,19 @@ module.exports = {
         remarkPlugins: [require(`remark-slug`)],
       },
     },
+    {
+      resolve: 'gatsby-plugin-webmention',
+      options: {
+        username: 'www.learnwithjason.dev',
+        identity: {
+          github: 'jlengstorf',
+          twitter: 'jlengstorf',
+        },
+        mentions: true,
+        pingbacks: false,
+        domain: 'learnwithjason.dev',
+        token: process.env.WEBMENTION_API_KEY,
+      },
+    },
   ],
 };

@@ -80,8 +80,6 @@ const Layout = ({ children, pageContext: { frontmatter = {} } = {} }) => {
           name="description"
           content={frontmatter.description || description}
         />
-        <link href="https://twitter.com/jlengstorf" rel="me" />
-        <link href="https://github.com/jlengstorf" rel="me" />
       </Helmet>
       <Header title={title} />
       <div
