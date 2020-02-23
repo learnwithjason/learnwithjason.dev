@@ -11,6 +11,7 @@ module.exports = {
       something live in about 90 minutes.
     `,
     baseUrl: 'https://learnwithjason.dev',
+    siteUrl: 'https://learnwithjason.dev',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -77,5 +78,6 @@ module.exports = {
         token: process.env.WEBMENTION_API_KEY,
       },
     },
+    'gatsby-plugin-sitemap',
   ],
 };
