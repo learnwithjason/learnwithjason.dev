@@ -1,8 +1,10 @@
 const createHandler = require('@stream-blitz/create-handler');
 
-exports.handler = createHandler(({ message, flags: { broadcaster, mod } }) => {
+exports.handler = createHandler(({ user, message, flags, extra }) => {
+  console.log(({ user, message, flags, extra });
+  
   // only broadcasters or mods can shoutout
-  if (!broadcaster && !mod) {
+  if (!flags.broadcaster && !flags.mod) {
     return;
   }
 
