@@ -1,5 +1,5 @@
 import nightOwl from '@theme-ui/prism/presets/night-owl.json';
-import { transparentize } from 'polished';
+import { alpha } from '@theme-ui/color';
 
 const defaultFontStack = [
   '-apple-system',
@@ -23,6 +23,7 @@ const colors = {
     '#0B7BCC',
     '#005593',
     '#042C49',
+    '#010a10',
   ],
   gray: [
     '#F2F1F4',
@@ -37,7 +38,7 @@ const colors = {
     '#F9E7F3',
     '#F3D3E9',
     '#E8A6D2',
-    '#D459AB',
+    '#D459AB', // gradient start
     '#8E256B',
     '#51153D',
     '#280B1F',
@@ -55,14 +56,14 @@ const colors = {
     '#FFF9DB',
     '#FFF3B3',
     '#FFEC8A',
-    '#FFDF37',
+    '#FFDF37', // gradient mid
     '#CCAB00',
     '#665600',
     '#332B00',
   ],
   teal: [
     '#CCFFFC',
-    '#A6FFFA',
+    '#A6FFFA', // gradient end
     '#52FFF5',
     '#00E5D8',
     '#007A73',
@@ -88,11 +89,11 @@ export default {
     textLight: colors.gray[4],
     heading: colors.purple[6],
     link: colors.purple[5],
-    nav: colors.purple[5],
+    nav: 'white',
     modes: {
       dark: {
         ...colors,
-        background: colors.blue[6],
+        background: colors.blue[7],
         primary: colors.magenta[3],
         secondary: colors.purple[5],
         accent: colors.yellow[3],
@@ -100,14 +101,13 @@ export default {
         text: colors.blue[0],
         textLight: colors.blue[1],
         link: colors.yellow[3],
-        nav: colors.purple[4],
         heading: 'white',
       },
     },
   },
   fonts: {
     body: defaultFontStack.join(),
-    heading: defaultFontStack.join(),
+    heading: `mallory`,
     monospace: 'Menlo, monospace',
   },
   fontSizes: [12, 14, 16, 20, 24, 32, 40, 64],
@@ -128,16 +128,30 @@ export default {
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   styles: {
     h1: {
-      color: 'heading',
-      fontSize: 4,
-      lineHeight: 'heading',
+      color: 'white',
+      fontSize: ['100px', '120px'],
+      fontWeight: 800,
+      letterSpacing: '-0.075em',
+      lineHeight: 1.4,
       m: 0,
-      mt: 4,
-      '&:first-of-type': {
-        mt: 0,
-      },
-      '@media (min-width: 750px)': {
-        fontSize: 6,
+      mb: 4,
+      pb: 5,
+      px: '0.125em',
+      py: 0,
+      textAlign: 'center',
+      textShadow: `
+        0.008em 0.008em #4F4F4F99,
+        0.008em -0.008em #4F4F4F99,
+        -0.008em 0.008em #4F4F4F99,
+        -0.008em -0.008em #4F4F4F99
+      `,
+      textTransform: 'lowercase',
+      '@supports ((-webkit-background-clip: text) and (-webkit-text-stroke: 5vw))': {
+        background: t => `
+          linear-gradient(160deg, ${t.colors.primary} 0%, ${t.colors.accent} 50%, ${t.colors.teal[1]} 90%)
+        `,
+        '-webkit-background-clip': 'text',
+        '-webkit-text-stroke': '0.164em transparent',
       },
     },
     h2: {
@@ -221,7 +235,17 @@ export default {
       root: {
         color: 'text',
         lineHeight: 'body',
-        'h1,h2,h3,h4,h5,h6': {
+        h1: {
+          fontFamily: 'heading',
+          span: {
+            '@media (min-width: 600px)': {
+              display: 'block',
+              marginTop: '-0.4em',
+            },
+          },
+        },
+        'h2,h3,h4,h5,h6': {
+          fontFamily: 'heading',
           lineHeight: 'heading',
         },
         table: {
@@ -242,7 +266,7 @@ export default {
         },
         'tbody tr': {
           '&:nth-of-type(even)': {
-            background: t => transparentize(0.75, t.colors.primary),
+            bg: alpha('primary', 0.25),
           },
         },
         code: {
@@ -255,17 +279,24 @@ export default {
     },
     header: {
       link: {
-        bg: 'nav',
-        color: 'white',
+        bg: 'transparent',
+        borderRadius: 1,
+        color: 'nav',
         display: 'block',
-        fontSize: [1, 2],
+        fontFamily: 'heading',
+        fontSize: 1,
         fontWeight: 'bold',
-        letterSpacing: 'caps',
         mx: 2,
-        my: 1,
+        my: 0,
         p: 2,
         textDecoration: 'none',
-        textTransform: 'uppercase',
+        textShadow: `
+          0.005em 0.005em #4F4F4F55,
+          0.005em -0.005em #4F4F4F55,
+          -0.005em 0.005em #4F4F4F55,
+          -0.005em -0.005em #4F4F4F55
+        `,
+        textTransform: 'lowercase',
         ':active, :focus, :hover': {
           bg: 'yellow.3',
           color: 'gray.6',

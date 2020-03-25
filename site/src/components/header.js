@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx, useColorMode } from 'theme-ui';
 import { Link } from 'gatsby';
+import { transparentize } from 'polished';
 import logo from '../assets/learn-with-jason.svg';
 import logoDark from '../assets/learn-with-jason-dark.svg';
 import TwitchButton from './twitch-button';
@@ -11,26 +12,73 @@ const Header = ({ title }) => {
   return (
     <header
       sx={{
-        position: 'relative',
+        backgroundImage: t => `
+          linear-gradient(
+            10deg,
+            ${t.colors.blue[6]},
+            ${transparentize(1, t.colors.blue[6])} 50vh
+          ),
+          linear-gradient(
+            180deg,
+            ${transparentize(0.75, t.colors.teal[1])},
+            ${transparentize(1, t.colors.teal[1])}
+          ),
+          linear-gradient(
+            90deg,
+            ${transparentize(0.8, t.colors.blue[3])},
+            ${transparentize(0.8, t.colors.teal[2])}
+          )
+        `,
+        position: 'sticky',
         px: t => [
           '5vw',
           `calc((100vw - ${t.breakpoints[0]}) / 2)`,
           `calc((100vw - ${t.breakpoints[1]}) / 2)`,
         ],
-        py: 2,
+        pb: '2px',
+        pt: '7px',
         variant: 'video-blog.header',
+        '@media (min-width: 600px)': {
+          alignItems: 'flex-start',
+          bg: 'background',
+          display: 'flex',
+          justifyContent: 'flex-start',
+          '::before,::after': {
+            content: '""',
+            position: 'absolute',
+            left: 0,
+            right: 0,
+            background: t => `
+              linear-gradient(160deg, ${t.colors.primary} 0%, ${t.colors.accent} 50%, ${t.colors.teal[1]} 90%)
+            `,
+          },
+          '::before': {
+            height: '5px',
+            top: 0,
+          },
+          '::after': {
+            height: '1px',
+            opacity: 0.5,
+            top: '100%',
+          },
+        },
       }}
     >
       <Link
         to="/"
         sx={{
           display: 'block',
-          width: '25vw',
-          maxWidth: [100, 100, 150],
-          mb: 0,
+          width: 60,
           mt: [0, 2],
           mx: 'auto',
           variant: 'video-blog.header.home-link',
+          '@media (min-width: 600px)': {
+            mt: -10,
+            mb: -60,
+            ml: 0,
+            mr: 2,
+            zIndex: 10,
+          },
         }}
       >
         <img
@@ -48,10 +96,9 @@ const Header = ({ title }) => {
           display: 'flex',
           flexWrap: 'wrap',
           justifyContent: 'center',
-          mt: 4,
+          m: 0,
         }}
       >
-        <TwitchButton username="jlengstorf" colorMode={colorMode} />
         {[
           {
             href: '/',
@@ -81,7 +128,7 @@ const Header = ({ title }) => {
             <Component
               key={page.href}
               sx={{
-                '&&': { color: 'white' },
+                '&&': { color: 'nav' },
                 variant: 'video-blog.header.link',
               }}
               {...props}
@@ -90,6 +137,7 @@ const Header = ({ title }) => {
             </Component>
           );
         })}
+        <TwitchButton username="jlengstorf" />
       </nav>
       <button
         role="switch"

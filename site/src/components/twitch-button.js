@@ -3,7 +3,7 @@ import { jsx } from 'theme-ui';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const TwitchButton = ({ username, colorMode }) => {
+const TwitchButton = ({ username }) => {
   const [live, setLive] = useState(false);
 
   useEffect(() => {
@@ -36,13 +36,18 @@ const TwitchButton = ({ username, colorMode }) => {
       href={`https://twitch.tv/${username}`}
       sx={{
         variant: 'video-blog.header.link',
+        bg: 'white',
+        textTransform: 'uppercase',
+        '&&': {
+          color: 'blue.7',
+        },
         '::before': {
-          bg: 'white',
+          bg: 'magenta.3',
           borderRadius: '50%',
           content: '""',
           display: live ? 'inline-block' : 'none',
           height: '10px',
-          my: 1,
+          my: '6px',
           mr: 2,
           verticalAlign: 'top',
           width: '10px',
@@ -54,7 +59,7 @@ const TwitchButton = ({ username, colorMode }) => {
         },
       }}
     >
-      Watch Live Now!
+      Live Now!
     </a>
   ) : null;
 };

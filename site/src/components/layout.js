@@ -3,7 +3,6 @@ import { jsx, Styled } from 'theme-ui';
 import { graphql, useStaticQuery } from 'gatsby';
 import { Global } from '@emotion/core';
 import Helmet from 'react-helmet';
-import { transparentize } from 'polished';
 import Header from './header';
 
 const Layout = ({ children, pageContext: { frontmatter = {} } = {} }) => {
@@ -27,22 +26,6 @@ const Layout = ({ children, pageContext: { frontmatter = {} } = {} }) => {
       sx={{
         backgroundBlendMode: 'normal, multiply, normal',
         backgroundColor: 'background',
-        backgroundImage: t => `
-          linear-gradient(
-            ${t.colors.background},
-            ${transparentize(1, t.colors.background)} 50vh
-          ),
-          linear-gradient(
-            180deg,
-            ${transparentize(0.75, t.colors.teal[1])},
-            ${transparentize(1, t.colors.teal[1])}
-          ),
-          linear-gradient(
-            90deg,
-            ${transparentize(0.8, t.colors.blue[3])},
-            ${transparentize(0.8, t.colors.teal[2])}
-          )
-        `,
         'a, button, summary': {
           ':active,:focus': {
             outline: t => `2px solid ${t.colors.primary}`,
@@ -80,12 +63,13 @@ const Layout = ({ children, pageContext: { frontmatter = {} } = {} }) => {
           name="description"
           content={frontmatter.description || description}
         />
+        <link rel="stylesheet" href="https://use.typekit.net/fnr1orp.css" />
       </Helmet>
       <Header title={title} />
       <div
         sx={{
           mb: 5,
-          mt: [0, 0, 5],
+          mt: [0, 0, 4],
           mx: 'auto',
           maxWidth: t => `calc(${t.breakpoints.slice(-1)[0]} + 100px)`,
           width: '90vw',
