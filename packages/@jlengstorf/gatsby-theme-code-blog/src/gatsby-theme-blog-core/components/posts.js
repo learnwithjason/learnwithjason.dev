@@ -14,9 +14,6 @@ export default ({ data }) => {
           key={post.id}
           sx={{
             mt: 5,
-            ':first-of-type': {
-              mt: 0,
-            },
           }}
         >
           <h2
@@ -42,9 +39,11 @@ export default ({ data }) => {
           <p sx={{ mt: 2 }}>{post.excerpt}</p>
           <div
             sx={{
-              display: 'flex',
-              fontSize: 1,
-              justifyContent: 'space-between',
+              '@media (min-width: 600px)': {
+                display: 'flex',
+                fontSize: 1,
+                justifyContent: 'space-between',
+              },
             }}
           >
             <ul
@@ -52,6 +51,8 @@ export default ({ data }) => {
                 margin: 0,
                 padding: 0,
                 display: 'flex',
+                flexWrap: 'wrap',
+                lineHeight: 2,
                 listStyle: 'none',
                 justifyContent: 'flex-start',
               }}
@@ -90,7 +91,19 @@ export default ({ data }) => {
                 </li>
               ))}
             </ul>
-            <Link to={post.slug}>read this post &rarr;</Link>
+            <Link
+              to={post.slug}
+              sx={{
+                display: 'block',
+                mt: 2,
+                lineHeight: 2,
+                '@media (min-width: 600px)': {
+                  mt: 0,
+                },
+              }}
+            >
+              read this post &rarr;
+            </Link>
           </div>
         </article>
       ))}

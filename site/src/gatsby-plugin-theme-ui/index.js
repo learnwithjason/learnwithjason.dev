@@ -129,7 +129,7 @@ export default {
   styles: {
     h1: {
       color: 'white',
-      fontSize: ['100px', '120px'],
+      fontSize: '15vw',
       fontWeight: 800,
       letterSpacing: '-0.075em',
       lineHeight: 1.4,
@@ -146,6 +146,9 @@ export default {
         -0.008em -0.008em #4F4F4F99
       `,
       textTransform: 'lowercase',
+      '@media (min-width: 780px)': {
+        fontSize: '120px',
+      },
       '@supports ((-webkit-background-clip: text) and (-webkit-text-stroke: 5vw))': {
         background: t => `
           linear-gradient(160deg, ${t.colors.primary} 0%, ${t.colors.accent} 50%, ${t.colors.teal[1]} 90%)
@@ -238,10 +241,8 @@ export default {
         h1: {
           fontFamily: 'heading',
           span: {
-            '@media (min-width: 600px)': {
-              display: 'block',
-              marginTop: '-0.4em',
-            },
+            display: 'block',
+            marginTop: '-0.4em',
           },
         },
         'h2,h3,h4,h5,h6': {

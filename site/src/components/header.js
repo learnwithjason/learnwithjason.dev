@@ -35,7 +35,7 @@ const Header = ({ title }) => {
           `calc((100vw - ${t.breakpoints[0]}) / 2)`,
           `calc((100vw - ${t.breakpoints[1]}) / 2)`,
         ],
-        pb: '2px',
+        pb: 3,
         pt: '7px',
         variant: 'video-blog.header',
         '@media (min-width: 600px)': {
@@ -43,6 +43,7 @@ const Header = ({ title }) => {
           bg: 'background',
           display: 'flex',
           justifyContent: 'flex-start',
+          pb: '2px',
           '::before,::after': {
             content: '""',
             position: 'absolute',
