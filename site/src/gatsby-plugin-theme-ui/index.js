@@ -76,7 +76,6 @@ const colors = {
 
 export default {
   initialColorMode: 'light',
-  useCustomProperties: false,
   breakpoints: ['600px', '800px'],
   colors: {
     ...colors,

@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, useColorMode } from 'theme-ui';
 import { Link } from 'gatsby';
-import { transparentize } from 'polished';
+import { alpha } from '@theme-ui/color';
 import logo from '../assets/learn-with-jason.svg';
 import logoDark from '../assets/learn-with-jason-dark.svg';
 import TwitchButton from './twitch-button';
@@ -16,17 +16,17 @@ const Header = ({ title }) => {
           linear-gradient(
             10deg,
             ${t.colors.blue[6]},
-            ${transparentize(1, t.colors.blue[6])} 50vh
+            ${alpha('blue.6', 0)(t)} 50vh
           ),
           linear-gradient(
             180deg,
-            ${transparentize(0.75, t.colors.teal[1])},
-            ${transparentize(1, t.colors.teal[1])}
+            ${alpha('teal.1', 0.25)(t)},
+            ${alpha('teal.1', 0)(t)}
           ),
           linear-gradient(
             90deg,
-            ${transparentize(0.8, t.colors.blue[3])},
-            ${transparentize(0.8, t.colors.teal[2])}
+            ${alpha('blue.3', 0.2)(t)},
+            ${alpha('teal.2', 0.2)(t)}
           )
         `,
         position: 'sticky',
