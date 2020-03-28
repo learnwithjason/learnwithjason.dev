@@ -7,7 +7,7 @@ import logoDark from '../assets/learn-with-jason-dark.svg';
 import TwitchButton from './twitch-button';
 
 const Header = ({ title }) => {
-  const [colorMode, setColorMode] = useColorMode('light');
+  const [colorMode, setColorMode] = useColorMode('default');
 
   return (
     <header
@@ -83,7 +83,7 @@ const Header = ({ title }) => {
         }}
       >
         <img
-          src={colorMode === 'light' ? logo : logoDark}
+          src={colorMode === 'default' ? logo : logoDark}
           alt={title}
           sx={{
             m: 0,
@@ -143,9 +143,11 @@ const Header = ({ title }) => {
       <button
         role="switch"
         id="theme-toggle"
-        aria-checked={colorMode === 'light' ? 'false' : 'true'}
-        className={colorMode !== 'light' ? 'active' : ''}
-        onClick={() => setColorMode(colorMode === 'light' ? 'dark' : 'light')}
+        aria-checked={colorMode !== 'default'}
+        className={colorMode !== 'default' ? 'active' : ''}
+        onClick={() =>
+          setColorMode(colorMode === 'default' ? 'dark' : 'default')
+        }
         sx={{
           backgroundColor: 'heading',
           border: '1px solid',
@@ -178,7 +180,7 @@ const Header = ({ title }) => {
         }}
       >
         <span className="visually-hidden">
-          Activate {colorMode === 'light' ? 'Dark' : 'Light'} Mode
+          Activate {colorMode === 'default' ? 'Dark' : 'Light'} Mode
         </span>
       </button>
     </header>

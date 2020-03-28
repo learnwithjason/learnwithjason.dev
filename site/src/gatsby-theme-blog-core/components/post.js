@@ -6,7 +6,8 @@ import { Link } from 'gatsby';
 import { alpha } from '@theme-ui/color';
 import { Helmet } from 'react-helmet';
 import getShareImage from '@jlengstorf/get-share-image';
-import Layout from '../../components/layout';
+import Layout from '@jlengstorf/gatsby-theme-code-blog/src/components/layout';
+import Form from '../../components/form';
 
 const EndLink = ({ post, label, area }) => (
   <div
@@ -116,12 +117,11 @@ const Post = ({ data: { blogPost, previous, next } }) => {
       >
         <MDXRenderer>{blogPost.body}</MDXRenderer>
       </div>
+      <Form />
       {(previous || next) && (
         <div
           sx={{
             alignItems: 'flex-start',
-            borderTop: '1px solid',
-            borderTopColor: alpha('muted', 0.5),
             display: 'grid',
             gridGap: '10%',
             gridTemplate: '"prev next" 45% / 45%',

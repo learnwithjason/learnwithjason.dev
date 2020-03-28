@@ -13,12 +13,21 @@ const Form = () => {
         backgroundPositionY: -1,
         backgroundSize: 'calc(100% + 2px) calc(100% + 2px)',
         border: `1px solid`,
+        borderLeftWidth: 0,
+        borderRightWidth: 0,
         borderColor: alpha('text', 0.25),
-        borderRadius: 3,
         boxSizing: 'initial',
         mt: 5,
-        mx: -4,
-        p: 3,
+        mx: '-5vw',
+        px: 2,
+        py: 3,
+        '@media (min-width: 600px)': {
+          borderLeftWidth: 1,
+          borderRightWidth: 1,
+          borderRadius: 3,
+          mx: -4,
+          px: 3,
+        },
       }}
     >
       <form
@@ -26,11 +35,11 @@ const Form = () => {
         method="POST"
         sx={{
           bg: 'background',
-          borderRadius: 2,
           p: [3, 4],
           pb: [3, '24px'],
           border: `1px solid`,
           borderColor: alpha('text', 0.5),
+          borderRadius: 2,
           backgroundClip: 'padding-box',
           'label,input': {
             display: 'block',
@@ -49,10 +58,15 @@ const Form = () => {
       >
         <h2 sx={{ fontSize: 5, mt: 0 }}>Build better web apps</h2>
         <p>
-          I spend a lot of time thinking about how to build web experiences that
-          are fast, secure, maintainable, scalable, and fun to build. Join my
-          newsletter and I’ll boop you on the brain what I’ve learned about
-          building modern web apps.
+          I spend a lot of time thinking about how to{' '}
+          <strong>
+            build web experiences that are fast, secure, maintainable, scalable,
+            and fun to build.
+          </strong>
+        </p>
+        <p>
+          Join my newsletter and I’ll boop you on the brain what I’ve learned
+          about building modern web apps.
         </p>
         <label htmlFor="firstName">First Name</label>
         <input type="text" name="firstName" id="firstName" />

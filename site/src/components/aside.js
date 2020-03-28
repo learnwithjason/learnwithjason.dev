@@ -5,7 +5,7 @@ import { alpha } from '@theme-ui/color';
 const Aside = ({ children, warning }) => (
   <aside
     sx={{
-      bg: alpha(warning ? 'yellow.1' : 'background', 0.25),
+      bg: alpha(warning ? 'yellow.1' : 'secondary', 0.125),
       borderLeft: '3px solid',
       borderLeftColor: warning ? 'yellow.4' : 'primary',
       borderRadius: '0 0.25rem 0.25rem 0',
