@@ -89,6 +89,7 @@ const Products = () => {
       sx={{
         display: 'flex',
         gridTemplateColumns: 'repeat(4, 1fr)',
+        mt: 5,
       }}
     >
       {inventory.map(product => (
