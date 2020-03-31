@@ -225,7 +225,7 @@ exports.createPages = async (
   });
 
   const upcoming = result.data.allVideoEpisode.nodes.filter(
-    episode => episode.isFuture,
+    episode => !episode.youtubeID,
   );
 
   upcoming.forEach(({ id, slug }) => {
