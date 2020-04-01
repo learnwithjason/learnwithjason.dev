@@ -9,7 +9,7 @@ const inventory = [
     name: 'Bearded Party Corgi',
     description: 'It’s a party corgi, but with a beard!',
     image:
-      'https://res.cloudinary.com/jlengstorf/image/upload/q_auto,f_auto,w_300/v1585672435/lwj/store/bearded-corgi.png',
+      'https://res.cloudinary.com/jlengstorf/image/upload/q_auto,f_auto,w_300/v1585764654/lwj/store/bearded-corgi.png',
     amount: 300,
     currency: 'USD',
   },
@@ -18,7 +18,7 @@ const inventory = [
     name: 'BOOP',
     description: 'Do you wanna get booped on the brain?',
     image:
-      'https://res.cloudinary.com/jlengstorf/image/upload/q_auto,f_auto,w_300/v1585672435/lwj/store/boop.png',
+      'https://res.cloudinary.com/jlengstorf/image/upload/q_auto,f_auto,w_300/v1585764654/lwj/store/boop.png',
     amount: 300,
     currency: 'USD',
   },
@@ -28,7 +28,7 @@ const inventory = [
     description:
       'Keep having fun until you figure out how make a living doing it.',
     image:
-      'https://res.cloudinary.com/jlengstorf/image/upload/q_auto,f_auto,w_300/v1585672435/lwj/store/play-until-it-pays.png',
+      'https://res.cloudinary.com/jlengstorf/image/upload/q_auto,f_auto,w_300/v1585764654/lwj/store/play-until-it-pays.png',
     amount: 300,
     currency: 'USD',
   },
@@ -37,7 +37,7 @@ const inventory = [
     name: 'BEEP BOOP',
     description: 'Boop, but in Morse code.',
     image:
-      'https://res.cloudinary.com/jlengstorf/image/upload/q_auto,f_auto,w_300/v1585672435/lwj/store/beep-boop.png',
+      'https://res.cloudinary.com/jlengstorf/image/upload/q_auto,f_auto,w_300/v1585764654/lwj/store/beep-boop.png',
     amount: 300,
     currency: 'USD',
   },
