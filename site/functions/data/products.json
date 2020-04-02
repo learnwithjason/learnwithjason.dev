@@ -1,8 +1,18 @@
 [
   {
+    "sku": "LWJ007",
+    "name": "5 Sticker Pack",
+    "description": "One each of all available stickers — holy buckets!",
+    "dimensions": "",
+    "image": "https://res.cloudinary.com/jlengstorf/image/upload/q_auto,f_auto,w_300/v1585784278/lwj/store/sticker-pack.png",
+    "amount": 1000,
+    "currency": "USD"
+  },
+  {
     "sku": "LWJ001",
-    "name": "Bearded Party Corgi",
+    "name": "Bearded Corgi",
     "description": "It’s a party corgi, but with a beard!",
+    "dimensions": "1.5”h x 1.59”",
     "image": "https://res.cloudinary.com/jlengstorf/image/upload/q_auto,f_auto,w_300/v1585764654/lwj/store/bearded-corgi.png",
     "amount": 300,
     "currency": "USD"
@@ -11,6 +21,7 @@
     "sku": "LWJ002",
     "name": "BOOP",
     "description": "Do you wanna get booped on the brain?",
+    "dimensions": "2” x 1.82”",
     "image": "https://res.cloudinary.com/jlengstorf/image/upload/q_auto,f_auto,w_300/v1585764654/lwj/store/boop.png",
     "amount": 300,
     "currency": "USD"
@@ -18,7 +29,8 @@
   {
     "sku": "LWJ003",
     "name": "Play Until It Pays",
-    "description": "Keep having fun until you figure out how make a living doing it.",
+    "description": "Make it because it’s fun. The rest will follow.",
+    "dimensions": "2” x 1.75”",
     "image": "https://res.cloudinary.com/jlengstorf/image/upload/q_auto,f_auto,w_300/v1585764654/lwj/store/play-until-it-pays.png",
     "amount": 300,
     "currency": "USD"
@@ -26,8 +38,18 @@
   {
     "sku": "LWJ004",
     "name": "BEEP BOOP",
-    "description": "Boop, but in Morse code.",
+    "description": "Boop, but beepier because it’s Morse code.",
+    "dimensions": "2” x 1.75”",
     "image": "https://res.cloudinary.com/jlengstorf/image/upload/q_auto,f_auto,w_300/v1585764654/lwj/store/beep-boop.png",
+    "amount": 300,
+    "currency": "USD"
+  },
+  {
+    "sku": "LWJ005",
+    "name": "LWJ Logo",
+    "description": "Boop crew membership badge.",
+    "dimensions": "1.75”w x 2”",
+    "image": "https://res.cloudinary.com/jlengstorf/image/upload/q_auto,f_auto,w_300/v1585784276/lwj/store/learn-with-jason.png",
     "amount": 300,
     "currency": "USD"
   }

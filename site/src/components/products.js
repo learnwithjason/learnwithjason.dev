@@ -1,47 +1,7 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui';
 import { loadStripe } from '@stripe/stripe-js';
-
-// TODO make this load from a single source of truth
-const inventory = [
-  {
-    sku: 'LWJ001',
-    name: 'Bearded Party Corgi',
-    description: 'It’s a party corgi, but with a beard!',
-    image:
-      'https://res.cloudinary.com/jlengstorf/image/upload/q_auto,f_auto,w_300/v1585764654/lwj/store/bearded-corgi.png',
-    amount: 300,
-    currency: 'USD',
-  },
-  {
-    sku: 'LWJ002',
-    name: 'BOOP',
-    description: 'Do you wanna get booped on the brain?',
-    image:
-      'https://res.cloudinary.com/jlengstorf/image/upload/q_auto,f_auto,w_300/v1585764654/lwj/store/boop.png',
-    amount: 300,
-    currency: 'USD',
-  },
-  {
-    sku: 'LWJ003',
-    name: 'Play Until It Pays',
-    description:
-      'Keep having fun until you figure out how make a living doing it.',
-    image:
-      'https://res.cloudinary.com/jlengstorf/image/upload/q_auto,f_auto,w_300/v1585764654/lwj/store/play-until-it-pays.png',
-    amount: 300,
-    currency: 'USD',
-  },
-  {
-    sku: 'LWJ004',
-    name: 'BEEP BOOP',
-    description: 'Boop, but in Morse code.',
-    image:
-      'https://res.cloudinary.com/jlengstorf/image/upload/q_auto,f_auto,w_300/v1585764654/lwj/store/beep-boop.png',
-    amount: 300,
-    currency: 'USD',
-  },
-];
+import inventory from '../../functions/data/products.json';
 
 const stripePromise = loadStripe(process.env.GATSBY_STRIPE_PUBLISHABLE_KEY);
 
@@ -70,8 +30,6 @@ const Products = () => {
       body: JSON.stringify(data),
     }).then(res => res.json());
 
-    console.log(response);
-
     // TODO get the session ID and redirect to checkout
     const stripe = await stripePromise;
 
@@ -87,28 +45,82 @@ const Products = () => {
   return (
     <section
       sx={{
-        display: 'flex',
-        gridTemplateColumns: 'repeat(4, 1fr)',
+        display: 'grid',
+        gap: 3,
+        gridTemplateColumns: 'repeat(3, 1fr)',
         mt: 5,
       }}
     >
       {inventory.map(product => (
         <div key={product.sku}>
-          <img sx={{ width: '100%' }} src={product.image} alt={product.name} />
-          <h2>{product.name}</h2>
-          <p>{product.description}</p>
-          <p>{format(product.amount, product.currency)}</p>
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="quantity">Quantity</label>
+          <img
+            sx={{
+              width: '100%',
+            }}
+            src={product.image}
+            alt={product.name}
+          />
+          <h2 sx={{ fontSize: 3 }}>{product.name}</h2>
+          <p sx={{ fontSize: 1 }}>{product.description}</p>
+          <p
+            sx={{
+              fontSize: 3,
+              fontWeight: 700,
+              m: 0,
+              mb: 2,
+              textAlign: 'right',
+            }}
+          >
+            {format(product.amount, product.currency)}
+          </p>
+          <form
+            onSubmit={handleSubmit}
+            sx={{ display: 'grid', gap: 2, gridTemplateColumns: 'auto 50px' }}
+          >
+            <label
+              htmlFor="quantity"
+              sx={{ fontSize: 1, fontWeight: 600, p: 2, textAlign: 'right' }}
+            >
+              Quantity
+            </label>
             <input
               type="number"
               id="quantity"
               name="quantity"
+              value={1}
               min="1"
               max="10"
+              sx={{
+                border: '1px solid',
+                borderColor: 'primary',
+                borderRadius: 2,
+                fontSize: 1,
+                p: 2,
+              }}
             />
             <input type="hidden" name="sku" value={product.sku} />
-            <button>BUY NOW</button>
+            <button
+              sx={{
+                bg: 'primary',
+                border: 'none',
+                borderRadius: 2,
+                color: 'nav',
+                fontFamily: 'heading',
+                fontSize: 2,
+                fontWeight: 800,
+                gridColumn: '1 / 3',
+                p: 2,
+                textShadow: `
+                  0.05em 0.05em #4F4F4F99,
+                  0.05em -0.05em #4F4F4F99,
+                  -0.05em 0.05em #4F4F4F99,
+                  -0.05em -0.05em #4F4F4F99
+                `,
+                textTransform: 'uppercase',
+              }}
+            >
+              Buy Now
+            </button>
           </form>
         </div>
       ))}
