@@ -12,7 +12,7 @@ const Products = () => {
       currency: currency,
     }).format((amount / 100).toFixed(2));
 
-  const handleSubmit = async event => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const form = new FormData(event.target);
 
@@ -28,7 +28,7 @@ const Products = () => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(data),
-    }).then(res => res.json());
+    }).then((res) => res.json());
 
     // TODO get the session ID and redirect to checkout
     const stripe = await stripePromise;
@@ -45,14 +45,19 @@ const Products = () => {
   return (
     <section
       sx={{
-        display: 'grid',
-        gap: 3,
-        gridTemplateColumns: 'repeat(3, 1fr)',
         mt: 5,
+        '@media (min-width: 360px)': {
+          display: 'grid',
+          gap: 3,
+          gridTemplateColumns: 'repeat(2, 1fr)',
+        },
+        '@media (min-width: 500px)': {
+          gridTemplateColumns: 'repeat(3, 1fr)',
+        },
       }}
     >
-      {inventory.map(product => (
-        <div key={product.sku}>
+      {inventory.map((product) => (
+        <div key={product.sku} sx={{ mt: 3 }}>
           <img
             sx={{
               width: '100%',
