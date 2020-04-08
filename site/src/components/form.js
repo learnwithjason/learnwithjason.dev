@@ -1,12 +1,13 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui';
+import { Fragment } from 'react';
 import { alpha } from '@theme-ui/color';
 
-const Form = () => {
+const Form = ({ heading = 'Build better web apps', children }) => {
   return (
     <aside
       sx={{
-        background: t => `
+        background: (t) => `
           linear-gradient(160deg, ${t.colors.primary} 0%, ${t.colors.accent} 50%, ${t.colors.teal[1]} 90%)
         `,
         backgroundPositionX: -1,
@@ -48,7 +49,7 @@ const Form = () => {
             mt: 2,
           },
           input: {
-            border: t => `1px solid ${t.colors.text}`,
+            border: (t) => `1px solid ${t.colors.text}`,
             borderRadius: 2,
             fontSize: 2,
             p: 2,
@@ -56,18 +57,24 @@ const Form = () => {
           },
         }}
       >
-        <h2 sx={{ fontSize: 5, mt: 0 }}>Build better web apps</h2>
-        <p>
-          I spend a lot of time thinking about how to{' '}
-          <strong>
-            build web experiences that are fast, secure, maintainable, scalable,
-            and fun to build.
-          </strong>
-        </p>
-        <p>
-          Join my newsletter and I’ll boop you on the brain what I’ve learned
-          about building modern web apps.
-        </p>
+        <h2 sx={{ fontSize: 5, mt: 0 }}>{heading}</h2>
+        {!children ? (
+          <Fragment>
+            <p>
+              I spend a lot of time thinking about how to{' '}
+              <strong>
+                build web experiences that are fast, secure, maintainable,
+                scalable, and fun to build.
+              </strong>
+            </p>
+            <p>
+              Join my newsletter and I’ll boop you on the brain what I’ve
+              learned about building modern web apps.
+            </p>
+          </Fragment>
+        ) : (
+          children
+        )}
         <label htmlFor="firstName">First Name</label>
         <input type="text" name="firstName" id="firstName" />
         <label htmlFor="email">Email</label>
@@ -75,7 +82,7 @@ const Form = () => {
         <button
           type="submit"
           sx={{
-            background: t => `
+            background: (t) => `
               linear-gradient(160deg, ${t.colors.primary} 0%, ${t.colors.accent} 50%, ${t.colors.teal[1]} 90%)
             `,
             border: 'none',

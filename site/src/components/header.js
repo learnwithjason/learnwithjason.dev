@@ -12,7 +12,7 @@ const Header = ({ title }) => {
   return (
     <header
       sx={{
-        backgroundImage: t => `
+        backgroundImage: (t) => `
           linear-gradient(
             10deg,
             ${t.colors.blue[6]},
@@ -30,7 +30,7 @@ const Header = ({ title }) => {
           )
         `,
         position: 'sticky',
-        px: t => [
+        px: (t) => [
           '5vw',
           `calc((100vw - ${t.breakpoints[0]}) / 2)`,
           `calc((100vw - ${t.breakpoints[1]}) / 2)`,
@@ -49,7 +49,7 @@ const Header = ({ title }) => {
             position: 'absolute',
             left: 0,
             right: 0,
-            background: t => `
+            background: (t) => `
               linear-gradient(160deg, ${t.colors.primary} 0%, ${t.colors.accent} 50%, ${t.colors.teal[1]} 90%)
             `,
           },
@@ -117,11 +117,19 @@ const Header = ({ title }) => {
             href: '/about',
             text: 'About',
           },
+          // {
+          //   href: '/participate',
+          //   text: 'Participate',
+          // },
           {
-            href: '/participate',
-            text: 'Participate',
+            href: '/workshops',
+            text: 'Workshops',
           },
-        ].map(page => {
+          {
+            href: '/store',
+            text: 'Store',
+          },
+        ].map((page) => {
           const isExternal = page.href.match(/^http/);
           const Component = isExternal ? 'a' : Link;
           const props = { [isExternal ? 'href' : 'to']: page.href };
@@ -161,7 +169,7 @@ const Header = ({ title }) => {
           variant: 'video-blog.header.theme-toggle',
           ':active,:focus': {
             '&&': { outline: 'none' },
-            boxShadow: t => `0 0 0 2px ${t.colors.primary}`,
+            boxShadow: (t) => `0 0 0 2px ${t.colors.primary}`,
           },
           '::after': {
             borderRadius: '50%',
