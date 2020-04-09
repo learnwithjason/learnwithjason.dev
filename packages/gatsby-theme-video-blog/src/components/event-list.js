@@ -38,7 +38,6 @@ const Event = ({ title, description, guest, date, image, basePath, slug }) => {
     link.searchParams.set('details', description);
     link.searchParams.set('location', 'https://twitch.tv/jlengstorf');
     link.searchParams.set('dates', `${start}/${end}`);
-    link.searchParams.set('ctz', `America/Los_Angeles`);
 
     setCalendarLink(link.toString());
   }, [date, title, description]);
@@ -88,7 +87,7 @@ const Event = ({ title, description, guest, date, image, basePath, slug }) => {
           }}
         >
           Guest:{' '}
-          {guest.map(g => (
+          {guest.map((g) => (
             <a
               href={`https://twitter.com/${g.twitter}`}
               target="_blank"
@@ -117,7 +116,7 @@ const Event = ({ title, description, guest, date, image, basePath, slug }) => {
 const EventList = ({ videos, basePath }) => {
   return (
     <div>
-      {videos.map(video => (
+      {videos.map((video) => (
         <Event
           key={video.id}
           title={video.title}
