@@ -158,7 +158,7 @@ export default {
     },
     h2: {
       color: 'heading',
-      fontSize: 4,
+      fontSize: [4, 5],
       lineHeight: 'heading',
       m: 0,
       mb: 4,
