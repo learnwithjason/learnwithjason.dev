@@ -133,7 +133,7 @@ export default {
       letterSpacing: '-0.075em',
       lineHeight: 1.4,
       m: 0,
-      mb: 4,
+      my: 4,
       pb: 5,
       px: '0.125em',
       py: 0,
@@ -149,7 +149,7 @@ export default {
         fontSize: '120px',
       },
       '@supports ((-webkit-background-clip: text) and (-webkit-text-stroke: 5vw))': {
-        background: t => `
+        background: (t) => `
           linear-gradient(160deg, ${t.colors.primary} 0%, ${t.colors.accent} 50%, ${t.colors.teal[1]} 90%)
         `,
         '-webkit-background-clip': 'text',
@@ -158,17 +158,19 @@ export default {
     },
     h2: {
       color: 'heading',
-      fontSize: 5,
-      lineHeight: 'heading',
-      m: 0,
-      mt: 4,
-    },
-    h3: {
-      color: 'heading',
       fontSize: 4,
       lineHeight: 'heading',
       m: 0,
-      mt: 4,
+      mb: 4,
+      mt: 5,
+    },
+    h3: {
+      color: 'heading',
+      fontSize: 3,
+      lineHeight: 'heading',
+      m: 0,
+      mb: 4,
+      mt: 5,
       '&:first-of-type': {
         mt: 0,
       },
@@ -176,9 +178,9 @@ export default {
     h4: {
       color: 'heading',
       lineHeight: 'heading',
-      fontSize: 3,
+      fontSize: 2,
       m: 0,
-      mt: 4,
+      mt: 5,
       '&:first-of-type': {
         mt: 0,
       },

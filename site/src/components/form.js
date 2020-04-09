@@ -2,6 +2,7 @@
 import { jsx } from 'theme-ui';
 import { Fragment } from 'react';
 import { alpha } from '@theme-ui/color';
+import Button from './button';
 
 const Form = ({ heading = 'Build better web apps', children }) => {
   return (
@@ -79,32 +80,7 @@ const Form = ({ heading = 'Build better web apps', children }) => {
         <input type="text" name="firstName" id="firstName" />
         <label htmlFor="email">Email</label>
         <input type="email" name="email" id="email" />
-        <button
-          type="submit"
-          sx={{
-            background: (t) => `
-              linear-gradient(160deg, ${t.colors.primary} 0%, ${t.colors.accent} 50%, ${t.colors.teal[1]} 90%)
-            `,
-            border: 'none',
-            borderRadius: 2,
-            color: 'white',
-            fontFamily: 'heading',
-            fontSize: 4,
-            fontWeight: 800,
-            letterSpacing: '-0.05em',
-            mt: 3,
-            px: 3,
-            textShadow: `
-              0.03em 0.03em #4F4F4FCC,
-              0.03em -0.03em #4F4F4FCC,
-              -0.03em 0.03em #4F4F4FCC,
-              -0.03em -0.03em #4F4F4FCC
-            `,
-            textTransform: 'uppercase',
-          }}
-        >
-          Subscribe
-        </button>
+        <Button />
         <p
           sx={{
             color: 'textLight',
