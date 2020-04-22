@@ -50,7 +50,7 @@ const Event = ({ title, description, guest, date, image, slug, basePath }) => {
   return (
     <Fragment>
       <SEO
-        title={`${title} (with ${guest.map(g => g.name).join()})`}
+        title={`${title} (with ${guest.map((g) => g.name).join()})`}
         description={`${localeDate} — ${seoDescription}`}
         image={image.fluid.src}
         guest={guest}
@@ -68,7 +68,7 @@ const Event = ({ title, description, guest, date, image, slug, basePath }) => {
         }}
       >
         <h1 sx={{ gridColumn: '1 / 3' }}>
-          {title} (with {guest.map(g => g.name).join()})
+          {title} (with {guest.map((g) => g.name).join()})
         </h1>
         <div>
           <Image fluid={image.fluid} alt={title} />
@@ -79,7 +79,7 @@ const Event = ({ title, description, guest, date, image, slug, basePath }) => {
             <li>{localeDate}</li>
             <li>
               Guest:{' '}
-              {guest.map(g => (
+              {guest.map((g) => (
                 <a
                   href={`https://twitter.com/${g.twitter}`}
                   target="_blank"
@@ -91,6 +91,10 @@ const Event = ({ title, description, guest, date, image, slug, basePath }) => {
               ))}
             </li>
           </ul>
+          <p>
+            This episode will air live at{' '}
+            <a href="https://twitch.tv/jlengstorf">twitch.tv/jlengstorf</a>!
+          </p>
           {calendarLink && (
             <a
               href={calendarLink}
