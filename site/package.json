@@ -6,7 +6,7 @@
   "scripts": {
     "develop": "gatsby develop --port 8008",
     "prebuild": "cd functions && npm i && cd ..",
-    "build": "gatsby build",
+    "build": "gatsby build --log-pages",
     "serve": "gatsby serve",
     "clean": "gatsby clean"
   },
