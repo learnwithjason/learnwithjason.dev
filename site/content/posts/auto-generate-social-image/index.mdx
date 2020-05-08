@@ -22,11 +22,11 @@ Creating sharing images for social media is critical if you want your content to
 
 The need to create a social media image creates extra chores before publishing: in addition to writing the post, you now need to go find (or create) an image for sharing. It may not be a ton of work, but it's still one more hurdle between you and a published post.
 
-Fortunately, tools exist that allow us to **automatically generate social media images**. In this post, we'll use [Cloudinary](https://cloudinary.com/), which combines asset hosting with APIs to modify media. This requires a Cloudinary account — the free tier should be more than enough for most personal sites.
+Fortunately, tools exist that allow us to **automatically generate social media images**. In this post, we'll use [Cloudinary](https://jason.af/cloudinary), which combines asset hosting with APIs to modify media. This requires a Cloudinary account — the free tier should be more than enough for most personal sites.
 
 <Aside>
 
-  **Heads up!** The code in this article is now [available as an npm package](https://www.npmjs.com/package/@jlengstorf/get-share-image).
+**Heads up!** The code in this article is now [available as an npm package](https://www.npmjs.com/package/@jlengstorf/get-share-image).
 
 </Aside>
 
@@ -39,6 +39,12 @@ Before we start, there are a few other options for generating social sharing ima
 
 For me, this was more than I wanted to take on and maintain, so I opted for a (free) hosted service — Cloudinary — that lets me forget about it entirely after setting it up the first time.
 
+<Aside>
+
+**Heads up!** If this article helps you, you can [sign up for Cloudinary with this link](https://jason.af/cloudinary) — you’ll get a free Cloudinary account, and I get a little bonus cash to help cover the costs of running this site.
+
+</Aside>
+
 ## Make a plan: what is the desired outcome?
 
 Before we get started, we need to know where we're headed — so let's [make a plan](https://lengstorf.com/mise-en-place/) and identify our outcomes. By the end of this article, we want to have a utility function that we can call to generate a social media-friendly image URL that will be unique to our post and help it stand out on people's timelines.
@@ -47,13 +53,13 @@ It should look something like this:
 
 <Image credit="Jason Lengstorf" creditType="Design">
 
-  ![Social sharing card with the title “Deploy Your First Serverless Function Using JavaScript” and the tagline “#front-end #serverless #jamstack”.](https://res.cloudinary.com/jlengstorf/image/upload/w_1280,h_669,c_fill,q_auto,f_auto/w_760,c_fit,co_rgb:232129,g_south_west,x_480,y_254,l_text:lwj-title.otf_64_line_spacing_-10:Deploy%20Your%20First%20Serverless%20Function%20Using%20JavaScript/w_760,c_fit,co_rgb:232129,g_north_west,x_480,y_445,l_text:lwj-tagline.otf_48:%23front-end%20%23serverless%20%23jamstack/lwj/blog-post-card)
+![Social sharing card with the title “Deploy Your First Serverless Function Using JavaScript” and the tagline “#front-end #serverless #jamstack”.](https://res.cloudinary.com/jlengstorf/image/upload/w_1280,h_669,c_fill,q_auto,f_auto/w_760,c_fit,co_rgb:232129,g_south_west,x_480,y_254,l_text:lwj-title.otf_64_line_spacing_-10:Deploy%20Your%20First%20Serverless%20Function%20Using%20JavaScript/w_760,c_fit,co_rgb:232129,g_north_west,x_480,y_445,l_text:lwj-tagline.otf_48:%23front-end%20%23serverless%20%23jamstack/lwj/blog-post-card)
 
 </Image>
 
 <Aside>
 
-  **Heads up!** I wrote a post about [how to design a social sharing card](/blog/design-social-sharing-card/) that goes over the choices made in this design to make it flexible enough to handle auto-generated text. Give it a read if you're interested in the design process or want to create your own social sharing card.
+**Heads up!** I wrote a post about [how to design a social sharing card](/blog/design-social-sharing-card/) that goes over the choices made in this design to make it flexible enough to handle auto-generated text. Give it a read if you're interested in the design process or want to create your own social sharing card.
 
 </Aside>
 
@@ -106,7 +112,7 @@ This places each transform option for the sharing image template into an array, 
 
 <Aside>
 
-  **NOTE:** We could also do this by creating a single string, but it gets hard to read with more complex transformations. This is a stylistic choice, so feel free to refactor this code however you like.
+**NOTE:** We could also do this by creating a single string, but it gets hard to read with more complex transformations. This is a stylistic choice, so feel free to refactor this code however you like.
 
 </Aside>
 
@@ -173,7 +179,7 @@ Only the `title` and `tagline` config options are required — everything else h
 
 <Aside>
 
-  **Heads up!** If you’ve never seen text overlays before, I wrote a post with more information on [how text overlays work in Cloudinary](/blog/add-text-overlay-cloudinary/). Give that a read if the configuration code is confusing.
+**Heads up!** If you’ve never seen text overlays before, I wrote a post with more information on [how text overlays work in Cloudinary](/blog/add-text-overlay-cloudinary/). Give that a read if the configuration code is confusing.
 
 </Aside>
 
@@ -271,7 +277,7 @@ https://res.cloudinary.com/jlengstorf/image/upload/v1578253116/lwj/blog-post-car
 
 <Image credit="Jason Lengstorf" creditType="Design">
 
-  ![The social sharing card template with no text.](https://res.cloudinary.com/jlengstorf/image/upload/v1578253116/lwj/blog-post-card.jpg)
+![The social sharing card template with no text.](https://res.cloudinary.com/jlengstorf/image/upload/v1578253116/lwj/blog-post-card.jpg)
 
 </Image>
 
@@ -292,7 +298,7 @@ If we visit the URL this produces, we'll see the social card generated with the 
 
 <Image credit="Jason Lengstorf" creditType="Design">
 
-  ![The social sharing card with the defined title and tagline using default settings.](https://res.cloudinary.com/jlengstorf/image/upload/w_1280,h_669,c_fill,q_auto,f_auto/w_760,c_fit,co_rgb:000000,g_south_west,x_480,y_254,l_text:arial_64:This%20Is%20a%20Post%20With%20an%20Automatically%20Generated%20Social%20Sharing%20Card/w_760,c_fit,co_rgb:000000,g_north_west,x_480,y_445,l_text:arial_48:Writing%20blog%20posts%20is%20fun%20when%20the%20robots%20do%20some%20of%20the%20work!/lwj/blog-post-card)
+![The social sharing card with the defined title and tagline using default settings.](https://res.cloudinary.com/jlengstorf/image/upload/w_1280,h_669,c_fill,q_auto,f_auto/w_760,c_fit,co_rgb:000000,g_south_west,x_480,y_254,l_text:arial_64:This%20Is%20a%20Post%20With%20an%20Automatically%20Generated%20Social%20Sharing%20Card/w_760,c_fit,co_rgb:000000,g_north_west,x_480,y_445,l_text:arial_48:Writing%20blog%20posts%20is%20fun%20when%20the%20robots%20do%20some%20of%20the%20work!/lwj/blog-post-card)
 
 </Image>
 
@@ -319,7 +325,7 @@ Now the URL shows us a more customized-looking sharing card!
 
 <Image credit="Jason Lengstorf" creditType="Design">
 
-  ![The social sharing card with the defined title and tagline using custom fonts and other settings.](https://res.cloudinary.com/jlengstorf/image/upload/w_1280,h_669,c_fill,q_auto,f_auto/w_760,c_fit,co_rgb:232129,g_south_west,x_480,y_254,l_text:lwj-title.otf_64_line_spacing_-10:This%20Is%20a%20Post%20With%20an%20Automatically%20Generated%20Social%20Sharing%20Card/w_760,c_fit,co_rgb:232129,g_north_west,x_480,y_445,l_text:lwj-tagline.otf_48:Writing%20blog%20posts%20is%20fun%20when%20the%20robots%20do%20some%20of%20the%20work!/lwj/blog-post-card)
+![The social sharing card with the defined title and tagline using custom fonts and other settings.](https://res.cloudinary.com/jlengstorf/image/upload/w_1280,h_669,c_fill,q_auto,f_auto/w_760,c_fit,co_rgb:232129,g_south_west,x_480,y_254,l_text:lwj-title.otf_64_line_spacing_-10:This%20Is%20a%20Post%20With%20an%20Automatically%20Generated%20Social%20Sharing%20Card/w_760,c_fit,co_rgb:232129,g_north_west,x_480,y_445,l_text:lwj-tagline.otf_48:Writing%20blog%20posts%20is%20fun%20when%20the%20robots%20do%20some%20of%20the%20work!/lwj/blog-post-card)
 
 </Image>
 

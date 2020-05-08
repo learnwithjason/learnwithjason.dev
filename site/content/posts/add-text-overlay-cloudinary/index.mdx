@@ -8,8 +8,8 @@ excerpt: >
 slug: add-text-overlay-cloudinary
 
 tags:
-- images
-- cloudinary
+  - images
+  - cloudinary
 ---
 
 import Aside from '../../../src/components/aside';
@@ -17,7 +17,13 @@ import Image from '../../../src/components/image';
 
 In many cases, it's helpful to add text overlays to images. Sharing content on social media, for example, can be more effective with a sharing image including information about the content.
 
-In this post, we'll look at how we can use Cloudinary to add text overlays to images using URL-based APIs.
+In this post, we'll look at how we can use [Cloudinary](https://jason.af/cloudinary) to add text overlays to images using URL-based APIs.
+
+<Aside>
+
+**Heads up!** If this article helps you, you can [sign up for Cloudinary with this link](https://jason.af/cloudinary) — you’ll get a free Cloudinary account, and I get a little bonus cash to help cover the costs of running this site.
+
+</Aside>
 
 ## How do text overlays work with Cloudinary?
 
@@ -27,7 +33,7 @@ As a simplified example, let's add some text to a picture of a corgi:
 
 <Image credit="ipet photo" creditLink="https://unsplash.com/photos/wehqRK6J6eo">
 
-  ![corgi](https://res.cloudinary.com/jlengstorf/image/upload/w_800/corgi.jpg)
+![corgi](https://res.cloudinary.com/jlengstorf/image/upload/w_800/corgi.jpg)
 
 </Image>
 
@@ -59,7 +65,7 @@ The change here is this string:
 
 <Aside>
 
-  **Heads up!** Cloudinary supports several fonts by default — there’s no list available, so you’ll have to just try a font out and see if it works. If the font you’d like to use isn’t available by default, you can [upload custom fonts for use with Cloudinary text overlays](/blog/upload-custom-font-cloudinary-media-library/) as well.
+**Heads up!** Cloudinary supports several fonts by default — there’s no list available, so you’ll have to just try a font out and see if it works. If the font you’d like to use isn’t available by default, you can [upload custom fonts for use with Cloudinary text overlays](/blog/upload-custom-font-cloudinary-media-library/) as well.
 
 </Aside>
 
@@ -67,7 +73,7 @@ If we open this URL in a browser, we’ll see the text overlaid on the image:
 
 <Image credit="ipet photo" creditLink="https://unsplash.com/photos/wehqRK6J6eo">
 
-  ![Corgi with the text “Ready to party” overlaid.](https://res.cloudinary.com/jlengstorf/image/upload/w_800/l_text:arial_64:Ready%20to%20party/corgi.jpg)
+![Corgi with the text “Ready to party” overlaid.](https://res.cloudinary.com/jlengstorf/image/upload/w_800/l_text:arial_64:Ready%20to%20party/corgi.jpg)
 
 </Image>
 
@@ -87,7 +93,7 @@ Now the image looks like this:
 
 <Image credit="ipet photo" creditLink="https://unsplash.com/photos/wehqRK6J6eo">
 
-  ![Corgi with the text “Ready to party” overlaid.](https://res.cloudinary.com/jlengstorf/image/upload/w_800/g_south_west,l_text:arial_64:Ready%20to%20party/corgi.jpg)
+![Corgi with the text “Ready to party” overlaid.](https://res.cloudinary.com/jlengstorf/image/upload/w_800/g_south_west,l_text:arial_64:Ready%20to%20party/corgi.jpg)
 
 </Image>
 
@@ -107,7 +113,7 @@ Now the image is offset from the edge of the image by 40px at the left and botto
 
 <Image credit="ipet photo" creditLink="https://unsplash.com/photos/wehqRK6J6eo">
 
-  ![Corgi with the text “Ready to party” overlaid.](https://res.cloudinary.com/jlengstorf/image/upload/w_800/g_south_west,x_40,y_40,l_text:arial_64:Ready%20to%20party/corgi.jpg)
+![Corgi with the text “Ready to party” overlaid.](https://res.cloudinary.com/jlengstorf/image/upload/w_800/g_south_west,x_40,y_40,l_text:arial_64:Ready%20to%20party/corgi.jpg)
 
 </Image>
 
@@ -127,13 +133,13 @@ Now it looks pretty good!
 
 <Image credit="ipet photo" creditLink="https://unsplash.com/photos/wehqRK6J6eo">
 
-  ![Corgi with the text “Ready to party” overlaid.](https://res.cloudinary.com/jlengstorf/image/upload/w_800/g_south_west,x_40,y_40,w_250,c_fit,l_text:arial_64:Ready%20to%20party/corgi.jpg)
+![Corgi with the text “Ready to party” overlaid.](https://res.cloudinary.com/jlengstorf/image/upload/w_800/g_south_west,x_40,y_40,w_250,c_fit,l_text:arial_64:Ready%20to%20party/corgi.jpg)
 
 </Image>
 
 <Aside>
 
-  **NOTE:** because we set the gravity to "south", the text will wrap so that the bottom-most line of text is at our given Y offset. This will be helpful for keeping two separate blocks of text together in our template.
+**NOTE:** because we set the gravity to "south", the text will wrap so that the bottom-most line of text is at our given Y offset. This will be helpful for keeping two separate blocks of text together in our template.
 
 </Aside>
 
