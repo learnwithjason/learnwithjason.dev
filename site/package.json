@@ -37,6 +37,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
+    "react-twitch-embed-video": "^2.0.2",
     "react-youtube": "^7.9.0",
     "remark-slug": "^6.0.0",
     "theme-ui": "^0.3.1"

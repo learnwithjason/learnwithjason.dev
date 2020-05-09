@@ -1,35 +1,9 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { useStreamDetails } from '../hooks/use-stream-details';
 
 const TwitchButton = ({ username }) => {
-  const [live, setLive] = useState(false);
-
-  useEffect(() => {
-    async function checkLiveStatus() {
-      const result = await axios({
-        method: 'GET',
-        url: 'https://api.twitch.tv/helix/streams',
-        headers: {
-          'Client-ID': process.env.GATSBY_TWITCH_CLIENT_ID,
-        },
-        params: {
-          user_login: username,
-        },
-      });
-
-      if (result.data && result.data.data) {
-        result.data.data.forEach(stream => {
-          if (stream.type === 'live') {
-            setLive(true);
-          }
-        });
-      }
-    }
-
-    checkLiveStatus();
-  }, [username]);
+  const [live] = useStreamDetails(username);
 
   return live ? (
     <a

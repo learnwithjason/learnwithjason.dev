@@ -4,27 +4,28 @@
   publish = "site/public"
 
 [dev] 
+  framework = "#custom"
   command = "yarn develop" # Command to start your dev server
   targetPort = 8008 # port the app runs on
-  port = 53091 # port Netlify Dev runs on
-  functionsPort = 34568
-  publish = "site/public" # Folder with the static content for _redirect file
+  # port = 53091 # port Netlify Dev runs on
+  # functionsPort = 34568
+  # publish = "site/public" # Folder with the static content for _redirect file
 
-[[redirects]]
-  from = "https://learnwithjason.netlify.com/*"
-  to = "https://www.learnwithjason.dev/:splat"
-  status = 301
-  force = true
+# [[redirects]]
+#   from = "https://learnwithjason.netlify.com/*"
+#   to = "https://www.learnwithjason.dev/:splat"
+#   status = 301
+#   force = true
 
-[[redirects]]
-  from = "/commands/*"
-  to = "/.netlify/functions/command-:splat"
-  status = 200
+# [[redirects]]
+#   from = "/commands/*"
+#   to = "/.netlify/functions/command-:splat"
+#   status = 200
 
-[[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/:splat"
-  status = 200
+# [[redirects]]
+#   from = "/api/*"
+#   to = "/.netlify/functions/:splat"
+#   status = 200
 
 [[plugins]]
   package = "netlify-plugin-gatsby-cache"
