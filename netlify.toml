@@ -11,21 +11,21 @@
   # functionsPort = 34568
   # publish = "site/public" # Folder with the static content for _redirect file
 
-# [[redirects]]
-#   from = "https://learnwithjason.netlify.com/*"
-#   to = "https://www.learnwithjason.dev/:splat"
-#   status = 301
-#   force = true
+[[redirects]]
+  from = "https://learnwithjason.netlify.com/*"
+  to = "https://www.learnwithjason.dev/:splat"
+  status = 301
+  force = true
 
-# [[redirects]]
-#   from = "/commands/*"
-#   to = "/.netlify/functions/command-:splat"
-#   status = 200
+[[redirects]]
+  from = "/commands/*"
+  to = "/.netlify/functions/command-:splat"
+  status = 200
 
-# [[redirects]]
-#   from = "/api/*"
-#   to = "/.netlify/functions/:splat"
-#   status = 200
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
 
 [[plugins]]
   package = "netlify-plugin-gatsby-cache"
