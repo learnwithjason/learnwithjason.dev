@@ -2,6 +2,14 @@
 # yarn lockfile v1
 
 
+"@jlengstorf/get-twitch-oauth@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@jlengstorf/get-twitch-oauth/-/get-twitch-oauth-1.0.0.tgz#71266b49a23003bc78e08e8e398f4695e9395577"
+  integrity sha512-6hcZZQZBjuB4bvWoITYCPZ9mbRMkqxFnycyMRAshMkqs1qia8vMzGnEtL4c7VNWCnwQR3KQTO1kFHkYsuB6WHw==
+  dependencies:
+    dotenv "^8.2.0"
+    node-fetch "^2.6.0"
+
 "@stream-blitz/create-handler@^0.1.0":
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/@stream-blitz/create-handler/-/create-handler-0.1.0.tgz#33d08a3fea32ce128c29a53dfc38f8c0999d6896"
@@ -42,6 +50,11 @@ ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
   integrity sha1-VgiurfwAvmwpAd9fmGF4jeDVl8g=
+
+node-fetch@^2.6.0:
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.0.tgz#e633456386d4aa55863f676a7ab0daa8fdecb0fd"
+  integrity sha512-8dG4H5ujfvFiqDmVu9fQ5bOHUC15JMjMY/Zumv26oOvvVJjM67KF8koCWIabKQ1GJIa9r2mMZscBq/TbdOcmNA==
 
 qs@^6.6.0:
   version "6.9.3"

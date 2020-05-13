@@ -3,7 +3,7 @@ import { jsx } from 'theme-ui';
 import { useStreamDetails } from '../hooks/use-stream-details';
 
 const TwitchButton = ({ username }) => {
-  const [live] = useStreamDetails(username);
+  const { live } = useStreamDetails(username);
 
   return live ? (
     <a

@@ -1,27 +1,26 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 
 export const useStreamDetails = (username) => {
   const [loading, setLoading] = useState(true);
   const [live, setLive] = useState(false);
+  const [data, setData] = useState({});
 
   useEffect(() => {
     async function checkLiveStatus() {
-      const result = await axios({
-        method: 'GET',
-        url: 'https://api.twitch.tv/helix/streams',
-        headers: {
-          'Client-ID': process.env.GATSBY_TWITCH_CLIENT_ID,
-        },
-        params: {
+      const result = await fetch('/api/get-twitch-stream-data', {
+        method: 'POST',
+        body: JSON.stringify({
           user_login: username,
-        },
-      });
+        }),
+      })
+        .then((res) => res.json())
+        .catch((err) => console.error(err));
 
-      if (result.data && result.data.data) {
-        result.data.data.forEach((stream) => {
+      if (result && result.data) {
+        result.data.forEach((stream) => {
           if (stream.type === 'live') {
             setLive(true);
+            setData(stream);
           }
         });
       }
@@ -29,8 +28,10 @@ export const useStreamDetails = (username) => {
       setLoading(false);
     }
 
-    checkLiveStatus();
-  }, [username]);
+    if (!loading) return;
 
-  return [loading, live];
+    checkLiveStatus();
+  }, [username, data]);
+
+  return { loading, live, data };
 };
