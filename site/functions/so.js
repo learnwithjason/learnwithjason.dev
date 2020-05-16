@@ -1,15 +1,16 @@
 const createHandler = require('@stream-blitz/create-handler');
 
-exports.handler = createHandler(({ user, message, flags, extra }) => {
-  console.log({ user, message, flags, extra });
-
-  // only broadcasters or mods can shoutout
-  if (!flags.broadcaster && !flags.mod) {
+exports.handler = createHandler(({ author, message }) => {
+  if (
+    !author ||
+    !author.roles.includes('SUBSCRIBER') ||
+    !author.roles.includes('BROADCASTER')
+  ) {
     return;
   }
 
   const parts = message.split(' ');
-  const soTarget = parts.find(part => part.startsWith('@'));
+  const soTarget = parts.find((part) => part.startsWith('@'));
   if (!soTarget) {
     return;
   }
