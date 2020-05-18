@@ -15,6 +15,7 @@
     "@jlengstorf/gatsby-theme-code-blog": "*",
     "@mdx-js/mdx": "^1.4.0",
     "@mdx-js/react": "^1.4.0",
+    "@stream-blitz/create-handler": "^1.0.0",
     "@stripe/stripe-js": "^1.3.0",
     "axios": "^0.19.0",
     "dotenv": "^8.2.0",
