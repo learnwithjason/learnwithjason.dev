@@ -5,7 +5,6 @@
   "license": "MIT",
   "scripts": {
     "develop": "gatsby develop --port 8008",
-    "prebuild": "cd functions && npm i && cd ..",
     "build": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --log-pages",
     "serve": "gatsby serve",
     "clean": "gatsby clean"
