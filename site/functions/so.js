@@ -1,7 +1,6 @@
 const createHandler = require('@stream-blitz/create-handler');
 
-exports.handler = createHandler((args) => {
-  console.log({ args });
+exports.handler = createHandler(({ author, arguments }) => {
   if (
     !author ||
     !author.roles.includes('SUBSCRIBER') ||
@@ -10,8 +9,7 @@ exports.handler = createHandler((args) => {
     return;
   }
 
-  const parts = message.split(' ');
-  const soTarget = parts.find((part) => part.startsWith('@'));
+  const soTarget = arguments.find((part) => part.startsWith('@'));
   if (!soTarget) {
     return;
   }
