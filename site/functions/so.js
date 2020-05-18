@@ -1,7 +1,7 @@
 const createHandler = require('@stream-blitz/create-handler');
 
-exports.handler = createHandler(({ author, message }) => {
-  console.log({ author, message });
+exports.handler = createHandler((args) => {
+  console.log({ args });
   if (
     !author ||
     !author.roles.includes('SUBSCRIBER') ||
