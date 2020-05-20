@@ -92,7 +92,7 @@ const Products = () => {
               type="number"
               id="quantity"
               name="quantity"
-              value={1}
+              defaultValue={1}
               min="1"
               max="10"
               sx={{
