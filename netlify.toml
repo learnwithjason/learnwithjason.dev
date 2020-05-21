@@ -32,6 +32,3 @@
 
 [[plugins]]
   package = "netlify-plugin-pastel"
-
-[[plugins]]
-  package = "@netlify/plugin-functions-install-core"
