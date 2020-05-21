@@ -1,21 +1,27 @@
 const qs = require('querystring');
-const axios = require('axios');
+const fetch = require('node-fetch');
 
-exports.handler = async event => {
+exports.handler = async (event) => {
   const formId = process.env.CK_FORM_ID;
   const url = `https://api.convertkit.com/v3/forms/${formId}/subscribe`;
   const { firstName, email } = qs.parse(event.body);
 
   try {
-    const result = await axios.post(url, {
-      api_key: process.env.CK_API_KEY,
-      first_name: firstName,
-      email,
-    });
-
-    if (result.error) {
-      throw new Error(result.error);
-    }
+    await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        api_key: process.env.CK_API_KEY,
+        first_name: firstName,
+        email,
+      }),
+    })
+      .then((res) => res.json())
+      .catch((error) => {
+        throw new Error(error);
+      });
 
     return {
       statusCode: 301,
