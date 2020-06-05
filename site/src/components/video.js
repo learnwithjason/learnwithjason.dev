@@ -2,13 +2,13 @@
 import { jsx } from 'theme-ui';
 import YouTube from 'react-youtube';
 
-const Video = ({ youtubeID, playlist }) => (
+const Video = ({ youtubeID, playlist, aspectRatio = 9 / 16 }) => (
   <div
     sx={{
       '.video-blog-embed-wrapper': {
         height: 0,
         mx: '-5vw',
-        pb: `calc(9 / 16 * (100% + 5vw))`,
+        pb: `calc(aspectRatio * (100% + 5vw))`,
         position: 'relative',
         width: 'calc(100% + 10vw)',
       },
@@ -19,7 +19,7 @@ const Video = ({ youtubeID, playlist }) => (
       containerClassName="video-blog-embed-wrapper"
       sx={{
         backgroundColor: 'background',
-        backgroundImage: t => `
+        backgroundImage: (t) => `
           linear-gradient(
             ${t.colors.background},
             ${t.colors.secondary},
