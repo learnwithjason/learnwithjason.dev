@@ -88,7 +88,7 @@ Each of those configuration options should have good defaults, but allow us to c
 
 Our first step is to create a configuration object that will be passed to the function. We'll set defaults where possible to give a good outcome without needing to tweak the settings.
 
-Then we'll create our first transformation block, which are the [Cloudinary transforms](https://cloudinary.com/documentation/image_transformation_reference) that set the dimensions, cropping, quality, and format of the final image:
+Then we'll create our first transformation block, which are the [Cloudinary transforms](https://cloudinary.com/documentation/image_transformation_reference?ap=lwj) that set the dimensions, cropping, quality, and format of the final image:
 
 ```js
 export default function generateSocialImage({
@@ -336,7 +336,7 @@ That's more like it! We now get an automatically generated social card that has 
 At this point, you have all the tools you need to add automatically generated social media sharing cards to your own blog!
 
 - Learn how to [design a social media sharing card](/blog/design-social-sharing-card/)
-- Read the [Cloudinary docs on text overlays](https://cloudinary.com/documentation/image_transformations#adding_text_captions)
+- Read the [Cloudinary docs on text overlays](https://cloudinary.com/documentation/image_transformations?ap=lwj#adding_text_captions)
 - Use [the Figma template](https://res.cloudinary.com/jlengstorf/raw/upload/v1578342420/social-sharing-cards/learnwithjason-social-card-template.fig) to create your own design
 - Install the [npm package for automatically generating social sharing images](https://www.npmjs.com/package/@jlengstorf/get-share-image) to add this function to your site
 - See the [source code for this site](https://github.com/jlengstorf/learnwithjason.dev/blob/070468828e8c758d150a8d573fd471d786278243/packages/%40jlengstorf/gatsby-theme-code-blog/src/gatsby-theme-blog-core/components/post.js#L55-L64) to see how to use the package in production

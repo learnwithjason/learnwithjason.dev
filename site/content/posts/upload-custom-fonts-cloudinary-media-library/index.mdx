@@ -18,7 +18,7 @@ import Image from '../../../src/components/image';
 
 If you want to use custom fonts with [Cloudinary](https://jason.af/cloudinary), you need to upload them as authenticated assets.
 
-While you can [use Cloudinary Node SDK to upload custom fonts](/blog/upload-custom-font-cloudinary-node/) (or one of the [other SDKs](https://cloudinary.com/documentation)), it's sometime more convenient to use the [Media Library UI](https://cloudinary.com/console/media_library) to drag and drop fonts. However, it's not immediately clear _how_ to upload fonts as authenticated assets.
+While you can [use Cloudinary Node SDK to upload custom fonts](/blog/upload-custom-font-cloudinary-node/) (or one of the [other SDKs](https://cloudinary.com/documentation?ap=lwj)), it's sometime more convenient to use the [Media Library UI](https://cloudinary.com/console/media_library?ap=lwj) to drag and drop fonts. However, it's not immediately clear _how_ to upload fonts as authenticated assets.
 
 In this post, we'll look at how to configure the Media Library to upload font files as authenticated assets so we can use them with [text overlays](/blog/add-text-overlay-cloudinary/).
 
@@ -30,7 +30,7 @@ In this post, we'll look at how to configure the Media Library to upload font fi
 
 ## Create an upload preset
 
-In your Cloudinary console, create a new upload preset by visiting [https://cloudinary.com/console/lui/upload_presets/new](https://cloudinary.com/console/lui/upload_presets/new) — you can navigate to this page by clicking the gear in the top-right, then the "upload" tab, and scrolling down near the bottom and clicking the link that says, "Add upload preset".
+In your Cloudinary console, create a new upload preset by visiting [https://cloudinary.com/console/lui/upload_presets/new](https://cloudinary.com/console/lui/upload_presets/new?ap=lwj) — you can navigate to this page by clicking the gear in the top-right, then the "upload" tab, and scrolling down near the bottom and clicking the link that says, "Add upload preset".
 
 You'll see the following screen:
 
@@ -50,7 +50,7 @@ On this page, we need to:
 
 Now that we have a preset, we need to tell Cloudinary to use it for "raw" files, which is any file that's not an image or video.
 
-Head to [https://cloudinary.com/console/settings/upload](https://cloudinary.com/console/settings/upload) — or click the gear, then the "Upload" tab — and scroll all the way to the bottom to find the "Media library’s upload presets".
+Head to [https://cloudinary.com/console/settings/upload](https://cloudinary.com/console/settings/upload?ap=lwj) — or click the gear, then the "Upload" tab — and scroll all the way to the bottom to find the "Media library’s upload presets".
 
 Under "Raw", choose the upload preset you just created.
 
@@ -68,7 +68,7 @@ Now that the preset is enabled, we can test it out by uploading a custom font. W
 
 **NOTE:** Make sure you have the appropriate licenses for any fonts you upload!
 
-Drag the TTF file onto the media library at [https://cloudinary.com/console/media_library](https://cloudinary.com/console/media_library) — once it's finished, we'll see it show up in our list of assets.
+Drag the TTF file onto the media library at [https://cloudinary.com/console/media_library](https://cloudinary.com/console/media_library?ap=lwj) — once it's finished, we'll see it show up in our list of assets.
 
 **Heads up!** Depending on your settings, you may see the font uploaded with a random string instead of the font name — if this happens, you can click on the font and edit the name in the right-hand sidebar that appears.
 
@@ -105,4 +105,4 @@ For next steps:
 - Learn how to use text overlays to [automatically generate social sharing cards for blog posts](/blog/auto-generate-social-image/)
 - Get more detail on [how text overlays work](/blog/add-text-overlay-cloudinary/)
 - Use the [Node SDK to upload custom fonts programmatically](/blog/upload-custom-font-cloudinary-node/)
-- Read the [Cloudinary docs on text overlays](https://cloudinary.com/documentation/image_transformations#adding_text_captions)
+- Read the [Cloudinary docs on text overlays](https://cloudinary.com/documentation/image_transformations?ap=lwj#adding_text_captions)

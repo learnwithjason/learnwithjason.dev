@@ -27,7 +27,7 @@ In this post, we'll look at how we can use [Cloudinary](https://jason.af/cloudin
 
 ## How do text overlays work with Cloudinary?
 
-Cloudinary has a whole set of [APIs to add overlays to images](https://cloudinary.com/documentation/image_transformation_reference#overlay_parameter). We can combine those with other transforms to place text anywhere on an image. All of these transformations are added in the URL of our image.
+Cloudinary has a whole set of [APIs to add overlays to images](https://cloudinary.com/documentation/image_transformation_reference?ap=lwj#overlay_parameter). We can combine those with other transforms to place text anywhere on an image. All of these transformations are added in the URL of our image.
 
 As a simplified example, let's add some text to a picture of a corgi:
 
@@ -81,7 +81,7 @@ If we open this URL in a browser, we’ll see the text overlaid on the image:
 
 Our image looks okay, but it would be better if the text wasn't on top of our doggo. Fortunately, Cloudinary allows us to position text using additional transforms.
 
-First, let's [set the "gravity"](https://cloudinary.com/documentation/image_transformation_reference#gravity_parameter) of the text so it's anchored to the bottom-left corner. This is done using directions for whatever reason, so bottom and left are considered south and west.
+First, let's [set the "gravity"](https://cloudinary.com/documentation/image_transformation_reference?ap=lwj#gravity_parameter) of the text so it's anchored to the bottom-left corner. This is done using directions for whatever reason, so bottom and left are considered south and west.
 
 Add `g_south_west` to the text overlay transformation section of the URL, separating it with a comma:
 
@@ -149,4 +149,4 @@ To take your text overlays to the next level, try:
 
 - [using a custom font for Cloudinary text overlays](/blog/upload-custom-font-cloudinary-media-library/)
 - [creating custom social media cards automatically using text overlays](/blog/auto-generate-social-image/)
-- reading the [Cloudinary docs on text overlays](https://cloudinary.com/documentation/image_transformations#adding_text_captions)
+- reading the [Cloudinary docs on text overlays](https://cloudinary.com/documentation/image_transformations?ap=lwj#adding_text_captions)

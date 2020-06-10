@@ -9,9 +9,9 @@ excerpt: >
 slug: upload-custom-font-cloudinary-node
 
 tags:
-- images
-- nodejs
-- cloudinary
+  - images
+  - nodejs
+  - cloudinary
 ---
 
 import Aside from '../../../src/components/aside';
@@ -21,7 +21,7 @@ If you want to use custom fonts with Cloudinary, you need to upload them as auth
 
 <Aside warning>
 
-  **IMPORTANT:** only upload fonts if you have the appropriate licenses.
+**IMPORTANT:** only upload fonts if you have the appropriate licenses.
 
 </Aside>
 
@@ -33,7 +33,7 @@ Make sure you've created a folder, initialized the Node project, and installed t
 mkdir upload-fonts
 
 cd upload-fonts/
-  
+
 npm init -y
 
 npm install --save cloudinary
@@ -118,7 +118,7 @@ Let's start with this image of a llama:
   creditLink="https://unsplash.com/photos/IivEbEd_vQ4"
 >
 
-  ![a llama](https://res.cloudinary.com/jlengstorf/image/upload/w_800,q_auto,f_auto/v1578269094/llama-kimmy-williams.jpg)
+![a llama](https://res.cloudinary.com/jlengstorf/image/upload/w_800,q_auto,f_auto/v1578269094/llama-kimmy-williams.jpg)
 
 </Image>
 
@@ -151,7 +151,7 @@ This sets a few things for our text:
 
 <Aside>
 
-  **Heads up!** If you want more details on what’s going on here, I wrote a full post on [how text overlays work in Cloudinary](/blog/add-text-overlay-cloudinary/).
+**Heads up!** If you want more details on what’s going on here, I wrote a full post on [how text overlays work in Cloudinary](/blog/add-text-overlay-cloudinary/).
 
 </Aside>
 
@@ -165,7 +165,7 @@ And the image now includes our text overlay using the custom font!
 
 <Image>
 
-  ![llama with text overlay saying, “Have you been to Machu Picchu?”](https://res.cloudinary.com/jlengstorf/image/upload/w_800,q_auto,f_auto/g_south,y_20,co_white,l_text:Tahu!.ttf_70:Have%20you%20been%20to%20Machu%20Picchu%3F/v1578269094/llama-kimmy-williams.jpg)
+![llama with text overlay saying, “Have you been to Machu Picchu?”](https://res.cloudinary.com/jlengstorf/image/upload/w_800,q_auto,f_auto/g_south,y_20,co_white,l_text:Tahu!.ttf_70:Have%20you%20been%20to%20Machu%20Picchu%3F/v1578269094/llama-kimmy-williams.jpg)
 
 </Image>
 
@@ -176,4 +176,4 @@ For next steps:
 - Learn how to use text overlays to [automatically generate social sharing cards for blog posts](/blog/auto-generate-social-image/)
 - Get more detail on [how text overlays work](/blog/add-text-overlay-cloudinary/)
 - Use the [media library to upload custom fonts via UI](/blog/upload-custom-font-cloudinary-media-library/)
-- Read the [Cloudinary docs on text overlays](https://cloudinary.com/documentation/image_transformations#adding_text_captions)
+- Read the [Cloudinary docs on text overlays](https://cloudinary.com/documentation/image_transformations?ap=lwj#adding_text_captions)
