@@ -2,7 +2,7 @@
 date: 2020-06-05
 
 title: >
-  No Slow Code! Stop Async/Await from Blocking Execution in JS
+  Use Promise.all to Stop Async/Await from Blocking Execution in JS
 excerpt: >
   When writing asynchronous code, async/await is a powerful tool — but it comes with risks! Learn how to avoid code slowdowns in this tutorial.
 
@@ -11,7 +11,15 @@ tags:
   - performance
 ---
 
-Promises are extremely powerful for asynchronous operations in JavaScript (sometimes referred to as “Ajax”, as popularized by jQuery), and async functions make them easier to read and reason about. However, they also introduce some sneaky traps that can lead to slowdowns if we're not careful.
+import Aside from '../../../src/components/aside';
+
+Promises are extremely powerful for handling asynchronous operations in JavaScript. Async functions make them easier to read and reason about. However, they also introduce some sneaky traps that can lead to slowdowns if we're not careful.
+
+<Aside>
+
+Async ops are commonly used for data fetching, which is also referred to as [Asynchronous JavaScript and XML (AJAX)](https://developer.mozilla.org/en-US/docs/Web/Guide/AJAX), a technique for sending requests from a web page that didn’t require refreshing the browser. This was relatively complex and involved the [`XMLHttpRequest` API](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest), but it really became popular with [jQuery’s `$.ajax()` function](https://api.jquery.com/jQuery.ajax/), which made it more approachable.
+
+</Aside>
 
 ## tl;dr
 
@@ -168,7 +176,11 @@ getData();
 
 Because next steps have to happen inside a `.then()`, each async action further nests our code, which adds cognitive overhead and can make code hard to refactor and maintain as time goes on.
 
+<Aside>
+
 **Heads up!** There are ways to clean this up, such as pulling out the functions passed to `.then` into to top-level scope and calling them like `.then(handleResponse)` — this article won't cover that flow, but it can be a very effective approach!
+
+</Aside>
 
 ## Async functions make Promises easier to use...
 
