@@ -16,6 +16,7 @@ exports.handler = async ({ body }) => {
       // if you don’t see your country listed, please add it as long as it’s
       // not in the unsupported countries list
       // (sorry, that’s Stripe policy, not mine)
+      // country codes: https://www.nationsonline.org/oneworld/country_code_list.htm
       allowed_countries: [
         'US',
         'CA',
