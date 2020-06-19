@@ -3,14 +3,34 @@ const inventory = require('./data/products.json');
 
 exports.handler = async ({ body }) => {
   const { sku, quantity } = JSON.parse(body);
-  const product = inventory.find(p => p.sku === sku);
+  const product = inventory.find((p) => p.sku === sku);
   const validatedQuantity = quantity > 0 && quantity <= 10 ? quantity : 1;
 
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ['card'],
     billing_address_collection: 'auto',
     shipping_address_collection: {
-      allowed_countries: ['US', 'CA'],
+      // Unsupported country codes:
+      // AS, CX, CC, CU, HM, IR, KP, MH, FM, NF, MP, PW, SD, SY, UM, VI
+      //
+      // if you don’t see your country listed, please add it as long as it’s
+      // not in the unsupported countries list
+      // (sorry, that’s Stripe policy, not mine)
+      allowed_countries: [
+        'US',
+        'CA',
+        'MX',
+        'IE',
+        'GB',
+        'DE',
+        'JP',
+        'FR',
+        'HR',
+        'DK',
+        'NO',
+        'SE',
+        'FI',
+      ],
     },
     line_items: [
       {
