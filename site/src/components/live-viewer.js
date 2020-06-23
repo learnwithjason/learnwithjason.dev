@@ -6,7 +6,7 @@ import { Link } from 'gatsby';
 import Heading from './heading';
 import { useStreamDetails } from '../hooks/use-stream-details';
 
-const CHANNEL_NAME = 'baldbeardedbuilder';
+const CHANNEL_NAME = 'jlengstorf';
 
 export const LiveViewer = () => {
   const { loading, live } = useStreamDetails(CHANNEL_NAME);
