@@ -27,6 +27,12 @@
   to = "/.netlify/functions/:splat"
   status = 200
 
+[[redirects]]
+  from = "https://lwj.dev/*"
+  to = "https://www.learnwithjason.dev/:splat"
+  status = 301
+  force = true
+
 [[plugins]]
   package = "netlify-plugin-gatsby-cache"
 
