@@ -59,7 +59,7 @@ export const LiveViewer = () => {
       >
         <ReactTwitchEmbedVideo
           channel={CHANNEL_NAME}
-          parent="learnwithjason.dev"
+          parent={['learnwithjason.dev']}
         />
       </div>
       <iframe
@@ -78,26 +78,17 @@ export const LiveViewer = () => {
       </p>
       <p
         sx={{
-          alignItems: 'center',
-          display: 'grid',
-          gap: '1rem',
-          gridTemplateColumns: '100px repeat(2, 80px)',
-          justifyContent: 'center',
           mt: 4,
-          img: {
-            width: '100%',
-          },
+          textAlign: 'center',
         }}
       >
-        <span sx={{ fontSize: 0, textAlign: 'right' }}>
-          Live captioning made possible by
-        </span>
+        Live captioning made possible by{' '}
         <a href="https://www.netlify.com?utm_source=learnwithjason&utm_medium=captions-jl&utm_campaign=devex">
-          <img src="/images/sponsors/netlify.svg" alt="Netlify" />
+          Netlify
         </a>
-        <a href="https://fauna.com">
-          <img src="/images/sponsors/fauna.png" alt="Fauna" />
-        </a>
+        , <a href="https://fauna.com">Fauna</a>,{' '}
+        <a href="https://sanity.io">Sanity</a>, and{' '}
+        <a href="https://auth0.com">Auth0</a>.
       </p>
     </Fragment>
   );

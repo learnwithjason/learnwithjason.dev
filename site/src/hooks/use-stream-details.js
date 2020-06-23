@@ -31,7 +31,7 @@ export const useStreamDetails = (username) => {
     if (!loading) return;
 
     checkLiveStatus();
-  }, [username, data]);
+  }, [username, data, loading]);
 
   return { loading, live, data };
 };
