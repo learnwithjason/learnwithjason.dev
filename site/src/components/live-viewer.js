@@ -6,7 +6,7 @@ import { Link } from 'gatsby';
 import Heading from './heading';
 import { useStreamDetails } from '../hooks/use-stream-details';
 
-const CHANNEL_NAME = 'jlengstorf';
+const CHANNEL_NAME = 'lcs';
 
 export const LiveViewer = () => {
   const { loading, live } = useStreamDetails(CHANNEL_NAME);
@@ -59,7 +59,7 @@ export const LiveViewer = () => {
       >
         <ReactTwitchEmbedVideo
           channel={CHANNEL_NAME}
-          parent={['learnwithjason.dev']}
+          parent={['www.learnwithjason.dev']}
         />
       </div>
       <iframe
