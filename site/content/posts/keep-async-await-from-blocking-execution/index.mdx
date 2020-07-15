@@ -281,7 +281,7 @@ doThings();
 
 This looks nice and clean, but if we run it in our console we’ll notice an issue: the code now takes _twice as long_ to run! 😱
 
-Promises run in parallel because they don’t care what happens outside of them — that‘s why we can only access their content inside a `.then`. This means that both `asyncThing1()` and `asyncThing2()` run at the same in our first example.
+Promises run in parallel because they don’t care what happens outside of them — that‘s why we can only access their content inside a `.then`. This means that both `asyncThing1()` and `asyncThing2()` run at the same time in our first example.
 
 In async functions, `await` blocks any code that follows from executing until the Promise has resolves, which means that our refactored code doesn't even start `asyncThing2()` until `asyncThing1()` has completed — that’s not good.
 
