@@ -1,9 +1,11 @@
 const createHandler = require('@stream-blitz/create-handler');
 
-exports.handler = createHandler(({ user }) => ({
+exports.handler = createHandler({
   name: 'chris',
-  message:
-    user !== 'chrisbiscardi'
-      ? 'LISTEN TO CHRIS! Chris is always right chrisb24PartyCorgi chrisb24PartyCorgi'
-      : 'jlengsHolyBucket Yes, you’re Chris. jlengsHolyBucket',
-}));
+  handler: ({ author }) => ({
+    message:
+      author.username !== 'chrisbiscardi'
+        ? 'LISTEN TO CHRIS! Chris is always right chrisb24PartyCorgi chrisb24PartyCorgi'
+        : 'jlengsHolyBucket Yes, you’re Chris. jlengsHolyBucket',
+  }),
+});
