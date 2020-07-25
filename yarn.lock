@@ -1805,10 +1805,10 @@
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.7.0.tgz#9a06f4f137ee84d7df0460c1fdb1135ffa6c50fd"
   integrity sha512-ONhaKPIufzzrlNbqtWFFd+jlnemX6lJAgq9ZeiZtS7I1PIf/la7CW4m83rTXRnVnsMbW2k56pGYu7AUFJD9Pow==
 
-"@stream-blitz/create-handler@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@stream-blitz/create-handler/-/create-handler-2.0.0.tgz#0c38a4a8b6894457caae49d3f63a7892f6a82a39"
-  integrity sha512-w/FKBkEYELpfWUvWftwQVS4+bhInUnDx+qEHDeoo+zw2LDI3f84l3FlnN4vqYP+1H4glfmmu5xdJLPIn9CZEIQ==
+"@stream-blitz/create-handler@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@stream-blitz/create-handler/-/create-handler-2.0.1.tgz#a3d5d8a26b0efafbb57eae6ddbdb53c3857069f0"
+  integrity sha512-2PWWzf1YAZvRI0kEdlaxgFSiBbQulDrAMz814z66r36Yc3+KZJ57uapBraF8Yy68O+qTX/nw4X3De1tiHMbrHA==
 
 "@stripe/stripe-js@^1.3.0":
   version "1.5.0"
