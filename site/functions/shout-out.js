@@ -3,7 +3,7 @@ const createHandler = require('@stream-blitz/create-handler');
 exports.handler = createHandler({
   name: 'so',
   description: 'Send a shout-out to someone in chat! `!so @username`',
-  handler: ({ author, arguments }) => {
+  handler: ({ author, args }) => {
     if (
       !author ||
       !author.roles.includes('SUBSCRIBER') ||
@@ -12,7 +12,7 @@ exports.handler = createHandler({
       return;
     }
 
-    const soTarget = arguments.find((part) => part.startsWith('@'));
+    const soTarget = args.find((part) => part.startsWith('@'));
     if (!soTarget) {
       return;
     }
