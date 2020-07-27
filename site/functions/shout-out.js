@@ -20,7 +20,7 @@ exports.handler = createHandler({
     const twitchLink = `https://twitch.tv/${soTarget.replace('@', '')}`;
 
     return {
-      message: `▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ Please check out ${soTarget} at ${twitchLink} jlengsHolyBucket jlengsBeardy ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬`,
+      message: `▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ jlengsStreamBlitz Please check out ${soTarget} at ${twitchLink} jlengsHolyBucket jlengsBOOP ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬`,
     };
   },
 });
