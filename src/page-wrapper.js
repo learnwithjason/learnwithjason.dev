@@ -2,6 +2,7 @@ import { h } from 'preact';
 import { Helmet } from 'react-helmet';
 import { MDXProvider } from '@mdx-js/preact';
 import { Logo } from './components/logo.js';
+import { Footer } from './components/footer.js';
 
 const components = {
   codeblock: (props) => (
@@ -14,6 +15,48 @@ export default function PageWrapper(props) {
       <Helmet>
         <html lang="en" />
 
+        <link
+          rel="preload"
+          href="/fonts/jwf-book.woff2"
+          as="font"
+          type="font/woff2"
+          crossorigin
+        />
+        <link
+          rel="preload"
+          href="/fonts/jwf-bookitalic.woff2"
+          as="font"
+          type="font/woff2"
+          crossorigin
+        />
+        <link
+          rel="preload"
+          href="/fonts/jwf-bold.woff2"
+          as="font"
+          type="font/woff2"
+          crossorigin
+        />
+        <link
+          rel="preload"
+          href="/fonts/jwf-bolditalic.woff2"
+          as="font"
+          type="font/woff2"
+          crossorigin
+        />
+        <link
+          rel="preload"
+          href="/fonts/jwf-ultra.woff2"
+          as="font"
+          type="font/woff2"
+          crossorigin
+        />
+        <link
+          rel="preload"
+          href="/fonts/jwf-ultraitalic.woff2"
+          as="font"
+          type="font/woff2"
+          crossorigin
+        />
         <link rel="preconnect" href="https://res.cloudinary.com" />
 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -51,7 +94,8 @@ export default function PageWrapper(props) {
           <a href="/">search</a>
         </nav>
       </header>
-      <main>{props.children}</main>
+      <main class={props.meta ? 'content' : ''}>{props.children}</main>
+      <Footer />
     </MDXProvider>
   );
 }

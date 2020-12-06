@@ -112,7 +112,7 @@ export function SectionFeaturedEpisodes() {
 
   return (
     <section class="block featured">
-      <h2>Look at all these brilliant teachers!</h2>
+      <h2>Look at these brilliant teachers!</h2>
       <nav class="teacher-photos">
         {episodes.map((episode, index) => {
           const isActive = currentIndex === index;
@@ -130,7 +130,11 @@ export function SectionFeaturedEpisodes() {
               class={isActive ? 'active' : ''}
               style={{ zIndex }}
             >
-              <TeacherPhoto imageURL={episode.imageURL} active={isActive} />
+              <TeacherPhoto
+                imageURL={episode.imageURL}
+                active={isActive}
+                animate
+              />
             </a>
           );
         })}

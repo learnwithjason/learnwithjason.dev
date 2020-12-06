@@ -9,11 +9,17 @@ const activePath =
 
 export function TeacherPhoto({
   imageURL = 'https://github.com/jlengstorf.png',
+  alt,
   active = false,
+  animate = false,
 }) {
   const ref = useRef();
 
   useEffect(() => {
+    if (!animate) {
+      return;
+    }
+
     const photo = ref.current;
     const border = photo.querySelector('.border');
     const config = { duration: 0.4, ease: 'back.inOut(2)' };
@@ -55,6 +61,7 @@ export function TeacherPhoto({
       fill="none"
       viewBox="0 0 84 110"
     >
+      <title>{alt}</title>
       <defs>
         <circle id="photo-area" cx="42" cy="42" r="38" />
       </defs>

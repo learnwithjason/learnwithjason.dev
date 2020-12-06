@@ -9,7 +9,7 @@ export function SectionHero() {
       <svg viewBox="0 0 800 180" class="hero-heading">
         <defs>
           <g id="text-group">
-            <text x="50%" y="80" fill-rule="nonzero">
+            <text x="50%" y="80">
               learn something
             </text>
             <text x="50%" y="150">
@@ -18,7 +18,8 @@ export function SectionHero() {
           </g>
         </defs>
 
-        <rect id="o-filler" x="362" y="58" width="8" height="8" />
+        <rect id="o-filler" x="360" y="58" width="8" height="8" />
+        <rect id="o-filler2" x="378" y="120" width="7" height="8"></rect>
         <use id="gradient-stroke" href="#text-group" />
         <use id="text" href="#text-group" />
       </svg>
