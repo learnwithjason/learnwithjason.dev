@@ -1,0 +1,43 @@
+{
+  "name": "toast-default-starter",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "author": "christopherbiscardi <chris@christopherbiscardi.com> (@chrisbiscardi)",
+  "license": "MIT",
+  "scripts": {
+    "postinstall": "breadbox --dest public/web_modules",
+    "build": "npm run build:css && npm run build:site",
+    "build:css": "postcss --config legacy-commonjs index.css -o public/styles.css",
+    "build:site": "toast incremental .",
+    "serve": "http-server public"
+  },
+  "dependencies": {
+    "@sector/breadbox": "^0.0.4",
+    "@toastdotdev/mdx": "^0.1.3",
+    "gsap": "^3.5.1",
+    "node-fetch": "^2.6.1",
+    "postcss": "^8.1.6",
+    "postcss-cli": "^8.2.0",
+    "toast": "^0.3.30"
+  },
+  "snowpack": {
+    "exclude": [
+      "public/**/*",
+      "toast.js"
+    ],
+    "installOptions": {
+      "alias": {
+        "react": "preact/compat"
+      }
+    },
+    "knownEntrypoints": [
+      "preact/hooks",
+      "preact"
+    ]
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.0.4",
+    "http-server": "^0.12.3"
+  }
+}
