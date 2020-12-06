@@ -63,8 +63,8 @@
   --black: #171321;
   --gray-light: #d4d0e0;
   --gray-medium: #b1acb9;
-  --font-family: mallory, jwf, -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+  --font-family: jwf, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
     'Segoe UI Symbol';
   --gradient: linear-gradient(
     2deg,
@@ -187,9 +187,9 @@ img {
 }
 
 .hero-heading text {
-  font-family: mallory;
+  font-family: var(--font-family);
   font-size: 75px;
-  font-weight: 800;
+  font-weight: 900;
   letter-spacing: -0.02em;
   line-height: 1;
   stroke-linejoin: round;
