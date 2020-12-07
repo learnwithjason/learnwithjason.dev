@@ -1,8 +1,7 @@
-const qs = require('querystring');
 const { hasuraRequest } = require('./util/hasura');
 
 exports.handler = async (event) => {
-  const { limit } = event.queryStringParameters;
+  const { limit = 999, featured = false } = event.queryStringParameters;
 
   const data = await hasuraRequest({
     query: `
@@ -11,7 +10,8 @@ exports.handler = async (event) => {
           where: {
             date: {lte: $date}, 
             youtubeID: {neq: ""}, 
-            hidden: {neq: true}
+            hidden: {neq: true},
+            featured: { ${featured ? 'eq' : 'neq'}: true }
           }, 
           sort: {date: DESC},
           limit: $limit
