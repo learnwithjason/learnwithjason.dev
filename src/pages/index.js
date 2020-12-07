@@ -5,11 +5,11 @@ import { SectionNextEpisode } from '../components/section-next-episode.js';
 import { SectionSponsors } from '../components/section-sponsors.js';
 import { SectionTopics } from '../components/section-topics.js';
 
-export default ({ sponsors }) => (
+export default ({ featuredEpisodes, sponsors }) => (
   <Fragment>
     <SectionHero />
     <SectionNextEpisode />
-    <SectionFeaturedEpisodes />
+    <SectionFeaturedEpisodes episodes={featuredEpisodes} />
     <SectionSponsors sponsors={sponsors} />
     <SectionTopics />
   </Fragment>
