@@ -15,11 +15,12 @@ exports.handler = async (event) => {
             youtubeID: {neq: ""}, 
             hidden: {neq: true}
           }, 
-          sort: {date: DESC},
+          sort: {date: ASC},
           limit: $limit
         ) {
           _id
           title
+          date
           slug {
             current
           }

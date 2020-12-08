@@ -8,6 +8,10 @@ export const sourceData = async ({ setDataForSlug }) => {
     slugPrefix: '/',
   });
 
+  const nextEpisodePromise = fetch(
+    'https://lwj2021.netlify.app/api/schedule?limit=1',
+  ).then((res) => res.json());
+
   const featuredPromise = fetch(
     'https://lwj2021.netlify.app/api/episodes?featured=true',
   ).then((res) => res.json());
@@ -16,12 +20,13 @@ export const sourceData = async ({ setDataForSlug }) => {
     `https://lwj2021.netlify.app/api/sponsors`,
   ).then((res) => res.json());
 
-  const [featuredEpisodes, sponsors] = await Promise.all([
+  const [nextEpisode, featuredEpisodes, sponsors] = await Promise.all([
+    nextEpisodePromise,
     featuredPromise,
     sponsorsPromise,
   ]);
 
   await setDataForSlug('/', {
-    data: { sponsors, featuredEpisodes },
+    data: { sponsors, featuredEpisodes, nextEpisode: nextEpisode[0] },
   });
 };

@@ -15,7 +15,7 @@
   "dependencies": {
     "@sector/breadbox": "^0.0.4",
     "@toastdotdev/mdx": "^0.1.3",
-    "date-fns": "^2.16.1",
+    "dayjs": "^1.9.7",
     "gsap": "^3.5.1",
     "node-fetch": "^2.6.1",
     "postcss": "^8.1.6",
