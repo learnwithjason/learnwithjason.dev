@@ -4,14 +4,14 @@ const { hasuraRequest } = require('./util/hasura');
 exports.handler = async (event) => {
   const { limit = 999 } = event.queryStringParameters;
   const date = new Date();
-  date.setHours(date.getHours() + 3);
+  date.setHours(date.getHours() - 2);
 
   const data = await hasuraRequest({
     query: `
       query GetSchedule ($date: DateTime!, $limit: Int!) {
         schedule: allEpisode(
           where: {
-            date: {gt: $date}, 
+            date: {gte: $date}, 
             youtubeID: {neq: ""}, 
             hidden: {neq: true}
           }, 
