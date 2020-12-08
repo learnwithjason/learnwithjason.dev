@@ -6,6 +6,9 @@
 [dev]
   autoLaunch = false
 
+[[plugins]]
+  package = "netlify-plugin-toast-cache"
+
 [[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/:splat"
