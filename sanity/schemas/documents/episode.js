@@ -77,5 +77,11 @@ export default {
       title: 'Transcript',
       description: 'Get this from rev.com as a .txt file.',
     },
+    {
+      title: 'Feature this episode',
+      name: 'featured',
+      type: 'boolean',
+      options: { layout: 'checkbox' },
+    },
   ],
 };

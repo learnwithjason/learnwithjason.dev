@@ -14,5 +14,10 @@ export default {
       title: 'Twitter',
       description: 'Just the username, no @ or URL (e.g. “jlengstorf”).',
     },
+    {
+      name: 'guestImage',
+      type: 'image',
+      title: 'Guest Image',
+    },
   ],
 };
