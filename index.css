@@ -98,7 +98,7 @@ body {
   font-family: var(--font-family);
   font-size: 18px;
   font-weight: 400;
-  line-height: 1.45;
+  line-height: 1.45rem;
   margin: 0;
 }
 
