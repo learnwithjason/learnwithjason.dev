@@ -20,7 +20,7 @@ export function SectionNextEpisode({ episode }) {
 
   return (
     <section class="block">
-      <h2>The next episode is in {dayjs().to(episode.date)}!</h2>
+      <h2>The next episode is {dayjs().to(episode.date)}!</h2>
       <div class="next-episode-wrapper">
         <div class="next-episode">
           <TeacherPhoto

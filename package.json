@@ -17,7 +17,7 @@
     "@toastdotdev/mdx": "^0.1.3",
     "dayjs": "^1.9.7",
     "gsap": "^3.5.1",
-    "netlify-plugin-toast-cache": "^0.0.2",
+    "netlify-plugin-toast-cache": "^0.0.3",
     "node-fetch": "^2.6.1",
     "postcss": "^8.1.6",
     "postcss-cli": "^8.2.0",
