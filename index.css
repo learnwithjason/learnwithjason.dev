@@ -76,7 +76,7 @@
   --footnote-hover: var(--pink-dark);
 }
 
-.dark {
+.dark-theme {
   --blue-dark: #0d314a;
   --pink-dark: #6d114c;
   --text: var(--gray-medium);
@@ -269,6 +269,55 @@ img {
   width: 0px;
 }
 
+.next-episode-wrapper {
+  align-items: end;
+  display: grid;
+  gap: 5rem;
+  grid-template-columns: min(590px, 60%) min(310px, 35%);
+  justify-content: center;
+}
+
+.next-episode {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: min(150px, 33%) min(410px, 66%);
+}
+
+.next-episode h3 {
+  font-weight: 600;
+  line-height: 1.1;
+  margin: 1rem 0 0;
+}
+
+.button {
+  border: 2px solid;
+  border-radius: 0.25rem;
+  color: var(--pink-dark);
+  display: block;
+  font-weight: 600;
+  margin-bottom: 2.25rem;
+  margin-top: 2rem;
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+}
+
+.schedule-links p {
+  color: var(--text);
+  font-size: 0.875rem;
+}
+
+.schedule-links .links a {
+  align-items: center;
+  color: var(--pink-dark);
+  display: flex;
+  font-size: 0.625rem;
+  font-weight: 600;
+  gap: 0.5rem;
+  letter-spacing: 0.2em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
 .teacher-photos {
   display: flex;
   justify-content: center;
@@ -340,13 +389,17 @@ img {
 }
 
 .gradient-subheading {
-  color: var(--gray-medium);
+  color: var(--text-muted);
   font-size: 0.625rem;
   letter-spacing: 0.2em;
   line-height: 2;
   margin: 0.25rem 0 0;
   position: relative;
   text-transform: uppercase;
+}
+
+.dark .gradient-subheading {
+  color: var(--gray-medium);
 }
 
 .gradient-subheading::after {
@@ -360,17 +413,37 @@ img {
 }
 
 .episode-description {
+  color: var(--text);
+}
+
+.next-episode .episode-description {
+  margin-top: 0.5rem;
+}
+
+.dark .episode-description {
   color: var(--gray-medium);
 }
 
 .episode-links {
-  color: var(--pink);
+  color: var(--pink-dark);
   display: flex;
   font-size: 0.625rem;
   font-weight: 600;
   gap: 1.5rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
+}
+
+.episode-links path {
+  fill: var(--pink-dark);
+}
+
+.dark .episode-links {
+  color: var(--pink);
+}
+
+.dark .episode-links path {
+  fill: var(--pink);
 }
 
 .episode-links a {

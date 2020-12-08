@@ -34,10 +34,6 @@ exports.handler = async (event) => {
             name
             twitter
           }
-          demo
-          repo
-          links
-          youtubeID
         }
       }
     `,

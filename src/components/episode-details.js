@@ -28,12 +28,13 @@ export function EpisodeDetails({
     `/u_fetch:${toBase64(
       teacherImageURL,
     )},w_280,h_280,c_fill,g_north_west,x_416,y_58`,
-    `/w_340,c_fit,co_white,g_north_west,x_40,y_180,l_text:jwf.otf_36_line_spacing_0:${encodeURIComponent(
+    `/w_310,c_fit,co_white,g_north_west,x_40,y_180,l_text:jwf.otf_38_line_spacing_0:${encodeURIComponent(
       encodeURIComponent(title),
     )}`,
     `/l_text:jwf.otf_24_center:${encodeURIComponent(
       teacher,
-    )},x_420,y_360,c_fit,co_white,g_north_west,w_280,b_rgb:00000001/lwj/episode.png`,
+    )},g_north_west,x_420,y_360,c_fit,co_white,w_280,b_rgb:00000001`,
+    '/lwj/video-poster.png',
   ].join('');
 
   useEffect(() => {
@@ -49,7 +50,7 @@ export function EpisodeDetails({
   }, [title]);
 
   return (
-    <article class="episode-details" ref={ref}>
+    <article class="episode-details dark" ref={ref}>
       <div class="episode-poster animate">
         <img src={poster} alt={`${title} (with ${teacher})`} />
       </div>

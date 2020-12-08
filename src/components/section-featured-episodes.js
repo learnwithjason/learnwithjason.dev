@@ -44,7 +44,6 @@ export function SectionFeaturedEpisodes({ episodes }) {
         title={currentEpisode.title}
         teacher={currentEpisode.guest[0].name}
         teacherImage={currentEpisode.guest[0].guestImage.asset.url}
-        poster="https://res.cloudinary.com/jlengstorf/image/upload/v1607215811/lwj/video-poster-temp.jpg"
         description={currentEpisode.description}
         url={`/${currentEpisode.slug.current}`}
       />
