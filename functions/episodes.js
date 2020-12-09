@@ -10,8 +10,8 @@ exports.handler = async (event) => {
           where: {
             date: {lte: $date}, 
             youtubeID: {neq: ""}, 
-            hidden: {neq: true},
-            featured: { ${featured ? 'eq' : 'neq'}: true }
+            hidden: {neq: true}
+            ${featured ? ', featured: { eq: true }' : ''}
           }, 
           sort: {date: DESC},
           limit: $limit
