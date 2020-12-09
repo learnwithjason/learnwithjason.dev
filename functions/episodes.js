@@ -35,6 +35,9 @@ exports.handler = async (event) => {
           repo
           links
           youtubeID
+          tags {
+            value
+          }
         }
       }
     `,
