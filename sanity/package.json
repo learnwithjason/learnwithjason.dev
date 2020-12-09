@@ -23,6 +23,7 @@
     "prop-types": "^15.6",
     "react": "^16.2",
     "react-dom": "^16.2",
+    "sanity-plugin-autocomplete-tags": "^1.0.1",
     "sanity-plugin-markdown": "^1.0.1"
   },
   "devDependencies": {}

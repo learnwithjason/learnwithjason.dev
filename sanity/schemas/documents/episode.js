@@ -72,16 +72,21 @@ export default {
       of: [{ type: 'url' }],
     },
     {
-      name: 'transcript',
-      type: 'markdown',
-      title: 'Transcript',
-      description: 'Get this from rev.com as a .txt file.',
-    },
-    {
       title: 'Feature this episode',
       name: 'featured',
       type: 'boolean',
       options: { layout: 'checkbox' },
+    },
+    {
+      name: 'tags',
+      title: 'Tags',
+      type: 'tags',
+    },
+    {
+      name: 'transcript',
+      type: 'markdown',
+      title: 'Transcript',
+      description: 'Get this from rev.com as a .txt file.',
     },
   ],
 };

@@ -13,7 +13,8 @@
     "@sanity/default-layout",
     "@sanity/default-login",
     "@sanity/desk-tool",
-    "markdown"
+    "markdown",
+    "autocomplete-tags"
   ],
   "parts": [
     {
