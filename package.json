@@ -21,6 +21,7 @@
     "node-fetch": "^2.6.1",
     "postcss": "^8.1.6",
     "postcss-cli": "^8.2.0",
+    "react-twitch-embed-video": "^2.0.4",
     "toast": "^0.3.30"
   },
   "snowpack": {
@@ -35,7 +36,8 @@
     },
     "knownEntrypoints": [
       "preact/hooks",
-      "preact"
+      "preact",
+      "react-twitch-embed-video"
     ]
   },
   "devDependencies": {

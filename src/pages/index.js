@@ -8,7 +8,10 @@ import { SectionTopics } from '../components/section-topics.js';
 export default ({ featuredEpisodes, sponsors, nextEpisode }) => (
   <Fragment>
     <SectionHero />
-    <SectionNextEpisode episode={nextEpisode} />
+    <SectionNextEpisode
+      nextEpisode={nextEpisode}
+      nextNextEpisode={nextEpisode}
+    />
     <SectionFeaturedEpisodes episodes={featuredEpisodes} />
     <SectionSponsors sponsors={sponsors} />
     <SectionTopics />

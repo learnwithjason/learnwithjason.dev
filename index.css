@@ -289,6 +289,18 @@ img {
   margin: 1rem 0 0;
 }
 
+.next-episode-photo {
+  height: 0;
+  padding-bottom: 100%;
+}
+
+.next-episode-teacher p {
+  font-weight: 900;
+  font-size: 0.875rem;
+  margin: 0.25rem 0 0;
+  text-align: center;
+}
+
 .button {
   border: 2px solid;
   border-radius: 0.25rem;
@@ -316,6 +328,18 @@ img {
   letter-spacing: 0.2em;
   text-decoration: none;
   text-transform: uppercase;
+}
+
+.live-captions {
+  margin: 0;
+  height: 360px;
+  width: 100%;
+}
+
+.live-captions-credits {
+  color: var(--text-muted);
+  margin: 0.5rem 0 0;
+  text-align: center;
 }
 
 .teacher-photos {
