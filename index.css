@@ -418,7 +418,6 @@ img {
   letter-spacing: 0.2em;
   line-height: 2;
   margin: 0.25rem 0 0;
-  position: relative;
   text-transform: uppercase;
 }
 
@@ -426,7 +425,13 @@ img {
   color: var(--gray-medium);
 }
 
-.gradient-subheading::after {
+.gradient-underline,
+.gradient-subheading {
+  position: relative;
+}
+
+.gradient-subheading::after,
+.gradient-underline::after {
   background: var(--gradient);
   bottom: 0;
   content: '';
@@ -549,6 +554,42 @@ img {
   margin: 3rem auto;
   max-width: 54ch;
   width: 90vw;
+}
+
+.topics {
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: repeat(2, min(50%, 375px));
+  justify-content: center;
+}
+
+.topic-list {
+  list-style: none;
+  padding: 0;
+}
+
+.topic-list-container h3 {
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.topic-episode {
+  align-items: center;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 50px 1fr;
+  margin-top: 1rem;
+}
+
+.teacher-photo {
+  display: block;
+  height: 0;
+  padding-bottom: 100%;
+}
+
+.topic-episode a {
+  color: var(--text);
+  text-decoration: none;
 }
 
 .footer {
