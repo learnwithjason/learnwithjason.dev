@@ -24,8 +24,8 @@ export function SectionFeaturedEpisodes({ episodes }) {
 
           return (
             <a
-              key={`episode-${index}`}
-              href={`/${episode.url}`}
+              key={episode._id}
+              href={`/${episode.slug.current}`}
               onClick={handleClick}
               class={isActive ? 'active' : ''}
               style={{ zIndex }}
