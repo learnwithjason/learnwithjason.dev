@@ -1,5 +1,6 @@
 import { sourceMdx } from '@toastdotdev/mdx';
 import fetch from 'node-fetch';
+import fs from 'fs';
 
 export const sourceData = async ({ setDataForSlug }) => {
   await sourceMdx({
@@ -37,7 +38,23 @@ export const sourceData = async ({ setDataForSlug }) => {
       featuredEpisodes,
       episodes,
       schedule,
-      nextEpisode: schedule[0],
     },
+  });
+
+  const episodeComponent = fs.readFileSync(
+    './src/components/episode-template.js',
+    'utf-8',
+  );
+
+  episodes.map((episode) => {
+    setDataForSlug(`/${episode.slug.current}`, {
+      component: {
+        mode: 'source',
+        value: episodeComponent,
+      },
+      data: {
+        episode,
+      },
+    });
   });
 };

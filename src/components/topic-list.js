@@ -1,5 +1,6 @@
 import { h } from 'preact';
 import { TeacherPhoto } from './teacher-photo.js';
+import { IconArrow } from './icon-arrow.js';
 
 export function TopicList({ title, episodes }) {
   return (
@@ -22,6 +23,11 @@ export function TopicList({ title, episodes }) {
           );
         })}
       </ul>
+      <div class="topic-links">
+        <a href={`#topics`}>
+          see more <IconArrow />
+        </a>
+      </div>
     </div>
   );
 }

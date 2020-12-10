@@ -6,6 +6,7 @@
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: 'jwf';
   src: url('/fonts/jwf-bookitalic.woff2') format('woff2'),
@@ -14,6 +15,7 @@
   font-style: italic;
   font-display: swap;
 }
+
 @font-face {
   font-family: 'jwf';
   src: url('/fonts/jwf-bold.woff2') format('woff2'),
@@ -22,6 +24,7 @@
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: 'jwf';
   src: url('/fonts/jwf-bolditalic.woff2') format('woff2'),
@@ -30,6 +33,7 @@
   font-style: italic;
   font-display: swap;
 }
+
 @font-face {
   font-family: 'jwf';
   src: url('/fonts/jwf-ultra.woff2') format('woff2'),
@@ -38,6 +42,7 @@
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: 'jwf';
   src: url('/fonts/jwf-ultraitalic.woff2') format('woff2'),
@@ -453,7 +458,8 @@ img {
   color: var(--gray-medium);
 }
 
-.episode-links {
+.episode-links,
+.topic-links {
   color: var(--pink-dark);
   display: flex;
   font-size: 0.625rem;
@@ -467,7 +473,8 @@ img {
   fill: var(--pink-dark);
 }
 
-.dark .episode-links {
+.dark .episode-links,
+.dark .topic-links {
   color: var(--pink);
 }
 
@@ -475,7 +482,8 @@ img {
   fill: var(--pink);
 }
 
-.episode-links a {
+.episode-links a,
+.topic-links a {
   align-items: center;
   color: inherit;
   display: flex;
@@ -499,6 +507,10 @@ img {
 
 .animate {
   position: relative;
+}
+
+.sponsors {
+  padding-bottom: 0;
 }
 
 .sponsors-heading {
@@ -592,12 +604,28 @@ img {
   text-decoration: none;
 }
 
+.topic-links {
+  justify-content: flex-end;
+  padding: 0.25rem 0 0;
+  position: relative;
+}
+
+.topic-links::before {
+  background: var(--gradient);
+  content: '';
+  height: 2px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
 .footer {
   align-items: center;
   background: var(--black);
   display: flex;
   flex-direction: column;
-  padding: 3rem 5vw;
+  padding: 3rem 5vw 1rem;
   position: relative;
 }
 
@@ -613,4 +641,17 @@ img {
 
 .footer h2 {
   color: var(--white);
+}
+
+.footer-links {
+  color: var(--text-muted);
+  font-size: 0.625rem;
+  letter-spacing: 0.2em;
+  margin-top: 3rem;
+  text-transform: uppercase;
+}
+
+.footer-links a {
+  color: inherit;
+  text-decoration: none;
 }

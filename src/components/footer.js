@@ -24,6 +24,12 @@ export function Footer() {
           </p>
         </div>
       </div>
+      <nav class="footer-links">
+        <a href="https://github.com/learnwithjason/learnwithjason.dev">
+          Source Code
+        </a>{' '}
+        · <a href="/code-of-conduct">Code of Conduct</a>
+      </nav>
     </footer>
   );
 }
