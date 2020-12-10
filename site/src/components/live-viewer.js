@@ -86,8 +86,8 @@ export const LiveViewer = () => {
         <a href="https://www.netlify.com?utm_source=learnwithjason&utm_medium=captions-jl&utm_campaign=devex">
           Netlify
         </a>
-        , <a href="https://fauna.com">Fauna</a>,{' '}
-        <a href="https://sanity.io">Sanity</a>, and{' '}
+        , <a href="https://hasura.io">Hasura</a>,{' '}
+        <a href="https://fauna.com">Fauna</a>, and{' '}
         <a href="https://auth0.com">Auth0</a>.
       </p>
     </Fragment>
