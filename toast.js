@@ -1,6 +1,10 @@
 import { sourceMdx } from '@toastdotdev/mdx';
 import fetch from 'node-fetch';
 import fs from 'fs';
+import unified from 'unified';
+import remarkParse from 'remark-parse';
+import remark2rehype from 'remark-rehype';
+import rehypeStringify from 'rehype-stringify';
 
 export const sourceData = async ({ setDataForSlug }) => {
   await sourceMdx({
@@ -56,6 +60,13 @@ export const sourceData = async ({ setDataForSlug }) => {
     if (!episode.youtubeID) {
       return;
     }
+
+    episode.transcriptHtml = unified()
+      .use(remarkParse)
+      .use(remark2rehype)
+      .use(rehypeStringify)
+      .processSync(episode.transcript)
+      .toString();
 
     setDataForSlug(`/${episode.slug.current}`, {
       component: {

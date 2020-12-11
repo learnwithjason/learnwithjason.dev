@@ -22,7 +22,11 @@
     "postcss": "^8.1.6",
     "postcss-cli": "^8.2.0",
     "react-twitch-embed-video": "^2.0.4",
-    "toast": "^0.3.30"
+    "rehype-stringify": "^8.0.0",
+    "remark-parse": "^9.0.0",
+    "remark-rehype": "^8.0.0",
+    "toast": "^0.3.30",
+    "unified": "^9.2.0"
   },
   "snowpack": {
     "exclude": [

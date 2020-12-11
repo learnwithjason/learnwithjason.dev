@@ -60,7 +60,7 @@ export default function EpisodeTemplate({ episode }) {
         {episode.transcript && (
           <Fragment>
             <h2 class="gradient-underline">Transcript</h2>
-            <p>{episode.transcript}</p>
+            <div dangerouslySetInnerHTML={{ __html: episode.transcriptHtml }} />
           </Fragment>
         )}
       </div>
