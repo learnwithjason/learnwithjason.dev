@@ -38,6 +38,7 @@ exports.handler = async (event) => {
           tags {
             value
           }
+          transcript
         }
       }
     `,

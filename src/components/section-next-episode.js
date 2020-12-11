@@ -1,5 +1,4 @@
 import { h, Fragment } from 'preact';
-import { useEffect } from 'preact/hooks';
 import dayjs from 'dayjs';
 import RelativeTime from 'dayjs/plugin/relativeTime.js';
 import Utc from 'dayjs/plugin/utc.js';
@@ -26,7 +25,10 @@ export function SectionNextEpisode({ nextEpisode, nextNextEpisode }) {
 
   const isLive = dayjs(episode.date).isBefore(dayjs());
 
-  const [guest] = episode.guest;
+  const [teacher = { name: 'Jason Lengstorf' }] = episode.guest;
+  const teacherImage =
+    teacher?.guestImage?.asset.url ||
+    'https://lengstorf.com/images/jason-lengstorf.jpg';
 
   return (
     <section class="block">
@@ -42,12 +44,9 @@ export function SectionNextEpisode({ nextEpisode, nextNextEpisode }) {
             <div class="next-episode">
               <div class="next-episode-teacher">
                 <div class="next-episode-photo">
-                  <TeacherPhoto
-                    imageURL={guest.guestImage.asset.url}
-                    alt={guest.name}
-                  />
+                  <TeacherPhoto imageURL={teacherImage} alt={teacher.name} />
                 </div>
-                <p>{guest.name}</p>
+                <p>{teacher.name}</p>
               </div>
               <div class="next-episode-details">
                 <p class="gradient-subheading">

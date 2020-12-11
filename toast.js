@@ -36,7 +36,13 @@ export const sourceData = async ({ setDataForSlug }) => {
     data: {
       sponsors,
       featuredEpisodes,
-      episodes,
+      episodes: episodes.map((episode) => ({
+        _id: episode._id,
+        title: episode.title,
+        slug: episode.slug,
+        guest: episode.guest,
+        tags: episode.tags,
+      })),
       schedule,
     },
   });
@@ -47,6 +53,10 @@ export const sourceData = async ({ setDataForSlug }) => {
   );
 
   episodes.map((episode) => {
+    if (!episode.youtubeID) {
+      return;
+    }
+
     setDataForSlug(`/${episode.slug.current}`, {
       component: {
         mode: 'source',

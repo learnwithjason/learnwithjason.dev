@@ -14,7 +14,7 @@ export function TopicList({ title, episodes }) {
             'https://lengstorf.com/images/jason-lengstorf.jpg';
 
           return (
-            <li key={episode.id} class="topic-episode">
+            <li key={episode._id} class="topic-episode">
               <div class="teacher-photo">
                 <TeacherPhoto imageURL={image} alt={teacher.name} />
               </div>

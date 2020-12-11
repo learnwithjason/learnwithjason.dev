@@ -505,6 +505,53 @@ img {
   }
 }
 
+.episode {
+  padding: 6rem 5vw;
+}
+
+.episode h1 {
+  margin: 0px 0 3rem;
+}
+
+.episode h2 {
+  font-size: 1.25rem;
+  text-align: left;
+  font-weight: 600;
+}
+
+.episode-info-wrapper {
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: min(550px, 55%) min(330px, 45%);
+  justify-content: center;
+}
+
+.episode-description .gradient-underline {
+  color: var(--text-muted);
+  font-size: 0.625rem;
+  letter-spacing: 0.2em;
+  line-height: 2;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.episode-description .gradient-underline a {
+  color: var(--pink-dark);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.episode-main-links {
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+}
+
+.episode-main-links .button {
+  margin: 0;
+  padding: 0.5rem 1.25rem;
+}
+
 .animate {
   position: relative;
 }
