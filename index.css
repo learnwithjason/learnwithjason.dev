@@ -524,6 +524,7 @@ img {
   gap: 3rem;
   grid-template-columns: min(550px, 55%) min(330px, 45%);
   justify-content: center;
+  margin-bottom: 3rem;
 }
 
 .episode-description .gradient-underline {
