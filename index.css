@@ -854,7 +854,7 @@ img {
 }
 
 .footer-links {
-  color: var(--text-muted);
+  color: var(--gray-medium);
   font-size: 0.625rem;
   letter-spacing: 0.2em;
   margin-top: 3rem;
