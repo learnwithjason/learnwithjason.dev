@@ -10,6 +10,13 @@ const components = {
   ),
 };
 export default function PageWrapper(props) {
+  const {
+    title = 'Learn With Jason — learn something new in 90 minutes!',
+    description = 'Learn With Jason is live, hands-on learning with brilliant teachers from the web community every Tuesday & Thursday. Join live and learn with us!',
+    image = 'https://res.cloudinary.com/jlengstorf/image/upload/q_auto,f_auto/v1607755791/lwj/learnwithjason-og.jpg',
+    url = 'https://www.learnwithjason.dev',
+  } = props?.meta ?? {};
+
   return (
     <MDXProvider components={components}>
       <Helmet>
@@ -60,6 +67,23 @@ export default function PageWrapper(props) {
         <link rel="preconnect" href="https://res.cloudinary.com" />
 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <meta name="image" content={image} />
+
+        <meta property="og:type" content={props.meta ? 'article' : 'website'} />
+        <meta property="og:url" content={url} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={image} />
+
+        <meta name="twitter:dnt" content="on" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:creator" content="@LWJShow" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={image} />
+
         <link rel="stylesheet" href="/styles.css" />
       </Helmet>
       <svg class="svg-defs">

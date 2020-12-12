@@ -61,7 +61,7 @@ export function Header() {
         <a href="/">courses</a>
         <a href="/">store</a>
         <a href="/">blog</a>
-        <a href="/">about</a>
+        <a href="/about">about</a>
         <a href="/">search</a>
       </nav>
     </header>
