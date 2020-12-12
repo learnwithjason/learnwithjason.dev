@@ -1,7 +1,7 @@
 import { h } from 'preact';
 import { Helmet } from 'react-helmet';
 import { MDXProvider } from '@mdx-js/preact';
-import { Logo } from './components/logo.js';
+import { Header } from './components/header.js';
 import { Footer } from './components/footer.js';
 
 const components = {
@@ -80,20 +80,7 @@ export default function PageWrapper(props) {
           </linearGradient>
         </defs>
       </svg>
-      <header class="header">
-        <a href="/" rel="home">
-          <Logo />
-        </a>
-        <nav>
-          <a href="/">episodes</a>
-          <a href="/">schedule</a>
-          <a href="/">courses</a>
-          <a href="/">store</a>
-          <a href="/">blog</a>
-          <a href="/">about</a>
-          <a href="/">search</a>
-        </nav>
-      </header>
+      <Header />
       <main class={props.meta ? 'content' : ''}>{props.children}</main>
       <Footer />
     </MDXProvider>

@@ -5,6 +5,7 @@ import unified from 'unified';
 import remarkParse from 'remark-parse';
 import remark2rehype from 'remark-rehype';
 import rehypeStringify from 'rehype-stringify';
+import { rejects } from 'assert';
 
 export const sourceData = async ({ setDataForSlug }) => {
   await sourceMdx({
@@ -51,22 +52,40 @@ export const sourceData = async ({ setDataForSlug }) => {
     },
   });
 
+  const markdownPromises = episodes.map(async (episode) => {
+    return new Promise((resolve, reject) => {
+      if (!episode.transcript) {
+        resolve(episode);
+      }
+
+      unified()
+        .use(remarkParse)
+        .use(remark2rehype)
+        .use(rehypeStringify)
+        .process(episode.transcript, (err, file) => {
+          if (err) {
+            reject(err);
+          }
+
+          resolve({
+            ...episode,
+            transcriptHtml: String(file),
+          });
+        });
+    });
+  });
+
+  const episodesWithMarkdown = await Promise.all(markdownPromises);
+
   const episodeComponent = fs.readFileSync(
     './src/components/episode-template.js',
     'utf-8',
   );
 
-  episodes.map((episode) => {
+  episodesWithMarkdown.map((episode) => {
     if (!episode.youtubeID) {
       return;
     }
-
-    episode.transcriptHtml = unified()
-      .use(remarkParse)
-      .use(remark2rehype)
-      .use(rehypeStringify)
-      .processSync(episode.transcript)
-      .toString();
 
     setDataForSlug(`/${episode.slug.current}`, {
       component: {
