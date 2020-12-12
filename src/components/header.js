@@ -56,13 +56,13 @@ export function Header() {
         <button onClick={handleClick}>{open ? 'close nav' : 'open nav'}</button>
       </div>
       <nav ref={ref}>
-        <a href="/">episodes</a>
-        <a href="/">schedule</a>
-        <a href="/">courses</a>
-        <a href="/">store</a>
-        <a href="/">blog</a>
+        <a href="/episodes">episodes</a>
+        <a href="/schedule">schedule</a>
+        {/* <a href="/">courses</a> */}
+        <a href="/store">store</a>
+        <a href="/blog">blog</a>
         <a href="/about">about</a>
-        <a href="/">search</a>
+        <a href="/search">search</a>
       </nav>
     </header>
   );
