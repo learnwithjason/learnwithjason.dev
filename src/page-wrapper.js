@@ -1,14 +1,22 @@
-import { h } from 'preact';
+import { h, Fragment } from 'preact';
 import { Helmet } from 'react-helmet';
 import { MDXProvider } from '@mdx-js/preact';
 import { Header } from './components/header.js';
 import { Footer } from './components/footer.js';
+import { PostTemplate } from './components/post-template.js';
 
 const components = {
   codeblock: (props) => (
-    <div dangerouslySetInnerHTML={{ __html: props.children }} />
+    <pre
+      class={`${props.className.includes('-diff-') ? 'diff-highlight' : ''} ${
+        props.className
+      }`}
+    >
+      <code dangerouslySetInnerHTML={{ __html: props.children }} />
+    </pre>
   ),
 };
+
 export default function PageWrapper(props) {
   const {
     title = 'Learn With Jason — learn something new in 90 minutes!',
@@ -16,6 +24,15 @@ export default function PageWrapper(props) {
     image = 'https://res.cloudinary.com/jlengstorf/image/upload/q_auto,f_auto/v1607755791/lwj/learnwithjason-og.jpg',
     url = 'https://www.learnwithjason.dev',
   } = props?.meta ?? {};
+
+  const Component = props?.meta?.date ? PostTemplate : Fragment;
+
+  let wrapperClass = '';
+  if (props.meta?.date) {
+    wrapperClass = 'post-container';
+  } else if (props.meta) {
+    wrapperClass = 'content';
+  }
 
   return (
     <MDXProvider components={components}>
@@ -105,7 +122,9 @@ export default function PageWrapper(props) {
         </defs>
       </svg>
       <Header />
-      <main class={props.meta ? 'content' : ''}>{props.children}</main>
+      <main class={wrapperClass}>
+        <Component {...props}>{props.children}</Component>
+      </main>
       <Footer />
     </MDXProvider>
   );

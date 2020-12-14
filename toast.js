@@ -1,18 +1,55 @@
-import { sourceMdx } from '@toastdotdev/mdx';
+import { sourceMdx, fetchMdxFromDisk, processMdx } from '@toastdotdev/mdx';
 import fetch from 'node-fetch';
 import fs from 'fs';
 import unified from 'unified';
 import remarkParse from 'remark-parse';
+import mdx from 'remark-mdx';
+import toc from 'remark-toc';
 import remark2rehype from 'remark-rehype';
 import rehypeStringify from 'rehype-stringify';
-import { rejects } from 'assert';
 
 export const sourceData = async ({ setDataForSlug }) => {
   await sourceMdx({
     setDataForSlug,
-    directory: './content',
+    directory: './content/pages',
     slugPrefix: '/',
   });
+
+  await sourceMdx({
+    setDataForSlug,
+    directory: './content/blog',
+    slugPrefix: '/blog',
+  });
+
+  // const files = await fetchMdxFromDisk({ directory: './content/blog' });
+  // Promise.all(
+  //   files.map(async ({ filename, file }) => {
+  //     const fileContent = unified()
+  //       .use(remarkParse)
+  //       .use(mdx)
+  //       .use(toc)
+  //       .use(remark2rehype)
+  //       .use(rehypeStringify)
+  //       .processSync(file)
+  //       .toString();
+
+  //     console.log(fileContent);
+
+  //     const { content: compiledMdx, data } = await processMdx(fileContent, {
+  //       filepath: filename,
+  //       namedExports: [],
+  //     });
+
+  //     await setDataForSlug(`/blog/${data.exports.meta.slug}`, {
+  //       component: {
+  //         mode: 'source',
+  //         value: compiledMdx,
+  //       },
+  //       data: data.exports,
+  //       slugPrefix: '/blog',
+  //     });
+  //   }),
+  // );
 
   const schedulePromise = fetch(
     'https://lwj2021.netlify.app/api/schedule',

@@ -6,9 +6,9 @@
   "author": "christopherbiscardi <chris@christopherbiscardi.com> (@chrisbiscardi)",
   "license": "MIT",
   "scripts": {
-    "postinstall": "breadbox --dest public/web_modules",
+    "postinstall": "breadbox --dest public/web_modules && patch-package",
     "build": "npm run build:css && npm run build:site",
-    "build:css": "postcss --config legacy-commonjs index.css -o public/styles.css",
+    "build:css": "postcss --config legacy-commonjs src/styles/*.css -d public/styles/",
     "build:site": "toast incremental .",
     "serve": "http-server public"
   },
@@ -21,10 +21,13 @@
     "node-fetch": "^2.6.1",
     "postcss": "^8.1.6",
     "postcss-cli": "^8.2.0",
+    "prism-theme-night-owl": "^1.4.0",
     "react-twitch-embed-video": "^2.0.4",
     "rehype-stringify": "^8.0.0",
+    "remark-mdx": "^1.6.22",
     "remark-parse": "^9.0.0",
     "remark-rehype": "^8.0.0",
+    "remark-toc": "^7.0.0",
     "toast": "^0.3.30",
     "unified": "^9.2.0"
   },
@@ -41,11 +44,13 @@
     "knownEntrypoints": [
       "preact/hooks",
       "preact",
-      "react-twitch-embed-video"
+      "react-twitch-embed-video",
+      "prism-theme-night-owl/build/style.css"
     ]
   },
   "devDependencies": {
     "autoprefixer": "^10.0.4",
-    "http-server": "^0.12.3"
+    "http-server": "^0.12.3",
+    "patch-package": "^6.2.2"
   }
 }

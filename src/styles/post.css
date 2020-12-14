@@ -1,0 +1,78 @@
+.post-container {
+  max-width: 51rem;
+  margin: 3rem auto;
+}
+
+.post {
+  display: grid;
+  gap: 4rem;
+  grid-template-columns: 12rem 1fr;
+}
+
+.post header,
+.post .post-content {
+  grid-column-start: 2;
+}
+
+.post-content {
+  max-width: 53ch;
+}
+
+.post .table-of-contents {
+  grid-column-start: 1;
+  grid-row-start: 2;
+}
+
+.table-of-contents .toc-sticky-container {
+  position: sticky;
+  top: 3rem;
+}
+
+.table-of-contents ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.75rem;
+}
+
+.table-of-contents li {
+  margin-top: 0.5rem;
+}
+
+.table-of-contents a {
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.post h2 {
+  font-size: 1.5rem;
+  scroll-padding-top: 2rem;
+  text-align: left;
+}
+
+pre[class*='language-'] {
+  margin: 2rem max(-5vw, -3rem);
+  padding: 1rem;
+}
+
+pre code {
+  font-family: 'Operator Mono', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono',
+    monospace;
+}
+
+.inserted[class*='language-'],
+.deleted[class*='language-'] {
+  display: block;
+  margin-left: -1em;
+  margin-right: -1em;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.inserted[class*='language-'] {
+  background: rgb(173 219 103 / 0.15);
+}
+
+.deleted[class*='language-'] {
+  background: rgb(239 83 80 / 0.25);
+}
