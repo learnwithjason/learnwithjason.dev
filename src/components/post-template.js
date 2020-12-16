@@ -10,15 +10,41 @@ export function PostTemplate({ meta, children }) {
     const post = ref.current;
 
     const headingElements = post.querySelectorAll('h2');
+    const callback = ([entry]) => {
+      const activeHeading = entry.target;
+      Array.from(document.querySelectorAll('.table-of-contents a')).forEach(
+        (link) => {
+          const [, href] = link.href.split('#');
+          console.log({ id: `#${activeHeading.id}`, href, entry });
+          if (href === activeHeading.id) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        },
+      );
+    };
+
+    const observer = new IntersectionObserver(callback, { threshold: [1.0] });
 
     setHeadings(
       Array.from(headingElements)
         .filter((h2) => h2.id !== 'table-of-contents')
-        .map((h2) => ({
-          label: h2.innerText,
-          href: `#${h2.id}`,
-        })),
+        .map((h2) => {
+          observer.observe(h2);
+
+          return {
+            label: h2.innerText,
+            href: `#${h2.id}`,
+          };
+        }),
     );
+
+    return () => {
+      Array.from(headingElements).map((h2) => {
+        observer.unobserve(h2);
+      });
+    };
   }, [ref]);
 
   return (
@@ -37,7 +63,10 @@ export function PostTemplate({ meta, children }) {
         </header>
         <aside class="table-of-contents">
           <div class="toc-sticky-container">
-            <h2 class="gradient-underline" id="table-of-contents">
+            <h2
+              class="gradient-subheading gradient-underline"
+              id="table-of-contents"
+            >
               Table of Contents
             </h2>
             <ol>

@@ -28,23 +28,40 @@
   top: 3rem;
 }
 
+.table-of-contents h2 {
+  font-weight: 400;
+  margin: 0 -0.25rem;
+  padding: 0 0.25rem;
+  text-align: left;
+}
+
 .table-of-contents ol {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 0.5rem 0 0;
   font-size: 0.75rem;
 }
 
 .table-of-contents li {
-  margin-top: 0.5rem;
+  margin: 0;
 }
 
 .table-of-contents a {
+  border-left: 2px solid transparent;
   color: var(--text-muted);
+  display: block;
+  line-height: 1rem;
+  margin: 0 -0.25rem;
+  padding: 0.5rem 0.25rem;
   text-decoration: none;
 }
 
-.post h2 {
+.table-of-contents a.active {
+  background: var(--pink-faded);
+  border-color: var(--pink-dark);
+}
+
+.post-content h2 {
   font-size: 1.5rem;
   scroll-padding-top: 2rem;
   text-align: left;

@@ -101,7 +101,7 @@ export default function PageWrapper(props) {
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={image} />
 
-        <link rel="stylesheet" href="/styles.css" />
+        <link rel="stylesheet" href="/styles/index.css" />
       </Helmet>
       <svg class="svg-defs">
         <defs>
