@@ -12,17 +12,18 @@ export function PostTemplate({ meta, children }) {
     const headingElements = post.querySelectorAll('h2');
     const callback = ([entry]) => {
       const activeHeading = entry.target;
-      Array.from(document.querySelectorAll('.table-of-contents a')).forEach(
-        (link) => {
-          const [, href] = link.href.split('#');
-          console.log({ id: `#${activeHeading.id}`, href, entry });
-          if (href === activeHeading.id) {
-            link.classList.add('active');
-          } else {
-            link.classList.remove('active');
-          }
-        },
+      const links = Array.from(
+        document.querySelectorAll('.table-of-contents a'),
       );
+
+      links.forEach((link) => {
+        const [, href] = link.href.split('#');
+
+        if (entry.isIntersecting && href === activeHeading.id) {
+          links.forEach((l) => l.classList.remove('active'));
+          link.classList.add('active');
+        }
+      });
     };
 
     const observer = new IntersectionObserver(callback, { threshold: [1.0] });
@@ -50,10 +51,7 @@ export function PostTemplate({ meta, children }) {
   return (
     <Fragment>
       <Helmet>
-        <link
-          rel="stylesheet"
-          href="/web_modules/prism-theme-night-owl/build/style.css"
-        />
+        <link rel="stylesheet" href="/styles/theme.css" />
         <link rel="stylesheet" href="/styles/post.css" />
       </Helmet>
       <article class="post" ref={ref}>

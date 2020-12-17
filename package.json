@@ -7,8 +7,9 @@
   "license": "MIT",
   "scripts": {
     "postinstall": "breadbox --dest public/web_modules && patch-package",
-    "build": "npm run build:css && npm run build:site",
+    "build": "npm run build:css && npm run build:css-modules && npm run build:site",
     "build:css": "postcss --config legacy-commonjs src/styles/*.css -d public/styles/",
+    "build:css-modules": "postcss --config legacy-commonjs node_modules/prism-theme-night-owl/build/style.css -o public/styles/theme.css",
     "build:site": "toast incremental .",
     "serve": "http-server public"
   },
@@ -44,8 +45,7 @@
     "knownEntrypoints": [
       "preact/hooks",
       "preact",
-      "react-twitch-embed-video",
-      "prism-theme-night-owl/build/style.css"
+      "react-twitch-embed-video"
     ]
   },
   "devDependencies": {

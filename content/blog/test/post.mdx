@@ -8,6 +8,7 @@ export const meta = {
 };
 
 import { Aside } from '../src/mdx/aside.js';
+import { Figure } from '../src/mdx/figure.js';
 
 Promises are extremely powerful for handling asynchronous operations in JavaScript. Async functions make them easier to read and reason about. However, they also introduce some sneaky traps that can lead to slowdowns if we're not careful.
 
@@ -18,14 +19,6 @@ Async ops are commonly used for data fetching, which is also referred to as [Asy
 </Aside>
 
 ## tl;dr
-
-```diff-jsx
-+ // test
-- // test
-  export default function MyComponent() {
-    return <p>test</p>;
-  }
-```
 
 To make sure your async code isn’t slowing down your apps, check your code to ensure that:
 
@@ -65,11 +58,13 @@ getFakeData().then((response) => {
 
 All the code samples in this article can be run in your console. To see these in action, open up developer tools (`command + option + I`), copy paste the code sample into the console, and press enter.
 
-<figure style={{ margin: '0 -5vw', width: 'auto' }}>
-  <video autoplay muted loop style={{ width: '100%' }}>
-    <source src="https://res.cloudinary.com/jlengstorf/video/upload/q_auto,f_auto,w_1200/v1591393216/lwj/blog/async-await-perf/console-execution.mov" />
-  </video>
-</figure>
+<Figure caption="All of the code examples in this post can be run in your browser’s devtools!">
+
+<video autoplay muted loop style={{ width: '100%' }}>
+  <source src="https://res.cloudinary.com/jlengstorf/video/upload/q_auto,f_auto,w_1200/v1591393216/lwj/blog/async-await-perf/console-execution.mov" />
+</video>
+
+</Figure>
 
 If you don't want to use your console, you can also use [CodePen](https://codepen.io/) or create a JavaScript file in your favorite editor to run in your browser.
 

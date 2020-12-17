@@ -67,14 +67,54 @@
   text-align: left;
 }
 
+.post-content a {
+  color: var(--pink-dark);
+  font-weight: inherit;
+}
+
+.post-content strong {
+  color: var(--text-emphasized);
+  font-weight: 600;
+}
+
+.post-figure,
 pre[class*='language-'] {
-  margin: 2rem max(-5vw, -3rem);
+  margin: 2rem max(-5vw, -2rem);
+}
+
+pre[class*='language-'] {
+  font-size: 0.875rem;
   padding: 1rem;
 }
 
-pre code {
+code {
   font-family: 'Operator Mono', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono',
     monospace;
+}
+
+.post-figure > * {
+  display: block;
+}
+
+.post-figure figcaption {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  font-style: italic;
+  margin-top: 0.5rem;
+  padding: 0 min(5vw, 2rem);
+}
+
+.post-content :not([class*='language']) code {
+  background: var(--gray-lightest);
+  border: 1px solid var(--gray-light);
+  border-radius: 0.125rem;
+  font-size: 1.125rem;
+  line-height: 1;
+  padding: 0.1rem 0.25rem;
+}
+
+.post-content .post-aside :not([class*='language']) code {
+  font-size: 0.875rem;
 }
 
 .inserted[class*='language-'],
@@ -92,4 +132,46 @@ pre code {
 
 .deleted[class*='language-'] {
   background: rgb(239 83 80 / 0.25);
+}
+
+.post-aside {
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: 1.5rem auto;
+  margin: 2rem 0;
+  padding: 1rem 1rem 1rem 0.5rem;
+  position: relative;
+}
+
+.post-aside::after,
+.post-aside::before {
+  background: var(--gradient);
+  content: '';
+  left: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.post-aside::after {
+  bottom: 0;
+  height: 2px;
+}
+
+.post-aside::before {
+  top: 0;
+  height: 4px;
+}
+
+.aside-icon {
+  padding-top: 0.2rem;
+}
+
+.aside-content p {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  margin: 1rem 0 0;
+}
+
+.aside-content p:first-of-type {
+  margin-top: 0;
 }
