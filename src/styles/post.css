@@ -125,7 +125,6 @@ code {
   background: var(--gray-lightest);
   border: 1px solid var(--gray-light);
   border-radius: 0.125rem;
-  font-size: 1.125rem;
   line-height: 1;
   padding: 0.1rem 0.25rem;
 }
