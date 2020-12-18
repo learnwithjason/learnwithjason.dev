@@ -5,11 +5,9 @@ import Utc from 'dayjs/plugin/utc.js';
 import Timezone from 'dayjs/plugin/timezone.js';
 import AdvancedFormat from 'dayjs/plugin/advancedFormat.js';
 import { LivePlayer } from './live-player.js';
-import { TeacherPhoto } from './teacher-photo.js';
+import { EpisodePreview } from './episode-preview.js';
 import { IconArrow } from './icon-arrow.js';
 import { IconCalendar } from './icon-calendar.js';
-import { IconInfo } from './icon-info.js';
-import { IconShare } from './icon-share.js';
 
 dayjs.extend(RelativeTime);
 dayjs.extend(Utc);
@@ -25,11 +23,6 @@ export function SectionNextEpisode({ nextEpisode, nextNextEpisode }) {
 
   const isLive = dayjs(episode.date).isBefore(dayjs());
 
-  const [teacher = { name: 'Jason Lengstorf' }] = episode.guest;
-  const teacherImage =
-    teacher?.guestImage?.asset.url ||
-    'https://lengstorf.com/images/jason-lengstorf.jpg';
-
   return (
     <section class="block">
       {isLive ? (
@@ -41,29 +34,7 @@ export function SectionNextEpisode({ nextEpisode, nextNextEpisode }) {
         <Fragment>
           <h2>The next episode is {dayjs().to(episode.date)}!</h2>
           <div class="next-episode-wrapper">
-            <div class="next-episode">
-              <div class="next-episode-teacher">
-                <div class="next-episode-photo">
-                  <TeacherPhoto imageURL={teacherImage} alt={teacher.name} />
-                </div>
-                <p>{teacher.name}</p>
-              </div>
-              <div class="next-episode-details">
-                <p class="gradient-subheading">
-                  {dayjs(episode.date).format('dddd, MMMM D @ h:mm A z')}
-                </p>
-                <h3>{episode.title}</h3>
-                <p class="episode-description">{episode.description}</p>
-                <div class="episode-links">
-                  <a href={`/${episode.slug.current}`}>
-                    <IconInfo /> Episode Details
-                  </a>
-                  <a href="#share">
-                    <IconShare /> Share
-                  </a>
-                </div>
-              </div>
-            </div>
+            <EpisodePreview episode={episode} />
             <div class="schedule-links">
               <a href="/schedule" class="button">
                 see all upcoming episodes <IconArrow />
@@ -73,7 +44,7 @@ export function SectionNextEpisode({ nextEpisode, nextNextEpisode }) {
                 schedule to your Google Calendar:
               </p>
               <div class="links">
-                <a href="#google-calendar">
+                <a href="/calendar">
                   <IconCalendar /> Add the Calendar
                 </a>
               </div>
