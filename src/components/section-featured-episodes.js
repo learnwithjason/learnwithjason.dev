@@ -31,6 +31,7 @@ export function SectionFeaturedEpisodes({ episodes }) {
               style={{ zIndex }}
             >
               <TeacherPhoto
+                key={`photo-${episode._id}`}
                 imageURL={`${teacher.guestImage.asset.url}?w=200&h=200&fit=crop&auto=format`}
                 active={isActive}
                 animate

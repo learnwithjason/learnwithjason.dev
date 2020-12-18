@@ -4,9 +4,7 @@
 }
 
 .post {
-  display: grid;
-  gap: 4rem;
-  grid-template-columns: 12rem 1fr;
+  padding: 0 5vw;
 }
 
 .post header,
@@ -24,8 +22,22 @@
 }
 
 .post .table-of-contents {
+  display: none;
   grid-column-start: 1;
   grid-row-start: 2;
+}
+
+@media (min-width: 1000px) {
+  .post {
+    display: grid;
+    gap: 4rem;
+    grid-template-columns: 12rem 1fr;
+    padding: 0;
+  }
+
+  .post .table-of-contents {
+    display: block;
+  }
 }
 
 .table-of-contents .toc-sticky-container {

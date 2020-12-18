@@ -15,9 +15,14 @@ export function SectionTopics({ episodes }) {
       <div class="topics">
         {topics.map((topic) => {
           const topicEpisodes = episodes
-            .filter((episode) =>
-              episode.tags?.some((tag) => tag.value === topic.tag),
-            )
+            .filter((episode) => {
+              const hasTag = episode.tags?.some(
+                (tag) => tag.value === topic.tag,
+              );
+              const hasVideo = episode.youtubeID;
+
+              return hasTag && hasVideo;
+            })
             .slice(0, 5);
 
           return <TopicList title={topic.title} episodes={topicEpisodes} />;

@@ -25,10 +25,8 @@
     "prism-theme-night-owl": "^1.4.0",
     "react-twitch-embed-video": "^2.0.4",
     "rehype-stringify": "^8.0.0",
-    "remark-mdx": "^1.6.22",
     "remark-parse": "^9.0.0",
     "remark-rehype": "^8.0.0",
-    "remark-toc": "^7.0.0",
     "toast": "^0.3.30",
     "unified": "^9.2.0"
   },
