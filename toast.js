@@ -68,8 +68,42 @@ export const sourceData = async ({ setDataForSlug }) => {
     'utf-8',
   );
 
+  const topicComponent = fs.readFileSync(
+    './src/components/episodes-template.js',
+    'utf-8',
+  );
+
+  const topics = episodes.reduce((topics, episode) => {
+    if (episode.tags) {
+      episode.tags.forEach((topic) => {
+        const count = topics.get(topic.value) ?? 1;
+        topics.set(topic.value, count + 1);
+      });
+    }
+
+    return topics;
+  }, new Map());
+
+  const topicPromises = [...topics].map(([topic]) => {
+    const filteredEpisodes = episodes.filter((e) =>
+      e.tags?.some((t) => t.value === topic),
+    );
+
+    return setDataForSlug(`/topic/${topic}`, {
+      component: {
+        mode: 'source',
+        value: topicComponent,
+      },
+      data: {
+        topic,
+        episodes: filteredEpisodes,
+      },
+    });
+  });
+
   const episodesWithMarkdown = await Promise.all([
     ...markdownPromises,
+    ...topicPromises,
     setDataForSlug('/', {
       data: {
         sponsors,
@@ -83,6 +117,11 @@ export const sourceData = async ({ setDataForSlug }) => {
           youtubeID: episode.youtubeID,
         })),
         schedule,
+      },
+    }),
+    setDataForSlug('/episodes', {
+      data: {
+        episodes,
       },
     }),
     setDataForSlug('/schedule', {

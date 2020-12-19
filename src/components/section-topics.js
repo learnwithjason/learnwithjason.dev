@@ -1,12 +1,6 @@
 import { h } from 'preact';
 import { TopicList } from './topic-list.js';
-
-const topics = [
-  { title: 'Let’s Learn! Intro Sessions', tag: 'lets-learn' },
-  { title: 'Animation on the Web', tag: 'animation' },
-  { title: 'Design and User Experience', tag: 'design' },
-  { title: 'Serverless Functions', tag: 'serverless' },
-];
+import { topics } from '../data/topics.js';
 
 export function SectionTopics({ episodes }) {
   return (
@@ -25,7 +19,13 @@ export function SectionTopics({ episodes }) {
             })
             .slice(0, 5);
 
-          return <TopicList title={topic.title} episodes={topicEpisodes} />;
+          return (
+            <TopicList
+              topic={topic.tag}
+              title={topic.title}
+              episodes={topicEpisodes}
+            />
+          );
         })}
       </div>
     </section>

@@ -622,8 +622,8 @@ img {
   }
 
   .episode h1 {
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
+    font-size: 2rem;
+    margin-bottom: 1rem;
   }
 }
 
@@ -872,6 +872,11 @@ img {
   position: relative;
 }
 
+.top-gradient-border {
+  position: relative;
+}
+
+.top-gradient-border::before,
 .topic-links::before {
   background: var(--gradient);
   content: '';
@@ -880,6 +885,38 @@ img {
   position: absolute;
   top: 0;
   width: 100%;
+}
+
+.episode-listing {
+  margin-top: 3rem;
+}
+
+.episode-listing h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0.5rem 0 0;
+  text-align: left;
+}
+
+.episode-listing p {
+  margin: 0.5rem 0 0.75rem;
+}
+
+.episode-links {
+  padding-top: 0.25rem;
+}
+
+@media (min-width: 1000px) {
+  .episodes {
+    align-items: start;
+    display: grid;
+    gap: 3rem;
+    grid-template-columns: repeat(auto-fit, min(calc(50% - 1.5rem), 500px));
+  }
+
+  .episode-listing {
+    margin-top: 0;
+  }
 }
 
 .footer {

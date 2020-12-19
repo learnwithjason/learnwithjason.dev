@@ -2,7 +2,7 @@ import { h } from 'preact';
 import { TeacherPhoto } from './teacher-photo.js';
 import { IconArrow } from './icon-arrow.js';
 
-export function TopicList({ title, episodes }) {
+export function TopicList({ topic, title, episodes }) {
   return (
     <div class="topic-list-container">
       <h3 class="gradient-underline">{title}</h3>
@@ -24,7 +24,7 @@ export function TopicList({ title, episodes }) {
         })}
       </ul>
       <div class="topic-links">
-        <a href={`#topics`}>
+        <a href={`/topic/${topic}`}>
           see more <IconArrow />
         </a>
       </div>
