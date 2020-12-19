@@ -5,6 +5,9 @@
 
 [dev]
   autoLaunch = false
+  framework = "#custom"
+  command = "npm run dev"
+  targetPort = 8080
 
 [[plugins]]
   package = "netlify-plugin-toast-cache"
