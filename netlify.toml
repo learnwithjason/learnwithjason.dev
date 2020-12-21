@@ -33,5 +33,10 @@
   status = 301
   force = true
 
+[[redirects]]
+  from = "/graphql"
+  to = "https://learnwithjason.hasura.app/v1/graphql"
+  status = 200
+
 [[plugins]]
   package = "netlify-plugin-gatsby-cache"
