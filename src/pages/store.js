@@ -78,7 +78,10 @@ export default function Store() {
                   {product.description}{' '}
                   {product.dimensions && `(dimensions: ${product.dimensions})`}
                 </p>
-                <p class="price">{formattedPrice}</p>
+                <p class="price">
+                  <span>{formattedPrice}</span>{' '}
+                  <span class="tag">free shipping!</span>
+                </p>
                 <button onClick={addToCart}>Add To Cart</button>
               </div>
             );
@@ -97,8 +100,22 @@ export default function Store() {
 
                 return (
                   <li key={cartItem.id}>
-                    <span class="cart-item-name">{cartItem.name}</span> &times;{' '}
-                    <span class="cart-item-quantity">{item.quantity}</span>
+                    <p class="cart-item-details">
+                      <span class="cart-item-name">{cartItem.name}</span>
+                      <span class="cart-item-subtotal">
+                        {format({
+                          amount: cartItem.amount * item.quantity,
+                          currency: 'usd',
+                        })}
+                      </span>
+                    </p>
+                    <p class="cart-item-quantity">
+                      <span class="cart-item-count">Qty. {item.quantity}</span>
+                      <span class="cart-item-unit-price">
+                        {format({ amount: cartItem.amount, currency: 'usd' })}{' '}
+                        each
+                      </span>
+                    </p>
                   </li>
                 );
               })}
