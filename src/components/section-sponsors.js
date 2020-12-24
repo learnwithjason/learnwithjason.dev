@@ -10,7 +10,13 @@ export function SectionSponsors({ sponsors }) {
         {sponsors.map((sponsor) => (
           <li key={sponsor.url} class="sponsor">
             <a href={sponsor.url}>
-              <img src={sponsor.image} alt={sponsor.name} />
+              <img
+                src={sponsor.image}
+                alt={sponsor.name}
+                width={sponsor.imageWidth}
+                height={sponsor.imageHeight}
+                loading="lazy"
+              />
             </a>
           </li>
         ))}

@@ -72,7 +72,13 @@ export default function Store() {
 
             return (
               <div class="product" key={product.id}>
-                <img src={product.image} alt={product.name} />
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  width={150}
+                  height={150}
+                  loading="lazy"
+                />
                 <h2>{product.name}</h2>
                 <p>
                   {product.description}{' '}

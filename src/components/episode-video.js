@@ -33,7 +33,13 @@ export function EpisodeVideo({ episode }) {
         </div>
       ) : (
         <button onClick={() => setPlaying(true)} aria-label="play video">
-          <img src={poster} alt={episode.title} />
+          <img
+            src={poster}
+            alt={episode.title}
+            width={900}
+            height={500}
+            loading="lazy"
+          />
         </button>
       )}
     </div>

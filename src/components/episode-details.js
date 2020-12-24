@@ -30,7 +30,13 @@ export function EpisodeDetails({
   return (
     <article class="episode-details dark" ref={ref}>
       <div class="episode-poster animate">
-        <img src={poster} alt={`${title} (with ${teacher})`} />
+        <img
+          src={poster}
+          alt={`${title} (with ${teacher})`}
+          width={900}
+          height={500}
+          loading="lazy"
+        />
       </div>
       <div class="episode-info">
         <h3 class="animate">{title}</h3>

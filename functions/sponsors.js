@@ -7,6 +7,8 @@ exports.handler = async () => {
         sponsors(where: {active: {_eq: true}}) {
           name
           image
+          imageWidth
+          imageHeight
           url
         }
       }    
