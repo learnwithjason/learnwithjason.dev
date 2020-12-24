@@ -32,8 +32,9 @@ export function SectionFeaturedEpisodes({ episodes }) {
             >
               <TeacherPhoto
                 key={`photo-${episode._id}`}
-                imageURL={`${teacher.guestImage.asset.url}?w=200&h=200&fit=crop&auto=format`}
+                imageURL={`${teacher.guestImage.asset.url}`}
                 active={isActive}
+                width={100}
                 animate
               />
             </a>

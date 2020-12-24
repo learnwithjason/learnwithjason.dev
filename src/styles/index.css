@@ -891,6 +891,7 @@ img {
 
 .episode-listing {
   margin-top: 3rem;
+  max-width: 500px;
 }
 
 .episode-listing h2 {

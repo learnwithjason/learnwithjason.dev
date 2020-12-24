@@ -1,8 +1,7 @@
 // this is for episodes that have already happened and the videos are posted
 import { h } from 'preact';
 import { useState } from 'preact/hooks';
-// this path is weird because this template gets moved during the build
-import { getEpisodePoster } from '../utils/get-episode-poster.js';
+import { EpisodePoster } from './episode-poster.js';
 
 export function EpisodeVideo({ episode }) {
   const [playing, setPlaying] = useState(false);
@@ -11,12 +10,6 @@ export function EpisodeVideo({ episode }) {
   const teacherImage =
     teacher?.guestImage?.asset.url ||
     'https://lengstorf.com/images/jason-lengstorf.jpg';
-
-  const poster = getEpisodePoster({
-    title: episode.title,
-    teacher: teacher.name,
-    teacherImage,
-  });
 
   return (
     <div class="episode-video">
@@ -33,12 +26,10 @@ export function EpisodeVideo({ episode }) {
         </div>
       ) : (
         <button onClick={() => setPlaying(true)} aria-label="play video">
-          <img
-            src={poster}
-            alt={episode.title}
-            width={900}
-            height={500}
-            loading="lazy"
+          <EpisodePoster
+            title={episode.title}
+            teacherName={teacher.name}
+            teacherImage={teacherImage}
           />
         </button>
       )}

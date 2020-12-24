@@ -16,7 +16,7 @@ export function TopicList({ topic, title, episodes }) {
           return (
             <li key={episode._id} class="topic-episode">
               <div class="teacher-photo">
-                <TeacherPhoto imageURL={image} alt={teacher.name} />
+                <TeacherPhoto imageURL={image} alt={teacher.name} width={50} />
               </div>
               <a href={`/${episode.slug.current}`}>{episode.title}</a>
             </li>

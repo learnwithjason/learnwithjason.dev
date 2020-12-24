@@ -21,7 +21,11 @@ export function EpisodePreview({ episode }) {
     <div class="episode-preview">
       <div class="episode-preview-teacher">
         <div class="episode-preview-photo">
-          <TeacherPhoto imageURL={teacherImage} alt={teacher.name} />
+          <TeacherPhoto
+            imageURL={teacherImage}
+            alt={teacher.name}
+            width={150}
+          />
         </div>
         <p>{teacher.name}</p>
       </div>

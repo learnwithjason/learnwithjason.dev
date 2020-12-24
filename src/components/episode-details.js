@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'preact/hooks';
 import gsap from 'gsap';
 import { IconShare } from './icon-share.js';
 import { IconInfo } from './icon-info.js';
-import { getEpisodePoster } from '../utils/get-episode-poster.js';
+import { EpisodePoster } from './episode-poster.js';
 
 export function EpisodeDetails({
   title,
@@ -13,7 +13,6 @@ export function EpisodeDetails({
   url,
 }) {
   const ref = useRef();
-  const poster = getEpisodePoster({ title, teacher, teacherImage });
 
   useEffect(() => {
     const details = ref.current;
@@ -30,12 +29,10 @@ export function EpisodeDetails({
   return (
     <article class="episode-details dark" ref={ref}>
       <div class="episode-poster animate">
-        <img
-          src={poster}
-          alt={`${title} (with ${teacher})`}
-          width={900}
-          height={500}
-          loading="lazy"
+        <EpisodePoster
+          title={title}
+          teacherName={teacher}
+          teacherImage={teacherImage}
         />
       </div>
       <div class="episode-info">

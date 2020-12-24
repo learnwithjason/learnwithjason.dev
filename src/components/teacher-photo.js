@@ -10,10 +10,18 @@ const activePath =
 export function TeacherPhoto({
   imageURL = 'https://github.com/jlengstorf.png',
   alt,
+  width = 150,
   active = false,
   animate = false,
+  skipFetch = false,
 }) {
   const ref = useRef();
+
+  const url = skipFetch
+    ? imageURL
+    : `https://res.cloudinary.com/jlengstorf/image/fetch/w_${width * 2},h_${
+        width * 2
+      },c_fill,g_face,q_auto,f_auto/${imageURL}`;
 
   useEffect(() => {
     if (!animate) {
@@ -77,7 +85,7 @@ export function TeacherPhoto({
         clip-rule="evenodd"
       />
       <use href="#photo-area" stroke="white" stroke-width="4" />
-      <image clip-path="url(#photo)" href={imageURL} width="100%" />
+      <image clip-path="url(#photo)" href={url} width="100%" />
     </svg>
   );
 }
