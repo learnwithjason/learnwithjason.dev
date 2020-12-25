@@ -100,32 +100,36 @@ export default function Store() {
               your cart is empty! maybe boop it with a sticker or two?
             </p>
           ) : (
-            <ul class="cart-items">
-              {cart.map((item) => {
-                const cartItem = products.find((p) => p.id === item.price);
+            <Fragment>
+              <ul class="cart-items">
+                {cart.map((item) => {
+                  const cartItem = products.find((p) => p.id === item.price);
 
-                return (
-                  <li key={cartItem.id}>
-                    <p class="cart-item-details">
-                      <span class="cart-item-name">{cartItem.name}</span>
-                      <span class="cart-item-subtotal">
-                        {format({
-                          amount: cartItem.amount * item.quantity,
-                          currency: 'usd',
-                        })}
-                      </span>
-                    </p>
-                    <p class="cart-item-quantity">
-                      <span class="cart-item-count">Qty. {item.quantity}</span>
-                      <span class="cart-item-unit-price">
-                        {format({ amount: cartItem.amount, currency: 'usd' })}{' '}
-                        each
-                      </span>
-                    </p>
-                  </li>
-                );
-              })}
-              <li class="subtotal">
+                  return (
+                    <li key={cartItem.id}>
+                      <p class="cart-item-details">
+                        <span class="cart-item-name">{cartItem.name}</span>
+                        <span class="cart-item-subtotal">
+                          {format({
+                            amount: cartItem.amount * item.quantity,
+                            currency: 'usd',
+                          })}
+                        </span>
+                      </p>
+                      <p class="cart-item-quantity">
+                        <span class="cart-item-count">
+                          Qty. {item.quantity}
+                        </span>
+                        <span class="cart-item-unit-price">
+                          {format({ amount: cartItem.amount, currency: 'usd' })}{' '}
+                          each
+                        </span>
+                      </p>
+                    </li>
+                  );
+                })}
+              </ul>
+              <p class="subtotal">
                 {format({
                   amount: cart.reduce((total, item) => {
                     const { amount } = products.find(
@@ -136,9 +140,9 @@ export default function Store() {
                   }, 0),
                   currency: 'usd',
                 })}
-              </li>
+              </p>
               <button onClick={handleSubmit}>Check Out</button>
-            </ul>
+            </Fragment>
           )}
         </aside>
       </section>
