@@ -23,20 +23,26 @@ export const sourceData = async ({ setDataForSlug }) => {
     `https://lwj2021.netlify.app/api/sponsors`,
   ).then((res) => res.json());
 
-  const [schedule, featuredEpisodes, episodes, sponsors] = await Promise.all([
+  const [
+    schedule,
+    featuredEpisodes,
+    episodes,
+    sponsors,
+    blogPosts,
+  ] = await Promise.all([
     schedulePromise,
     featuredPromise,
     allEpisodesPromise,
     sponsorsPromise,
     sourceMdx({
       setDataForSlug,
-      directory: './content/pages',
-      slugPrefix: '/',
+      directory: './content/blog',
+      slugPrefix: '/blog',
     }),
     sourceMdx({
       setDataForSlug,
-      directory: './content/blog',
-      slugPrefix: '/blog',
+      directory: './content/pages',
+      slugPrefix: '/',
     }),
   ]);
 
@@ -117,6 +123,11 @@ export const sourceData = async ({ setDataForSlug }) => {
           youtubeID: episode.youtubeID,
         })),
         schedule,
+      },
+    }),
+    setDataForSlug('/blog/index', {
+      data: {
+        posts: blogPosts.map(({ meta }) => meta),
       },
     }),
     setDataForSlug('/episodes', {
