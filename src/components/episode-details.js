@@ -17,6 +17,13 @@ export function EpisodeDetails({
   useEffect(() => {
     const details = ref.current;
 
+    // reset the animation in case folks click fast
+    gsap.set(details.querySelectorAll('.animate'), {
+      left: 0,
+      opacity: 1,
+    });
+
+    // fly things in for a little bit of extra character
     gsap.from(details.querySelectorAll('.animate'), {
       duration: 0.75,
       left: '150px',

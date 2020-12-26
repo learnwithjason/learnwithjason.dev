@@ -161,7 +161,7 @@ img {
   width: 100%;
 }
 
-.mobile-buttons button {
+.mobile-buttons .nav-toggle {
   background: transparent;
   border: 2px solid var(--white);
   border-radius: 0.25rem;
@@ -175,7 +175,7 @@ img {
     width: auto;
   }
 
-  .mobile-buttons button {
+  .mobile-buttons .nav-toggle {
     display: none;
   }
 }
@@ -191,10 +191,12 @@ img {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  height: 0;
 }
 
 .header nav a {
   font-weight: 900;
+  opacity: 0;
   padding: 1rem;
   position: relative;
   text-decoration: none;
@@ -209,6 +211,14 @@ img {
   .header {
     padding-bottom: calc(0.25rem + 9px);
     padding-top: 0.25rem;
+  }
+
+  .header nav {
+    height: auto;
+  }
+
+  .header nav a {
+    opacity: 1;
   }
 }
 

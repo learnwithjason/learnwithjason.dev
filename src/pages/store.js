@@ -1,5 +1,5 @@
 import { h, Fragment } from 'preact';
-import { useState } from 'preact/hooks';
+import { useEffect, useState } from 'preact/hooks';
 import { Helmet } from 'react-helmet';
 import { loadStripe } from '@stripe/stripe-js';
 import { products } from '../data/products.js';
@@ -15,6 +15,26 @@ function format({ amount, currency }) {
 
 export default function Store() {
   const [cart, setCart] = useState([]);
+
+  useEffect(() => {
+    const savedValue = window.localStorage.getItem('lwj-cart');
+    const query = new URLSearchParams(window.location.search);
+    const cartValue =
+      query.get('status') === 'success' ? [] : JSON.parse(savedValue);
+
+    if (savedValue) {
+      setCart(cartValue);
+    }
+  }, []);
+
+  useEffect(() => {
+    window.localStorage.setItem('lwj-cart', JSON.stringify(cart));
+  }, [cart]);
+
+  function emptyCart() {
+    setCart([]);
+    window.localStorage.setItem('lwj-cart', JSON.stringify([]));
+  }
 
   async function handleSubmit() {
     const response = await fetch('/.netlify/functions/create-checkout', {
@@ -142,6 +162,9 @@ export default function Store() {
                 })}
               </p>
               <button onClick={handleSubmit}>Check Out</button>
+              <p class="empty-cart">
+                <button onClick={emptyCart}>empty cart</button>
+              </p>
             </Fragment>
           )}
         </aside>

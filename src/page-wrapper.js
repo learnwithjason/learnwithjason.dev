@@ -125,6 +125,11 @@ export default function PageWrapper(props) {
         <meta name="twitter:image" content={image} />
 
         <link rel="stylesheet" href="/styles/index.css" />
+
+        {/* TODO why doesn't this render? */}
+        <noscript>{`
+          <link rel="stylesheet" href="/styles/no-js.css" />
+        `}</noscript>
       </Helmet>
       <svg class="svg-defs">
         <defs>

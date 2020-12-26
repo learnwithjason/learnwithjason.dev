@@ -11,14 +11,19 @@ export function Header() {
   const ref = useRef();
 
   useEffect(() => {
-    toggleNav = gsap.from(ref.current, {
+    const nav = ref.current.querySelector('nav');
+
+    gsap.set(nav, { height: 'auto' });
+    gsap.set(nav.querySelectorAll('a'), { opacity: 1 });
+
+    toggleNav = gsap.from(nav, {
       height: 0,
       paused: true,
       duration: 0.4,
       ease: 'power1',
     });
 
-    toggleNavItems = gsap.from(ref.current.querySelectorAll('a'), {
+    toggleNavItems = gsap.from(nav.querySelectorAll('a'), {
       left: '10rem',
       opacity: 0,
       paused: true,
@@ -48,14 +53,16 @@ export function Header() {
   }
 
   return (
-    <header class="header">
+    <header class="header" ref={ref}>
       <div class="mobile-buttons">
         <a href="/" rel="home">
           <Logo />
         </a>
-        <button onClick={handleClick}>{open ? 'close nav' : 'open nav'}</button>
+        <button className="nav-toggle" onClick={handleClick}>
+          {open ? 'close nav' : 'open nav'}
+        </button>
       </div>
-      <nav ref={ref}>
+      <nav>
         <a href="/episodes">episodes</a>
         <a href="/schedule">schedule</a>
         {/* <a href="/">courses</a> */}

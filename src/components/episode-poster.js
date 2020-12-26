@@ -99,6 +99,7 @@ export function EpisodePoster({
 
   return (
     <img
+      key={src}
       src={src}
       srcSet={srcSet}
       sizes={sizes}

@@ -148,12 +148,20 @@
   width: 100%;
 }
 
+.empty-cart button {
+  border: none;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
 @media (min-width: 800px) {
   .store {
     align-items: start;
     display: grid;
     grid-template-columns: 1fr 180px;
     justify-content: end;
+    margin: 0 auto;
+    max-width: 1400px;
   }
 
   .products {
@@ -162,6 +170,7 @@
   }
 
   .cart {
+    border-bottom: 0;
     margin: 0;
     min-width: auto;
     order: 2;
