@@ -149,7 +149,13 @@ export const sourceData = async ({ setDataForSlug }) => {
     }),
     setDataForSlug('/episodes', {
       data: {
-        episodes,
+        episodes: episodes.map((episode) => ({
+          _id: episode._id,
+          title: episode.title,
+          description: episode.description,
+          slug: episode.slug,
+          guest: episode.guest,
+        })),
       },
     }),
     setDataForSlug('/schedule', {
