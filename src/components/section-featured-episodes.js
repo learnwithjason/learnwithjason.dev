@@ -37,6 +37,9 @@ export function SectionFeaturedEpisodes({ episodes }) {
                 width={100}
                 animate
               />
+              <span class="visually-hidden">
+                {episode.title} (with {teacher.name})
+              </span>
             </a>
           );
         })}

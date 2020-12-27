@@ -6,15 +6,19 @@ import { Footer } from './components/footer.js';
 import { PostTemplate } from './components/post-template.js';
 
 const components = {
-  codeblock: (props) => (
-    <pre
-      class={`${props.className.includes('-diff-') ? 'diff-highlight' : ''} ${
-        props.className
-      }`}
-    >
-      <code dangerouslySetInnerHTML={{ __html: props.children }} />
-    </pre>
-  ),
+  codeblock: (props) => {
+    const className = props.className ?? 'language-text';
+
+    return (
+      <pre
+        class={`${
+          className.includes('-diff-') ? 'diff-highlight' : ''
+        } ${className}`}
+      >
+        <code dangerouslySetInnerHTML={{ __html: props.children }} />
+      </pre>
+    );
+  },
 };
 
 export default function PageWrapper(props) {
@@ -150,7 +154,7 @@ export default function PageWrapper(props) {
         </defs>
       </svg>
       <Header />
-      <main class={wrapperClass}>
+      <main id="content" class={wrapperClass}>
         <Component {...props}>{props.children}</Component>
       </main>
       <Footer />

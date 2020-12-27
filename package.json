@@ -12,8 +12,8 @@
     "build:css-modules": "postcss --config legacy-commonjs node_modules/prism-theme-night-owl/build/style.css -o public/styles/theme.css",
     "build:site": "toast incremental .",
     "predev": "npm run build",
-    "dev": "http-server public",
-    "serve": "http-server public"
+    "dev": "serve public",
+    "serve": "serve public"
   },
   "dependencies": {
     "@sector/breadbox": "^0.0.4",
@@ -52,7 +52,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.0.4",
-    "http-server": "^0.12.3",
-    "patch-package": "^6.2.2"
+    "patch-package": "^6.2.2",
+    "serve": "^11.3.2"
   }
 }

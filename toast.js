@@ -125,7 +125,7 @@ export const sourceData = async ({ setDataForSlug }) => {
         schedule,
       },
     }),
-    setDataForSlug('/blog/index', {
+    setDataForSlug('/blog', {
       data: {
         posts: blogPosts.map(({ meta }) => meta),
       },

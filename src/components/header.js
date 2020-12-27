@@ -54,9 +54,13 @@ export function Header() {
 
   return (
     <header class="header" ref={ref}>
+      <a class="visually-hidden" href="#content">
+        skip to content
+      </a>
       <div class="mobile-buttons">
         <a href="/" rel="home">
           <Logo />
+          <span class="visually-hidden">Home</span>
         </a>
         <button className="nav-toggle" onClick={handleClick}>
           {open ? 'close nav' : 'open nav'}

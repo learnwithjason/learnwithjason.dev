@@ -1,9 +1,13 @@
 import { h, Fragment } from 'preact';
-import { IconArrow } from '../../components/icon-arrow.js';
+import { Helmet } from 'react-helmet';
+import { IconArrow } from '../components/icon-arrow.js';
 
 export default function Blog({ posts }) {
   return (
     <Fragment>
+      <Helmet>
+        <link rel="stylesheet" href="/styles/post.css" />
+      </Helmet>
       <header class="block hero">
         <h1>Blog Posts</h1>
         <p>
@@ -13,16 +17,14 @@ export default function Blog({ posts }) {
       </header>
       <section class="block post-previews">
         {posts.map((post) => (
-          <article>
+          <article class="post-preview">
             <h2>
               <a href={`/blog/${post.slug}`}>{post.title}</a>
             </h2>
             <p>{post.description}</p>
-            <p>
-              <a href={`/blog/${post.slug}`}>
-                read this post <IconArrow />
-              </a>
-            </p>
+            <a href={`/blog/${post.slug}`} class="read-more">
+              read this post <IconArrow />
+            </a>
           </article>
         ))}
       </section>

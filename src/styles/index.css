@@ -119,6 +119,16 @@ body {
   overflow-x: hidden;
 }
 
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
 h2 {
   font-size: clamp(1.5rem, 4vw, 2rem);
   font-weight: 900;
@@ -130,6 +140,11 @@ h2 {
 img {
   height: auto;
   width: 100%;
+}
+
+a:focus {
+  outline: 2px solid var(--blue-dark);
+  outline-offset: 0.25rem;
 }
 
 .header {
@@ -251,18 +266,19 @@ img {
 
 .hero h1 {
   color: var(--white);
-  font-size: 3.5rem;
+  font-size: clamp(1.75rem, 10vw, 3.5rem);
   margin: 0 0 1rem;
   line-height: 3rem;
 }
 
 .hero p {
   color: var(--gray-medium);
-  font-size: clamp(1rem, 2vw, 1.375rem);
+  font-size: clamp(0.875rem, 2.75vw, 1.25rem);
+  line-height: 1.45;
   margin: 0;
   max-width: 90vw;
   text-align: center;
-  width: 50ch;
+  width: 46ch;
 }
 
 .hero p + p {
@@ -428,6 +444,26 @@ img {
   text-decoration: none;
 }
 
+.button path {
+  fill: var(--pink-dark);
+}
+
+.button:focus {
+  background: var(--blue-alpha);
+}
+
+.hero .button:not(:focus) {
+  color: var(--pink);
+}
+
+.hero .button:not(:focus) path {
+  fill: var(--pink);
+}
+
+.hero .button:focus {
+  background: var(--white);
+}
+
 .schedule-links p {
   color: var(--text);
   font-size: 0.875rem;
@@ -579,6 +615,11 @@ img {
   gap: 1.5rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
+}
+
+.episode-links svg,
+.topic-links svg {
+  min-width: 14px;
 }
 
 .episode-links path {
