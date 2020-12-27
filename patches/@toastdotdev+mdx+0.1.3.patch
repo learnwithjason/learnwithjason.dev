@@ -1,5 +1,17 @@
+diff --git a/node_modules/@toastdotdev/mdx/index.js b/node_modules/@toastdotdev/mdx/index.js
+index 8b87080..eeb0454 100644
+--- a/node_modules/@toastdotdev/mdx/index.js
++++ b/node_modules/@toastdotdev/mdx/index.js
+@@ -106,6 +106,7 @@ export const sourceMdx = async ({
+           namedExports,
+         });
+       } catch (e) {
++        console.log(e);
+         let matchString = "";
+         try {
+           // get the line and column from the error, if it exists
 diff --git a/node_modules/@toastdotdev/mdx/rehype-prism-mdx.js b/node_modules/@toastdotdev/mdx/rehype-prism-mdx.js
-index b288dea..573367b 100644
+index b288dea..36ecfac 100644
 --- a/node_modules/@toastdotdev/mdx/rehype-prism-mdx.js
 +++ b/node_modules/@toastdotdev/mdx/rehype-prism-mdx.js
 @@ -1,11 +1,11 @@
@@ -143,7 +155,7 @@ index b288dea..573367b 100644
  
  export default function rehypePrismMdx(options) {
    return (ast) => {
-@@ -146,65 +30,26 @@ export default function rehypePrismMdx(options) {
+@@ -146,65 +30,30 @@ export default function rehypePrismMdx(options) {
          let tree = parentTree.children[0];
          // store codestring for later
          tree.properties.codestring = tree.children[0].value.trim();
@@ -151,7 +163,8 @@ index b288dea..573367b 100644
 -          tree.properties.metastring
 -        );
  
-         const lang =
+-        const lang =
++        let lang =
            tree.properties.className &&
            tree.properties.className[0] &&
 -          tree.properties.className[0].split("-")[1];
@@ -186,7 +199,10 @@ index b288dea..573367b 100644
 -                        ? "mdx-highlight-line"
 -                        : "",
 -                    }),
--
++        if (!lang?.startsWith('diff-') && !Prism.languages[lang]) {
++          return
++        }
+ 
 -                    line.map((token, key) =>
 -                      h(
 -                        "span",
@@ -202,7 +218,7 @@ index b288dea..573367b 100644
 -          )
 +        const html = Prism.highlight(
 +          tree.children[0].value.trim(),
-+          lang.startsWith("diff-")
++          lang?.startsWith("diff-")
 +            ? Prism.languages["diff"]
 +            : Prism.languages[lang],
 +          lang
