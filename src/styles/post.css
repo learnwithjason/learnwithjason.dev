@@ -195,6 +195,10 @@ code {
   margin-top: 0;
 }
 
+.post-preview {
+  max-width: 500px;
+}
+
 .post-preview:not(:first-of-type) {
   margin-top: 3rem;
 }
