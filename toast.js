@@ -114,7 +114,6 @@ export const sourceData = async ({ setDataForSlug }) => {
 
   await Promise.all(
     schedule.map((episode) => {
-      console.log(episode);
       return setDataForSlug(`/${episode.slug.current}`, {
         component: {
           mode: 'source',

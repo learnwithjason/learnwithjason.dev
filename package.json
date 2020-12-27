@@ -11,7 +11,7 @@
     "build:css": "postcss --config legacy-commonjs src/styles/*.css -d public/styles/",
     "build:css-modules": "postcss --config legacy-commonjs node_modules/prism-theme-night-owl/build/style.css -o public/styles/theme.css",
     "build:site": "toast incremental .",
-    "postbuild": "./bin/minify.js",
+    "postbuild": "./bin/minify.js & ./bin/copy-content-images.js",
     "predev": "npm run build",
     "dev": "serve public",
     "serve": "serve public"
@@ -22,6 +22,7 @@
     "@toastdotdev/mdx": "^0.1.3",
     "cssnano": "^4.1.10",
     "dayjs": "^1.9.7",
+    "fs-extra": "^9.0.1",
     "glob": "^7.1.6",
     "globby": "^11.0.1",
     "gsap": "^3.5.1",
