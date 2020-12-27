@@ -372,6 +372,7 @@ a:focus {
 
 .episode-preview {
   display: block;
+  max-width: 630px;
 }
 
 .episode-preview:not(:first-child) {

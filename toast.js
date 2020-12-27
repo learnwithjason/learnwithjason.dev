@@ -74,6 +74,11 @@ export const sourceData = async ({ setDataForSlug }) => {
     'utf-8',
   );
 
+  const scheduledEpisodeComponent = fs.readFileSync(
+    './src/components/schedule-template.js',
+    'utf-8',
+  );
+
   const topicComponent = fs.readFileSync(
     './src/components/episodes-template.js',
     'utf-8',
@@ -106,6 +111,19 @@ export const sourceData = async ({ setDataForSlug }) => {
       },
     });
   });
+
+  await Promise.all(
+    schedule.map((episode) => {
+      console.log(episode);
+      return setDataForSlug(`/${episode.slug.current}`, {
+        component: {
+          mode: 'source',
+          value: scheduledEpisodeComponent,
+        },
+        data: { episode },
+      });
+    }),
+  );
 
   const episodesWithMarkdown = await Promise.all([
     ...markdownPromises,
