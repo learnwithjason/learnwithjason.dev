@@ -40,6 +40,7 @@ export function EpisodeDetails({
     });
   }, [title]);
 
+  // TODO abstract this into a component and use in all sharing spots
   async function handleShare() {
     await navigator.share({
       title: `${title} (with ${teacher})`,
