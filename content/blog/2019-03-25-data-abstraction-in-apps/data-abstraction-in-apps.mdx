@@ -109,9 +109,9 @@ npm install gatsby react react-dom @jlengstorf/gatsby-theme-style
 
 As our final code step, let’s tell Gatsby to use the theme by creating a `gatsby-config.js`:
 
-```js:title=gatsby-config.js
+```js
 module.exports = {
-  __experimentalThemes: ['@jlengstorf/gatsby-theme-style']
+  __experimentalThemes: ['@jlengstorf/gatsby-theme-style'],
 };
 ```
 
@@ -119,7 +119,7 @@ module.exports = {
 
 Next, we can add content. Create a folder called `content/posts/`, then add a new file called `foo.md` with the following content:
 
-```markdown:title=content/posts/foo.md
+```md
 ---
 title: Super Sweet Post
 date: 2019-02-28
@@ -196,7 +196,7 @@ Then we can shadow this component by creating a new file in our site here:
 
 To shadow our `<Post>` component, we need to create a new file in our site at `src/@jlengstorf/gatsby-theme-data/components/post.js` and add the following:
 
-```jsx:title=src/@jlengstorf/gatsby-theme-data/components/post.js
+```jsx
 import React from 'react';
 
 const Post = ({ title, content, author, date }) => (
@@ -208,7 +208,7 @@ const Post = ({ title, content, author, date }) => (
         {new Date(date).toLocaleDateString('en-US', {
           year: 'numeric',
           month: 'long',
-          day: 'numeric'
+          day: 'numeric',
         })}
       </time>{' '}
       by {author.name}

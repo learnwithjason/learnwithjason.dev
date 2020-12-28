@@ -1,10 +1,110 @@
-import { sourceMdx, fetchMdxFromDisk, processMdx } from '@toastdotdev/mdx';
+import { sourceMdx, fetchMdxFromDisk, compileMdx } from '@toastdotdev/mdx';
 import fetch from 'node-fetch';
 import fs from 'fs';
+import path from 'path';
 import unified from 'unified';
 import remarkParse from 'remark-parse';
 import remark2rehype from 'remark-rehype';
 import rehypeStringify from 'rehype-stringify';
+import rehypeLink from 'rehype-autolink-headings';
+import rehypeSlug from 'rehype-slug';
+import rehypePrism from '@toastdotdev/mdx/rehype-prism-mdx.js';
+import remarkPluckMeta from '@toastdotdev/mdx/remark-pluck-meta.js';
+import cloudinary from 'rehype-local-image-to-cloudinary';
+import upload from 'rehype-local-image-to-cloudinary/upload.js';
+import getImageUrl from 'rehype-local-image-to-cloudinary/build-url.js';
+
+async function createBlogPages({ setDataForSlug }) {
+  try {
+    const files = await fetchMdxFromDisk({ directory: './content/blog' });
+
+    const allPostMeta = await Promise.all(
+      files.map(async ({ filename, file: content }) => {
+        const { content: compiledMdx, data } = await compileMdx(content, {
+          filepath: filename,
+          remarkPlugins: [
+            [
+              remarkPluckMeta,
+              {
+                exportNames: ['meta'],
+              },
+            ],
+          ],
+          rehypePlugins: [
+            rehypePrism,
+            rehypeSlug,
+            [
+              rehypeLink,
+              {
+                properties: {
+                  className: 'heading-link-anchor',
+                  // style: "position: absolute; right: calc(100% + 5px);",
+                },
+                content: {
+                  type: 'element',
+                  tagName: 'heading-link-icon',
+                  properties: { className: ['heading-link-icon'] },
+                  children: [],
+                  // children: [parsedCorgi]
+                },
+              },
+            ],
+            [
+              cloudinary,
+              {
+                baseDir: path.dirname(filename),
+                uploadFolder: 'lwj',
+              },
+            ],
+          ],
+        });
+
+        let cloudinaryUrl;
+        if (data.exports.meta?.image) {
+          const cloudinaryName = await upload({
+            imagePath: path.join(
+              path.dirname(filename),
+              data.exports.meta.image,
+            ),
+            uploadFolder: 'lwj',
+          });
+
+          cloudinaryUrl = getImageUrl({
+            fileName: cloudinaryName,
+            uploadFolder: 'lwj',
+            transformations: 'f_auto,q_auto,w_1600,h_900,c_fill',
+          });
+        }
+
+        await setDataForSlug(`/blog/${data.exports.meta.slug}`, {
+          component: {
+            mode: 'source',
+            value: compiledMdx,
+          },
+          data: { meta: data.exports.meta, image: cloudinaryUrl },
+        });
+
+        return {
+          ...data.exports.meta,
+          image: cloudinaryUrl,
+        };
+      }),
+    );
+
+    const posts = allPostMeta.sort((a, b) => {
+      const da = new Date(a.date).getTime();
+      const db = new Date(b.date).getTime();
+
+      return db - da;
+    });
+
+    await setDataForSlug('/blog', {
+      data: { posts },
+    });
+  } catch (err) {
+    console.error(err);
+  }
+}
 
 export const sourceData = async ({ setDataForSlug }) => {
   const schedulePromise = fetch(
@@ -23,22 +123,13 @@ export const sourceData = async ({ setDataForSlug }) => {
     `https://lwj2021.netlify.app/api/sponsors`,
   ).then((res) => res.json());
 
-  const [
-    schedule,
-    featuredEpisodes,
-    episodes,
-    sponsors,
-    blogPosts,
-  ] = await Promise.all([
+  createBlogPages({ setDataForSlug });
+
+  const [schedule, featuredEpisodes, episodes, sponsors] = await Promise.all([
     schedulePromise,
     featuredPromise,
     allEpisodesPromise,
     sponsorsPromise,
-    sourceMdx({
-      setDataForSlug,
-      directory: './content/blog',
-      slugPrefix: '/blog',
-    }),
     sourceMdx({
       setDataForSlug,
       directory: './content/pages',
@@ -140,11 +231,6 @@ export const sourceData = async ({ setDataForSlug }) => {
           youtubeID: episode.youtubeID,
         })),
         schedule,
-      },
-    }),
-    setDataForSlug('/blog', {
-      data: {
-        posts: blogPosts.map(({ meta }) => meta),
       },
     }),
     setDataForSlug('/episodes', {
