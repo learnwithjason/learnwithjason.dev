@@ -13,6 +13,13 @@ export function EpisodeDetails({
   url,
 }) {
   const ref = useRef();
+  const [canShare, setCanShare] = useState(false);
+
+  useEffect(() => {
+    if (navigator.share) {
+      setCanShare(true);
+    }
+  }, []);
 
   useEffect(() => {
     const details = ref.current;
@@ -33,6 +40,14 @@ export function EpisodeDetails({
     });
   }, [title]);
 
+  async function handleShare() {
+    await navigator.share({
+      title: `${title} (with ${teacher})`,
+      text: description,
+      url,
+    });
+  }
+
   return (
     <article class="episode-details dark" ref={ref}>
       <div class="episode-poster animate">
@@ -50,9 +65,11 @@ export function EpisodeDetails({
           <a href={url} class="animate">
             <IconInfo /> Episode Details
           </a>
-          <a href="#share" class="animate">
-            <IconShare /> Share
-          </a>
+          {canShare && (
+            <button onClick={handleShare} class="animate">
+              <IconShare /> Share
+            </button>
+          )}
         </div>
       </div>
     </article>

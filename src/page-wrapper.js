@@ -29,13 +29,13 @@ export default function PageWrapper(props) {
     url = 'https://www.learnwithjason.dev',
   } = props?.meta ?? {};
 
-  const Component = props?.meta?.date ? PostTemplate : Fragment;
+  const Component = props?.meta?.type === 'post' ? PostTemplate : Fragment;
 
   let wrapperClass = '';
-  if (props.meta?.date) {
+  if (props.meta?.type === 'post') {
     wrapperClass = 'post-container';
-  } else if (props.meta) {
-    wrapperClass = 'content';
+    // } else if (props.meta) {
+    //   wrapperClass = 'content';
   }
 
   return (

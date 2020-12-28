@@ -1,4 +1,4 @@
-import { sourceMdx, fetchMdxFromDisk, compileMdx } from '@toastdotdev/mdx';
+import { sourceMdx, processMdx, fetchMdxFromDisk } from '@toastdotdev/mdx';
 import fetch from 'node-fetch';
 import fs from 'fs';
 import path from 'path';
@@ -6,53 +6,24 @@ import unified from 'unified';
 import remarkParse from 'remark-parse';
 import remark2rehype from 'remark-rehype';
 import rehypeStringify from 'rehype-stringify';
-import rehypeLink from 'rehype-autolink-headings';
-import rehypeSlug from 'rehype-slug';
-import rehypePrism from '@toastdotdev/mdx/rehype-prism-mdx.js';
-import remarkPluckMeta from '@toastdotdev/mdx/remark-pluck-meta.js';
 import cloudinary from 'rehype-local-image-to-cloudinary';
 import upload from 'rehype-local-image-to-cloudinary/upload.js';
 import getImageUrl from 'rehype-local-image-to-cloudinary/build-url.js';
+import { getImageAttributes } from './src/util/get-image-attributes.js';
 
 async function createBlogPages({ setDataForSlug }) {
   try {
     const files = await fetchMdxFromDisk({ directory: './content/blog' });
 
     const allPostMeta = await Promise.all(
-      files.map(async ({ filename, file: content }) => {
-        const { content: compiledMdx, data } = await compileMdx(content, {
-          filepath: filename,
-          remarkPlugins: [
-            [
-              remarkPluckMeta,
-              {
-                exportNames: ['meta'],
-              },
-            ],
-          ],
+      files.map(async ({ filename: filepath, file: content }) => {
+        const { content: compiledMdx, data } = await processMdx(content, {
+          filepath,
           rehypePlugins: [
-            rehypePrism,
-            rehypeSlug,
-            [
-              rehypeLink,
-              {
-                properties: {
-                  className: 'heading-link-anchor',
-                  // style: "position: absolute; right: calc(100% + 5px);",
-                },
-                content: {
-                  type: 'element',
-                  tagName: 'heading-link-icon',
-                  properties: { className: ['heading-link-icon'] },
-                  children: [],
-                  // children: [parsedCorgi]
-                },
-              },
-            ],
             [
               cloudinary,
               {
-                baseDir: path.dirname(filename),
+                baseDir: path.dirname(filepath),
                 uploadFolder: 'lwj',
               },
             ],
@@ -63,7 +34,7 @@ async function createBlogPages({ setDataForSlug }) {
         if (data.exports.meta?.image) {
           const cloudinaryName = await upload({
             imagePath: path.join(
-              path.dirname(filename),
+              path.dirname(filepath),
               data.exports.meta.image,
             ),
             uploadFolder: 'lwj',
@@ -81,7 +52,10 @@ async function createBlogPages({ setDataForSlug }) {
             mode: 'source',
             value: compiledMdx,
           },
-          data: { meta: data.exports.meta, image: cloudinaryUrl },
+          data: {
+            meta: { ...data.exports.meta, type: 'post' },
+            image: cloudinaryUrl,
+          },
         });
 
         return {
@@ -197,6 +171,12 @@ export const sourceData = async ({ setDataForSlug }) => {
         value: topicComponent,
       },
       data: {
+        meta: {
+          title: `${topic} Episodes · Learn With Jason`,
+          // description: 'TODO',
+          // image: 'TODO',
+          url: `https://www.learnwithjason.dev/topic/${topic}`,
+        },
         topic,
         episodes: filteredEpisodes,
       },
@@ -205,12 +185,31 @@ export const sourceData = async ({ setDataForSlug }) => {
 
   await Promise.all(
     schedule.map((episode) => {
+      const [teacher = { name: 'Jason Lengstorf' }] = episode.guest ?? [];
+      const teacherImage =
+        teacher?.guestImage?.asset.url ||
+        'https://lengstorf.com/images/jason-lengstorf.jpg';
+
       return setDataForSlug(`/${episode.slug.current}`, {
         component: {
           mode: 'source',
           value: scheduledEpisodeComponent,
         },
-        data: { episode },
+        data: {
+          meta: {
+            title: `${episode.title} · Learn With Jason`,
+            description: episode.description,
+            image: getImageAttributes({
+              teacherImage,
+              teacherName: teacher.name,
+              title: episode.title,
+              width: 900,
+              height: 500,
+            }).src,
+            url: `https://www.learnwithjason.dev/${episode.slug.current}`,
+          },
+          episode,
+        },
       });
     }),
   );
@@ -235,6 +234,14 @@ export const sourceData = async ({ setDataForSlug }) => {
     }),
     setDataForSlug('/episodes', {
       data: {
+        meta: {
+          title: `Browse all ${episodes.length} episodes of Learn With Jason!`,
+          description:
+            'Watch past episodes of Learn With Jason and learn something new in 90 minutes!',
+          image:
+            'https://res.cloudinary.com/jlengstorf/image/upload/q_auto,f_auto/v1607755791/lwj/learnwithjason-og.jpg',
+          url: 'https://www.learnwithjason.dev/episodes',
+        },
         episodes: episodes.map((episode) => ({
           _id: episode._id,
           title: episode.title,
@@ -246,6 +253,14 @@ export const sourceData = async ({ setDataForSlug }) => {
     }),
     setDataForSlug('/schedule', {
       data: {
+        meta: {
+          title: 'Upcoming Learn With Jason Episodes',
+          description:
+            'See upcoming episodes of Learn With Jason and add the LWJ calendar to your Google Calendar — never miss an episode!',
+          image:
+            'https://res.cloudinary.com/jlengstorf/image/upload/q_auto,f_auto/v1607755791/lwj/learnwithjason-og.jpg',
+          url: 'https://www.learnwithjason.dev/schedule',
+        },
         schedule,
       },
     }),
@@ -257,12 +272,33 @@ export const sourceData = async ({ setDataForSlug }) => {
         return Promise.resolve();
       }
 
+      const [teacher = { name: 'Jason Lengstorf' }] = episode.guest ?? [];
+      const teacherImage =
+        teacher?.guestImage?.asset.url ||
+        'https://lengstorf.com/images/jason-lengstorf.jpg';
+
+      const { srcSet } = getImageAttributes({
+        teacherImage,
+        teacherName: teacher.name,
+        title: episode.title,
+        width: 500,
+        height: 278,
+      });
+
+      const [image] = srcSet.slice(-1)[0].split(' ');
+
       return setDataForSlug(`/${episode.slug.current}`, {
         component: {
           mode: 'source',
           value: episodeComponent,
         },
         data: {
+          meta: {
+            title: `${episode.title} · Learn With Jason`,
+            description: episode.description,
+            image,
+            url: `https://www.learnwithjason.dev/${episode.slug.current}`,
+          },
           episode,
         },
       });
