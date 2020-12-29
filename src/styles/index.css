@@ -645,8 +645,12 @@ a:focus {
   border: none;
   color: inherit;
   display: flex;
+  font-size: 0.625rem;
+  font-weight: 600;
   gap: 0.5rem;
+  letter-spacing: 0.2em;
   text-decoration: none;
+  text-transform: uppercase;
 }
 
 @media (min-width: 800px) {

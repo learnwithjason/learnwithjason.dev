@@ -13,11 +13,7 @@ export function ShareButton({ title, text, url, ...props }) {
 
   // TODO abstract this into a component and use in all sharing spots
   async function handleShare() {
-    await navigator.share({
-      title,
-      text: description,
-      url,
-    });
+    await navigator.share({ title, text, url });
   }
 
   return canShare ? (
