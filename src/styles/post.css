@@ -115,6 +115,21 @@ code {
   display: block;
 }
 
+.embed-container {
+  height: 0;
+  position: relative;
+  width: 100%;
+}
+
+.embed-container > * {
+  height: 100%;
+  left: 0;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
 .post-figure figcaption {
   color: var(--text-muted);
   font-size: 0.875rem;

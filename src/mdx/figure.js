@@ -6,10 +6,20 @@ export function Figure({
   creditLink,
   creditType = 'Credit',
   children,
+  aspectRatio = false,
 }) {
   return (
     <figure class="post-figure">
-      {children}
+      {aspectRatio && typeof aspectRatio === 'number' ? (
+        <div
+          class="embed-container"
+          style={{ paddingBottom: aspectRatio * 100 + '%' }}
+        >
+          {children}
+        </div>
+      ) : (
+        children
+      )}
       {(caption || credit) && (
         <figcaption>
           {caption}
