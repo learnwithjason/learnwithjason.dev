@@ -3,7 +3,7 @@ export const meta = {
   updated: '2020-12-28',
   title: 'How to Convert HTML Form Field Values to a JSON Object',
   description:
-    'A simple, dependency-free way to use `reduce()` to convert all the fields in a form to a JSON object for AJAX (or whatever).',
+    'Use built-in browser APIs to get form values as JSON. Zero dependencies and only a few lines of code!',
   slug: 'get-form-values-as-json',
   image: 'images/convert-form-data-to-json.jpg',
   tags: ['front-end', 'javascript', 'reduce', 'forms', 'ajax'],
@@ -133,7 +133,11 @@ Let's add a field with multiple potential values to our form:
   form.addEventListener("submit", handleSubmit);
 ```
 
-Now the object contains
+Now the object contains an array in `topics` that contains all checked values!
+
+## A full example of multiple input types with the FormData API
+
+For a full example of using the FormData API with lots of different input types, check out [this CodePen](https://codepen.io/jlengstorf/pen/rNMpJNy) (the form values get printed below the form on submission).
 
 <Figure aspectRatio={646 / 1000}>
   <iframe
