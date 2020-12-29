@@ -32,13 +32,13 @@
     "postcss-cli": "^8.3.1",
     "prism-theme-night-owl": "^1.4.0",
     "react-twitch-embed-video": "^2.0.4",
-    "rehype-local-image-to-cloudinary": "^1.0.3",
+    "rehype-local-image-to-cloudinary": "^1.0.4",
     "rehype-stringify": "^8.0.0",
     "remark-parse": "^9.0.0",
     "remark-rehype": "^8.0.0",
     "stripe": "^8.129.0",
     "terser": "^5.5.1",
-    "toast": "^0.3.37",
+    "toast": "^0.3.39",
     "unified": "^9.2.0"
   },
   "snowpack": {

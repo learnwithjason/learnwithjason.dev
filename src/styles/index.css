@@ -268,7 +268,8 @@ a:focus {
   color: var(--white);
   font-size: clamp(1.75rem, 10vw, 3.5rem);
   margin: 0 0 1rem;
-  line-height: 3rem;
+  line-height: 1.1;
+  text-align: center;
 }
 
 .hero p {
@@ -637,8 +638,11 @@ a:focus {
 }
 
 .episode-links a,
+.episode-links button,
 .topic-links a {
   align-items: center;
+  background: transparent;
+  border: none;
   color: inherit;
   display: flex;
   gap: 0.5rem;
@@ -1008,4 +1012,58 @@ a:focus {
 .footer-links a {
   color: inherit;
   text-decoration: none;
+}
+
+.opt-in {
+  background: var(--black);
+  color: var(--gray-medium);
+  grid-column-start: 2;
+  margin: 5rem max(-5vw, -2rem) 0;
+  padding: 2rem min(5vw, 2rem);
+}
+
+.opt-in h2 {
+  color: var(--white);
+  margin: 0;
+  text-align: left;
+}
+
+.opt-in strong {
+  color: #d4d0da;
+}
+
+.opt-in label,
+.opt-in input,
+.opt-in button {
+  display: block;
+  font-family: 'jwf';
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.opt-in label {
+  margin-top: 0.5rem;
+}
+
+.opt-in input {
+  background: var(--white);
+  border: 1px solid var(--text);
+  border-radius: 0.25rem;
+  color: var(--text);
+  padding: 0.5rem;
+  width: 100%;
+}
+
+.opt-in button {
+  background: var(--pink-dark);
+  border: none;
+  border-radius: 0.25rem;
+  color: var(--white);
+  font-family: 'jwf';
+  font-size: 1.25rem;
+  font-weight: 900;
+  margin-top: 1rem;
+  padding: 0.25rem;
+  text-transform: uppercase;
+  width: max(300px, 100%);
 }

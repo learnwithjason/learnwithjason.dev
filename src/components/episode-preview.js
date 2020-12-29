@@ -5,7 +5,7 @@ import Timezone from 'dayjs/plugin/timezone.js';
 import AdvancedFormat from 'dayjs/plugin/advancedFormat.js';
 import { TeacherPhoto } from './teacher-photo.js';
 import { IconInfo } from './icon-info.js';
-import { IconShare } from './icon-share.js';
+import { ShareButton } from './share-button.js';
 
 dayjs.extend(Utc);
 dayjs.extend(Timezone);
@@ -40,9 +40,11 @@ export function EpisodePreview({ episode, hideLinks = false }) {
             <a href={`/${episode.slug.current}`}>
               <IconInfo /> Episode Details
             </a>
-            <a href="#share">
-              <IconShare /> Share
-            </a>
+            <ShareButton
+              title={episode.title}
+              text={episode.description}
+              url={`/${episode.slug.current}`}
+            />
           </div>
         )}
       </div>

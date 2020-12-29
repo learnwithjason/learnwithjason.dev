@@ -4,6 +4,7 @@ import { MDXProvider } from '@mdx-js/preact';
 import { Header } from './components/header.js';
 import { Footer } from './components/footer.js';
 import { PostTemplate } from './components/post-template.js';
+import { PageTemplate } from './components/page-template.js';
 
 const components = {
   codeblock: (props) => {
@@ -34,8 +35,6 @@ export default function PageWrapper(props) {
   let wrapperClass = '';
   if (props.meta?.type === 'post') {
     wrapperClass = 'post-container';
-    // } else if (props.meta) {
-    //   wrapperClass = 'content';
   }
 
   return (
@@ -155,7 +154,11 @@ export default function PageWrapper(props) {
       </svg>
       <Header />
       <main id="content" class={wrapperClass}>
-        <Component {...props}>{props.children}</Component>
+        {props.meta?.type === 'page' ? (
+          <PageTemplate {...props.meta}>{props.children}</PageTemplate>
+        ) : (
+          <Component {...props}>{props.children}</Component>
+        )}
       </main>
       <Footer />
     </MDXProvider>

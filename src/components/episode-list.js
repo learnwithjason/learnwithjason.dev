@@ -1,7 +1,7 @@
 import { h } from 'preact';
 import { EpisodeVideo } from '../components/episode-video.js';
 import { IconInfo } from '../components/icon-info.js';
-import { IconShare } from '../components/icon-share.js';
+import { ShareButton } from '../components/share-button.js';
 
 export function EpisodeList({ episodes }) {
   return (
@@ -15,9 +15,11 @@ export function EpisodeList({ episodes }) {
             <a href={`/${episode.slug.current}`} class="animate">
               <IconInfo /> Links, Resources, and Transcript
             </a>
-            <a href="#share" class="animate">
-              <IconShare /> Share
-            </a>
+            <ShareButton
+              title={episode.title}
+              description={episode.description}
+              url={`/${episode.slug.current}`}
+            />
           </div>
         </div>
       ))}

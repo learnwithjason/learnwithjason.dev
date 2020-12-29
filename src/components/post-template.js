@@ -1,6 +1,7 @@
 import { h, Fragment } from 'preact';
 import { useEffect, useRef, useState } from 'preact/hooks';
 import { Helmet } from 'react-helmet';
+import { OptInForm } from './opt-in-form.js';
 
 export function PostTemplate({ meta, children }) {
   const [headings, setHeadings] = useState([]);
@@ -77,6 +78,7 @@ export function PostTemplate({ meta, children }) {
           </div>
         </aside>
         <div class="post-content">{children}</div>
+        <OptInForm />
       </article>
     </Fragment>
   );

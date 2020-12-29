@@ -533,8 +533,9 @@ Once the app is started, we see the status displayed:
 
 And, conveniently, the app is running without locking up our session. In the same session we're able to run `curl http://localhost:5000` to make sure it's running properly:
 
-```text
+```md
 jason@nodejs-ssl-deploy:~/apps/app.example.com$ curl http://localhost:5000/
+
 <h1>I’m a Node app!</h1><p>And I’m <em>sooooo</em> secure.</p>
 ```
 
@@ -546,10 +547,10 @@ The last thing to do is to make sure that when the server restarts, PM2 starts o
 
 This is a two-step process, which we kick off by running `pm2 startup systemd`:
 
-```text
+```md
 jason@nodejs-ssl-deploy:~/app.example.com$ pm2 startup
 [PM2] You have to run this command as root. Execute the following command:
-      sudo su -c "env PATH=$PATH:/usr/bin pm2 startup systemd -u jason --hp /home/jason"
+sudo su -c "env PATH=$PATH:/usr/bin pm2 startup systemd -u jason --hp /home/jason"
 ```
 
 PM2 prints out a command that we need to run using `sudo`. Copy-paste that to finish the process.
@@ -813,7 +814,7 @@ This configuration listens for connections to our domain on port `443` (the HTT
 
 Before we start the server, we should test the NGINX configuration with `sudo nginx -t`. If we didn't make any typos and everything looks good, we'll get the following:
 
-```text
+```md
 jason@nodejs-ssl-deploy:~$ sudo nginx -t
 nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
 nginx: configuration file /etc/nginx/nginx.conf test is successful

@@ -1,9 +1,9 @@
 import { h } from 'preact';
 import { useEffect, useRef, useState } from 'preact/hooks';
 import gsap from 'gsap';
-import { IconShare } from './icon-share.js';
 import { IconInfo } from './icon-info.js';
 import { EpisodePoster } from './episode-poster.js';
+import { ShareButton } from './share-button.js';
 
 export function EpisodeDetails({
   title,
@@ -13,13 +13,6 @@ export function EpisodeDetails({
   url,
 }) {
   const ref = useRef();
-  const [canShare, setCanShare] = useState(false);
-
-  useEffect(() => {
-    if (navigator.share) {
-      setCanShare(true);
-    }
-  }, []);
 
   useEffect(() => {
     const details = ref.current;
@@ -40,15 +33,6 @@ export function EpisodeDetails({
     });
   }, [title]);
 
-  // TODO abstract this into a component and use in all sharing spots
-  async function handleShare() {
-    await navigator.share({
-      title: `${title} (with ${teacher})`,
-      text: description,
-      url,
-    });
-  }
-
   return (
     <article class="episode-details dark" ref={ref}>
       <div class="episode-poster animate">
@@ -66,11 +50,12 @@ export function EpisodeDetails({
           <a href={url} class="animate">
             <IconInfo /> Episode Details
           </a>
-          {canShare && (
-            <button onClick={handleShare} class="animate">
-              <IconShare /> Share
-            </button>
-          )}
+          <ShareButton
+            title={`${title} (with ${teacher})`}
+            text={description}
+            url={url}
+            class="animate"
+          />
         </div>
       </div>
     </article>

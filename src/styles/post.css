@@ -19,6 +19,7 @@
 
 .post-content {
   max-width: 53ch;
+  width: 100%;
 }
 
 .post .table-of-contents {
@@ -145,6 +146,7 @@ code {
   line-height: 1;
   overflow-x: scroll;
   padding: 0.1rem 0.25rem;
+  word-wrap: break-word;
 }
 
 .post-content .post-aside :not(pre) code {
@@ -161,11 +163,11 @@ code {
 }
 
 .inserted[class*='language-'] {
-  background: rgb(173 219 103 / 0.15);
+  background: rgb(173 219 103 / 0.1);
 }
 
 .deleted[class*='language-'] {
-  background: rgb(239 83 80 / 0.25);
+  background: rgb(239 83 80 / 0.125);
 }
 
 .post-aside {
