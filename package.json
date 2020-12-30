@@ -19,6 +19,7 @@
   "dependencies": {
     "@jlengstorf/get-share-image": "^0.8.0",
     "@sector/breadbox": "^0.0.4",
+    "@sendgrid/mail": "^7.4.0",
     "@stripe/stripe-js": "^1.11.0",
     "@toastdotdev/mdx": "^0.1.5",
     "cssnano": "^4.1.10",
