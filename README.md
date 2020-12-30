@@ -1,7 +1,4 @@
 <p align="center">
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
   <a href="https://www.learnwithjason.dev">
     <img src="https://res.cloudinary.com/jlengstorf/image/upload/q_auto,f_auto,w_240/v1579281727/lwj/learn-with-jason.png" alt="Learn With Jason" width="120" />
   </a>
@@ -18,6 +15,10 @@
   <a href="https://lwj.dev/schedule"><strong>see upcoming episodes</strong></a> · 
   <a href="https://www.learnwithjason.dev/calendar"><strong>add the Google Calendar</strong></a> 
 </p>
+
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 &nbsp;
 
