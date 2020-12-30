@@ -4,7 +4,7 @@ exports.handler = createHandler({
   name: 'haxxors',
   description: 'Should we focus up?',
   handler: () => ({
-    message: 'What were we doing again?',
+    message: 'MorphinTime no0o0o0 my c0d3z y0u h4x0rz! NotLikeThis',
     audio:
       'https://res.cloudinary.com/jlengstorf/video/upload/q_auto/v1569957993/lwj-sfx/haxxors.mp3',
     image:
