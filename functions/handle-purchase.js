@@ -33,7 +33,7 @@ exports.handler = async ({ headers, body }) => {
     const msg = {
       to: process.env.FULFILLMENT_EMAIL_ADDRESS,
       from: 'support@learnwithjason.dev',
-      subject: `New order from the Learn With Jason store!`,
+      subject: `[LWJ Store] Order from ${session.shipping.name}`,
       text: `
 Items:
 ${items.map((item) => `- ${item.quantity} × ${item.description}`).join('\n')}
