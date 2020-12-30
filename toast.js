@@ -21,7 +21,7 @@ async function createBlogPages({ setDataForSlug }) {
         const { content: compiledMdx, data } = await processMdx(content, {
           filepath,
           rehypePlugins: [
-            [
+            process.env.CLOUDINARY_API_KEY && [
               cloudinary,
               {
                 baseDir: path.dirname(filepath),
@@ -32,7 +32,7 @@ async function createBlogPages({ setDataForSlug }) {
         });
 
         let cloudinaryUrl;
-        if (data.exports.meta?.image) {
+        if (process.env.CLOUDINARY_API_KEY && data.exports.meta?.image) {
           const cloudinaryName = await upload({
             imagePath: path.join(
               path.dirname(filepath),
