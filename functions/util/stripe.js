@@ -1,6 +1,6 @@
 exports.getPaymentMethods = () => [
   'card',
-  'alipay',
+  // 'alipay',
   // 'ideal', // EUR only
   // 'fpx',
   // 'bacs_debit',
