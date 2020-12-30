@@ -16,7 +16,10 @@ exports.handler = async ({ headers, body }) => {
       return;
     }
 
-    const order = event.data.object;
+    const session = event.data.object;
+
+    const lineItems = await stripe.checkout.sessions.listLineItems(session.id);
+    const items = lineItems.data;
 
     const {
       line1,
@@ -25,23 +28,23 @@ exports.handler = async ({ headers, body }) => {
       state,
       postal_code,
       country,
-    } = order.shipping.address;
-
-    const items = order.display_items;
+    } = session.shipping.address;
 
     const msg = {
       to: process.env.FULFILLMENT_EMAIL_ADDRESS,
       from: 'support@learnwithjason.dev',
-      subject: 'New order from the Learn With Jason store!',
+      subject: `New order from the Learn With Jason store!`,
       text: `
 Items:
-${items.map((item) => `- (${item.quantity}) ${item.custom.name}`).join('\n')}
+${items.map((item) => `- ${item.quantity} × ${item.description}`).join('\n')}
 
 Shipping Address:
-${order.shipping.name}
+${session.shipping.name}
 ${line1}${line2 !== null ? '\n' + line2 : ''}
 ${city}, ${state} ${postal_code}
 ${country}
+
+Order ID: ${session.id}
 `,
     };
 
@@ -52,6 +55,7 @@ ${country}
       body: JSON.stringify({ received: true }),
     };
   } catch (error) {
+    console.error(error);
     return {
       statusCode: 400,
       body: `WebHook error: ${error.message}`,

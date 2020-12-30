@@ -4,8 +4,8 @@ const { getShippingCountries, getPaymentMethods } = require('./util/stripe');
 exports.handler = async (event) => {
   const { items } = JSON.parse(event.body);
   const session = await stripe.checkout.sessions.create({
-    success_url: 'http://localhost:8888/store?status=success',
-    cancel_url: 'http://localhost:8888/store?status=cancel',
+    success_url: `${process.env.URL}/store?status=success`,
+    cancel_url: `${process.env.URL}/store?status=cancel`,
     payment_method_types: getPaymentMethods(),
     billing_address_collection: 'auto',
     shipping_address_collection: {
