@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "@jlengstorf/get-share-image": "^0.8.0",
+    "@jlengstorf/get-twitch-oauth": "^1.0.1",
     "@sector/breadbox": "^0.0.4",
     "@sendgrid/mail": "^7.4.0",
     "@stripe/stripe-js": "^1.11.0",
