@@ -31,6 +31,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "sdras",
+      "name": "Sarah Drasner",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/2281088?v=4",
+      "profile": "https://sarah.dev",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
