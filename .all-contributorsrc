@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "ekinalcar",
+      "name": "Ekin Alçar",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/31273861?v=4",
+      "profile": "https://ekinalcar.com",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "learnwithjason.dev",
+  "projectOwner": "learnwithjason",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
