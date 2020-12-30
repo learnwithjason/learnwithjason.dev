@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "brittneypostma",
+      "name": "Brittney Postma",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/45889730?v=4",
+      "profile": "http://www.bdesigned.dev",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "learnwithjason.dev",
+  "projectOwner": "learnwithjason",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
