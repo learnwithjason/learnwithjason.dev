@@ -107,19 +107,19 @@ async function createBlogPages({ setDataForSlug }) {
 
 export const sourceData = async ({ setDataForSlug }) => {
   const schedulePromise = fetch(
-    'https://lwj2021.netlify.app/api/schedule',
+    'https://www.learnwithjason.dev/api/schedule',
   ).then((res) => res.json());
 
   const featuredPromise = fetch(
-    'https://lwj2021.netlify.app/api/episodes?featured=true',
+    'https://www.learnwithjason.dev/api/episodes?featured=true',
   ).then((res) => res.json());
 
   const allEpisodesPromise = fetch(
-    'https://lwj2021.netlify.app/api/episodes',
+    'https://www.learnwithjason.dev/api/episodes',
   ).then((res) => res.json());
 
   const sponsorsPromise = fetch(
-    `https://lwj2021.netlify.app/api/sponsors`,
+    `https://www.learnwithjason.dev/api/sponsors`,
   ).then((res) => res.json());
 
   createBlogPages({ setDataForSlug });
