@@ -11,7 +11,7 @@ dayjs.extend(Utc);
 dayjs.extend(Timezone);
 dayjs.extend(AdvancedFormat);
 
-export function EpisodePreview({ episode, hideLinks = false }) {
+export function EpisodePreview({ episode, hideLinks = false, children }) {
   const [teacher = { name: 'Jason Lengstorf' }] = episode.guest;
   const teacherImage =
     teacher?.guestImage?.asset.url ||
@@ -35,18 +35,20 @@ export function EpisodePreview({ episode, hideLinks = false }) {
         </p>
         <h3>{episode.title}</h3>
         <p class="episode-description">{episode.description}</p>
-        {!hideLinks && (
-          <div class="episode-links">
-            <a href={`/${episode.slug.current}`}>
-              <IconInfo /> Episode Details
-            </a>
-            <ShareButton
-              title={episode.title}
-              text={episode.description}
-              url={`/${episode.slug.current}`}
-            />
-          </div>
-        )}
+        {children
+          ? children
+          : !hideLinks && (
+              <div class="episode-links">
+                <a href={`/${episode.slug.current}`}>
+                  <IconInfo /> Episode Details
+                </a>
+                <ShareButton
+                  title={episode.title}
+                  text={episode.description}
+                  url={`/${episode.slug.current}`}
+                />
+              </div>
+            )}
       </div>
     </div>
   );

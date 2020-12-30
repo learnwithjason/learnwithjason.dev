@@ -9,6 +9,7 @@ import rehypeStringify from 'rehype-stringify';
 import cloudinary from 'rehype-local-image-to-cloudinary';
 import upload from 'rehype-local-image-to-cloudinary/upload.js';
 import getImageUrl from 'rehype-local-image-to-cloudinary/build-url.js';
+import getShareImage from '@jlengstorf/get-share-image';
 import { getImageAttributes } from './src/util/get-image-attributes.js';
 
 async function createBlogPages({ setDataForSlug }) {
@@ -45,6 +46,27 @@ async function createBlogPages({ setDataForSlug }) {
             uploadFolder: 'lwj',
             transformations: 'f_auto,q_auto,w_1600,h_900,c_fill',
           });
+        } else {
+          const title =
+            data.exports.meta.share?.title ?? data.exports.meta.title;
+          const tagline =
+            data.exports.meta.share?.text ?? data.exports.meta.description;
+
+          cloudinaryUrl = getShareImage({
+            title,
+            tagline,
+            cloudName: 'jlengstorf',
+            imagePublicID: 'lwj/post-share',
+            titleFont: 'jwf.otf',
+            titleFontSize: 55,
+            taglineFont: 'jwf-book.otf',
+            taglineFontSize: 42,
+            textColor: 'ffffff',
+            textLeftOffset: 392,
+            titleBottomOffset: 385,
+            taglineTopOffset: 320,
+            textAreaWidth: 813,
+          });
         }
 
         await setDataForSlug(`/blog/${data.exports.meta.slug}`, {
@@ -53,8 +75,11 @@ async function createBlogPages({ setDataForSlug }) {
             value: compiledMdx,
           },
           data: {
-            meta: { ...data.exports.meta, type: 'post' },
-            image: cloudinaryUrl,
+            meta: {
+              ...data.exports.meta,
+              image: cloudinaryUrl,
+              type: 'post',
+            },
           },
         });
 

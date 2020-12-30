@@ -10,7 +10,7 @@ export function PageTemplate({ title, description, children }) {
       </Helmet>
       <header class="block hero">
         <h1>{title}</h1>
-        <p>{description}</p>
+        {description && <p>{description}</p>}
       </header>
       <section class="block">
         <div class="post-content">{children}</div>
