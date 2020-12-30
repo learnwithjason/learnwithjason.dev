@@ -24,10 +24,10 @@ export function OptInForm({ heading = 'Build better web apps', children }) {
         )}
 
         <label for="firstName">First Name</label>
-        <input type="text" name="firstName" id="firstName" />
+        <input type="text" name="firstName" id="firstName" required />
 
         <label for="email">Email</label>
-        <input type="email" name="email" id="email" />
+        <input type="email" name="email" id="email" required />
 
         <button>Subscribe</button>
       </form>
