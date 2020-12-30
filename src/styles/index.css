@@ -261,7 +261,7 @@ a:focus {
   max-width: 900px;
 }
 
-.hero-heading text {
+#text-group {
   font-family: var(--font-family);
   font-size: 75px;
   font-weight: 900;
