@@ -6,7 +6,10 @@ export const meta = {
   slug: 'learn-trellis-wordpress-roots',
   image: 'images/learn-trellis-roots-wordpress.jpg',
   tags: ['wordpress', 'php', 'devops'],
-  repo_url: 'https://github.com/jlengstorf/roots.code.lengstorf.com',
+  share: {
+    title: 'Automatic WordPress Deployment with Trellis',
+    text: 'Set up a modern WordPress workflow with this in-depth tutorial.',
+  },
 };
 
 import { Aside } from '../src/mdx/aside.js';
@@ -719,7 +722,7 @@ Or, we can walk away and let the robots do our bidding.
 When it's all done, we'll see a "play recap" from Ansible that looks something like this:
 
 ```md
-PLAY RECAP **********************************\***********************************
+PLAY RECAP ****************\*\*****************\*****************\*\*****************
 162.243.171.188 : ok=130 changed=93 unreachable=0 failed=0
 localhost : ok=0 changed=0 unreachable=0 failed=0
 ```
@@ -747,7 +750,7 @@ pwd
 This takes a minute or two, and ends with a "play recap", just like provisioning. It should look something like this:
 
 ```md
-PLAY RECAP **********************************\***********************************
+PLAY RECAP ****************\*\*****************\*****************\*\*****************
 162.243.171.188 : ok=27 changed=12 unreachable=0 failed=0
 localhost : ok=0 changed=0 unreachable=0 failed=0
 ```
