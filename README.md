@@ -17,7 +17,7 @@
 </p>
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 &nbsp;
@@ -63,6 +63,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="http://www.bdesigned.dev"><img src="https://avatars2.githubusercontent.com/u/45889730?v=4" width="100px;" alt=""/><br /><sub><b>Brittney Postma</b></sub></a><br /><a href="https://github.com/learnwithjason/learnwithjason.dev/commits?author=brittneypostma" title="Code">💻</a></td>
     <td align="center"><a href="https://brandonroberts.dev"><img src="https://avatars3.githubusercontent.com/u/42211?v=4" width="100px;" alt=""/><br /><sub><b>Brandon</b></sub></a><br /><a href="https://github.com/learnwithjason/learnwithjason.dev/commits?author=brandonroberts" title="Code">💻</a></td>
+    <td align="center"><a href="https://ekinalcar.com"><img src="https://avatars1.githubusercontent.com/u/31273861?v=4" width="100px;" alt=""/><br /><sub><b>Ekin Alçar</b></sub></a><br /><a href="https://github.com/learnwithjason/learnwithjason.dev/commits?author=ekinalcar" title="Code">💻</a></td>
   </tr>
 </table>
 

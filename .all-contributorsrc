@@ -22,6 +22,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "ekinalcar",
+      "name": "Ekin Alçar",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/31273861?v=4",
+      "profile": "https://ekinalcar.com",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
