@@ -6,6 +6,24 @@
   "commit": false,
   "contributors": [
     {
+      "login": "brittneypostma",
+      "name": "Brittney Postma",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/45889730?v=4",
+      "profile": "http://www.bdesigned.dev",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "brandonroberts",
+      "name": "Brandon",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/42211?v=4",
+      "profile": "https://brandonroberts.dev",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
       "login": "ekinalcar",
       "name": "Ekin Alçar",
       "avatar_url": "https://avatars1.githubusercontent.com/u/31273861?v=4",
