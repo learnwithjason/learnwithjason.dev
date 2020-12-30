@@ -7,3 +7,8 @@ https://lwj.dev/*                     https://www.learnwithjason.dev/:splat 301!
 
 /commands /.netlify/functions/command-:splat  200
 /api      /.netlify/functions/:splat          200
+
+# the old live viewer is now on the home page
+/live     /                                   301
+
+/graphql  https://learnwithjason.hasura.app/v1/graphql  200

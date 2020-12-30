@@ -4,9 +4,9 @@ export function OptInForm({ heading = 'Build better web apps', children }) {
   return (
     <aside class="opt-in">
       <form action="/api/subscribe" method="POST">
-        <h2>{heading}</h2>
         {!children ? (
           <Fragment>
+            <h2>{heading}</h2>
             <p>
               I spend a lot of time thinking about how to{' '}
               <strong>

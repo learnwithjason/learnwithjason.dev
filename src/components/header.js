@@ -72,7 +72,7 @@ export function Header() {
         {/* <a href="/">courses</a> */}
         <a href="/store">store</a>
         <a href="/blog">blog</a>
-        {/* <a href="/about">about</a> */}
+        <a href="/about">about</a>
         {/* <a href="/search">search</a> */}
       </nav>
     </header>

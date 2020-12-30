@@ -10,7 +10,7 @@ export function PostTemplate({ meta, children }) {
   useEffect(() => {
     const post = ref.current;
 
-    const headingElements = post.querySelectorAll('h2');
+    const headingElements = post.querySelectorAll('.post-content h2');
     const callback = ([entry]) => {
       const activeHeading = entry.target;
       const links = Array.from(

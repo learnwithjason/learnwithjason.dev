@@ -33,7 +33,13 @@ export function EpisodePreview({ episode, hideLinks = false, children }) {
         <p class="gradient-subheading">
           {dayjs(episode.date).format('dddd, MMMM D @ h:mm A z')}
         </p>
-        <h3>{episode.title}</h3>
+        <h3>
+          {!hideLinks ? (
+            <a href={`/${episode.slug.current}`}>{episode.title}</a>
+          ) : (
+            episode.title
+          )}
+        </h3>
         <p class="episode-description">{episode.description}</p>
         {children
           ? children

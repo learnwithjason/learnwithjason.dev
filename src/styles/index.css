@@ -137,6 +137,13 @@ h2 {
   text-align: center;
 }
 
+h2 a,
+h3 a,
+h4 a {
+  color: inherit;
+  text-decoration: none;
+}
+
 img {
   height: auto;
   width: 100%;
@@ -1022,8 +1029,19 @@ a:focus {
   background: var(--black);
   color: var(--gray-medium);
   grid-column-start: 2;
-  margin: 5rem max(-5vw, -2rem) 0;
-  padding: 2rem min(5vw, 2rem);
+  margin: 3rem max(-5vw, -2rem) 0;
+  padding: 2rem min(5vw, 2rem) 2.25rem;
+}
+
+@media (min-width: 716px) {
+  .opt-in {
+    border-radius: 0.25rem;
+    margin-top: 0;
+  }
+}
+
+.post-content .opt-in {
+  margin-top: 2rem;
 }
 
 .opt-in h2 {
@@ -1032,7 +1050,8 @@ a:focus {
   text-align: left;
 }
 
-.opt-in strong {
+.opt-in strong,
+.post-content .opt-in strong {
   color: #d4d0da;
 }
 
@@ -1067,7 +1086,8 @@ a:focus {
   font-size: 1.25rem;
   font-weight: 900;
   margin-top: 1rem;
+  max-width: 300px;
   padding: 0.25rem;
   text-transform: uppercase;
-  width: max(300px, 100%);
+  width: 100%;
 }

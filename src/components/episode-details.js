@@ -36,14 +36,18 @@ export function EpisodeDetails({
   return (
     <article class="episode-details dark" ref={ref}>
       <div class="episode-poster animate">
-        <EpisodePoster
-          title={title}
-          teacherName={teacher}
-          teacherImage={teacherImage}
-        />
+        <a href={url}>
+          <EpisodePoster
+            title={title}
+            teacherName={teacher}
+            teacherImage={teacherImage}
+          />
+        </a>
       </div>
       <div class="episode-info">
-        <h3 class="animate">{title}</h3>
+        <h3 class="animate">
+          <a href={url}>{title}</a>
+        </h3>
         <p class="gradient-subheading animate">with {teacher}</p>
         <p class="episode-description animate">{description}</p>
         <div class="episode-links">

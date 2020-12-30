@@ -9,7 +9,9 @@ export function EpisodeList({ episodes }) {
       {episodes.map((episode) => (
         <div class="episode-listing">
           <EpisodeVideo key={episode.slug.current} episode={episode} />
-          <h2>{episode.title}</h2>
+          <h2>
+            <a href={`/${episode.slug.current}`}>{episode.title}</a>
+          </h2>
           <p>{episode.description}</p>
           <div class="episode-links top-gradient-border">
             <a href={`/${episode.slug.current}`} class="animate">
