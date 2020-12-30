@@ -273,6 +273,7 @@ export const sourceData = async ({ setDataForSlug }) => {
           description: episode.description,
           slug: episode.slug,
           guest: episode.guest,
+          youtubeID: episode.youtubeID,
         })),
       },
     }),
