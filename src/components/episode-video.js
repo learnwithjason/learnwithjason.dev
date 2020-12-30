@@ -1,15 +1,13 @@
 // this is for episodes that have already happened and the videos are posted
 import { h } from 'preact';
 import { useState } from 'preact/hooks';
+import { getTeacher } from '../util/get-teacher.js';
 import { EpisodePoster } from './episode-poster.js';
 
 export function EpisodeVideo({ episode }) {
   const [playing, setPlaying] = useState(false);
 
-  const teacher = episode.guest?.[0] || { name: 'Jason Lengstorf' };
-  const teacherImage =
-    teacher?.guestImage?.asset.url ||
-    'https://lengstorf.com/images/jason-lengstorf.jpg';
+  const teacher = getTeacher(episode.guest);
 
   return (
     <div class="episode-video">
@@ -26,11 +24,7 @@ export function EpisodeVideo({ episode }) {
         </div>
       ) : (
         <button onClick={() => setPlaying(true)} aria-label="play video">
-          <EpisodePoster
-            title={episode.title}
-            teacherName={teacher.name}
-            teacherImage={teacherImage}
-          />
+          <EpisodePoster title={episode.title} teacher={teacher} />
         </button>
       )}
     </div>

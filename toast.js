@@ -11,6 +11,7 @@ import upload from 'rehype-local-image-to-cloudinary/upload.js';
 import getImageUrl from 'rehype-local-image-to-cloudinary/build-url.js';
 import getShareImage from '@jlengstorf/get-share-image';
 import { getImageAttributes } from './src/util/get-image-attributes.js';
+import { getTeacher } from './src/util/get-teacher.js';
 
 async function createBlogPages({ setDataForSlug }) {
   try {
@@ -210,10 +211,7 @@ export const sourceData = async ({ setDataForSlug }) => {
 
   await Promise.all(
     schedule.map((episode) => {
-      const [teacher = { name: 'Jason Lengstorf' }] = episode.guest ?? [];
-      const teacherImage =
-        teacher?.guestImage?.asset.url ||
-        'https://lengstorf.com/images/jason-lengstorf.jpg';
+      const teacher = getTeacher(episode.guest);
 
       return setDataForSlug(`/${episode.slug.current}`, {
         component: {
@@ -225,8 +223,7 @@ export const sourceData = async ({ setDataForSlug }) => {
             title: `${episode.title} · Learn With Jason`,
             description: episode.description,
             image: getImageAttributes({
-              teacherImage,
-              teacherName: teacher.name,
+              teacher,
               title: episode.title,
               width: 900,
               height: 500,
@@ -298,14 +295,10 @@ export const sourceData = async ({ setDataForSlug }) => {
         return Promise.resolve();
       }
 
-      const [teacher = { name: 'Jason Lengstorf' }] = episode.guest ?? [];
-      const teacherImage =
-        teacher?.guestImage?.asset.url ||
-        'https://lengstorf.com/images/jason-lengstorf.jpg';
+      const teacher = getTeacher(episode.guest);
 
       const { srcSet } = getImageAttributes({
-        teacherImage,
-        teacherName: teacher.name,
+        teacher,
         title: episode.title,
         width: 500,
         height: 278,

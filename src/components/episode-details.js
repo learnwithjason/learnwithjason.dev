@@ -5,13 +5,7 @@ import { IconInfo } from './icon-info.js';
 import { EpisodePoster } from './episode-poster.js';
 import { ShareButton } from './share-button.js';
 
-export function EpisodeDetails({
-  title,
-  teacher,
-  teacherImage,
-  description,
-  url,
-}) {
+export function EpisodeDetails({ title, teacher, description, url }) {
   const ref = useRef();
 
   useEffect(() => {
@@ -37,25 +31,21 @@ export function EpisodeDetails({
     <article class="episode-details dark" ref={ref}>
       <div class="episode-poster animate">
         <a href={url}>
-          <EpisodePoster
-            title={title}
-            teacherName={teacher}
-            teacherImage={teacherImage}
-          />
+          <EpisodePoster title={title} teacher={teacher} />
         </a>
       </div>
       <div class="episode-info">
         <h3 class="animate">
           <a href={url}>{title}</a>
         </h3>
-        <p class="gradient-subheading animate">with {teacher}</p>
+        <p class="gradient-subheading animate">with {teacher.name}</p>
         <p class="episode-description animate">{description}</p>
         <div class="episode-links">
           <a href={url} class="animate">
             <IconInfo /> Episode Details
           </a>
           <ShareButton
-            title={`${title} (with ${teacher})`}
+            title={`${title} (with ${teacher.name})`}
             text={description}
             url={url}
             class="animate"

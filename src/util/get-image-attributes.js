@@ -11,13 +11,7 @@ function cleanText(text) {
   return encodeURIComponent(text).replace(/%(23|2C|2F|3F|5C)/g, '%25$1');
 }
 
-export function getImageAttributes({
-  teacherImage,
-  teacherName,
-  title,
-  width,
-  height,
-}) {
+export function getImageAttributes({ teacher, title, width, height }) {
   /*
    * hooooly shit this is kind of a nightmare but here’s what’s going on:
    *
@@ -40,7 +34,7 @@ export function getImageAttributes({
     [
       'https://res.cloudinary.com/jlengstorf/image/upload',
       `/w_${w},h_${h},c_fill,q_auto,f_auto`,
-      `/u_fetch:${toBase64(teacherImage)}`,
+      `/u_fetch:${toBase64(teacher.image)}`,
       `,w_${Math.round(0.3111111111 * w)},h_${Math.round(0.3111111111 * w)}`,
       `,c_fill,g_north_west,x_${Math.round(0.4622222222 * w)}`,
       `,y_${Math.round(0.116 * h)}`,
@@ -49,7 +43,7 @@ export function getImageAttributes({
       `,l_text:jwf.otf_${Math.round((w / width) * 21)}_line_spacing_0:`,
       `${cleanText(title)}`,
       `/l_text:jwf.otf_${Math.round((w / width) * 14)}_center:`,
-      `${cleanText(teacherName)}`,
+      `${cleanText(teacher.name)}`,
       `,g_north_west,x_${Math.round(0.4666666667 * w)}`,
       `,y_${Math.round(0.72 * h)},c_fit,co_white`,
       `,w_${Math.round(0.3111111111 * w)},b_rgb:00000001`,
@@ -64,7 +58,7 @@ export function getImageAttributes({
   const sizes = `(min-width: 1000px) 500px, 90vw`;
 
   return {
-    alt: `${title} (with ${teacherName})`,
+    alt: `${title} (with ${teacher.name})`,
     src,
     srcSet,
     sizes,

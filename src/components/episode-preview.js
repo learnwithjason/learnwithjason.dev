@@ -6,23 +6,21 @@ import AdvancedFormat from 'dayjs/plugin/advancedFormat.js';
 import { TeacherPhoto } from './teacher-photo.js';
 import { IconInfo } from './icon-info.js';
 import { ShareButton } from './share-button.js';
+import { getTeacher } from '../util/get-teacher.js';
 
 dayjs.extend(Utc);
 dayjs.extend(Timezone);
 dayjs.extend(AdvancedFormat);
 
 export function EpisodePreview({ episode, hideLinks = false, children }) {
-  const [teacher = { name: 'Jason Lengstorf' }] = episode.guest;
-  const teacherImage =
-    teacher?.guestImage?.asset.url ||
-    'https://lengstorf.com/images/jason-lengstorf.jpg';
+  const teacher = getTeacher(episode.guest);
 
   return (
     <div class="episode-preview">
       <div class="episode-preview-teacher">
         <div class="episode-preview-photo">
           <TeacherPhoto
-            imageURL={teacherImage}
+            imageURL={teacher.image}
             alt={teacher.name}
             width={150}
           />

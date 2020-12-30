@@ -1,9 +1,10 @@
 import { h, Fragment } from 'preact';
-// this path is weird because this template gets moved during the build
+// import paths are weird because this template gets moved during the build
+import { getTeacher } from './src/util/get-teacher.js';
 import { EpisodeVideo } from './src/components/episode-video.js';
 
 export default function EpisodeTemplate({ episode }) {
-  const teacher = episode.guest?.[0] || { name: 'Jason Lengstorf' };
+  const teacher = getTeacher(episode.guest);
 
   return (
     <div class="block episode">

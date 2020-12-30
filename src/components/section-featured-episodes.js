@@ -2,11 +2,13 @@ import { h } from 'preact';
 import { useState } from 'preact/hooks';
 import { TeacherPhoto } from './teacher-photo.js';
 import { EpisodeDetails } from './episode-details.js';
+import { getTeacher } from '../util/get-teacher.js';
 
 export function SectionFeaturedEpisodes({ episodes }) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const currentEpisode = episodes[currentIndex];
+  const currentTeacher = getTeacher(currentEpisode.guest);
 
   return (
     <section class="block featured">
@@ -20,7 +22,7 @@ export function SectionFeaturedEpisodes({ episodes }) {
             setCurrentIndex(index);
           };
 
-          const [teacher] = episode.guest;
+          const teacher = getTeacher(episode.guest);
 
           return (
             <a
@@ -32,7 +34,7 @@ export function SectionFeaturedEpisodes({ episodes }) {
             >
               <TeacherPhoto
                 key={`photo-${episode._id}`}
-                imageURL={`${teacher.guestImage.asset.url}`}
+                imageURL={`${teacher.image}`}
                 active={isActive}
                 width={100}
                 animate
@@ -47,8 +49,7 @@ export function SectionFeaturedEpisodes({ episodes }) {
 
       <EpisodeDetails
         title={currentEpisode.title}
-        teacher={currentEpisode.guest[0].name}
-        teacherImage={currentEpisode.guest[0].guestImage.asset.url}
+        teacher={currentTeacher}
         description={currentEpisode.description}
         url={`/${currentEpisode.slug.current}`}
       />
