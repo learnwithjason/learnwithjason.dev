@@ -45,6 +45,7 @@ export function EpisodePreview({ episode, hideLinks = false, children }) {
               <div class="episode-links">
                 <a href={`/${episode.slug.current}`}>
                   <IconInfo /> Episode Details
+				  <span class="visually-hidden"> for {episode.title}</span>
                 </a>
                 <ShareButton
                   title={episode.title}

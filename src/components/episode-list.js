@@ -16,6 +16,7 @@ export function EpisodeList({ episodes }) {
           <div class="episode-links top-gradient-border">
             <a href={`/${episode.slug.current}`} class="animate">
               <IconInfo /> Links, Resources, and Transcript
+			  <span class="visually-hidden"> for {episode.title}</span>
             </a>
             <ShareButton
               title={episode.title}

@@ -27,7 +27,7 @@ export function TopicList({ topic, title, episodes }) {
       </ul>
       <div class="topic-links">
         <a href={`/topic/${topic}`}>
-          see more <IconArrow />
+          see more <span class="visually-hidden">from {title}</span><IconArrow />
         </a>
       </div>
     </div>
