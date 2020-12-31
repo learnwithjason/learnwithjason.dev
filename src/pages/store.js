@@ -109,8 +109,8 @@ export default function Store() {
                   <span class="tag">free shipping!</span>
                 </p>
                 <button aria-label={`Add ${product.name} To Cart`} onClick={addToCart}>
-					Add To Cart
-				</button>
+				  Add To Cart
+			    </button>
               </div>
             );
           })}
