@@ -13,3 +13,6 @@ https://lwj.dev/*                     https://www.learnwithjason.dev/:splat 301!
 /live     /                                   301
 
 /graphql  https://learnwithjason.hasura.app/v1/graphql  200
+
+# fix broken URL
+/hiring-getting-hired-in-tech  /hiring-and-getting-hired-in-tech 301
