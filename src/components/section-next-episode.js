@@ -8,6 +8,7 @@ import { LivePlayer } from './live-player.js';
 import { EpisodePreview } from './episode-preview.js';
 import { IconArrow } from './icon-arrow.js';
 import { IconCalendar } from './icon-calendar.js';
+import { getTeacher } from '../util/get-teacher.js';
 
 dayjs.extend(RelativeTime);
 dayjs.extend(Utc);
@@ -21,13 +22,19 @@ export function SectionNextEpisode({ nextEpisode, nextNextEpisode }) {
     ? nextEpisode
     : nextNextEpisode;
 
+  const teacher = getTeacher(episode.guest);
+
   const isLive = dayjs(episode.date).isBefore(dayjs());
 
   return (
     <section class="block">
       {isLive ? (
         <div>
-          <h2>Jason is live with {guest.name} right now!</h2>
+          <h2>
+            Jason is live{' '}
+            {teacher.name !== 'Jason Lengstorf' ? `with ${teacher.name}` : ''}{' '}
+            right now!
+          </h2>
           <LivePlayer />
         </div>
       ) : (
