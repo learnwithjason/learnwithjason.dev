@@ -16,3 +16,4 @@ https://lwj.dev/*                     https://www.learnwithjason.dev/:splat 301!
 
 # fix broken URL
 /hiring-getting-hired-in-tech  /hiring-and-getting-hired-in-tech 301
+/use-gatsby-wordpress-for-dynamic-sites  /use-gatsby-and-wordpress-for-dynamic-sites 301
