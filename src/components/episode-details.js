@@ -43,6 +43,7 @@ export function EpisodeDetails({ title, teacher, description, url }) {
         <div class="episode-links">
           <a href={url} class="animate">
             <IconInfo /> Episode Details
+            <span class="visually-hidden"> for {title}</span>
           </a>
           <ShareButton
             title={`${title} (with ${teacher.name})`}
