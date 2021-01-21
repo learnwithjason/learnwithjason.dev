@@ -49,6 +49,15 @@
       "contributions": [
         "maintenance"
       ]
+    },
+    {
+      "login": "BenDMyers",
+      "name": "Ben Myers",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/18060369?v=4",
+      "profile": "http://benmyers.dev",
+      "contributions": [
+        "a11y"
+      ]
     }
   ],
   "contributorsPerLine": 7,
