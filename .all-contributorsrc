@@ -40,6 +40,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "seifsay3d",
+      "name": "Seifeldin Mahjoub",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/16223724?v=4",
+      "profile": "https://medium.com/@seif.sayed",
+      "contributions": [
+        "maintenance"
+      ]
     }
   ],
   "contributorsPerLine": 7,
