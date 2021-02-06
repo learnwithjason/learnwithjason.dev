@@ -1,7 +1,11 @@
 const { hasuraRequest } = require('./util/hasura');
 
 exports.handler = async (event) => {
-  const { limit = 999, featured = false } = event.queryStringParameters;
+  const {
+    limit = 999,
+    featured = false,
+    transcript = false,
+  } = event.queryStringParameters;
 
   const data = await hasuraRequest({
     query: `
@@ -38,7 +42,7 @@ exports.handler = async (event) => {
           tags {
             value
           }
-          transcript
+          ${transcript ? 'transcript' : ''}
         }
       }
     `,

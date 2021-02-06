@@ -16,8 +16,3 @@
   from = "/api/*"
   to = "/.netlify/functions/:splat"
   status = 200
-
-[[redirects]]
-  from = "/scenes/*"
-  to = "https://lwj-scenes-toast.netlify.app/:splat"
-  status = 200

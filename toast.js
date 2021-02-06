@@ -116,7 +116,7 @@ export const sourceData = async ({ setDataForSlug }) => {
   ).then((res) => res.json());
 
   const allEpisodesPromise = fetch(
-    'https://www.learnwithjason.dev/api/episodes',
+    'https://www.learnwithjason.dev/api/episodes?transcript=true',
   ).then((res) => res.json());
 
   const sponsorsPromise = fetch(
