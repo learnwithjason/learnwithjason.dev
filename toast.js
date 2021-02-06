@@ -225,8 +225,8 @@ export const sourceData = async ({ setDataForSlug }) => {
             image: getImageAttributes({
               teacher,
               title: episode.title,
-              width: 900,
-              height: 500,
+              width: 500,
+              height: 278,
             }).src,
             url: `https://www.learnwithjason.dev/${episode.slug.current}`,
           },
