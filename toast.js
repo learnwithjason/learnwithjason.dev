@@ -213,6 +213,15 @@ export const sourceData = async ({ setDataForSlug }) => {
     schedule.map((episode) => {
       const teacher = getTeacher(episode.guest);
 
+      const { srcSet } = getImageAttributes({
+        teacher,
+        title: episode.title,
+        width: 500,
+        height: 278,
+        type: 'scheduled',
+      });
+      const [image] = srcSet.slice(-1)[0].split(' ');
+
       return setDataForSlug(`/${episode.slug.current}`, {
         component: {
           mode: 'source',
@@ -222,12 +231,7 @@ export const sourceData = async ({ setDataForSlug }) => {
           meta: {
             title: `${episode.title} · Learn With Jason`,
             description: episode.description,
-            image: getImageAttributes({
-              teacher,
-              title: episode.title,
-              width: 500,
-              height: 278,
-            }).src,
+            image,
             url: `https://www.learnwithjason.dev/${episode.slug.current}`,
           },
           episode,

@@ -11,7 +11,19 @@ function cleanText(text) {
   return encodeURIComponent(text).replace(/%(23|2C|2F|3F|5C)/g, '%25$1');
 }
 
-export function getImageAttributes({ teacher, title, width, height }) {
+export function getImageAttributes({
+  teacher,
+  title,
+  width,
+  height,
+  type = 'video',
+}) {
+  const JasonIsTalkingToHimself = teacher.name === 'Jason Lengstorf';
+  let filename = type === 'scheduled' ? 'episode' : 'video-poster';
+  if (JasonIsTalkingToHimself) {
+    filename = `${filename}-solo`;
+  }
+
   /*
    * hooooly shit this is kind of a nightmare but here’s what’s going on:
    *
@@ -30,27 +42,53 @@ export function getImageAttributes({ teacher, title, width, height }) {
     [width * 1.5, height * 1.5],
     [width * 2, height * 2],
     [width * 3, height * 3],
-  ].map(([w, h]) =>
-    [
+  ].map(([w, h]) => {
+    // let's build up a Cloudinary URL!
+    let urlParts = [];
+
+    // start with the basics: Cloudinary base URL, dimensions, & quality/format
+    urlParts.push(
       'https://res.cloudinary.com/jlengstorf/image/upload',
       `/w_${w},h_${h},c_fill,q_auto,f_auto`,
-      `/u_fetch:${toBase64(teacher.image)}`,
-      `,w_${Math.round(0.3111111111 * w)},h_${Math.round(0.3111111111 * w)}`,
-      `,c_fill,g_north_west,x_${Math.round(0.4622222222 * w)}`,
-      `,y_${Math.round(0.116 * h)}`,
+    );
+
+    // next, if we have a guest, add their photo
+    if (!JasonIsTalkingToHimself) {
+      urlParts.push(
+        `/u_fetch:${toBase64(teacher.image)}`,
+        `,w_${Math.round(0.3111111111 * w)},h_${Math.round(0.3111111111 * w)}`,
+        `,c_fill,g_north_west,x_${Math.round(0.4622222222 * w)}`,
+        `,y_${Math.round(0.116 * h)}`,
+      );
+    }
+
+    // now let's add the episode title
+    urlParts.push(
       `/w_${Math.round(0.3444444444 * w)},c_fit,co_white,g_north_west`,
       `,x_${Math.round(0.04444444444 * w)},y_${Math.round(0.36 * h)}`,
       `,l_text:jwf.otf_${Math.round((w / width) * 21)}_line_spacing_0:`,
       `${cleanText(title)}`,
-      `/l_text:jwf.otf_${Math.round((w / width) * 14)}_center:`,
-      `${cleanText(teacher.name)}`,
-      `,g_north_west,x_${Math.round(0.4666666667 * w)}`,
-      `,y_${Math.round(0.72 * h)},c_fit,co_white`,
-      `,w_${Math.round(0.3111111111 * w)},b_rgb:00000001`,
-      `/lwj/video-poster.jpg`,
-      ` ${w}w`,
-    ].join(''),
-  );
+    );
+
+    // next up, if we have a guest let's add their name
+    if (!JasonIsTalkingToHimself) {
+      urlParts.push(
+        `/l_text:jwf.otf_${Math.round((w / width) * 14)}_center:`,
+        `${cleanText(teacher.name)}`,
+        `,g_north_west,x_${Math.round(0.4666666667 * w)}`,
+        `,y_${Math.round(0.72 * h)},c_fit,co_white`,
+        `,w_${Math.round(0.3111111111 * w)},b_rgb:00000001`,
+      );
+    }
+
+    // the last part for Cloudinary is to set the file name for the poster itself
+    urlParts.push(`/lwj/${filename}.jpg`);
+
+    // to finish it off, add the width for srcset
+    urlParts.push(` ${w}w`);
+
+    return urlParts.join('');
+  });
 
   // set the default size as the fallback and drop the size off the end
   const [src] = srcSet[1].split(' ');
