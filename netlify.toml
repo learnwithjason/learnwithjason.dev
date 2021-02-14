@@ -13,6 +13,11 @@
   package = "netlify-plugin-toast-cache"
 
 [[redirects]]
+  from = "/api/episode/:slug"
+  to = "/.netlify/functions/episode"
+  status = 200
+
+[[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/:splat"
   status = 200
