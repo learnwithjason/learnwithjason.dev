@@ -60,6 +60,8 @@ exports.handler = async (event) => {
       'Access-Control-Allow-Headers': 'Content-Type',
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(data.episodes),
+    body: JSON.stringify(
+      data.episodes.map((e) => ({ ...e, title: `[STAGING] ${e.title}` })),
+    ),
   };
 };
