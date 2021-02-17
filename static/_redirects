@@ -20,6 +20,7 @@ https://lwj.dev/*                     https://www.learnwithjason.dev/:splat 301!
 /contentful-graphql-paid-content  /contentful-graphql-and-paid-content 301
 /build-a-toast-site-using-mdx-tailwind  /build-a-toast-site-using-mdx-and-tailwind 301
 /let-s-learn-eleventy  /lets-learn-eleventy 301
+/let-s-learn-vite  /lets-learn-esbuild 301
 /hiring-getting-hired-in-tech  /hiring-and-getting-hired-in-tech 301
 /hiring-getting-hired-in-tech  /hiring-and-getting-hired-in-tech 301
 /use-gatsby-wordpress-for-dynamic-sites  /use-gatsby-and-wordpress-for-dynamic-sites 301
