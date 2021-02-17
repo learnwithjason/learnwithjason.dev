@@ -15,5 +15,6 @@ https://lwj.dev/*                     https://www.learnwithjason.dev/:splat 301!
 /graphql  https://learnwithjason.hasura.app/v1/graphql  200
 
 # fix broken URL
+/let-s-learn-vite  /lets-learn-esbuild 301
 /hiring-getting-hired-in-tech  /hiring-and-getting-hired-in-tech 301
 /use-gatsby-wordpress-for-dynamic-sites  /use-gatsby-and-wordpress-for-dynamic-sites 301
