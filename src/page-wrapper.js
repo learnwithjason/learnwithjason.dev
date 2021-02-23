@@ -1,10 +1,22 @@
 import { h, Fragment } from 'preact';
 import { Helmet } from 'react-helmet';
 import { MDXProvider } from '@mdx-js/preact';
+import * as Sentry from '@sentry/react';
+import { Integrations } from '@sentry/tracing';
 import { Header } from './components/header.js';
 import { Footer } from './components/footer.js';
 import { PostTemplate } from './components/post-template.js';
 import { PageTemplate } from './components/page-template.js';
+
+Sentry.init({
+  dsn:
+    'https://52fddedd5d784c1e94b484097d35a589@o530194.ingest.sentry.io/5649362',
+  integrations: [new Integrations.BrowserTracing()],
+
+  // We recommend adjusting this value in production, or using tracesSampler
+  // for finer control
+  tracesSampleRate: 1.0,
+});
 
 const components = {
   codeblock: (props) => {
