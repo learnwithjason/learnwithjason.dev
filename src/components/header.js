@@ -41,8 +41,6 @@ export function Header() {
   function handleClick(event) {
     event.preventDefault();
 
-    console.log(event.this.is.not.a.thing);
-
     if (open) {
       toggleNav.reverse();
       toggleNavItems.reverse();
