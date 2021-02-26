@@ -108,19 +108,19 @@ async function createBlogPages({ setDataForSlug }) {
 
 export const sourceData = async ({ setDataForSlug }) => {
   const schedulePromise = fetch(
-    'https://www.learnwithjason.dev/api/schedule',
+    'https://6036a55bffc5a700a6c13851--lwj2021.netlify.app/api/schedule',
   ).then((res) => res.json());
 
   const featuredPromise = fetch(
-    'https://www.learnwithjason.dev/api/episodes?featured=true',
+    'https://6036a55bffc5a700a6c13851--lwj2021.netlify.app/api/episodes?featured=true',
   ).then((res) => res.json());
 
   const allEpisodesPromise = fetch(
-    'https://www.learnwithjason.dev/api/episodes?transcript=true',
+    'https://6036a55bffc5a700a6c13851--lwj2021.netlify.app/api/episodes?transcript=true',
   ).then((res) => res.json());
 
   const sponsorsPromise = fetch(
-    `https://www.learnwithjason.dev/api/sponsors`,
+    `https://6036a55bffc5a700a6c13851--lwj2021.netlify.app/api/sponsors`,
   ).then((res) => res.json());
 
   createBlogPages({ setDataForSlug });
