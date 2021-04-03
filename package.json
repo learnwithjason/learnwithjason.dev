@@ -19,6 +19,7 @@
   "dependencies": {
     "@jlengstorf/get-share-image": "^0.8.0",
     "@jlengstorf/get-twitch-oauth": "^1.0.1",
+    "@netlify/functions": "^0.4.1",
     "@sector/breadbox": "^0.0.4",
     "@sendgrid/mail": "^7.4.0",
     "@stream-blitz/create-handler": "^2.0.3",

@@ -1,6 +1,7 @@
+const { builder } = require('@netlify/functions');
 const { hasuraRequest } = require('./util/hasura');
 
-exports.handler = async (event) => {
+const handler = async (event) => {
   const {
     limit = 999,
     featured = false,
@@ -63,3 +64,5 @@ exports.handler = async (event) => {
     body: JSON.stringify(data.episodes),
   };
 };
+
+exports.handler = builder(handler);

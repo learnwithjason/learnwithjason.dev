@@ -1,6 +1,7 @@
+const { builder } = require('@netlify/functions');
 const { hasuraRequest } = require('./util/hasura');
 
-exports.handler = async (event) => {
+const handler = async (event) => {
   const path = event.path;
   const slug = path.replace(new RegExp('/api/episode/'), '');
   const { transcript = false } = event.queryStringParameters;
@@ -57,3 +58,5 @@ exports.handler = async (event) => {
     body: JSON.stringify(episode),
   };
 };
+
+exports.handler = builder(handler);
