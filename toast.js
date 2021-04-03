@@ -137,7 +137,12 @@ export const sourceData = async ({ setDataForSlug }) => {
     }),
   ]);
 
-  const markdownPromises = episodes.map(async (episode) => {
+  const markdownPromises = episodes.map(async (episodeWithoutTranscript) => {
+    const { slug } = episodeWithoutTranscript;
+    const episode = await fetch(
+      `https://www.learnwithjason.dev/api/episode/${slug.current}?transcript=true`,
+    ).then((res) => res.json());
+
     return new Promise((resolve, reject) => {
       if (!episode.transcript) {
         resolve(episode);
