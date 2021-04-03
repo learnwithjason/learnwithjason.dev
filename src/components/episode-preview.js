@@ -39,13 +39,22 @@ export function EpisodePreview({ episode, hideLinks = false, children }) {
           )}
         </h3>
         <p class="episode-description">{episode.description}</p>
+        {episode.host && (
+          <p class="episode-description">
+            With special guest host{' '}
+            <a href={`https://twitter.com/${episode.host.twitter}`}>
+              {episode.host.name}
+            </a>
+            !
+          </p>
+        )}
         {children
           ? children
           : !hideLinks && (
               <div class="episode-links">
                 <a href={`/${episode.slug.current}`}>
                   <IconInfo /> Episode Details
-		          <span class="visually-hidden"> for {episode.title}</span>
+                  <span class="visually-hidden"> for {episode.title}</span>
                 </a>
                 <ShareButton
                   title={episode.title}
