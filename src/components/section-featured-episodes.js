@@ -8,6 +8,8 @@ export function SectionFeaturedEpisodes({ episodes }) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const currentEpisode = episodes[currentIndex];
+  const currentHost = getTeacher([currentEpisode.host]);
+  console.log({ currentHost });
   const currentTeacher = getTeacher(currentEpisode.guest);
 
   return (
@@ -49,6 +51,7 @@ export function SectionFeaturedEpisodes({ episodes }) {
 
       <EpisodeDetails
         title={currentEpisode.title}
+        host={currentHost}
         teacher={currentTeacher}
         description={currentEpisode.description}
         url={`/${currentEpisode.slug.current}`}

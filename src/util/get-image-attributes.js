@@ -12,16 +12,37 @@ function cleanText(text) {
 }
 
 export function getImageAttributes({
+  host = {
+    guestImage: {
+      asset: {
+        url:
+          'https://cdn.sanity.io/images/vnkupgyb/production/7d8835955821f584df0b89ab72d2d83799139bb7-660x660.jpg',
+      },
+    },
+    name: 'Jason Lengstorf',
+    twitter: 'jlengstorf',
+  },
   teacher,
   title,
   width,
   height,
   type = 'video',
 }) {
-  const JasonIsTalkingToHimself = teacher.name === 'Jason Lengstorf';
+  const JasonIsTalkingToHimself =
+    host.name === 'Jason Lengstorf' && teacher.name === 'Jason Lengstorf';
   let filename = type === 'scheduled' ? 'episode' : 'video-poster';
   if (JasonIsTalkingToHimself) {
     filename = `${filename}-solo`;
+  }
+
+  // do we have a guest host? 👀
+  switch (host.twitter) {
+    case 'bencodezen':
+      filename = `${filename}-ben-hong`;
+      break;
+
+    default:
+      break;
   }
 
   /*

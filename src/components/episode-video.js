@@ -7,6 +7,7 @@ import { EpisodePoster } from './episode-poster.js';
 export function EpisodeVideo({ episode }) {
   const [playing, setPlaying] = useState(false);
 
+  const host = getTeacher([episode.host]);
   const teacher = getTeacher(episode.guest);
 
   return (
@@ -24,7 +25,7 @@ export function EpisodeVideo({ episode }) {
         </div>
       ) : (
         <button onClick={() => setPlaying(true)} aria-label="play video">
-          <EpisodePoster title={episode.title} teacher={teacher} />
+          <EpisodePoster title={episode.title} host={host} teacher={teacher} />
         </button>
       )}
     </div>

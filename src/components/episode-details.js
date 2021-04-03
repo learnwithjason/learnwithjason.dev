@@ -5,7 +5,7 @@ import { IconInfo } from './icon-info.js';
 import { EpisodePoster } from './episode-poster.js';
 import { ShareButton } from './share-button.js';
 
-export function EpisodeDetails({ title, teacher, description, url }) {
+export function EpisodeDetails({ title, host, teacher, description, url }) {
   const ref = useRef();
 
   useEffect(() => {
@@ -31,7 +31,7 @@ export function EpisodeDetails({ title, teacher, description, url }) {
     <article class="episode-details dark" ref={ref}>
       <div class="episode-poster animate">
         <a href={url}>
-          <EpisodePoster title={title} teacher={teacher} />
+          <EpisodePoster title={title} host={host} teacher={teacher} />
         </a>
       </div>
       <div class="episode-info">

@@ -115,8 +115,16 @@ export const sourceData = async ({ setDataForSlug }) => {
     'https://www.learnwithjason.dev/api/episodes?featured=true',
   ).then((res) => res.json());
 
-  const allEpisodesPromise = fetch(
-    'https://www.learnwithjason.dev/api/episodes',
+  const first100EpisodesPromise = fetch(
+    'https://www.learnwithjason.dev/api/episodes?transcript=true&limit=100',
+  ).then((res) => res.json());
+
+  const next100EpisodesPromise = fetch(
+    'https://www.learnwithjason.dev/api/episodes?transcript=true&limit=100&offset=100',
+  ).then((res) => res.json());
+
+  const third100EpisodesPromise = fetch(
+    'https://www.learnwithjason.dev/api/episodes?transcript=true&limit=100&offset=200',
   ).then((res) => res.json());
 
   const sponsorsPromise = fetch(
@@ -125,10 +133,19 @@ export const sourceData = async ({ setDataForSlug }) => {
 
   createBlogPages({ setDataForSlug });
 
-  const [schedule, featuredEpisodes, episodes, sponsors] = await Promise.all([
+  const [
+    schedule,
+    featuredEpisodes,
+    episodes,
+    moreEpisodes,
+    evenMoreEpisodes,
+    sponsors,
+  ] = await Promise.all([
     schedulePromise,
     featuredPromise,
-    allEpisodesPromise,
+    first100EpisodesPromise,
+    next100EpisodesPromise,
+    third100EpisodesPromise,
     sponsorsPromise,
     sourceMdx({
       setDataForSlug,
@@ -137,12 +154,11 @@ export const sourceData = async ({ setDataForSlug }) => {
     }),
   ]);
 
-  const markdownPromises = episodes.map(async (episodeWithoutTranscript) => {
-    const { slug } = episodeWithoutTranscript;
-    const episode = await fetch(
-      `https://www.learnwithjason.dev/api/episode/${slug.current}?transcript=true`,
-    ).then((res) => res.json());
-
+  const markdownPromises = [
+    ...episodes,
+    ...moreEpisodes,
+    ...evenMoreEpisodes,
+  ].map(async (episode) => {
     return new Promise((resolve, reject) => {
       if (!episode.transcript) {
         resolve(episode);
@@ -216,9 +232,11 @@ export const sourceData = async ({ setDataForSlug }) => {
 
   await Promise.all(
     schedule.map((episode) => {
+      const host = getTeacher([episode.host]);
       const teacher = getTeacher(episode.guest);
 
       const { srcSet } = getImageAttributes({
+        host,
         teacher,
         title: episode.title,
         width: 500,
@@ -304,9 +322,11 @@ export const sourceData = async ({ setDataForSlug }) => {
         return Promise.resolve();
       }
 
+      const host = getTeacher([episode.host]);
       const teacher = getTeacher(episode.guest);
 
       const { srcSet } = getImageAttributes({
+        host,
         teacher,
         title: episode.title,
         width: 500,
