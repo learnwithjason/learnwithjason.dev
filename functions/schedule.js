@@ -34,6 +34,15 @@ exports.handler = async (event) => {
             name
             twitter
           }
+          host {
+            guestImage {
+              asset {
+                url
+              }
+            }
+            name
+            twitter
+          }
         }
       }
     `,

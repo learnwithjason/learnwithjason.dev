@@ -29,6 +29,15 @@ const handler = async (event) => {
             name
             twitter
           }
+          host {
+            guestImage {
+              asset {
+                url
+              }
+            }
+            name
+            twitter
+          }
           demo
           repo
           links
