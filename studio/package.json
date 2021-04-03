@@ -1,0 +1,30 @@
+{
+  "name": "studio",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "package.json",
+  "author": "Jason Lengstorf <jason@lengstorf.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "sanity start",
+    "test": "sanity check"
+  },
+  "keywords": [
+    "sanity"
+  ],
+  "dependencies": {
+    "@sanity/base": "^2.7.4",
+    "@sanity/components": "^2.2.6",
+    "@sanity/core": "^2.7.4",
+    "@sanity/default-layout": "^2.7.4",
+    "@sanity/default-login": "^2.7.0",
+    "@sanity/desk-tool": "^2.7.4",
+    "prop-types": "^15.6",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "sanity-plugin-autocomplete-tags": "^1.0.1",
+    "sanity-plugin-markdown": "^2.0.0"
+  },
+  "devDependencies": {}
+}
