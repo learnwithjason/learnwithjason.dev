@@ -418,6 +418,7 @@ a:focus {
   }
 
   .episode-previews {
+    align-items: start;
     display: grid;
     gap: 3rem;
     grid-template-columns: repeat(auto-fit, min(calc(50% - 1.5rem), 600px));
