@@ -136,9 +136,9 @@ export const sourceData = async ({ setDataForSlug }) => {
   const [
     schedule,
     featuredEpisodes,
-    episodes,
-    moreEpisodes,
-    evenMoreEpisodes,
+    first100Episodes,
+    next100Episodes,
+    third100Episodes,
     sponsors,
   ] = await Promise.all([
     schedulePromise,
@@ -154,11 +154,13 @@ export const sourceData = async ({ setDataForSlug }) => {
     }),
   ]);
 
-  const markdownPromises = [
-    ...episodes,
-    ...moreEpisodes,
-    ...evenMoreEpisodes,
-  ].map(async (episode) => {
+  const episodes = [
+    ...first100Episodes,
+    ...next100Episodes,
+    ...third100Episodes,
+  ];
+
+  const markdownPromises = episodes.map(async (episode) => {
     return new Promise((resolve, reject) => {
       if (!episode.transcript) {
         resolve(episode);
