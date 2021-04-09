@@ -26,3 +26,6 @@ https://lwj.dev/*                     https://www.learnwithjason.dev/:splat 301!
 /use-gatsby-wordpress-for-dynamic-sites  /use-gatsby-and-wordpress-for-dynamic-sites 301
 /set-up-strapi-as-a-cms-for-gatsby  /strapi-gatsby-cms 301
 /write-tests-for-gatsby-sites-apps  /write-tests-for-gatsby-sites-and-apps 301
+/advanced-graphql-techniques-in-gatsby  /advanced-graphql-gatsby 301
+/jamstack-cms-ecommerce  /jamstack-cms-and-ecommerce 301
+
