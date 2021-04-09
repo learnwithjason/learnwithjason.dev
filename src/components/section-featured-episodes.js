@@ -9,7 +9,6 @@ export function SectionFeaturedEpisodes({ episodes }) {
 
   const currentEpisode = episodes[currentIndex];
   const currentHost = getTeacher([currentEpisode.host]);
-  console.log({ currentHost });
   const currentTeacher = getTeacher(currentEpisode.guest);
 
   return (

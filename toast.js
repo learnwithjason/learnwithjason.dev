@@ -112,19 +112,27 @@ export const sourceData = async ({ setDataForSlug }) => {
   ).then((res) => res.json());
 
   const featuredPromise = fetch(
-    'https://www.learnwithjason.dev/api/episodes?featured=true',
+    'https://www.learnwithjason.dev/api/episodes/featured',
   ).then((res) => res.json());
 
-  const first100EpisodesPromise = fetch(
-    'https://www.learnwithjason.dev/api/episodes?transcript=true&limit=100',
+  const episodesPromise1 = fetch(
+    'https://www.learnwithjason.dev/api/episodes/page/1/transcript',
   ).then((res) => res.json());
 
-  const next100EpisodesPromise = fetch(
-    'https://www.learnwithjason.dev/api/episodes?transcript=true&limit=100&offset=100',
+  const episodesPromise2 = fetch(
+    'https://www.learnwithjason.dev/api/episodes/page/2/transcript',
   ).then((res) => res.json());
 
-  const third100EpisodesPromise = fetch(
-    'https://www.learnwithjason.dev/api/episodes?transcript=true&limit=100&offset=200',
+  const episodesPromise3 = fetch(
+    'https://www.learnwithjason.dev/api/episodes/page/3/transcript',
+  ).then((res) => res.json());
+
+  const episodesPromise4 = fetch(
+    'https://www.learnwithjason.dev/api/episodes/page/4/transcript',
+  ).then((res) => res.json());
+
+  const episodesPromise5 = fetch(
+    'https://www.learnwithjason.dev/api/episodes/page/5/transcript',
   ).then((res) => res.json());
 
   const sponsorsPromise = fetch(
@@ -136,16 +144,20 @@ export const sourceData = async ({ setDataForSlug }) => {
   const [
     schedule,
     featuredEpisodes,
-    first100Episodes,
-    next100Episodes,
-    third100Episodes,
+    episodes1,
+    episodes2,
+    episodes3,
+    episodes4,
+    episodes5,
     sponsors,
   ] = await Promise.all([
     schedulePromise,
     featuredPromise,
-    first100EpisodesPromise,
-    next100EpisodesPromise,
-    third100EpisodesPromise,
+    episodesPromise1,
+    episodesPromise2,
+    episodesPromise3,
+    episodesPromise4,
+    episodesPromise5,
     sponsorsPromise,
     sourceMdx({
       setDataForSlug,
@@ -155,10 +167,16 @@ export const sourceData = async ({ setDataForSlug }) => {
   ]);
 
   const episodes = [
-    ...first100Episodes,
-    ...next100Episodes,
-    ...third100Episodes,
+    ...episodes1,
+    ...episodes2,
+    ...episodes3,
+    ...episodes4,
+    ...episodes5,
   ];
+
+  console.log({
+    count: episodes.length,
+  });
 
   const markdownPromises = episodes.map(async (episode) => {
     return new Promise((resolve, reject) => {

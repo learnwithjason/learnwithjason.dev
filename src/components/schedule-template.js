@@ -5,7 +5,6 @@ import { IconCalendar } from './src/components/icon-calendar.js';
 import { ShareButton } from './src/components/share-button.js';
 
 export default function EpisodeTemplate({ episode }) {
-  console.log({ host: episode.host });
   return (
     <div class="block episode">
       <EpisodePreview episode={episode} hideLinks>
