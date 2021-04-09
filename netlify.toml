@@ -9,6 +9,9 @@
   command = "npm run dev"
   targetPort = 5000
 
+[functions]
+  node_bundler = "esbuild"
+
 [[plugins]]
   package = "netlify-plugin-toast-cache"
 
