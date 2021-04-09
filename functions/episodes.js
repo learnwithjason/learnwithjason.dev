@@ -2,12 +2,17 @@ const { builderFunction: builder } = require('@netlify/functions');
 const { hasuraRequest } = require('./util/hasura');
 
 const handler = async (event) => {
-  const {
-    limit = 999,
-    offset = 0,
-    featured = false,
-    transcript = false,
-  } = event.queryStringParameters;
+  const { path } = event;
+  const [, , , type = 'page', page = 1, hasTranscript = false] = path.split(
+    '/',
+  );
+
+  const limit = 50;
+  const offset = (page - 1) * 50;
+  const featured = type === 'featured';
+  const transcript = !!hasTranscript;
+
+  console.log({ limit, offset, featured, transcript });
 
   const data = await hasuraRequest({
     query: `
