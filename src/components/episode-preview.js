@@ -13,6 +13,7 @@ dayjs.extend(Timezone);
 dayjs.extend(AdvancedFormat);
 
 export function EpisodePreview({ episode, hideLinks = false, children }) {
+  const host = getTeacher([episode.host]);
   const teacher = getTeacher(episode.guest);
 
   return (
@@ -39,7 +40,7 @@ export function EpisodePreview({ episode, hideLinks = false, children }) {
           )}
         </h3>
         <p class="episode-description">{episode.description}</p>
-        {episode.host && (
+        {host && host.name !== 'Jason Lengstorf' && (
           <p class="episode-description">
             With special guest host{' '}
             <a href={`https://twitter.com/${episode.host.twitter}`}>
