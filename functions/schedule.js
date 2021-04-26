@@ -1,7 +1,7 @@
-const qs = require('querystring');
+const { builder } = require('@netlify/functions');
 const { hasuraRequest } = require('./util/hasura');
 
-exports.handler = async (event) => {
+const handler = async (event) => {
   const { limit = 999 } = event.queryStringParameters;
   const date = new Date();
   date.setHours(date.getHours() - 2);
@@ -63,3 +63,5 @@ exports.handler = async (event) => {
     body: JSON.stringify(data.schedule),
   };
 };
+
+exports.handler = builder(handler);

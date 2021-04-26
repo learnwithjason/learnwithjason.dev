@@ -12,8 +12,6 @@ const handler = async (event) => {
   const featured = type === 'featured';
   const transcript = !!hasTranscript;
 
-  console.log({ limit, offset, featured, transcript });
-
   const data = await hasuraRequest({
     query: `
       query GetEpisodes ($date: DateTime!, $limit: Int!, $offset: Int!) {
