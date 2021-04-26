@@ -29,6 +29,8 @@ https://lwj.dev/*                     https://www.learnwithjason.dev/:splat 301!
 /advanced-graphql-techniques-in-gatsby  /advanced-graphql-gatsby 301
 /jamstack-cms-ecommerce  /jamstack-cms-and-ecommerce 301
 /image-video-magic-with-cloudinary /image-and-video-magic-with-cloudinary 301
+/running-state-machines-on-kubernetes /episodes 301
+/sketching-illustration-and-logo-creation /sketching-illustration-logo-creation 301
 
 # hi bots
 /wp-login.php  https://jason.af/party 301
