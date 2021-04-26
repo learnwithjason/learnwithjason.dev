@@ -1,4 +1,4 @@
-const { builderFunction: builder } = require('@netlify/functions');
+const { builder } = require('@netlify/functions');
 const { hasuraRequest } = require('./util/hasura');
 
 const handler = async (event) => {
