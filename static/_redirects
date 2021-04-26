@@ -34,3 +34,5 @@ https://lwj.dev/*                     https://www.learnwithjason.dev/:splat 301!
 
 # hi bots
 /wp-login.php  https://jason.af/party 301
+/.env  https://jason.af/party 301
+/xmlrpc.php  https://jason.af/party 301
