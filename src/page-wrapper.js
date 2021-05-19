@@ -159,6 +159,7 @@ export default function PageWrapper(props) {
         ) : (
           <Component {...props}>{props.children}</Component>
         )}
+        <p>butts</p>
       </main>
       <Footer />
     </MDXProvider>
