@@ -311,14 +311,19 @@ export const sourceData = async ({ setDataForSlug }) => {
             'https://res.cloudinary.com/jlengstorf/image/upload/q_auto,f_auto/v1607755791/lwj/learnwithjason-og.jpg',
           url: 'https://www.learnwithjason.dev/episodes',
         },
-        episodes: episodes.map((episode) => ({
-          _id: episode._id,
-          title: episode.title,
-          description: episode.description,
-          slug: episode.slug,
-          guest: episode.guest,
-          youtubeID: episode.youtubeID,
-        })),
+        episodes: episodes.map((episode) => {
+          const host = getTeacher([episode.host]);
+
+          return {
+            _id: episode._id,
+            title: episode.title,
+            description: episode.description,
+            slug: episode.slug,
+            host,
+            guest: episode.guest,
+            youtubeID: episode.youtubeID,
+          };
+        }),
       },
     }),
     setDataForSlug('/schedule', {
