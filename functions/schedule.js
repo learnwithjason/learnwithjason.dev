@@ -60,7 +60,9 @@ const handler = async (event) => {
       'Access-Control-Allow-Headers': 'Content-Type',
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(data.schedule),
+    body: JSON.stringify(
+      data.schedule.map((s) => ({ ...s, title: `[STAGING] ${s.title}` })),
+    ),
   };
 };
 

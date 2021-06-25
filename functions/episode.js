@@ -64,7 +64,7 @@ const handler = async (event) => {
       'Access-Control-Allow-Headers': 'Content-Type',
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(episode),
+    body: JSON.stringify({ ...episode, title: `[STAGING] ${episode.title}` }),
   };
 };
 
