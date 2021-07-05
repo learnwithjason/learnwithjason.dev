@@ -17,6 +17,8 @@
     "serve": "serve public"
   },
   "dependencies": {
+    "@algolia/autocomplete-js": "^1.1.0",
+    "@algolia/autocomplete-theme-classic": "^1.1.0",
     "@jlengstorf/get-share-image": "^0.8.0",
     "@jlengstorf/get-twitch-oauth": "^1.0.1",
     "@netlify/functions": "^0.7.0",
@@ -27,6 +29,7 @@
     "@stream-blitz/create-handler": "^2.0.3",
     "@stripe/stripe-js": "^1.11.0",
     "@toastdotdev/mdx": "^0.2.3",
+    "algoliasearch": "^4.10.2",
     "cssnano": "^5.0.1",
     "dayjs": "^1.9.8",
     "fs-extra": "^9.0.1",
@@ -57,7 +60,8 @@
     ],
     "installOptions": {
       "alias": {
-        "react": "preact/compat"
+        "react": "preact/compat",
+        "algolia": "algolia/lite"
       }
     },
     "knownEntrypoints": [

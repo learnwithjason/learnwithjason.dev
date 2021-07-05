@@ -7,6 +7,7 @@ import { Header } from './components/header.js';
 import { Footer } from './components/footer.js';
 import { PostTemplate } from './components/post-template.js';
 import { PageTemplate } from './components/page-template.js';
+import { Search } from './components/search.js';
 
 Sentry.init({
   dsn:
