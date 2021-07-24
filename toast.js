@@ -139,6 +139,270 @@ export const sourceData = async ({ setDataForSlug }) => {
     `https://www.learnwithjason.dev/api/sponsors`,
   ).then((res) => res.json());
 
+  // const productsPromise = fetch(
+  //   `https://www.learnwithjason.dev/api/products`,
+  // ).then((res) => res.json());
+  const productsPromise = Promise.resolve([
+    {
+      id: 'Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0LzY3MDk2MTU5ODQ4NDk=',
+      handle: 'rainbow-corgi-toy',
+      description:
+        'Tell the rainbow corgi why your code doesn’t work; it listens. Give the rainbow corgi snuggs; it comforts. Take the rainbow corgi in the bath; it protecc.',
+      title: 'Rainbow Corgi Toy',
+      totalInventory: 1000,
+      variants: [
+        {
+          id: 'Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC8zOTk4MDkwMzEwNDcyMQ==',
+          title: 'Default Title',
+          quantityAvailable: 1000,
+          priceV2: { amount: '19.99', currencyCode: 'USD' },
+        },
+      ],
+      priceRange: {
+        maxVariantPrice: { amount: '19.99', currencyCode: 'USD' },
+        minVariantPrice: { amount: '19.99', currencyCode: 'USD' },
+      },
+      images: [
+        {
+          src: 'https://cdn.shopify.com/s/files/1/0589/5798/8049/products/corgi-toy.jpg?v=1627169322',
+          altText: null,
+        },
+      ],
+    },
+    {
+      id: 'Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0LzY3MDgzNzQ4NjQwODE=',
+      handle: '8-sticker-pack-save-50',
+      description: 'One each of all available stickers — holy buckets!',
+      title: '8 Sticker Pack (Save 50%!)',
+      totalInventory: 100,
+      variants: [
+        {
+          id: 'Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC8zOTk3NDk1MzEyNDA0OQ==',
+          title: 'Default Title',
+          quantityAvailable: 100,
+          priceV2: { amount: '16.0', currencyCode: 'USD' },
+        },
+      ],
+      priceRange: {
+        maxVariantPrice: { amount: '16.0', currencyCode: 'USD' },
+        minVariantPrice: { amount: '16.0', currencyCode: 'USD' },
+      },
+      images: [
+        {
+          src: 'https://cdn.shopify.com/s/files/1/0589/5798/8049/products/sticker-pack-v2.png?v=1627085191',
+          altText: null,
+        },
+      ],
+    },
+    {
+      id: 'Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0LzY3MDgzNjQ0MTEwODk=',
+      handle: 'stream-blitz-sticker',
+      description:
+        'Have more fun on Twitch with Stream Blitz! (dimensions: 1.82”w x 2”)',
+      title: 'Stream Blitz Sticker',
+      totalInventory: 100,
+      variants: [
+        {
+          id: 'Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC8zOTk3NDkyMTg5NjE0NQ==',
+          title: 'Default Title',
+          quantityAvailable: 100,
+          priceV2: { amount: '4.0', currencyCode: 'USD' },
+        },
+      ],
+      priceRange: {
+        maxVariantPrice: { amount: '4.0', currencyCode: 'USD' },
+        minVariantPrice: { amount: '4.0', currencyCode: 'USD' },
+      },
+      images: [
+        {
+          src: 'https://cdn.shopify.com/s/files/1/0589/5798/8049/products/stream-blitz.png?v=1627084862',
+          altText: null,
+        },
+      ],
+    },
+    {
+      id: 'Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0LzY3MDgzNjIzNDY3MDU=',
+      handle: 'lwj-logo-sticker',
+      description: 'Boop crew membership badge. (dimensions: 1.75”w x 2”)',
+      title: 'LWJ Logo Sticker',
+      totalInventory: 100,
+      variants: [
+        {
+          id: 'Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC8zOTk3NDkxNzIxMDMyMQ==',
+          title: 'Default Title',
+          quantityAvailable: 100,
+          priceV2: { amount: '4.0', currencyCode: 'USD' },
+        },
+      ],
+      priceRange: {
+        maxVariantPrice: { amount: '4.0', currencyCode: 'USD' },
+        minVariantPrice: { amount: '4.0', currencyCode: 'USD' },
+      },
+      images: [
+        {
+          src: 'https://cdn.shopify.com/s/files/1/0589/5798/8049/products/learn-with-jason.png?v=1627084783',
+          altText: null,
+        },
+      ],
+    },
+    {
+      id: 'Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0LzY3MDgzNjE3MjQxMTM=',
+      handle: 'beep-boop-sticker',
+      description:
+        'Boop, but beepier because it’s Morse code. (dimensions: 2” x 1.75”)',
+      title: 'BEEP BOOP Sticker',
+      totalInventory: 100,
+      variants: [
+        {
+          id: 'Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC8zOTk3NDkxNTgwMTI5Nw==',
+          title: 'Default Title',
+          quantityAvailable: 100,
+          priceV2: { amount: '4.0', currencyCode: 'USD' },
+        },
+      ],
+      priceRange: {
+        maxVariantPrice: { amount: '4.0', currencyCode: 'USD' },
+        minVariantPrice: { amount: '4.0', currencyCode: 'USD' },
+      },
+      images: [
+        {
+          src: 'https://cdn.shopify.com/s/files/1/0589/5798/8049/products/beep-boop.png?v=1627084741',
+          altText: null,
+        },
+      ],
+    },
+    {
+      id: 'Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0LzY3MDgzNjAyMTY3ODU=',
+      handle: 'play-until-it-pays-sticker',
+      description:
+        'Make it because it’s fun. The rest will follow. (dimensions: 2” x 1.75”)',
+      title: 'Play Until It Pays Sticker',
+      totalInventory: 100,
+      variants: [
+        {
+          id: 'Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC8zOTk3NDkxMjY4ODMzNw==',
+          title: 'Default Title',
+          quantityAvailable: 100,
+          priceV2: { amount: '4.0', currencyCode: 'USD' },
+        },
+      ],
+      priceRange: {
+        maxVariantPrice: { amount: '4.0', currencyCode: 'USD' },
+        minVariantPrice: { amount: '4.0', currencyCode: 'USD' },
+      },
+      images: [
+        {
+          src: 'https://cdn.shopify.com/s/files/1/0589/5798/8049/products/play-until-it-pays.png?v=1627084678',
+          altText: null,
+        },
+      ],
+    },
+    {
+      id: 'Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0LzY3MDgzNTkxMzU0NDE=',
+      handle: 'boop-sticker',
+      description:
+        'Do you wanna get booped on the brain? (dimensions: 2” x 1.82”)',
+      title: 'BOOP Sticker',
+      totalInventory: 100,
+      variants: [
+        {
+          id: 'Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC8zOTk3NDkxMDE2NTIwMQ==',
+          title: 'Default Title',
+          quantityAvailable: 100,
+          priceV2: { amount: '4.0', currencyCode: 'USD' },
+        },
+      ],
+      priceRange: {
+        maxVariantPrice: { amount: '4.0', currencyCode: 'USD' },
+        minVariantPrice: { amount: '4.0', currencyCode: 'USD' },
+      },
+      images: [
+        {
+          src: 'https://cdn.shopify.com/s/files/1/0589/5798/8049/products/boop.png?v=1627084638',
+          altText: null,
+        },
+      ],
+    },
+    {
+      id: 'Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0LzY3MDgzNTc3NTkxODU=',
+      handle: 'corgi-pal-sticker',
+      description:
+        'Add a corgi pal to your collection! (dimensions: 1.59”h x 2”)',
+      title: 'Corgi Pal Sticker',
+      totalInventory: 100,
+      variants: [
+        {
+          id: 'Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC8zOTk3NDkwNzg3MTQ0MQ==',
+          title: 'Default Title',
+          quantityAvailable: 100,
+          priceV2: { amount: '4.0', currencyCode: 'USD' },
+        },
+      ],
+      priceRange: {
+        maxVariantPrice: { amount: '4.0', currencyCode: 'USD' },
+        minVariantPrice: { amount: '4.0', currencyCode: 'USD' },
+      },
+      images: [
+        {
+          src: 'https://cdn.shopify.com/s/files/1/0589/5798/8049/products/corgi-pal.png?v=1627084571',
+          altText: null,
+        },
+      ],
+    },
+    {
+      id: 'Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0LzY3MDgzNTY3NDMzNzc=',
+      handle: 'rubber-corgi-sticker',
+      description:
+        'This rubber corgi will listen to your problems. (dimensions: 1.92”h x 2”)',
+      title: 'Rubber Corgi Sticker',
+      totalInventory: 100,
+      variants: [
+        {
+          id: 'Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC8zOTk3NDkwNDIwMTQyNQ==',
+          title: 'Default Title',
+          quantityAvailable: 100,
+          priceV2: { amount: '4.0', currencyCode: 'USD' },
+        },
+      ],
+      priceRange: {
+        maxVariantPrice: { amount: '4.0', currencyCode: 'USD' },
+        minVariantPrice: { amount: '4.0', currencyCode: 'USD' },
+      },
+      images: [
+        {
+          src: 'https://cdn.shopify.com/s/files/1/0589/5798/8049/products/rubber-corgi.png?v=1627084500',
+          altText: null,
+        },
+      ],
+    },
+    {
+      id: 'Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0LzY3MDgzNTQxODc0NzM=',
+      handle: 'bearded-corgi-sticker',
+      description:
+        'It’s a party corgi, but with a beard! (dimensions: 1.5”h x 1.59”)',
+      title: 'Bearded Corgi Sticker',
+      totalInventory: 100,
+      variants: [
+        {
+          id: 'Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC8zOTk3NDg5OTc0NDk3Nw==',
+          title: 'Default Title',
+          quantityAvailable: 100,
+          priceV2: { amount: '4.0', currencyCode: 'USD' },
+        },
+      ],
+      priceRange: {
+        maxVariantPrice: { amount: '4.0', currencyCode: 'USD' },
+        minVariantPrice: { amount: '4.0', currencyCode: 'USD' },
+      },
+      images: [
+        {
+          src: 'https://cdn.shopify.com/s/files/1/0589/5798/8049/products/bearded-corgi.png?v=1627084354',
+          altText: null,
+        },
+      ],
+    },
+  ]);
+
   createBlogPages({ setDataForSlug });
 
   const [
@@ -150,6 +414,7 @@ export const sourceData = async ({ setDataForSlug }) => {
     episodes4,
     episodes5,
     sponsors,
+    products,
   ] = await Promise.all([
     schedulePromise,
     featuredPromise,
@@ -159,6 +424,7 @@ export const sourceData = async ({ setDataForSlug }) => {
     episodesPromise4,
     episodesPromise5,
     sponsorsPromise,
+    productsPromise,
     sourceMdx({
       setDataForSlug,
       directory: './content/pages',
@@ -375,6 +641,11 @@ export const sourceData = async ({ setDataForSlug }) => {
           episode,
         },
       });
+    }),
+    setDataForSlug('/store', {
+      data: {
+        products,
+      },
     }),
   );
 };
