@@ -58,6 +58,15 @@
       "contributions": [
         "a11y"
       ]
+    },
+    {
+      "login": "philhawksworth",
+      "name": "Phil Hawksworth",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5865?v=4",
+      "profile": "http://hawksworx.com",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
