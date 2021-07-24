@@ -1,22 +1,38 @@
-const stripe = require('stripe')(process.env.STRIPE_API_SECRET);
-const { getShippingCountries, getPaymentMethods } = require('./util/stripe');
+const qs = require('querystring');
+const { postToShopify } = require('./util/postToShopify.js');
 
 exports.handler = async (event) => {
-  const { items } = JSON.parse(event.body);
-  const session = await stripe.checkout.sessions.create({
-    success_url: `${process.env.URL}/store?status=success`,
-    cancel_url: `${process.env.URL}/store?status=cancel`,
-    payment_method_types: getPaymentMethods(),
-    billing_address_collection: 'auto',
-    shipping_address_collection: {
-      allowed_countries: getShippingCountries(),
-    },
-    line_items: items,
-    mode: 'payment',
-  });
+  const { cartId } = qs.parse(event.body);
 
-  return {
-    statusCode: 200,
-    body: JSON.stringify({ sessionId: session.id }),
-  };
+  try {
+    const response = await postToShopify({
+      query: `
+        query checkoutURL($cartId: ID!) {
+          cart(id: $cartId) {
+            checkoutUrl
+          }
+        }
+      `,
+      variables: {
+        cartId,
+      },
+    });
+
+    if (!response.cart.checkoutUrl) {
+      throw new Error('No checkout URL returned');
+    }
+
+    return {
+      statusCode: 301,
+      headers: {
+        Location: response.cart.checkoutUrl,
+      },
+      body: 'Redirecting to checkout...',
+    };
+  } catch (error) {
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: error.message }),
+    };
+  }
 };
