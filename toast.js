@@ -441,7 +441,7 @@ export const sourceData = async ({ setDataForSlug }) => {
   ];
 
   console.log({
-    count: episodes.length,
+    totalEpisodes: episodes.length,
   });
 
   const markdownPromises = episodes.map(async (episode) => {

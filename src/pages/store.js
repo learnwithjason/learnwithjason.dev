@@ -171,7 +171,6 @@ export default function Store({ products }) {
           <Cart cart={cart} emptyCart={emptyCart} />
         </aside>
       </section>
-      <pre>{JSON.stringify(cart, null, 2)}</pre>
     </Fragment>
   );
 }
