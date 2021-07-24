@@ -58,6 +58,15 @@
       "contributions": [
         "a11y"
       ]
+    },
+    {
+      "login": "cassidoo",
+      "name": "Cassidy Williams",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1454517?v=4",
+      "profile": "https://cassidoo.co",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
