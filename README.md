@@ -17,7 +17,7 @@
 </p>
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 &nbsp;
@@ -67,6 +67,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://sarah.dev"><img src="https://avatars1.githubusercontent.com/u/2281088?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sarah Drasner</b></sub></a><br /><a href="https://github.com/learnwithjason/learnwithjason.dev/commits?author=sdras" title="Code">💻</a></td>
     <td align="center"><a href="https://medium.com/@seif.sayed"><img src="https://avatars1.githubusercontent.com/u/16223724?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Seifeldin Mahjoub</b></sub></a><br /><a href="#maintenance-seifsay3d" title="Maintenance">🚧</a></td>
     <td align="center"><a href="http://benmyers.dev"><img src="https://avatars1.githubusercontent.com/u/18060369?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ben Myers</b></sub></a><br /><a href="#a11y-BenDMyers" title="Accessibility">️️️️♿️</a></td>
+    <td align="center"><a href="http://www.bencodezen.io"><img src="https://avatars.githubusercontent.com/u/4836334?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ben Hong</b></sub></a><br /><a href="https://github.com/learnwithjason/learnwithjason.dev/commits?author=bencodezen" title="Code">💻</a></td>
   </tr>
 </table>
 
