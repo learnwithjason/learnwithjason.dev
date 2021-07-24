@@ -138,6 +138,10 @@ export default function PageWrapper(props) {
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={image} />
 
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@algolia/autocomplete-theme-classic"
+        />
         <link rel="stylesheet" href="/styles/index.css" />
 
         {/* TODO why doesn't this render? */}
