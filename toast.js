@@ -164,7 +164,8 @@ export const sourceData = async ({ setDataForSlug }) => {
       },
       images: [
         {
-          src: 'https://cdn.shopify.com/s/files/1/0589/5798/8049/products/corgi-toy.jpg?v=1627169322',
+          src:
+            'https://cdn.shopify.com/s/files/1/0589/5798/8049/products/corgi-toy.jpg?v=1627169322',
           altText: null,
         },
       ],
@@ -189,7 +190,8 @@ export const sourceData = async ({ setDataForSlug }) => {
       },
       images: [
         {
-          src: 'https://cdn.shopify.com/s/files/1/0589/5798/8049/products/sticker-pack-v2.png?v=1627085191',
+          src:
+            'https://cdn.shopify.com/s/files/1/0589/5798/8049/products/sticker-pack-v2.png?v=1627085191',
           altText: null,
         },
       ],
@@ -215,7 +217,8 @@ export const sourceData = async ({ setDataForSlug }) => {
       },
       images: [
         {
-          src: 'https://cdn.shopify.com/s/files/1/0589/5798/8049/products/stream-blitz.png?v=1627084862',
+          src:
+            'https://cdn.shopify.com/s/files/1/0589/5798/8049/products/stream-blitz.png?v=1627084862',
           altText: null,
         },
       ],
@@ -240,7 +243,8 @@ export const sourceData = async ({ setDataForSlug }) => {
       },
       images: [
         {
-          src: 'https://cdn.shopify.com/s/files/1/0589/5798/8049/products/learn-with-jason.png?v=1627084783',
+          src:
+            'https://cdn.shopify.com/s/files/1/0589/5798/8049/products/learn-with-jason.png?v=1627084783',
           altText: null,
         },
       ],
@@ -266,7 +270,8 @@ export const sourceData = async ({ setDataForSlug }) => {
       },
       images: [
         {
-          src: 'https://cdn.shopify.com/s/files/1/0589/5798/8049/products/beep-boop.png?v=1627084741',
+          src:
+            'https://cdn.shopify.com/s/files/1/0589/5798/8049/products/beep-boop.png?v=1627084741',
           altText: null,
         },
       ],
@@ -292,7 +297,8 @@ export const sourceData = async ({ setDataForSlug }) => {
       },
       images: [
         {
-          src: 'https://cdn.shopify.com/s/files/1/0589/5798/8049/products/play-until-it-pays.png?v=1627084678',
+          src:
+            'https://cdn.shopify.com/s/files/1/0589/5798/8049/products/play-until-it-pays.png?v=1627084678',
           altText: null,
         },
       ],
@@ -318,7 +324,8 @@ export const sourceData = async ({ setDataForSlug }) => {
       },
       images: [
         {
-          src: 'https://cdn.shopify.com/s/files/1/0589/5798/8049/products/boop.png?v=1627084638',
+          src:
+            'https://cdn.shopify.com/s/files/1/0589/5798/8049/products/boop.png?v=1627084638',
           altText: null,
         },
       ],
@@ -344,7 +351,8 @@ export const sourceData = async ({ setDataForSlug }) => {
       },
       images: [
         {
-          src: 'https://cdn.shopify.com/s/files/1/0589/5798/8049/products/corgi-pal.png?v=1627084571',
+          src:
+            'https://cdn.shopify.com/s/files/1/0589/5798/8049/products/corgi-pal.png?v=1627084571',
           altText: null,
         },
       ],
@@ -370,7 +378,8 @@ export const sourceData = async ({ setDataForSlug }) => {
       },
       images: [
         {
-          src: 'https://cdn.shopify.com/s/files/1/0589/5798/8049/products/rubber-corgi.png?v=1627084500',
+          src:
+            'https://cdn.shopify.com/s/files/1/0589/5798/8049/products/rubber-corgi.png?v=1627084500',
           altText: null,
         },
       ],
@@ -396,7 +405,8 @@ export const sourceData = async ({ setDataForSlug }) => {
       },
       images: [
         {
-          src: 'https://cdn.shopify.com/s/files/1/0589/5798/8049/products/bearded-corgi.png?v=1627084354',
+          src:
+            'https://cdn.shopify.com/s/files/1/0589/5798/8049/products/bearded-corgi.png?v=1627084354',
           altText: null,
         },
       ],
@@ -644,6 +654,14 @@ export const sourceData = async ({ setDataForSlug }) => {
     }),
     setDataForSlug('/store', {
       data: {
+        meta: {
+          title: 'Toys and Stickers — Get Booped in the Learn With Jason Store',
+          description:
+            'Get your hands on a party corgi rubber duck and a whole bunch of boop-tastic stickers in the Learn With Jason store!',
+          image:
+            'https://res.cloudinary.com/jlengstorf/image/upload/lwj/store/lwj-store-og.jpg',
+          url: 'https://www.learnwithjason.dev/store',
+        },
         products,
       },
     }),
