@@ -67,6 +67,8 @@ const handler = async (event) => {
       offset: parseInt(offset),
     },
   });
+  
+  const publishedEpisodes = data.episodes.filter(e => e.youtubeID !== null);
 
   return {
     statusCode: 200,
@@ -76,7 +78,7 @@ const handler = async (event) => {
       'Access-Control-Allow-Headers': 'Content-Type',
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(data.episodes),
+    body: JSON.stringify(publishedEpisodes),
   };
 };
 
