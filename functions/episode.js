@@ -88,7 +88,9 @@ const handler = async (event) => {
     : '';
 
   const filename =
-    episode.host?.twitter === 'bencodezen' ? 'episode-ben-hong' : 'episode';
+    episode.host && episode.host.twitter === 'bencodezen'
+      ? 'episode-ben-hong'
+      : 'episode';
 
   const posterUrl = [
     `https://res.cloudinary.com/jlengstorf/image/upload`,
