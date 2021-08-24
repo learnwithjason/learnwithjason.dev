@@ -120,9 +120,10 @@ const handler = async (event) => {
     const imageBuffer = Buffer.from(response);
 
     return {
-      statusCode: 302,
+      statusCode: 200,
       headers: {
         'Content-Type': 'image/jpeg',
+        'Content-Disposition': `filename="${episode.slug.current}.jpg"`,
       },
       body: imageBuffer.toString('base64'),
       isBase64Encoded: true,
