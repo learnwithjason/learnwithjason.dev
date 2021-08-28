@@ -9,8 +9,7 @@ import { PostTemplate } from './components/post-template.js';
 import { PageTemplate } from './components/page-template.js';
 
 Sentry.init({
-  dsn:
-    'https://52fddedd5d784c1e94b484097d35a589@o530194.ingest.sentry.io/5649362',
+  dsn: 'https://52fddedd5d784c1e94b484097d35a589@o530194.ingest.sentry.io/5649362',
   integrations: [new Integrations.BrowserTracing()],
 
   // We recommend adjusting this value in production, or using tracesSampler
@@ -28,7 +27,7 @@ const components = {
           className.includes('-diff-') ? 'diff-highlight' : ''
         } ${className}`}
       >
-        <code dangerouslySetInnerHTML={{ __html: props.children }} />
+        <code {...props} />
       </pre>
     );
   },

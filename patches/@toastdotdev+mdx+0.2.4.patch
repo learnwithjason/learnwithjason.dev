@@ -1,8 +1,8 @@
 diff --git a/node_modules/@toastdotdev/mdx/rehype-prism-mdx.js b/node_modules/@toastdotdev/mdx/rehype-prism-mdx.js
-index b288dea..6d15221 100644
+index e9deaf5..9959266 100644
 --- a/node_modules/@toastdotdev/mdx/rehype-prism-mdx.js
 +++ b/node_modules/@toastdotdev/mdx/rehype-prism-mdx.js
-@@ -1,11 +1,11 @@
+@@ -1,14 +1,14 @@
 -import renderToString from "preact-render-to-string";
 -import { h } from "preact";
 -import Highlight from "prism-react-renderer";
@@ -11,14 +11,18 @@ index b288dea..6d15221 100644
  import prismComponents from "prismjs/components.js";
  import visit from "unist-util-visit";
 -import rangeParser from "parse-numeric-range";
+-import rehypeParse from 'rehype-parse';
 +import { createRequire } from "module";
-+
++import parse from 'rehype-parse';
+ import unified from 'unified';
+ 
 +const require = createRequire(import.meta.url);
 +global.Prism = Prism;
- 
++
  try {
    // meta doesn't exist in the prismjs package and thus will *FAIL* because it's a FAILURE
-@@ -17,123 +17,7 @@ try {
+   loadLanguages(
+@@ -19,123 +19,7 @@ try {
    console.log(e);
  }
  
@@ -143,7 +147,7 @@ index b288dea..6d15221 100644
  
  export default function rehypePrismMdx(options) {
    return (ast) => {
-@@ -146,65 +30,30 @@ export default function rehypePrismMdx(options) {
+@@ -148,67 +32,33 @@ export default function rehypePrismMdx(options) {
          let tree = parentTree.children[0];
          // store codestring for later
          tree.properties.codestring = tree.children[0].value.trim();
@@ -211,14 +215,18 @@ index b288dea..6d15221 100644
 +            : Prism.languages[lang],
 +          lang
          );
-+                    
++
+         // parse html string to HAST because unified breaks
+         // all the time.
+         const hastRoot = unified()
+-          .use(rehypeParse, {
++          .use(parse, {
+             emitParseErrors: true,
+             fragment: true
+           })
+-          .parse(highlightedCode);
++          .parse(html);
++
          // render code to string
          parentTree.tagName = "codeblock";
          parentTree.properties = tree.properties;
-         parentTree.children = [
-           {
--            value: highlightedCode,
-+            value: html,
-             type: "text",
-           },
-         ];
