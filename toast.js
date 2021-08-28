@@ -29,7 +29,7 @@ async function createBlogPages({ setDataForSlug }) {
                 uploadFolder: 'lwj',
               },
             ],
-          ],
+          ].filter(Boolean),
         });
 
         let cloudinaryUrl;
