@@ -1,11 +1,3 @@
-// "snowpack": {
-//   "exclude": [
-//     "bin/**/*",
-//     "public/**/*",
-//     "toast.js",
-//     "studio/**/*"
-//   ],
-// },
 export const specs = [
   'gsap',
   'preact/hooks',

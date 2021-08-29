@@ -2,7 +2,6 @@
 import { install, printStats } from 'esinstall';
 import { copyFile } from 'fs/promises';
 import prettyBytes from 'pretty-bytes';
-import cTable from 'console.table';
 import { options, specs } from './esinstall.js';
 
 // esinstall doesn't let us quiet the output while it runs
@@ -45,10 +44,12 @@ async function main() {
 }
 
 async function copyAssets() {
-  console.log('did the thing');
   await copyFile(
-    './node_modules/@algolia/autocomplete-theme-classic/dist/theme.min.css',
-    './public/styles/algolia-search.css',
+    path.resolve(
+      process.cwd(),
+      './node_modules/@algolia/autocomplete-theme-classic/dist/theme.min.css',
+    ),
+    path.resolve(process.cwd(), './public/styles/algolia-search.css'),
   );
 }
 
