@@ -1092,3 +1092,8 @@ a:focus {
   text-transform: uppercase;
   width: 100%;
 }
+
+.search-box-wrapper {
+  max-width: 100%;
+  width: 54ch;
+}
