@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import path from 'path';
 import { install, printStats } from 'esinstall';
 import { copyFile } from 'fs/promises';
 import prettyBytes from 'pretty-bytes';
