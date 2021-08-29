@@ -6,7 +6,7 @@
   "author": "christopherbiscardi <chris@christopherbiscardi.com> (@chrisbiscardi)",
   "license": "MIT",
   "scripts": {
-    "postinstall": "breadbox --dest public/web_modules && patch-package",
+    "postinstall": "./postinstall.js && patch-package",
     "build": "npm run build:css && npm run build:css-modules && npm run build:site",
     "build:css": "postcss --config legacy-commonjs src/styles/*.css -d public/styles/",
     "build:css-modules": "postcss --config legacy-commonjs node_modules/prism-theme-night-owl/build/style.css -o public/styles/theme.css",
@@ -18,10 +18,11 @@
   },
   "dependencies": {
     "@algolia/autocomplete-js": "^1.1.0",
+    "@algolia/autocomplete-plugin-recent-searches": "^1.3.0",
+    "@algolia/autocomplete-theme-classic": "^1.3.0",
     "@jlengstorf/get-share-image": "^0.8.0",
     "@jlengstorf/get-twitch-oauth": "^1.0.1",
     "@netlify/functions": "^0.7.0",
-    "@sector/breadbox": "^0.0.4",
     "@sendgrid/mail": "^7.4.0",
     "@sentry/react": "^6.2.0",
     "@sentry/tracing": "^6.2.0",
@@ -31,6 +32,7 @@
     "algoliasearch": "^4.10.3",
     "cssnano": "^5.0.1",
     "dayjs": "^1.9.8",
+    "esinstall": "^1.1.7",
     "fs-extra": "^9.0.1",
     "glob": "^7.1.6",
     "globby": "^11.0.1",
@@ -50,29 +52,10 @@
     "toast": "^0.3.39",
     "unified": "^9.2.0"
   },
-  "snowpack": {
-    "exclude": [
-      "bin/**/*",
-      "public/**/*",
-      "toast.js",
-      "studio/**/*"
-    ],
-    "installOptions": {
-      "alias": {
-        "react": "preact/compat"
-      }
-    },
-    "knownEntrypoints": [
-      "preact/hooks",
-      "preact",
-      "react-twitch-embed-video",
-      "@sentry/react",
-      "@sentry/tracing"
-    ]
-  },
   "devDependencies": {
     "autoprefixer": "^10.1.0",
     "patch-package": "^6.2.2",
+    "pretty-bytes": "^5.6.0",
     "serve": "^11.3.2"
   }
 }

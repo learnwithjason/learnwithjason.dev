@@ -2,7 +2,6 @@ import { h } from 'preact';
 import { useEffect, useRef, useState } from 'preact/hooks';
 import gsap from 'gsap';
 import { Logo } from './logo.js';
-import { Search } from './search.js';
 
 let toggleNav;
 let toggleNavItems;
@@ -74,9 +73,8 @@ export function Header() {
         <a href="/store">store</a>
         <a href="/blog">blog</a>
         <a href="/about">about</a>
-        {/* <a href="/search">search</a> */}
+        <a href="/search">search</a>
       </nav>
-      <Search />
     </header>
   );
 }
