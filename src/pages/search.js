@@ -104,7 +104,10 @@ export default function Search() {
   return (
     <Fragment>
       <Helmet>
-        <link rel="stylesheet" href="/styles/algolia-search.css" />
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@algolia/autocomplete-theme-classic"
+        />
       </Helmet>
       <section class="block">
         <h1>Search the Site</h1>

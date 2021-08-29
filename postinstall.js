@@ -17,24 +17,12 @@ const logger = {
   },
 };
 
-async function copyAssets() {
-  await copyFile(
-    path.resolve(
-      process.cwd(),
-      './node_modules/@algolia/autocomplete-theme-classic/dist/theme.min.css',
-    ),
-    path.resolve(process.cwd(), './public/styles/algolia-search.css'),
-  );
-}
-
 async function main() {
   const { success, stats } = await install(specs, {
     dest: './public/web_modules',
     // logger,
     ...options,
   });
-
-  await copyAssets();
 
   if (stats) {
     console.table(
