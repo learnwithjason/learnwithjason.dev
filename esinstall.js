@@ -1,5 +1,9 @@
 export const specs = [
   'dayjs',
+  'dayjs/plugin/relativeTime.js',
+  'dayjs/plugin/utc.js',
+  'dayjs/plugin/timezone.js',
+  'dayjs/plugin/advancedFormat.js',
   'gsap',
   'preact/hooks',
   'preact',
