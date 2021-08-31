@@ -1,4 +1,5 @@
 export const specs = [
+  'dayjs',
   'gsap',
   'preact/hooks',
   'preact',
