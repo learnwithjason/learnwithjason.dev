@@ -3,8 +3,14 @@ const { hasuraRequest } = require('./util/hasura');
 
 const handler = async (event) => {
   const { limit = 999 } = event.queryStringParameters;
+  const [, , , withBuffer] = event.path.split('/');
   const date = new Date();
-  date.setHours(date.getHours() - 2);
+  console.log({ withBuffer });
+  if (Boolean(withBuffer)) {
+    date.setHours(date.getHours() - 72);
+  } else {
+    date.setHours(date.getHours() - 2);
+  }
 
   const data = await hasuraRequest({
     query: `
@@ -21,6 +27,7 @@ const handler = async (event) => {
           _id
           title
           date
+          youtubeID
           slug {
             current
           }
@@ -52,6 +59,8 @@ const handler = async (event) => {
     },
   });
 
+  const schedule = data.schedule.filter((ep) => !ep.youtubeID);
+
   return {
     statusCode: 200,
     headers: {
@@ -60,7 +69,7 @@ const handler = async (event) => {
       'Access-Control-Allow-Headers': 'Content-Type',
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(data.schedule),
+    body: JSON.stringify(schedule),
   };
 };
 
