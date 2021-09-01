@@ -25,9 +25,11 @@ export default function Schedule({ schedule }) {
         </div>
       </header>
       <section class="block episode-previews">
-        {schedule.map((episode) => (
-          <EpisodePreview key={episode.slug} episode={episode} />
-        ))}
+        {schedule
+          .filter((ep) => !ep.youtubeID)
+          .map((episode) => (
+            <EpisodePreview key={episode.slug} episode={episode} />
+          ))}
       </section>
     </Fragment>
   );

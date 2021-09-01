@@ -108,7 +108,7 @@ async function createBlogPages({ setDataForSlug }) {
 
 export const sourceData = async ({ setDataForSlug }) => {
   const schedulePromise = fetch(
-    'https://www.learnwithjason.dev/api/schedule',
+    'https://www.learnwithjason.dev/api/schedule/safe',
   ).then((res) => res.json());
 
   const featuredPromise = fetch(
@@ -602,7 +602,13 @@ export const sourceData = async ({ setDataForSlug }) => {
             'https://res.cloudinary.com/jlengstorf/image/upload/q_auto,f_auto/v1607755791/lwj/learnwithjason-og.jpg',
           url: 'https://www.learnwithjason.dev/schedule',
         },
-        schedule,
+        schedule: schedule.filter(
+          (ep) =>
+            ep.date >
+            new Date(
+              new Date().setHours(new Date().getHours() - 2),
+            ).toISOString(),
+        ),
       },
     }),
   ]);
