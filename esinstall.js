@@ -7,6 +7,7 @@ export const specs = [
   'gsap',
   'preact/hooks',
   'preact',
+  'preact/compat',
   'react-helmet',
   'react-twitch-embed-video',
   '@sentry/react',
