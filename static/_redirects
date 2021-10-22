@@ -32,7 +32,12 @@ https://lwj.dev/*                     https://www.learnwithjason.dev/:splat 301!
 /running-state-machines-on-kubernetes /episodes 301
 /sketching-illustration-and-logo-creation /sketching-illustration-logo-creation 301
 
+# sponsors
+/fauna    https://www.fauna.com/?utm_source=Jason+Lengstorf+&utm_medium=video&utm_campaign=Q3&utm_id=influencers  301
+/auth0    https://auth0.com/?utm_source=learnwithjason&utm_medium=lwj&utm_campaign=sponsored                      301
+/netlify  https://www.netlify.com/?utm_source=learnwithjason&utm_medium=lwj&utm_campaign=devex-jl                 301
+
 # hi bots
 /wp-login.php  https://jason.af/party 301
-/.env  https://jason.af/party 301
-/xmlrpc.php  https://jason.af/party 301
+/.env          https://jason.af/party 301
+/xmlrpc.php    https://jason.af/party 301
