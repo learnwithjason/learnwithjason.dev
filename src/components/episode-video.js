@@ -4,11 +4,25 @@ import { useState } from 'preact/hooks';
 import { getTeacher } from '../util/get-teacher.js';
 import { EpisodePoster } from './episode-poster.js';
 
-export function EpisodeVideo({ episode }) {
+export function EpisodeVideo({ episode, count }) {
   const [playing, setPlaying] = useState(false);
 
   const host = getTeacher([episode.host]);
   const teacher = getTeacher(episode.guest);
+
+  // apparently YT breaks playlists after 200 videos, so bail if we're above that limit
+  const showPlaylist = count < 200;
+  const url = new URL('https://www.youtube-nocookie.com/');
+
+  url.pathname = `/embed/${episode.youtubeID}`;
+
+  if (showPlaylist) {
+    url.searchParams.set('listType', 'playlist');
+    url.searchParams.set('list', 'PLz8Iz-Fnk_eTpvd49Sa77NiF8Uqq5Iykx');
+  }
+
+  url.searchParams.set('autoplay', '1');
+  url.searchParams.set('rel', '0');
 
   return (
     <div class="episode-video">
@@ -17,7 +31,7 @@ export function EpisodeVideo({ episode }) {
           <iframe
             width="560"
             height="315"
-            src={`https://www.youtube-nocookie.com/embed/${episode.youtubeID}?listType=playlist&list=PLz8Iz-Fnk_eTpvd49Sa77NiF8Uqq5Iykx&autoplay=1&rel=0`}
+            src={url}
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen

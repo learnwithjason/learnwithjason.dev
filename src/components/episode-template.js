@@ -3,13 +3,13 @@ import { h, Fragment } from 'preact';
 import { getTeacher } from './src/util/get-teacher.js';
 import { EpisodeVideo } from './src/components/episode-video.js';
 
-export default function EpisodeTemplate({ episode }) {
+export default function EpisodeTemplate({ episode, count }) {
   const teacher = getTeacher(episode.guest);
 
   return (
     <div class="block episode">
       <div class="episode-info-wrapper">
-        <EpisodeVideo episode={episode} />
+        <EpisodeVideo episode={episode} count={count} />
         <div class="episode-description">
           <h1>{episode.title}</h1>
           <p class="gradient-underline">

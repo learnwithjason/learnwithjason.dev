@@ -13,9 +13,13 @@ export function EpisodeList({ episodes }) {
 
   return (
     <section class="block episodes">
-      {activeEpisodes.map((episode) => (
+      {activeEpisodes.map((episode, i) => (
         <div class="episode-listing">
-          <EpisodeVideo key={episode.slug.current} episode={episode} />
+          <EpisodeVideo
+            key={episode.slug.current}
+            episode={episode}
+            count={i + 1}
+          />
           <h2>
             <a href={`/${episode.slug.current}`}>{episode.title}</a>
           </h2>

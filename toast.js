@@ -614,7 +614,7 @@ export const sourceData = async ({ setDataForSlug }) => {
   ]);
 
   await Promise.all(
-    episodesWithMarkdown.map((episode) => {
+    episodesWithMarkdown.map((episode, i) => {
       if (!episode.youtubeID) {
         return Promise.resolve();
       }
@@ -645,6 +645,7 @@ export const sourceData = async ({ setDataForSlug }) => {
             url: `https://www.learnwithjason.dev/${episode.slug.current}`,
           },
           episode,
+          count: i + 1,
         },
       });
     }),
