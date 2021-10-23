@@ -37,6 +37,9 @@ https://lwj.dev/*                     https://www.learnwithjason.dev/:splat 301!
 /auth0    https://auth0.com/?utm_source=learnwithjason&utm_medium=lwj&utm_campaign=sponsored                      301
 /netlify  https://www.netlify.com/?utm_source=learnwithjason&utm_medium=lwj&utm_campaign=devex-jl                 301
 
+# affiliate links
+/daskeyboard  https://click.linksynergy.com/fs-bin/click?id=2xZxGRnahIM&offerid=1008802.89&type=3&subid=0&LSNSUBSITE=LSNSUBSITE  301
+
 # hi bots
 /wp-login.php  https://jason.af/party 301
 /.env          https://jason.af/party 301
