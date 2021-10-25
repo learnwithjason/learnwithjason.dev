@@ -5,11 +5,11 @@ const handler = async (event) => {
   const { limit = 999 } = event.queryStringParameters;
   const [, , , withBuffer] = event.path.split('/');
   const date = new Date();
-  console.log({ withBuffer });
+
   if (Boolean(withBuffer)) {
     date.setHours(date.getHours() - 72);
   } else {
-    date.setHours(date.getHours() - 2);
+    date.setHours(date.getMinutes() - 70);
   }
 
   const data = await hasuraRequest({
