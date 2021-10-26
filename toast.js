@@ -108,7 +108,7 @@ async function createBlogPages({ setDataForSlug }) {
 
 export const sourceData = async ({ setDataForSlug }) => {
   const schedulePromise = fetch(
-    'https://www.learnwithjason.dev/api/schedule/safe',
+    'https://www.learnwithjason.dev/api/schedule',
   ).then((res) => res.json());
 
   const featuredPromise = fetch(
