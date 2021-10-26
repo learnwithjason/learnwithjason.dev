@@ -9,7 +9,7 @@ const handler = async (event) => {
   if (Boolean(withBuffer)) {
     date.setHours(date.getHours() - 72);
   } else {
-    date.setHours(date.getMinutes() - 70);
+    date.setMinutes(date.getMinutes() - 70);
   }
 
   const data = await hasuraRequest({
