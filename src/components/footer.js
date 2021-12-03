@@ -17,8 +17,8 @@ export function Footer() {
         <div class="host-details">
           <p>
             <strong>Jason Lengstorf</strong> is a developer, a teacher, a
-            lifelong learner, and a huge doofus. He works as a Principal
-            Developer Experience Engineer at{' '}
+            lifelong learner, and a huge doofus. He works as a VP of
+            Developer Experience at{' '}
             <a href="https://www.netlify.com/?utm_source=learnwithjason&utm_medium=lwj-jl&utm_campaign=devex">
               Netlify
             </a>{' '}
