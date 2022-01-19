@@ -75,6 +75,11 @@ export default function EpisodeTemplate({ episode }) {
       </Helmet>
       <div class="block episode">
         <EpisodePreview episode={episode} hideLinks>
+          <p>
+            <a href="https://twitch.tv/jlengstorf" class="button">
+              Watch on Twitch
+            </a>
+          </p>
           <div class="episode-links">
             <a href="/calendar">
               <IconCalendar /> Add on Google Calendar
