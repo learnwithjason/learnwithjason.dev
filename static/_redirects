@@ -32,6 +32,7 @@ https://lwj.dev/*                     https://www.learnwithjason.dev/:splat 301!
 /running-state-machines-on-kubernetes /episodes 301
 /sketching-illustration-and-logo-creation /sketching-illustration-logo-creation 301
 /lets-learn-trpc /let-s-learn-trpc 301
+/build-your-own-live-music-visualization /build-your-own-audio-visualization-in-a-shader 301
 
 # sponsors
 /fauna    https://www.fauna.com/?utm_source=Jason+Lengstorf+&utm_medium=video&utm_campaign=Q3&utm_id=influencers  301
