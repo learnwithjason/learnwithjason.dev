@@ -135,6 +135,10 @@ export const sourceData = async ({ setDataForSlug }) => {
     'https://www.learnwithjason.dev/api/episodes/page/5/transcript',
   ).then((res) => res.json());
 
+  const episodesPromise6 = fetch(
+    'https://www.learnwithjason.dev/api/episodes/page/6/transcript',
+  ).then((res) => res.json());
+
   const sponsorsPromise = fetch(
     `https://www.learnwithjason.dev/api/sponsors`,
   ).then((res) => res.json());
@@ -413,6 +417,7 @@ export const sourceData = async ({ setDataForSlug }) => {
     episodes3,
     episodes4,
     episodes5,
+    episodes6,
     sponsors,
     products,
   ] = await Promise.all([
@@ -423,6 +428,7 @@ export const sourceData = async ({ setDataForSlug }) => {
     episodesPromise3,
     episodesPromise4,
     episodesPromise5,
+    episodesPromise6,
     sponsorsPromise,
     productsPromise,
     sourceMdx({
@@ -438,6 +444,7 @@ export const sourceData = async ({ setDataForSlug }) => {
     ...episodes3,
     ...episodes4,
     ...episodes5,
+    ...episodes6,
   ].filter((e) => e.youtubeID !== null);
 
   console.log({
