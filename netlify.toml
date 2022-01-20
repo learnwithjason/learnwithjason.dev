@@ -1,20 +1,3 @@
-[build]
-  command = "npm run build"
-  publish = "public"
-  functions = "functions"
-
-[dev]
-  autoLaunch = false
-  framework = "#custom"
-  command = "npm run dev"
-  targetPort = 5000
-
-# [functions]
-#   node_bundler = "esbuild"
-
-[[plugins]]
-  package = "netlify-plugin-toast-cache"
-
 [[redirects]]
   from = "/api/episode/:slug"
   to = "/.netlify/functions/episode"
