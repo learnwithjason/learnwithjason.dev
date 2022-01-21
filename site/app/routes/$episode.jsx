@@ -10,6 +10,7 @@ export const loader = async ({ params }) => {
     `http://localhost:3000/api/episode/${slug}/transcript`,
   ).then((res) => res.json());
 
+  // TODO handle missing transcript, future episode
   return { ...episode, transcriptHtml: marked.parse(episode.transcript) };
 };
 
