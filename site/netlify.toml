@@ -8,6 +8,26 @@
   port = 3000
 
 [[redirects]]
+  from = "/api/episode/:slug"
+  to = "/.netlify/builders/episode"
+  status = 200
+
+[[redirects]]
+  from = "/:slug/poster.jpg"
+  to = "/.netlify/builders/episode"
+  status = 200
+
+[[redirects]]
+  from = "/:slug/starting-soon.jpg"
+  to = "/.netlify/builders/episode"
+  status = 200
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/builders/:splat"
+  status = 200
+
+[[redirects]]
   from = "/*"
   to = "/.netlify/functions/server"
   status = 200

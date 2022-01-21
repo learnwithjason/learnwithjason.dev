@@ -8,6 +8,7 @@ import {
 } from 'remix';
 
 import { Header } from './components/header.jsx';
+import { Footer } from './components/footer.jsx';
 
 import styles from './styles/main.css';
 
@@ -106,6 +107,11 @@ export function links() {
 }
 
 export default function App() {
+  let wrapperClass = '';
+  // if (props.meta?.type === 'post') {
+  //   wrapperClass = 'post-container';
+  // }
+
   return (
     <html lang="en">
       <head>
@@ -134,7 +140,10 @@ export default function App() {
           </defs>
         </svg>
         <Header />
-        <Outlet />
+        <main id="content" className={wrapperClass}>
+          <Outlet />
+        </main>
+        <Footer />
         <ScrollRestoration />
         <Scripts />
         {process.env.NODE_ENV === 'development' && <LiveReload />}

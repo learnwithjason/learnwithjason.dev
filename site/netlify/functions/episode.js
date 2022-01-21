@@ -8,13 +8,30 @@ function cleanText(text) {
 
 const handler = async (event) => {
   const path = event.path;
-  const [, slug, poster = false] = path
+  const [, slug, modifier = false] = path
     .replace(new RegExp('/api/episode'), '')
     .split('/');
 
-  const { transcript = false } = event.queryStringParameters;
+  let transcript = false;
+  let poster = false;
+  let starting = false;
 
-  const starting = poster === 'starting-soon.jpg';
+  switch (modifier) {
+    case 'transcript':
+      transcript = true;
+      break;
+
+    case false:
+      break;
+
+    case 'starting-soon.jpg':
+      // fall through to the next case intentionally
+      starting = true;
+
+    default:
+      poster = modifier;
+      break;
+  }
 
   const data = await hasuraRequest({
     query: `

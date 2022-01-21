@@ -77,7 +77,7 @@ export function TeacherPhoto({
       </clipPath>
 
       <path
-        class="border"
+        className="border"
         fill="url(#lwj-gradient)"
         fillRule="evenodd"
         d={inactivePath}
