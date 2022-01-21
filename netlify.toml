@@ -1,19 +1,2 @@
-[[redirects]]
-  from = "/api/episode/:slug"
-  to = "/.netlify/functions/episode"
-  status = 200
-
-[[redirects]]
-  from = "/:slug/poster.jpg"
-  to = "/.netlify/functions/episode"
-  status = 200
-
-[[redirects]]
-  from = "/:slug/starting-soon.jpg"
-  to = "/.netlify/functions/episode"
-  status = 200
-
-[[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/:splat"
-  status = 200
+[build]
+ base = "site"
