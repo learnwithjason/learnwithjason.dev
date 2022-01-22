@@ -1,0 +1,250 @@
+.post-container {
+  max-width: 51rem;
+  margin: 3rem auto;
+}
+
+.post {
+  padding: 0 5vw;
+}
+
+.post header,
+.post .post-content {
+  grid-column-start: 2;
+}
+
+.post header p {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.post-content {
+  max-width: 53ch;
+  width: 100%;
+}
+
+.post .table-of-contents {
+  display: none;
+  grid-column-start: 1;
+  grid-row-start: 2;
+}
+
+@media (min-width: 1000px) {
+  .post {
+    display: grid;
+    gap: 4rem;
+    grid-template-columns: 12rem 1fr;
+    padding: 0;
+  }
+
+  .post .table-of-contents {
+    display: block;
+  }
+}
+
+.table-of-contents .toc-sticky-container {
+  position: sticky;
+  top: 3rem;
+}
+
+.table-of-contents h2 {
+  font-weight: 400;
+  margin: 0 -0.25rem;
+  padding: 0 0.25rem;
+  text-align: left;
+}
+
+.table-of-contents ol {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+  font-size: 0.75rem;
+}
+
+.table-of-contents li {
+  margin: 0;
+}
+
+.table-of-contents a {
+  border-left: 2px solid transparent;
+  color: var(--text-muted);
+  display: block;
+  line-height: 1rem;
+  margin: 0 -0.25rem;
+  padding: 0.5rem 0.25rem;
+  text-decoration: none;
+}
+
+.table-of-contents a.active {
+  background: var(--pink-faded);
+  border-color: var(--pink-dark);
+}
+
+.post-content h2 {
+  font-size: 1.5rem;
+  scroll-padding-top: 2rem;
+  text-align: left;
+}
+
+.post-content a {
+  color: var(--pink-dark);
+  font-weight: inherit;
+}
+
+.post-content strong {
+  color: var(--text-emphasized);
+  font-weight: 600;
+}
+
+.post-figure,
+.post-content pre {
+  margin: 2rem max(-5vw, -2rem);
+}
+
+.post-content pre {
+  color: var(--white);
+  background: var(--black);
+  font-size: 0.875rem;
+  padding: 1rem;
+}
+
+code {
+  font-family: 'Operator Mono', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono',
+    monospace;
+}
+
+.post-figure > * {
+  display: block;
+}
+
+.embed-container {
+  height: 0;
+  position: relative;
+  width: 100%;
+}
+
+.embed-container > * {
+  height: 100%;
+  left: 0;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.post-figure figcaption {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  font-style: italic;
+  margin-top: 0.5rem;
+  padding: 0 min(5vw, 2rem);
+}
+
+.post-content :not(pre) code {
+  background: var(--gray-lightest);
+  border: 1px solid var(--gray-light);
+  border-radius: 0.125rem;
+  line-height: 1;
+  overflow-x: scroll;
+  padding: 0.1rem 0.25rem;
+  word-wrap: break-word;
+}
+
+.post-content .post-aside :not(pre) code {
+  font-size: 0.875rem;
+}
+
+.inserted[class*='language-'],
+.deleted[class*='language-'] {
+  display: block;
+  margin-left: -1em;
+  margin-right: -1em;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.inserted[class*='language-'] {
+  background: rgb(173 219 103 / 0.1);
+}
+
+.deleted[class*='language-'] {
+  background: rgb(239 83 80 / 0.125);
+}
+
+.post-aside {
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: 1.5rem auto;
+  margin: 2rem 0;
+  padding: 1rem 1rem 1rem 0.5rem;
+  position: relative;
+}
+
+.post-aside::after,
+.post-aside::before {
+  background: var(--gradient);
+  content: '';
+  left: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.post-aside::after {
+  bottom: 0;
+  height: 2px;
+}
+
+.post-aside::before {
+  top: 0;
+  height: 4px;
+}
+
+.aside-icon {
+  padding-top: 0.2rem;
+}
+
+.aside-content p {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  margin: 1rem 0 0;
+}
+
+.aside-content p:first-of-type {
+  margin-top: 0;
+}
+
+.post-preview {
+  max-width: 500px;
+}
+
+.post-preview:not(:first-of-type) {
+  margin-top: 3rem;
+}
+
+.post-preview h2 {
+  font-size: 1.25rem;
+  margin: 0;
+  text-align: left;
+}
+
+.post-preview h2 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.post-preview p {
+  margin: 1rem 0 0.5rem;
+}
+
+.post-preview .read-more {
+  align-items: center;
+  color: var(--pink-dark);
+  display: flex;
+  font-size: 0.625rem;
+  font-weight: 600;
+  gap: 0.25rem;
+  justify-content: flex-end;
+  letter-spacing: 0.2em;
+  text-align: right;
+  text-transform: uppercase;
+  text-decoration: none;
+}

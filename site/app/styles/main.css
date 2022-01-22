@@ -816,6 +816,11 @@ a:focus {
   padding-bottom: 0;
 }
 
+.sponsor {
+  display: flex;
+  align-items: center;
+}
+
 .sponsors-heading {
   color: var(--text-muted);
   font-size: 0.625rem;

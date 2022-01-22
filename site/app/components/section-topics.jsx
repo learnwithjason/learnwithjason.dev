@@ -26,6 +26,7 @@ export function SectionTopics({ episodes }) {
 
           return (
             <TopicList
+              key={topic.tag}
               topic={topic.tag}
               title={topic.title}
               episodes={topicEpisodes}

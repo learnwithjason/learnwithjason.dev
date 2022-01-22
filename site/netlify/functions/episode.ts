@@ -1,12 +1,12 @@
-const fetch = require('node-fetch');
-const { builder } = require('@netlify/functions');
-const { hasuraRequest } = require('./util/hasura');
+import fetch from 'node-fetch';
+import { builder, Handler } from '@netlify/functions';
+import { hasuraRequest } from './util/hasura';
 
 function cleanText(text) {
   return encodeURIComponent(text).replace(/%(23|2C|2F|3F|5C)/g, '%25$1');
 }
 
-const handler = async (event) => {
+const handlerFn: Handler = async (event) => {
   const path = event.path;
   const [, slug, modifier = false] = path
     .replace(new RegExp('/api/episode'), '')
@@ -65,6 +65,7 @@ const handler = async (event) => {
             name
             twitter
           }
+          date
           demo
           repo
           links
@@ -159,4 +160,4 @@ const handler = async (event) => {
   };
 };
 
-exports.handler = builder(handler);
+export const handler = builder(handlerFn);

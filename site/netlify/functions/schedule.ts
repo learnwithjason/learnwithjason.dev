@@ -1,7 +1,7 @@
-const { builder } = require('@netlify/functions');
-const { hasuraRequest } = require('./util/hasura');
+import { builder, Handler } from '@netlify/functions';
+import { hasuraRequest } from './util/hasura';
 
-const handler = async (event) => {
+const handlerFn: Handler = async (event) => {
   const { limit = 999 } = event.queryStringParameters;
   const [, , , withBuffer] = event.path.split('/');
   const date = new Date();
@@ -55,7 +55,7 @@ const handler = async (event) => {
     `,
     variables: {
       date: date.toISOString(),
-      limit: parseInt(limit),
+      limit: limit,
     },
   });
 
@@ -73,4 +73,4 @@ const handler = async (event) => {
   };
 };
 
-exports.handler = builder(handler);
+export const handler = builder(handlerFn);

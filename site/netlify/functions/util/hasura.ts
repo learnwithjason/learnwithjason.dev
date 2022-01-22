@@ -1,7 +1,12 @@
-const fetch = require('node-fetch');
+import fetch from 'node-fetch';
 
-exports.hasuraRequest = async function ({ query, variables = {} }) {
-  const result = await fetch(process.env.HASURA_URL, {
+type FetchResult = {
+  data?: any;
+  errors?: any;
+};
+
+export const hasuraRequest = async function ({ query, variables = {} }) {
+  const result: FetchResult = await fetch(process.env.HASURA_URL, {
     method: 'POST',
     headers: {
       'X-Hasura-Admin-Secret': process.env.HASURA_ADMIN_SECRET,

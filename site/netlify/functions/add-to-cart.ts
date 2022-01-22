@@ -36,10 +36,12 @@
  * ```
  */
 
-const { createCartWithItem } = require('./util/createCartWithItem');
-const { addItemToCart } = require('./util/addItemToCart');
+import { Handler } from '@netlify/functions';
 
-exports.handler = async (event) => {
+import { createCartWithItem } from './util/createCartWithItem';
+import { addItemToCart } from './util/addItemToCart';
+
+export const handler: Handler = async (event) => {
   const { cartId, itemId, quantity } = JSON.parse(event.body);
 
   if (cartId) {

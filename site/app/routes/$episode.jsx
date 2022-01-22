@@ -1,73 +1,93 @@
-import { Fragment } from 'react';
 import { useLoaderData } from 'remix';
 import { marked } from 'marked';
+import dayjs from 'dayjs';
+import Utc from 'dayjs/plugin/utc.js';
+import Timezone from 'dayjs/plugin/timezone.js';
+import AdvancedFormat from 'dayjs/plugin/advancedFormat.js';
 import { getTeacher } from '../util/get-teacher.js';
-import { EpisodeVideo } from '../components/episode-video.jsx';
+import { EpisodePosted } from '../components/episode-posted.jsx';
+import { EpisodeScheduled } from '../components/episode-scheduled.jsx';
+
+dayjs.extend(Utc);
+dayjs.extend(Timezone);
+dayjs.extend(AdvancedFormat);
+
+const API_URL =
+  process.env.NODE_ENV === 'development'
+    ? 'http://localhost:3000'
+    : 'https://remix--lwj2021.netlify.app';
 
 export const loader = async ({ params }) => {
   const slug = params.episode;
-  const API_URL = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://remix--lwj2021.netlify.app'
-  const episode = await fetch(
-    `${API_URL}/api/episode/${slug}/transcript`,
-  ).then((res) => res.json());
+  const episode = await fetch(`${API_URL}/api/episode/${slug}/transcript`).then(
+    (res) => res.json(),
+  );
 
-  // TODO handle missing transcript, future episode
-  return { ...episode, transcriptHtml: marked.parse(episode.transcript) };
-};
+  const scheduleDescription = `${dayjs(episode.date).format(
+    'MMMM D @ h:mm A z',
+  )} — ${episode.description}`;
 
-export default function EpisodeTemplate({ count = 1 }) {
-  const episode = useLoaderData();
+  const transcriptHtml = episode.transcript
+    ? marked.parse(episode.transcript)
+    : false;
+
+  const startDate = dayjs(episode.date).toISOString();
+  const endDate = dayjs(episode.date).add(90, 'minutes').toISOString();
+
+  const host = getTeacher([episode.host]);
   const teacher = getTeacher(episode.guest);
 
+  return {
+    ...episode,
+    startDate,
+    endDate,
+    host,
+    teacher,
+    scheduleDescription,
+    transcriptHtml,
+  };
+};
+
+export function meta({ data: episode }) {
+  const description = `${dayjs(episode.date).format('MMMM D @ h:mm A z')} — ${
+    episode.description
+  }`;
+
+  return {
+    title: episode.title,
+    description,
+    image: episode.poster,
+    'og:type': 'video.other',
+    'og:url': `https://www.learnwithjason.dev/${episode.slug.current}`,
+    'og:description': description,
+    'og:image': episode.poster,
+    'twitter:dnt': 'on',
+    'twitter:card': 'summary_large_image',
+    'twitter:creator': '@LWJShow',
+    'twitter:title': episode.title,
+    'twitter:description': description,
+    'twitter:image': episode.poster,
+  };
+}
+
+export default function EpisodeTemplate() {
+  const episode = useLoaderData();
+
+  if (episode.youtubeID) {
+    return (
+      <EpisodePosted
+        episode={episode}
+        host={episode.host}
+        teacher={episode.teacher}
+      />
+    );
+  }
+
   return (
-    <div className="block episode">
-      <div className="episode-info-wrapper">
-        <EpisodeVideo episode={episode} count={count} />
-        <div className="episode-description">
-          <h1>{episode.title}</h1>
-          <p className="gradient-underline">
-            with{' '}
-            {teacher.twitter ? (
-              <a href={`https://twitter.com/${teacher.twitter}`}>
-                {teacher.name}
-              </a>
-            ) : (
-              teacher.name
-            )}
-          </p>
-          <p>{episode.description}</p>
-          <div className="episode-main-links">
-            {episode.demo && (
-              <a href={episode.demo} className="button">
-                Demo
-              </a>
-            )}
-            {episode.repo && (
-              <a href={episode.repo} className="button">
-                Source Code
-              </a>
-            )}
-          </div>
-        </div>
-      </div>
-      <div className="episode-resources">
-        <h2 className="gradient-underline">Resources & Links</h2>
-        <ul>
-          {episode.links.map((link) => (
-            <li key={link}>
-              <a href={link}>{link}</a>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className="episode-transcript">
-        {episode.transcript && (
-          <Fragment>
-            <h2 className="gradient-underline">Transcript</h2>
-            <div dangerouslySetInnerHTML={{ __html: episode.transcriptHtml }} />
-          </Fragment>
-        )}
-      </div>
-    </div>
+    <EpisodeScheduled
+      episode={episode}
+      host={episode.host}
+      teacher={episode.teacher}
+    />
   );
 }

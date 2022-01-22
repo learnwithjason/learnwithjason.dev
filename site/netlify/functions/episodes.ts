@@ -1,11 +1,10 @@
-const { builder } = require('@netlify/functions');
-const { hasuraRequest } = require('./util/hasura');
+import { builder, Handler } from '@netlify/functions';
+import { hasuraRequest } from './util/hasura';
 
-const handler = async (event) => {
+const handlerFn: Handler = async (event) => {
   const { path } = event;
-  const [, , , type = 'page', page = 1, hasTranscript = false] = path.split(
-    '/',
-  );
+  const [, , , type = 'page', page = 1, hasTranscript = false] =
+    path.split('/');
 
   const limit = 50;
   const offset = (page - 1) * 50;
@@ -50,6 +49,7 @@ const handler = async (event) => {
             name
             twitter
           }
+          date
           demo
           repo
           links
@@ -63,12 +63,12 @@ const handler = async (event) => {
     `,
     variables: {
       date: new Date().toISOString(),
-      limit: parseInt(limit),
-      offset: parseInt(offset),
+      limit,
+      offset,
     },
   });
-  
-  const publishedEpisodes = data.episodes.filter(e => e.youtubeID !== null);
+
+  const publishedEpisodes = data.episodes.filter((e) => e.youtubeID !== null);
 
   return {
     statusCode: 200,
@@ -82,4 +82,4 @@ const handler = async (event) => {
   };
 };
 
-exports.handler = builder(handler);
+export const handler = builder(handlerFn);
