@@ -29,7 +29,7 @@
 
 [[redirects]]
   from = "/*"
-  to = "/.netlify/functions/server"
+  to = "/.netlify/builders/server"
   status = 200
 
 [[headers]]
