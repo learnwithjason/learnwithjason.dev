@@ -6,8 +6,9 @@ import { EpisodeVideo } from '../components/episode-video.jsx';
 
 export const loader = async ({ params }) => {
   const slug = params.episode;
+  const API_URL = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://remix--lwj2021.netlify.app'
   const episode = await fetch(
-    `http://localhost:3000/api/episode/${slug}/transcript`,
+    `${API_URL}/api/episode/${slug}/transcript`,
   ).then((res) => res.json());
 
   // TODO handle missing transcript, future episode
