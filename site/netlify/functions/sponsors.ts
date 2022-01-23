@@ -1,6 +1,7 @@
-const { hasuraRequest } = require('./util/hasura');
+import { Handler } from '@netlify/functions';
+import { hasuraRequest } from './util/hasura';
 
-exports.handler = async () => {
+export const handler: Handler = async () => {
   const data = await hasuraRequest({
     query: `
       query GetSponsors {
