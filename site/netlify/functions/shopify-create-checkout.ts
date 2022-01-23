@@ -1,5 +1,5 @@
-const qs = require('querystring');
-const { postToShopify } = require('./util/postToShopify.js');
+import qs from 'querystring';
+import { postToShopify } from './util/postToShopify';
 
 exports.handler = async (event) => {
   const { cartId } = qs.parse(event.body);

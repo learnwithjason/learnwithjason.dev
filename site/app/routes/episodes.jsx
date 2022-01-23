@@ -20,8 +20,6 @@ export const loader = async () => {
 export default function Episodes() {
   const episodes = useLoaderData();
 
-  console.log(episodes);
-
   return (
     <Fragment>
       <header class="block hero">

@@ -17,9 +17,10 @@
  * TODO: Add enhancement for pagination
  */
 
-const { postToShopify } = require('./util/postToShopify.js');
+import { Handler } from '@netlify/functions';
+import { postToShopify } from './util/postToShopify';
 
-exports.handler = async (event) => {
+export const handler: Handler = async (event) => {
   const { cartId } = JSON.parse(event.body);
 
   try {

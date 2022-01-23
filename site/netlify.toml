@@ -23,6 +23,11 @@
   status = 200
 
 [[redirects]]
+  from = "/api/store/*"
+  to = "/.netlify/functions/shopify-:splat"
+  status = 200
+
+[[redirects]]
   from = "/api/*"
   to = "/.netlify/builders/:splat"
   status = 200

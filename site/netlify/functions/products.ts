@@ -14,10 +14,10 @@
  *
  * TODO: Add enhancement for pagination
  */
+import { Handler, builder } from '@netlify/functions';
+import { postToShopify } from './util/postToShopify';
 
-const { postToShopify } = require('./util/postToShopify.js');
-
-exports.handler = async () => {
+export const handler: Handler = builder(async () => {
   try {
     console.log('--------------------------------');
     console.log('Retrieving product list...');
@@ -90,4 +90,4 @@ exports.handler = async () => {
   } catch (error) {
     console.log(error);
   }
-};
+});

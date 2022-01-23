@@ -17,9 +17,10 @@
  * ```
  */
 
-const { removeItemFromCart } = require('./util/removeItemFromCart');
+import { Handler } from '@netlify/functions';
+import { removeItemFromCart } from './util/removeItemFromCart';
 
-exports.handler = async (event) => {
+export const handler: Handler = async (event) => {
   const { cartId, lineId } = JSON.parse(event.body);
 
   try {

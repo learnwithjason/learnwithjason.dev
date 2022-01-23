@@ -1,11 +1,15 @@
-const { postToShopify } = require('./postToShopify.js');
+import { postToShopify } from './postToShopify';
 
-exports.addItemToCart = async ({ cartId, itemId, quantity }) => {
+/**
+ * @param {string} cartId - Target cart to update
+ * @param lineId - Line id that the item belongs to
+ */
+export const removeItemFromCart = async ({ cartId, lineId }) => {
   try {
-    const shopifyResponse = postToShopify({
+    const shopifyResponse = await postToShopify({
       query: `
-        mutation addItemToCart($cartId: ID!, $lines: [CartLineInput!]!) {
-          cartLinesAdd(cartId: $cartId, lines: $lines) {
+        mutation removeItemFromCart($cartId: ID!, $lineIds: [ID!]!) {
+          cartLinesRemove(cartId: $cartId, lineIds: $lineIds) {
             cart {
               id
               lines(first: 10) {
@@ -54,12 +58,7 @@ exports.addItemToCart = async ({ cartId, itemId, quantity }) => {
       `,
       variables: {
         cartId,
-        lines: [
-          {
-            merchandiseId: itemId,
-            quantity,
-          },
-        ],
+        lineIds: [lineId],
       },
     });
 

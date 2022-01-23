@@ -1,8 +1,14 @@
-const fetch = require('node-fetch');
+import { default as fetch } from 'node-fetch';
 
-exports.postToShopify = async ({ query, variables }) => {
+export const postToShopify = async ({
+  query,
+  variables = {},
+}: {
+  query: string;
+  variables?: {};
+}): Promise<any> => {
   try {
-    const result = await fetch(process.env.SHOPIFY_API_ENDPOINT, {
+    const result: any = await fetch(process.env.SHOPIFY_API_ENDPOINT, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

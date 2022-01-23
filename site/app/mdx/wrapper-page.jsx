@@ -1,4 +1,4 @@
-export function MdxPageWrapper({ title, description, children }) {
+export function WrapperPage({ title, description, children }) {
   return (
     <>
       <header className="block hero">

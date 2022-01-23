@@ -5,7 +5,13 @@ type FetchResult = {
   errors?: any;
 };
 
-export const hasuraRequest = async function ({ query, variables = {} }) {
+export const hasuraRequest = async function ({
+  query,
+  variables = {},
+}: {
+  query: string;
+  variables?: object;
+}) {
   const result: FetchResult = await fetch(process.env.HASURA_URL, {
     method: 'POST',
     headers: {

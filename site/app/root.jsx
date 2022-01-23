@@ -5,6 +5,7 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useMatches,
 } from 'remix';
 
 import { Header } from './components/header.jsx';
@@ -107,10 +108,12 @@ export function links() {
 }
 
 export default function App() {
+  const matches = useMatches();
+
   let wrapperClass = '';
-  // if (props.meta?.type === 'post') {
-  //   wrapperClass = 'post-container';
-  // }
+  if (matches.some(({ pathname }) => pathname === '/blog')) {
+    wrapperClass = 'post-container';
+  }
 
   return (
     <html lang="en">
