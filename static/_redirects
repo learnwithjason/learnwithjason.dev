@@ -33,6 +33,8 @@ https://lwj.dev/*                     https://www.learnwithjason.dev/:splat 301!
 /sketching-illustration-and-logo-creation /sketching-illustration-logo-creation 301
 /lets-learn-trpc /let-s-learn-trpc 301
 /build-your-own-live-music-visualization /build-your-own-audio-visualization-in-a-shader 301
+/simply--unify-data-access-with-netlify-graph /simplify-and-unify-data-access-with-netlify-graph 301
+/simply-and-unify-data-access-with-netlify-graph /simplify-and-unify-data-access-with-netlify-graph 301
 
 # sponsors
 /sponsor    https://www.notion.so/jlengstorf/Learn-With-Jason-Sponsorship-214f066473d64bddaeb6f57d155fad34
