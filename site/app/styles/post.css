@@ -139,7 +139,7 @@ code {
   padding: 0 min(5vw, 2rem);
 }
 
-.post-content :not(pre) code {
+.post-content :not(pre) > code {
   background: var(--gray-lightest);
   border: 1px solid var(--gray-light);
   border-radius: 0.125rem;
