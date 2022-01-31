@@ -1,19 +1,23 @@
-export const meta = {
-  date: '2020-01-06',
-  title: 'Design a Flexible Social Card Template for Sharing Content',
-  description:
-    'Creating eye-catching social sharing images doesn’t have to take a ton of time. In this post, learn how to create a reusable template for sharing your posts.',
-  slug: 'design-social-sharing-card',
-  tags: ['images', 'seo', 'social-sharing', 'design'],
-  share: {
-    title: 'Design Your Own Social Sharing Image',
-    text:
-      'Use this Figma template to create eye-catching social sharing images!',
-  },
-};
+---
+date: 2020-01-06
+updated: 2020-01-06
 
-import { Aside } from '../src/mdx/aside.js';
-import { Figure } from '../src/mdx/figure.js';
+meta:
+  title: Design a Flexible Social Card Template for Sharing Content
+  description: >
+    Creating eye-catching social sharing images doesn’t have to take a ton of time. In this post, learn how to create a reusable template for sharing your posts.
+
+tags: [images, seo, social-sharing, design]
+share:
+  title: Design Your Own Social Sharing Image
+  text: Use this Figma template to create eye-catching social sharing images!
+---
+
+import { WrapperPost } from '~/mdx/wrapper-post.jsx';
+import { Aside } from '~/mdx/aside.jsx';
+import { Figure } from '~/mdx/figure.jsx';
+
+<WrapperPost meta={attributes.meta}>
 
 When sharing content on Twitter, Facebook, and other social media platforms, adding an eye-catching image is critical to making sure your content doesn't get lost in the timeline. In this post, we'll look at a strategy for **designing a flexible, reusable template for sharing posts** that helps brand your content without requiring you to create a bespoke image for each post.
 
@@ -129,3 +133,5 @@ This looks pretty good, if I do say so myself. 😎
 
 - Use the Figma template to [design your own social sharing card](https://res.cloudinary.com/jlengstorf/raw/upload/v1578342420/social-sharing-cards/learnwithjason-social-card-template.fig)
 - Use Cloudinary to [automatically generate your social sharing cards](/blog/auto-generate-social-image/)
+
+</WrapperPost>

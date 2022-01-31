@@ -1,18 +1,23 @@
-export const meta = {
-  date: '2020-01-10',
-  title: 'Access Query String Parameters in Serverless Functions',
-  description:
-    'How do you use query parameter arguments in a serverless function? This quick tutorial will show you how to get values from query string parameters.',
-  slug: 'serverless-functions/query-strings-serverless-functions',
-  tags: ['front-end', 'serverless', 'jamstack'],
-  share: {
-    text:
-      'A tutorial to teach you how query parameters work and how to use them.',
-  },
-};
+---
+date: 2020-01-10
+updated: 2020-01-10
 
-import { Aside } from '../../src/mdx/aside.js';
-import { Figure } from '../../src/mdx/figure.js';
+meta:
+  title: Access Query String Parameters in Serverless Functions
+  description: >
+    How do you use query parameter arguments in a serverless function? This quick tutorial will show you how to get values from query string parameters.
+
+tags: [front-end, serverless, jamstack]
+share:
+  title: Access Query String Parameters in Serverless Functions
+  text: A tutorial to teach you how query parameters work and how to use them.
+---
+
+import { WrapperPost } from '~/mdx/wrapper-post.jsx';
+import { Aside } from '~/mdx/aside.jsx';
+import { Figure } from '~/mdx/figure.jsx';
+
+<WrapperPost meta={attributes.meta}>
 
 Serverless functions really start to show their potential when we can accept user input and respond to it. The most straightforward way to do this is with query parameters in the browser using `GET` requests. In this article, we'll look at how to retrieve query parameters in a serverless function and use them to affect the output of our function.
 
@@ -151,3 +156,5 @@ We did it! We can now send, parse, and use query string parameters in our server
 
 - [See the full collection of serverless function examples](/blog/serverless-functions/overview/)
 - Read the [Netlify CLI docs on setting up continuous deployment](https://docs.netlify.com/cli/get-started/?utm_source=learnwithjason&utm_medium=first-serverless-function-jl&utm_campaign=devex#continuous-deployment)
+
+</WrapperPost>

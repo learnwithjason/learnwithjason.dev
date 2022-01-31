@@ -1,19 +1,23 @@
-export const meta = {
-  date: '2020-06-05',
-  title: 'Use Promise.all to Stop Async/Await from Blocking Execution in JS',
-  description:
-    'When writing asynchronous code, async/await is a powerful tool — but it comes with risks! Learn how to avoid code slowdowns in this tutorial.',
-  slug: 'keep-async-await-from-blocking-execution',
-  tags: ['javascript', 'performance'],
-  share: {
-    title: 'Keep your async calls fast with Promise.all',
-    text:
-      'Async/await is super powerful, but it has some gotchas! Learn how to avoid them in this tutorial.',
-  },
-};
+---
+date: 2020-06-05
+updated: 2020-06-05
 
-import { Aside } from '../src/mdx/aside.js';
-import { Figure } from '../src/mdx/figure.js';
+meta:
+  title: Use Promise.all to Stop Async/Await from Blocking Execution in JS
+  description: >
+    When writing asynchronous code, async/await is a powerful tool — but it comes with risks! Learn how to avoid code slowdowns in this tutorial.
+
+tags: [front-end, javascript, performance]
+share:
+  title: Keep your async calls fast with Promise.all
+  text: Async/await is super powerful, but it has some gotchas! Learn how to avoid them in this tutorial.
+---
+
+import { WrapperPost } from '~/mdx/wrapper-post.jsx';
+import { Aside } from '~/mdx/aside.jsx';
+import { Figure } from '~/mdx/figure.jsx';
+
+<WrapperPost meta={attributes.meta}>
 
 Promises are extremely powerful for handling asynchronous operations in JavaScript. Async functions make them easier to read and reason about. However, they also introduce some sneaky traps that can lead to slowdowns if we're not careful.
 
@@ -65,7 +69,7 @@ All the code samples in this article can be run in your console. To see these in
 
 <Figure caption="All of the code examples in this post can be run in your browser’s devtools!">
 
-<video autoplay muted loop style={{ width: '100%' }}>
+<video autoPlay muted loop style={{ width: '100%' }}>
   <source src="https://res.cloudinary.com/jlengstorf/video/upload/q_auto,f_auto,w_1200/v1591393216/lwj/blog/async-await-perf/console-execution.mov" />
 </video>
 
@@ -195,9 +199,9 @@ Let‘s refactor the code we’ve written so far in this article using async fun
 ```jsx
 async function getData() {
   // using await means the resolved value of the Promise is returned!
-  const response = await fetch(
-    'https://dog.ceo/api/breeds/image/random',
-  ).then((response) => response.json()); // .then still works when it makes sense!
+  const response = await fetch('https://dog.ceo/api/breeds/image/random').then(
+    (response) => response.json(),
+  ); // .then still works when it makes sense!
 
   const otherResponse = await doOtherAsyncThing();
 
@@ -417,3 +421,5 @@ This code is still much more readable than the nested Promises and for loops, an
 This is just one optimization to keep in mind when writing asynchronous code. Tuck it into your toolkit and keep your async functions fast!
 
 Have other ideas for speeding up async functions? [Hit me up on Twitter!](https://twitter.com/compose/tweet?text=I%20just%20learned%20how%20to%20keep%20async/await%20function%20fast%20from%20@jlengstorf&url=https://www.learnwithjason.dev/blog/keep-async-await-from-blocking-execution/)
+
+</WrapperPost>

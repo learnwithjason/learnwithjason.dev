@@ -1,18 +1,23 @@
-export const meta = {
-  date: '2020-01-06',
-  title: 'Automatically Generate Social Images for Blog Posts',
-  description:
-    'Make sure your content stands out in social media timelines by automatically generating social media sharing cards for your blog posts.',
-  slug: 'auto-generate-social-image',
-  tags: ['images', 'seo', 'social-sharing', 'cloudinary'],
-  share: {
-    title: 'Automatic Social Images',
-    text: 'Custom images for sharing on Twitter, Facebook, and more!',
-  },
-};
+---
+date: 2020-01-06
+updated: 2020-01-06
 
-import { Aside } from '../src/mdx/aside.js';
-import { Figure } from '../src/mdx/figure.js';
+meta:
+  title: Automatically Generate Social Images for Blog Posts
+  description: >
+    Make sure your content stands out in social media timelines by automatically generating social media sharing cards for your blog posts.
+
+tags: [images, seo, social-sharing, cloudinary]
+share:
+  title: Automatic Social Images
+  text: Custom images for sharing on Twitter, Facebook, and more!
+---
+
+import { WrapperPost } from '~/mdx/wrapper-post.jsx';
+import { Aside } from '~/mdx/aside.jsx';
+import { Figure } from '~/mdx/figure.jsx';
+
+<WrapperPost meta={attributes.meta}>
 
 Creating sharing images for social media is critical if you want your content to stand out, but a lot of content — for example, code-related blog posts — don't always have great visuals to share. If our Twitter cards don't have images, they get lost in the noise — but at the same time, a random image from [Unsplash](https://unsplash.com/) doesn't really communicate what the post contains, either.
 
@@ -338,3 +343,5 @@ At this point, you have all the tools you need to add automatically generated so
 - See the [source code for this site](https://github.com/jlengstorf/learnwithjason.dev/blob/070468828e8c758d150a8d573fd471d786278243/packages/%40jlengstorf/gatsby-theme-code-blog/src/gatsby-theme-blog-core/components/post.js#L55-L64) to see how to use the package in production
 
 After you’ve implemented this, [send me a note on Twitter](https://twitter.com/jlengstorf) so I can see what you come up with!
+
+</WrapperPost>

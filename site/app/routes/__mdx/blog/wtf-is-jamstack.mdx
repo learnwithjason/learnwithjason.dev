@@ -1,19 +1,23 @@
-export const meta = {
-  date: '2020-03-27',
-  title: 'WTF is the Jamstack? A goofy name for a great web architecture.',
-  slug: 'wtf-is-jamstack',
-  description:
-    'Are you already using the Jamstack? Boost your understanding of modern web dev and learn what the Jamstack is — and what it’s not — in this overview.',
-  tags: ['front-end', 'serverless', 'jamstack'],
-  share: {
-    title: 'WTF is the Jamstack?',
-    text:
-      'Look past the hype, learn what Jamstack means, and see how it helps you build better apps.',
-  },
-};
+---
+date: 2020-03-27
+updated: 2020-03-27
 
-import { Aside } from '../src/mdx/aside.js';
-import { Figure } from '../src/mdx/figure.js';
+meta:
+  title: WTF is the Jamstack? A goofy name for a great web architecture.
+  description: >
+    Are you already using the Jamstack? Boost your understanding of modern web dev and learn what the Jamstack is — and what it’s not — in this overview.
+
+tags: [front-end, serverless, jamstack]
+share:
+  title: WTF is the Jamstack?
+  text: Look past the hype, learn what Jamstack means, and see how it helps you build better apps.
+---
+
+import { WrapperPost } from '~/mdx/wrapper-post.jsx';
+import { Aside } from '~/mdx/aside.jsx';
+import { Figure } from '~/mdx/figure.jsx';
+
+<WrapperPost meta={attributes.meta}>
 
 At a high level, the Jamstack is an architectural approach to web apps that focuses on:
 
@@ -153,3 +157,5 @@ To recap, let’s run through the Big Ideas™ of the Jamstack that we covered i
 I’m obviously biased, given that I work at Netlify. However, I love the Jamstack and have been recommending it since long before I took a job at Netlify — I was pushing for this approach when I worked at IBM back in 2016 and didn’t have a word to describe the approach yet. 💜
 
 Are you exploring the Jamstack for an upcoming project? What questions do you have about it? I really want to hear from you — [hit me up on Twitter](http://twitter.com/compose/tweet?text=Hey%20@jlengstorf!%20I%E2%80%99m%20looking%20into%20the%20Jamstack%20for%20a%20project%20and%20I%20have%20questions.) or reply to any of [my newsletter](/newsletter/) messages! (I’m serious, too: hearing what you find confusing, inspiring, frustrating, etc. about the Jamstack helps me know what I should create content about, so _please_ don’t hold back!)
+
+</WrapperPost>

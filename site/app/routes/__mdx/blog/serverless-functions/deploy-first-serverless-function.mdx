@@ -1,17 +1,23 @@
-export const meta = {
-  date: '2020-01-08',
-  title: 'Deploy Your First Serverless Function Using JavaScript',
-  description:
-    'With serverless functions, the JavaScript powering our front-ends enables us to add back-end logic. Deploy your first serverless function in this tutorial!',
-  slug: 'serverless-functions/deploy-first-serverless-function',
-  tags: ['front-end', 'serverless', 'jamstack'],
-  share: {
-    text: 'Add more power to your web apps quickly and with less complexity.',
-  },
-};
+---
+date: 2020-01-08
+updated: 2020-01-08
 
-import { Aside } from '../../src/mdx/aside.js';
-import { Figure } from '../../src/mdx/figure.js';
+meta:
+  title: Deploy Your First Serverless Function Using JavaScript
+  description: >
+    With serverless functions, the JavaScript powering our front-ends enables us to add back-end logic. Deploy your first serverless function in this tutorial!
+
+tags: [front-end, serverless, jamstack]
+share:
+  title: Deploy Your First Serverless Function Using JavaScript
+  text: Add more power to your web apps quickly and with less complexity.
+---
+
+import { WrapperPost } from '~/mdx/wrapper-post.jsx';
+import { Aside } from '~/mdx/aside.jsx';
+import { Figure } from '~/mdx/figure.jsx';
+
+<WrapperPost meta={attributes.meta}>
 
 **Serverless functions are a powerful solution for adding additional functionality to Jamstack sites.** In this post, we'll step through creating and deploying your first serverless function using [Netlify Functions](https://www.netlify.com/products/functions/?utm_source=learnwithjason&utm_medium=first-serverless-function-jl&utm_campaign=devex).
 
@@ -140,3 +146,5 @@ That's all there is to it! You've successfully deployed your first serverless fu
 - [See the full collection of serverless function examples](/blog/serverless-functions/overview/)
 - Read the [Netlify CLI docs on setting up continuous deployment](https://docs.netlify.com/cli/get-started/?utm_source=learnwithjason&utm_medium=first-serverless-function-jl&utm_campaign=devex#continuous-deployment)
 - Learn how to [use redirects in Netlify](https://docs.netlify.com/routing/redirects/?utm_source=learnwithjason&utm_medium=first-serverless-function-jl&utm_campaign=devex#continuous-deployment)
+
+</WrapperPost>
