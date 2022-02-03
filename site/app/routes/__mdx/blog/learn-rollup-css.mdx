@@ -1,29 +1,33 @@
-export const meta = {
-  date: '2016-08-25',
-  title: 'Bundle Stylesheets and Add LiveReload With Rollup',
-  description:
-    'Learn how to use the JavaScript bundler Rollup to process stylesheets using PostCSS and rebuild & reload files when changes are made in this tutorial.',
-  slug: 'learn-rollup-css',
-  image: 'images/learn-rollup-css.jpg',
-  tags: ['rollup', 'javascript', 'postcss', 'modules'],
-  share: {
-    title: 'How to Bundle CSS With Rollup',
-    text:
-      'Include stylesheets in your Rollup build process by following this tutorial.',
-  },
-};
+---
+date: 2016-08-25
+updated: 2016-08-25
 
-import { Aside } from '../src/mdx/aside.js';
-import { Figure } from '../src/mdx/figure.js';
+meta:
+  title: >
+    Bundle Stylesheets and Add LiveReload With Rollup
+  description: >
+    Learn how to use the JavaScript bundler Rollup to process stylesheets using PostCSS and rebuild & reload files when changes are made in this tutorial.
+
+tags: [rollup, javascript, postcss, modules]
+share:
+  title: How to Bundle CSS With Rollup
+  text: Include stylesheets in your Rollup build process by following this tutorial.
+---
+
+import { WrapperPost } from '~/mdx/wrapper-post.jsx';
+import { Aside } from '~/mdx/aside.jsx';
+import { Figure } from '~/mdx/figure.jsx';
+
+<WrapperPost meta={attributes.meta}>
 
 <Figure aspectRatio={315 / 560}>
   <iframe
     width="560"
     height="315"
     src="https://www.youtube-nocookie.com/embed/hJ2RVXEIgkk"
-    frameborder="0"
+    frameBorder="0"
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen
+    allowFullScreen
   ></iframe>
 </Figure>
 
@@ -604,3 +608,5 @@ We’re now Rollup masters. Our code bundles will be smaller and faster, and our
 
 - [PostCSS](http://postcss.org/)
 - [Some discussion about using JS to insert styles, and when/whether it’s appropriate](http://stackoverflow.com/questions/26882177/react-js-inline-style-best-practices)
+
+</WrapperPost>

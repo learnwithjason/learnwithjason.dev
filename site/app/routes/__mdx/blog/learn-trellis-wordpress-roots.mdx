@@ -1,28 +1,33 @@
-export const meta = {
-  date: '2016-10-17',
-  title: 'Automatic WordPress Deployment + Free SSL: Trellis How-To',
-  description:
-    'A step-by-step video tutorial on setting up a local WordPress development environment in minutes using Trellis, plus how to deploy FAST with free SSL.',
-  slug: 'learn-trellis-wordpress-roots',
-  image: 'images/learn-trellis-roots-wordpress.jpg',
-  tags: ['wordpress', 'php', 'devops'],
-  share: {
-    title: 'Automatic WordPress Deployment with Trellis',
-    text: 'Set up a modern WordPress workflow with this in-depth tutorial.',
-  },
-};
+---
+date: 2016-10-17
+updated: 2016-10-17
 
-import { Aside } from '../src/mdx/aside.js';
-import { Figure } from '../src/mdx/figure.js';
+meta:
+  title: >
+    Automatic WordPress Deployment + Free SSL: Trellis How-To
+  description: >
+    A step-by-step video tutorial on setting up a local WordPress development environment in minutes using Trellis, plus how to deploy FAST with free SSL.
+
+tags: [wordpress, php, devops]
+share:
+  title: Automatic WordPress Deployment with Trellis
+  text: Set up a modern WordPress workflow with this in-depth tutorial.
+---
+
+import { WrapperPost } from '~/mdx/wrapper-post.jsx';
+import { Aside } from '~/mdx/aside.jsx';
+import { Figure } from '~/mdx/figure.jsx';
+
+<WrapperPost meta={attributes.meta}>
 
 <Figure aspectRatio={315 / 560}>
   <iframe
     width="560"
     height="315"
     src="https://www.youtube-nocookie.com/embed/Ls30HGKru8A"
-    frameborder="0"
+    frameBorder="0"
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen
+    allowFullScreen
   ></iframe>
 </Figure>
 
@@ -722,7 +727,7 @@ Or, we can walk away and let the robots do our bidding.
 When it's all done, we'll see a "play recap" from Ansible that looks something like this:
 
 ```md
-PLAY RECAP ****************\*\*****************\*****************\*\*****************
+PLAY RECAP **\*\***\*\*\*\***\*\***\*\***\*\***\*\*\*\***\*\***\***\*\***\*\*\*\***\*\***\*\***\*\***\*\*\*\***\*\***
 162.243.171.188 : ok=130 changed=93 unreachable=0 failed=0
 localhost : ok=0 changed=0 unreachable=0 failed=0
 ```
@@ -750,7 +755,7 @@ pwd
 This takes a minute or two, and ends with a "play recap", just like provisioning. It should look something like this:
 
 ```md
-PLAY RECAP ****************\*\*****************\*****************\*\*****************
+PLAY RECAP **\*\***\*\*\*\***\*\***\*\***\*\***\*\*\*\***\*\***\***\*\***\*\*\*\***\*\***\*\***\*\***\*\*\*\***\*\***
 162.243.171.188 : ok=27 changed=12 unreachable=0 failed=0
 localhost : ok=0 changed=0 unreachable=0 failed=0
 ```
@@ -880,3 +885,5 @@ Once this is done, you can reload the production site and see that the database 
 
 - [Develop WordPress Sites Like a Goddamn Champion](http://davekiss.com/develop-wordpress-sites-like-a-goddamn-champion/)
 - [Trellis documentation](https://roots.io/trellis/docs/installing-trellis/)
+
+</WrapperPost>

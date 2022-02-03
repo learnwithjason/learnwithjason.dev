@@ -111,7 +111,9 @@ export default function App() {
   const matches = useMatches();
 
   let wrapperClass = '';
-  if (matches.some(({ pathname }) => pathname === '/blog')) {
+  if (matches.some(({ pathname }) => pathname === '/blog/')) {
+    wrapperClass = 'post-listing-container';
+  } else if (matches.some(({ pathname }) => pathname === '/blog')) {
     wrapperClass = 'post-container';
   }
 

@@ -1,17 +1,23 @@
-export const meta = {
-  date: '2020-01-04',
-  title: 'Add Text Overlays to Images Using Cloudinary',
-  description:
-    'In this post, learn how to use Cloudinary to add text overlays to images using URL-based APIs.',
-  slug: 'add-text-overlay-cloudinary',
-  tags: ['images', 'cloudinary'],
-  share: {
-    text: 'Use URL-based APIs to add custom text overlays to your images.',
-  },
-};
+---
+date: 2020-01-04
+updated: 2020-01-04
 
-import { Aside } from '../src/mdx/aside.js';
-import { Figure } from '../src/mdx/figure.js';
+meta:
+  title: Add Text Overlays to Images Using Cloudinary
+  description: >
+    In this post, learn how to use Cloudinary to add text overlays to images using URL-based APIs.
+
+tags: [images, cloudinary]
+share:
+  title: Add Text Overlays to Images Using Cloudinary
+  text: Use URL-based APIs to add custom text overlays to your images.
+---
+
+import { WrapperPost } from '~/mdx/wrapper-post.jsx';
+import { Aside } from '~/mdx/aside.jsx';
+import { Figure } from '~/mdx/figure.jsx';
+
+<WrapperPost meta={attributes.meta}>
 
 In many cases, it's helpful to add text overlays to images. Sharing content on social media, for example, can be more effective with a sharing image including information about the content.
 
@@ -148,3 +154,5 @@ To take your text overlays to the next level, try:
 - [using a custom font for Cloudinary text overlays](/blog/upload-custom-font-cloudinary-media-library/)
 - [creating custom social media cards automatically using text overlays](/blog/auto-generate-social-image/)
 - reading the [Cloudinary docs on text overlays](https://cloudinary.com/documentation/image_transformations?ap=lwj#adding_text_captions)
+
+</WrapperPost>

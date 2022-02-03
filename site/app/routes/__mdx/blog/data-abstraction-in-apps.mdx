@@ -1,19 +1,23 @@
-export const meta = {
-  date: '2019-03-25',
-  title: 'Data abstraction in Gatsby themes (and React apps in general)',
-  description:
-    'How do we keep the content separate from presentation in React apps? Here’s one approach we’re using in Gatsby themes.',
-  slug: 'data-abstraction-in-apps',
-  image: 'images/data-abstraction.png',
-  tags: ['gatsby', 'gatsby-themes', 'react', 'architecture'],
-  share: {
-    title: 'Data abstraction in Gatsby and React',
-    text: 'Learn how to keep content separate from presentation in React apps.',
-  },
-};
+---
+date: 2019-03-25
+updated: 2019-03-25
 
-import { Aside } from '../src/mdx/aside.js';
-import { Figure } from '../src/mdx/figure.js';
+meta:
+  title: Data abstraction in Gatsby themes (and React apps in general)
+  description: >
+    How do we keep the content separate from presentation in React apps? Here’s one approach we’re using in Gatsby themes.
+
+tags: [gatsby, gatsby-themes, react, architecture]
+share:
+  title: Data abstraction in Gatsby and React
+  text: Learn how to keep content separate from presentation in React apps.
+---
+
+import { WrapperPost } from '~/mdx/wrapper-post.jsx';
+import { Aside } from '~/mdx/aside.jsx';
+import { Figure } from '~/mdx/figure.jsx';
+
+<WrapperPost meta={attributes.meta}>
 
 It’s an inevitability that, over time, any actively maintained application will grow in complexity.
 
@@ -258,3 +262,5 @@ It’s also possible to modify the underlying data, add new components, or even 
 - [The presentation theme](https://github.com/jlengstorf/gatsby-theme-style) used in this example
 - [Posts about Gatsby themes](https://www.gatsbyjs.org/blog/tags/themes/) on the Gatsby blog
 - A deeper exploration of [progressive disclosure of complexity](/progressive-disclosure-of-complexity/)
+
+</WrapperPost>

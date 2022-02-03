@@ -1,18 +1,23 @@
-export const meta = {
-  date: '2020-01-05',
-  title: 'Upload a Custom Font to Cloudinary Using the Media Library UI',
-  description:
-    'A tutorial on how to upload via UI and use custom fonts in text overlays with Cloudinary to generate images with custom text.',
-  slug: 'upload-custom-font-cloudinary-media-library',
-  tags: ['images', 'cloudinary'],
-  share: {
-    text:
-      'Use custom fonts in Cloudinary by uploading them through their web app.',
-  },
-};
+---
+date: 2020-01-05
+updated: 2020-01-05
 
-import { Aside } from '../src/mdx/aside.js';
-import { Figure } from '../src/mdx/figure.js';
+meta:
+  title: Upload a Custom Font to Cloudinary Using the Media Library UI
+  description: >
+    A tutorial on how to upload via UI and use custom fonts in text overlays with Cloudinary to generate images with custom text.
+
+tags: [images, cloudinary]
+share:
+  title: Upload a Custom Font to Cloudinary Using the Media Library UI
+  text: Use custom fonts in Cloudinary by uploading them through their web app.
+---
+
+import { WrapperPost } from '~/mdx/wrapper-post.jsx';
+import { Aside } from '~/mdx/aside.jsx';
+import { Figure } from '~/mdx/figure.jsx';
+
+<WrapperPost meta={attributes.meta}>
 
 If you want to use custom fonts with [Cloudinary](https://jason.af/cloudinary), you need to upload them as authenticated assets.
 
@@ -34,7 +39,7 @@ You'll see the following screen:
 
 <Figure caption="The Cloudinary screen for adding upload presets.">
 
-![Cloudinary app UI for adding an upload preset.](/images/cloudinary-upload-preset.jpg)
+![Cloudinary app UI for adding an upload preset.](https://res.cloudinary.com/jlengstorf/image/upload/q_auto,f_auto/v1643780202/lwj/blog/cloudinary-upload-preset.jpg)
 
 </Figure>
 
@@ -56,7 +61,7 @@ Click "Save" at the bottom of the page.
 
 <Figure caption="The Cloudinary settings screen for choosing upload presets.">
 
-![Cloudinary settings screen for choosing upload presets.](/images/cloudinary-media-library-preset.jpg)
+![Cloudinary settings screen for choosing upload presets.](https://res.cloudinary.com/jlengstorf/image/upload/q_auto,f_auto/v1643780262/lwj/blog/cloudinary-media-library-preset.jpg)
 
 </Figure>
 
@@ -66,13 +71,13 @@ Now that the preset is enabled, we can test it out by uploading a custom font. W
 
 **NOTE:** Make sure you have the appropriate licenses for any fonts you upload!
 
-Drag the TTF file onto the media library at [https://cloudinary.com/console/media_library](https://cloudinary.com/console/media_library?ap=lwj) — once it's finished, we'll see it show up in our list of assets.
+Drag the TTF file onto the media library at [https://cloudinary.com/console/media_library](https://cloudinary.com/console/media_library?ap=lwj) — once it's finished, we'll see it show up in our list of assets.
 
 **Heads up!** Depending on your settings, you may see the font uploaded with a random string instead of the font name — if this happens, you can click on the font and edit the name in the right-hand sidebar that appears.
 
 <Figure caption="A custom font displayed in Cloudinary’s media library.">
 
-![Custom font displayed in Cloudinary’s media library.](/images/cloudinary-custom-font.jpg)
+![Custom font displayed in Cloudinary’s media library.](https://res.cloudinary.com/jlengstorf/image/upload/q_auto,f_auto/v1643780332/lwj/blog/cloudinary-custom-font.jpg)
 
 </Figure>
 
@@ -104,3 +109,5 @@ For next steps:
 - Get more detail on [how text overlays work](/blog/add-text-overlay-cloudinary/)
 - Use the [Node SDK to upload custom fonts programmatically](/blog/upload-custom-font-cloudinary-node/)
 - Read the [Cloudinary docs on text overlays](https://cloudinary.com/documentation/image_transformations?ap=lwj#adding_text_captions)
+
+</WrapperPost>

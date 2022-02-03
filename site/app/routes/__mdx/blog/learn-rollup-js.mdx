@@ -1,29 +1,33 @@
-export const meta = {
-  date: '2016-08-19',
-  title: 'How to Bundle JavaScript With Rollup — Step-by-Step Tutorial',
-  description:
-    'Learn how to use Rollup as a smaller, more efficient alternative to webpack and Browserify to bundle JavaScript files in this step-by-step tutorial series.',
-  slug: 'learn-rollup-js',
-  image: 'images/learn-rollup-js.jpg',
-  tags: ['rollup', 'javascript', 'babel', 'modules'],
-  share: {
-    title: 'How to Bundle JavaScript With Rollup',
-    text:
-      'Use Rollup to create smaller bundles for libraries in this tutorial.',
-  },
-};
+---
+date: 2016-08-19
+updated: 2016-08-19
 
-import { Aside } from '../src/mdx/aside.js';
-import { Figure } from '../src/mdx/figure.js';
+meta:
+  title: >
+    How to Bundle JavaScript With Rollup — Step-by-Step Tutorial
+  description: >
+    Learn how to use Rollup as a smaller, more efficient alternative to webpack and Browserify to bundle JavaScript files in this step-by-step tutorial series.
+
+tags: [rollup, javascript, babel, modules]
+share:
+  title: How to Bundle JavaScript With Rollup
+  text: Use Rollup to create smaller bundles for libraries in this tutorial.
+---
+
+import { WrapperPost } from '~/mdx/wrapper-post.jsx';
+import { Aside } from '~/mdx/aside.jsx';
+import { Figure } from '~/mdx/figure.jsx';
+
+<WrapperPost meta={attributes.meta}>
 
 <Figure aspectRatio={315 / 560}>
   <iframe
     width="560"
     height="315"
     src="https://www.youtube-nocookie.com/embed/ICYLOZuFMz8"
-    frameborder="0"
+    frameBorder="0"
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen
+    allowFullScreen
   ></iframe>
 </Figure>
 
@@ -821,3 +825,5 @@ In the next installment of this series, we'll look at handling stylesheets throu
 - [Rollup's getting started guide](http://rollupjs.org/guide/)
 - [Rollup's CLI docs](https://github.com/rollup/rollup/wiki/Command-Line-Interface)
 - [A list of Rollup plugins](https://github.com/rollup/rollup/wiki/Plugins)
+
+</WrapperPost>

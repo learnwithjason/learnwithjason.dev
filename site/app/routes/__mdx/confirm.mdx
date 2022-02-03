@@ -1,9 +1,13 @@
-export const meta = {
-  title: 'Confirm Your Email Address',
-  description: 'One more step: please confirm your email address!',
-  slug: 'confirm',
-  type: 'page',
-};
+---
+meta:
+  title: Confirm Your Email Address
+  description: >
+    One more step: please confirm your email address!
+---
+
+import { WrapperPage } from '~/mdx/wrapper-page.jsx';
+
+<WrapperPage {...attributes.meta}>
 
 I’m really excited you’re here. There’s just one more thing left to do:
 
@@ -14,3 +18,5 @@ This is a necessary step to make sure that you’re only getting email that you 
 But that’s not the kind of operation I run here. Only messages you _actually want_ will arrive. 😂
 
 So head over to your inbox, click that confirm button, and I’ll send over the first bit of content right away!
+
+</WrapperPage>
