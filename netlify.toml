@@ -1,6 +1,2 @@
 [build]
   base = "site"
-
-[functions.server]
-  included_files = ["app/routes/__mdx/blog/**.mdx"]
- 

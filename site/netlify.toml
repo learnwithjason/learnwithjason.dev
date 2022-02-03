@@ -7,6 +7,9 @@
   command = "remix watch"
   port = 3000
 
+[functions.server]
+  included_files = ["app/routes/__mdx/blog/**/*.mdx"] 
+
 [[redirects]]
   from = "/api/episode/:slug"
   to = "/.netlify/builders/episode"

@@ -5,7 +5,6 @@ import { useLoaderData } from 'remix';
 import { IconArrow } from '~/components/icon-arrow.jsx';
 
 export const loader = () => {
-  console.log({ __dirname });
   const blogBasePath = join(process.cwd(), 'app', 'routes', '__mdx', 'blog');
   const dirEntries = readdirSync(blogBasePath, { withFileTypes: true });
   const dirs = dirEntries.filter((entry) => entry.isDirectory());
