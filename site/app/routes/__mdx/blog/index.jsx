@@ -1,47 +1,20 @@
-import { readdirSync, readFileSync } from 'fs';
-import { join } from 'path';
-import fm from 'front-matter';
 import { useLoaderData } from 'remix';
+import { loadMdx } from '~/util/load-mdx.server.js';
 import { IconArrow } from '~/components/icon-arrow.jsx';
 
 export const loader = () => {
-  const blogBasePath = join(process.cwd(), 'app', 'routes', '__mdx', 'blog');
-  const dirEntries = readdirSync(blogBasePath, { withFileTypes: true });
-  const dirs = dirEntries.filter((entry) => entry.isDirectory());
-  const files = dirEntries.filter((entry) => entry.isFile());
+  const posts = loadMdx();
 
-  const subFiles = dirs
-    .map((dir) => {
-      const subDirEntries = readdirSync(join(blogBasePath, dir.name), {
-        withFileTypes: true,
-      })
-        .filter((e) => e.isFile())
-        .map((e) => ({ name: join(dir.name, e.name) }));
+  return posts;
+};
 
-      return subDirEntries;
-    })
-    .flat();
-
-  const entries = [...files, ...subFiles].map((entry) => {
-    if (entry.name === 'index.jsx') {
-      return;
-    }
-
-    const fileContents = readFileSync(join(blogBasePath, entry.name), {
-      encoding: 'utf-8',
-    });
-
-    const { attributes } = fm(fileContents);
-
-    return {
-      date: attributes.date,
-      slug: entry.name.replace('.mdx', ''),
-      title: attributes.meta.title,
-      description: attributes.meta.description,
-    };
-  });
-
-  return entries.filter(Boolean).sort((a, b) => b.date - a.date);
+export const meta = () => {
+  return {
+    title: 'Posts About Modern Web Development — Learn With Jason',
+    description: `
+      Jason shares his experience on his blog to help you build a better web.
+    `,
+  };
 };
 
 export default function BlogIndex() {
