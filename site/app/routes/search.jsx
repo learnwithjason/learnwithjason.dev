@@ -47,11 +47,11 @@ export default function Search() {
               item({ item, components }) {
                 return (
                   <a
-                    className="aa-ItemLink"
+                    class="aa-ItemLink"
                     href={`https://www.learnwithjason.dev${item.url}`}
                   >
-                    <div className="aa-ItemContent">
-                      <div className="aa-ItemIcon">
+                    <div class="aa-ItemContent">
+                      <div class="aa-ItemIcon">
                         <img
                           src={item.image}
                           alt={item.title}
@@ -59,18 +59,18 @@ export default function Search() {
                           height="40"
                         />
                       </div>
-                      <div className="aa-ItemContentBody">
-                        <div className="aa-ItemContentTitle">
+                      <div class="aa-ItemContentBody">
+                        <div class="aa-ItemContentTitle">
                           <components.Highlight hit={item} attribute="title" />
                         </div>
-                        <div className="aa-ItemContentDescription">
+                        <div class="aa-ItemContentDescription">
                           <components.Snippet hit={item} attribute="content" />
                         </div>
                       </div>
                     </div>
-                    <div className="aa-ItemActions">
+                    <div class="aa-ItemActions">
                       <button
-                        className="aa-ItemActionButton aa-DesktopOnly aa-ActiveOnly"
+                        class="aa-ItemActionButton aa-DesktopOnly aa-ActiveOnly"
                         type="button"
                         title="Select"
                       >
