@@ -13,7 +13,7 @@ export function EpisodeList({ episodes }) {
   return (
     <section className="block episodes">
       {activeEpisodes.map((episode, i) => (
-        <div className="episode-listing">
+        <div className="episode-listing" key={episode.slug.current}>
           <EpisodeVideo
             key={episode.slug.current}
             episode={episode}

@@ -5,7 +5,7 @@ import { SectionSponsors } from '../components/section-sponsors.jsx';
 import { SectionTopics } from '../components/section-topics.jsx';
 import { SectionHero } from '../components/section-hero.jsx';
 import { SectionNextEpisode } from '../components/section-next-episode.jsx';
-import { loadAllEpisodes } from '../util/load-all-episodes.js';
+import { loadAllEpisodes } from '../util/load-all-episodes.server.js';
 
 export const loader = async () => {
   const episodes = await loadAllEpisodes();
