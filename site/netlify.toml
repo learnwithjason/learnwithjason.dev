@@ -10,6 +10,16 @@
 [functions.server]
   included_files = ["app/routes/__mdx/blog/**/*.mdx"] 
 
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Strict-Transport-Security = '''
+    max-age=63072000;
+    includeSubDomains;
+    preload'''
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+
 [[redirects]]
   from = "/api/episode/:slug"
   to = "/.netlify/builders/episode"
