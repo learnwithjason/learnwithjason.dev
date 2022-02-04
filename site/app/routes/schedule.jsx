@@ -8,7 +8,7 @@ import { EpisodePreview } from '../components/episode-preview.jsx';
 const API_URL =
   process.env.NODE_ENV === 'development'
     ? 'http://localhost:3000'
-    : 'https://remix--lwj2021.netlify.app';
+    : 'https://www.learnwithjason.dev';
 
 export const loader = async () => {
   const schedule = await fetch(`${API_URL}/api/schedule`).then((res) =>

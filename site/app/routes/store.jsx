@@ -6,7 +6,7 @@ import styles from '../styles/store.css';
 const API_URL =
   process.env.NODE_ENV === 'development'
     ? 'http://localhost:3000'
-    : 'https://remix--lwj2021.netlify.app';
+    : 'https://www.learnwithjason.dev';
 
 export const loader = async () => {
   const products = await fetch(`${API_URL}/api/products`).then((res) =>

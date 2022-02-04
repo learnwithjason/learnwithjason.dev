@@ -15,7 +15,7 @@ dayjs.extend(AdvancedFormat);
 const API_URL =
   process.env.NODE_ENV === 'development'
     ? 'http://localhost:3000'
-    : 'https://remix--lwj2021.netlify.app';
+    : 'https://www.learnwithjason.dev';
 
 export const loader = async ({ params }) => {
   const slug = params.episode;
