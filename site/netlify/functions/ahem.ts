@@ -1,6 +1,6 @@
-const createHandler = require('@stream-blitz/create-handler');
+import createHandler from '@stream-blitz/create-handler';
 
-exports.handler = createHandler({
+export const handler = createHandler({
   name: 'ahem',
   description: 'Pay attention!',
   handler: () => ({
