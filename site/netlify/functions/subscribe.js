@@ -1,7 +1,7 @@
-const qs = require('querystring');
-const fetch = require('node-fetch');
+import qs from 'querystring';
+import fetch from 'node-fetch';
 
-exports.handler = async (event) => {
+export const handler = async (event) => {
   const formId = process.env.CK_FORM_ID;
   const url = `https://api.convertkit.com/v3/forms/${formId}/subscribe`;
   const { firstName, email } = qs.parse(event.body);
