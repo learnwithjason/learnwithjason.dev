@@ -22,5 +22,5 @@ export function Autocomplete(props) {
     return () => search.destroy();
   }, [props]);
 
-  return <div ref={containerRef} />;
+  return <div ref={containerRef} className="search-box-wrapper" />;
 }

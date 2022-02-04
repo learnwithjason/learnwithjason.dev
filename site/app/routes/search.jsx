@@ -52,7 +52,6 @@ export default function Search() {
                 },
                 templates: {
                   item({ item, components }) {
-                    console.log({ item });
                     return (
                       <a
                         className="aa-ItemLink"
