@@ -121,6 +121,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "hriziya",
+      "name": "Hitesh Riziya",
+      "avatar_url": "https://avatars.githubusercontent.com/u/4135216?v=4",
+      "profile": "https://twitter.com/HiteshRiziya",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
