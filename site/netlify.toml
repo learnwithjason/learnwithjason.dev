@@ -1,0 +1,46 @@
+[build]
+  command = "remix build"
+  functions = "netlify/functions"
+  publish = "public"
+
+[dev]
+  command = "remix watch"
+  port = 3000
+
+[functions.server]
+  included_files = ["app/routes/__mdx/blog/**/*.mdx"] 
+
+[[redirects]]
+  from = "/api/episode/:slug"
+  to = "/.netlify/builders/episode"
+  status = 200
+
+[[redirects]]
+  from = "/:slug/poster.jpg"
+  to = "/.netlify/builders/episode"
+  status = 200
+
+[[redirects]]
+  from = "/:slug/starting-soon.jpg"
+  to = "/.netlify/builders/episode"
+  status = 200
+
+[[redirects]]
+  from = "/api/store/*"
+  to = "/.netlify/functions/shopify-:splat"
+  status = 200
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/builders/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/builders/server"
+  status = 200
+
+[[headers]]
+  for = "/build/*"
+  [headers.values]
+    "Cache-Control" = "public, max-age=31536000, s-maxage=31536000"
