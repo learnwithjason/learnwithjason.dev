@@ -1,4 +1,4 @@
-import { useLoaderData } from 'remix';
+import { useLoaderData, json } from 'remix';
 
 import { SectionFeaturedEpisodes } from '../components/section-featured-episodes.jsx';
 import { SectionSponsors } from '../components/section-sponsors.jsx';
@@ -8,21 +8,16 @@ import { SectionNextEpisode } from '../components/section-next-episode.jsx';
 import { loadAllEpisodes } from '../util/load-all-episodes.server.js';
 
 export const loader = async () => {
-  const episodes = await loadAllEpisodes();
+  let [episodes, schedule, featured, sponsors] = await Promise.all([
+    loadAllEpisodes(),
+    ...[
+      'https://www.learnwithjason.dev/api/schedule',
+      'https://www.learnwithjason.dev/api/episodes/featured',
+      'https://www.learnwithjason.dev/api/sponsors',
+    ].map((url) => fetch(url).then((res) => res.json())),
+  ]);
 
-  const schedule = await fetch(
-    'https://www.learnwithjason.dev/api/schedule',
-  ).then((res) => res.json());
-
-  const featured = await fetch(
-    'https://www.learnwithjason.dev/api/episodes/featured',
-  ).then((res) => res.json());
-
-  const sponsors = await fetch(
-    `https://www.learnwithjason.dev/api/sponsors`,
-  ).then((res) => res.json());
-
-  return { episodes, schedule, featured, sponsors };
+  return json({ episodes, schedule, featured, sponsors });
 };
 
 export default function Index() {
