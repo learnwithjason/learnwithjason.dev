@@ -32,7 +32,7 @@ If you want to load _Learn With Jason_ episodes or the schedule, there is an API
 
 All requests are made through the `/api` path. For example:
 
-`https://www.learnwithjason/api/schedule`
+`https://www.learnwithjason.dev/api/schedule`
 
 ### `/api/episodes`
 
