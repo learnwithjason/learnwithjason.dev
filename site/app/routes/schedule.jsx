@@ -1,19 +1,13 @@
 import { Fragment } from 'react';
 import { useLoaderData } from 'remix';
 
-import { IconArrow } from '../components/icon-arrow.jsx';
-import { IconCalendar } from '../components/icon-calendar.jsx';
-import { EpisodePreview } from '../components/episode-preview.jsx';
-
-const API_URL =
-  process.env.NODE_ENV === 'development'
-    ? 'http://localhost:3000'
-    : 'https://www.learnwithjason.dev';
+import { loadFromApi } from '~/util/fetch-api.server.js';
+import { IconArrow } from '~/components/icon-arrow.jsx';
+import { IconCalendar } from '~/components/icon-calendar.jsx';
+import { EpisodePreview } from '~/components/episode-preview.jsx';
 
 export const loader = async () => {
-  const schedule = await fetch(`${API_URL}/api/schedule`).then((res) =>
-    res.json(),
-  );
+  const schedule = await loadFromApi('/api/schedule');
 
   return schedule;
 };

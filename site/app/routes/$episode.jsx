@@ -4,24 +4,19 @@ import dayjs from 'dayjs';
 import Utc from 'dayjs/plugin/utc.js';
 import Timezone from 'dayjs/plugin/timezone.js';
 import AdvancedFormat from 'dayjs/plugin/advancedFormat.js';
-import { getTeacher } from '../util/get-teacher.js';
-import { EpisodePosted } from '../components/episode-posted.jsx';
-import { EpisodeScheduled } from '../components/episode-scheduled.jsx';
+
+import { loadFromApi } from '~/util/fetch-api.server.js';
+import { getTeacher } from '~/util/get-teacher.js';
+import { EpisodePosted } from '~/components/episode-posted.jsx';
+import { EpisodeScheduled } from '~/components/episode-scheduled.jsx';
 
 dayjs.extend(Utc);
 dayjs.extend(Timezone);
 dayjs.extend(AdvancedFormat);
 
-const API_URL =
-  process.env.NODE_ENV === 'development'
-    ? 'http://localhost:3000'
-    : 'https://www.learnwithjason.dev';
-
 export const loader = async ({ params }) => {
   const slug = params.episode;
-  const episode = await fetch(`${API_URL}/api/episode/${slug}/transcript`).then(
-    (res) => res.json(),
-  );
+  const episode = await loadFromApi(`/api/episode/${slug}/transcript`);
 
   const scheduleDescription = `${dayjs(episode.date).format(
     'MMMM D @ h:mm A z',

@@ -1,17 +1,11 @@
 import { Fragment, useEffect, useState } from 'react';
 import { useLoaderData } from 'remix';
 
-import styles from '../styles/store.css';
-
-const API_URL =
-  process.env.NODE_ENV === 'development'
-    ? 'http://localhost:3000'
-    : 'https://www.learnwithjason.dev';
+import { loadFromApi } from '~/util/fetch-api.server.js';
+import styles from '~/styles/store.css';
 
 export const loader = async () => {
-  const products = await fetch(`${API_URL}/api/products`).then((res) =>
-    res.json(),
-  );
+  const products = await loadFromApi('/api/products');
 
   return products;
 };
