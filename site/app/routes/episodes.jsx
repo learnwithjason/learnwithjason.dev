@@ -1,10 +1,10 @@
 import { Fragment } from 'react';
 import { useLoaderData } from 'remix';
 
-import { EpisodeList } from '../components/episode-list.jsx';
-import { IconArrow } from '../components/icon-arrow.jsx';
-import { getTeacher } from '../util/get-teacher.js';
-import { loadAllEpisodes } from '../util/load-all-episodes.server.js';
+import { EpisodeList } from '~/components/episode-list.jsx';
+import { IconArrow } from '~/components/icon-arrow.jsx';
+import { getTeacher } from '~/util/get-teacher.js';
+import { loadAllEpisodes } from '~/util/load-all-episodes.server.js';
 
 export const loader = async () => {
   const episodes = await loadAllEpisodes();
