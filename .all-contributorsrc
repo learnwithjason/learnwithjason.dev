@@ -130,6 +130,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "ryankshaw",
+      "name": "Ryan Shaw",
+      "avatar_url": "https://avatars.githubusercontent.com/u/10541?v=4",
+      "profile": "https://github.com/ryankshaw",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
