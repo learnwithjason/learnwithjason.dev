@@ -7,22 +7,21 @@ import { SectionHero } from '../components/section-hero.jsx';
 import { SectionNextEpisode } from '../components/section-next-episode.jsx';
 import { loadAllEpisodes } from '../util/load-all-episodes.server.js';
 
+const fetchJson = (url) => fetch(url).then((res) => res.json());
+
 export const loader = async () => {
-  const episodes = await loadAllEpisodes();
+  // we don't `await` on these until below so they can all be fetched in parallel
+  const episodesPromise = loadAllEpisodes();
+  const schedulePromise = fetchJson('https://www.learnwithjason.dev/api/schedule');
+  const featuredPromise = fetchJson('https://www.learnwithjason.dev/api/episodes/featured');
+  const sponsorsPromise = fetchJson('https://www.learnwithjason.dev/api/sponsors');
 
-  const schedule = await fetch(
-    'https://www.learnwithjason.dev/api/schedule',
-  ).then((res) => res.json());
-
-  const featured = await fetch(
-    'https://www.learnwithjason.dev/api/episodes/featured',
-  ).then((res) => res.json());
-
-  const sponsors = await fetch(
-    `https://www.learnwithjason.dev/api/sponsors`,
-  ).then((res) => res.json());
-
-  return { episodes, schedule, featured, sponsors };
+  return { 
+    episodes: await episodesPromise,
+    schedule: await schedulePromise, 
+    featured: await featuredPromise, 
+    sponsors: await sponsorsPromise,
+  };
 };
 
 export default function Index() {
