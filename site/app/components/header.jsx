@@ -1,25 +1,39 @@
+import { Link } from 'remix';
+
 import { Logo } from './logo.jsx';
 
 export function Header() {
   return (
     <header className="header">
-      <a className="visually-hidden" href="#content">
+      <a href="#content" className="visually-hidden">
         skip to content
       </a>
       <div className="mobile-buttons">
-        <a href="/" rel="home">
+        <Link rel="prefetch" to="/" rel="home">
           <Logo />
           <span className="visually-hidden">Home</span>
-        </a>
+        </Link>
       </div>
       <nav>
-        <a href="/episodes">episodes</a>
-        <a href="/schedule">schedule</a>
-        {/* <a href="/">courses</a> */}
-        <a href="/store">store</a>
-        <a href="/blog">blog</a>
-        <a href="/about">about</a>
-        <a href="/search">search</a>
+        <Link rel="prefetch" to="/episodes">
+          episodes
+        </Link>
+        <Link rel="prefetch" to="/schedule">
+          schedule
+        </Link>
+        {/* <Link rel="prefetch" to="/">courses</Link> */}
+        <Link rel="prefetch" to="/store">
+          store
+        </Link>
+        <Link rel="prefetch" to="/blog">
+          blog
+        </Link>
+        <Link rel="prefetch" to="/about">
+          about
+        </Link>
+        <Link rel="prefetch" to="/search">
+          search
+        </Link>
       </nav>
     </header>
   );

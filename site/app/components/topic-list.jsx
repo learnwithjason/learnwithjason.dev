@@ -1,3 +1,5 @@
+import { Link } from 'remix';
+
 import { TeacherPhoto } from './teacher-photo.jsx';
 import { IconArrow } from './icon-arrow.jsx';
 import { getTeacher } from '../util/get-teacher.js';
@@ -19,16 +21,18 @@ export function TopicList({ topic, title, episodes }) {
                   width={50}
                 />
               </div>
-              <a href={`/${episode.slug.current}`}>{episode.title}</a>
+              <Link rel="prefetch" to={`/${episode.slug.current}`}>
+                {episode.title}
+              </Link>
             </li>
           );
         })}
       </ul>
       <div className="topic-links">
-        <a href={`/topic/${topic}`}>
+        <Link rel="prefetch" to={`/topic/${topic}`}>
           see more <span className="visually-hidden">from {title}</span>
           <IconArrow />
-        </a>
+        </Link>
       </div>
     </div>
   );

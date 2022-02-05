@@ -1,3 +1,4 @@
+import { Link } from 'remix';
 import { TeacherPhoto } from './teacher-photo.jsx';
 
 export function Footer() {
@@ -29,7 +30,10 @@ export function Footer() {
         <a href="https://github.com/learnwithjason/learnwithjason.dev">
           Source Code
         </a>{' '}
-        · <a href="/code-of-conduct">Code of Conduct</a>
+        ·{' '}
+        <Link rel="prefetch" to="/code-of-conduct">
+          Code of Conduct
+        </Link>
       </nav>
     </footer>
   );

@@ -1,5 +1,4 @@
 const path = require('path');
-const { builder } = require('@netlify/functions');
 const { createRequestHandler } = require('@remix-run/netlify');
 
 const BUILD_DIR = path.join(process.cwd(), 'netlify');
@@ -17,7 +16,7 @@ function purgeRequireCache() {
   }
 }
 
-exports.handler = builder(
+exports.handler =
   process.env.NODE_ENV === 'production'
     ? createRequestHandler({ build: require('./build') })
     : (event, context) => {
@@ -26,5 +25,4 @@ exports.handler = builder(
           event,
           context,
         );
-      },
-);
+      };
