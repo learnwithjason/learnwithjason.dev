@@ -73,11 +73,14 @@ To start, clone the repo and install dependencies:
 # clone the repo
 git clone git@github.com:learnwithjason/learnwithjason.dev
 
-# move into the project directory
-cd learnwithjason.dev/
+# move into the project directory, then into the site
+cd learnwithjason.dev/site/
 
 # install dependencies
 npm install
+
+# build the site — this is required for local dev!
+npm run build
 ```
 
 Next, start the project using the Netlify CLI:
