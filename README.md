@@ -17,7 +17,7 @@
   <br />
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-14-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-15-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 </p>
@@ -113,6 +113,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/Rohithgilla12"><img src="https://avatars.githubusercontent.com/u/19389850?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Rohith Gilla</b></sub></a><br /><a href="#content-Rohithgilla12" title="Content">🖋</a></td>
     <td align="center"><a href="https://sarahdayan.dev"><img src="https://avatars.githubusercontent.com/u/5370675?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sarah Dayan</b></sub></a><br /><a href="https://github.com/learnwithjason/learnwithjason.dev/commits?author=sarahdayan" title="Code">💻</a></td>
     <td align="center"><a href="https://twitter.com/HiteshRiziya"><img src="https://avatars.githubusercontent.com/u/4135216?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Hitesh Riziya</b></sub></a><br /><a href="https://github.com/learnwithjason/learnwithjason.dev/commits?author=hriziya" title="Documentation">📖</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/ryankshaw"><img src="https://avatars.githubusercontent.com/u/10541?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ryan Shaw</b></sub></a><br /><a href="https://github.com/learnwithjason/learnwithjason.dev/commits?author=ryankshaw" title="Code">💻</a></td>
   </tr>
 </table>
 
