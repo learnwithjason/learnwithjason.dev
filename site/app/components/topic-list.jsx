@@ -21,7 +21,7 @@ export function TopicList({ topic, title, episodes }) {
                   width={50}
                 />
               </div>
-              <Link rel="prefetch" to={`/${episode.slug.current}`}>
+              <Link prefetch="intent" to={`/${episode.slug.current}`}>
                 {episode.title}
               </Link>
             </li>
@@ -29,7 +29,7 @@ export function TopicList({ topic, title, episodes }) {
         })}
       </ul>
       <div className="topic-links">
-        <Link rel="prefetch" to={`/topic/${topic}`}>
+        <Link prefetch="intent" to={`/topic/${topic}`}>
           see more <span className="visually-hidden">from {title}</span>
           <IconArrow />
         </Link>

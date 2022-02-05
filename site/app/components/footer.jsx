@@ -31,7 +31,7 @@ export function Footer() {
           Source Code
         </a>{' '}
         ·{' '}
-        <Link rel="prefetch" to="/code-of-conduct">
+        <Link prefetch="intent" to="/code-of-conduct">
           Code of Conduct
         </Link>
       </nav>

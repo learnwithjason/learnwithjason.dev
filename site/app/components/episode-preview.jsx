@@ -35,7 +35,7 @@ export function EpisodePreview({ episode, hideLinks = false, children }) {
         </p>
         <h3>
           {!hideLinks ? (
-            <Link rel="prefetch" to={`/${episode.slug.current}`}>
+            <Link prefetch="intent" to={`/${episode.slug.current}`}>
               {episode.title}
             </Link>
           ) : (
@@ -59,7 +59,7 @@ export function EpisodePreview({ episode, hideLinks = false, children }) {
           ? children
           : !hideLinks && (
               <div className="episode-links">
-                <Link rel="prefetch" to={`/${episode.slug.current}`}>
+                <Link prefetch="intent" to={`/${episode.slug.current}`}>
                   <IconInfo /> Episode Details
                   <span className="visually-hidden"> for {episode.title}</span>
                 </Link>

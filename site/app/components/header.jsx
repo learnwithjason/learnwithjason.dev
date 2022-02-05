@@ -9,29 +9,29 @@ export function Header() {
         skip to content
       </a>
       <div className="mobile-buttons">
-        <Link rel="prefetch" to="/" rel="home">
+        <Link prefetch="intent" to="/" rel="home">
           <Logo />
           <span className="visually-hidden">Home</span>
         </Link>
       </div>
       <nav>
-        <Link rel="prefetch" to="/episodes">
+        <Link prefetch="intent" to="/episodes">
           episodes
         </Link>
-        <Link rel="prefetch" to="/schedule">
+        <Link prefetch="intent" to="/schedule">
           schedule
         </Link>
-        {/* <Link rel="prefetch" to="/">courses</Link> */}
-        <Link rel="prefetch" to="/store">
+        {/* <Link prefetch="intent" to="/">courses</Link> */}
+        <Link prefetch="intent" to="/store">
           store
         </Link>
-        <Link rel="prefetch" to="/blog">
+        <Link prefetch="intent" to="/blog">
           blog
         </Link>
-        <Link rel="prefetch" to="/about">
+        <Link prefetch="intent" to="/about">
           about
         </Link>
-        <Link rel="prefetch" to="/search">
+        <Link prefetch="intent" to="/search">
           search
         </Link>
       </nav>

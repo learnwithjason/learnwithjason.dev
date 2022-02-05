@@ -45,7 +45,7 @@ export function SectionNextEpisode({ nextEpisode, nextNextEpisode }) {
           <div className="next-episode-wrapper">
             <EpisodePreview episode={episode} />
             <div className="schedule-links">
-              <Link rel="prefetch" to="/schedule" className="button">
+              <Link prefetch="intent" to="/schedule" className="button">
                 see all upcoming episodes <IconArrow />
               </Link>
               <p>
@@ -53,7 +53,7 @@ export function SectionNextEpisode({ nextEpisode, nextNextEpisode }) {
                 schedule to your Google Calendar:
               </p>
               <div className="links">
-                <Link rel="prefetch" to="/calendar">
+                <Link prefetch="intent" to="/calendar">
                   <IconCalendar /> Add the Calendar
                 </Link>
               </div>

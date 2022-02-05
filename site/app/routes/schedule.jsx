@@ -41,7 +41,7 @@ export default function Schedule() {
           subscribing on Twitch!
         </p>
         <div className="hero-buttons">
-          <Link rel="prefetch" to="/calendar" className="button">
+          <Link prefetch="intent" to="/calendar" className="button">
             <IconCalendar /> Add on Google Calendar
           </Link>
           <a href="https://twitch.tv/jlengstorf" className="button">

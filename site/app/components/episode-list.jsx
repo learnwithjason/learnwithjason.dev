@@ -21,7 +21,7 @@ export function EpisodeList({ episodes }) {
             count={i + 1}
           />
           <h2>
-            <Link rel="prefetch" to={`/${episode.slug.current}`}>
+            <Link prefetch="intent" to={`/${episode.slug.current}`}>
               {episode.title}
             </Link>
           </h2>

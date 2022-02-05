@@ -110,7 +110,7 @@ export default function Search() {
         <p>
           <small>
             Want to see how this was built?{' '}
-            <Link rel="prefetch" to="/javascript-autocomplete">
+            <Link prefetch="intent" to="/javascript-autocomplete">
               Watch the episode!
             </Link>
           </small>

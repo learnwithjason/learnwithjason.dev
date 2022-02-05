@@ -33,7 +33,7 @@ export default function BlogIndex() {
         {posts.map((post) => (
           <article className="post-preview" key={post.slug}>
             <h2>
-              <Link rel="prefetch" to={`/blog/${post.slug}`}>
+              <Link prefetch="intent" to={`/blog/${post.slug}`}>
                 {post.title}
               </Link>
             </h2>
