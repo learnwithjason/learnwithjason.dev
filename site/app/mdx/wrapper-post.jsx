@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useRef, useState } from 'react';
-import { OptInForm } from '../components/opt-in-form.jsx';
+import { OptInForm } from '~/components/opt-in-form.jsx';
 
 export function WrapperPost({ meta, children }) {
   const [headings, setHeadings] = useState([]);

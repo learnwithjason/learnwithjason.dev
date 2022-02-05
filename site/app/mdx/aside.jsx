@@ -1,4 +1,4 @@
-import { IconAlert } from '../components/icon-alert.jsx';
+import { IconAlert } from '~/components/icon-alert.jsx';
 
 export function Aside({ children }) {
   return (

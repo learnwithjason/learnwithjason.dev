@@ -1,5 +1,5 @@
 import { Outlet } from 'remix';
-import postStyles from '../styles/post.css';
+import postStyles from '~/styles/post.css';
 
 export const links = () => {
   return [{ rel: 'stylesheet', href: postStyles }];
