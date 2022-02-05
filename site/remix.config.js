@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require("path");
 
 /**
  * @type {import('@remix-run/dev/config').AppConfig}
@@ -11,29 +11,29 @@ module.exports = {
   devServerPort: 8002,
   ignoredRouteFiles: ['.*'],
   mdx: async () => {
-    const [rehypeSlug] = await Promise.all([
-      import('rehype-slug').then((mod) => mod.default),
-    ]);
-
-    console.log(rehypeSlug);
+    const rehypeSlug = await import('rehype-slug');
+    const remarkPrism = await import('remark-prism');
+    const rehypeCloudinary = await import('rehype-local-image-to-cloudinary');
 
     return {
       remarkPlugins: [
         [
-          require('remark-prism'),
+          remarkPrism.default,
           {
             plugins: ['prismjs/plugins/diff-highlight/prism-diff-highlight'],
           },
         ],
       ],
       rehypePlugins: [
-        rehypeSlug,
         [
-          require('rehype-local-image-to-cloudinary'),
-          {
-            baseDir: path.join(__dirname, 'public'),
-            uploadFolder: 'lwj',
-          },
+          rehypeSlug.default,
+          [
+            rehypeCloudinary.default,
+            {
+              baseDir: path.join(__dirname, 'public'),
+              uploadFolder: 'lwj',
+            },
+          ],
         ],
       ],
     };
