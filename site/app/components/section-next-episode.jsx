@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+import { Link } from 'remix';
 import dayjs from 'dayjs';
 import RelativeTime from 'dayjs/plugin/relativeTime.js';
 import Utc from 'dayjs/plugin/utc.js';
@@ -44,17 +45,17 @@ export function SectionNextEpisode({ nextEpisode, nextNextEpisode }) {
           <div className="next-episode-wrapper">
             <EpisodePreview episode={episode} />
             <div className="schedule-links">
-              <a href="/schedule" className="button">
+              <Link prefetch="intent" to="/schedule" className="button">
                 see all upcoming episodes <IconArrow />
-              </a>
+              </Link>
               <p>
                 Never miss an episode! Add the <em>Learn With Jason</em>{' '}
                 schedule to your Google Calendar:
               </p>
               <div className="links">
-                <a href="/calendar">
+                <Link prefetch="intent" to="/calendar">
                   <IconCalendar /> Add the Calendar
-                </a>
+                </Link>
               </div>
             </div>
           </div>

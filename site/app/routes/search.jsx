@@ -1,3 +1,4 @@
+import { Link } from 'remix';
 import algoliasearch from 'algoliasearch/lite';
 import { getAlgoliaResults } from '@algolia/autocomplete-js';
 import { Autocomplete } from '~/components/autocomplete';
@@ -109,7 +110,9 @@ export default function Search() {
         <p>
           <small>
             Want to see how this was built?{' '}
-            <a href="/javascript-autocomplete">Watch the episode!</a>
+            <Link prefetch="intent" to="/javascript-autocomplete">
+              Watch the episode!
+            </Link>
           </small>
         </p>
       </section>

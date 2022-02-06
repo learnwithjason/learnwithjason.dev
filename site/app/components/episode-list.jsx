@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'remix';
 import { EpisodeVideo } from './episode-video.jsx';
 import { IconInfo } from './icon-info.jsx';
 import { ShareButton } from './share-button.jsx';
@@ -20,14 +21,20 @@ export function EpisodeList({ episodes }) {
             count={i + 1}
           />
           <h2>
-            <a href={`/${episode.slug.current}`}>{episode.title}</a>
+            <Link prefetch="intent" to={`/${episode.slug.current}`}>
+              {episode.title}
+            </Link>
           </h2>
           <p>{episode.description}</p>
           <div className="episode-links top-gradient-border">
-            <a href={`/${episode.slug.current}`} className="animate">
+            <Link
+              rel="prefetch"
+              to={`/${episode.slug.current}`}
+              className="animate"
+            >
               <IconInfo /> Links, Resources, and Transcript
               <span className="visually-hidden"> for {episode.title}</span>
-            </a>
+            </Link>
             <ShareButton
               title={episode.title}
               description={episode.description}

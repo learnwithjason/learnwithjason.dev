@@ -1,4 +1,4 @@
-import { useLoaderData } from 'remix';
+import { useLoaderData, Link } from 'remix';
 import { loadMdx } from '~/util/load-mdx.server.js';
 import { IconArrow } from '~/components/icon-arrow.jsx';
 
@@ -33,12 +33,18 @@ export default function BlogIndex() {
         {posts.map((post) => (
           <article className="post-preview" key={post.slug}>
             <h2>
-              <a href={`/blog/${post.slug}`}>{post.title}</a>
+              <Link prefetch="intent" to={`/blog/${post.slug}`}>
+                {post.title}
+              </Link>
             </h2>
             <p>{post.description}</p>
-            <a href={`/blog/${post.slug}`} className="read-more">
+            <Link
+              rel="prefetch"
+              to={`/blog/${post.slug}`}
+              className="read-more"
+            >
               read this post <IconArrow />
-            </a>
+            </Link>
           </article>
         ))}
       </section>

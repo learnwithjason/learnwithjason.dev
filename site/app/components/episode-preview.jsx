@@ -1,3 +1,4 @@
+import { Link } from 'remix';
 import dayjs from 'dayjs';
 import Utc from 'dayjs/plugin/utc.js';
 import Timezone from 'dayjs/plugin/timezone.js';
@@ -34,7 +35,9 @@ export function EpisodePreview({ episode, hideLinks = false, children }) {
         </p>
         <h3>
           {!hideLinks ? (
-            <a href={`/${episode.slug.current}`}>{episode.title}</a>
+            <Link prefetch="intent" to={`/${episode.slug.current}`}>
+              {episode.title}
+            </Link>
           ) : (
             episode.title
           )}
@@ -43,9 +46,12 @@ export function EpisodePreview({ episode, hideLinks = false, children }) {
         {host && host.name !== 'Jason Lengstorf' && (
           <p className="episode-description">
             With special guest host{' '}
-            <a href={`https://twitter.com/${episode.host.twitter}`}>
+            <Link
+              rel="prefetch"
+              to={`https://twitter.com/${episode.host.twitter}`}
+            >
               {episode.host.name}
-            </a>
+            </Link>
             !
           </p>
         )}
@@ -53,10 +59,10 @@ export function EpisodePreview({ episode, hideLinks = false, children }) {
           ? children
           : !hideLinks && (
               <div className="episode-links">
-                <a href={`/${episode.slug.current}`}>
+                <Link prefetch="intent" to={`/${episode.slug.current}`}>
                   <IconInfo /> Episode Details
                   <span className="visually-hidden"> for {episode.title}</span>
-                </a>
+                </Link>
                 <ShareButton
                   title={episode.title}
                   text={episode.description}

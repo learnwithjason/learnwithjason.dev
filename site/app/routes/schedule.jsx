@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { useLoaderData } from 'remix';
+import { useLoaderData, Link } from 'remix';
 
 import { loadFromApi } from '~/util/fetch-api.server.js';
 import { IconArrow } from '~/components/icon-arrow.jsx';
@@ -35,9 +35,9 @@ export default function Schedule() {
           subscribing on Twitch!
         </p>
         <div className="hero-buttons">
-          <a href="/calendar" className="button">
+          <Link prefetch="intent" to="/calendar" className="button">
             <IconCalendar /> Add on Google Calendar
-          </a>
+          </Link>
           <a href="https://twitch.tv/jlengstorf" className="button">
             Follow on Twitch <IconArrow />
           </a>
