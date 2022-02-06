@@ -15,7 +15,7 @@ export const hasuraRequest = async function ({
   const result: FetchResult = await fetch(process.env.HASURA_URL, {
     method: 'POST',
     headers: {
-      'X-Hasura-Admin-Secret': process.env.HASURA_ADMIN_SECRET,
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify({ query, variables }),
   }).then((res) => res.json());
