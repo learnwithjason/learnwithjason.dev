@@ -161,7 +161,7 @@ a:focus {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  justify-content: space-between;
+  justify-content: center;
   overflow: hidden;
   padding: 1.5rem 1rem calc(1.5rem + 9px) 2rem;
   position: relative;
@@ -177,31 +177,6 @@ a:focus {
   width: 100%;
 }
 
-.mobile-buttons {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.mobile-buttons .nav-toggle {
-  background: transparent;
-  border: 2px solid var(--white);
-  border-radius: 0.25rem;
-  color: var(--white);
-  font-weight: 600;
-  width: 120px;
-}
-
-@media (min-width: 980px) {
-  .mobile-buttons {
-    width: auto;
-  }
-
-  .mobile-buttons .nav-toggle {
-    display: none;
-  }
-}
-
 .header a {
   color: var(--white);
   display: block;
@@ -211,37 +186,26 @@ a:focus {
 .header nav {
   align-items: center;
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  height: 0;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0 1rem;
+}
+
+@media (min-width: 980px) {
+  .header {
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: calc(0.25rem + 9px);
+    padding-top: 0.25rem;
+  }
 }
 
 .header nav a {
   font-weight: 900;
-  opacity: 0;
   padding: 1rem;
   position: relative;
   text-decoration: none;
-}
-
-@media (min-width: 980px) {
-  .header,
-  .header nav {
-    flex-direction: row;
-  }
-
-  .header {
-    padding-bottom: calc(0.25rem + 9px);
-    padding-top: 0.25rem;
-  }
-
-  .header nav {
-    height: auto;
-  }
-
-  .header nav a {
-    opacity: 1;
-  }
 }
 
 .block {

@@ -8,12 +8,14 @@ export function Header() {
       <a href="#content" className="visually-hidden">
         skip to content
       </a>
-      <div className="mobile-buttons">
+
+      <div className="logo">
         <Link prefetch="intent" to="/" rel="home">
           <Logo />
           <span className="visually-hidden">Home</span>
         </Link>
       </div>
+
       <nav>
         <Link prefetch="intent" to="/episodes">
           episodes
