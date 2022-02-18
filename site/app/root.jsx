@@ -12,11 +12,11 @@ import {
 
 import { Header } from './components/header.jsx';
 import { Footer } from './components/footer.jsx';
+import { Search } from './components/search/index.jsx';
+import { loadFromApi } from './util/fetch-api.server.js';
 
 import styles from './styles/main.css';
 import search from './styles/search.css';
-import { Search } from './components/search/index.jsx';
-import { loadFromApi } from './util/fetch-api.server.js';
 
 export function meta() {
   return {
