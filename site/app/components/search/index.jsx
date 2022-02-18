@@ -79,7 +79,7 @@ export function Search({ data, isOpen, onToggle }) {
         {
           sourceId: 'latest',
           getItems: () => [
-            ...episodes.slice(0, 3),
+            ...episodes,
             {
               label: 'See all past episodes',
               url: '/episodes',
@@ -102,7 +102,7 @@ export function Search({ data, isOpen, onToggle }) {
         {
           sourceId: 'schedule',
           getItems: () => [
-            ...schedule.slice(0, 3),
+            ...schedule,
             {
               label: 'See all upcoming episodes',
               url: '/schedule',

@@ -122,8 +122,8 @@ export const loader = async ({ request }) => {
   const episodesPromise = loadFromApi('/api/episodes');
 
   return {
-    schedule: await schedulePromise,
-    episodes: await episodesPromise,
+    schedule: (await schedulePromise).slice(0, 3),
+    episodes: (await episodesPromise).slice(0, 3),
     search: search !== null,
   };
 };
