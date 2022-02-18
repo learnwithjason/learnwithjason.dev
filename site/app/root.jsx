@@ -133,6 +133,26 @@ export default function App() {
   const { schedule, episodes, search } = useLoaderData();
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(search);
 
+  function toggleSearchModal(isOpen) {
+    setIsSearchModalOpen(isOpen);
+
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+
+    const searchParams = new URLSearchParams(window.location.search);
+
+    if (!isOpen && searchParams.get('search') !== null) {
+      searchParams.delete('search');
+
+      history.pushState(
+        null,
+        '',
+        [window.location.pathname, searchParams.toString()]
+          .filter(Boolean)
+          .join('?')
+      );
+    }
+  }
+
   let wrapperClass = '';
   if (matches.some(({ pathname }) => pathname === '/blog/')) {
     wrapperClass = 'post-listing-container';
@@ -167,7 +187,7 @@ export default function App() {
             </linearGradient>
           </defs>
         </svg>
-        <Header onOpenSearch={() => setIsSearchModalOpen(true)} />
+        <Header onOpenSearch={() => toggleSearchModal(true)} />
         <main id="content" className={wrapperClass}>
           <Outlet />
         </main>
@@ -175,7 +195,7 @@ export default function App() {
         <Search
           data={{ schedule, episodes }}
           isOpen={isSearchModalOpen}
-          onToggle={setIsSearchModalOpen}
+          onToggle={toggleSearchModal}
         />
         <ScrollRestoration />
         <Scripts />

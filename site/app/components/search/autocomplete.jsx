@@ -57,18 +57,12 @@ export function Autocomplete(props) {
       window.removeEventListener('touchstart', onTouchStart);
       window.removeEventListener('touchmove', onTouchMove);
     };
-  }, [autocomplete.getEnvironmentProps, formRef, inputRef, panelRef]);
-
-  useEffect(() => {
-    if (props.autoFocus) {
-      inputRef.current?.dispatchEvent(
-        new Event('focusin', {
-          bubbles: true,
-          cancelable: true,
-        })
-      );
-    }
-  }, [inputRef]);
+  }, [
+    autocomplete.getEnvironmentProps,
+    formRef.current,
+    inputRef.current,
+    panelRef.current,
+  ]);
 
   useEffect(() => {
     function onKeyDown(event) {
@@ -114,6 +108,7 @@ export function Autocomplete(props) {
             {...autocomplete.getRootProps({})}
           >
             <form
+              ref={formRef}
               className="aa-Form"
               {...autocomplete.getFormProps({ inputElement: inputRef.current })}
             >
@@ -133,7 +128,7 @@ export function Autocomplete(props) {
                   ref={inputRef}
                   {...autocomplete.getInputProps({
                     inputElement: inputRef.current,
-                    enterkeyhint: 'go',
+                    enterKeyHint: 'go',
                   })}
                 />
               </div>
