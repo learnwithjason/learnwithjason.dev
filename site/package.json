@@ -10,7 +10,8 @@
     "postinstall": "remix setup node"
   },
   "dependencies": {
-    "@algolia/autocomplete-js": "^1.5.1",
+    "@algolia/autocomplete-core": "1.5.2",
+    "@algolia/autocomplete-preset-algolia": "1.5.2",
     "@jlengstorf/get-twitch-oauth": "^1.0.1",
     "@netlify/functions": "^0.11.0",
     "@remix-run/netlify": "^1.1.1",
