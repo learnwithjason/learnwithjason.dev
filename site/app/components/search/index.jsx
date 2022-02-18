@@ -29,10 +29,17 @@ export function Search({ data, isOpen, onToggle }) {
         document.body.style.overflow = nextIsOpen ? 'hidden' : '';
 
         const searchParams = new URLSearchParams(window.location.search);
-        const search = searchParams.get('search');
 
-        if (!nextIsOpen && search !== null) {
-          history.pushState(null, '', window.location.pathname);
+        if (!nextIsOpen && searchParams.get('search') !== null) {
+          searchParams.delete('search');
+
+          history.pushState(
+            null,
+            '',
+            [window.location.pathname, searchParams.toString()]
+              .filter(Boolean)
+              .join('?')
+          );
         }
       }}
       emptyQuery={() => [
