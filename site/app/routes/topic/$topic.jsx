@@ -20,9 +20,14 @@ export const loader = async ({ params }) => {
   const episodes = await loadAllEpisodes();
 
   return {
+    topicSlug: topic,
     topic: topicInfo,
     episodes: episodes
-      .filter((ep) => (ep.tags ?? []).some((tag) => tag.value === topic))
+      .filter((ep) =>
+        (ep.tags ?? []).some(
+          (tag) => tag.value.toLowerCase() === topic.toLowerCase(),
+        ),
+      )
       .map((episode) => {
         const host = getTeacher([episode.host]);
         const teacher = getTeacher(episode.guest);
@@ -34,17 +39,17 @@ export const loader = async ({ params }) => {
 
 export const meta = ({ data }) => {
   return {
-    title: data.topic.title,
+    title: data.topic?.title ?? `Topic: ${data.topicSlug}`,
   };
 };
 
 export default function Episodes() {
-  const { topic, episodes } = useLoaderData();
+  const { topic, topicSlug, episodes } = useLoaderData();
 
   return (
     <Fragment>
       <header className="block hero">
-        <h1>{topic.title}</h1>
+        <h1>{topic?.title ?? `Posts tagged with “${topicSlug}”`}</h1>
       </header>
       <EpisodeList episodes={episodes} />
     </Fragment>
