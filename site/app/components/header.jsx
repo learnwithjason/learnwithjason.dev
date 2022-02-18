@@ -1,8 +1,9 @@
 import { Link } from 'remix';
 
 import { Logo } from './logo.jsx';
+import { SearchIcon } from './search/icons/search-icon.jsx';
 
-export function Header() {
+export function Header({ onOpenSearch }) {
   return (
     <header className="header">
       <a href="#content" className="visually-hidden">
@@ -33,9 +34,10 @@ export function Header() {
         <Link prefetch="intent" to="/about">
           about
         </Link>
-        <Link prefetch="intent" to="/search">
-          search
-        </Link>
+        <button className="aa-OpenButton" onClick={onOpenSearch}>
+          <SearchIcon />
+          <span className="visually-hidden">Open search</span>
+        </button>
       </nav>
     </header>
   );
