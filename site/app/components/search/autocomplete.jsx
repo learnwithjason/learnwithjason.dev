@@ -133,6 +133,7 @@ export function Autocomplete(props) {
                   ref={inputRef}
                   {...autocomplete.getInputProps({
                     inputElement: inputRef.current,
+                    enterkeyhint: 'go',
                   })}
                 />
               </div>
