@@ -112,6 +112,7 @@
 
 .aa-Input {
   width: 100%;
+  margin: 0;
   padding: 1.25rem 0;
   font-size: 1rem;
   border: none;
@@ -119,6 +120,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   font-family: var(--font-family);
+  -webkit-appearance: textfield;
 }
 
 .aa-Input::-webkit-search-decoration,
@@ -126,6 +128,7 @@
 .aa-Input::-webkit-search-results-button,
 .aa-Input::-webkit-search-results-decoration {
   appearance: none;
+  -webkit-appearance: none;
 }
 
 .aa-Input:focus {
@@ -156,6 +159,7 @@
   background: none;
   border: none;
   cursor: pointer;
+  margin: 0;
   padding: 0 1rem;
   height: 100%;
   color: var(--gray-medium);
@@ -275,7 +279,7 @@
   font-size: 0.9rem;
   font-weight: 600;
   overflow: hidden;
-  display: box;
+  display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 }
@@ -284,7 +288,7 @@
   font-size: 0.8rem;
   color: var(--text-muted);
   overflow: hidden;
-  display: box;
+  display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
 }
@@ -383,7 +387,7 @@
   font-weight: 600;
   margin-bottom: 0.5rem;
   overflow: hidden;
-  display: box;
+  display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
 }
@@ -402,7 +406,7 @@
   position: relative;
   display: flex;
   justify-content: end;
-  flex: 0;
+  flex: none;
   padding: 0.8rem 1rem;
   border-top: 1px solid var(--gray-lightest);
 }
@@ -427,6 +431,7 @@
 
 .aa-AlgoliaLogo a {
   display: flex;
+  align-items: center;
   text-decoration: none;
   color: var(--text-muted);
 }
@@ -443,6 +448,7 @@
 
 .aa-AlgoliaLogo svg {
   width: 4rem;
+  height: 1rem;
 }
 
 @media (max-width: 750px) {
@@ -470,21 +476,21 @@
     max-height: none;
   }
 
-  .aa-LinkLabel {
-    -webkit-line-clamp: 1;
-  }
-
   .aa-CoverImage {
     width: 5rem;
     height: 5rem;
     object-fit: cover;
     object-position: center;
   }
+
+  .aa-LinkIcon {
+    display: none;
+  }
 }
 
 @media (max-width: 450px) {
   .aa-LinkDescription {
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 1;
   }
 
   .aa-CoverImage {
@@ -496,6 +502,14 @@
 @media (max-width: 380px) {
   .aa-CoverImage {
     display: none;
+  }
+
+  .aa-LinkItem-Content {
+    align-items: flex-start;
+  }
+
+  .aa-Icon {
+    margin-top: 0.1rem;
   }
 
   .aa-LinkDescription {
