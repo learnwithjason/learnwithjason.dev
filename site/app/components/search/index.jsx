@@ -23,25 +23,7 @@ export function Search({ data, isOpen, onToggle }) {
       autoFocus={true}
       defaultActiveItemId={0}
       isOpen={isOpen}
-      onToggle={(nextIsOpen) => {
-        onToggle(nextIsOpen);
-
-        document.body.style.overflow = nextIsOpen ? 'hidden' : '';
-
-        const searchParams = new URLSearchParams(window.location.search);
-
-        if (!nextIsOpen && searchParams.get('search') !== null) {
-          searchParams.delete('search');
-
-          history.pushState(
-            null,
-            '',
-            [window.location.pathname, searchParams.toString()]
-              .filter(Boolean)
-              .join('?')
-          );
-        }
-      }}
+      onToggle={onToggle}
       emptyQuery={() => [
         {
           sourceId: 'links',
