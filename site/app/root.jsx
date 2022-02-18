@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   Links,
   LiveReload,
@@ -5,13 +6,17 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
   useMatches,
 } from 'remix';
 
 import { Header } from './components/header.jsx';
 import { Footer } from './components/footer.jsx';
+import { Search } from './components/search/index.jsx';
+import { loadFromApi } from './util/fetch-api.server.js';
 
 import styles from './styles/main.css';
+import search from './styles/search.css';
 
 export function meta() {
   return {
@@ -42,6 +47,7 @@ export function meta() {
 export function links() {
   return [
     { rel: 'stylesheet', href: styles },
+    { rel: 'stylesheet', href: search },
     {
       rel: 'preload',
       href: '/fonts/jwf-book.woff2',
@@ -104,11 +110,28 @@ export function links() {
     },
     { rel: 'manifest', href: '/site.webmanifest' },
     { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#c10b7e' },
+    { rel: 'preconnect', href: 'https://MU9BHW5MNS-dsn.algolia.net' },
   ];
 }
 
+export const loader = async ({ request }) => {
+  const url = new URL(request.url);
+  const search = url.searchParams.get('search');
+
+  const schedulePromise = loadFromApi('/api/schedule');
+  const episodesPromise = loadFromApi('/api/episodes');
+
+  return {
+    schedule: (await schedulePromise).slice(0, 3),
+    episodes: (await episodesPromise).slice(0, 3),
+    search: search !== null,
+  };
+};
+
 export default function App() {
   const matches = useMatches();
+  const { schedule, episodes, search } = useLoaderData();
+  const [isSearchModalOpen, setIsSearchModalOpen] = useState(search);
 
   let wrapperClass = '';
   if (matches.some(({ pathname }) => pathname === '/blog/')) {
@@ -144,11 +167,16 @@ export default function App() {
             </linearGradient>
           </defs>
         </svg>
-        <Header />
+        <Header onOpenSearch={() => setIsSearchModalOpen(true)} />
         <main id="content" className={wrapperClass}>
           <Outlet />
         </main>
         <Footer />
+        <Search
+          data={{ schedule, episodes }}
+          isOpen={isSearchModalOpen}
+          onToggle={setIsSearchModalOpen}
+        />
         <ScrollRestoration />
         <Scripts />
         {process.env.NODE_ENV === 'development' && <LiveReload />}
