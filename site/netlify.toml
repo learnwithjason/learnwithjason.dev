@@ -11,6 +11,14 @@
   included_files = ["app/routes/__mdx/blog/**/*.mdx"] 
 
 [[headers]]
+  for = "/episodes.xml"
+  [headers.values]
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Content-Type = "application/xml; charset=utf-8"
+
+[[headers]]
   for = "/*"
   [headers.values]
     Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
