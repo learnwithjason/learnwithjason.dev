@@ -49,6 +49,12 @@ export function links() {
     { rel: 'stylesheet', href: styles },
     { rel: 'stylesheet', href: search },
     {
+      rel: 'alternate',
+      type: 'application/rss+xml',
+      title: 'Episodes RSS Feed',
+      href: '/episodes.xml',
+    },
+    {
       rel: 'preload',
       href: '/fonts/jwf-book.woff2',
       as: 'font',
@@ -148,7 +154,7 @@ export default function App() {
         '',
         [window.location.pathname, searchParams.toString()]
           .filter(Boolean)
-          .join('?')
+          .join('?'),
       );
     }
   }

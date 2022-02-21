@@ -13,7 +13,7 @@ export const loader = async () => {
 >
   <channel>
     <title>Learn With Jason Episodes</title>
-    <description>Learn With Jason is live, hands-on learning with brilliant teachers from the web community every Tuesday & Thursday. Join live and learn with us!</description>
+    <description>Learn With Jason is live, hands-on learning with brilliant teachers from the web community every Tuesday &amp; Thursday. Join live and learn with us!</description>
     <link>https://www.learnwithjason.dev/</link>
     <atom:link href="https://www.learnwithjason.dev/episodes.xml" rel="self" type="application/rss+xml" />
     <language>en-us</language>
@@ -23,12 +23,15 @@ export const loader = async () => {
       .map(
         (episode) => `
     <item>
-      <title>${episode.title}</title>
+      <title>${episode.title.replace(/&/g, '&amp;')}</title>
       <pubDate>${format(
         new Date(episode.date),
         'eee, d E yyyy H:mm:ss XX',
       )}</pubDate>
-      <description><![CDATA[<p>${episode.description}</p>]]></description>
+      <description><![CDATA[<p>${episode.description.replace(
+        /&/g,
+        '&amp;',
+      )}</p>]]></description>
       <content:encoded><![CDATA[
         <ul>
           <li>
@@ -64,5 +67,11 @@ export const loader = async () => {
   </channel>
 </rss>
   `,
+    {
+      headers: {
+        'X-Boop': 'boop',
+        'Content-Type': 'application/xml',
+      },
+    },
   );
 };
