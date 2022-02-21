@@ -1,8 +1,7 @@
 import { Fragment } from 'react';
-import { useLoaderData, useParams } from 'remix';
+import { useLoaderData } from 'remix';
 
 import { EpisodeList } from '~/components/episode-list.jsx';
-import { IconArrow } from '~/components/icon-arrow.jsx';
 import { getTeacher } from '~/util/get-teacher.js';
 import { loadAllEpisodes } from '~/util/load-all-episodes.server.js';
 
@@ -14,7 +13,6 @@ export const topicDescriptions = [
 ];
 
 export const loader = async ({ params }) => {
-  console.log({ params });
   const { topic } = params;
   const topicInfo = topicDescriptions.find((t) => t.tag === topic);
   const episodes = await loadAllEpisodes();
