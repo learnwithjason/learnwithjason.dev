@@ -16,6 +16,18 @@ dayjs.extend(AdvancedFormat);
 
 export const loader = async ({ params }) => {
   const slug = params.episode;
+
+  if (slug.endsWith('.json')) {
+    const endpoint = `/api/episodes/${slug.replace('.json', '')}`;
+
+    return new Response(`Redirecting to ${endpoint}`, {
+      status: 301,
+      headers: {
+        Location: endpoint,
+      },
+    });
+  }
+
   const episode = await loadFromApi(`/api/episode/${slug}/transcript`);
 
   const scheduleDescription = `${dayjs(episode.date).format(
