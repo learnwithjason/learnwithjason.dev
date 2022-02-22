@@ -16,9 +16,13 @@ function cleanText(text) {
 
 const handlerFn: Handler = async (event) => {
   const path = event.path;
-  const [, slug, modifier = false] = path
+  let [, slug, modifier = false] = path
     .replace(new RegExp('/api/episode'), '')
     .split('/');
+
+  if (slug.endsWith('.json')) {
+    slug = slug.replace('.json', '');
+  }
 
   let transcript = false;
   let poster;
@@ -100,7 +104,16 @@ const handlerFn: Handler = async (event) => {
 
   const [episode] = data.episode;
 
-  const host = episode.host || { name: 'Jason Lengstorf' };
+  if (!episode) {
+    return {
+      statusCode: 500,
+      body: JSON.stringify({
+        error: `Unable to load data for episode ${slug}`,
+      }),
+    };
+  }
+
+  const host = episode?.host || { name: 'Jason Lengstorf' };
   const [guest] = episode.guest || [{ name: 'Jason Lengstorf' }];
   const isSolo =
     guest.name === 'Jason Lengstorf' && host.name === 'Jason Lengstorf';
@@ -198,7 +211,12 @@ const handlerFn: Handler = async (event) => {
       'Access-Control-Allow-Headers': 'Content-Type',
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ ...episode, poster: posterUrl }),
+    body: JSON.stringify({
+      ...episode,
+      host: episode.host || { name: 'Jason Lengstorf' },
+      guest: episode.guest || [{ name: 'Jason Lengstorf' }],
+      poster: posterUrl,
+    }),
   };
 };
 
