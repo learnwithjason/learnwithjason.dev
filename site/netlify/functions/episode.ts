@@ -100,9 +100,12 @@ const handlerFn: Handler = async (event) => {
 
   const [episode] = data.episode;
 
-  const [guest] = episode.guest || [];
+  const host = episode.host || { name: 'Jason Lengstorf' };
+  const [guest] = episode.guest || [{ name: 'Jason Lengstorf' }];
+  const isSolo =
+    guest.name === 'Jason Lengstorf' && host.name === 'Jason Lengstorf';
 
-  const thumb = guest
+  const thumb = !isSolo
     ? Buffer.from(guest.guestImage.asset.url)
         .toString('base64')
         .replace(/\//g, '_')
