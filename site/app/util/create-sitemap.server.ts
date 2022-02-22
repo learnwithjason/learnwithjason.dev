@@ -60,6 +60,7 @@ export function createSitemap(urls: SitemapUrl[]): string {
             }</video:player_loc>
             <video:family_friendly>yes</video:family_friendly>
             <video:requires_subscription>no</video:requires_subscription>
+            <video:live>no</video:live>
             <video:uploader info="https://www.learnwithjason.dev">Learn With Jason</video:uploader>
           </video:video>
         `
