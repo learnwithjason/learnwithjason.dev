@@ -49,7 +49,7 @@ export function meta({ data: episode }) {
   }`;
 
   const poster = episode.youtubeID
-    ? episode.poster
+    ? `https://www.learnwithjason.dev/${episode.slug.current}/poster.jpg`
     : `https://www.learnwithjason.dev/${episode.slug.current}/schedule.jpg`;
 
   return {
