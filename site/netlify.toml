@@ -51,6 +51,13 @@
   status = 200
 
 [[headers]]
+  for = "/*"
+  [headers.values]
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+
+[[headers]]
   for = "/build/*"
   [headers.values]
     "Cache-Control" = "public, max-age=31536000, s-maxage=31536000"
