@@ -48,14 +48,18 @@ export function meta({ data: episode }) {
     episode.description
   }`;
 
+  const poster = episode.youtubeID
+    ? episode.poster
+    : `https://www.learnwithjason.dev/${episode.slug.current}/schedule.jpg`;
+
   return {
     title: episode.title,
     description,
-    image: episode.poster,
+    image: poster,
     'og:type': 'video.other',
     'og:url': `https://www.learnwithjason.dev/${episode.slug.current}`,
     'og:description': description,
-    'og:image': episode.poster,
+    'og:image': poster,
     'twitter:dnt': 'on',
     'twitter:card': 'summary_large_image',
     'twitter:creator': '@LWJShow',
