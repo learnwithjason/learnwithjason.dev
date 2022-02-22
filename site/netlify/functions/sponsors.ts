@@ -1,7 +1,7 @@
-import { Handler } from '@netlify/functions';
+import { Handler, builder } from '@netlify/functions';
 import { hasuraRequest } from './util/hasura';
 
-export const handler: Handler = async () => {
+export const handler: Handler = builder(async () => {
   const data = await hasuraRequest({
     query: `
       query GetSponsors {
@@ -26,4 +26,4 @@ export const handler: Handler = async () => {
     },
     body: JSON.stringify(data.sponsors),
   };
-};
+});

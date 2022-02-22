@@ -37,7 +37,7 @@
 
 [[redirects]]
   from = "/api/sponsors*"
-  to = "/.netlify/functions/sponsors"
+  to = "/.netlify/builders/sponsors"
   status = 200
 
 [[redirects]]
