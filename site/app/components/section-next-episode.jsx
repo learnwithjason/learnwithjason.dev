@@ -6,7 +6,7 @@ import Utc from 'dayjs/plugin/utc.js';
 import Timezone from 'dayjs/plugin/timezone.js';
 import AdvancedFormat from 'dayjs/plugin/advancedFormat.js';
 
-// import { LivePlayer } from './live-player.jsx';
+import { LivePlayer } from './live-player.jsx';
 import { EpisodePreview } from './episode-preview.jsx';
 import { IconArrow } from './icon-arrow.jsx';
 import { IconCalendar } from './icon-calendar.jsx';
@@ -37,7 +37,7 @@ export function SectionNextEpisode({ nextEpisode, nextNextEpisode }) {
             {teacher.name !== 'Jason Lengstorf' ? `with ${teacher.name}` : ''}{' '}
             right now!
           </h2>
-          {/* <LivePlayer /> */}
+          <LivePlayer />
         </div>
       ) : (
         <Fragment>
