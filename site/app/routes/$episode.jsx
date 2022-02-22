@@ -18,7 +18,7 @@ export const loader = async ({ params }) => {
   const slug = params.episode;
 
   if (slug.endsWith('.json')) {
-    const endpoint = `/api/episodes/${slug.replace('.json', '')}`;
+    const endpoint = `/api/episode/${slug.replace('.json', '')}`;
 
     return new Response(`Redirecting to ${endpoint}`, {
       status: 301,
