@@ -2,7 +2,7 @@ import { format } from 'date-fns';
 import { loadAllEpisodes } from '../util/load-all-episodes.server.js';
 
 export const loader = async () => {
-  const episodes = await loadAllEpisodes();
+  const episodes = (await loadAllEpisodes()).slice(0, 20);
 
   return new Response(
     `<?xml version="1.0" encoding="UTF-8"?>
