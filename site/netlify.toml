@@ -26,6 +26,11 @@
   status = 200
 
 [[redirects]]
+  from = "/:slug/schedule.jpg"
+  to = "/.netlify/builders/episode"
+  status = 200
+
+[[redirects]]
   from = "/api/store/*"
   to = "/.netlify/functions/shopify-:splat"
   status = 200

@@ -1,6 +1,14 @@
 import fetch from 'node-fetch';
 import { builder, Handler } from '@netlify/functions';
+import dayjs from 'dayjs';
+import Utc from 'dayjs/plugin/utc.js';
+import Timezone from 'dayjs/plugin/timezone.js';
+import AdvancedFormat from 'dayjs/plugin/advancedFormat.js';
 import { hasuraRequest } from './util/hasura';
+
+dayjs.extend(Utc);
+dayjs.extend(Timezone);
+dayjs.extend(AdvancedFormat);
 
 function cleanText(text) {
   return encodeURIComponent(text).replace(/%(23|2C|2F|3F|5C)/g, '%25$1');
@@ -13,7 +21,8 @@ const handlerFn: Handler = async (event) => {
     .split('/');
 
   let transcript = false;
-  let poster = false;
+  let poster;
+  let showDate = false;
   let starting = false;
 
   switch (modifier) {
@@ -24,9 +33,16 @@ const handlerFn: Handler = async (event) => {
     case false:
       break;
 
+    case 'schedule.jpg':
+      showDate = true;
+      poster = modifier;
+      break;
+
     case 'starting-soon.jpg':
       // fall through to the next case intentionally
       starting = true;
+      poster = modifier;
+      break;
 
     default:
       poster = modifier;
@@ -86,9 +102,11 @@ const handlerFn: Handler = async (event) => {
 
   const [guest] = episode.guest || [];
 
-  const thumb = Buffer.from(guest.guestImage.asset.url)
-    .toString('base64')
-    .replace(/\//g, '_');
+  const thumb = guest
+    ? Buffer.from(guest.guestImage.asset.url)
+        .toString('base64')
+        .replace(/\//g, '_')
+    : false;
 
   const width = 500;
   const w = 1280;
@@ -103,35 +121,56 @@ const handlerFn: Handler = async (event) => {
         `l_text:jwf-book.otf_${Math.round((w / width) * 18)}_line_spacing_0:`,
         `STARTING SOON!`,
       ].join('')
-    : '';
+    : false;
 
-  const filename =
-    episode.host && episode.host.twitter === 'bencodezen'
-      ? 'episode-ben-hong'
-      : 'episode';
+  const dateText = showDate
+    ? [
+        `/w_${Math.round(0.3444444444 * w)},`,
+        `c_fit,co_white,g_north_west,`,
+        `x_${Math.round(0.04444444444 * w)},`,
+        `y_${Math.round(0.34 * h)},`,
+        `l_text:jwf-book.otf_${Math.round((w / width) * 10)}_line_spacing_0:`,
+        encodeURIComponent(
+          dayjs(episode.date).format('dddd, MMM D @ h:mm A z'),
+        ).replace('%2C', '%252C'),
+      ].join('')
+    : false;
+
+  let filename = 'episode';
+
+  if (episode.host && episode.host.twitter === 'bencodezen') {
+    filename = 'episode-ben-hong';
+  }
+
+  if (!thumb) {
+    filename = 'episode-solo';
+  }
 
   const posterUrl = [
     `https://res.cloudinary.com/jlengstorf/image/upload`,
-    `/w_${w},h_${h},c_fill,q_auto,f_auto/`,
-    `u_fetch:${thumb},w_${Math.round(0.3111111111 * w)},`,
-    `h_${Math.round(0.3111111111 * w)},`,
-    `c_fill,g_north_west,`,
-    `x_${Math.round(0.4622222222 * w)},`,
-    `y_${Math.round(0.116 * h)}`,
+    `/w_${w},h_${h},c_fill,q_auto,f_auto`,
+    thumb ? `/u_fetch:${thumb},w_${Math.round(0.3111111111 * w)},` : false,
+    thumb ? `h_${Math.round(0.3111111111 * w)},` : false,
+    thumb ? `c_fill,g_north_west,` : false,
+    thumb ? `x_${Math.round(0.4622222222 * w)},` : false,
+    thumb ? `y_${Math.round(0.116 * h)}` : false,
+    dateText,
     startingSoonText,
     `/w_${Math.round(0.3444444444 * w)},`,
     `c_fit,co_white,g_north_west,`,
     `x_${Math.round(0.04444444444 * w)},`,
-    `y_${Math.round((starting ? 0.42 : 0.36) * h)},`,
+    `y_${Math.round((starting || dateText ? 0.42 : 0.36) * h)},`,
     `l_text:jwf.otf_${Math.round((w / width) * 21)}_line_spacing_0:`,
     `${cleanText(episode.title)}`,
-    `/l_text:jwf.otf_${Math.round((w / width) * 14)}_center:`,
-    `${cleanText(guest.name)},`,
-    `g_north_west,x_${Math.round(0.4666666667 * w)},`,
-    `y_${Math.round(0.72 * h)},c_fit,co_white,`,
-    `w_${Math.round(0.3111111111 * w)},b_rgb:00000001`,
+    thumb ? `/l_text:jwf.otf_${Math.round((w / width) * 14)}_center:` : false,
+    thumb ? `${cleanText(guest.name)},` : false,
+    thumb ? `g_north_west,x_${Math.round(0.4666666667 * w)},` : false,
+    thumb ? `y_${Math.round(0.72 * h)},c_fit,co_white,` : false,
+    thumb ? `w_${Math.round(0.3111111111 * w)},b_rgb:00000001` : false,
     `/lwj/${filename}.jpg`,
-  ].join('');
+  ]
+    .filter(Boolean)
+    .join('');
 
   if (poster) {
     const response = await fetch(posterUrl).then((res) => res.arrayBuffer());
