@@ -42,6 +42,8 @@ https://lwj.dev/*                     https://www.learnwithjason.dev/:splat 301!
 /create-apps-using-a-component-library /material-ui-gatsby
 /turning-an-app-idea-into-a-plan-with-ux-design-workflows-and-prototypes /ux-design-workflows-and-prototypes
 /create-a-custom-alexa-skill /episodes
+/make-a-beat-from-scratch-in-logic-pro-x /make-a-beat-logic-pro-x
+/code/learn-rollup-js /blog/learn-rollup-js
 
 # search is a command bar now thanks to Sarah Dayan and Algolia
 /search /?search 301
@@ -61,3 +63,5 @@ https://lwj.dev/*                     https://www.learnwithjason.dev/:splat 301!
 /wp-login.php  https://jason.af/party 301
 /.env          https://jason.af/party 301
 /xmlrpc.php    https://jason.af/party 301
+/sitemap_index.xml /sitemap.xml
+/sitemapindex.xml /sitemap.xml
