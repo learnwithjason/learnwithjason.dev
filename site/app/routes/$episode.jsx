@@ -65,7 +65,7 @@ export function meta({ data: episode }) {
     'twitter:creator': '@LWJShow',
     'twitter:title': episode.title,
     'twitter:description': description,
-    'twitter:image': episode.poster,
+    'twitter:image': poster,
   };
 }
 
