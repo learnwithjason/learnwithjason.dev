@@ -35,6 +35,15 @@ https://lwj.dev/*                     https://www.learnwithjason.dev/:splat 301!
 /build-your-own-live-music-visualization /build-your-own-audio-visualization-in-a-shader 301
 /simply--unify-data-access-with-netlify-graph /simplify-and-unify-data-access-with-netlify-graph 301
 /simply-and-unify-data-access-with-netlify-graph /simplify-and-unify-data-access-with-netlify-graph 301
+/let-s-learn-apollo-client-v3-part-1 /let-s-learn-apollo-client-v3
+/building-with-sentry /monitor-errors-and-performance-with-sentry
+/building-with-algolia /custom-command-bar-using-autocomplete-with-algolia
+/automated-manual-accessibility-testing /automated-and-manual-accessibility-testing
+/create-apps-using-a-component-library /material-ui-gatsby
+/turning-an-app-idea-into-a-plan-with-ux-design-workflows-and-prototypes /ux-design-workflows-and-prototypes
+/create-a-custom-alexa-skill /episodes
+
+# search is a command bar now thanks to Sarah Dayan and Algolia
 /search /?search 301
 
 # sponsors
