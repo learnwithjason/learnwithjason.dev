@@ -45,6 +45,8 @@ https://lwj.dev/*                     https://www.learnwithjason.dev/:splat 301!
 /make-a-beat-from-scratch-in-logic-pro-x /make-a-beat-logic-pro-x
 /code/learn-rollup-js /blog/learn-rollup-js
 
+/progressive-disclosure-of-complexity https://www.jason.af/progressive-disclosure-of-complexity 301!
+
 # search is a command bar now thanks to Sarah Dayan and Algolia
 /search /?search 301
 
