@@ -44,6 +44,9 @@ https://lwj.dev/*                     https://www.learnwithjason.dev/:splat 301!
 /create-a-custom-alexa-skill /episodes
 /make-a-beat-from-scratch-in-logic-pro-x /make-a-beat-logic-pro-x
 /code/learn-rollup-js /blog/learn-rollup-js
+/facial-recognition-machine-learning-in-react-gatsby /facial-recognition-and-machine-learning-in-react-and-gatsby
+/set-up-a-new-gatsby-shopify-ecommerce-sites-pt-2 /set-up-a-new-gatsby-shopify-ecommerce-sites-pt-2
+/building-with-twilio /send-transactional-emails-with-twilio-sendgrid
 
 /progressive-disclosure-of-complexity https://www.jason.af/progressive-disclosure-of-complexity 301!
 
@@ -54,6 +57,7 @@ https://lwj.dev/*                     https://www.learnwithjason.dev/:splat 301!
 /sponsor   https://www.notion.so/jlengstorf/Learn-With-Jason-Sponsorship-214f066473d64bddaeb6f57d155fad34
 /backlight https://backlight.dev/?utm_source=learnwithjason&utm_medium=lwj&utm_campaign=sponsored
 /nrwl      https://nrwl.io/?utm_source=learnwithjason&utm_medium=lwj&utm_campaign=sponsored
+/nx        https://nx.dev/?utm_source=Learn+with+Jason&utm_medium=link&utm_id=LWJ+2022+H1
 /fauna     https://www.fauna.com/?utm_source=Jason+Lengstorf+&utm_medium=video&utm_campaign=Q3&utm_id=influencers
 /auth0     https://auth0.com/?utm_source=learnwithjason&utm_medium=lwj&utm_campaign=sponsored
 /netlify   https://www.netlify.com/?utm_source=learnwithjason&utm_medium=lwj&utm_campaign=devex-jl
