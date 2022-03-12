@@ -3,8 +3,8 @@ https://learnwithjason.netlify.app/*  https://www.learnwithjason.dev/:splat 301!
 https://learnwithjason.netlify.com/*  https://www.learnwithjason.dev/:splat 301!
 https://lwj.dev/*                     https://www.learnwithjason.dev/:splat 301!
 
-/calendar https://calendar.google.com/calendar?cid=bGVuZ3N0b3JmLmNvbV85cGxqMW02dTl2dGRkbGRvaW5sMGhzMnZna0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t 301
-/cal      https://calendar.google.com/calendar?cid=bGVuZ3N0b3JmLmNvbV85cGxqMW02dTl2dGRkbGRvaW5sMGhzMnZna0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t 301
+/calendar https://calendar.google.com/calendar?cid=bGVuZ3N0b3JmLmNvbV85cGxqMW02dTl2dGRkbGRvaW5sMGhzMnZna0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t 301!
+/cal      https://calendar.google.com/calendar?cid=bGVuZ3N0b3JmLmNvbV85cGxqMW02dTl2dGRkbGRvaW5sMGhzMnZna0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t 301!
 
 /commands /.netlify/functions/command-:splat  200
 /api      /.netlify/builders/:splat          200
