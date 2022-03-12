@@ -53,9 +53,9 @@ export function SectionNextEpisode({ nextEpisode, nextNextEpisode }) {
                 schedule to your Google Calendar:
               </p>
               <div className="links">
-                <Link prefetch="intent" to="/calendar">
+                <a href="/calendar">
                   <IconCalendar /> Add the Calendar
-                </Link>
+                </a>
               </div>
             </div>
           </div>
