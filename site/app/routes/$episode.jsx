@@ -119,9 +119,15 @@ export function meta({ data: episode }) {
 export default function EpisodeTemplate() {
   const episode = useLoaderData();
 
+  let includePlaylist = true;
+  if (dayjs(episode.startDate).isBefore(dayjs().subtract(100, 'week'))) {
+    includePlaylist = false;
+  }
+
   if (episode.youtubeID) {
     return (
       <EpisodePosted
+        includePlaylist={includePlaylist}
         episode={episode}
         host={episode.host}
         teacher={episode.teacher}

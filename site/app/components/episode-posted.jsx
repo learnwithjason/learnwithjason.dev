@@ -1,11 +1,11 @@
 import { Fragment } from 'react';
 import { EpisodeVideo } from '../components/episode-video.jsx';
 
-export function EpisodePosted({ episode, teacher, count = 1 }) {
+export function EpisodePosted({ episode, teacher, includePlaylist }) {
   return (
     <div className="block episode">
       <div className="episode-info-wrapper">
-        <EpisodeVideo episode={episode} count={count} />
+        <EpisodeVideo episode={episode} includePlaylist={includePlaylist} />
         <div className="episode-description">
           <h1>{episode.title}</h1>
           <p className="gradient-underline">

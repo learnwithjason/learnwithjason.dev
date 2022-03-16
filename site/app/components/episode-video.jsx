@@ -2,19 +2,18 @@ import { useState } from 'react';
 import { EpisodePoster } from './episode-poster.jsx';
 import { getTeacher } from '../util/get-teacher.js';
 
-export function EpisodeVideo({ episode, count }) {
+export function EpisodeVideo({ episode, includePlaylist = true }) {
   const [playing, setPlaying] = useState(false);
 
   const host = getTeacher([episode.host]);
   const teacher = getTeacher(episode.guest);
 
-  // apparently YT breaks playlists after 200 videos, so bail if we're above that limit
-  const showPlaylist = count < 200;
   const url = new URL('https://www.youtube-nocookie.com/');
 
   url.pathname = `/embed/${episode.youtubeID}`;
 
-  if (showPlaylist) {
+  // apparently YT breaks playlists after 200 videos, so bail if we're above that limit
+  if (includePlaylist) {
     url.searchParams.set('listType', 'playlist');
     url.searchParams.set('list', 'PLz8Iz-Fnk_eTpvd49Sa77NiF8Uqq5Iykx');
   }
