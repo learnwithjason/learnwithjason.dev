@@ -15,8 +15,7 @@ export function getImageAttributes({
   host = {
     guestImage: {
       asset: {
-        url:
-          'https://cdn.sanity.io/images/vnkupgyb/production/7d8835955821f584df0b89ab72d2d83799139bb7-660x660.jpg',
+        url: 'https://cdn.sanity.io/images/vnkupgyb/production/7d8835955821f584df0b89ab72d2d83799139bb7-660x660.jpg',
       },
     },
     name: 'Jason Lengstorf',
@@ -30,7 +29,7 @@ export function getImageAttributes({
 }) {
   const JasonIsTalkingToHimself =
     host.name === 'Jason Lengstorf' && teacher.name === 'Jason Lengstorf';
-  let filename = type === 'scheduled' ? 'episode' : 'video-poster';
+  let filename = type === 'scheduled' ? 'episode-2022' : 'video-poster-2022';
   if (JasonIsTalkingToHimself) {
     filename = `${filename}-solo`;
   }
@@ -38,7 +37,7 @@ export function getImageAttributes({
   // do we have a guest host? 👀
   switch (host.twitter) {
     case 'bencodezen':
-      filename = `${filename}-ben-hong`;
+      filename = filename.replace('-2022', '-ben-hong');
       break;
 
     default:

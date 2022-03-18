@@ -158,14 +158,14 @@ const handlerFn: Handler = async (event) => {
       ].join('')
     : false;
 
-  let filename = 'episode';
+  let filename = 'episode-2022';
 
   if (episode.host && episode.host.twitter === 'bencodezen') {
     filename = 'episode-ben-hong';
   }
 
   if (!thumb) {
-    filename = 'episode-solo';
+    filename = 'episode-2022-solo';
   }
 
   const posterUrl = [
