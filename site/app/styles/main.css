@@ -750,6 +750,28 @@ a:focus {
   padding: 0.5rem 1.25rem;
 }
 
+.episode h2.episode-tags-heading {
+  margin-top: 2rem;
+}
+
+.episode-tags {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 0.625rem;
+  font-weight: 600;
+  gap: 1rem;
+  letter-spacing: 0.2em;
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  text-transform: uppercase;
+}
+
+.episode-tags a {
+  color: var(--pink-dark);
+  text-decoration: none;
+}
+
 .responsive-video-container {
   display: block;
   height: 0;

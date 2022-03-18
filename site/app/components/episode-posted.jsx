@@ -31,6 +31,20 @@ export function EpisodePosted({ episode, teacher, includePlaylist }) {
               </a>
             )}
           </div>
+          {episode.tags ? (
+            <>
+              <h2 className="episode-tags-heading gradient-underline">
+                Topics
+              </h2>
+              <ul className="episode-tags">
+                {episode.tags.map((tag) => (
+                  <li key={tag.slug}>
+                    <a href={`/topic/${tag.slug}`}>{tag.label}</a>
+                  </li>
+                ))}
+              </ul>
+            </>
+          ) : null}
         </div>
       </div>
       {episode.links.length > 0 && (

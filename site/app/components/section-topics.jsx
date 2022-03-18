@@ -16,7 +16,7 @@ export function SectionTopics({ episodes }) {
           const topicEpisodes = episodes
             .filter((episode) => {
               const hasTag = episode.tags?.some(
-                (tag) => tag.value === topic.tag,
+                (tag) => tag.slug === topic.tag,
               );
               const hasVideo = episode.youtubeID;
 
