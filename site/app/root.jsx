@@ -26,13 +26,13 @@ export function meta() {
     description:
       'Learn With Jason is live, hands-on learning with brilliant teachers from the web community every Tuesday & Thursday. Join live and learn with us!',
     image:
-      'https://res.cloudinary.com/jlengstorf/image/upload/q_auto,f_auto/v1607755791/lwj/learnwithjason-og.jpg',
+      'https://res.cloudinary.com/jlengstorf/image/upload/q_auto,f_auto/v1607755791/lwj/learnwithjason-og-2022.jpg',
     'og:type': 'website',
     'og:url': 'https://www.learnwithjason.dev/',
     'og:description':
       'Learn With Jason is live, hands-on learning with brilliant teachers from the web community every Tuesday & Thursday. Join live and learn with us!',
     'og:image':
-      'https://res.cloudinary.com/jlengstorf/image/upload/q_auto,f_auto/v1607755791/lwj/learnwithjason-og.jpg',
+      'https://res.cloudinary.com/jlengstorf/image/upload/q_auto,f_auto/v1607755791/lwj/learnwithjason-og-2022.jpg',
     'twitter:dnt': 'on',
     'twitter:card': 'summary_large_image',
     'twitter:creator': '@LWJShow',
@@ -40,7 +40,7 @@ export function meta() {
     'twitter:description':
       'Learn With Jason is live, hands-on learning with brilliant teachers from the web community every Tuesday & Thursday. Join live and learn with us!',
     'twitter:image':
-      'https://res.cloudinary.com/jlengstorf/image/upload/q_auto,f_auto/v1607755791/lwj/learnwithjason-og.jpg',
+      'https://res.cloudinary.com/jlengstorf/image/upload/q_auto,f_auto/v1607755791/lwj/learnwithjason-og-2022.jpg',
   };
 }
 

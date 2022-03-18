@@ -1,5 +1,6 @@
 import { Fragment } from 'react';
 import { useLoaderData } from 'remix';
+import getShareImage from '@jlengstorf/get-share-image';
 
 import { EpisodeList } from '~/components/episode-list.jsx';
 import { loadFromApi } from '~/util/fetch-api.server';
@@ -30,9 +31,43 @@ export const loader = async ({ params }) => {
 };
 
 export const meta = ({ data }) => {
-  return {
-    title: data.topic?.label ?? `Topic: ${data.topicSlug}`,
-  };
+  const title = data.topic?.label ?? `Topic: ${data.topicSlug}`;
+  const description = data.topic?.description ?? false;
+
+  const tags = {};
+
+  tags.title = title;
+  tags['twitter:title'] = title;
+
+  tags['og:url'] = `https://www.learnwithjason.dev/topic/${data.topicSlug}`;
+
+  const image = getShareImage({
+    title,
+    tagline: `Get expert guidance on ${data.topic.label} from professional engineers.`,
+    cloudName: 'jlengstorf',
+    imagePublicID: 'lwj/post-share-2022',
+    titleFont: 'jwf.otf',
+    titleFontSize: 55,
+    taglineFont: 'jwf-book.otf',
+    taglineFontSize: 42,
+    textColor: 'ffffff',
+    textLeftOffset: 392,
+    titleBottomOffset: 385,
+    taglineTopOffset: 320,
+    textAreaWidth: 813,
+  });
+
+  tags.image = image;
+  tags['og:image'] = image;
+  tags['twitter:image'] = image;
+
+  if (description) {
+    tags.description = description;
+    tags['twitter:description'] = description;
+    tags['og:description'] = description;
+  }
+
+  return tags;
 };
 
 export default function Episodes() {
