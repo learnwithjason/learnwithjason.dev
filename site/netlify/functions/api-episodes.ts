@@ -57,6 +57,12 @@ const handlerFn: Handler = async (event) => {
           tags {
             value
           }
+          episodeTags {
+            label
+            slug {
+              current
+            }
+          }
           ${transcript ? 'transcript' : ''}
         }
       }

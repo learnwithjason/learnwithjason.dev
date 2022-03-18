@@ -93,6 +93,12 @@ const handlerFn: Handler = async (event) => {
           tags {
             value
           }
+          episodeTags {
+            label
+            slug {
+              current
+            }
+          }
           ${transcript ? 'transcript' : ''}
         }
       }
@@ -213,6 +219,11 @@ const handlerFn: Handler = async (event) => {
     },
     body: JSON.stringify({
       ...episode,
+      tags:
+        episode?.episodeTags?.map((tag) => ({
+          label: tag.label,
+          slug: tag.slug.current,
+        })) ?? [],
       host: episode.host || { name: 'Jason Lengstorf' },
       guest: episode.guest || [{ name: 'Jason Lengstorf' }],
       poster: posterUrl,

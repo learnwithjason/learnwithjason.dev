@@ -11,23 +11,43 @@
   included_files = ["app/routes/__mdx/blog/**/*.mdx"] 
 
 [[redirects]]
+  from = "/api/tag/:tag"
+  to = "/.netlify/builders/api-tag"
+  status = 200
+
+[[redirects]]
+  from = "/api/episodes*"
+  to = "/.netlify/builders/api-episodes"
+  status = 200
+
+[[redirects]]
+  from = "/api/schedule*"
+  to = "/.netlify/builders/api-schedule"
+  status = 200
+
+[[redirects]]
   from = "/api/episode/:slug"
-  to = "/.netlify/builders/episode"
+  to = "/.netlify/builders/api-episode"
+  status = 200
+
+[[redirects]]
+  from = "/api/episode/:slug/*"
+  to = "/.netlify/builders/api-episode"
   status = 200
 
 [[redirects]]
   from = "/:slug/poster.jpg"
-  to = "/.netlify/builders/episode"
+  to = "/.netlify/builders/api-episode"
   status = 200
 
 [[redirects]]
   from = "/:slug/starting-soon.jpg"
-  to = "/.netlify/builders/episode"
+  to = "/.netlify/builders/api-episode"
   status = 200
 
 [[redirects]]
   from = "/:slug/schedule.jpg"
-  to = "/.netlify/builders/episode"
+  to = "/.netlify/builders/api-episode"
   status = 200
 
 [[redirects]]
@@ -37,7 +57,7 @@
 
 [[redirects]]
   from = "/api/sponsors*"
-  to = "/.netlify/builders/sponsors"
+  to = "/.netlify/builders/api-sponsors"
   status = 200
 
 [[redirects]]
