@@ -2,8 +2,23 @@ import { readdirSync, readFileSync } from 'fs';
 import { join } from 'path';
 import fm from 'front-matter';
 
+const blogBasePath = join(process.cwd(), 'app', 'routes', '__mdx', 'blog');
+
+export function loadMdxSingle(filepath) {
+  const relativeFilePath = filepath.replace(/^\/blog\//, '');
+  const fileContents = readFileSync(
+    join(blogBasePath, `${relativeFilePath}.mdx`),
+    {
+      encoding: 'utf-8',
+    },
+  );
+
+  const { attributes } = fm(fileContents);
+
+  return attributes;
+}
+
 export function loadMdx() {
-  const blogBasePath = join(process.cwd(), 'app', 'routes', '__mdx', 'blog');
   const dirEntries = readdirSync(blogBasePath, { withFileTypes: true });
   const dirs = dirEntries.filter((entry) => entry.isDirectory());
   const files = dirEntries.filter((entry) => entry.isFile());
