@@ -59,12 +59,6 @@ export default {
       group: 'schedule',
     },
     {
-      name: 'tags',
-      title: 'Tags',
-      type: 'tags',
-      group: 'schedule',
-    },
-    {
       name: 'episodeTags',
       type: 'array',
       title: 'Tags',
