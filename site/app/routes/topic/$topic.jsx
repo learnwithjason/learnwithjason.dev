@@ -31,6 +31,7 @@ export const loader = async ({ params }) => {
 };
 
 export const meta = ({ data }) => {
+  // TODO make this a util and add to posts
   const title = data.topic?.label ?? `Topic: ${data.topicSlug}`;
   const description = data.topic?.description ?? false;
 
