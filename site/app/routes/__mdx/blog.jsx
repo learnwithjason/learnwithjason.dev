@@ -6,6 +6,13 @@ import { loadMdxSingle } from '~/util/load-mdx.server.js';
 
 export const loader = ({ request }) => {
   const url = new URL(request.url);
+  if (url.pathname === '/blog') {
+    return {
+      title: 'Posts by Jason',
+      description:
+        'Blog posts about modern web development by Jason Lengstorf.',
+    };
+  }
   const { meta, tags } = loadMdxSingle(url.pathname);
 
   return { ...meta, tags };
@@ -23,7 +30,8 @@ export const meta = ({ data, location }) => {
 
   const image = getShareImage({
     title: data.title,
-    tagline: data.tags.map((t) => `#${t}`).join(' '),
+    tagline:
+      data.tags?.map((t) => `#${t}`).join(' ') ?? 'On modern web development.',
     cloudName: 'jlengstorf',
     imagePublicID: 'lwj/post-share-2022',
     titleFont: 'jwf.otf',
