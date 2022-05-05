@@ -107,6 +107,10 @@
   padding: 1rem;
 }
 
+.remark-highlight {
+  margin-bottom: 1.5rem;
+}
+
 code {
   font-family: 'Operator Mono', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono',
     monospace;
