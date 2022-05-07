@@ -1,4 +1,4 @@
-import { createXML } from '~/util/create-xml.server.js';
+import { createXML } from '~/util/create-xml.server.ts';
 import { loadAllEpisodes } from '~/util/load-all-episodes.server.js';
 
 export const loader = async () => {
