@@ -8,14 +8,20 @@ export const loader = ({ request }) => {
   const url = new URL(request.url);
   if (url.pathname === '/blog') {
     return {
-      title: 'Posts by Jason',
-      description:
-        'Blog posts about modern web development by Jason Lengstorf.',
+      meta: {
+        title: 'Posts by Jason Lengstorf',
+        description:
+          'Blog posts about modern web development by Jason Lengstorf.',
+      },
+      share: {
+        title: 'Posts by Jason Lengstorf',
+        text: 'On modern web development.',
+      },
     };
   }
-  const { meta, tags } = loadMdxSingle(url.pathname);
+  const { meta, share } = loadMdxSingle(url.pathname);
 
-  return { ...meta, tags };
+  return { meta, share };
 };
 
 export const links = () => [
@@ -29,34 +35,33 @@ export const meta = ({ data, location }) => {
   url.pathname = location.pathname;
 
   const image = getShareImage({
-    title: data.title,
-    tagline:
-      data.tags?.map((t) => `#${t}`).join(' ') ?? 'On modern web development.',
+    title: data.share.title,
+    tagline: data.share?.text ?? 'On modern web development.',
     cloudName: 'jlengstorf',
     imagePublicID: 'lwj/post-share-2022',
     titleFont: 'jwf.otf',
     taglineFont: 'jwf-book.otf',
     textLeftOffset: 392,
     textColor: 'ffffff',
-    titleBottomOffset: 296,
-    taglineTopOffset: 415,
+    titleBottomOffset: 340,
+    taglineTopOffset: 376,
     titleFontSize: 55,
-    taglineFontSize: 42,
+    taglineFontSize: 40,
   });
 
   return {
-    title: data.title,
-    description: data.description,
+    title: data.meta.title,
+    description: data.meta.description,
     image,
     'og:type': 'article',
     'og:url': url.toString(),
-    'og:description': data.description,
+    'og:description': data.meta.description,
     'og:image': image,
     'twitter:dnt': 'on',
     'twitter:card': 'summary_large_image',
     'twitter:creator': '@LWJShow',
-    'twitter:title': data.title,
-    'twitter:description': data.description,
+    'twitter:title': data.meta.title,
+    'twitter:description': data.meta.description,
     'twitter:image': image,
   };
 };
