@@ -41,7 +41,7 @@ In this tutorial, we'll take a look at how to transform an HTML response using H
 
 **What is the "edge"?** To boost performance on the web, modern sites place assets on Content Delivery Networks (CDNs), also called "edge networks". When you request a page, the CDN finds the closest node to you and responds to the request from there.
 
-CDNs have traditionally have only delivered static assets. With the introduction of Edge Functions, it's now possible to transform responses at the edge by distributing business logic closer to your users.
+CDNs have traditionally only delivered static assets. With the introduction of Edge Functions, it's now possible to transform responses at the edge by distributing business logic closer to your users.
 
 </Aside>
 
@@ -259,7 +259,7 @@ Restart your local dev server (`ctrl` + `C`, then run `ntl dev` again), then loa
 
 ## 4. Transform streaming text with an Edge Function
 
-In order to keep responses fast, Edge Functions will stream (TKTK link to explainer) responses, which means that the response is sent to the browser in chunks instead of waiting until the full document is processed.
+In order to keep responses fast, [Edge Functions will stream responses](https://twitter.com/ascorbic/status/1523630720832311298), which means that the response is sent to the browser in chunks instead of waiting until the full document is processed.
 
 This is great for performance, but it can be confusing for transformations because we can't just run a find-and-replace — it's possible that the text we're searching for will be broken across chunks! For example, the sentence "A great big ol' honkin' donut." may be sent in two chunks: "A great big " and "ol' honkin' donut." This means that if we were trying to replace "big ol'" in our text, a straightforward find-and-replace would fail.
 
