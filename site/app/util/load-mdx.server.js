@@ -5,7 +5,7 @@ import fm from 'front-matter';
 const blogBasePath = join(process.cwd(), 'app', 'routes', '__mdx', 'blog');
 
 export function loadMdxSingle(filepath) {
-  const relativeFilePath = filepath.replace(/^\/blog\//, '');
+  const relativeFilePath = filepath.replace(/^\/blog\//, '').replace(/\/$/, '');
   const fileContents = readFileSync(
     join(blogBasePath, `${relativeFilePath}.mdx`),
     {
