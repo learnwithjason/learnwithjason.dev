@@ -4,7 +4,7 @@ import { EpisodeVideo } from './episode-video.jsx';
 import { IconInfo } from './icon-info.jsx';
 import { ShareButton } from './share-button.jsx';
 
-export function EpisodeList({ episodes }) {
+export function EpisodeList({ episodes, playlist = true }) {
   const [activeEpisodes, setActiveEpisodes] = useState(episodes.slice(0, 20));
 
   useEffect(() => {
@@ -19,6 +19,7 @@ export function EpisodeList({ episodes }) {
             key={episode.slug.current}
             episode={episode}
             count={i + 1}
+            includePlaylist={playlist}
           />
           <h2>
             <Link prefetch="intent" to={`/${episode.slug.current}`}>

@@ -80,7 +80,7 @@ export default function Episodes() {
         <h1>{topic?.label ?? `Posts tagged with “${topicSlug}”`}</h1>
         {topic?.description ? <p>{topic.description}</p> : null}
       </header>
-      <EpisodeList episodes={episodes} />
+      <EpisodeList episodes={episodes} playlist={false} />
     </Fragment>
   );
 }
