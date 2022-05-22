@@ -265,7 +265,7 @@ This is great for performance, but it can be confusing for transformations becau
 
 ### Set up HTMLRewriter
 
-To solve for this, we can use the `HTMLRewriter` tool, which was originally [created by the Cloudflare team](https://developers.cloudflare.com/workers/runtime-apis/html-rewriter/) and later [ported to WASM by Florian Klampfer](https://deno.land/x/html_rewriter) for use with Deno and other open runtimes.
+To solve for this, we can use the `HTMLRewriter` tool, which was originally [created by the Cloudflare team](https://developers.cloudflare.com/workers/runtime-apis/html-rewriter/) and later [ported for use with Deno and other open runtimes by Florian Klampfer](https://deno.land/x/html_rewriter).
 
 Let's implement the `HTMLRewriter` in our Edge Function by replacing the contents of `pizza-to-tacos.js` with the following:
 
