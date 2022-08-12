@@ -21,8 +21,8 @@ import search from './styles/search.css';
 export function meta() {
   return {
     title: 'Learn With Jason — learn something new in 90 minutes!',
-    'msapplication-TileColor': '#201d29',
-    'theme-color': '#ffffff',
+    'msapplication-TileColor': '#302d42',
+    'theme-color': '#302d42',
     description:
       'Learn With Jason is live, hands-on learning with brilliant teachers from the web community every Tuesday & Thursday. Join live and learn with us!',
     image:
@@ -115,7 +115,7 @@ export function links() {
       href: '/favicon-16x16.png',
     },
     { rel: 'manifest', href: '/site.webmanifest' },
-    { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#c10b7e' },
+    { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#302d42' },
     { rel: 'preconnect', href: 'https://MU9BHW5MNS-dsn.algolia.net' },
   ];
 }
