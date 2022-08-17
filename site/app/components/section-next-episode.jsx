@@ -18,6 +18,10 @@ dayjs.extend(Timezone);
 dayjs.extend(AdvancedFormat);
 
 export function SectionNextEpisode({ nextEpisode, nextNextEpisode }) {
+  if (!nextEpisode?.date && !nextNextEpisode?.date) {
+    return null;
+  }
+
   // show the current episode until it's over
   const date = dayjs().subtract(90, 'minutes');
   const episode = date.isBefore(dayjs(nextEpisode.date))
