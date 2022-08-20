@@ -14,6 +14,31 @@ export const links = () => {
   return [{ rel: 'stylesheet', href: styles }];
 };
 
+export function meta() {
+  const title =
+    'Party Corgi Rubber Ducks, Stickers, & More! · Learn With Jason Store';
+  const description =
+    'The minimum order for custom rubber ducks is so high. Please buy a rainbow corgi rubber duck. There are so many. My partner is so mad. Please. Help.';
+  const image =
+    'https://res.cloudinary.com/jlengstorf/image/upload/q_auto,f_auto/v1627316609/lwj/store/lwj-store-og.jpg';
+
+  return {
+    title,
+    'twitter:title': title,
+    description,
+    'og:description': description,
+    'twitter:description': description,
+    image,
+    'og:image': image,
+    'twitter:image': image,
+    'og:type': 'website',
+    'og:url': `https://www.learnwithjason.dev/store`,
+    'twitter:dnt': 'on',
+    'twitter:card': 'summary_large_image',
+    'twitter:creator': '@LWJShow',
+  };
+}
+
 function format(item, quantity = 1) {
   return parseFloat(item.priceV2.amount * quantity).toLocaleString('en-us', {
     style: 'currency',
