@@ -14,7 +14,8 @@
     "@sanity/default-login",
     "@sanity/desk-tool",
     "markdown",
-    "autocomplete-tags"
+    "autocomplete-tags",
+    "@sanity/vision"
   ],
   "parts": [
     {

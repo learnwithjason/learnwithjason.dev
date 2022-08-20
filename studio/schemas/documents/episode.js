@@ -115,10 +115,23 @@ export default {
       hidden: ({ document }) => !document?.youtubeID,
       group: 'published',
     },
+    {
+      name: 'image',
+      type: 'episodeImage',
+      hidden: true,
+    },
   ],
   initialValue: () => ({
     host: { _type: 'reference', _ref: '1c607bb5-519b-49b6-9da9-5ddc424aa44c' },
     featured: false,
     hidden: false,
+    image: {
+      _type: 'episodeImage',
+      alt: 'Learn With Jason',
+      asset: {
+        _ref: 'image-5b179f2cd1d20585ba62c631bc2400ca3643c0ae-1280x670-jpg',
+        _type: 'reference',
+      },
+    },
   }),
 };
