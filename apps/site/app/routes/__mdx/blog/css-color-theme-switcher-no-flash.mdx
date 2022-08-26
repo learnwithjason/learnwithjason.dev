@@ -95,8 +95,8 @@ Open `src/index.html` and take a look at the top of the file:
 <!--     ℹ️ this is the important thing -->
 <!--            ⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄    -->
 <html lang="en" data-theme="default">
-  <!--          ^^^^^^^^^^^^^^^^^^^^    -->
-  <head></head>
+	<!--          ^^^^^^^^^^^^^^^^^^^^    -->
+	<head></head>
 </html>
 ```
 
@@ -106,16 +106,16 @@ Below that, there's a form allowing people to choose their theme:
 
 ```html
 <aside>
-  <h2>Choose a Theme</h2>
-  <form>
-    <select title="Choose a theme" name="theme">
-      <option value="default">System Default</option>
-      <option value="light">Light</option>
-      <option value="dark">Dark</option>
-      <option value="pink">Pink</option>
-    </select>
-    <button type="submit">Switch Theme</button>
-  </form>
+	<h2>Choose a Theme</h2>
+	<form>
+		<select title="Choose a theme" name="theme">
+			<option value="default">System Default</option>
+			<option value="light">Light</option>
+			<option value="dark">Dark</option>
+			<option value="pink">Pink</option>
+		</select>
+		<button type="submit">Switch Theme</button>
+	</form>
 </aside>
 ```
 
@@ -126,25 +126,25 @@ Next, open up `src/styles.css` and look at the top of the file.
 ```css
 html[data-theme='default'],
 html[data-theme='light'] {
-  --color-bg: #fcfaff;
-  --color-header-bg: #2a1f3f;
-  --color-header-text: #fcfaff;
-  --color-border: #54495f;
-  --color-link: #1600ed;
-  --color-text: #464064;
-  --color-text-heading: #1d1036;
-  --color-text-muted: #575280;
+	--color-bg: #fcfaff;
+	--color-header-bg: #2a1f3f;
+	--color-header-text: #fcfaff;
+	--color-border: #54495f;
+	--color-link: #1600ed;
+	--color-text: #464064;
+	--color-text-heading: #1d1036;
+	--color-text-muted: #575280;
 }
 
 html[data-theme='dark'] {
-  --color-bg: #242526;
-  --color-header-bg: #18111f;
-  --color-header-text: #e9e9f1;
-  --color-border: #54495f;
-  --color-link: #617ff5;
-  --color-text: #cdcdcf;
-  --color-text-heading: #dedeee;
-  --color-text-muted: #bebebf;
+	--color-bg: #242526;
+	--color-header-bg: #18111f;
+	--color-header-text: #e9e9f1;
+	--color-border: #54495f;
+	--color-link: #617ff5;
+	--color-text: #cdcdcf;
+	--color-text-heading: #dedeee;
+	--color-text-muted: #bebebf;
 }
 
 /* ...full file omitted for brevity... */
@@ -180,7 +180,7 @@ Create a new file at `netlify/edge-functions/color-theme.ts`. Inside, let’s cr
 
 ```ts
 export default async () => {
-  return new Response('hello world');
+	return new Response('hello world');
 };
 ```
 

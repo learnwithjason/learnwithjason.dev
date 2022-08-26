@@ -1,0 +1,11 @@
+{
+	"$schema": "../../node_modules/nx/schemas/project-schema.json",
+	"sourceRoot": "apps/site",
+	"projectType": "application",
+	"targets": {
+		"serve": {
+			"executor": "netlify-cli"
+		}
+	},
+	"tags": []
+}
