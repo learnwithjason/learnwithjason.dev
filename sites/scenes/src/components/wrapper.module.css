@@ -1,0 +1,62 @@
+.wrapper {
+	background: var(--color-black-faded);
+	display: grid;
+	grid-template-rows: auto 200px;
+	height: 100vh;
+}
+
+.content {
+	position: relative;
+}
+
+.lowerThird {
+	background: var(--color-black);
+	display: grid;
+	grid-template-columns: 290px 1fr 550px;
+	position: relative;
+	place-content: center;
+}
+
+.content::after,
+.lowerThird::after {
+	animation: gradient-shift 5s linear infinite;
+	background-image: var(--color-gradient);
+	background-size: 200vw 100%;
+	content: '';
+	display: block;
+	height: 4px;
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+.lowerThird::after {
+	animation-delay: -2.5s;
+}
+
+.logoWrapper,
+.episodeDetails,
+.chatWrapper {
+	display: flex;
+	place-content: center;
+}
+
+.episodeDetails {
+	justify-content: start;
+}
+
+.logo {
+	display: block;
+	width: 190px;
+}
+
+@keyframes gradient-shift {
+	0% {
+		left: 0;
+	}
+
+	100% {
+		left: -100vw;
+	}
+}

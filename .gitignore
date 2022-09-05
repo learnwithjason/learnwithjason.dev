@@ -44,5 +44,7 @@ public/build
 .env
 .DS_Store
 
+.turbo
+
 # Local Netlify folder
 .netlify

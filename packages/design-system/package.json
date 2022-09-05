@@ -1,0 +1,7 @@
+{
+	"private": true,
+	"type": "module",
+	"name": "@lwj/design-system",
+	"version": "0.0.1",
+	"main": "./index.ts"
+}
