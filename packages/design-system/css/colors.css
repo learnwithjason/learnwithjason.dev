@@ -28,4 +28,16 @@
 		hsl(177deg 100% 83%) 90%,
 		hsl(320deg 59% 59%) 100%
 	);
+
+	--animation-gradient-shift: gradient-shift 10s linear infinite;
+}
+
+@keyframes gradient-shift {
+	0% {
+		background-position: 0;
+	}
+
+	100% {
+		background-position: 100%;
+	}
 }

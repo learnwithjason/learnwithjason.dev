@@ -10,7 +10,8 @@
 		"preview": "vite preview"
 	},
 	"dependencies": {
-		"@lwj/design-system": "*"
+		"@lwj/design-system": "*",
+		"react-router-dom": "^6.3.0"
 	},
 	"devDependencies": {
 		"@types/react": "^18.0.18",

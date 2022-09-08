@@ -66,13 +66,8 @@ export function MessageRotator() {
 	const hiddenClass = state.value === 'transitioning' ? styles.hide : '';
 
 	return (
-		<div className={styles.messageWrapper}>
-			<h1 className={styles.heading}>
-				AMA: Developer Experience, DevRel, Jamstack, JavaScript, and more!
-			</h1>
-			<div className={`${styles.message} ${hiddenClass}`}>
-				{messages[state.context.message]}
-			</div>
+		<div className={`${styles.message} ${hiddenClass}`}>
+			{messages[state.context.message]}
 		</div>
 	);
 }

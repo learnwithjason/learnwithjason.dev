@@ -3,10 +3,14 @@
 	display: grid;
 	grid-template-rows: auto 200px;
 	height: 100vh;
+	position: relative;
 }
 
 .content {
-	position: relative;
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	z-index: 10;
 }
 
 .lowerThird {
@@ -19,7 +23,7 @@
 
 .content::after,
 .lowerThird::after {
-	animation: gradient-shift 5s linear infinite;
+	animation: var(--animation-gradient-shift);
 	background-image: var(--color-gradient);
 	background-size: 200vw 100%;
 	content: '';
@@ -51,12 +55,16 @@
 	width: 190px;
 }
 
-@keyframes gradient-shift {
-	0% {
-		left: 0;
-	}
+.detailsWrapper {
+	color: var(--color-white);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 100%;
+	width: 100%;
+}
 
-	100% {
-		left: -100vw;
-	}
+.heading {
+	line-height: 1.1;
+	margin: 0 0 0.5rem;
 }
