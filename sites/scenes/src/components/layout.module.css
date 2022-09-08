@@ -9,6 +9,7 @@
 .content {
 	align-items: center;
 	display: flex;
+	gap: 80px;
 	justify-content: center;
 	z-index: 10;
 }
