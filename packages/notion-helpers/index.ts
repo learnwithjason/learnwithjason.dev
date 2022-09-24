@@ -24,11 +24,11 @@ export async function getUserByEmail(email: string) {
 	return user;
 }
 
-type TitleProperty = {
+export type TitleProperty = {
 	title: [{ text: { content: string } }];
 };
 
-type RichTextProperty = {
+export type RichTextProperty = {
 	rich_text: [
 		{
 			type: 'text';
@@ -37,16 +37,24 @@ type RichTextProperty = {
 	];
 };
 
-type DateProperty = {
-	date: { start: string };
+export type DateProperty = {
+	date: {
+		start: string;
+		time_zone: string;
+	};
 };
 
-type PeopleProperty = {
+export type PeopleProperty = {
 	people: [{ id: string }];
 };
 
-type SelectProperty = {
+export type SelectProperty = {
 	select: { name: string };
+};
+
+export type UrlProperty = {
+	type: 'url';
+	url: string;
 };
 
 export type RequestEntry = {
@@ -118,6 +126,7 @@ export const properties = {
 		return {
 			date: {
 				start: date,
+				time_zone: 'America/Los_Angeles',
 			},
 		};
 	},
@@ -126,6 +135,12 @@ export const properties = {
 			select: {
 				name: optionName,
 			},
+		};
+	},
+	url(url: string): UrlProperty {
+		return {
+			type: 'url',
+			url,
 		};
 	},
 };
