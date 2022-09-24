@@ -1,0 +1,16 @@
+{
+	"name": "webhooks",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"dev": "ntl dev"
+	},
+	"author": "",
+	"license": "MIT",
+	"dependencies": {
+		"@lwj/notion-helpers": "*",
+		"@netlify/functions": "^1.2.0",
+		"node-fetch": "^3.2.10"
+	}
+}
