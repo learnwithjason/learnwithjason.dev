@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { SocketStudioProvider } from '@socket-studio/react';
 
 import { Interview } from './routes/interview';
 import { Monologue } from './routes/monologue';
@@ -13,16 +14,18 @@ import './styles/global.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 	<React.StrictMode>
-		<BrowserRouter>
-			<Routes>
-				<Route path="/" element={<Layout />}>
-					<Route path="interview" element={<Interview />} />
-					<Route path="pair-programming" element={<PairProgramming />} />
+		<SocketStudioProvider>
+			<BrowserRouter>
+				<Routes>
+					<Route path="/" element={<Layout />}>
+						<Route path="interview" element={<Interview />} />
+						<Route path="pair-programming" element={<PairProgramming />} />
 
-					<Route path="monologue" element={<Monologue />} />
-					<Route path="solo-programming" element={<SoloProgramming />} />
-				</Route>
-			</Routes>
-		</BrowserRouter>
+						<Route path="monologue" element={<Monologue />} />
+						<Route path="solo-programming" element={<SoloProgramming />} />
+					</Route>
+				</Routes>
+			</BrowserRouter>
+		</SocketStudioProvider>
 	</React.StrictMode>
 );

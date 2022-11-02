@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import { Logo } from '@lwj/design-system';
+import { TwitchChat } from '@socket-studio/react';
 
 import { MessageRotator } from './message-rotator';
 import { useEpisode } from '../hooks/use-episode';
@@ -26,7 +27,9 @@ export function Layout() {
 						<MessageRotator />
 					</div>
 				</div>
-				<div className={styles.chatWrapper}>chat</div>
+				<div className={styles.chatWrapper}>
+					<TwitchChat username="jlengstorf" />
+				</div>
 			</div>
 		</div>
 	);
