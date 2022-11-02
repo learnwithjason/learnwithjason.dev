@@ -119,10 +119,10 @@ export function meta({ data: episode }) {
 export default function EpisodeTemplate() {
   const episode = useLoaderData();
 
-  let includePlaylist = true;
-  if (dayjs(episode.startDate).isBefore(dayjs().subtract(80, 'week'))) {
-    includePlaylist = false;
-  }
+  let includePlaylist = false;
+  // if (dayjs(episode.startDate).isBefore(dayjs().subtract(80, 'week'))) {
+  //   includePlaylist = false;
+  // }
 
   if (episode.youtubeID) {
     return (
