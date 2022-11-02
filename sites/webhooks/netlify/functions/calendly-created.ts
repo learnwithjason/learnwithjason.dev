@@ -75,12 +75,10 @@ export const handler: Handler = async (event) => {
 	}
 
 	const notionRes = await notionApi('/pages', {
-		parent: { database_id: '3b2fb85c445e411581f5098da4b7b012' },
+		parent: { database_id: 'd33807ea938e43f3bf902fd8fe152c80' },
 		properties: props,
 		children,
 	});
-
-	console.log(notionRes);
 
 	return {
 		statusCode: 200,
