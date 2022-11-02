@@ -2,15 +2,23 @@ const API_URL =
   process.env.API_URL || process.env.URL || 'https://www.learnwithjason.dev';
 
 export async function loadAllEpisodes() {
-  const [episodes1, episodes2, episodes3, episodes4, episodes5, episodes6] =
-    await Promise.all([
-      fetch(`${API_URL}/api/episodes/page/1`).then((res) => res.json()),
-      fetch(`${API_URL}/api/episodes/page/2`).then((res) => res.json()),
-      fetch(`${API_URL}/api/episodes/page/3`).then((res) => res.json()),
-      fetch(`${API_URL}/api/episodes/page/4`).then((res) => res.json()),
-      fetch(`${API_URL}/api/episodes/page/5`).then((res) => res.json()),
-      fetch(`${API_URL}/api/episodes/page/6`).then((res) => res.json()),
-    ]);
+  const [
+    episodes1,
+    episodes2,
+    episodes3,
+    episodes4,
+    episodes5,
+    episodes6,
+    episodes7,
+  ] = await Promise.all([
+    fetch(`${API_URL}/api/episodes/page/1`).then((res) => res.json()),
+    fetch(`${API_URL}/api/episodes/page/2`).then((res) => res.json()),
+    fetch(`${API_URL}/api/episodes/page/3`).then((res) => res.json()),
+    fetch(`${API_URL}/api/episodes/page/4`).then((res) => res.json()),
+    fetch(`${API_URL}/api/episodes/page/5`).then((res) => res.json()),
+    fetch(`${API_URL}/api/episodes/page/6`).then((res) => res.json()),
+    fetch(`${API_URL}/api/episodes/page/7`).then((res) => res.json()),
+  ]);
 
   const episodes = [
     ...episodes1,
@@ -19,6 +27,7 @@ export async function loadAllEpisodes() {
     ...episodes4,
     ...episodes5,
     ...episodes6,
+    ...episodes7,
   ]
     .filter((e) => e.youtubeID !== null)
     .map((episode) => ({
