@@ -92,19 +92,19 @@ https://lwj.dev/*                     https://www.learnwithjason.dev/:splat 301!
 /.env                                 https://jason.af/party 301
 /xmlrpc.php                           https://jason.af/party 301
 /xmlrpc.php                           https://jason.af/party 301
-/web/wp-includes/wlwmanifest.xml     https://jason.af/party 301
-/wp-includes/wlwmanifest.xml         https://jason.af/party 301
-/website/wp-includes/wlwmanifest.xml https://jason.af/party 301
-/news/wp-includes/wlwmanifest.xml    https://jason.af/party 301
-/2019/wp-includes/wlwmanifest.xml    https://jason.af/party 301
-/wp1/wp-includes/wlwmanifest.xml     https://jason.af/party 301
-/cms/wp-includes/wlwmanifest.xml     https://jason.af/party 301
-/wp2/wp-includes/wlwmanifest.xml     https://jason.af/party 301
-/site/wp-includes/wlwmanifest.xml    https://jason.af/party 301
-/sito/wp-includes/wlwmanifest.xml    https://jason.af/party 301
+/web/wp-includes/wlwmanifest.xml      https://jason.af/party 301
+/wp-includes/wlwmanifest.xml          https://jason.af/party 301
+/website/wp-includes/wlwmanifest.xml  https://jason.af/party 301
+/news/wp-includes/wlwmanifest.xml     https://jason.af/party 301
+/2019/wp-includes/wlwmanifest.xml     https://jason.af/party 301
+/wp1/wp-includes/wlwmanifest.xml      https://jason.af/party 301
+/cms/wp-includes/wlwmanifest.xml      https://jason.af/party 301
+/wp2/wp-includes/wlwmanifest.xml      https://jason.af/party 301
+/site/wp-includes/wlwmanifest.xml     https://jason.af/party 301
+/sito/wp-includes/wlwmanifest.xml     https://jason.af/party 301
 
-/sitemap_index.xml /sitemap.xml
-/sitemapindex.xml /sitemap.xml
+/sitemap_index.xml  /sitemap.xml
+/sitemapindex.xml   /sitemap.xml
 
 # Remix
 /*      /.netlify/functions/server  200
