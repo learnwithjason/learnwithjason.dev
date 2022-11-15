@@ -1,0 +1,4 @@
+[dev]
+  framework = "vite"
+  command = "vite"
+  targetPort = 5173

@@ -1,0 +1,22 @@
+{
+	"private": true,
+	"name": "scenes",
+	"version": "0.0.0",
+	"type": "module",
+	"types": "./src/design-system.d.ts",
+	"scripts": {
+		"dev": "ntl dev",
+		"build": "vite build",
+		"preview": "vite preview"
+	},
+	"dependencies": {
+		"@lwj/design-system": "*",
+		"@socket-studio/react": "*",
+		"react-router-dom": "^6.3.0"
+	},
+	"devDependencies": {
+		"@types/react": "^18.0.18",
+		"@xstate/react": "^3.0.1",
+		"xstate": "^4.33.5"
+	}
+}

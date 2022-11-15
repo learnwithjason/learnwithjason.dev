@@ -1,0 +1,16 @@
+.wrapper {
+	display: grid;
+	grid-template-columns: 1285px 635px;
+	height: 100%;
+}
+
+.screen {
+	background: green;
+}
+
+.videos {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+	justify-content: center;
+}

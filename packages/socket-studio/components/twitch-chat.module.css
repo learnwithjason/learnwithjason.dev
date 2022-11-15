@@ -1,0 +1,22 @@
+.chat {
+	color: var(--color-white);
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.chatMessage {
+	display: flex;
+	gap: 0.5rem;
+	justify-content: space-between;
+}
+
+.author {
+	color: var(--color-pink);
+	font-weight: bold;
+	text-align: right;
+	width: 100px;
+}
+
+.message {
+}
