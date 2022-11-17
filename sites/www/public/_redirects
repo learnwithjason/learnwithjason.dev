@@ -3,17 +3,14 @@ https://learnwithjason.netlify.app/*  https://www.learnwithjason.dev/:splat 301!
 https://learnwithjason.netlify.com/*  https://www.learnwithjason.dev/:splat 301!
 https://lwj.dev/*                     https://www.learnwithjason.dev/:splat 301!
 
-# RSS
 /feed     https://www.learnwithjason.dev/episodes.xml
 /feed.xml https://www.learnwithjason.dev/episodes.xml
 /feeds    https://www.learnwithjason.dev/episodes.xml
 /rss      https://www.learnwithjason.dev/episodes.xml
 /rss.xml  https://www.learnwithjason.dev/episodes.xml
 
-# calendar stuff
 /calendar https://calendar.google.com/calendar?cid=bGVuZ3N0b3JmLmNvbV85cGxqMW02dTl2dGRkbGRvaW5sMGhzMnZna0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t 301!
 /cal      https://calendar.google.com/calendar?cid=bGVuZ3N0b3JmLmNvbV85cGxqMW02dTl2dGRkbGRvaW5sMGhzMnZna0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t 301!
-/book     https://calendly.com/learnwithjason/livestream
 
 /api/tag/:tag               /.netlify/builders/api-tag          200
 /api/episodes*              /.netlify/builders/api-episodes     200
