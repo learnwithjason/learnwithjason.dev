@@ -13,10 +13,8 @@ https://lwj.dev/*                     https://www.learnwithjason.dev/:splat 301!
 /rss      https://www.learnwithjason.dev/episodes.xml
 /rss.xml  https://www.learnwithjason.dev/episodes.xml
 
-# calendar stuff
 /calendar https://calendar.google.com/calendar?cid=bGVuZ3N0b3JmLmNvbV85cGxqMW02dTl2dGRkbGRvaW5sMGhzMnZna0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t 301!
 /cal      https://calendar.google.com/calendar?cid=bGVuZ3N0b3JmLmNvbV85cGxqMW02dTl2dGRkbGRvaW5sMGhzMnZna0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t 301!
-/book     https://calendly.com/learnwithjason/livestream
 
 /api/tag/:tag               /.netlify/builders/api-tag          200
 /api/episodes*              /.netlify/builders/api-episodes     200
