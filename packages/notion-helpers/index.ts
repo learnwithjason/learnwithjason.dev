@@ -95,9 +95,9 @@ export async function notionApi(endpoint: string, body?: object) {
 		options.body = JSON.stringify(body);
 	}
 
-	return await fetch(`https://api.notion.com/v1${endpoint}`, options).then(
-		(res) => res.json()
-	);
+	const res = await fetch(`https://api.notion.com/v1${endpoint}`, options);
+
+	return res.json();
 }
 
 export const properties = {
