@@ -81,14 +81,6 @@ function validateCalendlySignature(event: HandlerEvent) {
 		.update(data, 'utf8')
 		.digest('hex');
 
-	console.log({
-		t,
-		data,
-		signature,
-		key: process.env.CALENDLY_WEBHOOK_SIGNING_KEY,
-		expectedSignature,
-	});
-
 	if (expectedSignature !== signature) {
 		console.error('Invalid webhook signature');
 		return false;
