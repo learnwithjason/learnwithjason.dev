@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+	
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width">
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+		<meta name="generator" content="Astro v1.6.10">
+		<title>Buid a CSS Theme Switcher With No Flash of the Wrong Theme</title>
+	
+	<body data-theme="light">
+		<header class="_header_1p297_1"><a href="#content" class="visually-hidden">skip to content</a><div class="_logo_1p297_55"><a href="/" rel="home"><svg width="424" height="214" viewBox="0 0 424 214" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_2992_38045)"><path d="M7.74383 135.623C7.80164 136.726 8.74271 137.573 9.84577 137.515L23.4979 136.8L27.3183 209.697C27.3761 210.8 28.3172 211.647 29.4202 211.589L419.538 191.144C420.641 191.086 421.489 190.145 421.431 189.042L416.92 102.97C416.862 101.867 415.921 101.019 414.818 101.077L405.637 101.558L400.587 5.18724C400.529 4.08418 399.588 3.23684 398.485 3.29465L3.89533 23.9742C2.79227 24.032 1.94493 24.9731 2.00274 26.0761L7.74383 135.623Z" fill="#FFDF37" stroke="white" stroke-width="4" stroke-linejoin="round"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M410.686 107.78L403.979 108.132L29.5103 127.757L29.8618 134.464L33.5525 204.886L414.728 184.91L410.686 107.78ZM24.8047 123.52L29.3156 209.592L419.434 189.147L414.923 103.074L24.8047 123.52Z" fill="#011627"></path><path d="M82.3831 154.369L93.986 178.944L97.0274 178.785L106.695 146.755L103.386 146.928L95.3344 174.721L82.4873 147.8L81.8611 147.833L71.6747 175.961L60.9414 149.152L57.5422 149.331L70.1922 180.191L73.2335 180.032L82.3831 154.369Z" fill="#011627"></path><path d="M120.545 146.029L117.414 146.193L119.048 177.363L122.179 177.199L120.545 146.029Z" fill="#011627"></path><path d="M131.012 145.48L131.161 148.33L143.863 147.664L145.347 175.985L148.478 175.82L146.994 147.5L159.696 146.835L159.546 143.985L131.012 145.48Z" fill="#011627"></path><path d="M196.762 142.034L193.631 142.198L194.353 155.958L173.6 157.045L172.879 143.286L169.748 143.45L171.382 174.62L174.512 174.456L173.752 159.94L194.504 158.852L195.265 173.368L198.396 173.204L196.762 142.034Z" fill="#011627"></path><path d="M228.196 169.142C226.273 169.243 224.306 168.498 222.291 166.862L222.204 166.911L223.158 170.567C224.832 171.685 226.651 172.17 228.753 172.06C233.539 171.809 236.369 168.491 236.108 163.503L234.878 140.037L231.748 140.201L232.961 163.356C233.138 166.74 231.282 168.98 228.196 169.142Z" fill="#011627"></path><path d="M261.002 141.972L269.25 158.15L254.312 158.933L261.002 141.972ZM262.428 138.37L259.432 138.527L246.496 170.684L249.761 170.512L253.207 161.804L270.65 160.889L274.897 169.195L278.296 169.017L262.428 138.37Z" fill="#011627"></path><path d="M294.721 153.6C297.651 154.741 299.633 155.754 300.713 156.679C301.793 157.605 302.345 158.737 302.413 160.028C302.579 163.19 299.875 165.52 296.163 165.714C292.764 165.892 288.914 164.308 285.669 161.442L285.582 161.491L286.658 165.766C289.454 167.762 292.737 168.796 296.136 168.618C298.954 168.47 301.237 167.547 302.987 165.848C304.739 164.193 305.571 162.095 305.443 159.646C305.342 157.732 304.672 156.07 303.392 154.753C302.112 153.436 299.848 152.17 296.641 150.865C293.574 149.686 291.592 148.674 290.604 147.788C289.616 146.902 289.068 145.859 289 144.568C288.844 141.584 291.244 139.449 294.777 139.264C297.595 139.116 300.24 139.96 303.167 141.905L303.257 141.901L303.072 138.383C300.343 136.785 297.801 136.203 294.759 136.363C292.076 136.503 289.924 137.375 288.259 138.981C286.594 140.586 285.847 142.59 285.973 144.994C286.071 146.864 286.737 148.437 288.014 149.71C289.249 151.029 291.468 152.297 294.721 153.6Z" fill="#011627"></path><path d="M331.595 166.849C336.157 166.61 339.921 164.85 342.931 161.522C345.941 158.194 347.306 154.282 347.068 149.74C346.832 145.243 345.066 141.496 341.769 138.498C338.431 135.547 334.503 134.191 329.985 134.427C325.423 134.666 321.659 136.426 318.694 139.752C315.684 143.08 314.319 146.992 314.557 151.533C314.793 156.031 316.559 159.778 319.853 162.731C323.149 165.729 327.078 167.086 331.595 166.849ZM330.003 137.329C333.626 137.139 336.824 138.266 339.509 140.715C342.196 143.209 343.658 146.302 343.852 149.998C344.046 153.694 342.912 156.879 340.498 159.595C338.084 162.312 335.066 163.765 331.488 163.952C327.865 164.142 324.756 163.01 322.071 160.561C319.387 158.112 317.969 155.016 317.773 151.276C317.579 147.58 318.668 144.397 321.082 141.681C323.451 138.967 326.425 137.516 330.003 137.329Z" fill="#011627"></path><path d="M385.063 132.166L382.066 132.323L383.361 157.036L360.553 133.45L357.601 133.605L359.235 164.775L362.231 164.618L360.834 137.945L385.587 163.573L386.705 163.514L385.063 132.166Z" fill="#011627"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M4 25.9715L398.589 5.29192L403.979 108.132L29.5103 127.757L29.8618 134.464L9.74109 135.518L4 25.9715ZM75.6768 99.2482L45.528 100.828L42.3919 40.989L25.0107 41.9L28.9661 117.373L76.4962 114.882L75.6768 99.2482ZM105.081 98.5721L138.878 96.8009L136.648 111.729L88.6888 114.243L84.7334 38.77L132.371 36.2735L136.149 50.8871L102.674 52.6415L103.51 68.5986L131.299 67.1423L131.994 80.4039L104.205 81.8602L105.081 98.5721ZM193.688 32.8437L175.341 33.8052L146.37 111.22L164.287 110.281L169.911 94.4177L204.244 92.6184L211.281 107.818L229.842 106.845L193.688 32.8437ZM198.151 78.991L185.066 51.0264L174.547 80.228L198.151 78.991ZM292.188 51.4667C292.691 61.0626 287.632 69.2201 278.411 73.9198L304.997 102.907L284.397 103.986L260.753 77.7643L256.247 78.0004L257.682 105.386L240.301 106.297L236.345 30.8244L262.524 29.4524C280.549 28.5077 291.403 36.48 292.188 51.4667ZM262.293 43.5194C269.696 43.1314 274.739 46.9755 275.073 53.3368C275.417 59.9137 270.708 64.4851 263.09 64.8843L255.258 65.2948L254.139 43.9467L262.293 43.5194ZM379.359 23.3294L362.299 24.2234L364.661 67.2373L324.855 26.1858L308.117 27.063L312.073 102.536L329.132 101.642L326.335 52.38L372.28 99.7048L383.331 99.1257L379.359 23.3294Z" fill="#011627"></path></g><defs><clipPath id="clip0_2992_38045"><rect width="424" height="213" fill="white" transform="translate(0 0.706085)"></rect></clipPath></defs></svg><span class="visually-hidden">Home</span></a></div><nav><a href="/episodes">episodes</a><a href="/schedule">schedule</a><a href="/store">store</a><a href="/blog">blog</a><a href="/about">about</a><button class="aa-OpenButton _search_1p297_65"><svg viewBox="0 0 20 20"><path fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M14.386 14.386l4.088 4.088-4.088-4.088A7.533 7.533 0 113.733 3.733a7.533 7.533 0 0110.653 10.653z"></path></svg><span class="visually-hidden">Open search</span></button></nav></header>
+		<main class="post-container">
+			<link rel="stylesheet" href="/assets/css-color-theme-switcher-no-flash.ee5d513c.css" />
+<link rel="stylesheet" href="/assets/css-color-theme-switcher-no-flash.31e9dcd2.css" /><script type="module">function l(){const t=document.querySelectorAll("[data-section=post-content] h2"),s=([e])=>{const a=e.target,o=Array.from(document.querySelectorAll("[data-section=table-of-contents] a"));o.forEach(n=>{const[,c]=n.getAttribute("href")?.split("#")??"";e.isIntersecting&&c===a.id&&(o.forEach(i=>i.classList.remove("active")),n.classList.add("active"))})},r=new IntersectionObserver(s,{threshold:[1]});return Array.from(t).filter(e=>e.id!=="table-of-contents").map(e=>(r.observe(e),{label:e.textContent,href:`#${e.id}`})),()=>{Array.from(t).map(e=>{r.unobserve(e)})}}l();
+</script><article class="post astro-5EC6OIZH">
+		<header class="astro-5EC6OIZH">
+			<h1 class="astro-5EC6OIZH">Buid a CSS Theme Switcher With No Flash of the Wrong Theme</h1>
+			<p class="astro-5EC6OIZH">Many JavaScript and CSS theme switchers have a momentary flash of the wrong theme. With edge functions, we can make that a thing of the past.
+</p>
+		</header>
+		<aside class="table-of-contents astro-5EC6OIZH" data-section="table-of-contents">
+			<div class="toc-sticky-container astro-5EC6OIZH">
+				<h2 class="gradient-subheading gradient-underline astro-5EC6OIZH" id="table-of-contents">
+					Table of Contents
+				</h2>
+				<ol class="astro-5EC6OIZH">
+					<li class="astro-5EC6OIZH">
+										<a href="#1-start-with-a-basic-html-and-css-site" class="astro-5EC6OIZH">1. Start with a basic HTML and CSS site</a>
+									</li><li class="astro-5EC6OIZH">
+										<a href="#2-create-an-edge-function" class="astro-5EC6OIZH">2. Create an edge function</a>
+									</li><li class="astro-5EC6OIZH">
+										<a href="#3-update-the-html-with-the-correct-theme" class="astro-5EC6OIZH">3. Update the HTML with the correct theme</a>
+									</li><li class="astro-5EC6OIZH">
+										<a href="#fast-no-flash-no-client-side-javascript-color-themes-are-possible-without-managing-a-server" class="astro-5EC6OIZH">Fast, no flash, no client-side JavaScript color themes are possible without managing a server</a>
+									</li>
+				</ol>
+			</div>
+		</aside>
+
+		<div class="post-content astro-5EC6OIZH" data-section="post-content"><p>Not too long ago, the introduction of React Context led to a wave of color theme switchers. For a brief, glorious moment, color theme switchers dethroned TODO apps as the default tutorial.</p>
+<p>However, these color theme switchers all shared a flaw: they were all (a little bit) broken. When you selected a non-default theme, they would either:</p>
+<ol>
+<li>Briefly flash the wrong color theme (which <a href="https://css-tricks.com/flash-of-inaccurate-color-theme-fart/">Chris Coyier dubbed FART</a>, as only Chris Coyier can)</li>
+<li>Delay the rendering of the page until client-side JavaScript is able to load and execute to update the theme</li>
+</ol>
+<p>Both of these workarounds aren’t ideal, and there haven’t been many (any?) solutions offered that don’t require running a server. In fact, Chris summed up his article on this problem by saying:</p>
+<blockquote>
+<p>I’m not convinced there is a good way to avoid FART without a server-side language or force-delayed page renders.</p>
+</blockquote>
+<p>But — good news, everybody! — I have a solution that will allow any site, whether it’s built with a server-side language, a JS framework, or plain ol’ HTML and CSS, to add a color theme switcher that works without client-side JS and doesn’t delay the page render.</p>
+<p>To do this, we’re going to use edge computing, which might sound like a lot, but only requires about 60 lines of code and a free Netlify account to add.</p>
+<p>Jump to the end: <a href="https://theme-switcher-no-flash.netlify.app/">demo</a> · <a href="https://github.com/learnwithjason/theme-switcher-no-flash">source code</a></p>
+<h2 id="1-start-with-a-basic-html-and-css-site">1. Start with a basic HTML and CSS site</h2>
+<p>For this tutorial, we’ll be working from <a href="https://github.com/jlengstorf/theme-switcher-no-flash">this starter repo</a>.</p>
+<p>The solution we’re building requires the use of <a href="https://docs.netlify.com/edge-functions/overview/">Netlify Edge Functions</a>, which means we’ll need the Netlify CLI for local testing and to deploy the site to Netlify.</p>
+<aside class="post-aside"><div class="aside-icon"><svg width="23" height="19" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M.405 15.91C-.46 17.24.495 19 2.082 19h18.63c1.586 0 2.54-1.76 1.676-3.09L13.073 1.58a2 2 0 00-3.353 0L.405 15.91zm2.18.317a.5.5 0 00.418.773H19.79a.5.5 0 00.42-.773L11.815 3.315a.5.5 0 00-.839 0L2.584 16.227z" fill="#C10B7E"></path><path d="M9.397 7v.291l1.287 5.038h1.452l1.26-5.038V7h-4zm2.013 9c.466 0 .863-.152 1.192-.456.329-.303.493-.67.493-1.101 0-.43-.164-.797-.493-1.101a1.693 1.693 0 00-1.192-.456c-.465 0-.863.152-1.191.456-.33.304-.494.67-.494 1.101 0 .43.165.798.494 1.101.328.304.726.456 1.191.456z" fill="#C10B7E"></path></svg></div><div class="aside-content"><p><strong>Reminder:</strong> all of the Netlify features we’ll be using are free.</p></div></aside>
+<h3 id="clone-and-deploy-the-repo">Clone and deploy the repo</h3>
+<p>For convenience, <a href="http://app.netlify.com/start/deploy?repository=https://github.com/jlengstorf/theme-switcher-no-flash">click here to create and deploy the repo all at once</a>. This will take you through Netlify’s deployment flow, connect your GitHub, create a copy of the repo, and deploy it to your Netlify account.</p>
+<h3 id="set-up-local-development">Set up local development</h3>
+<p>Once you’ve got that set up, set up the repo locally (make sure to replace <code>&lt;username&gt;</code> and <code>&lt;repo&gt;</code> with your own username and repo name):</p>
+<pre class="astro-code" style="background-color:#011627;overflow-x:auto"><code><span class="line"><span style="color:#637777">#</span><span style="color:#637777"> clone your copy of the repo</span></span>
+<span class="line"><span style="color:#D6DEEB">git clone git@github.com:</span><span style="color:#7FDBCA">&lt;</span><span style="color:#D6DEEB">username</span><span style="color:#7FDBCA">&gt;</span><span style="color:#D6DEEB">/</span><span style="color:#7FDBCA">&lt;</span><span style="color:#D6DEEB">repo</span><span style="color:#7FDBCA">&gt;</span><span style="color:#D6DEEB">.git</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#637777">#</span><span style="color:#637777"> move into the cloned repo</span></span>
+<span class="line"><span style="color:#C5E478">cd</span><span style="color:#D6DEEB"> </span><span style="color:#7FDBCA">&lt;</span><span style="color:#D6DEEB">repo</span><span style="color:#7FDBCA">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#637777">#</span><span style="color:#637777"> OPTIONAL: install the Netlify CLI globally</span></span>
+<span class="line"><span style="color:#637777">#</span><span style="color:#637777"> (v12.1.0 at time of writing)</span></span>
+<span class="line"><span style="color:#D6DEEB">npm i -g netlify-cli</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#637777">#</span><span style="color:#637777"> start the Netlify CLI</span></span>
+<span class="line"><span style="color:#D6DEEB">ntl dev</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#637777">#</span><span style="color:#637777"> or, if you don&#39;t have the CLI installed globally:</span></span>
+<span class="line"><span style="color:#637777">#</span><span style="color:#637777"> npx ntl dev</span></span></code></pre>
+<p>This will start the site at <code>localhost:8888</code>:</p>
+<figure class="post-figure"><img src="/images/css-theme-switcher-01.png" alt="The CSS theme switcher demo running locally"/></figure>
+<p>There is a theme selection dropdown in the sidebar. Right now, choosing a new theme doesn’t change anything — it just adds a <code>?theme=&lt;selected_theme&gt;</code> to the URL.</p>
+<h3 id="get-familiar-with-the-code">Get familiar with the code</h3>
+<p>Inside the repo, you’ll see a <code>src</code> folder that has two HTML files and a CSS file inside.</p>
+<p>Open <code>src/index.html</code> and take a look at the top of the file:</p>
+<pre class="astro-code" style="background-color:#011627;overflow-x:auto"><code><span class="line"><span style="color:#7FDBCA">&lt;!</span><span style="color:#CAECE6">DOCTYPE</span><span style="color:#7FDBCA"> </span><span style="color:#C5E478">html</span><span style="color:#7FDBCA">&gt;</span></span>
+<span class="line"><span style="color:#637777">&lt;!--</span><span style="color:#637777">     ℹ️ this is the important thing </span><span style="color:#637777">--&gt;</span></span>
+<span class="line"><span style="color:#637777">&lt;!--</span><span style="color:#637777">            ⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄    </span><span style="color:#637777">--&gt;</span></span>
+<span class="line"><span style="color:#7FDBCA">&lt;</span><span style="color:#CAECE6">html</span><span style="color:#7FDBCA"> </span><span style="color:#C5E478">lang</span><span style="color:#7FDBCA">=</span><span style="color:#D9F5DD">&quot;</span><span style="color:#ECC48D">en</span><span style="color:#D9F5DD">&quot;</span><span style="color:#7FDBCA"> </span><span style="color:#C5E478">data-theme</span><span style="color:#7FDBCA">=</span><span style="color:#D9F5DD">&quot;</span><span style="color:#ECC48D">default</span><span style="color:#D9F5DD">&quot;</span><span style="color:#7FDBCA">&gt;</span></span>
+<span class="line"><span style="color:#D6DEEB">	</span><span style="color:#637777">&lt;!--</span><span style="color:#637777">          ^^^^^^^^^^^^^^^^^^^^    </span><span style="color:#637777">--&gt;</span></span>
+<span class="line"><span style="color:#D6DEEB">	</span><span style="color:#7FDBCA">&lt;</span><span style="color:#CAECE6">head</span><span style="color:#7FDBCA">&gt;&lt;/</span><span style="color:#CAECE6">head</span><span style="color:#7FDBCA">&gt;</span></span>
+<span class="line"><span style="color:#7FDBCA">&lt;/</span><span style="color:#CAECE6">html</span><span style="color:#7FDBCA">&gt;</span></span></code></pre>
+<p>The <code>data-theme=&quot;default&quot;</code> is the critical piece of this markup.</p>
+<p>Below that, there’s a form allowing people to choose their theme:</p>
+<pre class="astro-code" style="background-color:#011627;overflow-x:auto"><code><span class="line"><span style="color:#7FDBCA">&lt;</span><span style="color:#CAECE6">aside</span><span style="color:#7FDBCA">&gt;</span></span>
+<span class="line"><span style="color:#D6DEEB">	</span><span style="color:#7FDBCA">&lt;</span><span style="color:#CAECE6">h2</span><span style="color:#7FDBCA">&gt;</span><span style="color:#D6DEEB">Choose a Theme</span><span style="color:#7FDBCA">&lt;/</span><span style="color:#CAECE6">h2</span><span style="color:#7FDBCA">&gt;</span></span>
+<span class="line"><span style="color:#D6DEEB">	</span><span style="color:#7FDBCA">&lt;</span><span style="color:#CAECE6">form</span><span style="color:#7FDBCA">&gt;</span></span>
+<span class="line"><span style="color:#D6DEEB">		</span><span style="color:#7FDBCA">&lt;</span><span style="color:#CAECE6">select</span><span style="color:#7FDBCA"> </span><span style="color:#C5E478">title</span><span style="color:#7FDBCA">=</span><span style="color:#D9F5DD">&quot;</span><span style="color:#ECC48D">Choose a theme</span><span style="color:#D9F5DD">&quot;</span><span style="color:#7FDBCA"> </span><span style="color:#C5E478">name</span><span style="color:#7FDBCA">=</span><span style="color:#D9F5DD">&quot;</span><span style="color:#ECC48D">theme</span><span style="color:#D9F5DD">&quot;</span><span style="color:#7FDBCA">&gt;</span></span>
+<span class="line"><span style="color:#D6DEEB">			</span><span style="color:#7FDBCA">&lt;</span><span style="color:#CAECE6">option</span><span style="color:#7FDBCA"> </span><span style="color:#C5E478">value</span><span style="color:#7FDBCA">=</span><span style="color:#D9F5DD">&quot;</span><span style="color:#ECC48D">default</span><span style="color:#D9F5DD">&quot;</span><span style="color:#7FDBCA">&gt;</span><span style="color:#D6DEEB">System Default</span><span style="color:#7FDBCA">&lt;/</span><span style="color:#CAECE6">option</span><span style="color:#7FDBCA">&gt;</span></span>
+<span class="line"><span style="color:#D6DEEB">			</span><span style="color:#7FDBCA">&lt;</span><span style="color:#CAECE6">option</span><span style="color:#7FDBCA"> </span><span style="color:#C5E478">value</span><span style="color:#7FDBCA">=</span><span style="color:#D9F5DD">&quot;</span><span style="color:#ECC48D">light</span><span style="color:#D9F5DD">&quot;</span><span style="color:#7FDBCA">&gt;</span><span style="color:#D6DEEB">Light</span><span style="color:#7FDBCA">&lt;/</span><span style="color:#CAECE6">option</span><span style="color:#7FDBCA">&gt;</span></span>
+<span class="line"><span style="color:#D6DEEB">			</span><span style="color:#7FDBCA">&lt;</span><span style="color:#CAECE6">option</span><span style="color:#7FDBCA"> </span><span style="color:#C5E478">value</span><span style="color:#7FDBCA">=</span><span style="color:#D9F5DD">&quot;</span><span style="color:#ECC48D">dark</span><span style="color:#D9F5DD">&quot;</span><span style="color:#7FDBCA">&gt;</span><span style="color:#D6DEEB">Dark</span><span style="color:#7FDBCA">&lt;/</span><span style="color:#CAECE6">option</span><span style="color:#7FDBCA">&gt;</span></span>
+<span class="line"><span style="color:#D6DEEB">			</span><span style="color:#7FDBCA">&lt;</span><span style="color:#CAECE6">option</span><span style="color:#7FDBCA"> </span><span style="color:#C5E478">value</span><span style="color:#7FDBCA">=</span><span style="color:#D9F5DD">&quot;</span><span style="color:#ECC48D">pink</span><span style="color:#D9F5DD">&quot;</span><span style="color:#7FDBCA">&gt;</span><span style="color:#D6DEEB">Pink</span><span style="color:#7FDBCA">&lt;/</span><span style="color:#CAECE6">option</span><span style="color:#7FDBCA">&gt;</span></span>
+<span class="line"><span style="color:#D6DEEB">		</span><span style="color:#7FDBCA">&lt;/</span><span style="color:#CAECE6">select</span><span style="color:#7FDBCA">&gt;</span></span>
+<span class="line"><span style="color:#D6DEEB">		</span><span style="color:#7FDBCA">&lt;</span><span style="color:#CAECE6">button</span><span style="color:#7FDBCA"> </span><span style="color:#C5E478">type</span><span style="color:#7FDBCA">=</span><span style="color:#D9F5DD">&quot;</span><span style="color:#ECC48D">submit</span><span style="color:#D9F5DD">&quot;</span><span style="color:#7FDBCA">&gt;</span><span style="color:#D6DEEB">Switch Theme</span><span style="color:#7FDBCA">&lt;/</span><span style="color:#CAECE6">button</span><span style="color:#7FDBCA">&gt;</span></span>
+<span class="line"><span style="color:#D6DEEB">	</span><span style="color:#7FDBCA">&lt;/</span><span style="color:#CAECE6">form</span><span style="color:#7FDBCA">&gt;</span></span>
+<span class="line"><span style="color:#7FDBCA">&lt;/</span><span style="color:#CAECE6">aside</span><span style="color:#7FDBCA">&gt;</span></span></code></pre>
+<p>The rest of the markup sets up the example page, but doesn’t have any impact on the theme switcher functionality and can be ignored.</p>
+<p>Next, open up <code>src/styles.css</code> and look at the top of the file.</p>
+<pre class="astro-code" style="background-color:#011627;overflow-x:auto"><code><span class="line"><span style="color:#FF6363">html</span><span style="color:#C792EA">[</span><span style="color:#C5E478">data-theme</span><span style="color:#7FDBCA">=</span><span style="color:#D9F5DD">&#39;</span><span style="color:#ECC48D">default</span><span style="color:#D9F5DD">&#39;</span><span style="color:#C792EA">],</span></span>
+<span class="line"><span style="color:#FF6363">html</span><span style="color:#C792EA">[</span><span style="color:#C5E478">data-theme</span><span style="color:#7FDBCA">=</span><span style="color:#D9F5DD">&#39;</span><span style="color:#ECC48D">light</span><span style="color:#D9F5DD">&#39;</span><span style="color:#C792EA">]</span><span style="color:#D6DEEB"> {</span></span>
+<span class="line"><span style="color:#D6DEEB">	</span><span style="color:#C5E478">--color-bg</span><span style="color:#D6DEEB">: </span><span style="color:#F78C6C">#</span><span style="color:#FFEB95">fcfaff</span><span style="color:#D6DEEB">;</span></span>
+<span class="line"><span style="color:#D6DEEB">	</span><span style="color:#C5E478">--color-header-bg</span><span style="color:#D6DEEB">: </span><span style="color:#F78C6C">#</span><span style="color:#FFEB95">2a1f3f</span><span style="color:#D6DEEB">;</span></span>
+<span class="line"><span style="color:#D6DEEB">	</span><span style="color:#C5E478">--color-header-text</span><span style="color:#D6DEEB">: </span><span style="color:#F78C6C">#</span><span style="color:#FFEB95">fcfaff</span><span style="color:#D6DEEB">;</span></span>
+<span class="line"><span style="color:#D6DEEB">	</span><span style="color:#C5E478">--color-border</span><span style="color:#D6DEEB">: </span><span style="color:#F78C6C">#</span><span style="color:#FFEB95">54495f</span><span style="color:#D6DEEB">;</span></span>
+<span class="line"><span style="color:#D6DEEB">	</span><span style="color:#C5E478">--color-link</span><span style="color:#D6DEEB">: </span><span style="color:#F78C6C">#</span><span style="color:#FFEB95">1600ed</span><span style="color:#D6DEEB">;</span></span>
+<span class="line"><span style="color:#D6DEEB">	</span><span style="color:#C5E478">--color-text</span><span style="color:#D6DEEB">: </span><span style="color:#F78C6C">#</span><span style="color:#FFEB95">464064</span><span style="color:#D6DEEB">;</span></span>
+<span class="line"><span style="color:#D6DEEB">	</span><span style="color:#C5E478">--color-text-heading</span><span style="color:#D6DEEB">: </span><span style="color:#F78C6C">#</span><span style="color:#FFEB95">1d1036</span><span style="color:#D6DEEB">;</span></span>
+<span class="line"><span style="color:#D6DEEB">	</span><span style="color:#C5E478">--color-text-muted</span><span style="color:#D6DEEB">: </span><span style="color:#F78C6C">#</span><span style="color:#FFEB95">575280</span><span style="color:#D6DEEB">;</span></span>
+<span class="line"><span style="color:#D6DEEB">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF6363">html</span><span style="color:#C792EA">[</span><span style="color:#C5E478">data-theme</span><span style="color:#7FDBCA">=</span><span style="color:#D9F5DD">&#39;</span><span style="color:#ECC48D">dark</span><span style="color:#D9F5DD">&#39;</span><span style="color:#C792EA">]</span><span style="color:#D6DEEB"> {</span></span>
+<span class="line"><span style="color:#D6DEEB">	</span><span style="color:#C5E478">--color-bg</span><span style="color:#D6DEEB">: </span><span style="color:#F78C6C">#</span><span style="color:#FFEB95">242526</span><span style="color:#D6DEEB">;</span></span>
+<span class="line"><span style="color:#D6DEEB">	</span><span style="color:#C5E478">--color-header-bg</span><span style="color:#D6DEEB">: </span><span style="color:#F78C6C">#</span><span style="color:#FFEB95">18111f</span><span style="color:#D6DEEB">;</span></span>
+<span class="line"><span style="color:#D6DEEB">	</span><span style="color:#C5E478">--color-header-text</span><span style="color:#D6DEEB">: </span><span style="color:#F78C6C">#</span><span style="color:#FFEB95">e9e9f1</span><span style="color:#D6DEEB">;</span></span>
+<span class="line"><span style="color:#D6DEEB">	</span><span style="color:#C5E478">--color-border</span><span style="color:#D6DEEB">: </span><span style="color:#F78C6C">#</span><span style="color:#FFEB95">54495f</span><span style="color:#D6DEEB">;</span></span>
+<span class="line"><span style="color:#D6DEEB">	</span><span style="color:#C5E478">--color-link</span><span style="color:#D6DEEB">: </span><span style="color:#F78C6C">#</span><span style="color:#FFEB95">617ff5</span><span style="color:#D6DEEB">;</span></span>
+<span class="line"><span style="color:#D6DEEB">	</span><span style="color:#C5E478">--color-text</span><span style="color:#D6DEEB">: </span><span style="color:#F78C6C">#</span><span style="color:#FFEB95">cdcdcf</span><span style="color:#D6DEEB">;</span></span>
+<span class="line"><span style="color:#D6DEEB">	</span><span style="color:#C5E478">--color-text-heading</span><span style="color:#D6DEEB">: </span><span style="color:#F78C6C">#</span><span style="color:#FFEB95">dedeee</span><span style="color:#D6DEEB">;</span></span>
+<span class="line"><span style="color:#D6DEEB">	</span><span style="color:#C5E478">--color-text-muted</span><span style="color:#D6DEEB">: </span><span style="color:#F78C6C">#</span><span style="color:#FFEB95">bebebf</span><span style="color:#D6DEEB">;</span></span>
+<span class="line"><span style="color:#D6DEEB">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#637777">/*</span><span style="color:#637777"> ...full file omitted for brevity... </span><span style="color:#637777">*/</span></span></code></pre>
+<p>By targeting the <code>html</code> element using the <code>data-theme</code> attribute, we’re able to update the color theme by changing CSS variable values.</p>
+<p>To see this in action, open the inspector in your browser and edit the attribute to <code>data-theme=&quot;pink&quot;</code>. This will cause the site’s theme to change.</p>
+<figure class="post-figure"><img src="/images/css-theme-switcher-02.png" alt="CSS theme switcher showing the pink theme"/></figure>
+<p>For our color switcher to work, we need to handle form submissions from the theme chooser, store that value somewhere, then use the value to update the <code>data-theme</code> attribute.</p>
+<h2 id="2-create-an-edge-function">2. Create an edge function</h2>
+<h3 id="what-is-an-edge-function">What is an edge function?</h3>
+<p>An edge function is a small piece of business logic that’s executed at the network’s edge (which is another way of saying “as close to the user as possible”).</p>
+<p>This logic is executed between receiving the request from the user and returning the response from the network. An edge function can modify the response before it’s returned — if you’ve ever worked with middleware before, it’s similar to that.</p>
+<p>The outcome of using edge functions is that you can modify responses based on details about the specific request — the user’s cookies, geolocation, or other data sent in the request — without requiring the whole site to be powered by a server or sending client-side JavaScript. This allows us to create personalized experiences in a way that’s performant and pleasant to use without a steep learning curve or changing our entire codebase to support edge functions.</p>
+<h3 id="create-a-netlify-edge-function-in-your-project">Create a Netlify Edge Function in your project</h3>
+<p>To set up a Netlify Edge Function, create a new folder called <code>netlify</code>, and another folder called <code>edge-functions</code> inside of it. Edge functions will be automatically detected by Netlify when they’re stored in this folder structure.</p>
+<p>Create a new file at <code>netlify/edge-functions/color-theme.ts</code>. Inside, let’s create the “hello world” of edge functions:</p>
+<pre class="astro-code" style="background-color:#011627;overflow-x:auto"><code><span class="line"><span style="color:#C792EA">export</span><span style="color:#D6DEEB"> </span><span style="color:#C792EA">default</span><span style="color:#D6DEEB"> </span><span style="color:#C792EA">async</span><span style="color:#D6DEEB"> </span><span style="color:#D9F5DD">()</span><span style="color:#D6DEEB"> </span><span style="color:#C792EA">=&gt;</span><span style="color:#D6DEEB"> {</span></span>
+<span class="line"><span style="color:#D6DEEB">	</span><span style="color:#C792EA">return</span><span style="color:#D6DEEB"> </span><span style="color:#7FDBCA">new</span><span style="color:#D6DEEB"> </span><span style="color:#82AAFF">Response</span><span style="color:#D6DEEB">(</span><span style="color:#D9F5DD">&#39;</span><span style="color:#ECC48D">hello world</span><span style="color:#D9F5DD">&#39;</span><span style="color:#D6DEEB">);</span></span>
+<span class="line"><span style="color:#D6DEEB">};</span></span></code></pre>
+<p>Next, we need to configure which route or routes should trigger the edge function. For a color theme, we want that to affect every page on the site, so we’ll target all routes.</p>
+<p>Open <code>netlify.toml</code> at the root of your project and add the following:</p>
+<pre class="astro-code" style="background-color:#011627;overflow-x:auto"><code><span class="line"><span style="color:#D6DEEB">  [build]</span></span>
+<span class="line"><span style="color:#D6DEEB">    publish = &quot;src&quot;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF"> [[edge_functions]]</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF">   path = &quot;/*&quot;</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF">   function = &quot;color-theme&quot;</span></span></code></pre>
+<p>Stop the server (<code>ctrl + C</code> in your terminal), then restart it using <code>ntl dev</code> — <code>localhost:8888</code> is replaced by the response from our edge function.</p>
+<figure class="post-figure"><img src="/images/css-theme-switcher-03.png" alt="output of the edge function taking over the local dev site"/></figure>
+<h3 id="return-the-original-response-through-the-edge-function">Return the original response through the edge function</h3>
+<p>If an edge function doesn’t return anything, by default the page will remain unchanged. This can be helpful for logging or setting cookies without modifying the response itself.</p>
+<p>In this example, however, we <em>do</em> want to modify the response, so we need to send the original page response back.</p>
+<p>To do this, modify <code>netlify/edge-functions/color-theme.ts</code> with the following:</p>
+<pre class="astro-code" style="background-color:#011627;overflow-x:auto"><code><span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF"> import type { Context } from &#39;https://edge.netlify.com/&#39;;</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span></span>
+<span class="line"><span style="color:#EF535090"><span style="user-select:none">-</span></span><span style="color:#EF535090"> export default async () =&gt; {</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF"> export default async (request: Request, context: Context) =&gt; {</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF">   const res = await context.next();</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF">   console.log(request.url);</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span></span>
+<span class="line"><span style="color:#EF535090"><span style="user-select:none">-</span></span><span style="color:#EF535090">   return new Response(&#39;hello world&#39;);</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF">   return res;</span></span>
+<span class="line"><span style="color:#D6DEEB">  };</span></span></code></pre>
+<p>Reload the page in your browser and the site will render the same as it did before the edge function was added. However, if you look in the terminal, you’ll see that URLs were logged:</p>
+<pre class="astro-code" style="background-color:#011627;overflow-x:auto"><code><span class="line"><span style="color:#d6deeb">◈ Reloading edge functions...</span></span>
+<span class="line"><span style="color:#d6deeb">◈ Reloaded edge function color-theme</span></span>
+<span class="line"><span style="color:#d6deeb">[color-theme] http://localhost:8888/</span></span>
+<span class="line"><span style="color:#d6deeb">[color-theme] http://localhost:8888/styles.css</span></span></code></pre>
+<p>The HTML file ran through the edge function, which is exactly what we wanted!</p>
+<p>However, the CSS file <em>also</em> triggered the edge function, and that’s <em>not</em> what we wanted.</p>
+<h3 id="only-transform-html-files">Only transform HTML files</h3>
+<p>To make sure edge functions only execute on the requests we intend to modify, we can check the <code>Content-Type</code> header and bail if it’s not <code>text/html</code>.</p>
+<p>Update <code>netlify/edge-functions/color-theme.ts</code> with the following:</p>
+<pre class="astro-code" style="background-color:#011627;overflow-x:auto"><code><span class="line"><span style="color:#D6DEEB">  import type { Context } from &#39;https://edge.netlify.com/&#39;;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D6DEEB">  export default async (request: Request, context: Context) =&gt; {</span></span>
+<span class="line"><span style="color:#D6DEEB">    const res = await context.next();</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF">   const type = res.headers.get(&#39;content-type&#39;) as string;</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF">   if (!type.startsWith(&#39;text/html&#39;)) {</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF">     return;</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF">   }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D6DEEB">    console.log(request.url);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D6DEEB">    return res;</span></span>
+<span class="line"><span style="color:#D6DEEB">  };</span></span>
+<span class="line"></span></code></pre>
+<p>Reload the page and you’ll see that only the URL for the HTML itself shows up in the terminal logs now:</p>
+<pre class="astro-code" style="background-color:#011627;overflow-x:auto"><code><span class="line"><span style="color:#d6deeb">◈ Reloading edge functions...</span></span>
+<span class="line"><span style="color:#d6deeb">◈ Reloaded edge function color-theme</span></span>
+<span class="line"><span style="color:#d6deeb">[color-theme] http://localhost:8888/</span></span></code></pre>
+<h2 id="3-update-the-html-with-the-correct-theme">3. Update the HTML with the correct theme</h2>
+<p>To update the HTML with our correct theme, we need to do three things:</p>
+<ol>
+<li>Check a cookie to track which theme is currently selected</li>
+<li>Set the cookie to a new theme value when the user makes a theme selection</li>
+<li>Transform the <code>data-theme</code> attribute in the HTML to insert the current theme</li>
+<li>Update the <code>selected</code> attribute of the theme switcher to make sure the current theme is selected in the dropdown</li>
+</ol>
+<h3 id="use-a-cookie-to-track-the-currently-selected-theme">Use a cookie to track the currently selected theme</h3>
+<p>In Netlify Edge Functions, cookie management is simplified thanks to the built in <code>context</code> object.</p>
+<p>In <code>netlify/edge-functions/color-theme.ts</code>, make the following changes:</p>
+<pre class="astro-code" style="background-color:#011627;overflow-x:auto"><code><span class="line"><span style="color:#D6DEEB">  import type { Context } from &#39;https://edge.netlify.com/&#39;;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D6DEEB">  export default async (request: Request, context: Context) =&gt; {</span></span>
+<span class="line"><span style="color:#D6DEEB">    const res = await context.next();</span></span>
+<span class="line"><span style="color:#D6DEEB">    const type = res.headers.get(&#39;content-type&#39;) as string;</span></span>
+<span class="line"><span style="color:#D6DEEB">    if (!type.startsWith(&#39;text/html&#39;)) {</span></span>
+<span class="line"><span style="color:#D6DEEB">      return;</span></span>
+<span class="line"><span style="color:#D6DEEB">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#EF535090"><span style="user-select:none">-</span></span><span style="color:#EF535090">   console.log(request.url);</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF">   const theme = context.cookies.get(&#39;lwj-color-theme&#39;) ?? &#39;default&#39;;</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF">   console.log({ theme });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D6DEEB">    return res;</span></span>
+<span class="line"><span style="color:#D6DEEB">  };</span></span></code></pre>
+<p>Reload the page and see the theme logged in the terminal:</p>
+<pre class="astro-code" style="background-color:#011627;overflow-x:auto"><code><span class="line"><span style="color:#d6deeb">◈ Reloaded edge function color-theme</span></span>
+<span class="line"><span style="color:#d6deeb">[color-theme] { theme: &quot;default&quot; }</span></span></code></pre>
+<p>We haven’t set the cookie yet, so it falls back to “default”.</p>
+<h3 id="set-a-cookie-with-the-selected-theme">Set a cookie with the selected theme</h3>
+<p>When someone chooses a new theme, it will submit the form to the same page and add the theme as a query string. This is the default behavior of a form that doesn’t have an <code>action</code> or <code>method</code> set.</p>
+<p>In our app, the edge function will check for a query string and — if one is set — create a cookie using the selected theme.</p>
+<p>Add the following to <code>netlify/edge-functions/color-theme.ts</code>:</p>
+<pre class="astro-code" style="background-color:#011627;overflow-x:auto"><code><span class="line"><span style="color:#D6DEEB">  import type { Context } from &#39;https://edge.netlify.com/&#39;;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D6DEEB">  export default async (request: Request, context: Context) =&gt; {</span></span>
+<span class="line"><span style="color:#D6DEEB">    const res = await context.next();</span></span>
+<span class="line"><span style="color:#D6DEEB">    const type = res.headers.get(&#39;content-type&#39;) as string;</span></span>
+<span class="line"><span style="color:#D6DEEB">    if (!type.startsWith(&#39;text/html&#39;)) {</span></span>
+<span class="line"><span style="color:#D6DEEB">      return;</span></span>
+<span class="line"><span style="color:#D6DEEB">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF">   const url = new URL(request.url);</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF">   console.log(url.search);</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF">   if (url.searchParams.has(&#39;theme&#39;)) {</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF">     const availableThemes = [&#39;default&#39;, &#39;light&#39;, &#39;dark&#39;, &#39;pink&#39;];</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF">     const requestedTheme = url.searchParams.get(&#39;theme&#39;) ?? &#39;default&#39;;</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF">     console.log({ requestedTheme });</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF">     if (availableThemes.includes(requestedTheme)) {</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF">       context.cookies.set({</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF">         name: &#39;lwj-color-theme&#39;,</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF">         value: requestedTheme,</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF">         path: &#39;/&#39;,</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF">         secure: true,</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF">         httpOnly: true,</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF">         sameSite: &#39;Strict&#39;,</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF">         expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF">       });</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF">     }</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF">     return new Response(&#39;Redirecting...&#39;, {</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF">       status: 301,</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF">       headers: {</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF">         Location: url.pathname,</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF">         &#39;Cache-Control&#39;: &#39;no-cache&#39;,</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF">       },</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF">     });</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF">   }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D6DEEB">    const theme = context.cookies.get(&#39;lwj-color-theme&#39;) ?? &#39;default&#39;;</span></span>
+<span class="line"><span style="color:#D6DEEB">    console.log({ theme });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D6DEEB">    return res;</span></span>
+<span class="line"><span style="color:#D6DEEB">  };</span></span></code></pre>
+<p>This code starts by turning the requested URL into a <a href="https://developer.mozilla.org/en-US/docs/Web/API/URL">web standard <code>URL</code> interface</a>, then checks to see if the query parameters include <code>theme</code>. If set, it checks the requested theme against the available themes, then sets a cookie with the requested theme.</p>
+<aside class="post-aside"><div class="aside-icon"><svg width="23" height="19" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M.405 15.91C-.46 17.24.495 19 2.082 19h18.63c1.586 0 2.54-1.76 1.676-3.09L13.073 1.58a2 2 0 00-3.353 0L.405 15.91zm2.18.317a.5.5 0 00.418.773H19.79a.5.5 0 00.42-.773L11.815 3.315a.5.5 0 00-.839 0L2.584 16.227z" fill="#C10B7E"></path><path d="M9.397 7v.291l1.287 5.038h1.452l1.26-5.038V7h-4zm2.013 9c.466 0 .863-.152 1.192-.456.329-.303.493-.67.493-1.101 0-.43-.164-.797-.493-1.101a1.693 1.693 0 00-1.192-.456c-.465 0-.863.152-1.191.456-.33.304-.494.67-.494 1.101 0 .43.165.798.494 1.101.328.304.726.456 1.191.456z" fill="#C10B7E"></path></svg></div><div class="aside-content"><p><strong>Note:</strong> Because this is <em>not</em> client-side code, the cookie can be set securely in a way that isn’t readable by client-side JavaScript or third parties. This is a big advantage when using edge functions!</p></div></aside>
+<p>Finally, to remove the query string from the URL, the code redirects to the current URL <em>without</em> the query string.</p>
+<h3 id="transform-the-data-theme-attribute">Transform the <code>data-theme</code> attribute</h3>
+<p>Now that we have the current theme name set in a cookie, we can use it to transform the request and set the displayed color theme.</p>
+<p>To do this, we’ll use a powerful library called <a href="https://developers.cloudflare.com/workers/runtime-apis/html-rewriter/">HTMLRewriter</a> that allows us to update elements in the response using CSS-like selectors and a straightforward API.</p>
+<p>Update <code>netlify/edge-functions/color-theme.ts</code> to import <code>HTMLRewriter</code> and the <code>Element</code> type, then set up the transform for the <code>html</code> element that updates the <code>data-theme</code> attribute:</p>
+<pre class="astro-code" style="background-color:#011627;overflow-x:auto"><code><span class="line"><span style="color:#D6DEEB">  import type { Context } from &#39;https://edge.netlify.com/&#39;;</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF"> import {</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF">   HTMLRewriter,</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF">   Element,</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF"> } from &#39;https://ghuc.cc/worker-tools/html-rewriter/index.ts&#39;;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D6DEEB">  export default async (request: Request, context: Context) =&gt; {</span></span>
+<span class="line"><span style="color:#D6DEEB">    const res = await context.next();</span></span>
+<span class="line"><span style="color:#D6DEEB">    const type = res.headers.get(&#39;content-type&#39;) as string;</span></span>
+<span class="line"><span style="color:#D6DEEB">    if (!type.startsWith(&#39;text/html&#39;)) {</span></span>
+<span class="line"><span style="color:#D6DEEB">      return;</span></span>
+<span class="line"><span style="color:#D6DEEB">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D6DEEB">    const url = new URL(request.url);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D6DEEB">    console.log(url.search);</span></span>
+<span class="line"><span style="color:#D6DEEB">    if (url.searchParams.has(&#39;theme&#39;)) {</span></span>
+<span class="line"><span style="color:#D6DEEB">      const availableThemes = [&#39;default&#39;, &#39;light&#39;, &#39;dark&#39;, &#39;pink&#39;];</span></span>
+<span class="line"><span style="color:#D6DEEB">      const requestedTheme = url.searchParams.get(&#39;theme&#39;) ?? &#39;default&#39;;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D6DEEB">      console.log({ requestedTheme });</span></span>
+<span class="line"><span style="color:#D6DEEB">      if (availableThemes.includes(requestedTheme)) {</span></span>
+<span class="line"><span style="color:#D6DEEB">        context.cookies.set({</span></span>
+<span class="line"><span style="color:#D6DEEB">          name: &#39;lwj-color-theme&#39;,</span></span>
+<span class="line"><span style="color:#D6DEEB">          value: requestedTheme,</span></span>
+<span class="line"><span style="color:#D6DEEB">          path: &#39;/&#39;,</span></span>
+<span class="line"><span style="color:#D6DEEB">          secure: true,</span></span>
+<span class="line"><span style="color:#D6DEEB">          httpOnly: true,</span></span>
+<span class="line"><span style="color:#D6DEEB">          sameSite: &#39;Strict&#39;,</span></span>
+<span class="line"><span style="color:#D6DEEB">          expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),</span></span>
+<span class="line"><span style="color:#D6DEEB">        });</span></span>
+<span class="line"><span style="color:#D6DEEB">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D6DEEB">      return new Response(&#39;Redirecting...&#39;, {</span></span>
+<span class="line"><span style="color:#D6DEEB">        status: 301,</span></span>
+<span class="line"><span style="color:#D6DEEB">        headers: {</span></span>
+<span class="line"><span style="color:#D6DEEB">          Location: url.pathname,</span></span>
+<span class="line"><span style="color:#D6DEEB">          &#39;Cache-Control&#39;: &#39;no-cache&#39;,</span></span>
+<span class="line"><span style="color:#D6DEEB">        },</span></span>
+<span class="line"><span style="color:#D6DEEB">      });</span></span>
+<span class="line"><span style="color:#D6DEEB">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D6DEEB">    const theme = context.cookies.get(&#39;lwj-color-theme&#39;) ?? &#39;default&#39;;</span></span>
+<span class="line"><span style="color:#D6DEEB">    console.log({ theme });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#EF535090"><span style="user-select:none">-</span></span><span style="color:#EF535090">   return res;</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF">   return new HTMLRewriter()</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF">     .on(&#39;html&#39;, {</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF">       element(element: Element) {</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF">         element.setAttribute(&#39;data-theme&#39;, theme);</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF">       },</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF">     })</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF">     .transform(res);</span></span>
+<span class="line"><span style="color:#D6DEEB">  };</span></span></code></pre>
+<p>Save this and reload the browser. Choose a theme other than the default and see that it actually updates now.</p>
+<p>However, the dropdown will always show “system default”, which isn’t ideal.</p>
+<h3 id="update-the-currently-selected-theme-in-the-dropdown">Update the currently selected theme in the dropdown</h3>
+<p>To update the dropdown, we need to add another transformation in our <code>HTMLRewriter</code> chain.</p>
+<p>Modify <code>netlify/edge-functions/color-theme.ts</code> to transform the <code>option</code> element with a <code>value</code> that matches the currently selected theme and set that to <code>selected=&quot;selected&quot;</code>:</p>
+<pre class="astro-code" style="background-color:#011627;overflow-x:auto"><code><span class="line"><span style="color:#D6DEEB">  import type { Context } from &#39;https://edge.netlify.com/&#39;;</span></span>
+<span class="line"><span style="color:#D6DEEB">  import {</span></span>
+<span class="line"><span style="color:#D6DEEB">    HTMLRewriter,</span></span>
+<span class="line"><span style="color:#D6DEEB">    Element,</span></span>
+<span class="line"><span style="color:#D6DEEB">  } from &#39;https://ghuc.cc/worker-tools/html-rewriter/index.ts&#39;;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D6DEEB">  export default async (request: Request, context: Context) =&gt; {</span></span>
+<span class="line"><span style="color:#D6DEEB">    const res = await context.next();</span></span>
+<span class="line"><span style="color:#D6DEEB">    const type = res.headers.get(&#39;content-type&#39;) as string;</span></span>
+<span class="line"><span style="color:#D6DEEB">    if (!type.startsWith(&#39;text/html&#39;)) {</span></span>
+<span class="line"><span style="color:#D6DEEB">      return;</span></span>
+<span class="line"><span style="color:#D6DEEB">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D6DEEB">    const url = new URL(request.url);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D6DEEB">    console.log(url.search);</span></span>
+<span class="line"><span style="color:#D6DEEB">    if (url.searchParams.has(&#39;theme&#39;)) {</span></span>
+<span class="line"><span style="color:#D6DEEB">      const availableThemes = [&#39;default&#39;, &#39;light&#39;, &#39;dark&#39;, &#39;pink&#39;];</span></span>
+<span class="line"><span style="color:#D6DEEB">      const requestedTheme = url.searchParams.get(&#39;theme&#39;) ?? &#39;default&#39;;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D6DEEB">      console.log({ requestedTheme });</span></span>
+<span class="line"><span style="color:#D6DEEB">      if (availableThemes.includes(requestedTheme)) {</span></span>
+<span class="line"><span style="color:#D6DEEB">        context.cookies.set({</span></span>
+<span class="line"><span style="color:#D6DEEB">          name: &#39;lwj-color-theme&#39;,</span></span>
+<span class="line"><span style="color:#D6DEEB">          value: requestedTheme,</span></span>
+<span class="line"><span style="color:#D6DEEB">          path: &#39;/&#39;,</span></span>
+<span class="line"><span style="color:#D6DEEB">          secure: true,</span></span>
+<span class="line"><span style="color:#D6DEEB">          httpOnly: true,</span></span>
+<span class="line"><span style="color:#D6DEEB">          sameSite: &#39;Strict&#39;,</span></span>
+<span class="line"><span style="color:#D6DEEB">          expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),</span></span>
+<span class="line"><span style="color:#D6DEEB">        });</span></span>
+<span class="line"><span style="color:#D6DEEB">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D6DEEB">      return new Response(&#39;Redirecting...&#39;, {</span></span>
+<span class="line"><span style="color:#D6DEEB">        status: 301,</span></span>
+<span class="line"><span style="color:#D6DEEB">        headers: {</span></span>
+<span class="line"><span style="color:#D6DEEB">          Location: url.pathname,</span></span>
+<span class="line"><span style="color:#D6DEEB">          &#39;Cache-Control&#39;: &#39;no-cache&#39;,</span></span>
+<span class="line"><span style="color:#D6DEEB">        },</span></span>
+<span class="line"><span style="color:#D6DEEB">      });</span></span>
+<span class="line"><span style="color:#D6DEEB">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D6DEEB">    const theme = context.cookies.get(&#39;lwj-color-theme&#39;) ?? &#39;default&#39;;</span></span>
+<span class="line"><span style="color:#D6DEEB">    console.log({ theme });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D6DEEB">    return new HTMLRewriter()</span></span>
+<span class="line"><span style="color:#D6DEEB">      .on(&#39;html&#39;, {</span></span>
+<span class="line"><span style="color:#D6DEEB">        element(element: Element) {</span></span>
+<span class="line"><span style="color:#D6DEEB">          element.setAttribute(&#39;data-theme&#39;, theme);</span></span>
+<span class="line"><span style="color:#D6DEEB">        },</span></span>
+<span class="line"><span style="color:#D6DEEB">      })</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF">     .on(`option[value=&#39;${theme}&#39;]`, {</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF">       element(element: Element) {</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF">         element.setAttribute(&#39;selected&#39;, &#39;selected&#39;);</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF">       },</span></span>
+<span class="line"><span style="color:#C5E478FF"><span style="user-select:none">+</span></span><span style="color:#C5E478FF">     })</span></span>
+<span class="line"><span style="color:#D6DEEB">      .transform(res);</span></span>
+<span class="line"><span style="color:#D6DEEB">  };</span></span></code></pre>
+<p>Save and reload — it all works!</p>
+<h2 id="fast-no-flash-no-client-side-javascript-color-themes-are-possible-without-managing-a-server">Fast, no flash, no client-side JavaScript color themes are possible without managing a server</h2>
+<p>Before edge functions entered the equation, there wasn’t a good solution for managing color themes without either some jank on the client side or some extra management on the server side. But today, we’re now able to get the benefits of server side HTML rendering <em>without having to set up a server</em>.</p>
+<p>Edge computing gives us the capability to make small transforms on the fly, whether we’re <a href="https://www.learnwithjason.dev/blog/html-transform-edge-function">updating static HTML</a> or <a href="https://www.netlify.com/blog/rewrite-html-transform-page-props-in-nextjs/">transforming SSR-generated pages in a framework like Next.js</a>. It also means we can get some of the benefits of servers without having to pay for servers — edge functions are free!</p>
+<p>View the <a href="https://github.com/learnwithjason/theme-switcher-no-flash">full source code</a> for this demo, or check out the <a href="https://theme-switcher-no-flash.netlify.app/">live demo</a> to try it for yourself.</p></div>
+
+		<aside class="opt-in"><form action="/api/subscribe" method="POST"><h2>Build better web apps</h2><p>I spend a lot of time thinking about how to<!-- --> <strong>build web experiences that are fast, secure, maintainable, scalable, and fun to build.</strong></p><p>Join my newsletter and I’ll boop you on the brain what I’ve learned about building modern web apps.</p><label for="firstName">First Name</label><input type="text" name="firstName" id="firstName" required=""/><label for="email">Email</label><input type="email" name="email" id="email" required=""/><button>Subscribe</button></form></aside>
+	</article>
+		</main>
+	</body>
+
+
