@@ -100,8 +100,6 @@ function validateCalendlySignature(event: HandlerEvent) {
 }
 
 export const handler: Handler = async (event) => {
-	console.log(event.queryStringParameters);
-	// console.log(JSON.stringify(event.headers, null, 2));
 	if (!validateCalendlySignature(event)) {
 		return {
 			statusCode: 400,
@@ -114,6 +112,8 @@ export const handler: Handler = async (event) => {
 	);
 
 	const payload = body.payload;
+
+	console.log(JSON.stringify(payload));
 
 	const eventData = (await fetch(payload.event, {
 		method: 'GET',
@@ -143,11 +143,13 @@ export const handler: Handler = async (event) => {
 		children.push(blocks.image(photoUrl));
 	}
 
-	const notionRes = await notionApi('/pages', {
+	const notionRes = (await notionApi('/pages', {
 		parent: { database_id: process.env.NOTION_LIVESTREAMS_DB },
 		properties: props,
 		children,
-	});
+	})) as { object: string; status: number };
+
+	console.log(notionRes);
 
 	if (notionRes.object === 'error') {
 		return {
