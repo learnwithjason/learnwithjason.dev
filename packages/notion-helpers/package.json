@@ -5,7 +5,6 @@
 	"version": "0.0.1",
 	"main": "./index.ts",
 	"dependencies": {
-		"@notionhq/client": "^2.2.0",
-		"node-fetch": "^3.2.10"
+		"@notionhq/client": "^2.2.0"
 	}
 }

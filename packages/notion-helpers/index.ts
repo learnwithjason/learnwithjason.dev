@@ -1,6 +1,4 @@
-import type { RequestInit } from 'node-fetch';
 import { Client, collectPaginatedAPI } from '@notionhq/client';
-import fetch from 'node-fetch';
 
 const notion = new Client({
 	auth: process.env.NOTION_INTEGRATION_TOKEN,
