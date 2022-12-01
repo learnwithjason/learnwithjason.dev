@@ -1,2 +1,12 @@
 [build]
-  functions = "functions"
+  functions = "src"
+
+[[redirects]]
+  from = "/*/poster.jpg"
+  to = "/.netlify/functions/poster"
+  status = 200
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200

@@ -1,0 +1,8 @@
+{
+	"private": true,
+	"type": "module",
+	"name": "@lwj/sanity-helpers",
+	"version": "0.0.1",
+	"main": "./index.ts",
+	"dependencies": {}
+}
