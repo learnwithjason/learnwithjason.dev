@@ -1,0 +1,89 @@
+.header {
+	align-items: center;
+	background: var(--color-black);
+	border-bottom: 1px solid var(--color-gray-text);
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	justify-content: center;
+	overflow: hidden;
+	padding: 1.5rem 1rem calc(1.5rem + 4px) 2rem;
+	position: relative;
+}
+
+.header::after {
+	background: var(--color-gradient);
+	bottom: 0;
+	content: '';
+	height: 4px;
+	left: 0;
+	position: absolute;
+	width: 100%;
+}
+
+.header a {
+	color: var(--color-white);
+	display: block;
+	line-height: 1;
+}
+
+.header nav {
+	align-items: center;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 0 1rem;
+}
+
+@media (min-width: 980px) {
+	.header {
+		flex-direction: row;
+		justify-content: space-between;
+		padding-bottom: calc(0.25rem + 9px);
+		padding-top: 0.25rem;
+	}
+}
+
+.header nav a {
+	font-weight: 900;
+	padding: 1rem;
+	position: relative;
+	text-decoration: none;
+}
+
+.logo {
+	max-width: 87px;
+}
+
+.logo svg {
+	display: block;
+	height: auto;
+	max-width: 100%;
+}
+
+.search {
+	display: flex;
+	align-items: center;
+	padding: 0.6rem 0.75rem;
+	border-radius: 0.5rem;
+	background: linear-gradient(
+		270deg,
+		var(--color-pink) 0%,
+		var(--color-yellow) 25%,
+		var(--color-blue) 50%,
+		var(--color-yellow) 75%,
+		var(--color-pink) 90%
+	);
+	background-size: 200% 100%;
+	border: none;
+	color: var(--color-black);
+	font-family: var(--font-family);
+	cursor: pointer;
+}
+
+.search svg {
+	display: block;
+	height: auto;
+	width: 1rem;
+}
