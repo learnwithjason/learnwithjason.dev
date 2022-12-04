@@ -9,8 +9,8 @@ import AdvancedFormat from 'dayjs/plugin/advancedFormat.js';
 import { LivePlayer } from './live-player.jsx';
 import { EpisodePreview } from './episode-preview.jsx';
 import { IconArrow } from './icon-arrow.jsx';
-import { IconCalendar } from './icon-calendar.jsx';
 import { getTeacher } from '../util/get-teacher.js';
+import { IconEmail } from './icon-email.jsx';
 
 dayjs.extend(RelativeTime);
 dayjs.extend(Utc);
@@ -53,12 +53,12 @@ export function SectionNextEpisode({ nextEpisode, nextNextEpisode }) {
                 see all upcoming episodes <IconArrow />
               </Link>
               <p>
-                Never miss an episode! Add the <em>Learn With Jason</em>{' '}
-                schedule to your Google Calendar:
+                Never miss an episode! Get new episodes & industry insights
+                direct to your inbox:
               </p>
               <div className="links">
-                <a href="/calendar">
-                  <IconCalendar /> Add the Calendar
+                <a href="/newsletter`">
+                  <IconEmail /> Subscribe to the Newsletter
                 </a>
               </div>
             </div>
