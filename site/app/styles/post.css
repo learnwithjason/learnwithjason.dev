@@ -218,6 +218,7 @@ code {
 
 .post-preview {
   max-width: 500px;
+  width: 100%;
 }
 
 .post-preview:not(:first-of-type) {

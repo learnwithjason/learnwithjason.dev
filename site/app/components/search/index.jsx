@@ -10,6 +10,7 @@ import {
 import { GoogleCalendarLogo } from './logos/google-calendar-logo.jsx';
 import { TwitchLogo } from './logos/twitch-logo.jsx';
 import { YouTubeLogo } from './logos/youtube-logo.jsx';
+import { NewsletterIcon } from './icons/newsletter-icon.jsx';
 import { isLink } from './utils/is-link.js';
 import { Autocomplete } from './autocomplete.jsx';
 
@@ -28,6 +29,17 @@ export function Search({ data, isOpen, onToggle }) {
         {
           sourceId: 'links',
           getItems: () => [
+            {
+              label: 'Subscribe to the newsletter',
+              description:
+                'News episodes & industry tips direct to your inbox.',
+              url: '/newsletter',
+              icon: () => (
+                <div className="aa-LinkPicture">
+                  <NewsletterIcon />
+                </div>
+              ),
+            },
             {
               label: 'Add schedule to Google Calendar',
               description: 'Get LWJ upcoming shows in your calendar.',

@@ -31,9 +31,12 @@ export function Header({ onOpenSearch }) {
         <Link prefetch="intent" to="/blog">
           blog
         </Link>
-        <Link prefetch="intent" to="/about">
-          about
+        <Link prefetch="intent" to="/newsletter">
+          tips & insights
         </Link>
+        {/* <Link prefetch="intent" to="/about">
+          about
+        </Link> */}
         <button className="aa-OpenButton" onClick={onOpenSearch}>
           <SearchIcon />
           <span className="visually-hidden">Open search</span>
