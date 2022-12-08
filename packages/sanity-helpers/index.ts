@@ -41,8 +41,6 @@ export async function sanityFetch({
 		});
 	}
 
-	console.log(apiUrl.toString());
-
 	const res = await fetch(apiUrl.toString());
 
 	if (!res.ok) {
@@ -63,15 +61,19 @@ export async function sanityFetch({
 export function loadAllEpisodes({ cdn = true }): Promise<SanityFetchResponse> {
 	const query = `
     *[_type == "episode" && hidden == false && date < now() && defined(youtubeID)] {
+      "id": _id,
       title,
-      slug,
+      "slug": slug.current,
+      "uri": "https://www.learnwithjason.dev/" + slug.current,
       date,
-      demo,
-      repo,
       description,
       youtubeID,
-      links,
-      guest[]-> {
+      "links": {
+        demo,
+        repo,
+        "resources": links
+      },
+      guest[0]-> {
         ...(guestImage {
           ...(asset-> {
             "image": url
@@ -88,8 +90,13 @@ export function loadAllEpisodes({ cdn = true }): Promise<SanityFetchResponse> {
         }),
         name,
         twitter,
+      },
+      "tags": episodeTags[]-> {
+        label,
+        "slug": slug.current,
+        "uri": "https://www.learnwithjason.dev/topic/" + slug.current
       }
-    } | order(date)
+    } | order(date desc)
 `;
 
 	return sanityFetch({ query, cdn });
