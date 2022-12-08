@@ -3,6 +3,7 @@ import { loadEpisodeBySlug } from '@lwj/sanity-helpers';
 
 const handlerFn: Handler = async (event) => {
 	const params = new URLSearchParams(event.rawQuery);
+	const transcript = params.get('transcript') === 'true';
 	const cdn = params.get('cdn') === 'false' ? false : true;
 	let [, slug] = event.path.replace(new RegExp('/api/episode'), '').split('/');
 
@@ -10,7 +11,7 @@ const handlerFn: Handler = async (event) => {
 		slug = slug.replace('.json', '');
 	}
 
-	const { error, data } = await loadEpisodeBySlug({ slug, cdn });
+	const { error, data } = await loadEpisodeBySlug({ slug, transcript, cdn });
 
 	if (error) {
 		return {
