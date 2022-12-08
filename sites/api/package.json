@@ -4,6 +4,7 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
+		"build": "# no build command",
 		"dev": "ntl dev"
 	},
 	"keywords": [],

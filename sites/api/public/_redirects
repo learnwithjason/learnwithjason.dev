@@ -1,0 +1,2 @@
+/*/poster.jpg   /.netlify/functions/poster  200
+/api/*          /.netlify/functions/:splat  200

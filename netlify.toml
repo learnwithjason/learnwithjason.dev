@@ -1,2 +1,0 @@
-[functions.server]
-  included_files = ["sites/www/app/routes/__mdx/blog/**/*.mdx"]
