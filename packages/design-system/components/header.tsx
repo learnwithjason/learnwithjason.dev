@@ -4,10 +4,10 @@ import { SearchIcon } from './search/icons/search-icon';
 import styles from './header.module.css';
 
 type HeaderProps = {
-	onOpenSearch: MouseEventHandler<HTMLButtonElement>;
+	onOpenSearch?: MouseEventHandler<HTMLButtonElement>;
 };
 
-export function Header({ onOpenSearch }: HeaderProps) {
+export function Header({ onOpenSearch = () => {} }: HeaderProps) {
 	return (
 		<header className={styles.header}>
 			<a href="#content" className="visually-hidden">
