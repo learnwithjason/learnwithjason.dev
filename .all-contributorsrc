@@ -148,6 +148,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "petardotjs",
+      "name": "Petar Todorov",
+      "avatar_url": "https://avatars.githubusercontent.com/u/109748926?v=4",
+      "profile": "https://github.com/petardotjs",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
@@ -155,5 +164,6 @@
   "projectOwner": "learnwithjason",
   "repoType": "github",
   "repoHost": "https://github.com",
-  "skipCi": true
+  "skipCi": true,
+  "commitConvention": "angular"
 }

@@ -17,7 +17,7 @@
   <br />
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-16-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-17-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 </p>
@@ -99,28 +99,31 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
 <table>
-  <tr>
-    <td align="center"><a href="http://www.bdesigned.dev"><img src="https://avatars2.githubusercontent.com/u/45889730?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Brittney Postma</b></sub></a><br /><a href="https://github.com/learnwithjason/learnwithjason.dev/commits?author=brittneypostma" title="Code">💻</a></td>
-    <td align="center"><a href="https://brandonroberts.dev"><img src="https://avatars3.githubusercontent.com/u/42211?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Brandon</b></sub></a><br /><a href="https://github.com/learnwithjason/learnwithjason.dev/commits?author=brandonroberts" title="Code">💻</a></td>
-    <td align="center"><a href="https://ekinalcar.com"><img src="https://avatars1.githubusercontent.com/u/31273861?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ekin Alçar</b></sub></a><br /><a href="https://github.com/learnwithjason/learnwithjason.dev/commits?author=ekinalcar" title="Code">💻</a></td>
-    <td align="center"><a href="https://sarah.dev"><img src="https://avatars1.githubusercontent.com/u/2281088?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sarah Drasner</b></sub></a><br /><a href="https://github.com/learnwithjason/learnwithjason.dev/commits?author=sdras" title="Code">💻</a></td>
-    <td align="center"><a href="https://medium.com/@seif.sayed"><img src="https://avatars1.githubusercontent.com/u/16223724?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Seifeldin Mahjoub</b></sub></a><br /><a href="#maintenance-seifsay3d" title="Maintenance">🚧</a></td>
-    <td align="center"><a href="http://benmyers.dev"><img src="https://avatars1.githubusercontent.com/u/18060369?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ben Myers</b></sub></a><br /><a href="#a11y-BenDMyers" title="Accessibility">️️️️♿️</a></td>
-    <td align="center"><a href="http://www.bencodezen.io"><img src="https://avatars.githubusercontent.com/u/4836334?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ben Hong</b></sub></a><br /><a href="https://github.com/learnwithjason/learnwithjason.dev/commits?author=bencodezen" title="Code">💻</a></td>
-  </tr>
-  <tr>
-    <td align="center"><a href="https://cassidoo.co"><img src="https://avatars.githubusercontent.com/u/1454517?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Cassidy Williams</b></sub></a><br /><a href="https://github.com/learnwithjason/learnwithjason.dev/commits?author=cassidoo" title="Code">💻</a></td>
-    <td align="center"><a href="https://ekeneeze.com/"><img src="https://avatars.githubusercontent.com/u/20874031?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ekene Eze</b></sub></a><br /><a href="https://github.com/learnwithjason/learnwithjason.dev/commits?author=kenny-io" title="Code">💻</a></td>
-    <td align="center"><a href="http://hawksworx.com"><img src="https://avatars.githubusercontent.com/u/5865?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Phil Hawksworth</b></sub></a><br /><a href="https://github.com/learnwithjason/learnwithjason.dev/commits?author=philhawksworth" title="Code">💻</a></td>
-    <td align="center"><a href="https://tzmanics.dev"><img src="https://avatars.githubusercontent.com/u/3611928?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Tara Z. Manicsic</b></sub></a><br /><a href="https://github.com/learnwithjason/learnwithjason.dev/commits?author=tzmanics" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/Rohithgilla12"><img src="https://avatars.githubusercontent.com/u/19389850?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Rohith Gilla</b></sub></a><br /><a href="#content-Rohithgilla12" title="Content">🖋</a></td>
-    <td align="center"><a href="https://sarahdayan.dev"><img src="https://avatars.githubusercontent.com/u/5370675?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sarah Dayan</b></sub></a><br /><a href="https://github.com/learnwithjason/learnwithjason.dev/commits?author=sarahdayan" title="Code">💻</a></td>
-    <td align="center"><a href="https://twitter.com/HiteshRiziya"><img src="https://avatars.githubusercontent.com/u/4135216?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Hitesh Riziya</b></sub></a><br /><a href="https://github.com/learnwithjason/learnwithjason.dev/commits?author=hriziya" title="Documentation">📖</a></td>
-  </tr>
-  <tr>
-    <td align="center"><a href="https://github.com/ryankshaw"><img src="https://avatars.githubusercontent.com/u/10541?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ryan Shaw</b></sub></a><br /><a href="https://github.com/learnwithjason/learnwithjason.dev/commits?author=ryankshaw" title="Code">💻</a></td>
-    <td align="center"><a href="https://mcan.sh"><img src="https://avatars.githubusercontent.com/u/11698668?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Logan McAnsh</b></sub></a><br /><a href="https://github.com/learnwithjason/learnwithjason.dev/commits?author=mcansh" title="Code">💻</a></td>
-  </tr>
+  <tbody>
+    <tr>
+      <td align="center"><a href="http://www.bdesigned.dev"><img src="https://avatars2.githubusercontent.com/u/45889730?v=4?s=100" width="100px;" alt="Brittney Postma"/><br /><sub><b>Brittney Postma</b></sub></a><br /><a href="https://github.com/learnwithjason/learnwithjason.dev/commits?author=brittneypostma" title="Code">💻</a></td>
+      <td align="center"><a href="https://brandonroberts.dev"><img src="https://avatars3.githubusercontent.com/u/42211?v=4?s=100" width="100px;" alt="Brandon"/><br /><sub><b>Brandon</b></sub></a><br /><a href="https://github.com/learnwithjason/learnwithjason.dev/commits?author=brandonroberts" title="Code">💻</a></td>
+      <td align="center"><a href="https://ekinalcar.com"><img src="https://avatars1.githubusercontent.com/u/31273861?v=4?s=100" width="100px;" alt="Ekin Alçar"/><br /><sub><b>Ekin Alçar</b></sub></a><br /><a href="https://github.com/learnwithjason/learnwithjason.dev/commits?author=ekinalcar" title="Code">💻</a></td>
+      <td align="center"><a href="https://sarah.dev"><img src="https://avatars1.githubusercontent.com/u/2281088?v=4?s=100" width="100px;" alt="Sarah Drasner"/><br /><sub><b>Sarah Drasner</b></sub></a><br /><a href="https://github.com/learnwithjason/learnwithjason.dev/commits?author=sdras" title="Code">💻</a></td>
+      <td align="center"><a href="https://medium.com/@seif.sayed"><img src="https://avatars1.githubusercontent.com/u/16223724?v=4?s=100" width="100px;" alt="Seifeldin Mahjoub"/><br /><sub><b>Seifeldin Mahjoub</b></sub></a><br /><a href="#maintenance-seifsay3d" title="Maintenance">🚧</a></td>
+      <td align="center"><a href="http://benmyers.dev"><img src="https://avatars1.githubusercontent.com/u/18060369?v=4?s=100" width="100px;" alt="Ben Myers"/><br /><sub><b>Ben Myers</b></sub></a><br /><a href="#a11y-BenDMyers" title="Accessibility">️️️️♿️</a></td>
+      <td align="center"><a href="http://www.bencodezen.io"><img src="https://avatars.githubusercontent.com/u/4836334?v=4?s=100" width="100px;" alt="Ben Hong"/><br /><sub><b>Ben Hong</b></sub></a><br /><a href="https://github.com/learnwithjason/learnwithjason.dev/commits?author=bencodezen" title="Code">💻</a></td>
+    </tr>
+    <tr>
+      <td align="center"><a href="https://cassidoo.co"><img src="https://avatars.githubusercontent.com/u/1454517?v=4?s=100" width="100px;" alt="Cassidy Williams"/><br /><sub><b>Cassidy Williams</b></sub></a><br /><a href="https://github.com/learnwithjason/learnwithjason.dev/commits?author=cassidoo" title="Code">💻</a></td>
+      <td align="center"><a href="https://ekeneeze.com/"><img src="https://avatars.githubusercontent.com/u/20874031?v=4?s=100" width="100px;" alt="Ekene Eze"/><br /><sub><b>Ekene Eze</b></sub></a><br /><a href="https://github.com/learnwithjason/learnwithjason.dev/commits?author=kenny-io" title="Code">💻</a></td>
+      <td align="center"><a href="http://hawksworx.com"><img src="https://avatars.githubusercontent.com/u/5865?v=4?s=100" width="100px;" alt="Phil Hawksworth"/><br /><sub><b>Phil Hawksworth</b></sub></a><br /><a href="https://github.com/learnwithjason/learnwithjason.dev/commits?author=philhawksworth" title="Code">💻</a></td>
+      <td align="center"><a href="https://tzmanics.dev"><img src="https://avatars.githubusercontent.com/u/3611928?v=4?s=100" width="100px;" alt="Tara Z. Manicsic"/><br /><sub><b>Tara Z. Manicsic</b></sub></a><br /><a href="https://github.com/learnwithjason/learnwithjason.dev/commits?author=tzmanics" title="Code">💻</a></td>
+      <td align="center"><a href="https://github.com/Rohithgilla12"><img src="https://avatars.githubusercontent.com/u/19389850?v=4?s=100" width="100px;" alt="Rohith Gilla"/><br /><sub><b>Rohith Gilla</b></sub></a><br /><a href="#content-Rohithgilla12" title="Content">🖋</a></td>
+      <td align="center"><a href="https://sarahdayan.dev"><img src="https://avatars.githubusercontent.com/u/5370675?v=4?s=100" width="100px;" alt="Sarah Dayan"/><br /><sub><b>Sarah Dayan</b></sub></a><br /><a href="https://github.com/learnwithjason/learnwithjason.dev/commits?author=sarahdayan" title="Code">💻</a></td>
+      <td align="center"><a href="https://twitter.com/HiteshRiziya"><img src="https://avatars.githubusercontent.com/u/4135216?v=4?s=100" width="100px;" alt="Hitesh Riziya"/><br /><sub><b>Hitesh Riziya</b></sub></a><br /><a href="https://github.com/learnwithjason/learnwithjason.dev/commits?author=hriziya" title="Documentation">📖</a></td>
+    </tr>
+    <tr>
+      <td align="center"><a href="https://github.com/ryankshaw"><img src="https://avatars.githubusercontent.com/u/10541?v=4?s=100" width="100px;" alt="Ryan Shaw"/><br /><sub><b>Ryan Shaw</b></sub></a><br /><a href="https://github.com/learnwithjason/learnwithjason.dev/commits?author=ryankshaw" title="Code">💻</a></td>
+      <td align="center"><a href="https://mcan.sh"><img src="https://avatars.githubusercontent.com/u/11698668?v=4?s=100" width="100px;" alt="Logan McAnsh"/><br /><sub><b>Logan McAnsh</b></sub></a><br /><a href="https://github.com/learnwithjason/learnwithjason.dev/commits?author=mcansh" title="Code">💻</a></td>
+      <td align="center"><a href="https://github.com/petardotjs"><img src="https://avatars.githubusercontent.com/u/109748926?v=4?s=100" width="100px;" alt="Petar Todorov"/><br /><sub><b>Petar Todorov</b></sub></a><br /><a href="https://github.com/learnwithjason/learnwithjason.dev/commits?author=petardotjs" title="Code">💻</a></td>
+    </tr>
+  </tbody>
 </table>
 
 <!-- markdownlint-restore -->
