@@ -23,6 +23,44 @@ type SanityFetchResponse = {
 	};
 };
 
+const EPISODE_FIELDS = `
+  "id": _id,
+  title,
+  "slug": slug.current,
+  "uri": "https://www.learnwithjason.dev/" + slug.current,
+  date,
+  description,
+  "youtube": "https://youtu.be/" + youtubeID,
+  "links": {
+    demo,
+    repo,
+    "resources": links
+  },
+  guest[0]-> {
+    ...(guestImage {
+      ...(asset-> {
+        "image": url
+      })
+    }),
+    name,
+    twitter,
+  },
+  host-> {
+    ...(guestImage {
+      ...(asset-> {
+        "image": url
+      })
+    }),
+    name,
+    twitter,
+  },
+  "tags": coalesce(episodeTags[]-> {
+    label,
+    "slug": slug.current,
+    "uri": "https://www.learnwithjason.dev/topic/" + slug.current
+  }, [])
+`;
+
 export async function sanityFetch({
 	query,
 	variables,
@@ -59,47 +97,14 @@ export async function sanityFetch({
 }
 
 export function loadAllEpisodes({ cdn = true }): Promise<SanityFetchResponse> {
-	const query = `
-    *[_type == "episode" && hidden == false && date < now() && defined(youtubeID)] {
-      "id": _id,
-      title,
-      "slug": slug.current,
-      "uri": "https://www.learnwithjason.dev/" + slug.current,
-      date,
-      description,
-      youtubeID,
-      "links": {
-        demo,
-        repo,
-        "resources": links
-      },
-      guest[0]-> {
-        ...(guestImage {
-          ...(asset-> {
-            "image": url
-          })
-        }),
-        name,
-        twitter,
-      },
-      host-> {
-        ...(guestImage {
-          ...(asset-> {
-            "image": url
-          })
-        }),
-        name,
-        twitter,
-      },
-      "tags": episodeTags[]-> {
-        label,
-        "slug": slug.current,
-        "uri": "https://www.learnwithjason.dev/topic/" + slug.current
-      }
-    } | order(date desc)
-`;
-
-	return sanityFetch({ query, cdn });
+	return sanityFetch({
+		query: `
+      *[_type == "episode" && hidden == false && date < now() && defined(youtubeID)] {
+        ${EPISODE_FIELDS}
+      } | order(date desc)
+    `,
+		cdn,
+	});
 }
 
 export function loadEpisodeBySlug({
@@ -109,45 +114,52 @@ export function loadEpisodeBySlug({
 	slug: string;
 	cdn?: boolean;
 }): Promise<SanityFetchResponse> {
-	const query = `
-    *[_type == "episode" && slug.current == $slug][0] {
-      "id": _id,
-      title,
-      "slug": slug.current,
-      "uri": "https://www.learnwithjason.dev/" + slug.current,
-      date,
-      description,
-      youtubeID,
-      "links": {
-        demo,
-        repo,
-        "resources": links
-      },
-      guest[0]-> {
-        ...(guestImage {
-          ...(asset-> {
-            "image": url
-          })
-        }),
-        name,
-        twitter,
-      },
-      host-> {
-        ...(guestImage {
-          ...(asset-> {
-            "image": url
-          })
-        }),
-        name,
-        twitter,
-      },
-      "tags": episodeTags[]-> {
-        label,
-        "slug": slug.current,
-        "uri": "https://www.learnwithjason.dev/topic/" + slug.current
+	return sanityFetch({
+		query: `
+      *[_type == "episode" && slug.current == $slug][0] {
+        ${EPISODE_FIELDS}
       }
-    }
-`;
+    `,
+		cdn,
+		variables: { slug },
+	});
+}
 
-	return sanityFetch({ query, cdn, variables: { slug } });
+export function loadSchedule({ cdn = true }: { cdn?: boolean }) {
+	return sanityFetch({
+		query: `
+      *[_type == "episode" && hidden == false && date > now()] {
+        "id": _id,
+        title,
+        "slug": slug.current,
+        "uri": "https://www.learnwithjason.dev/" + slug.current,
+        date,
+        description,
+        guest[0]-> {
+          ...(guestImage {
+            ...(asset-> {
+              "image": url
+            })
+          }),
+          name,
+          "twitter": "https://twitter.com/" + twitter,
+        },
+        host-> {
+          ...(guestImage {
+            ...(asset-> {
+              "image": url
+            })
+          }),
+          name,
+          "twitter": "https://twitter.com/" + twitter,
+        },
+        "tags": episodeTags[]-> {
+          label,
+          "slug": slug.current,
+          "uri": "https://www.learnwithjason.dev/topic/" + slug.current
+        }
+      } | order(date asc)
+    `,
+		cdn,
+	});
 }
