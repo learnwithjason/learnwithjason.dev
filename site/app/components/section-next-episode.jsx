@@ -57,7 +57,7 @@ export function SectionNextEpisode({ nextEpisode, nextNextEpisode }) {
                 direct to your inbox:
               </p>
               <div className="links">
-                <a href="/newsletter`">
+                <a href="/newsletter">
                   <IconEmail /> Subscribe to the Newsletter
                 </a>
               </div>
