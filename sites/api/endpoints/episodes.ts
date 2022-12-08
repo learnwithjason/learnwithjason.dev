@@ -18,7 +18,7 @@ const handlerFn: Handler = async (event) => {
 		headers: {
 			'Content-Type': 'application/json; charset=utf8',
 		},
-		body: JSON.stringify(data?.result, null, 2),
+		body: JSON.stringify(data?.result),
 	};
 };
 
