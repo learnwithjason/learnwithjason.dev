@@ -1,4 +1,5 @@
 ---
+import { PageHeader } from '@lwj/design-system';
 import { IconArrow } from '@lwj/design-system';
 import Layout from '../../layouts/Layout.astro';
 
@@ -57,7 +58,7 @@ const posts = (await Astro.glob('./**/*.mdx')).map((p: any): PostPreview => {
 </style>
 <Layout title="Blog">
 	<main>
-		<h1>Blog</h1>
+		<PageHeader />
 		<section class="block post-previews">
 			{
 				posts.map((post: PostPreview) => {

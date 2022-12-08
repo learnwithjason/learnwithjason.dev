@@ -10,6 +10,10 @@ html {
 	--color-gray-light: hsl(258 4% 60%);
 	--color-gray-text: hsl(258 4% 80%);
 
+	/* TODO: make sure this is not the worst idea ever */
+	--color-heading: var(--color-white);
+	--color-text-default: var(--color-gray-text);
+
 	/*
 	 * Josh Comeau’s gradient generator is so dope:
 	 * https://www.joshwcomeau.com/gradient-generator/
@@ -37,6 +41,9 @@ html {
 	--color-gray-text: #403c4a;
 	--color-gray-text-muted: #78757f;
 	--color-pink-faded: #f5f2fc;
+
+	--color-heading: var(--color-black-faded);
+	--color-text-default: var(--color-gray-text);
 }
 
 @keyframes gradient-shift {

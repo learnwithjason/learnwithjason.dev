@@ -1,4 +1,5 @@
 import { Fragment, ReactNode } from 'react';
+import styles from './opt-in-form.module.css';
 
 type OptInFormProps = {
 	heading?: String;
@@ -10,7 +11,7 @@ export function OptInForm({
 	children,
 }: OptInFormProps) {
 	return (
-		<aside className="opt-in">
+		<aside className={styles['opt-in']}>
 			<form action="/api/subscribe" method="POST">
 				{!children ? (
 					<Fragment>

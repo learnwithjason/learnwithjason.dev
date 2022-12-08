@@ -228,7 +228,6 @@ const { frontmatter, headings } = Astro.props;
 					{
 						headings.map(
 							(heading: { depth: number; slug: string; text: string }) => {
-								console.log(heading);
 								if (heading.depth > 2) {
 									return null;
 								}

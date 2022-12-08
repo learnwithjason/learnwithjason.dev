@@ -1,7 +1,7 @@
 ---
 export interface Props {
 	title: string;
-	mainClass: string;
+	mainClass?: string;
 }
 
 import { Header } from '@lwj/design-system';
@@ -11,10 +11,6 @@ const { title, mainClass = '' } = Astro.props;
 ---
 
 <style is:global>
-	main {
-		color: var(--color-gray-text);
-	}
-
 	.block {
 		align-items: center;
 		display: flex;
