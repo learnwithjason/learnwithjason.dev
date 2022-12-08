@@ -1,0 +1,43 @@
+:root {
+	--color-white: hsl(0 0% 100%);
+	--color-black: hsl(207 95% 8%);
+	--color-black-faded: hsl(250 23% 10%);
+	--color-pink: hsl(320 59% 59%);
+	--color-yellow: hsl(50 100% 61%);
+	--color-blue: hsl(177 100% 82%);
+	--color-gray: hsl(258 4% 48%);
+	--color-gray-light: hsl(258 4% 60%);
+	--color-gray-text: hsl(258 4% 80%);
+
+	/*
+	 * Josh Comeau’s gradient generator is so dope:
+	 * https://www.joshwcomeau.com/gradient-generator/
+	 */
+	--gradient-angle: 100deg;
+	--color-gradient: linear-gradient(
+		var(--gradient-angle),
+		hsl(320deg 59% 59%) 0%,
+		hsl(11deg 100% 70%) 10%,
+		hsl(50deg 100% 61%) 20%,
+		hsl(123deg 94% 81%) 30%,
+		hsl(177deg 100% 83%) 40%,
+		hsl(320deg 59% 59%) 50%,
+		hsl(11deg 100% 70%) 60%,
+		hsl(50deg 100% 61%) 70%,
+		hsl(123deg 94% 81%) 80%,
+		hsl(177deg 100% 83%) 90%,
+		hsl(320deg 59% 59%) 100%
+	);
+
+	--animation-gradient-shift: gradient-shift 10s linear infinite;
+}
+
+@keyframes gradient-shift {
+	0% {
+		background-position: 0;
+	}
+
+	100% {
+		background-position: 100%;
+	}
+}

@@ -1,0 +1,62 @@
+@font-face {
+	font-family: 'jwf';
+	src: url('../fonts/jwf-book.woff2') format('woff2'),
+		url('../fonts/jwf-book.woff') format('woff');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'jwf';
+	src: url('../fonts/jwf-bookitalic.woff2') format('woff2'),
+		url('../fonts/jwf-bookitalic.woff') format('woff');
+	font-weight: 400;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'jwf';
+	src: url('../fonts/jwf-bold.woff2') format('woff2'),
+		url('../fonts/jwf-bold.woff') format('woff');
+	font-weight: 600;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'jwf';
+	src: url('../fonts/jwf-bolditalic.woff2') format('woff2'),
+		url('../fonts/jwf-bolditalic.woff') format('woff');
+	font-weight: 600;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'jwf';
+	src: url('../fonts/jwf-ultra.woff2') format('woff2'),
+		url('../fonts/jwf-ultra.woff') format('woff');
+	font-weight: 900;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'jwf';
+	src: url('../fonts/jwf-ultraitalic.woff2') format('woff2'),
+		url('../fonts/jwf-ultraitalic.woff') format('woff');
+	font-weight: 900;
+	font-style: italic;
+	font-display: swap;
+}
+
+html,
+body {
+	font-family: mallory, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+		Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+		'Segoe UI Symbol';
+	font-size: 18px;
+	line-height: 1.45;
+}
