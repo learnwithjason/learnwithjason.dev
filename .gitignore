@@ -48,3 +48,6 @@ public/build
 
 # Local Netlify folder
 .netlify
+
+# Astro
+sites/blog/dist
