@@ -9,9 +9,6 @@
 	},
 	"author": "",
 	"license": "MIT",
-	"devDependencies": {
-		"netlify-cli": "^11.8.2"
-	},
 	"dependencies": {
 		"@netlify/functions": "^1.2.0",
 		"discord-interactions": "^3.2.0",
