@@ -1,0 +1,72 @@
+---
+export interface Props {
+	title: string;
+	mainClass: string;
+}
+
+import { Header } from '@lwj/design-system';
+import '@lwj/design-system/css/index.css';
+
+const { title, mainClass = '' } = Astro.props;
+---
+
+<style is:global>
+	main {
+		color: var(--color-gray-text);
+	}
+
+	.block {
+		align-items: center;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		padding: 4rem 5vw;
+	}
+
+	.gradient-subheading {
+		color: var(--color-gray-text-muted);
+		font-size: 0.625rem;
+		font-weight: 400;
+		letter-spacing: 0.2em;
+		line-height: 2;
+		margin: 0.25rem 0 0;
+		text-align: left;
+		text-transform: uppercase;
+	}
+
+	.dark .gradient-subheading {
+		color: var(--color-gray-medium);
+	}
+
+	.gradient-underline,
+	.gradient-subheading {
+		position: relative;
+	}
+
+	.gradient-subheading::after,
+	.gradient-underline::after {
+		background: var(--color-gradient);
+		bottom: 0;
+		content: '';
+		height: 2px;
+		left: 0;
+		position: absolute;
+		width: 100%;
+	}
+</style>
+
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body data-theme="light">
+		<Header />
+		<main class={mainClass}>
+			<slot />
+		</main>
+	</body>
+</html>
