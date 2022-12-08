@@ -111,15 +111,19 @@ export function loadEpisodeBySlug({
 }): Promise<SanityFetchResponse> {
 	const query = `
     *[_type == "episode" && slug.current == $slug][0] {
+      "id": _id,
       title,
-      slug,
+      "slug": slug.current,
+      "uri": "https://www.learnwithjason.dev/" + slug.current,
       date,
-      demo,
-      repo,
       description,
       youtubeID,
-      links,
-      guest[]-> {
+      "links": {
+        demo,
+        repo,
+        "resources": links
+      },
+      guest[0]-> {
         ...(guestImage {
           ...(asset-> {
             "image": url
@@ -136,6 +140,11 @@ export function loadEpisodeBySlug({
         }),
         name,
         twitter,
+      },
+      "tags": episodeTags[]-> {
+        label,
+        "slug": slug.current,
+        "uri": "https://www.learnwithjason.dev/topic/" + slug.current
       }
     }
 `;
