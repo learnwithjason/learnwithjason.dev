@@ -4,13 +4,8 @@
 	height: 100%;
 }
 
-.screen {
-	background: green;
-}
-
 .videos {
 	display: flex;
 	flex-direction: column;
-	gap: 1.5rem;
-	justify-content: center;
+	justify-content: flex-start;
 }

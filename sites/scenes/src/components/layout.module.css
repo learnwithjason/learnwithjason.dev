@@ -1,5 +1,5 @@
 .wrapper {
-	background: var(--color-black-faded);
+	background: #ff0000;
 	display: grid;
 	grid-template-rows: auto 200px;
 	height: 100vh;
@@ -9,7 +9,7 @@
 .content {
 	align-items: center;
 	display: flex;
-	gap: 80px;
+	gap: 0;
 	justify-content: center;
 	z-index: 10;
 }
