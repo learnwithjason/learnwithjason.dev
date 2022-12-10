@@ -66,6 +66,11 @@
   status = 200
 
 [[redirects]]
+  from = "/api/v2/*"
+  to = "https://lwj-api.netlify.app/api/:splat"
+  status = 200
+
+[[redirects]]
   from = "/api/*"
   to = "/.netlify/builders/:splat"
   status = 200

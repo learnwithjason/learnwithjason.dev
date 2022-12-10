@@ -13,7 +13,7 @@ export const loader = async () => {
   const episodesPromise = loadAllEpisodes();
   const schedulePromise = loadFromApi('/api/schedule');
   const featuredPromise = loadFromApi('/api/episodes/featured');
-  const sponsorsPromise = loadFromApi('/api/sponsors');
+  const sponsorsPromise = loadFromApi('/api/v2/sponsors');
 
   return {
     episodes: await episodesPromise,
