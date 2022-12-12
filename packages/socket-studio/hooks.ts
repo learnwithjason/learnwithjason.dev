@@ -34,6 +34,7 @@ interface Message {
 	images: {
 		large: string;
 	};
+	highlighted: boolean;
 	message: string;
 	author: {
 		username: string;
@@ -99,6 +100,7 @@ export function useTwitchChat(channel: string) {
             }
             ... on TwitchChatMessage {
               html
+              highlighted
             }
 
             ... on TwitchChatEvent {

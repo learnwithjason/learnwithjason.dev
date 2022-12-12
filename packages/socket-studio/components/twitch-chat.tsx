@@ -13,6 +13,7 @@ type Message = {
 	username: string;
 	roles: string[];
 	html: string;
+	highlighted: boolean;
 };
 
 export function TwitchChat({ username }: TwitchChatProps) {
@@ -21,12 +22,11 @@ export function TwitchChat({ username }: TwitchChatProps) {
 	const messages: Message[] = chat
 		.filter((msg) => !!msg.html) // skip if there’s no text
 		.map((msg) => {
-			console.log(msg);
-
 			return {
 				time: Number(msg.time),
 				username: msg.author.username,
 				roles: msg.author.roles.map((r) => r.toLowerCase()),
+				highlighted: msg.highlighted,
 				html: rehype()
 					.data('settings', { fragment: true })
 					.use(sanitize, {
@@ -50,7 +50,11 @@ export function TwitchChat({ username }: TwitchChatProps) {
 		<div className={styles.container}>
 			<ul className={styles.chat}>
 				{messages.map((msg) => (
-					<li key={msg.time} className={styles.chatMessage}>
+					<li
+						key={msg.time}
+						className={styles.chatMessage}
+						data-highlighted={msg.highlighted}
+					>
 						<span className={styles.author} data-role={msg.roles.join(' ')}>
 							{msg.username}
 						</span>

@@ -19,19 +19,30 @@
 
 .chatMessage {
 	align-items: center;
-	display: flex;
-	gap: 1rem;
-	justify-content: center;
+	border-radius: 0.25rem;
+	display: grid;
+	gap: 20px;
+	grid-template-columns: 150px 480px;
+	margin: 0.5rem 0 0;
+	width: 100%;
+}
+
+.chatMessage[data-highlighted='true'] {
+	background: var(--color-yellow);
+	color: var(--color-black);
+	padding: 1rem 0;
 }
 
 .author {
+	align-self: start;
 	border-radius: 0.125rem;
 	color: var(--color-gray-text);
 	display: block;
 	font-weight: bold;
-	max-width: 120px;
+	justify-self: end;
+	max-width: 100%;
 	overflow: hidden;
-	padding: 0.125rem 0.25rem;
+	padding: 0.25rem 0.625rem;
 	text-align: right;
 	text-overflow: ellipsis;
 	white-space: nowrap;
@@ -39,7 +50,7 @@
 }
 
 .author[data-role*='subscriber'] {
-	color: var(--color-yellow);
+	color: var(--color-pink);
 }
 
 .author[data-role*='broadcaster'] {
@@ -47,15 +58,25 @@
 	color: var(--color-black);
 }
 
+[data-highlighted='true'] .author {
+	background: transparent;
+	color: var(--color-black);
+	margin-left: 1rem;
+}
+
 .message {
 	align-items: center;
 	display: flex;
 	flex-wrap: wrap;
-	width: 450px;
+}
+
+[data-highlighted='true'] .message {
+	font-weight: bold;
+	padding-right: 1rem;
 }
 
 .message img {
 	display: block;
-	margin: -0.125rem 0.25rem;
-	width: 45px;
+	margin: -0.5rem 0.25rem;
+	width: 36px;
 }
