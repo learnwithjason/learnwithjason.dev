@@ -17,7 +17,8 @@
 .lowerThird {
 	background: var(--color-black);
 	display: grid;
-	grid-template-columns: 290px 1fr 550px;
+	grid-template-columns: 290px 1fr 650px;
+	overflow: hidden;
 	position: relative;
 	place-content: center;
 }
@@ -34,6 +35,7 @@
 	position: absolute;
 	right: 0;
 	top: 0;
+	z-index: 100;
 }
 
 .lowerThird::after {
