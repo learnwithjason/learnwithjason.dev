@@ -246,7 +246,7 @@ const { frontmatter, headings } = Astro.props;
 
 		<div class="post-content" data-section="post-content"><slot /></div>
 
-		<OptInForm />
+		{frontmatter.showOptin !== false ? <OptInForm /> : null}
 	</article>
 </Layout>
 
@@ -273,7 +273,7 @@ const { frontmatter, headings } = Astro.props;
 		};
 
 		const observer = new IntersectionObserver(observerCallback, {
-			threshold: [1.0],
+			threshold: [0.9],
 		});
 
 		Array.from(headingElements)

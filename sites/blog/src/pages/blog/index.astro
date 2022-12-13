@@ -9,18 +9,21 @@ type PostPreview = {
 	url: string;
 };
 
-const posts = (await Astro.glob('./**/*.mdx')).map((p: any): PostPreview => {
-	return {
-		title: p.frontmatter.meta.title,
-		description: p.frontmatter.meta.description,
-		url: p.url,
-	};
-});
+const posts = (await Astro.glob('./**/*.mdx'))
+	.sort((a, b) => (a.frontmatter.date < b.frontmatter.date ? 1 : -1))
+	.map((p: any): PostPreview => {
+		return {
+			title: p.frontmatter.meta.title,
+			description: p.frontmatter.meta.description,
+			url: p.url,
+		};
+	});
 ---
 
 <style>
 	.post-preview {
 		max-width: 500px;
+		width: 100%;
 	}
 
 	.post-preview:not(:first-of-type) {
