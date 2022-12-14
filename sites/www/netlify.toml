@@ -4,6 +4,3 @@
 [dev]
   command = "remix watch"
   port = 3000
-
-[functions.server]
-  included_files = ["app/routes/__mdx/blog/**/*.mdx"]
