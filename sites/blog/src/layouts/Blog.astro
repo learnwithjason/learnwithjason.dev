@@ -100,7 +100,7 @@ const { frontmatter, headings } = Astro.props;
 	}
 
 	.post-content strong {
-		color: var(--text-emphasized);
+		color: var(--color-text-emphasized);
 		font-weight: 600;
 	}
 
@@ -146,7 +146,7 @@ const { frontmatter, headings } = Astro.props;
 	}
 
 	.post-figure figcaption {
-		color: var(--text-muted);
+		color: var(--color-gray-text-muted);
 		font-size: 0.875rem;
 		font-style: italic;
 		margin-top: 0.5rem;
@@ -154,8 +154,8 @@ const { frontmatter, headings } = Astro.props;
 	}
 
 	.post-content :not(pre) > code {
-		background: var(--gray-lightest);
-		border: 1px solid var(--gray-light);
+		background: var(--color-gray-lightest);
+		border: 1px solid var(--color-gray-lighter);
 		border-radius: 0.125rem;
 		line-height: 1;
 		overflow-x: scroll;
@@ -165,48 +165,6 @@ const { frontmatter, headings } = Astro.props;
 
 	.post-content .post-aside :not(pre) code {
 		font-size: 0.875rem;
-	}
-
-	.post-aside {
-		display: grid;
-		gap: 0.5rem;
-		grid-template-columns: 1.5rem auto;
-		margin: 2rem 0;
-		padding: 1rem 1rem 1rem 0.5rem;
-		position: relative;
-	}
-
-	.post-aside::after,
-	.post-aside::before {
-		background: var(--gradient);
-		content: '';
-		left: 0;
-		position: absolute;
-		width: 100%;
-	}
-
-	.post-aside::after {
-		bottom: 0;
-		height: 2px;
-	}
-
-	.post-aside::before {
-		top: 0;
-		height: 4px;
-	}
-
-	.aside-icon {
-		padding-top: 0.2rem;
-	}
-
-	.aside-content p {
-		color: var(--text-muted);
-		font-size: 0.875rem;
-		margin: 1rem 0 0;
-	}
-
-	.aside-content p:first-of-type {
-		margin-top: 0;
 	}
 </style>
 

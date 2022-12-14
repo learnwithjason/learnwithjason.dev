@@ -8,11 +8,15 @@ html {
 	--color-yellow: hsla(50 100% 61% / 1);
 	--color-blue: hsla(177 100% 82% / 1);
 	--color-gray: hsla(258 4% 48% / 1);
+	--color-gray-medium: hsla(258 8% 70% / 1);
 	--color-gray-light: hsla(258 4% 60% / 1);
+	--color-gray-lighter: hsla(258 23% 87% / 1);
+	--color-gray-lightest: hsla(258 53% 97% / 1);
 	--color-gray-text: hsla(258 4% 80% / 1);
 
 	/* TODO: make sure this is not the worst idea ever */
 	--color-heading: var(--color-white);
+	--color-text-emphasized: var(--color-white);
 	--color-text-default: var(--color-gray-text);
 
 	/*
@@ -44,6 +48,7 @@ html {
 	--color-pink-faded: #f5f2fc;
 
 	--color-heading: var(--color-black-faded);
+	--color-text-emphasized: var(--color-black-faded);
 	--color-text-default: var(--color-gray-text);
 }
 

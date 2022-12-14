@@ -1,0 +1,42 @@
+.aside {
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: 1.5rem auto;
+  margin: 2rem 0;
+  padding: 1rem 1rem 1rem 0.5rem;
+  position: relative;
+}
+
+.aside::after,
+.aside::before {
+  animation: var(--animation-gradient-shift);
+  background: var(--color-gradient);
+  background-size: 200%;
+  content: '';
+  height: 1px;
+  left: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.aside::after {
+  bottom: 0;
+}
+
+.aside::before {
+  top: 0;
+}
+
+.icon {
+  padding-top: 0;
+}
+
+.content p {
+  color: var(--color-gray-text-muted);
+  font-size: 0.875rem;
+  margin: 1rem 0 0;
+}
+
+.content p:first-of-type {
+  margin-top: 0;
+}

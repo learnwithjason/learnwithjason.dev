@@ -4,7 +4,7 @@ export interface Props {
 	mainClass?: string;
 }
 
-import { Header } from '@lwj/design-system';
+import { Header, Footer } from '@lwj/design-system';
 import '@lwj/design-system/css/index.css';
 
 const { title, mainClass = '' } = Astro.props;
@@ -45,13 +45,21 @@ const { title, mainClass = '' } = Astro.props;
 
 	.gradient-subheading::after,
 	.gradient-underline::after {
+  	animation: var(--animation-gradient-shift);
 		background: var(--color-gradient);
+		background-size: 200%;
 		bottom: 0;
 		content: '';
-		height: 2px;
+		height: 1px;
 		left: 0;
 		position: absolute;
 		width: 100%;
+	}
+
+	.svg-defs {
+		display: block;
+    height: 0px;
+    width: 0px;
 	}
 </style>
 
@@ -69,9 +77,26 @@ const { title, mainClass = '' } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body data-theme="light">
+		<svg class="svg-defs">
+			<defs>
+				<linearGradient
+					id="lwj-gradient"
+					x1="0"
+					x2="100%"
+					y1="100%"
+					y2="100%"
+					gradientUnits="objectBoundingBox"
+				>
+					<stop offset="0" stop-color="#D459AB" />
+					<stop offset=".5" stop-color="#FFDF37" />
+					<stop offset="1" stop-color="#A6FFFA" />
+				</linearGradient>
+			</defs>
+		</svg>
 		<Header />
 		<main class={mainClass}>
 			<slot />
 		</main>
+		<Footer />
 	</body>
 </html>

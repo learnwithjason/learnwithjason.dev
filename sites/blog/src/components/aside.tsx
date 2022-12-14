@@ -1,7 +1,9 @@
+import styles from './aside.module.css';
+
 export function Aside({ children }) {
 	return (
-		<aside className="post-aside">
-			<div className="aside-icon">
+		<aside className={styles.aside}>
+			<div className={styles.icon}>
 				<svg
 					width="23"
 					height="19"
@@ -20,7 +22,7 @@ export function Aside({ children }) {
 					/>
 				</svg>
 			</div>
-			<div className="aside-content">{children}</div>
+			<div className={styles.content}>{children}</div>
 		</aside>
 	);
 }
