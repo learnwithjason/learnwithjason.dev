@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/Blog.astro
+layout: ../layouts/Blog.astro
 date: 2016-08-19
 updated: 2016-08-19
 
@@ -15,18 +15,18 @@ share:
   text: Use Rollup to create smaller bundles for libraries in this tutorial.
 ---
 
-import { Aside } from '../../components/aside.tsx';
-import { Figure } from '../../components/figure.tsx';
+import { Aside } from '../components/aside.tsx';
+import { Figure } from '../components/figure.tsx';
 
 <Figure aspectRatio={315 / 560}>
-	<iframe
-		width="560"
-		height="315"
-		src="https://www.youtube-nocookie.com/embed/ICYLOZuFMz8"
-		frameBorder="0"
-		allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-		allowFullScreen
-	></iframe>
+  <iframe
+    width="560"
+    height="315"
+    src="https://www.youtube-nocookie.com/embed/ICYLOZuFMz8"
+    frameBorder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowFullScreen
+  ></iframe>
 </Figure>
 
 <Aside warning>
@@ -146,10 +146,10 @@ Next, create a new file called `rollup.config.js` in the `learn-rollup` folder. 
 
 ```js
 export default {
-	entry: 'src/scripts/main.js',
-	dest: 'build/js/main.min.js',
-	format: 'iife',
-	sourceMap: 'inline',
+  entry: 'src/scripts/main.js',
+  dest: 'build/js/main.min.js',
+  format: 'iife',
+  sourceMap: 'inline',
 };
 ```
 
@@ -199,40 +199,40 @@ What makes Rollup powerful is the fact that it uses "tree-shaking", which leaves
 
 ```js
 (function () {
-	'use strict';
+  'use strict';
 
-	/**
-	 * Says hello.
-	 * @param  {String} name a name
-	 * @return {String}      a greeting for `name`
-	 */
-	function sayHelloTo(name) {
-		const toSay = `Hello, ${name}!`;
+  /**
+   * Says hello.
+   * @param  {String} name a name
+   * @return {String}      a greeting for `name`
+   */
+  function sayHelloTo(name) {
+    const toSay = `Hello, ${name}!`;
 
-		return toSay;
-	}
+    return toSay;
+  }
 
-	/**
-	 * Adds all the values in an array.
-	 * @param  {Array} arr an array of numbers
-	 * @return {Number}    the sum of all the array values
-	 */
-	const addArray = (arr) => {
-		const result = arr.reduce((a, b) => a + b, 0);
+  /**
+   * Adds all the values in an array.
+   * @param  {Array} arr an array of numbers
+   * @return {Number}    the sum of all the array values
+   */
+  const addArray = (arr) => {
+    const result = arr.reduce((a, b) => a + b, 0);
 
-		return result;
-	};
+    return result;
+  };
 
-	// Import a couple modules for testing.
-	// Run some functions from our imported modules.
-	const result1 = sayHelloTo('Jason');
-	const result2 = addArray([1, 2, 3, 4]);
+  // Import a couple modules for testing.
+  // Run some functions from our imported modules.
+  const result1 = sayHelloTo('Jason');
+  const result2 = addArray([1, 2, 3, 4]);
 
-	// Print the results on the page.
-	const printTarget = document.getElementsByClassName('debug__output')[0];
+  // Print the results on the page.
+  const printTarget = document.getElementsByClassName('debug__output')[0];
 
-	printTarget.innerText = `sayHelloTo('Jason') => ${result1}\n\n`;
-	printTarget.innerText += `addArray([1, 2, 3, 4]) => ${result2}`;
+  printTarget.innerText = `sayHelloTo('Jason') => ${result1}\n\n`;
+  printTarget.innerText += `addArray([1, 2, 3, 4]) => ${result2}`;
 })();
 //# sourceMappingURL=data:application/json;charset=utf-8;base64,...
 ```
@@ -284,15 +284,15 @@ Next, create a new file called `.babelrc` in your project's root directory (`lea
 
 ```json
 {
-	"presets": [
-		[
-			"es2015",
-			{
-				"modules": false
-			}
-		]
-	],
-	"plugins": ["external-helpers"]
+  "presets": [
+    [
+      "es2015",
+      {
+        "modules": false
+      }
+    ]
+  ],
+  "plugins": ["external-helpers"]
 }
 ```
 
@@ -321,15 +321,15 @@ Inside, we `import` the Babel plugin, then add it to a new configuration propert
 import babel from 'rollup-plugin-babel';
 
 export default {
-	entry: 'src/scripts/main.js',
-	dest: 'build/js/main.min.js',
-	format: 'iife',
-	sourceMap: 'inline',
-	plugins: [
-		babel({
-			exclude: 'node_modules/**',
-		}),
-	],
+  entry: 'src/scripts/main.js',
+  dest: 'build/js/main.min.js',
+  format: 'iife',
+  sourceMap: 'inline',
+  plugins: [
+    babel({
+      exclude: 'node_modules/**',
+    }),
+  ],
 };
 ```
 
@@ -347,11 +347,11 @@ When we look at the output, it looks _mostly_ the same. But there are a few key 
 
 ```js
 var addArray = function addArray(arr) {
-	var result = arr.reduce(function (a, b) {
-		return a + b;
-	}, 0);
+  var result = arr.reduce(function (a, b) {
+    return a + b;
+  }, 0);
 
-	return result;
+  return result;
 };
 ```
 
@@ -403,20 +403,20 @@ If you answer the questions as shown above, you'll get the following output in `
 
 ```json
 {
-	"env": {
-		"browser": true,
-		"es6": true
-	},
-	"extends": "eslint:recommended",
-	"parserOptions": {
-		"sourceType": "module"
-	},
-	"rules": {
-		"indent": ["error", 4],
-		"linebreak-style": ["error", "unix"],
-		"quotes": ["error", "single"],
-		"semi": ["error", "always"]
-	}
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "extends": "eslint:recommended",
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "rules": {
+    "indent": ["error", 4],
+    "linebreak-style": ["error", "unix"],
+    "quotes": ["error", "single"],
+    "semi": ["error", "always"]
+  }
 }
 ```
 
@@ -431,23 +431,23 @@ Make the following adjustments — the `globals` property and the adjustment to 
 
 ```json
 {
-	"env": {
-		"browser": true,
-		"es6": true
-	},
-	"globals": {
-		"ENV": true
-	},
-	"extends": "eslint:recommended",
-	"parserOptions": {
-		"sourceType": "module"
-	},
-	"rules": {
-		"indent": ["error", 2],
-		"linebreak-style": ["error", "unix"],
-		"quotes": ["error", "single"],
-		"semi": ["error", "always"]
-	}
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "globals": {
+    "ENV": true
+  },
+  "extends": "eslint:recommended",
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "rules": {
+    "indent": ["error", 2],
+    "linebreak-style": ["error", "unix"],
+    "quotes": ["error", "single"],
+    "semi": ["error", "always"]
+  }
 }
 ```
 
@@ -461,18 +461,18 @@ import babel from 'rollup-plugin-babel';
 import eslint from 'rollup-plugin-eslint';
 
 export default {
-	entry: 'src/scripts/main.js',
-	dest: 'build/js/main.min.js',
-	format: 'iife',
-	sourceMap: 'inline',
-	plugins: [
-		eslint({
-			exclude: ['src/styles/**'],
-		}),
-		babel({
-			exclude: 'node_modules/**',
-		}),
-	],
+  entry: 'src/scripts/main.js',
+  dest: 'build/js/main.min.js',
+  format: 'iife',
+  sourceMap: 'inline',
+  plugins: [
+    eslint({
+      exclude: ['src/styles/**'],
+    }),
+    babel({
+      exclude: 'node_modules/**',
+    }),
+  ],
 };
 ```
 
@@ -588,24 +588,24 @@ import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 
 export default {
-	entry: 'src/scripts/main.js',
-	dest: 'build/js/main.min.js',
-	format: 'iife',
-	sourceMap: 'inline',
-	plugins: [
-		resolve({
-			jsnext: true,
-			main: true,
-			browser: true,
-		}),
-		commonjs(),
-		eslint({
-			exclude: ['src/styles/**'],
-		}),
-		babel({
-			exclude: 'node_modules/**',
-		}),
-	],
+  entry: 'src/scripts/main.js',
+  dest: 'build/js/main.min.js',
+  format: 'iife',
+  sourceMap: 'inline',
+  plugins: [
+    resolve({
+      jsnext: true,
+      main: true,
+      browser: true,
+    }),
+    commonjs(),
+    eslint({
+      exclude: ['src/styles/**'],
+    }),
+    babel({
+      exclude: 'node_modules/**',
+    }),
+  ],
 };
 ```
 
@@ -642,11 +642,11 @@ const log = debug('app:log');
 
 // The logger should only be disabled if we’re not in production.
 if (ENV !== 'production') {
-	// Enable the logger.
-	debug.enable('*');
-	log('Logging is enabled!');
+  // Enable the logger.
+  debug.enable('*');
+  log('Logging is enabled!');
 } else {
-	debug.disable();
+  debug.disable();
 }
 ```
 
@@ -679,28 +679,28 @@ import commonjs from 'rollup-plugin-commonjs';
 import replace from 'rollup-plugin-replace';
 
 export default {
-	entry: 'src/scripts/main.js',
-	dest: 'build/js/main.min.js',
-	format: 'iife',
-	sourceMap: 'inline',
-	plugins: [
-		resolve({
-			jsnext: true,
-			main: true,
-			browser: true,
-		}),
-		commonjs(),
-		eslint({
-			exclude: ['src/styles/**'],
-		}),
-		babel({
-			exclude: 'node_modules/**',
-		}),
-		replace({
-			exclude: 'node_modules/**',
-			ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
-		}),
-	],
+  entry: 'src/scripts/main.js',
+  dest: 'build/js/main.min.js',
+  format: 'iife',
+  sourceMap: 'inline',
+  plugins: [
+    resolve({
+      jsnext: true,
+      main: true,
+      browser: true,
+    }),
+    commonjs(),
+    eslint({
+      exclude: ['src/styles/**'],
+    }),
+    babel({
+      exclude: 'node_modules/**',
+    }),
+    replace({
+      exclude: 'node_modules/**',
+      ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
+    }),
+  ],
 };
 ```
 
@@ -760,28 +760,28 @@ import replace from 'rollup-plugin-replace';
 import uglify from 'rollup-plugin-uglify';
 
 export default {
-	entry: 'src/scripts/main.js',
-	dest: 'build/js/main.min.js',
-	format: 'iife',
-	sourceMap: 'inline',
-	plugins: [
-		resolve({
-			jsnext: true,
-			main: true,
-			browser: true,
-		}),
-		commonjs(),
-		eslint({
-			exclude: ['src/styles/**'],
-		}),
-		babel({
-			exclude: 'node_modules/**',
-		}),
-		replace({
-			ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
-		}),
-		process.env.NODE_ENV === 'production' && uglify(),
-	],
+  entry: 'src/scripts/main.js',
+  dest: 'build/js/main.min.js',
+  format: 'iife',
+  sourceMap: 'inline',
+  plugins: [
+    resolve({
+      jsnext: true,
+      main: true,
+      browser: true,
+    }),
+    commonjs(),
+    eslint({
+      exclude: ['src/styles/**'],
+    }),
+    babel({
+      exclude: 'node_modules/**',
+    }),
+    replace({
+      ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
+    }),
+    process.env.NODE_ENV === 'production' && uglify(),
+  ],
 };
 ```
 

@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/Blog.astro
+layout: ../layouts/Blog.astro
 date: 2022-10-12
 updated: 2022-10-12
 
@@ -14,8 +14,8 @@ share:
   text: Many JavaScript and CSS theme switchers have a momentary flash of the wrong theme. With edge functions, we can make that a thing of the past.
 ---
 
-import { Aside } from '../../components/aside.tsx';
-import { Image } from '../../components/image.tsx';
+import { Aside } from '../components/aside.tsx';
+import { Image } from '../components/image.tsx';
 
 Not too long ago, the introduction of React Context led to a wave of color theme switchers. For a brief, glorious moment, color theme switchers dethroned TODO apps as the default tutorial.
 
@@ -75,8 +75,8 @@ ntl dev
 This will start the site at `localhost:8888`:
 
 <Image
-	src="/images/css-theme-switcher-01.png"
-	alt="The CSS theme switcher demo running locally"
+  src="/images/css-theme-switcher-01.png"
+  alt="The CSS theme switcher demo running locally"
 />
 
 There is a theme selection dropdown in the sidebar. Right now, choosing a new theme doesn't change anything — it just adds a `?theme=<selected_theme>` to the URL.
@@ -92,8 +92,8 @@ Open `src/index.html` and take a look at the top of the file:
 <!--     ℹ️ this is the important thing -->
 <!--            ⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄⌄    -->
 <html lang="en" data-theme="default">
-	<!--          ^^^^^^^^^^^^^^^^^^^^    -->
-	<head></head>
+  <!--          ^^^^^^^^^^^^^^^^^^^^    -->
+  <head></head>
 </html>
 ```
 
@@ -103,16 +103,16 @@ Below that, there's a form allowing people to choose their theme:
 
 ```html
 <aside>
-	<h2>Choose a Theme</h2>
-	<form>
-		<select title="Choose a theme" name="theme">
-			<option value="default">System Default</option>
-			<option value="light">Light</option>
-			<option value="dark">Dark</option>
-			<option value="pink">Pink</option>
-		</select>
-		<button type="submit">Switch Theme</button>
-	</form>
+  <h2>Choose a Theme</h2>
+  <form>
+    <select title="Choose a theme" name="theme">
+      <option value="default">System Default</option>
+      <option value="light">Light</option>
+      <option value="dark">Dark</option>
+      <option value="pink">Pink</option>
+    </select>
+    <button type="submit">Switch Theme</button>
+  </form>
 </aside>
 ```
 
@@ -123,25 +123,25 @@ Next, open up `src/styles.css` and look at the top of the file.
 ```css
 html[data-theme='default'],
 html[data-theme='light'] {
-	--color-bg: #fcfaff;
-	--color-header-bg: #2a1f3f;
-	--color-header-text: #fcfaff;
-	--color-border: #54495f;
-	--color-link: #1600ed;
-	--color-text: #464064;
-	--color-text-heading: #1d1036;
-	--color-text-muted: #575280;
+  --color-bg: #fcfaff;
+  --color-header-bg: #2a1f3f;
+  --color-header-text: #fcfaff;
+  --color-border: #54495f;
+  --color-link: #1600ed;
+  --color-text: #464064;
+  --color-text-heading: #1d1036;
+  --color-text-muted: #575280;
 }
 
 html[data-theme='dark'] {
-	--color-bg: #242526;
-	--color-header-bg: #18111f;
-	--color-header-text: #e9e9f1;
-	--color-border: #54495f;
-	--color-link: #617ff5;
-	--color-text: #cdcdcf;
-	--color-text-heading: #dedeee;
-	--color-text-muted: #bebebf;
+  --color-bg: #242526;
+  --color-header-bg: #18111f;
+  --color-header-text: #e9e9f1;
+  --color-border: #54495f;
+  --color-link: #617ff5;
+  --color-text: #cdcdcf;
+  --color-text-heading: #dedeee;
+  --color-text-muted: #bebebf;
 }
 
 /* ...full file omitted for brevity... */
@@ -152,8 +152,8 @@ By targeting the `html` element using the `data-theme` attribute, we're able to 
 To see this in action, open the inspector in your browser and edit the attribute to `data-theme="pink"`. This will cause the site's theme to change.
 
 <Image
-	src="/images/css-theme-switcher-02.png"
-	alt="CSS theme switcher showing the pink theme"
+  src="/images/css-theme-switcher-02.png"
+  alt="CSS theme switcher showing the pink theme"
 />
 
 For our color switcher to work, we need to handle form submissions from the theme chooser, store that value somewhere, then use the value to update the `data-theme` attribute.
@@ -176,7 +176,7 @@ Create a new file at `netlify/edge-functions/color-theme.ts`. Inside, let’s cr
 
 ```ts
 export default async () => {
-	return new Response('hello world');
+  return new Response('hello world');
 };
 ```
 
@@ -196,8 +196,8 @@ Open `netlify.toml` at the root of your project and add the following:
 Stop the server (`ctrl + C` in your terminal), then restart it using `ntl dev` — `localhost:8888` is replaced by the response from our edge function.
 
 <Image
-	src="/images/css-theme-switcher-03.png"
-	alt="output of the edge function taking over the local dev site"
+  src="/images/css-theme-switcher-03.png"
+  alt="output of the edge function taking over the local dev site"
 />
 
 ### Return the original response through the edge function

@@ -22,12 +22,12 @@ export function Header({ onOpenSearch = () => {} }: HeaderProps) {
 			</div>
 
 			<nav>
-				<a href="/episodes">episodes</a>
-				<a href="/schedule">schedule</a>
+				<a href="/episodes/">episodes</a>
+				<a href="/schedule/">schedule</a>
 				{/* <a href="/">courses</a> */}
-				<a href="/store">store</a>
-				<a href="/blog">blog</a>
-				<a href="/about">about</a>
+				<a href="/store/">store</a>
+				<a href="/blog/">blog</a>
+				<a href="/about/">about</a>
 				<button
 					className={`aa-OpenButton ${styles.search}`}
 					onClick={onOpenSearch}
