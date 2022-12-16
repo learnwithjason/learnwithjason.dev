@@ -6,6 +6,7 @@ https://lwj.dev/*                     https://www.learnwithjason.dev/:splat 301!
 # stitch in the additional sites
 /webhooks/*   https://lwj-webhooks.netlify.app/.netlify/functions/webhook-:splat  200
 /blog/*       https://lwj-blog.netlify.app/blog/:splat                            200!
+/api/v2/*     https://lwj-api.netlify.app/.netlify/functions/:splat               200
 
 # RSS
 /feed     https://www.learnwithjason.dev/episodes.xml
