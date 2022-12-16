@@ -58,8 +58,8 @@ const COMMON_EPISODE_FIELDS = `
 const PUBLISHED_EPISODE_FIELDS = `
   ${COMMON_EPISODE_FIELDS}
   "youtube": {
-    uri: "https://youtu.be/" + youtubeID,
-    id: youtubeID,
+    "uri": "https://youtu.be/" + youtubeID,
+    "id": youtubeID,
   },
   "links": {
     demo,
