@@ -5,7 +5,9 @@ const handlerFn: Handler = async (event) => {
 	const params = new URLSearchParams(event.rawQuery);
 	const transcript = params.get('transcript') === 'true';
 	const cdn = params.get('cdn') === 'false' ? false : true;
-	let [, slug] = event.path.replace(new RegExp('/api/episode'), '').split('/');
+	let [, slug] = event.path
+		.replace(/\/(api|.netlify\/functions)\/episode/, '')
+		.split('/');
 
 	if (slug.endsWith('.json')) {
 		slug = slug.replace('.json', '');
