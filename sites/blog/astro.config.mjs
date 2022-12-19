@@ -6,7 +6,6 @@ import theme from './config/shiki/theme-night-owl.json';
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://www.learnwithjason.dev',
-	base: '/blog',
 	integrations: [mdx(), react()],
 	markdown: {
 		shikiConfig: {
