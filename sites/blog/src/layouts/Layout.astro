@@ -618,7 +618,7 @@ const { title, mainClass = '' } = Astro.props;
 				</linearGradient>
 			</defs>
 		</svg>
-		<Header episodes={episodes} schedule={schedule} client:load />
+		<Header episodes={episodes} schedule={schedule} />
 		<main class={mainClass}>
 			<slot />
 		</main>
