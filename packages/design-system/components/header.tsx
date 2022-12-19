@@ -1,4 +1,4 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import { Logo } from './logo';
 // @ts-ignore
 // import { Search } from './search/index.js';
@@ -11,7 +11,7 @@ type HeaderProps = {
 };
 
 export function Header({ episodes, schedule }: HeaderProps) {
-	const [searchState, setSearchState] = useState<'open' | 'closed'>('closed');
+	// const [searchState, setSearchState] = useState<'open' | 'closed'>('closed');
 
 	return (
 		<>
