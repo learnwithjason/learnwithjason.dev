@@ -6,7 +6,6 @@ export interface Props {
 
 import { Header, Footer } from '@lwj/design-system';
 import '@lwj/design-system/css/index.css';
-import '@lwj/design-system/css/header.css';
 
 const [episodes, schedule] = await Promise.all([
 	fetch('https://www.learnwithjason.dev/api/v2/episodes').then((res) =>
