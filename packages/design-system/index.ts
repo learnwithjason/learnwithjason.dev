@@ -8,4 +8,4 @@ export * from './components/icons';
 export * from './components/page-header';
 
 // @ts-ignore
-export * from './components/search';
+// export * from './components/search';

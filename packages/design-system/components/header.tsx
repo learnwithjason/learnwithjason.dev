@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Logo } from './logo';
 // @ts-ignore
-import { Search } from './search/index.js';
-import { SearchIcon } from './search/icons/search-icon';
+// import { Search } from './search/index.js';
+// import { SearchIcon } from './search/icons/search-icon';
 import styles from './header.module.css';
 
 type HeaderProps = {
@@ -34,22 +34,22 @@ export function Header({ episodes, schedule }: HeaderProps) {
 					<a href="/store/">store</a>
 					<a href="/blog/">blog</a>
 					<a href="/about/">about</a>
-					<button
+					{/* <button
 						className={`aa-OpenButton ${styles.search}`}
 						onClick={() => setSearchState('open')}
 					>
 						<SearchIcon />
 						⌘+K
 						<span className="visually-hidden">Open search</span>
-					</button>
+					</button> */}
 				</nav>
 			</header>
-			<Search
+			{/* <Search
 				episodes={episodes}
 				schedule={schedule}
 				searchState={searchState}
 				setSearchState={setSearchState}
-			/>
+			/> */}
 		</>
 	);
 }
