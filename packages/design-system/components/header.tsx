@@ -15,12 +15,12 @@ export function Header({ episodes, schedule }: HeaderProps) {
 
 	return (
 		<>
-			<header className={styles.header}>
+			<header data-lwj-element="header">
 				<a href="#content" className="visually-hidden">
 					skip to content
 				</a>
 
-				<div className={styles.logo}>
+				<div data-lwj-element="logo">
 					<a href="/" rel="home">
 						<Logo />
 						<span className="visually-hidden">Home</span>
@@ -36,6 +36,7 @@ export function Header({ episodes, schedule }: HeaderProps) {
 					<a href="/about/">about</a>
 					{/* <button
 						className={`aa-OpenButton ${styles.search}`}
+            data-lwj-element="search"
 						onClick={() => setSearchState('open')}
 					>
 						<SearchIcon />
