@@ -7,6 +7,15 @@ export interface Props {
 import { Header, Footer } from '@lwj/design-system';
 import '@lwj/design-system/css/index.css';
 
+const [episodes, schedule] = await Promise.all([
+	fetch('https://www.learnwithjason.dev/api/v2/episodes').then((res) =>
+		res.json()
+	),
+	fetch('https://www.learnwithjason.dev/api/v2/schedule').then((res) =>
+		res.json()
+	),
+]);
+
 const { title, mainClass = '' } = Astro.props;
 ---
 
@@ -45,7 +54,7 @@ const { title, mainClass = '' } = Astro.props;
 
 	.gradient-subheading::after,
 	.gradient-underline::after {
-  	animation: var(--animation-gradient-shift);
+		animation: var(--animation-gradient-shift);
 		background: var(--color-gradient);
 		background-size: 200%;
 		bottom: 0;
@@ -58,8 +67,523 @@ const { title, mainClass = '' } = Astro.props;
 
 	.svg-defs {
 		display: block;
-    height: 0px;
-    width: 0px;
+		height: 0px;
+		width: 0px;
+	}
+
+	/* Algolia search */
+	.aa-OpenButton {
+		display: flex;
+		align-items: center;
+		padding: 0.6rem 0.75rem;
+		border-radius: 0.5rem;
+		background: linear-gradient(
+			270deg,
+			var(--pink) 0%,
+			var(--yellow) 25%,
+			var(--blue) 50%,
+			var(--yellow) 75%,
+			var(--pink) 90%
+		);
+		background-size: 200% 100%;
+		border: none;
+		color: var(--black);
+		font-family: var(--font-family);
+		cursor: pointer;
+	}
+
+	.aa-OpenButton:hover {
+		animation: gradient 5s linear infinite;
+	}
+
+	@keyframes gradient {
+		to {
+			background-position: 200%;
+		}
+	}
+
+	.aa-OpenButton svg {
+		width: 1.25rem;
+		height: 1.25rem;
+	}
+
+	.aa-Backdrop {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: rgb(0 0 0 / 80%);
+		padding: 2rem;
+		z-index: 1000;
+	}
+
+	.aa-Autocomplete {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		max-width: 840px;
+		max-height: 630px;
+		min-height: 200px;
+		width: 100%;
+		height: 100%;
+		background: var(--color-white);
+		margin: 0 auto;
+		border-radius: 0.5rem;
+		box-shadow: rgb(17 17 26 / 10%) 0 1px 0, rgb(17 17 26 / 10%) 0 8px 24px,
+			rgb(17 17 26 / 10%) 0 16px 48px;
+		z-index: 10000;
+	}
+
+	.aa-Form {
+		display: grid;
+		grid-template-columns: 3.2rem 1fr auto;
+		align-items: center;
+		place-items: center;
+		flex: 0;
+	}
+
+	.aa-InputWrapper {
+		width: 100%;
+	}
+
+	.aa-InputWrapperPrefix,
+	.aa-InputWrapperSuffix {
+		width: 100%;
+		height: 100%;
+	}
+
+	.aa-Label,
+	.aa-InputWrapperSuffix {
+		display: flex;
+		height: 100%;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.aa-Label svg {
+		width: 1.25rem;
+		height: 1.25rem;
+	}
+
+	.aa-SpinnerIcon {
+		animation: spin 1s linear infinite;
+	}
+
+	@keyframes spin {
+		to {
+			transform: rotate(1turn);
+		}
+	}
+
+	.aa-SpinnerIcon circle {
+		opacity: 0.25;
+	}
+
+	.aa-SpinnerIcon path {
+		opacity: 0.75;
+	}
+
+	.aa-Input {
+		width: 100%;
+		margin: 0;
+		padding: 1.25rem 0;
+		font-size: 1rem;
+		border: none;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		font-family: var(--font-family);
+		-webkit-appearance: textfield;
+	}
+
+	.aa-Input::-webkit-search-decoration,
+	.aa-Input::-webkit-search-cancel-button,
+	.aa-Input::-webkit-search-results-button,
+	.aa-Input::-webkit-search-results-decoration {
+		appearance: none;
+		-webkit-appearance: none;
+	}
+
+	.aa-Input:focus {
+		outline: none;
+	}
+
+	.aa-ClearButton {
+		background: none;
+		border: none;
+		cursor: pointer;
+		padding: 0 1rem;
+		height: 100%;
+		color: var(--color-gray-medium);
+		transition: color 0.1s linear;
+	}
+
+	.aa-ClearButton:hover {
+		color: var(--color-text-muted);
+	}
+
+	.aa-ClearButton svg {
+		width: 1rem;
+		height: 1rem;
+		margin-top: 4px;
+	}
+
+	.aa-CancelButton {
+		background: none;
+		border: none;
+		cursor: pointer;
+		margin: 0;
+		padding: 0 1rem;
+		height: 100%;
+		color: var(--color-gray-medium);
+		font-size: 0.85rem;
+		transition: color 0.1s linear;
+		border-left: 1px solid var(--color-gray-lightest);
+		font-family: var(--font-family);
+	}
+
+	.aa-CancelButton:hover {
+		color: var(--color-text-muted);
+	}
+
+	.aa-Panel {
+		flex-grow: 1;
+		height: 100%;
+		overflow-y: scroll;
+		border-top: 1px solid var(--color-gray-lightest);
+	}
+
+	.aa-Panel--stalled {
+		filter: grayscale(1);
+		opacity: 0.8;
+		overflow: hidden;
+	}
+
+	.aa-List {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	.aa-Source {
+		padding: 0.5rem;
+	}
+
+	.aa-Source[id='autocomplete-latest'] .aa-List,
+	.aa-Source[id='autocomplete-schedule'] .aa-List {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 0.5rem;
+	}
+
+	.aa-Header {
+		padding: 0 0.6rem;
+		margin-bottom: 0.6rem;
+		font-size: 0.85rem;
+		font-weight: 600;
+		color: var(--color-gray-text-default);
+	}
+
+	.aa-List > :not([hidden]) ~ :not([hidden]) {
+		margin-top: 0.2rem;
+	}
+
+	.aa-Item {
+		display: flex;
+		align-items: center;
+		transition: background 0.1s linear;
+	}
+
+	.aa-Link {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		padding: 0.5rem;
+		color: inherit;
+		text-decoration: none;
+		line-height: 1.3rem;
+		border-radius: 0.5rem;
+	}
+
+	.aa-LinkItem {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.aa-LinkItem-Content {
+		display: flex;
+		align-items: center;
+	}
+
+	.aa-Item mark {
+		background: var(--color-yellow);
+		border-radius: 0.25rem;
+		padding: 0 0.15rem;
+	}
+
+	.aa-Item[aria-selected='true'] .aa-Link {
+		background: var(--color-gray-lightest);
+	}
+
+	.aa-Item .button {
+		margin: 0.5rem;
+		width: 100%;
+		transition: background 0.1s linear;
+	}
+
+	.aa-Item[aria-selected='true'] .button {
+		background: var(--color-pink-dark);
+		border-color: var(--color-pink-dark);
+		color: var(--color-white);
+	}
+
+	.aa-LinkText {
+		margin-left: 0.8rem;
+	}
+
+	.aa-LinkLabel {
+		font-size: 0.9rem;
+		font-weight: 600;
+		overflow: hidden;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 2;
+	}
+
+	.aa-LinkDescription {
+		font-size: 0.8rem;
+		color: var(--color-text-muted);
+		overflow: hidden;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 3;
+	}
+
+	.aa-LinkPicture {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 100%;
+		width: 100%;
+		flex: none;
+	}
+
+	.aa-LinkPicture--Twitch {
+		background: #9146ff;
+	}
+
+	.aa-LinkPicture--Twitch svg {
+		position: relative;
+		top: 5px;
+		right: 2px;
+		padding: 0.2rem;
+	}
+
+	.aa-LinkPicture--YouTube {
+		background: red;
+	}
+
+	.aa-LinkIcon {
+		width: 1rem;
+		height: 1rem;
+		color: transparent;
+		transition: color 0.1s linear;
+		margin-left: 0.5rem;
+		flex: none;
+	}
+
+	.aa-Item[aria-selected='true'] .aa-LinkIcon {
+		color: var(--color-gray-medium);
+	}
+
+	.aa-Icon {
+		width: 2.4rem;
+		height: 2.4rem;
+		border-radius: 0.4rem;
+		overflow: hidden;
+		margin-right: 0.8rem;
+		flex: none;
+	}
+
+	.aa-Icon svg {
+		width: 100%;
+		height: 100%;
+	}
+
+	.aa-Participants {
+		display: flex;
+		align-items: center;
+		justify-content: end;
+		flex: none;
+		width: 6rem;
+	}
+
+	.aa-Participant {
+		width: 4rem;
+		height: 4rem;
+		flex: none;
+		margin-left: -2rem;
+	}
+
+	.aa-Participant--first {
+		margin-left: 0;
+	}
+
+	.aa-CoverImage {
+		width: 10.2rem;
+		height: auto;
+		flex: none;
+		margin-right: 0.8rem;
+		border-radius: 0.4rem;
+	}
+
+	.aa-NoResults {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		padding: 0.5rem;
+		align-items: center;
+		text-align: center;
+		width: 100%;
+		height: 100%;
+	}
+
+	.aa-NoResultsLabel {
+		font-size: 1.1rem;
+		font-weight: 600;
+		margin-bottom: 0.5rem;
+		overflow: hidden;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 1;
+	}
+
+	.aa-NoResultsDescription {
+		font-size: 0.9rem;
+		color: var(--color-gray-text-muted);
+		margin-bottom: 1rem;
+	}
+
+	.aa-NoResultsImage {
+		width: 10rem;
+	}
+
+	.aa-Footer {
+		position: relative;
+		display: flex;
+		justify-content: end;
+		flex: none;
+		padding: 0.8rem 1rem;
+		border-top: 1px solid var(--color-gray-lightest);
+	}
+
+	.aa-Footer::before {
+		position: absolute;
+		top: -2rem;
+		left: 0;
+		display: block;
+		content: '';
+		width: 100%;
+		height: 2rem;
+		margin-top: -1px;
+		background: linear-gradient(
+			180deg,
+			rgb(255 255 255 / 0%) 0%,
+			rgb(255 255 255 / 40%) 100%
+		);
+		pointer-events: none;
+		z-index: 10000;
+	}
+
+	.aa-AlgoliaLogo a {
+		display: flex;
+		align-items: center;
+		text-decoration: none;
+		color: var(--color-gray-text-muted);
+	}
+
+	.aa-AlgoliaLabel {
+		font-size: 0.6rem;
+		margin-right: 0.4rem;
+	}
+
+	.aa-AlgoliaLogo svg,
+	.aa-AlgoliaLabel {
+		flex: none;
+	}
+
+	.aa-AlgoliaLogo svg {
+		width: 4rem;
+		height: 1rem;
+	}
+
+	@media (max-width: 750px) {
+		.aa-Backdrop {
+			padding: 1rem;
+		}
+
+		.aa-Source[id='autocomplete-latest'] .aa-List,
+		.aa-Source[id='autocomplete-schedule'] .aa-List {
+			grid-template-columns: 1fr;
+		}
+
+		.aa-CoverImage {
+			width: 12rem;
+		}
+	}
+
+	@media (max-width: 600px) {
+		.aa-Backdrop {
+			padding: 0;
+		}
+
+		.aa-Autocomplete {
+			border-radius: 0;
+			max-height: none;
+		}
+
+		.aa-CoverImage {
+			width: 5rem;
+			height: 5rem;
+			object-fit: cover;
+			object-position: center;
+		}
+
+		.aa-LinkIcon {
+			display: none;
+		}
+	}
+
+	@media (max-width: 450px) {
+		.aa-LinkDescription {
+			-webkit-line-clamp: 1;
+		}
+
+		.aa-CoverImage {
+			width: 4rem;
+			height: 4rem;
+		}
+	}
+
+	@media (max-width: 380px) {
+		.aa-CoverImage {
+			display: none;
+		}
+
+		.aa-LinkItem-Content {
+			align-items: flex-start;
+		}
+
+		.aa-Icon {
+			margin-top: 0.1rem;
+		}
+
+		.aa-LinkDescription {
+			-webkit-line-clamp: unset;
+		}
 	}
 </style>
 
@@ -67,7 +591,7 @@ const { title, mainClass = '' } = Astro.props;
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/ico" href="/favicon.ico" />
 		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
 		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
@@ -87,13 +611,13 @@ const { title, mainClass = '' } = Astro.props;
 					y2="100%"
 					gradientUnits="objectBoundingBox"
 				>
-					<stop offset="0" stop-color="#D459AB" />
-					<stop offset=".5" stop-color="#FFDF37" />
-					<stop offset="1" stop-color="#A6FFFA" />
+					<stop offset="0" stop-color="#D459AB"></stop>
+					<stop offset=".5" stop-color="#FFDF37"></stop>
+					<stop offset="1" stop-color="#A6FFFA"></stop>
 				</linearGradient>
 			</defs>
 		</svg>
-		<Header />
+		<Header episodes={episodes} schedule={schedule} client:visible />
 		<main class={mainClass}>
 			<slot />
 		</main>
