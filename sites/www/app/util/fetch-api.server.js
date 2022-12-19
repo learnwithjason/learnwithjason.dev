@@ -1,6 +1,5 @@
-const API_URL =
-  process.env.API_URL || process.env.URL || 'https://www.learnwithjason.dev';
-
 export async function loadFromApi(endpoint) {
-  return fetch(`${API_URL}${endpoint}`).then((res) => res.json());
+	return fetch(`https://www.learnwithjason.dev${endpoint}`).then((res) =>
+		res.json()
+	);
 }
