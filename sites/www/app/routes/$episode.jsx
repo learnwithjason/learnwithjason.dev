@@ -124,7 +124,7 @@ export default function EpisodeTemplate() {
 		includePlaylist = false;
 	}
 
-	if (episode.youtube) {
+	if (episode.youtube.id) {
 		return (
 			<EpisodePosted
 				includePlaylist={includePlaylist}
