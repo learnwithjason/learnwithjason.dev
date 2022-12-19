@@ -3,5 +3,10 @@
 	"type": "module",
 	"name": "@lwj/design-system",
 	"version": "0.0.1",
-	"main": "./index.ts"
+	"main": "./index.ts",
+	"dependencies": {
+		"@algolia/autocomplete-core": "^1.7.3",
+		"@algolia/autocomplete-preset-algolia": "^1.7.3",
+		"algoliasearch": "^4.14.2"
+	}
 }
