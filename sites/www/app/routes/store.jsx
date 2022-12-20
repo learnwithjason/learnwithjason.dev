@@ -5,7 +5,7 @@ import { loadFromApi } from '~/util/fetch-api.server.js';
 import styles from '~/styles/store.css';
 
 export const loader = async () => {
-	const products = await loadFromApi('/api/products');
+	const products = await loadFromApi('/api/v2/products');
 
 	return products;
 };
