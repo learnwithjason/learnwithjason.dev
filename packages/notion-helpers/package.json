@@ -1,0 +1,10 @@
+{
+	"private": true,
+	"type": "module",
+	"name": "@lwj/notion-helpers",
+	"version": "0.0.1",
+	"main": "./index.ts",
+	"dependencies": {
+		"@notionhq/client": "^2.2.0"
+	}
+}

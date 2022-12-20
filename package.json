@@ -1,0 +1,25 @@
+{
+	"name": "learnwithjason",
+	"version": "0.0.0",
+	"license": "MIT",
+	"private": true,
+	"devDependencies": {
+		"@nrwl/nx-cloud": "^15.0.2",
+		"@types/node": "16.11.7",
+		"@types/react": "^18.0.17",
+		"@types/react-dom": "^18.0.6",
+		"@vitejs/plugin-react": "^2.0.1",
+		"nx": "15.0.10",
+		"vite": "^3.0.9"
+	},
+	"dependencies": {
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"regenerator-runtime": "0.13.7",
+		"tslib": "^2.3.0"
+	},
+	"workspaces": [
+		"sites/*",
+		"packages/*"
+	]
+}

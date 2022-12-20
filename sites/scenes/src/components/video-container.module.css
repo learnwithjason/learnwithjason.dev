@@ -1,0 +1,67 @@
+.wrapper {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 0;
+	position: relative;
+	z-index: 10;
+}
+
+.videoWrapper {
+	object-fit: cover;
+}
+
+.video {
+	height: 100%;
+	width: 100%;
+}
+
+.nameWrapper {
+	bottom: 1rem;
+	left: 1rem;
+	position: absolute;
+}
+
+[data-size='monologue'] .videoWrapper {
+	aspect-ratio: 16 / 7.3;
+	width: 1920px;
+}
+
+[data-size='interview'] .videoWrapper {
+	aspect-ratio: 8 / 7.3;
+	width: 960px;
+}
+
+[data-size='sidebar'] .videoWrapper {
+	aspect-ratio: 6 / 4.14;
+	width: 100%;
+}
+
+[data-size='sidebar-solo'] .videoWrapper {
+	aspect-ratio: 6 / 8.31;
+	width: 100%;
+}
+
+.nameCard {
+	--alpha: 0.1;
+
+	background: var(--color-black-faded);
+	border-radius: 0.25rem;
+	padding: 0.5rem 1rem 0.625rem;
+	text-align: center;
+}
+
+.guest {
+	color: var(--color-white);
+	display: block;
+	font-size: 1.75rem;
+	font-weight: 400;
+	line-height: 1.1;
+	position: relative;
+	z-index: 10;
+}
+
+[data-size='sidebar'] .guest {
+	font-size: 2rem;
+}

@@ -1,0 +1,8 @@
+[build]
+  publish = "public"
+  functions = "src"
+
+[[redirects]]
+  from = "/webhooks/*"
+  to = "/.netlify/functions/webhook-:splat"
+  status = 200

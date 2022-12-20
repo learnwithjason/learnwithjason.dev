@@ -1,0 +1,38 @@
+---
+import { PageHeader } from '@lwj/design-system';
+import Layout from './Layout.astro';
+
+const { frontmatter } = Astro.props;
+---
+
+<style>
+	:global(.page-container) {
+		max-width: 51rem;
+		margin: 3rem auto;
+	}
+
+	.page {
+		padding: 0 5vw;
+	}
+
+	.page header p {
+		font-size: 1.25rem;
+		line-height: 1.75rem;
+	}
+
+	.page-content {
+		margin: 2rem auto 4rem;
+		max-width: 53ch;
+		width: 100%;
+	}
+</style>
+
+<Layout title={frontmatter.meta.title} mainClass="post-container">
+	<PageHeader
+		heading={frontmatter.meta.title}
+		lede={frontmatter.meta.description}
+	/>
+	<article class="page">
+		<div class="page-content"><slot /></div>
+	</article>
+</Layout>

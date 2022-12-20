@@ -1,0 +1,63 @@
+html {
+	--color-white: hsla(0 0% 100% / 1);
+	--color-black: hsla(207 95% 8% / 1);
+	--color-black-faded: hsla(255 17% 14% / 1);
+	--color-black-faded-alpha: hsla(255 17% 14% / 0.75);
+	--color-pink: hsla(320 59% 59% / 1);
+	--color-pink-text: hsla(320 89% 40% / 1);
+	--color-yellow: hsla(50 100% 61% / 1);
+	--color-blue: hsla(177 100% 82% / 1);
+	--color-gray: hsla(258 4% 48% / 1);
+	--color-gray-medium: hsla(258 8% 70% / 1);
+	--color-gray-light: hsla(258 4% 60% / 1);
+	--color-gray-lighter: hsla(258 23% 87% / 1);
+	--color-gray-lightest: hsla(258 53% 97% / 1);
+	--color-gray-text: hsla(258 4% 80% / 1);
+
+	/* TODO: make sure this is not the worst idea ever */
+	--color-heading: var(--color-white);
+	--color-text-emphasized: var(--color-white);
+	--color-text-default: var(--color-gray-text);
+
+	/*
+	 * Josh Comeau’s gradient generator is so dope:
+	 * https://www.joshwcomeau.com/gradient-generator/
+	 */
+	--gradient-angle: 100deg;
+	--color-gradient: linear-gradient(
+		var(--gradient-angle),
+		hsl(320deg 59% 59%) 0%,
+		hsl(11deg 100% 70%) 10%,
+		hsl(50deg 100% 61%) 20%,
+		hsl(123deg 94% 81%) 30%,
+		hsl(177deg 100% 83%) 40%,
+		hsl(320deg 59% 59%) 50%,
+		hsl(11deg 100% 70%) 60%,
+		hsl(50deg 100% 61%) 70%,
+		hsl(123deg 94% 81%) 80%,
+		hsl(177deg 100% 83%) 90%,
+		hsl(320deg 59% 59%) 100%
+	);
+
+	--animation-gradient-shift: gradient-shift 10s linear infinite;
+}
+
+[data-theme='light'] {
+	--color-gray-text: #403c4a;
+	--color-gray-text-muted: #78757f;
+	--color-pink-faded: #f5f2fc;
+
+	--color-heading: var(--color-black-faded);
+	--color-text-emphasized: var(--color-black-faded);
+	--color-text-default: var(--color-gray-text);
+}
+
+@keyframes gradient-shift {
+	0% {
+		background-position: 0;
+	}
+
+	100% {
+		background-position: 100%;
+	}
+}

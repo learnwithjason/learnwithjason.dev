@@ -1,0 +1,16 @@
+{
+	"private": true,
+	"type": "module",
+	"name": "@socket-studio/react",
+	"version": "0.0.1",
+	"main": "./index.ts",
+	"dependencies": {
+		"isomorphic-fetch": "^3.0.0",
+		"isomorphic-ws": "^5.0.0",
+		"react": "^18.2.0",
+		"rehype": "^12.0.1",
+		"rehype-sanitize": "^5.0.1",
+		"subscriptions-transport-ws": "^0.11.0",
+		"urql": "^3.0.3"
+	}
+}

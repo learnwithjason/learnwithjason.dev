@@ -1,0 +1,19 @@
+.container {
+	display: flex;
+	gap: 1rem;
+	place-items: center;
+}
+
+.sponsors {
+	display: flex;
+	gap: 0;
+}
+
+.sponsors a {
+	color: inherit;
+	display: block;
+}
+
+.sponsors svg {
+	display: block;
+}

@@ -1,0 +1,28 @@
+
+# RSS
+/feed     https://www.learnwithjason.dev/episodes.xml
+/feed.xml https://www.learnwithjason.dev/episodes.xml
+/feeds    https://www.learnwithjason.dev/episodes.xml
+/rss      https://www.learnwithjason.dev/episodes.xml
+/rss.xml  https://www.learnwithjason.dev/episodes.xml
+
+/api/tag/:tag               /.netlify/builders/api-tag          200
+/api/episodes*              /.netlify/builders/api-episodes     200
+/api/schedule               /.netlify/builders/api-schedule     200
+/api/episode/:slug          /.netlify/builders/api-episode      200
+/api/episode/:slug/*        /.netlify/builders/api-episode      200
+/:slug/poster.jpg           /.netlify/builders/api-episode      200
+/:slug/starting-soon.jpg    /.netlify/builders/api-episode      200
+/:slug/schedule.jpg         /.netlify/builders/api-episode      200
+/api/store/*                /.netlify/functions/shopify-:splat  200
+/api/sponsors*              /.netlify/builders/api-sponsors     200
+/api/subscribe              /.netlify/functions/subscribe       200
+
+/commands/*                 /.netlify/functions/command-:splat  200
+/api/*                      /.netlify/builders/:splat           200
+
+/sitemap_index.xml  /sitemap.xml
+/sitemapindex.xml   /sitemap.xml
+
+# Remix
+/*      /.netlify/functions/server  200

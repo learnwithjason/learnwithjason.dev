@@ -1,0 +1,17 @@
+{
+	"name": "api",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"build": "# no build command",
+		"dev": "ntl dev -d ./public -f ./endpoints"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"@lwj/sanity-helpers": "*",
+		"@netlify/functions": "^1.3.0"
+	}
+}

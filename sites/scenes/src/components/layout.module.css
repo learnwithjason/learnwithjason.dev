@@ -1,0 +1,74 @@
+.wrapper {
+	background: #ff0000;
+	display: grid;
+	grid-template-rows: auto 200px;
+	height: 100vh;
+	position: relative;
+}
+
+.content {
+	align-items: center;
+	display: flex;
+	gap: 0;
+	justify-content: center;
+	z-index: 10;
+}
+
+.lowerThird {
+	background: var(--color-black);
+	display: grid;
+	grid-template-columns: 290px 1fr 670px;
+	overflow: hidden;
+	position: relative;
+	place-content: center;
+}
+
+.content::after,
+.lowerThird::after {
+	animation: var(--animation-gradient-shift);
+	background-image: var(--color-gradient);
+	background-size: 200vw 100%;
+	content: '';
+	display: block;
+	height: 4px;
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+	z-index: 100;
+}
+
+.lowerThird::after {
+	animation-delay: -2.5s;
+}
+
+.logoWrapper,
+.episodeDetails,
+.chatWrapper {
+	display: flex;
+	place-content: center;
+}
+
+.episodeDetails {
+	justify-content: start;
+}
+
+.logo {
+	display: block;
+	height: auto;
+	width: 190px;
+}
+
+.detailsWrapper {
+	color: var(--color-white);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 100%;
+	width: 100%;
+}
+
+.heading {
+	line-height: 1.1;
+	margin: 0 0 0.5rem;
+}
