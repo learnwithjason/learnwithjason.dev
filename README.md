@@ -24,7 +24,18 @@
 
 &nbsp;
 
-This site is home to _Learn With Jason_’s episode back catalog, upcoming schedule, and written posts. It’s built with [Remix](https://remix.run) and [Netlify Functions](https://www.netlify.com/products/functions/?utm_campaign=devex-jl&utm_source=github&utm_medium=readme&utm_content=functions-jl). For data, it uses a combination of [Sanity](https://www.sanity.io/) and [Hasura](https://hasura.io/).
+This site is home to _Learn With Jason_’s episode back catalog, upcoming schedule, and written posts. It’s an [Nx](https://nx.dev) monorepo housing multiple sites built with:
+
+- [Remix](https://remix.run)
+- [Astro](https://astro.build)
+- [Netlify Functions](https://www.netlify.com/products/functions/)
+
+For data, it uses:
+
+- [Sanity](https://www.sanity.io/)
+- [Shopify](https://shopify.com)
+
+It also uses [Algolia](https://algolia.com) for search.
 
 ## API
 
@@ -32,26 +43,21 @@ If you want to load _Learn With Jason_ episodes or the schedule, there is an API
 
 All requests are made through the `/api` path. For example:
 
-`https://www.learnwithjason.dev/api/schedule`
+`https://www.learnwithjason.dev/api/v2/schedule`
 
-### `/api/episodes`
+### `/api/v2/episodes`
 
 Loads the most recent 50 episodes.
 
-#### Options
-
-- `/api/episodes/page/:page` — pagination allows retrieving older episodes, 50 per page
-
-### `/api/episode/:slug`
+### `/api/v2/episode/:slug`
 
 Load details about a single episode.
 
 #### Options
 
-- `/api/episode/:slug/transcript` — include the episode transcript in the response
-- `/api/episode/:slug/poster.jpg` — returns the episode poster image as an image
+- `/api/episode/:slug?transcript=true` — include the episode transcript in the response
 
-### `/api/schedule`
+### `/api/v2/schedule`
 
 Load upcoming episode details.
 
@@ -59,7 +65,7 @@ Load upcoming episode details.
 
 To run this repo, you will need:
 
-- Node >= v16.13.1 (if you’re using `nvm`, run `nvm use` in the project root to switch)
+- Node >= v18 (if you’re using `nvm`, run `nvm use` in the project root to switch)
 - the [Netlify CLI](https://docs.netlify.com/cli/get-started/?utm_campaign=devex-jl&utm_source=github&utm_medium=readme&utm_content=cli-jl)
 
 ```bash
@@ -74,22 +80,16 @@ To start, clone the repo and install dependencies:
 git clone git@github.com:learnwithjason/learnwithjason.dev
 
 # move into the project directory, then into the site
-cd learnwithjason.dev/site/
+cd learnwithjason.dev
 
 # install dependencies
 npm install
 
-# build the site — this is required for local dev!
-npm run build
+# start local dev!
+npx nx run blog:dev
 ```
 
-Next, start the project using the Netlify CLI:
-
-```bash
-ntl dev
-```
-
-The project will start at `http://localhost:3000`. Please note that the environment variables will not be set, so some of the serverless functions won’t work unless you add your own env vars. This shouldn’t prevent working on the project for UI-related changes.
+The project will start at `http://localhost:8888`. Please note that the environment variables will not be set, so some of the serverless functions won’t work unless you add your own env vars. This shouldn’t prevent working on the project for UI-related changes.
 
 ## Contributors ✨
 
