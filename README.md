@@ -17,7 +17,7 @@
   <br />
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-17-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-18-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 </p>
@@ -122,6 +122,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center"><a href="https://github.com/ryankshaw"><img src="https://avatars.githubusercontent.com/u/10541?v=4?s=100" width="100px;" alt="Ryan Shaw"/><br /><sub><b>Ryan Shaw</b></sub></a><br /><a href="https://github.com/learnwithjason/learnwithjason.dev/commits?author=ryankshaw" title="Code">💻</a></td>
       <td align="center"><a href="https://mcan.sh"><img src="https://avatars.githubusercontent.com/u/11698668?v=4?s=100" width="100px;" alt="Logan McAnsh"/><br /><sub><b>Logan McAnsh</b></sub></a><br /><a href="https://github.com/learnwithjason/learnwithjason.dev/commits?author=mcansh" title="Code">💻</a></td>
       <td align="center"><a href="https://github.com/petardotjs"><img src="https://avatars.githubusercontent.com/u/109748926?v=4?s=100" width="100px;" alt="Petar Todorov"/><br /><sub><b>Petar Todorov</b></sub></a><br /><a href="https://github.com/learnwithjason/learnwithjason.dev/commits?author=petardotjs" title="Code">💻</a></td>
+      <td align="center"><a href="https://github.com/muescha"><img src="https://avatars.githubusercontent.com/u/184316?v=4?s=100" width="100px;" alt="Muescha"/><br /><sub><b>Muescha</b></sub></a><br /><a href="https://github.com/learnwithjason/learnwithjason.dev/commits?author=muescha" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
