@@ -1,13 +1,15 @@
 import styles from './page-header.module.css';
 
-export function PageHeader() {
+type PageHeaderProps = {
+	heading: string;
+	lede: string;
+};
+
+export function PageHeader({ heading, lede }: PageHeaderProps) {
 	return (
 		<header className={`block ${styles.hero}`}>
-			<h1>Blog Posts</h1>
-			<p>
-				Tutorials, quick tips, and other helpful resources for learning more
-				about code!
-			</p>
+			<h1>{heading}</h1>
+			<p>{lede}</p>
 		</header>
 	);
 }

@@ -1,4 +1,5 @@
 // import { useState } from 'react';
+import { ReactNode } from 'react';
 import { Logo } from './logo';
 // @ts-ignore
 // import { Search } from './search/index.js';
@@ -6,13 +7,10 @@ import { Logo } from './logo';
 import styles from './header.module.css';
 
 type HeaderProps = {
-	episodes: object[];
-	schedule: object[];
+	children: ReactNode;
 };
 
-export function Header({ episodes, schedule }: HeaderProps) {
-	// const [searchState, setSearchState] = useState<'open' | 'closed'>('closed');
-
+export function Header({ children }: HeaderProps) {
 	return (
 		<>
 			<header className={styles.header}>
@@ -23,33 +21,12 @@ export function Header({ episodes, schedule }: HeaderProps) {
 				<div className={styles.logo}>
 					<a href="/" rel="home">
 						<Logo />
-						<span className="visually-hidden">Home</span>
+						<span className="visually-hidden">home</span>
 					</a>
 				</div>
 
-				<nav>
-					<a href="/episodes/">episodes</a>
-					<a href="/schedule/">schedule</a>
-					{/* <a href="/">courses</a> */}
-					<a href="/store/">store</a>
-					<a href="/blog/">blog</a>
-					<a href="/about/">about</a>
-					{/* <button
-						className={`aa-OpenButton ${styles.search}`}
-						onClick={() => setSearchState('open')}
-					>
-						<SearchIcon />
-						⌘+K
-						<span className="visually-hidden">Open search</span>
-					</button> */}
-				</nav>
+				{children}
 			</header>
-			{/* <Search
-				episodes={episodes}
-				schedule={schedule}
-				searchState={searchState}
-				setSearchState={setSearchState}
-			/> */}
 		</>
 	);
 }

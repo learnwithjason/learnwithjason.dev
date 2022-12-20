@@ -1,8 +1,8 @@
 html {
 	--color-white: hsla(0 0% 100% / 1);
 	--color-black: hsla(207 95% 8% / 1);
-	--color-black-faded: hsla(250 23% 10% / 1);
-	--color-black-faded-alpha: hsla(250 23% 10% / 0.75);
+	--color-black-faded: hsla(255 17% 14% / 1);
+	--color-black-faded-alpha: hsla(255 17% 14% / 0.75);
 	--color-pink: hsla(320 59% 59% / 1);
 	--color-pink-text: hsla(320 89% 40% / 1);
 	--color-yellow: hsla(50 100% 61% / 1);

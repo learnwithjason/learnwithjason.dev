@@ -61,7 +61,10 @@ const posts = (await Astro.glob('./**/*.mdx'))
 </style>
 <Layout title="Blog">
 	<main>
-		<PageHeader />
+		<PageHeader
+			heading="Blog Posts"
+			lede="Tutorials, quick tips, and other helpful resources for learning more about code!"
+		/>
 		<section class="block post-previews">
 			{
 				posts.map((post: PostPreview) => {
