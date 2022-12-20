@@ -152,7 +152,7 @@ export function loadEpisodesByTopic({
 
 	return sanityFetch({
 		query: `
-      *[_type == "episodeTag" && slug.current == $topic] {
+      *[_type == "episodeTag" && slug.current == $topic][0] {
         "details": {
           label,
           description,
