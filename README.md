@@ -41,7 +41,7 @@ It also uses [Algolia](https://algolia.com) for search.
 
 If you want to load _Learn With Jason_ episodes or the schedule, there is an API available.
 
-All requests are made through the `/api` path. For example:
+All requests are made through the `/api/v2` path. For example:
 
 `https://www.learnwithjason.dev/api/v2/schedule`
 
@@ -55,7 +55,7 @@ Load details about a single episode.
 
 #### Options
 
-- `/api/episode/:slug?transcript=true` — include the episode transcript in the response
+- `/api/v2/episode/:slug?transcript=true` — include the episode transcript in the response
 
 ### `/api/v2/schedule`
 
