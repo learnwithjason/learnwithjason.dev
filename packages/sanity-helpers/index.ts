@@ -11,9 +11,15 @@ interface SanityFetchEpisodeBySlugProps {
 	cdn: boolean;
 	variables: { slug: string };
 }
+interface SanityFetchEpisodeByTopicProps {
+	query: string;
+	cdn: boolean;
+	variables: { topic: string };
+}
 
 type SanityFetchProps =
 	| SanityFetchAllEpisodesProps
+	| SanityFetchEpisodeByTopicProps
 	| SanityFetchEpisodeBySlugProps;
 
 type SanityFetchResponse = {
@@ -80,7 +86,8 @@ export async function sanityFetch({
 
 	if (variables) {
 		Object.keys(variables).forEach((key) => {
-			if (key === 'slug') {
+			if (['slug', 'topic'].includes(key)) {
+				// @ts-ignore I can’t be bothered to deal with the keyof stuff; this is fine
 				apiUrl.searchParams.set(`$${key}`, `"${variables[key]}"`);
 			}
 		});
@@ -123,6 +130,35 @@ export function loadFeaturedEpisodes({
         ${PUBLISHED_EPISODE_FIELDS}
       } | order(date desc)
     `,
+		cdn,
+	});
+}
+
+export function loadEpisodesByTopic({
+	topic,
+	cdn = true,
+}: {
+	topic: string;
+	cdn: boolean;
+}): Promise<SanityFetchResponse> {
+	if (!topic) {
+		return Promise.resolve({
+			error: {
+				statusCode: 400,
+				message: 'Topic is required',
+			},
+		});
+	}
+
+	return sanityFetch({
+		query: `
+    *[_type == "episode" && hidden == false && defined(youtubeID) && count((episodeTags[]->slug.current)[@ in [$topic]]) > 0] {
+        ${PUBLISHED_EPISODE_FIELDS}
+      } | order(date desc)
+    `,
+		variables: {
+			topic,
+		},
 		cdn,
 	});
 }
