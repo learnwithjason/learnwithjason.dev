@@ -126,9 +126,9 @@ export function loadFeaturedEpisodes({
 }): Promise<SanityFetchResponse> {
 	return sanityFetch({
 		query: `
-    *[_type == "episode" && hidden == false && date < now() && defined(youtubeID) && featured == true][0..7] {
-        ${PUBLISHED_EPISODE_FIELDS}
-      } | order(date desc)
+      *[_type == "episode" && hidden == false && date < now() && defined(youtubeID) && featured == true][0..7] {
+          ${PUBLISHED_EPISODE_FIELDS}
+        } | order(date desc)
     `,
 		cdn,
 	});
@@ -152,9 +152,17 @@ export function loadEpisodesByTopic({
 
 	return sanityFetch({
 		query: `
-    *[_type == "episode" && hidden == false && defined(youtubeID) && count((episodeTags[]->slug.current)[@ in [$topic]]) > 0] {
-        ${PUBLISHED_EPISODE_FIELDS}
-      } | order(date desc)
+      *[_type == "episodeTag" && slug.current == $topic] {
+        "details": {
+          label,
+          description,
+          "slug": slug.current,
+          "uri": "https://www.learnwithjason.dev/topic/" + slug.current,
+        },
+        "episodes": *[_type == "episode" && references(^._id) && hidden == false && defined(youtubeID)] {
+          ${PUBLISHED_EPISODE_FIELDS}
+        } | order(date desc),
+      }
     `,
 		variables: {
 			topic,
