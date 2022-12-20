@@ -1,10 +1,9 @@
 import { createSitemap } from '~/util/create-sitemap.server';
 import { loadFromApi } from '~/util/fetch-api.server';
-import { loadAllEpisodes } from '~/util/load-all-episodes.server';
 
 export const loader = async () => {
-	const episodes = await loadAllEpisodes();
-	const schedule = await loadFromApi('/api/schedule');
+	const episodes = await loadFromApi('/api/v2/episodes');
+	const schedule = await loadFromApi('/api/v2/schedule');
 
 	const pageUrls = [
 		'/',
@@ -18,17 +17,17 @@ export const loader = async () => {
 	].map((url) => ({ url: `https://www.learnwithjason.dev${url}` }));
 
 	const episodeUrls = episodes.map((episode) => ({
-		url: `https://www.learnwithjason.dev/${episode.slug.current}`,
+		url: `https://www.learnwithjason.dev/${episode.slug}`,
 		video: {
 			title: episode.title,
 			description: episode.description,
-			youtubeID: episode.youtubeID,
+			youtubeID: episode.youtube.id,
 			publication_date: new Date(episode.date).toISOString(),
 		},
 	}));
 
 	const scheduleUrls = schedule.map((episode) => ({
-		url: `https://www.learnwithjason.dev/${episode.slug.current}`,
+		url: `https://www.learnwithjason.dev/${episode.slug}`,
 	}));
 
 	const urls = [...pageUrls, ...episodeUrls, ...scheduleUrls];

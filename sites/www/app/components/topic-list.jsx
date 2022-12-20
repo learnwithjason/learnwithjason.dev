@@ -13,7 +13,7 @@ export function TopicList({ topic, title, episodes }) {
 					const teacher = getTeacher(episode.guest);
 
 					return (
-						<li key={episode._id} className="topic-episode">
+						<li key={episode.id} className="topic-episode">
 							<div className="teacher-photo">
 								<TeacherPhoto
 									imageURL={teacher.image}
@@ -21,7 +21,7 @@ export function TopicList({ topic, title, episodes }) {
 									width={50}
 								/>
 							</div>
-							<Link prefetch="intent" to={`/${episode.slug.current}`}>
+							<Link prefetch="intent" to={`/${episode.slug}`}>
 								{episode.title}
 							</Link>
 						</li>

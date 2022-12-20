@@ -759,7 +759,7 @@ a:focus {
 	flex-wrap: wrap;
 	font-size: 0.625rem;
 	font-weight: 600;
-	gap: 1rem;
+	gap: 0 1rem;
 	letter-spacing: 0.2em;
 	list-style: none;
 	margin: 0.5rem 0 0;

@@ -9,7 +9,6 @@ import { loadFromApi } from '~/util/fetch-api.server.js';
 import { getTeacher } from '~/util/get-teacher.js';
 import { EpisodePosted } from '~/components/episode-posted.jsx';
 import { EpisodeScheduled } from '~/components/episode-scheduled.jsx';
-import { WrapperPage } from '~/mdx/wrapper-page.jsx';
 
 dayjs.extend(Utc);
 dayjs.extend(Timezone);
@@ -19,23 +18,31 @@ export function CatchBoundary() {
 	const params = useParams();
 
 	return (
-		<WrapperPage title="Not Found" description="">
-			<h1>Not Found</h1>
-			<p>
-				The page you requested doesn’t exist. Try pressing <code>command</code>{' '}
-				+ <code>K</code> or clicking search in the top navigation to find what
-				you’re looking for.
-			</p>
-			<p>
-				If you want to let us know about this broken link,{' '}
-				<a
-					href={`https://github.com/learnwithjason/learnwithjason.dev/issues/new?title=Broken+link:+/${params.episode}&body=This+link+resulted+in+a+404:+https://www.learnwithjason.dev/${params.episode}&labels=bug`}
-				>
-					please open an issue on GitHub
-				</a>
-				.
-			</p>
-		</WrapperPage>
+		<>
+			<header className="block hero">
+				<h1>Not Found</h1>
+				{description && <p>{description}</p>}
+			</header>
+			<section className="block">
+				<div className="post-content">
+					<h1>Not Found</h1>
+					<p>
+						The page you requested doesn’t exist. Try pressing{' '}
+						<code>command</code> + <code>K</code> or clicking search in the top
+						navigation to find what you’re looking for.
+					</p>
+					<p>
+						If you want to let us know about this broken link,{' '}
+						<a
+							href={`https://github.com/learnwithjason/learnwithjason.dev/issues/new?title=Broken+link:+/${params.episode}&body=This+link+resulted+in+a+404:+https://www.learnwithjason.dev/${params.episode}&labels=bug`}
+						>
+							please open an issue on GitHub
+						</a>
+						.
+					</p>
+				</div>
+			</section>
+		</>
 	);
 }
 
@@ -53,7 +60,7 @@ export const loader = async ({ params }) => {
 		});
 	}
 
-	const episode = await loadFromApi(`/api/v2/episode/${slug}`);
+	const episode = await loadFromApi(`/api/v2/episode/${slug}?transcript=true`);
 
 	if (!episode || !episode.title) {
 		throw new Response('Not Found', {

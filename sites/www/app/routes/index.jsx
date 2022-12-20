@@ -11,23 +11,19 @@ export const loader = async () => {
 	// we don't `await` on these until below so they can all be fetched in parallel
 	const episodesPromise = loadFromApi('/api/v2/episodes');
 	const schedulePromise = loadFromApi('/api/v2/schedule');
-	// const featuredPromise = loadFromApi('/api/episodes/featured');
-	// const sponsorsPromise = loadFromApi('/api/v2/sponsors');
+	const featuredPromise = loadFromApi('/api/v2/featured');
+	const sponsorsPromise = loadFromApi('/api/v2/sponsors');
 
 	return {
-		// episodes: await episodesPromise,
+		episodes: await episodesPromise,
 		schedule: await schedulePromise,
-		// featured: await featuredPromise,
-		// sponsors: await sponsorsPromise,
+		featured: await featuredPromise,
+		sponsors: await sponsorsPromise,
 	};
 };
 
 export default function Index() {
-	const {
-		// episodes,
-		schedule,
-		// featured, sponsors
-	} = useLoaderData();
+	const { episodes, schedule, featured, sponsors } = useLoaderData();
 
 	return (
 		<>
@@ -36,9 +32,9 @@ export default function Index() {
 				nextEpisode={schedule[0]}
 				nextNextEpisode={schedule[1]}
 			/>
-			{/* <SectionSponsors sponsors={sponsors} />
+			<SectionSponsors sponsors={sponsors} />
 			<SectionFeaturedEpisodes episodes={featured} />
-			<SectionTopics episodes={episodes} /> */}
+			<SectionTopics episodes={episodes} />
 		</>
 	);
 }

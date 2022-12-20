@@ -124,8 +124,8 @@ export const loader = async ({ request }) => {
 	const url = new URL(request.url);
 	const search = url.searchParams.get('search');
 
-	const schedulePromise = loadFromApi('/api/schedule');
-	const episodesPromise = loadFromApi('/api/episodes');
+	const schedulePromise = loadFromApi('/api/v2/schedule');
+	const episodesPromise = loadFromApi('/api/v2/episodes');
 
 	return {
 		schedule: (await schedulePromise).slice(0, 3),
