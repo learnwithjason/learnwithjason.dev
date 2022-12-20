@@ -114,6 +114,19 @@ export function loadAllEpisodes({ cdn = true }): Promise<SanityFetchResponse> {
 	});
 }
 
+export function loadFeaturedEpisodes({
+	cdn = true,
+}): Promise<SanityFetchResponse> {
+	return sanityFetch({
+		query: `
+    *[_type == "episode" && hidden == false && date < now() && defined(youtubeID) && featured == true][0..7] {
+        ${PUBLISHED_EPISODE_FIELDS}
+      } | order(date desc)
+    `,
+		cdn,
+	});
+}
+
 export function loadEpisodeBySlug({
 	slug,
 	transcript = false,
