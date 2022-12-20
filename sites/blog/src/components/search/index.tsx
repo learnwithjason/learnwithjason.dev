@@ -19,6 +19,8 @@ import { YouTubeLogo } from './logos/youtube-logo.jsx';
 // @ts-ignore
 import { SearchIcon } from './icons/search-icon.tsx';
 // @ts-ignore
+import { NewsletterIcon } from './icons/newsletter-icon.jsx';
+// @ts-ignore
 import { isLink } from './utils/is-link.js';
 // @ts-ignore
 import { Autocomplete } from './autocomplete.jsx';
@@ -65,6 +67,17 @@ export function Search({ episodes, schedule }: SearchProps) {
 					{
 						sourceId: 'links',
 						getItems: () => [
+							{
+								label: 'Subscribe to the newsletter',
+								description:
+									'News episodes & industry tips direct to your inbox.',
+								url: '/newsletter',
+								icon: () => (
+									<div className="aa-LinkPicture">
+										<NewsletterIcon />
+									</div>
+								),
+							},
 							{
 								label: 'Add schedule to Google Calendar',
 								description: 'Get LWJ upcoming shows in your calendar.',
