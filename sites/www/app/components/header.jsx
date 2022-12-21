@@ -29,9 +29,7 @@ export function Header({ onOpenSearch }) {
 					store
 				</Link>
 				<a href="/blog/">blog</a>
-				<Link prefetch="intent" to="/newsletter">
-					tips & insights
-				</Link>
+				<a href="/newsletter">tips & insights</a>
 				{/* <Link prefetch="intent" to="/about">
           about
         </Link> */}
