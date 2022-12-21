@@ -43,6 +43,67 @@ const PAGES = [
 const { title, mainClass = '' } = Astro.props;
 ---
 
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/ico" href="/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+		<link rel="manifest" href="/site.webmanifest" />
+		<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#302d42" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body data-theme="light">
+		<svg class="svg-defs">
+			<defs>
+				<linearGradient
+					id="lwj-gradient"
+					x1="0"
+					x2="100%"
+					y1="100%"
+					y2="100%"
+					gradientUnits="objectBoundingBox"
+				>
+					<stop offset="0" stop-color="#D459AB"></stop>
+					<stop offset=".5" stop-color="#FFDF37"></stop>
+					<stop offset="1" stop-color="#A6FFFA"></stop>
+				</linearGradient>
+			</defs>
+		</svg>
+		<!-- TODO get styles for the header loaded above this element -->
+		<Header>
+			<nav class="main-nav">
+				{PAGES.map((p) => <a href={p.url}>{p.label}</a>)}
+			</nav>
+
+			<Search
+				episodes={episodes.slice(0, 4)}
+				schedule={schedule.slice(0, 4)}
+				client:only
+			/>
+
+			<button class="nav-toggle"> menu</button>
+		</Header>
+
+		<script>
+			const btn = document.querySelector('.nav-toggle');
+			const nav = document.querySelector('.main-nav');
+
+			btn.addEventListener('click', () => {
+				nav.classList.toggle('open');
+			});
+		</script>
+
+		<main class={mainClass}>
+			<slot />
+		</main>
+		<Footer />
+	</body>
+</html>
+
 <style is:global>
 	html {
 		scroll-behavior: smooth;
@@ -618,64 +679,3 @@ const { title, mainClass = '' } = Astro.props;
 		}
 	}
 </style>
-
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/ico" href="/favicon.ico" />
-		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-		<link rel="manifest" href="/site.webmanifest" />
-		<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#302d42" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body data-theme="light">
-		<svg class="svg-defs">
-			<defs>
-				<linearGradient
-					id="lwj-gradient"
-					x1="0"
-					x2="100%"
-					y1="100%"
-					y2="100%"
-					gradientUnits="objectBoundingBox"
-				>
-					<stop offset="0" stop-color="#D459AB"></stop>
-					<stop offset=".5" stop-color="#FFDF37"></stop>
-					<stop offset="1" stop-color="#A6FFFA"></stop>
-				</linearGradient>
-			</defs>
-		</svg>
-		<!-- TODO get styles for the header loaded above this element -->
-		<Header>
-			<nav class="main-nav">
-				{PAGES.map((p) => <a href={p.url}>{p.label}</a>)}
-			</nav>
-
-			<Search
-				episodes={episodes.slice(0, 4)}
-				schedule={schedule.slice(0, 4)}
-				client:only
-			/>
-
-			<button class="nav-toggle"> menu</button>
-		</Header>
-
-		<script>
-			const btn = document.querySelector('.nav-toggle');
-			const nav = document.querySelector('.main-nav');
-
-			btn.addEventListener('click', () => {
-				nav.classList.toggle('open');
-			});
-		</script>
-
-		<main class={mainClass}>
-			<slot />
-		</main>
-		<Footer />
-	</body>
-</html>

@@ -5,6 +5,93 @@ import Layout from './Layout.astro';
 const { frontmatter, headings } = Astro.props;
 ---
 
+<Layout title={frontmatter.meta.title} mainClass="post-container">
+	<article class="post">
+		<header>
+			<h1>{frontmatter.meta.title}</h1>
+			<p>{frontmatter.meta.description}</p>
+		</header>
+		<aside class="table-of-contents" data-section="table-of-contents">
+			<div class="toc-sticky-container">
+				<h2
+					class="gradient-subheading gradient-underline"
+					id="table-of-contents"
+				>
+					Table of Contents
+				</h2>
+				<ol>
+					{
+						headings.map(
+							(heading: { depth: number; slug: string; text: string }) => {
+								if (heading.depth > 2) {
+									return null;
+								}
+
+								return (
+									<li>
+										<a href={`#${heading.slug}`}>{heading.text}</a>
+									</li>
+								);
+							}
+						)
+					}
+				</ol>
+			</div>
+		</aside>
+
+		<div class="post-content" data-section="post-content"><slot /></div>
+
+		{frontmatter.showOptin !== false ? <OptInForm /> : null}
+	</article>
+</Layout>
+
+<script>
+	function setActiveHeading() {
+		const headingElements = document.querySelectorAll(
+			'[data-section=post-content] h2'
+		);
+
+		const observerCallback: IntersectionObserverCallback = ([entry]) => {
+			const activeHeading = entry.target;
+			const links = Array.from(
+				document.querySelectorAll('[data-section=table-of-contents] a')
+			);
+
+			links.forEach((link) => {
+				const [, href] = link.getAttribute('href')?.split('#') ?? '';
+
+				if (entry.isIntersecting && href === activeHeading.id) {
+					links.forEach((l) => l.classList.remove('active'));
+					link.classList.add('active');
+				}
+			});
+		};
+
+		const observer = new IntersectionObserver(observerCallback, {
+			threshold: [0.9],
+		});
+
+		Array.from(headingElements)
+			.filter((h2) => h2.id !== 'table-of-contents')
+			.map((h2) => {
+				observer.observe(h2);
+
+				return {
+					label: h2.textContent,
+					href: `#${h2.id}`,
+				};
+			});
+
+		return () => {
+			Array.from(headingElements).map((h2) => {
+				observer.unobserve(h2);
+			});
+		};
+	}
+
+	setActiveHeading();
+</script>
+
 <style>
 	:global(.post-container) {
 		max-width: 51rem;
@@ -167,90 +254,3 @@ const { frontmatter, headings } = Astro.props;
 		font-size: 0.875rem;
 	}
 </style>
-
-<Layout title={frontmatter.meta.title} mainClass="post-container">
-	<article class="post">
-		<header>
-			<h1>{frontmatter.meta.title}</h1>
-			<p>{frontmatter.meta.description}</p>
-		</header>
-		<aside class="table-of-contents" data-section="table-of-contents">
-			<div class="toc-sticky-container">
-				<h2
-					class="gradient-subheading gradient-underline"
-					id="table-of-contents"
-				>
-					Table of Contents
-				</h2>
-				<ol>
-					{
-						headings.map(
-							(heading: { depth: number; slug: string; text: string }) => {
-								if (heading.depth > 2) {
-									return null;
-								}
-
-								return (
-									<li>
-										<a href={`#${heading.slug}`}>{heading.text}</a>
-									</li>
-								);
-							}
-						)
-					}
-				</ol>
-			</div>
-		</aside>
-
-		<div class="post-content" data-section="post-content"><slot /></div>
-
-		{frontmatter.showOptin !== false ? <OptInForm /> : null}
-	</article>
-</Layout>
-
-<script>
-	function setActiveHeading() {
-		const headingElements = document.querySelectorAll(
-			'[data-section=post-content] h2'
-		);
-
-		const observerCallback: IntersectionObserverCallback = ([entry]) => {
-			const activeHeading = entry.target;
-			const links = Array.from(
-				document.querySelectorAll('[data-section=table-of-contents] a')
-			);
-
-			links.forEach((link) => {
-				const [, href] = link.getAttribute('href')?.split('#') ?? '';
-
-				if (entry.isIntersecting && href === activeHeading.id) {
-					links.forEach((l) => l.classList.remove('active'));
-					link.classList.add('active');
-				}
-			});
-		};
-
-		const observer = new IntersectionObserver(observerCallback, {
-			threshold: [0.9],
-		});
-
-		Array.from(headingElements)
-			.filter((h2) => h2.id !== 'table-of-contents')
-			.map((h2) => {
-				observer.observe(h2);
-
-				return {
-					label: h2.textContent,
-					href: `#${h2.id}`,
-				};
-			});
-
-		return () => {
-			Array.from(headingElements).map((h2) => {
-				observer.unobserve(h2);
-			});
-		};
-	}
-
-	setActiveHeading();
-</script>
