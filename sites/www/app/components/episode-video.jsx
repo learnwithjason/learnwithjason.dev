@@ -5,11 +5,7 @@ import { getTeacher } from '../util/get-teacher.js';
 export function EpisodeVideo({ episode, includePlaylist = true }) {
 	const [playing, setPlaying] = useState(false);
 
-	const host = getTeacher(episode.host);
-	const teacher = getTeacher(episode.guest);
-
 	const url = new URL('https://www.youtube-nocookie.com/');
-
 	url.pathname = `/embed/${episode.youtube.id}`;
 
 	// apparently YT breaks playlists after 200 videos, so bail if we're above that limit
@@ -36,7 +32,11 @@ export function EpisodeVideo({ episode, includePlaylist = true }) {
 				</div>
 			) : (
 				<button onClick={() => setPlaying(true)} aria-label="play video">
-					<EpisodePoster title={episode.title} host={host} teacher={teacher} />
+					<EpisodePoster
+						slug={episode.slug}
+						title={episode.title}
+						guest={episode.guest}
+					/>
 				</button>
 			)}
 		</div>

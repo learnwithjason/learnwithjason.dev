@@ -81,6 +81,14 @@ const handlerFn: Handler = async (event) => {
 		filename = 'episode-2023-solo';
 	}
 
+	if (type === 'video-poster.jpg' && episodeType === 'interview') {
+		filename = 'episode-video-2023';
+	}
+
+	if (type === 'video-poster.jpg' && episodeType === 'solo') {
+		filename = 'episode-video-2023-solo';
+	}
+
 	/*
 	 * Tweak the font styles a bit so that short titles and long titles don’t
 	 * look goofy on the cards. Not perfect, but better than it was before.

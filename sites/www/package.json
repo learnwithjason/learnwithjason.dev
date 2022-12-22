@@ -6,7 +6,7 @@
 	"scripts": {
 		"prebuild": "postcss ../../node_modules/prism-theme-night-owl/build/style.css -o public/styles/theme.css",
 		"build": "remix build",
-		"dev": "cross-env NODE_ENV=development netlify dev -d ./public -f ./netlify/functions",
+		"dev": "cross-env BROWSER=none NODE_ENV=development netlify dev -d ./public -f ./netlify/functions",
 		"serve": "cross-env NODE_ENV=development netlify dev -d ./public -f ./netlify/functions"
 	},
 	"dependencies": {

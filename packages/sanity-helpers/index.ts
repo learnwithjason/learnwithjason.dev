@@ -1,3 +1,5 @@
+import type { Episode } from '@lwj/types';
+
 const SANITY_PROJECT_ID = 'vnkupgyb';
 
 interface SanityFetchAllEpisodesProps {
@@ -25,7 +27,7 @@ type SanityFetchProps =
 type SanityFetchResponse = {
 	error: false | { statusCode: number; message: string };
 	data?: {
-		result: object;
+		result: Episode;
 	};
 };
 
