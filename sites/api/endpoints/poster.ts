@@ -36,6 +36,17 @@ const dimensions = {
 		left: 970,
 		top: 660,
 	},
+	videoGuestImage: {
+		width: 600,
+		height: 600,
+		left: 1080,
+		top: 190,
+	},
+	videoGuestName: {
+		width: 540,
+		left: 1110,
+		top: 760,
+	},
 };
 
 function cleanText(text: string) {
@@ -128,12 +139,24 @@ const handlerFn: Handler = async (event) => {
 			.toString('base64')
 			.replace(/\//g, '_');
 
+		let imageTop = dimensions.guestImage.top;
+		let imageLeft = dimensions.guestImage.left;
+		let nameTop = dimensions.guestName.top;
+		let nameLeft = dimensions.guestName.left;
+
+		if (type === 'video-poster.jpg') {
+			imageTop = dimensions.videoGuestImage.top;
+			imageLeft = dimensions.videoGuestImage.left;
+			nameTop = dimensions.videoGuestName.top;
+			nameLeft = dimensions.videoGuestName.left;
+		}
+
 		posterUrl.push(
 			`/u_fetch:${guestImageBuffer},w_${dimensions.guestImage.width},`,
 			`h_${dimensions.guestImage.height},c_fill,g_north_west,`,
-			`x_${dimensions.guestImage.left},y_${dimensions.guestImage.top}`,
+			`x_${imageLeft},y_${imageTop}`,
 			`/l_text:jwf-bold.otf_44_center:${cleanText(guest.name)},`,
-			`g_north_west,x_${dimensions.guestName.left},y_${dimensions.guestName.top},`,
+			`g_north_west,x_${nameLeft},y_${nameTop},`,
 			`c_fit,co_white,w_${dimensions.guestName.width},b_rgb:00000001`
 		);
 	}
