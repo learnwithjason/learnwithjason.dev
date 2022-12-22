@@ -5,7 +5,7 @@ export function EpisodePoster({
 	width = 500,
 	height = 280,
 }) {
-	const src = `https://www.learnwithjason.dev/${slug}/poster.jpg`;
+	const src = `https://www.learnwithjason.dev/${slug}/video-poster.jpg`;
 	const imageAttributes = {
 		src,
 		srcSet: [
