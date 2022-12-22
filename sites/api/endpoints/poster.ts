@@ -89,7 +89,7 @@ const handlerFn: Handler = async (event) => {
 	let lineSpacing = 0;
 
 	if (episode.title.length < 25) {
-		titleSize = 130;
+		titleSize = 120;
 		lineSpacing = -30;
 	} else if (episode.title.length < 30) {
 		titleSize = 100;
