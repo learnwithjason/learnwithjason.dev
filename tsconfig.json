@@ -2,6 +2,7 @@
 	"compilerOptions": {
 		"strict": true,
 		"jsx": "react-jsx",
-		"forceConsistentCasingInFileNames": true
+		"forceConsistentCasingInFileNames": true,
+		"esModuleInterop": true
 	}
 }

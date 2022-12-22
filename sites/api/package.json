@@ -12,6 +12,7 @@
 	"license": "ISC",
 	"dependencies": {
 		"@lwj/sanity-helpers": "*",
-		"@netlify/functions": "^1.3.0"
+		"@netlify/functions": "^1.3.0",
+		"dayjs": "^1.11.7"
 	}
 }
