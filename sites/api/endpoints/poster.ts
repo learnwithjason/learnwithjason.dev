@@ -45,7 +45,7 @@ function cleanText(text: string) {
 const handlerFn: Handler = async (event) => {
 	const { w = 1920 } = parse(event.rawQuery);
 	const [, slug, type] = event.path
-		.replace(/\/(api|.netlify\/functions)\/poster/g, '')
+		.replace(/\/(api|.netlify\/functions|.netlify\/builders)\/poster/g, '')
 		.split('/');
 
 	if (!type) {
