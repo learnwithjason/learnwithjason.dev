@@ -8,19 +8,20 @@ https://lwj.dev/*                     https://www.learnwithjason.dev/:splat 301!
 /api/v2/*     https://lwj-api.netlify.app/.netlify/functions/:splat               200
 
 # v1 API endpoints
-/api/tag/:tag               https://lwj-remix.netlify.app/.netlify/builders/api-tag                   200
-/api/episodes*              https://lwj-remix.netlify.app/.netlify/builders/api-episodes              200
-/api/schedule               https://lwj-remix.netlify.app/.netlify/builders/api-schedule              200
-/api/episode/:slug          https://lwj-remix.netlify.app/.netlify/builders/api-episode               200
-/api/episode/:slug/*        https://lwj-remix.netlify.app/.netlify/builders/api-episode               200
-/:slug/poster.jpg           https://lwj-api.netlify.app/.netlify/builders/poster/:slug/poster.jpg     200
-/:slug/starting-soon.jpg    https://lwj-api.netlify.app/.netlify/builders/poster/:slug/poster.jpg     200
-/:slug/schedule.jpg         https://lwj-api.netlify.app/.netlify/builders/poster/:slug/schedule.jpg   200
-/api/store/*                https://lwj-remix.netlify.app/.netlify/functions/shopify-:splat           200
-/api/sponsors*              https://lwj-remix.netlify.app/.netlify/builders/api-sponsors              200
-/api/subscribe              https://lwj-remix.netlify.app/.netlify/functions/subscribe                200
-/commands/*                 https://lwj-remix.netlify.app/.netlify/functions/command-:splat           200
-/api/*                      https://lwj-remix.netlify.app/.netlify/builders/:splat                    200
+/api/tag/:tag               https://lwj-remix.netlify.app/.netlify/builders/api-tag                      200
+/api/episodes*              https://lwj-remix.netlify.app/.netlify/builders/api-episodes                 200
+/api/schedule               https://lwj-remix.netlify.app/.netlify/builders/api-schedule                 200
+/api/episode/:slug          https://lwj-remix.netlify.app/.netlify/builders/api-episode                  200
+/api/episode/:slug/*        https://lwj-remix.netlify.app/.netlify/builders/api-episode                  200
+/:slug/poster.jpg           https://lwj-api.netlify.app/.netlify/builders/poster/:slug/poster.jpg        200
+/:slug/video-poster.jpg     https://lwj-api.netlify.app/.netlify/builders/poster/:slug/video-poster.jpg  200
+/:slug/starting-soon.jpg    https://lwj-api.netlify.app/.netlify/builders/poster/:slug/poster.jpg        200
+/:slug/schedule.jpg         https://lwj-api.netlify.app/.netlify/builders/poster/:slug/schedule.jpg      200
+/api/store/*                https://lwj-remix.netlify.app/.netlify/functions/shopify-:splat              200
+/api/sponsors*              https://lwj-remix.netlify.app/.netlify/builders/api-sponsors                 200
+/api/subscribe              https://lwj-remix.netlify.app/.netlify/functions/subscribe                   200
+/commands/*                 https://lwj-remix.netlify.app/.netlify/functions/command-:splat              200
+/api/*                      https://lwj-remix.netlify.app/.netlify/builders/:splat                       200
 
 # search is a command bar now thanks to Sarah Dayan and Algolia
 /search /?search 301
