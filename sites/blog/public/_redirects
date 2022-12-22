@@ -13,9 +13,9 @@ https://lwj.dev/*                     https://www.learnwithjason.dev/:splat 301!
 /api/schedule               https://lwj-remix.netlify.app/.netlify/builders/api-schedule     200
 /api/episode/:slug          https://lwj-remix.netlify.app/.netlify/builders/api-episode      200
 /api/episode/:slug/*        https://lwj-remix.netlify.app/.netlify/builders/api-episode      200
-/:slug/poster.jpg           https://lwj-remix.netlify.app/.netlify/builders/api-episode      200
-/:slug/starting-soon.jpg    https://lwj-remix.netlify.app/.netlify/builders/api-episode      200
-/:slug/schedule.jpg         https://lwj-remix.netlify.app/.netlify/builders/api-episode      200
+/:slug/poster.jpg           https://lwj-api.netlify.app/.netlify/builders/api-episode      200
+/:slug/starting-soon.jpg    https://lwj-api.netlify.app/.netlify/builders/api-episode      200
+/:slug/schedule.jpg         https://lwj-api.netlify.app/.netlify/builders/api-episode      200
 /api/store/*                https://lwj-remix.netlify.app/.netlify/functions/shopify-:splat  200
 /api/sponsors*              https://lwj-remix.netlify.app/.netlify/builders/api-sponsors     200
 /api/subscribe              https://lwj-remix.netlify.app/.netlify/functions/subscribe       200
