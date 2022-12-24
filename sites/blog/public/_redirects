@@ -1,12 +1,16 @@
-https://lwj2021.netlify.app/*         https://www.learnwithjason.dev/:splat 301!
-https://learnwithjason.netlify.app/*  https://www.learnwithjason.dev/:splat 301!
-https://learnwithjason.netlify.com/*  https://www.learnwithjason.dev/:splat 301!
-https://lwj.dev/*                     https://www.learnwithjason.dev/:splat 301!
+https://lwj2021.netlify.app/*           https://www.learnwithjason.dev/:splat    301!
+https://learnwithjason.netlify.app/*    https://www.learnwithjason.dev/:splat    301!
+https://learnwithjason.netlify.com/*    https://www.learnwithjason.dev/:splat    301!
+https://lwj.dev/*                       https://www.learnwithjason.dev/:splat    301!
 
 # stitch in the additional sites
-/webhooks/*         https://lwj-webhooks.netlify.app/.netlify/functions/webhook-:splat  200
-/api/v2/store/*     https://lwj-api.netlify.app/.netlify/functions/shopify-:splat       200
-/api/v2/*           https://lwj-api.netlify.app/.netlify/builders/:splat               200
+/webhooks/*                 https://lwj-webhooks.netlify.app/.netlify/functions/webhook-:splat           200
+/api/v2/store/*             https://lwj-api.netlify.app/.netlify/functions/shopify-:splat                200
+/api/v2/*                   https://lwj-api.netlify.app/.netlify/builders/:splat                         200
+/:slug/poster.jpg           https://lwj-api.netlify.app/.netlify/builders/poster/:slug/poster.jpg        200
+/:slug/video-poster.jpg     https://lwj-api.netlify.app/.netlify/builders/poster/:slug/video-poster.jpg  200
+/:slug/starting-soon.jpg    https://lwj-api.netlify.app/.netlify/builders/poster/:slug/poster.jpg        200
+/:slug/schedule.jpg         https://lwj-api.netlify.app/.netlify/builders/poster/:slug/schedule.jpg      200
 
 # v1 API endpoints
 /api/tag/:tag               https://lwj-remix.netlify.app/.netlify/builders/api-tag                      200
@@ -14,10 +18,6 @@ https://lwj.dev/*                     https://www.learnwithjason.dev/:splat 301!
 /api/schedule               https://lwj-remix.netlify.app/.netlify/builders/api-schedule                 200
 /api/episode/:slug          https://lwj-remix.netlify.app/.netlify/builders/api-episode                  200
 /api/episode/:slug/*        https://lwj-remix.netlify.app/.netlify/builders/api-episode                  200
-/:slug/poster.jpg           https://lwj-api.netlify.app/.netlify/builders/poster/:slug/poster.jpg        200
-/:slug/video-poster.jpg     https://lwj-api.netlify.app/.netlify/builders/poster/:slug/video-poster.jpg  200
-/:slug/starting-soon.jpg    https://lwj-api.netlify.app/.netlify/builders/poster/:slug/poster.jpg        200
-/:slug/schedule.jpg         https://lwj-api.netlify.app/.netlify/builders/poster/:slug/schedule.jpg      200
 /api/store/*                https://lwj-remix.netlify.app/.netlify/functions/shopify-:splat              200
 /api/sponsors*              https://lwj-remix.netlify.app/.netlify/builders/api-sponsors                 200
 /api/subscribe              https://lwj-remix.netlify.app/.netlify/functions/subscribe                   200
@@ -25,31 +25,33 @@ https://lwj.dev/*                     https://www.learnwithjason.dev/:splat 301!
 /api/*                      https://lwj-remix.netlify.app/.netlify/builders/:splat                       200
 
 # search is a command bar now thanks to Sarah Dayan and Algolia
-/search /?search 301
+/search        /?search
+
+# sponsorship information
+/sponsor       https://www.notion.so/jlengstorf/Learn-With-Jason-Sponsorship-214f066473d64bddaeb6f57d155fad34
 
 # sponsors
-/sponsor   https://www.notion.so/jlengstorf/Learn-With-Jason-Sponsorship-214f066473d64bddaeb6f57d155fad34
-/backlight https://backlight.dev/?utm_source=learnwithjason&utm_medium=lwj&utm_campaign=sponsored
-/nrwl      https://nrwl.io/?utm_source=learnwithjason&utm_medium=lwj&utm_campaign=sponsored
-/nx        https://nx.dev/?utm_source=Learn+with+Jason&utm_medium=link&utm_id=LWJ+2022+H1
-/fauna     https://www.fauna.com/?utm_source=Jason+Lengstorf+&utm_medium=video&utm_campaign=Q3&utm_id=influencers
-/auth0     https://auth0.com/?utm_source=learnwithjason&utm_medium=lwj&utm_campaign=sponsored
-/netlify   https://www.netlify.com/?utm_source=learnwithjason&utm_medium=lwj&utm_campaign=devex-jl
-/new-relic https://newrelic.com/
+/netlify       https://www.netlify.com/?utm_source=learnwithjason&utm_medium=lwj&utm_campaign=sponsored
+/nx            https://nx.dev/?utm_source=Learn+with+Jason&utm_medium=link&utm_id=LWJ+2022+H1
+/new-relic     https://newrelic.com/?utm_source=learnwithjason&utm_medium=lwj&utm_campaign=sponsored
+/nrwl          https://nrwl.io/?utm_source=learnwithjason&utm_medium=lwj&utm_campaign=sponsored
+/backlight     https://backlight.dev/?utm_source=learnwithjason&utm_medium=lwj&utm_campaign=sponsored
+/fauna         https://www.fauna.com/?utm_source=Jason+Lengstorf+&utm_medium=video&utm_campaign=Q3&utm_id=influencers
+/auth0         https://auth0.com/?utm_source=learnwithjason&utm_medium=lwj&utm_campaign=sponsored
 
 # affiliate links
-/daskeyboard  https://click.linksynergy.com/fs-bin/click?id=2xZxGRnahIM&offerid=1008802.89&type=3&subid=0&LSNSUBSITE=LSNSUBSITE  301
+/daskeyboard   https://click.linksynergy.com/fs-bin/click?id=2xZxGRnahIM&offerid=1008802.89&type=3&subid=0&LSNSUBSITE=LSNSUBSITE  301
 
 # calendar stuff
-/calendar https://calendar.google.com/calendar?cid=bGVuZ3N0b3JmLmNvbV85cGxqMW02dTl2dGRkbGRvaW5sMGhzMnZna0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t 301!
-/cal      https://calendar.google.com/calendar?cid=bGVuZ3N0b3JmLmNvbV85cGxqMW02dTl2dGRkbGRvaW5sMGhzMnZna0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t 301!
-/book     https://calendly.com/learnwithjason/livestream
+/calendar      https://calendar.google.com/calendar?cid=bGVuZ3N0b3JmLmNvbV85cGxqMW02dTl2dGRkbGRvaW5sMGhzMnZna0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t 301!
+/cal           https://calendar.google.com/calendar?cid=bGVuZ3N0b3JmLmNvbV85cGxqMW02dTl2dGRkbGRvaW5sMGhzMnZna0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t 301!
+/book          https://calendly.com/learnwithjason/livestream
 
 # the old live viewer is now on the home page
-/live     /
+/live          /
 
 # TODO decommission this
-/graphql  https://learnwithjason.hasura.app/v1/graphql  200
+/graphql       https://learnwithjason.hasura.app/v1/graphql  200
 
 # this article was moved to another site
 /progressive-disclosure-of-complexity   https://www.jason.af/progressive-disclosure-of-complexity 301!
