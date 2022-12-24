@@ -92,7 +92,7 @@ function Cart({ cart, emptyCart }) {
 					})}
 				</p>
 				{cart.id && (
-					<form action="/api/store/create-checkout" method="POST">
+					<form action="/api/v2/store/create-checkout" method="POST">
 						<input type="hidden" name="cartId" value={cart.id} />
 						<button>Check Out</button>
 					</form>
@@ -118,7 +118,7 @@ export default function Store() {
 		}
 
 		const cartData = await fetch(
-			`${window.location.origin}/api/store/get-cart`,
+			`${window.location.origin}/api/v2/store/get-cart`,
 			{
 				method: 'POST',
 				body: JSON.stringify({ cartId }),
@@ -143,7 +143,7 @@ export default function Store() {
 		const form = new FormData(event.target);
 
 		const response = await fetch(
-			`${window.location.origin}/api/store/add-to-cart`,
+			`${window.location.origin}/api/v2/store/add-to-cart`,
 			{
 				method: 'POST',
 				headers: {
