@@ -6,7 +6,7 @@ const handlerFn: Handler = async (event) => {
 	const transcript = params.get('transcript') === 'true';
 	const cdn = params.get('cdn') === 'false' ? false : true;
 	let [, slug] = event.path
-		.replace(/\/(api|.netlify\/functions)\/episode/, '')
+		.replace(/\/(api\/v2|.netlify\/functions)\/episode/, '')
 		.split('/');
 
 	if (slug.endsWith('.json')) {

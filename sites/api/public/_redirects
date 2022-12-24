@@ -1,4 +1,4 @@
-/*/poster.jpg                  /.netlify/functions/poster          200
+/*/poster.jpg                  /.netlify/builders/poster          200
 /api/store/*                   /.netlify/functions/shopify-:splat  200
 /.netlify/functions/store/*    /.netlify/functions/shopify-:splat  200
-/api/*                         /.netlify/functions/:splat          200
+/api/v2/*                      /.netlify/builders/:splat          200
