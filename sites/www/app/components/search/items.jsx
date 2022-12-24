@@ -98,8 +98,9 @@ export function EmptyQueryEpisodeItem({ item }) {
  * Episode item for search results
  */
 export function QueryEpisodeItem({ item }) {
+	console.log({ item });
 	const descriptionAttribute =
-		item._snippetResult?.description.matchLevel === 'none'
+		item._snippetResult?.description?.matchLevel === 'none'
 			? 'content'
 			: 'description';
 
