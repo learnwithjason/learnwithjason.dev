@@ -2,12 +2,11 @@ import { builder, Handler } from '@netlify/functions';
 import { loadEpisodeBySlug } from '@lwj/sanity-helpers';
 
 const handlerFn: Handler = async (event) => {
-	console.log(JSON.stringify(event, null, 2));
 	const params = new URLSearchParams(event.rawQuery);
 	const transcript = params.get('transcript') === 'true';
 	const cdn = params.get('cdn') === 'false' ? false : true;
 	let [, slug] = event.path
-		.replace(/\/(api\/v2|.netlify\/functions)\/episode/, '')
+		.replace(/\/(api\/v2|.netlify\/functions|.netlify\/builders)\/episode/, '')
 		.split('/');
 
 	if (slug.endsWith('.json')) {
