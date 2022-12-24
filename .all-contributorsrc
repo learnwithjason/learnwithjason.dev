@@ -166,6 +166,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "andykenward",
+      "name": "Andy Kenward",
+      "avatar_url": "https://avatars.githubusercontent.com/u/4893048?v=4",
+      "profile": "https://andykenward.com",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
