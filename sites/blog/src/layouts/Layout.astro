@@ -4,8 +4,8 @@ export interface Props {
 	mainClass?: string;
 }
 
-import { Header, Footer } from '@lwj/design-system';
-import { Search } from '../components/search/index.tsx';
+import { Header, Footer, TeacherPhoto } from '@lwj/design-system';
+import { Search } from '../components/search';
 import '@lwj/design-system/css/index.css';
 
 const [episodes, schedule] = await Promise.all([
@@ -82,7 +82,7 @@ const { title, mainClass = '' } = Astro.props;
 			<Search
 				episodes={episodes.slice(0, 4)}
 				schedule={schedule.slice(0, 4)}
-				client:only
+				client:only="react"
 			/>
 
 			<button class="nav-toggle"> menu</button>
@@ -92,15 +92,22 @@ const { title, mainClass = '' } = Astro.props;
 			const btn = document.querySelector('.nav-toggle');
 			const nav = document.querySelector('.main-nav');
 
-			btn.addEventListener('click', () => {
-				nav.classList.toggle('open');
+			btn?.addEventListener('click', () => {
+				nav?.classList.toggle('open');
 			});
 		</script>
 
 		<main class={mainClass}>
 			<slot />
 		</main>
-		<Footer />
+		<Footer>
+			<TeacherPhoto
+				imageURL="https://res.cloudinary.com/jlengstorf/image/upload/q_auto,f_auto,w_300,h_300,c_thumb,g_face,z_0.6/press/jason-lengstorf-ac-alley3.jpg"
+				alt="Jason Lengstorf"
+				width={125}
+				skipFetch
+			/>
+		</Footer>
 	</body>
 </html>
 

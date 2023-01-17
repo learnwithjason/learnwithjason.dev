@@ -1,32 +1,26 @@
-// import { useState } from 'react';
-import { ReactNode } from 'react';
+import type { Component, JSXElement } from 'solid-js';
 import { Logo } from './logo';
+
 // @ts-ignore
-// import { Search } from './search/index.js';
-// import { SearchIcon } from './search/icons/search-icon';
 import styles from './header.module.css';
 
-type HeaderProps = {
-	children: ReactNode;
-};
-
-export function Header({ children }: HeaderProps) {
+export const Header: Component<{
+	children: JSXElement;
+}> = (props) => {
 	return (
-		<>
-			<header className={styles.header}>
-				<a href="#content" className="visually-hidden">
-					skip to content
+		<header class={styles.header}>
+			<a href="#content" class="visually-hidden">
+				skip to content
+			</a>
+
+			<div class={styles.logo}>
+				<a href="/" rel="home">
+					<Logo />
+					<span class="visually-hidden">home</span>
 				</a>
+			</div>
 
-				<div className={styles.logo}>
-					<a href="/" rel="home">
-						<Logo />
-						<span className="visually-hidden">home</span>
-					</a>
-				</div>
-
-				{children}
-			</header>
-		</>
+			{props.children}
+		</header>
 	);
-}
+};
