@@ -25,6 +25,14 @@ const sponsors = [
 		imageHeight: 23,
 		url: 'https://newrelic.com/',
 	},
+	{
+		name: 'Pluralsight',
+		image:
+			'https://res.cloudinary.com/jlengstorf/image/upload/v1673920307/lwj/sponsors/pluralsight.svg',
+		imageWidth: 85,
+		imageHeight: 18,
+		url: 'https://lwj.dev/pluralsight',
+	},
 ];
 
 const handlerFn: Handler = async () => {
