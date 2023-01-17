@@ -5,7 +5,7 @@ const handlerFn: Handler = async (event) => {
 	const params = new URLSearchParams(event.rawQuery);
 	const cdn = params.get('cdn') === 'false' ? false : true;
 	const [, topic] = event.path
-		.replace(/\/(api\/v2|.netlify\/functions)\/topic/, '')
+		.replace(/\/(api\/v2|.netlify\/builders)\/topic/, '')
 		.split('/');
 
 	console.log({ path: event.path, topic });
