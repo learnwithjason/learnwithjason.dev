@@ -29,8 +29,8 @@ const sponsors = [
 		name: 'Pluralsight',
 		image:
 			'https://res.cloudinary.com/jlengstorf/image/upload/v1673920307/lwj/sponsors/pluralsight.svg',
-		imageWidth: 85,
-		imageHeight: 18,
+		imageWidth: 165,
+		imageHeight: 35,
 		url: 'https://lwj.dev/pluralsight',
 	},
 ];
