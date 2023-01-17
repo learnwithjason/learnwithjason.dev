@@ -5,8 +5,10 @@ const handlerFn: Handler = async (event) => {
 	const params = new URLSearchParams(event.rawQuery);
 	const cdn = params.get('cdn') === 'false' ? false : true;
 	const [, topic] = event.path
-		.replace(/\/(api|.netlify\/functions)\/topic/, '')
+		.replace(/\/(api\/v2|.netlify\/functions)\/topic/, '')
 		.split('/');
+
+	console.log({ path: event.path, topic });
 	const { error, data } = await loadEpisodesByTopic({ cdn, topic });
 
 	if (error) {
