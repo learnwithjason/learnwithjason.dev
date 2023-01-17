@@ -1,3 +1,4 @@
+/** @jsxImportSource react */
 import { getAlgoliaResults } from '@algolia/autocomplete-preset-algolia';
 import { useState } from 'react';
 

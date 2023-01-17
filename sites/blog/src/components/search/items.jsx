@@ -1,3 +1,4 @@
+/** @jsxImportSource react */
 import { Highlight } from './highlight';
 import { ReturnIcon } from './icons/return-icon';
 import { Snippet } from './snippet';

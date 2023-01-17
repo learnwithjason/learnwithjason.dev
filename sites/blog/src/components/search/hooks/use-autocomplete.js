@@ -1,3 +1,4 @@
+/** @jsxImportSource react */
 import { useMemo, useState } from 'react';
 import { createAutocomplete } from '@algolia/autocomplete-core';
 

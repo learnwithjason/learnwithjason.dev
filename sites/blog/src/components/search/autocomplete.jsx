@@ -1,3 +1,4 @@
+/** @jsxImportSource react */
 import { useEffect, useRef, createElement, Fragment } from 'react';
 
 import { useAutocomplete } from './hooks/use-autocomplete';

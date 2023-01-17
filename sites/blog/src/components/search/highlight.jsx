@@ -1,3 +1,4 @@
+/** @jsxImportSource react */
 import { Fragment } from 'react';
 import { parseAlgoliaHitHighlight } from '@algolia/autocomplete-preset-algolia';
 

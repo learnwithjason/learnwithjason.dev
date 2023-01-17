@@ -1,3 +1,4 @@
+/** @jsxImportSource react */
 import { parseAlgoliaHitSnippet } from '@algolia/autocomplete-preset-algolia';
 
 export function Snippet({ hit, attribute }) {
