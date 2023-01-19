@@ -23,7 +23,7 @@ export function useEpisode() {
 			if (!loading || episode) return;
 
 			const nextEpisode = await fetch(
-				'https://www.learnwithjason.dev/api/schedule'
+				'https://www.learnwithjason.dev/api/v2/schedule'
 			)
 				.then((res) => res.json())
 				.then((episodes) => episodes[0])
@@ -35,10 +35,10 @@ export function useEpisode() {
 			setLoading(false);
 			setEpisode({
 				title: nextEpisode.title,
-				slug: nextEpisode.slug.current,
+				slug: nextEpisode.slug,
 				guest: {
-					name: nextEpisode.guest[0].name,
-					twitter: nextEpisode.guest[0].twitter,
+					name: nextEpisode.guest.name,
+					twitter: nextEpisode.guest.twitter,
 				},
 				host: {
 					name: nextEpisode.host.name,
