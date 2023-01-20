@@ -1,9 +1,10 @@
+import type { Component, JSXElement } from 'solid-js';
 import styles from './aside.module.css';
 
-export function Aside({ children }) {
+export const Aside: Component<{ children: JSXElement }> = (props) => {
 	return (
-		<aside className={styles.aside}>
-			<div className={styles.icon}>
+		<aside class={styles.aside}>
+			<div class={styles.icon}>
 				<svg
 					width="23"
 					height="19"
@@ -11,8 +12,8 @@ export function Aside({ children }) {
 					xmlns="http://www.w3.org/2000/svg"
 				>
 					<path
-						fillRule="evenodd"
-						clipRule="evenodd"
+						fill-rule="evenodd"
+						clip-rule="evenodd"
 						d="M.405 15.91C-.46 17.24.495 19 2.082 19h18.63c1.586 0 2.54-1.76 1.676-3.09L13.073 1.58a2 2 0 00-3.353 0L.405 15.91zm2.18.317a.5.5 0 00.418.773H19.79a.5.5 0 00.42-.773L11.815 3.315a.5.5 0 00-.839 0L2.584 16.227z"
 						fill="#C10B7E"
 					/>
@@ -22,7 +23,7 @@ export function Aside({ children }) {
 					/>
 				</svg>
 			</div>
-			<div className={styles.content}>{children}</div>
+			<div class={styles.content}>{props.children}</div>
 		</aside>
 	);
-}
+};
