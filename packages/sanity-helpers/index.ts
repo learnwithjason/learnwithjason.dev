@@ -195,9 +195,11 @@ export function loadEpisodeBySlug({
 }
 
 export function loadSchedule({ cdn = true }: { cdn?: boolean }) {
+	// load episodes that start after 3 hours before now
+	// (so we don’t miss in-progress episodes)
 	return sanityFetch({
 		query: `
-      *[_type == "episode" && hidden == false && date > now()] {
+      *[_type == "episode" && hidden == false && dateTime(date) > dateTime(now()) - 60 * 60 * 3] {
         ${COMMON_EPISODE_FIELDS}
       } | order(date asc)
     `,
