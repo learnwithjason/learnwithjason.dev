@@ -53,7 +53,7 @@
 	justify-content: start;
 }
 
-.logo {
+.logoWrapper svg {
 	display: block;
 	height: auto;
 	width: 190px;

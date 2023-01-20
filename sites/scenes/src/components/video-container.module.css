@@ -8,6 +8,10 @@
 	z-index: 10;
 }
 
+.wrapper[data-size='sidebar'] {
+	height: 438px;
+}
+
 .videoWrapper {
 	object-fit: cover;
 }
