@@ -269,9 +269,6 @@ import { z, defineCollection } from 'astro:content';
 
 export const collections = {
   blog: defineCollection({
-    slug: ({ defaultSlug, data }) => {
-      return data.slug || defaultSlug;
-    },
     schema: z.object({
       draft: z.boolean().default(false),
       date: z.date().transform((str) => new Date(str)),
@@ -307,8 +304,6 @@ The `share` object uses `.strict()` to ensure that no additional fields are adde
   **Heads up!** There's a whole lot that can be done with Zod that we won't
   cover in this post. For full details, see the [Zod docs](https://zod.dev/).
 </Aside>
-
-The `slug` property at the top level of the collection config is a special helper Astro provides to allow us to customize the URL of a blog post. By default, the file name is used, but if you prefer, you can set a custom frontmatter fields and use the `slug` helper to replace the default. In this case, we look for a frontmatter field called `slug` and fall back to the default if one isn't provided.
 
 ## Step 4: Show a list of blog posts on the blog home page
 
