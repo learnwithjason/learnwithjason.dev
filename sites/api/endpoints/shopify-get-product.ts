@@ -78,7 +78,7 @@ export const handler: Handler = async (event) => {
 		return {
 			statusCode: 200,
 			headers: {
-				'Content-Type': 'application/json',
+				'Content-Type': 'application/json; charset=utf8',
 			},
 			body: JSON.stringify(shopifyResponse),
 		};
