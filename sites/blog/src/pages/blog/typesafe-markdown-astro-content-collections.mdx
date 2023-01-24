@@ -250,7 +250,6 @@ For our blog, we want the following metadata to be supplied:
 - Draft status — we don't want to show work-in-progress posts on the live site
 - Publish date
 - Title
-- Slug — this is optional, but if we want to customize the URL of the blog, we'd use this
 - Category — each post needs to have exactly one category, and we only want to allow two categories: "food" and "wisdom"
 - Tags — posts can optionally add tags for grouping posts together
 - Sharing details — for social sharing cards, search results, and other external services, each post can specify custom details:
@@ -273,7 +272,6 @@ export const collections = {
       draft: z.boolean().default(false),
       date: z.date().transform((str) => new Date(str)),
       title: z.string(),
-      slug: z.string().optional(),
       category: z.enum(['food', 'wisdom']),
       tags: z.array(z.string()).optional(),
       share: z
@@ -448,7 +446,7 @@ Right now, though, if we click to read one of these posts we'll get a 404. In th
 
 ## Step 6: Create individual blog pages from an Astro content collection
 
-Since we don't want to create an individual page every time we write a blog post, we'll use a [dynamic route](https://docs.astro.build/en/core-concepts/routing/#dynamic-routes) for our blog posts.
+Since we don't want to create an individual page every time we write a blog post, we'll use a [dynamic route](https://docs.astro.build/en/core-concepts/routing/?utm_source=jason-lengstorf&utm_medium=link&utm_term=2.0+launch&utm_campaign=blog#dynamic-routes) for our blog posts.
 
 Create a new file at `src/pages/blog/[slug].astro` and add the following:
 
@@ -553,5 +551,6 @@ To see this in action and review the source code, check the following links:
 
 Additional resources:
 
-- [Astro docs on content collections](https://docs.astro.build/en/guides/content-collections/)
+- [Read the Astro 2.0 announcement](https://astro.build/blog/astro-2/?utm_source=jason-lengstorf&utm_medium=link&utm_term=2.0+launch&utm_campaign=blog)
+- [Astro docs on content collections](https://docs.astro.build/en/guides/content-collections/?utm_source=jason-lengstorf&utm_medium=link&utm_term=2.0+launch&utm_campaign=blog)
 - [Watch this tutorial as a video](https://youtu.be/TfD4RW2gR-s)
