@@ -1,49 +1,49 @@
-import type { ReactNode } from 'react';
+import { JSXElement, mergeProps, Show } from 'solid-js';
 
 type FigureProps = {
 	caption?: string;
 	credit?: string;
 	creditLink?: string;
 	creditType?: string;
-	children: ReactNode;
-	aspectRatio: boolean | number;
+	children: JSXElement;
+	aspectRatio: number;
 };
 
-export function Figure({
-	caption,
-	credit,
-	creditLink,
-	creditType = 'Credit',
-	children,
-	aspectRatio = false,
-}: FigureProps) {
+export function Figure(rawProps: FigureProps) {
+	const props = mergeProps(
+		{
+			creditType: 'Credit',
+			aspectRatio: -1,
+		},
+		rawProps
+	);
 	return (
-		<figure className="post-figure">
-			{aspectRatio && typeof aspectRatio === 'number' ? (
+		<figure class="post-figure">
+			<Show when={props.aspectRatio > 0} fallback={props.children}>
 				<div
-					className="embed-container"
-					style={{ paddingBottom: aspectRatio * 100 + '%' }}
+					class="embed-container"
+					style={{ 'padding-bottom': props.aspectRatio * 100 + '%' }}
 				>
-					{children}
+					{props.children}
 				</div>
-			) : (
-				children
-			)}
-			{(caption || credit) && (
+			</Show>
+
+			<Show when={props.caption || props.credit}>
 				<figcaption>
-					{caption}
-					{credit && (
+					{props.caption}
+					<Show when={props.credit}>
 						<small>
-							{creditType}:{' '}
-							{creditLink ? (
-								<a href={creditLink}>{credit}</a>
-							) : (
-								<span>{credit}</span>
-							)}
+							{props.creditType}:
+							<Show
+								when={props.creditLink}
+								fallback={<span>{props.credit}</span>}
+							>
+								<a href={props.creditLink}>{props.credit}</a>
+							</Show>
 						</small>
-					)}
+					</Show>
 				</figcaption>
-			)}
+			</Show>
 		</figure>
 	);
 }
