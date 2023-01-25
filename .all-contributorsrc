@@ -175,6 +175,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "beeburrt",
+      "name": "B. Burt",
+      "avatar_url": "https://avatars.githubusercontent.com/u/97593291?v=4",
+      "profile": "https://github.com/beeburrt",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "contributorsPerLine": 7,
