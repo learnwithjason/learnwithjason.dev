@@ -14,6 +14,7 @@
  *
  * TODO: Add enhancement for pagination
  */
+import { ProductsSchema } from '@lwj/types/schema';
 import { Handler, builder } from '@netlify/functions';
 import { postToShopify } from '../util/postToShopify';
 
@@ -72,13 +73,35 @@ export const handler: Handler = builder(async () => {
 		});
 
 		// clean up the product list to remove some of the GraphQL noise
-		const products = shopifyResponse.products.edges.map((product) => {
-			return {
-				...product.node,
-				images: product.node.images.edges.map((image) => image.node),
-				variants: product.node.variants.edges.map((variant) => variant.node),
-			};
-		});
+		const shopifyProducts = shopifyResponse.products.edges.map(
+			(product: any) => {
+				return {
+					...product.node,
+					images: product.node.images.edges.map((image: any) => image.node),
+					variants: product.node.variants.edges.map(
+						(variant: any) => variant.node
+					),
+				};
+			}
+		);
+
+		const products = ProductsSchema.parse(
+			shopifyProducts.map((product: any) => {
+				return {
+					id: product.variants[0].id,
+					slug: product.handle,
+					title: product.title,
+					description: product.description,
+					image: {
+						src: product.images[0].src,
+						alt: product.images[0].altText || product.title,
+					},
+					price: product.variants[0].priceV2.amount,
+					priceFormatted: product.variants[0],
+					inventory: product.totalInventory,
+				};
+			})
+		);
 
 		return {
 			statusCode: 200,
@@ -89,5 +112,9 @@ export const handler: Handler = builder(async () => {
 		};
 	} catch (error) {
 		console.log(error);
+		return {
+			statusCode: 500,
+			body: JSON.stringify({ error }),
+		};
 	}
 });
