@@ -14,6 +14,7 @@
  */
 
 import { Handler } from '@netlify/functions';
+import { ProductsSchema } from '@lwj/types/schema';
 import { postToShopify } from '../util/postToShopify';
 
 export const handler: Handler = async (event) => {
@@ -75,12 +76,30 @@ export const handler: Handler = async (event) => {
 			},
 		});
 
+		const products = ProductsSchema.parse(
+			shopifyResponse.map((product: any) => {
+				return {
+					id: product.variants[0].id,
+					slug: product.handle,
+					title: product.title,
+					description: product.description,
+					image: {
+						src: product.images[0].src,
+						alt: product.images[0].altText || product.title,
+					},
+					price: product.variants[0].priceV2.amount,
+					priceFormatted: product.variants[0],
+					inventory: product.totalInventory,
+				};
+			})
+		);
+
 		return {
 			statusCode: 200,
 			headers: {
 				'Content-Type': 'application/json; charset=utf8',
 			},
-			body: JSON.stringify(shopifyResponse),
+			body: JSON.stringify(products),
 		};
 	} catch (error) {
 		console.log(error);

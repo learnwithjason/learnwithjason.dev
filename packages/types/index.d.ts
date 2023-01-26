@@ -1,3 +1,8 @@
+import z from 'zod';
+import { ProductsSchema as PSchema } from './index';
+
+export type Products = z.infer<typeof PSchema>;
+
 interface EpisodePerson {
 	image: string;
 	name: string;
