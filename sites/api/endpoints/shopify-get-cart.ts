@@ -32,61 +32,61 @@ export const handler: Handler = async (event) => {
 		console.log('Retrieving existing cart...');
 		console.log('--------------------------------');
 		const shopifyResponse = await postToShopify({
-			query: `
-         query getCart($cartId: ID!) {
-           cart(id: $cartId) {
-             id
-             lines(first: 10) {
-               edges {
-                 node {
-                   id
-                   quantity
-                   merchandise {
-                     ... on ProductVariant {
-                       id
-                       title
-                       priceV2 {
-                         amount
-                         currencyCode
-                       }
-                       product {
-                         title
-                         handle
-                         images(first: 1) {
-                           edges {
-                             node {
-                               src
-                               altText
-                             }
-                           }
-                         }
-                       }
-                     }
-                   }
-                 }
-               }
-             }
-             estimatedCost {
-               totalAmount {
-                 amount
-                 currencyCode
-               }
-               subtotalAmount {
-                 amount
-                 currencyCode
-               }
-               totalTaxAmount {
-                 amount
-                 currencyCode
-               }
-               totalDutyAmount {
-                 amount
-                 currencyCode
-               }
-             }
-           }
-         }
-       `,
+			query: /* GraphQL */ `
+				query getCart($cartId: ID!) {
+					cart(id: $cartId) {
+						id
+						lines(first: 10) {
+							edges {
+								node {
+									id
+									quantity
+									merchandise {
+										... on ProductVariant {
+											id
+											title
+											price {
+												amount
+												currencyCode
+											}
+											product {
+												title
+												handle
+												images(first: 1) {
+													edges {
+														node {
+															src
+															altText
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+						estimatedCost {
+							totalAmount {
+								amount
+								currencyCode
+							}
+							subtotalAmount {
+								amount
+								currencyCode
+							}
+							totalTaxAmount {
+								amount
+								currencyCode
+							}
+							totalDutyAmount {
+								amount
+								currencyCode
+							}
+						}
+					}
+				}
+			`,
 			variables: {
 				cartId,
 			},
@@ -108,7 +108,10 @@ export const handler: Handler = async (event) => {
 		return {
 			statusCode: 200,
 			headers: {
-				'Content-Type': 'application/json',
+				'Access-Control-Allow-Origin': '*',
+				'Access-Control-Allow-Methods': 'GET',
+				'Access-Control-Allow-Headers': 'Content-Type',
+				'Content-Type': 'application/json; charset=utf8',
 			},
 			body: JSON.stringify(cart),
 		};

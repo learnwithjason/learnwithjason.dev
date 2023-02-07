@@ -21,10 +21,11 @@
 		"@types/react": "^18.0.25",
 		"@types/react-dom": "^18.0.9",
 		"algoliasearch": "^4.14.2",
-		"astro": "^2.0.0-beta.2",
+		"astro": "^2.0.0",
 		"gsap": "^3.11.4",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
-		"solid-js": "^1.4.3"
+		"solid-js": "^1.4.3",
+		"zod": "^3.20.2"
 	}
 }

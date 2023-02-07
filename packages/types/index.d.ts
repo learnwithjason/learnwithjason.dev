@@ -1,5 +1,5 @@
 import z from 'zod';
-import { ProductsSchema as PSchema } from './index';
+import { ProductsSchema as PSchema } from './schema';
 
 export type Products = z.infer<typeof PSchema>;
 
