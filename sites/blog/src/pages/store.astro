@@ -1,0 +1,130 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { PageHeader, Button } from '@lwj/design-system';
+import type { Products } from '@lwj/types';
+import { Cart } from '../components/cart';
+
+const API_ADD_TO_CART =
+	'http://localhost:8889/.netlify/functions/shopify-add-to-cart';
+
+const response = await fetch(
+	`https://deploy-preview-65--lwj-api.netlify.app/api/v2/products`,
+	{
+		headers: {
+			'Content-Type': 'application/json; charset=utf8',
+		},
+	}
+);
+
+if (!response.ok) {
+	console.error('Error loading product data');
+}
+
+const products: Products = await response.json();
+---
+
+<Layout title="Buy Goofy Boop Stuff">
+	<PageHeader
+		heading="Store"
+		lede="Please buy a corgi duck. I have so many. Please."
+	/>
+
+	<aside class="cart">
+		<Cart client:only="solid" />
+	</aside>
+
+	<section class="page">
+		{
+			products.map((product) => {
+				return (
+					<div class="product">
+						<img
+							class="image"
+							src={product.image.src}
+							alt={product.title}
+							width={150}
+							height={150}
+							loading="lazy"
+						/>
+						<h2 class="heading">{product.title}</h2>
+						<p class="description">{product.description}</p>
+						<p class="price">
+							<span>{product.priceFormatted}</span>
+							<span class="tag">free shipping!</span>
+						</p>
+						<form class="add-to-cart" method="post" action={API_ADD_TO_CART}>
+							<input type="hidden" name="productId" value={product.id} />
+
+							{/* TODO: make this into a quantity selector */}
+							<input type="hidden" name="quantity" value={1} />
+
+							<Button aria-label="Add To Cart" class="button">
+								Add <span class="visually-hidden">{product.title}</span> To Cart
+							</Button>
+						</form>
+					</div>
+				);
+			})
+		}
+	</section>
+</Layout>
+
+<style>
+	:global(.page-container) {
+		max-width: 51rem;
+		margin: 3rem auto;
+	}
+
+	.page {
+		display: grid;
+		gap: 1.5rem;
+		grid-template-columns: repeat(auto-fit, 200px);
+		justify-content: center;
+		margin: 3rem 0 4rem;
+		padding: 0 5vw;
+	}
+
+	.image {
+		display: block;
+		margin: 0 auto;
+	}
+
+	.heading {
+		margin: 1rem 0 0;
+		padding: 0;
+		font-size: 1rem;
+		font-weight: bold;
+	}
+
+	.description {
+		margin: 0.5rem 0;
+		font-size: 0.875rem;
+	}
+
+	.price {
+		align-items: center;
+		display: flex;
+		font-size: 0.875rem;
+		font-weight: 600;
+		justify-content: space-between;
+		margin-top: auto;
+	}
+
+	.tag {
+		background: var(--color-blue);
+		border: 1px solid var(--color-blue);
+		border-radius: 0.25rem;
+		color: var(--color-text);
+		font-weight: 400;
+		font-size: 0.625rem;
+		letter-spacing: 0.2em;
+		line-height: 1.45;
+		padding: 0 0.25rem;
+		text-transform: uppercase;
+	}
+
+	.button {
+		margin: 0;
+		width: 100%;
+	}
+</style>

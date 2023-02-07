@@ -36,13 +36,19 @@
  * ```
  */
 
+//TODO THIS IS BROKEN FIX IT
+
 import { Handler } from '@netlify/functions';
+import { parse } from 'querystring';
 
 import { createCartWithItem } from '../util/createCartWithItem';
 import { addItemToCart } from '../util/addItemToCart';
 
 export const handler: Handler = async (event) => {
-	const { cartId, itemId, quantity } = JSON.parse(event.body || '{}');
+	const { cartId, itemId, quantity: quantityStr } = parse(event.body || '{}');
+	const quantity = Number(quantityStr);
+
+	console.log({ body: event.body, cartId, itemId, quantity });
 
 	if (cartId) {
 		console.log('--------------------------------');
@@ -84,12 +90,18 @@ export const handler: Handler = async (event) => {
 			),
 		};
 
+		// return {
+		// 	statusCode: 200,
+		// 	headers: {
+		// 		'Content-Type': 'application/json',
+		// 	},
+		// 	body: JSON.stringify(cart),
+		// };
 		return {
-			statusCode: 200,
+			statusCode: 301,
 			headers: {
-				'Content-Type': 'application/json',
+				Location: 'http://localhost:8888/store',
 			},
-			body: JSON.stringify(cart),
 		};
 	}
 };

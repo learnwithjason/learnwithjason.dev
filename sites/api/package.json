@@ -5,7 +5,7 @@
 	"main": "index.js",
 	"scripts": {
 		"build": "# no build command",
-		"dev": "ntl dev -d ./public -f ./endpoints"
+		"dev": "ntl dev -d ./public -f ./endpoints -p 8889"
 	},
 	"keywords": [],
 	"author": "",
