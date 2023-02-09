@@ -200,7 +200,7 @@ export default function Store() {
 									/>
 									{/* TODO: make this into a quantity selector */}
 									<input type="hidden" name="quantity" value={1} />
-									<button aria-label={`Add To Cart`}>
+									<button>
 										Add <span className="visually-hidden">{product.title}</span>{' '}
 										To Cart
 									</button>
