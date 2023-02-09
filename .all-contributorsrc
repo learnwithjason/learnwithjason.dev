@@ -184,6 +184,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "levic",
+      "name": "Levi Cameron",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2154472?v=4",
+      "profile": "http://www.alliancesoftware.com.au/",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "contributorsPerLine": 7,
