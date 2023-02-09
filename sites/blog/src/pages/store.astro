@@ -58,7 +58,7 @@ const products: Products = await response.json();
 							{/* TODO: make this into a quantity selector */}
 							<input type="hidden" name="quantity" value={1} />
 
-							<Button aria-label="Add To Cart" class="button">
+							<Button class="button">
 								Add <span class="visually-hidden">{product.title}</span> To Cart
 							</Button>
 						</form>
