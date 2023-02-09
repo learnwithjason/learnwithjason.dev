@@ -17,7 +17,7 @@
   <br />
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-20-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-21-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 </p>
@@ -125,6 +125,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/muescha"><img src="https://avatars.githubusercontent.com/u/184316?v=4?s=100" width="100px;" alt="Muescha"/><br /><sub><b>Muescha</b></sub></a><br /><a href="https://github.com/learnwithjason/learnwithjason.dev/commits?author=muescha" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://andykenward.com"><img src="https://avatars.githubusercontent.com/u/4893048?v=4?s=100" width="100px;" alt="Andy Kenward"/><br /><sub><b>Andy Kenward</b></sub></a><br /><a href="https://github.com/learnwithjason/learnwithjason.dev/commits?author=andykenward" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/beeburrt"><img src="https://avatars.githubusercontent.com/u/97593291?v=4?s=100" width="100px;" alt="B. Burt"/><br /><sub><b>B. Burt</b></sub></a><br /><a href="#content-beeburrt" title="Content">🖋</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://www.alliancesoftware.com.au/"><img src="https://avatars.githubusercontent.com/u/2154472?v=4?s=100" width="100px;" alt="Levi Cameron"/><br /><sub><b>Levi Cameron</b></sub></a><br /><a href="#content-levic" title="Content">🖋</a></td>
     </tr>
   </tbody>
 </table>
