@@ -39,13 +39,20 @@
 //TODO THIS IS BROKEN FIX IT
 
 import { Handler } from '@netlify/functions';
-import { parse } from 'querystring';
+import { serialize, parse as cookieParse } from 'cookie';
 
 import { createCartWithItem } from '../util/createCartWithItem';
 import { addItemToCart } from '../util/addItemToCart';
 
 export const handler: Handler = async (event) => {
-	const { cartId, itemId, quantity: quantityStr } = parse(event.body || '{}');
+	const {
+		itemId,
+		quantity: quantityStr,
+		cartId,
+	} = JSON.parse(event.body || '{}');
+
+	console.log({ cartId });
+
 	const quantity = Number(quantityStr);
 
 	console.log({ body: event.body, cartId, itemId, quantity });
@@ -61,16 +68,24 @@ export const handler: Handler = async (event) => {
 			quantity,
 		});
 
-		const cart = {
-			...shopifyResponse.cartLinesAdd.cart,
-			lines: shopifyResponse.cartLinesAdd.cart.lines.edges.map(
-				({ node }: { node: any }) => node
-			),
-		};
+		console.log(JSON.stringify(shopifyResponse, null, 2));
+
+		// const cart = {
+		// 	...shopifyResponse.cartLinesAdd.cart,
+		// 	// lines: shopifyResponse.cartLinesAdd.cart.lines.edges.map(
+		// 	// 	({ node }: { node: any }) => node
+		// 	// ),
+		// };
 
 		return {
 			statusCode: 200,
-			body: JSON.stringify(cart),
+			headers: {
+				'Access-Control-Allow-Origin': '*',
+				'Access-Control-Allow-Methods': 'GET',
+				'Access-Control-Allow-Headers': 'Content-Type',
+				'Content-Type': 'application/json; charset=utf8',
+			},
+			body: JSON.stringify(shopifyResponse),
 		};
 	} else {
 		console.log('--------------------------------');
@@ -90,6 +105,13 @@ export const handler: Handler = async (event) => {
 			),
 		};
 
+		const cartCookie = serialize('lwj-cart-id', cart.id, {
+			secure: true,
+			httpOnly: true,
+			path: '/',
+			maxAge: 1000 * 60 * 60 * 24 * 14,
+		});
+
 		// return {
 		// 	statusCode: 200,
 		// 	headers: {
@@ -98,10 +120,15 @@ export const handler: Handler = async (event) => {
 		// 	body: JSON.stringify(cart),
 		// };
 		return {
-			statusCode: 301,
+			statusCode: 200,
 			headers: {
-				Location: 'http://localhost:8888/store',
+				'Access-Control-Allow-Origin': '*',
+				'Access-Control-Allow-Methods': 'GET',
+				'Access-Control-Allow-Headers': 'Content-Type',
+				'Content-Type': 'application/json; charset=utf8',
+				'Set-Cookie': cartCookie,
 			},
+			body: JSON.stringify(cart),
 		};
 	}
 };

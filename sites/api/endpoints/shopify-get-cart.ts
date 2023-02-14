@@ -18,10 +18,13 @@
  */
 
 import { Handler } from '@netlify/functions';
+import { serialize, parse } from 'cookie';
 import { postToShopify } from '../util/postToShopify';
 
 export const handler: Handler = async (event) => {
-	const { cartId } = JSON.parse(event.body ?? '{}');
+	const { cartId } = JSON.parse(event.body || '');
+
+	console.log({ cookie: event.headers.cookie, cartId });
 
 	try {
 		if (!cartId) {
@@ -93,10 +96,7 @@ export const handler: Handler = async (event) => {
 		});
 
 		if (!shopifyResponse.cart) {
-			return {
-				statusCode: 200,
-				body: JSON.stringify({}),
-			};
+			throw new Error('No valid cart returned from Shopify');
 		}
 
 		// clean up some GraphQL noise to make the cart easier to use
@@ -105,6 +105,25 @@ export const handler: Handler = async (event) => {
 			lines: shopifyResponse.cart.lines.edges.map(({ node }: any) => node),
 		};
 
+		const cartCookie = serialize('lwj-cart-id', cart.id, {
+			secure: true,
+			path: '/',
+			maxAge: 1000 * 60 * 60 * 24 * 14,
+		});
+
+		return {
+			statusCode: 200,
+			headers: {
+				'Access-Control-Allow-Origin': '*',
+				'Access-Control-Allow-Methods': 'GET',
+				'Access-Control-Allow-Headers': 'Content-Type',
+				'Content-Type': 'application/json; charset=utf8',
+				'Set-Cookie': cartCookie,
+			},
+			body: JSON.stringify(cart),
+		};
+	} catch (error: any) {
+		console.log(error.message);
 		return {
 			statusCode: 200,
 			headers: {
@@ -113,13 +132,7 @@ export const handler: Handler = async (event) => {
 				'Access-Control-Allow-Headers': 'Content-Type',
 				'Content-Type': 'application/json; charset=utf8',
 			},
-			body: JSON.stringify(cart),
-		};
-	} catch (error: any) {
-		console.log(error.message);
-		return {
-			statusCode: 500,
-			body: JSON.stringify({ error: { message: error.message } }),
+			body: JSON.stringify({}),
 		};
 	}
 };

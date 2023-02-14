@@ -5,7 +5,14 @@ const API_GET_CART =
 const API_CHECKOUT =
 	'http://localhost:8889/.netlify/functions/shopify-create-checkout';
 
-async function getCart(cartId: string) {
+async function getCart() {
+	const cartId = decodeURIComponent(
+		document.cookie
+			.split('; ')
+			.find((row) => row.startsWith('lwj-cart-id='))
+			?.split('=')[1] || ''
+	);
+
 	const res = await fetch(API_GET_CART, {
 		method: 'POST',
 		body: JSON.stringify({ cartId }),
@@ -34,14 +41,7 @@ const EmptyState: Component = () => {
 };
 
 export const Cart: Component = () => {
-	const maybeCartId = window.localStorage.getItem('lwj-cart-id');
-
-	if (!maybeCartId?.startsWith('gid://')) {
-		return <EmptyState />;
-	}
-
-	const [cartId] = createSignal(maybeCartId);
-	const [cart] = createResource(cartId, getCart);
+	const [cart] = createResource(getCart);
 
 	return (
 		<Show when={!cart.loading} fallback={<p class="empty">loading...</p>}>
