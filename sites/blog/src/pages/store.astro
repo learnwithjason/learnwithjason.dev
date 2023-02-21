@@ -29,40 +29,42 @@ const products: Products = await response.json();
 		lede="Please buy a corgi duck. I have so many. Please."
 	/>
 
-	<aside class="cart">
-		<Cart client:only="solid" />
-	</aside>
+	<div class="store">
+		<aside class="cart">
+			<Cart client:only="solid" />
+		</aside>
 
-	<section class="page">
-		{
-			products.map((product, i) => {
-				return (
-					<div class="product">
-						<img
-							class="image"
-							src={product.image.src}
-							alt={product.title}
-							width={150}
-							height={150}
-							loading="lazy"
-						/>
-						<h2 class="heading">{product.title}</h2>
-						<p class="description">{product.description}</p>
-						<p class="price">
-							<span>{product.priceFormatted}</span>
-							<span class="tag">free shipping!</span>
-						</p>
-						<AddToCart
-							productId={product.id}
-							productTitle={product.title}
-							quantity={1}
-							client:idle
-						/>
-					</div>
-				);
-			})
-		}
-	</section>
+		<section class="page">
+			{
+				products.map((product, i) => {
+					return (
+						<div class="product">
+							<img
+								class="image"
+								src={product.image.src}
+								alt={product.title}
+								width={150}
+								height={150}
+								loading="lazy"
+							/>
+							<h2 class="heading">{product.title}</h2>
+							<p class="description">{product.description}</p>
+							<p class="price">
+								<span>{product.priceFormatted}</span>
+								<span class="tag">free shipping!</span>
+							</p>
+							<AddToCart
+								productId={product.id}
+								productTitle={product.title}
+								quantity={1}
+								client:idle
+							/>
+						</div>
+					);
+				})
+			}
+		</section>
+	</div>
 </Layout>
 
 <style>
@@ -110,7 +112,7 @@ const products: Products = await response.json();
 		background: var(--color-blue);
 		border: 1px solid var(--color-blue);
 		border-radius: 0.25rem;
-		color: var(--color-text);
+		color: var(--color-gray-text);
 		font-weight: 400;
 		font-size: 0.625rem;
 		letter-spacing: 0.2em;
@@ -122,5 +124,115 @@ const products: Products = await response.json();
 	.button {
 		margin: 0;
 		width: 100%;
+	}
+
+	.cart {
+		background-color: var(--color-white);
+		border-bottom: 1px solid var(--color-gray-light);
+		display: block;
+		margin: 0;
+		min-width: 100%;
+		order: 1;
+		padding: 1rem 5%;
+		position: sticky;
+		top: 0;
+	}
+
+	.cart h3 {
+		font-size: 1rem;
+		margin: 0;
+		text-align: center;
+	}
+
+	.cart :global(.empty) {
+		color: var(--color-gray-text-muted);
+		font-size: 0.875rem;
+		line-height: 1.45;
+		margin: 0;
+		text-align: center;
+	}
+
+	:global(.cart-items) {
+		list-style: none;
+		margin: 0.25rem 0 0;
+		max-height: 22vh;
+		overflow-y: scroll;
+		padding: 0;
+	}
+
+	:global(.cart-items li) {
+		border-top: 1px solid var(--color-gray-light);
+		font-size: 0.75rem;
+		padding: 0.5rem 0;
+	}
+
+	:global(.cart-item-details) {
+		display: flex;
+		font-weight: 600;
+		justify-content: space-between;
+		line-height: 1.45;
+		margin: auto;
+	}
+
+	:global(.cart-item-quantity) {
+		color: var(--color-gray-text-muted);
+		display: flex;
+		font-size: 0.625rem;
+		justify-content: space-between;
+		letter-spacing: 0.1em;
+		line-height: 1.45;
+		margin: 0;
+	}
+
+	:global(.subtotal) {
+		font-size: 0.875rem;
+		font-weight: 600;
+		text-align: right;
+	}
+
+	.cart button {
+		background: transparent;
+		border: 2px solid var(--color-pink-text);
+		border-radius: 0.25rem;
+		color: var(--color-pink-text);
+		display: block;
+		font-family: var(--font-family);
+		font-size: 0.875rem;
+		font-weight: 600;
+		margin: 0;
+		padding: 0.25rem;
+		width: 100%;
+	}
+
+	:global(.empty-cart button) {
+		background: none;
+		border: none;
+		color: var(--color-gray-text-muted);
+		font-weight: 400;
+	}
+
+	@media (min-width: 800px) {
+		.page {
+			justify-content: end;
+		}
+
+		.store {
+			display: grid;
+			gap: 2rem;
+			grid-template-columns: 1fr 250px;
+			width: min(90%, 1400px);
+		}
+		.cart {
+			border-bottom: 0;
+			margin: 0;
+			min-width: auto;
+			order: 2;
+			padding: 0;
+			top: 2rem;
+		}
+
+		:global(.cart-items) {
+			max-height: 70vh;
+		}
 	}
 </style>
