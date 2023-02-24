@@ -61,6 +61,7 @@ body {
 	font-size: 18px;
 	line-height: 1.45;
 	tab-size: 2;
+	word-wrap: break-word;
 }
 
 h1,
