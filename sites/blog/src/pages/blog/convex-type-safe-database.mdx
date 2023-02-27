@@ -118,6 +118,12 @@ The `dev` command will stay running while we work to keep our local app connecte
 
 Because we want type safety and autocomplete, our first step is to define a schema. The `convex` package provides the helpers we need to define the overall schema, data tables, and the field types within the table.
 
+<Aside>
+  **NOTE:** It's not required to create a schema in Convex. If you don't care
+  about autocomplete and type checking, you can jump straight into writing
+  queries and mutations!
+</Aside>
+
 Create a new file at `convex/schema.ts`:
 
 ```ts
