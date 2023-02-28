@@ -113,7 +113,8 @@ const { frontmatter, headings } = Astro.props;
 	}
 
 	.post-content {
-		max-width: 53ch;
+		margin-inline: 0;
+		max-width: 100%;
 		width: 100%;
 	}
 
@@ -129,6 +130,11 @@ const { frontmatter, headings } = Astro.props;
 			gap: 4rem;
 			grid-template-columns: 12rem 1fr;
 			padding: 0;
+		}
+
+		.post-content {
+			align-self: start;
+			max-width: 53ch;
 		}
 
 		.post .table-of-contents {
@@ -191,17 +197,24 @@ const { frontmatter, headings } = Astro.props;
 		font-weight: 600;
 	}
 
-	.post-figure,
-	.post-content pre {
+	.post-figure {
 		margin: 2rem max(-5vw, -2rem);
 	}
 
 	.post-content pre {
-		border-radius: 0.125rem;
 		color: var(--color-white);
 		background: var(--color-black);
-		font-size: 0.875rem;
-		padding: 1rem;
+		font-size: 0.8rem;
+		margin: 2rem -5vw;
+		padding: 1.5rem calc(5vw + 0.25rem);
+	}
+
+	@media (min-width: 1000px) {
+		.post-content pre {
+			border-radius: 0.125rem;
+			margin-inline: -1rem;
+			padding: 1.25rem;
+		}
 	}
 
 	code {
