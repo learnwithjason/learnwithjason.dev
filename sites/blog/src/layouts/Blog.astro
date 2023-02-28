@@ -1,11 +1,50 @@
 ---
+import getShareImage from '@jlengstorf/get-share-image';
 import { OptInForm } from '../components/opt-in-form';
 import Layout from './Layout.astro';
 
 const { frontmatter, headings } = Astro.props;
+const url = Astro.url.toString();
+
+const shareImage =
+	frontmatter.share.image ??
+	getShareImage({
+		title: frontmatter.share.title,
+		tagline: frontmatter.share.text,
+		cloudName: 'jlengstorf',
+		imagePublicID: 'lwj/post-share-2022',
+		titleColor: 'ffffff',
+		titleFont: 'jwf.otf',
+		titleFontSize: 55,
+		taglineColor: 'ffffff',
+		taglineFont: 'jwf-book.otf',
+		taglineFontSize: 42,
+		textLeftOffset: 392,
+		titleBottomOffset: 340,
+		taglineTopOffset: 375,
+		textAreaWidth: 813,
+	});
 ---
 
 <Layout title={frontmatter.meta.title} mainClass="post-container">
+	<Fragment slot="head-tags">
+		<meta name="twitter:title" content={frontmatter.share.title} />
+
+		<meta name="description" content={frontmatter.meta.description} />
+		<meta property="og:description" content={frontmatter.share.text} />
+		<meta name="twitter:description" content={frontmatter.share.text} />
+
+		<meta property="og:url" content={url} />
+
+		<meta name="image" content={shareImage} />
+		<meta property="og:image" content={shareImage} />
+		<meta name="twitter:image" content={shareImage} />
+
+		<meta property="og:type" content="article" />
+		<meta name="twitter:dnt" content="on" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:creator" content="@LWJShow" />
+	</Fragment>
 	<article class="post">
 		<header>
 			<h1>{frontmatter.meta.title}</h1>

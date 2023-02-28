@@ -16,6 +16,7 @@
 		"@astrojs/mdx": "^0.11.6",
 		"@astrojs/react": "^1.2.2",
 		"@astrojs/solid-js": "^1.2.3",
+		"@jlengstorf/get-share-image": "^0.8.0",
 		"@lwj/design-system": "^0.0.1",
 		"@types/react": "^18.0.25",
 		"@types/react-dom": "^18.0.9",

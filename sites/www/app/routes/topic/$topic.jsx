@@ -45,8 +45,8 @@ export const meta = ({ data }) => {
 		taglineFontSize: 42,
 		textColor: 'ffffff',
 		textLeftOffset: 392,
-		titleBottomOffset: 385,
-		taglineTopOffset: 320,
+		titleBottomOffset: 340,
+		taglineTopOffset: 375,
 		textAreaWidth: 813,
 	});
 

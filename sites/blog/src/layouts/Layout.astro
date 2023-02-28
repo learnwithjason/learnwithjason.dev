@@ -55,6 +55,8 @@ const { title, mainClass = '' } = Astro.props;
 		<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#302d42" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+
+		<slot name="head-tags" />
 	</head>
 	<body data-theme="light">
 		<svg class="svg-defs">
