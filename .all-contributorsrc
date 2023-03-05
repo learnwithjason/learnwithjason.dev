@@ -193,6 +193,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "mdarrik",
+      "name": "Darrik Moberg",
+      "avatar_url": "https://avatars.githubusercontent.com/u/30670444?v=4",
+      "profile": "https://www.darrik.dev",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
