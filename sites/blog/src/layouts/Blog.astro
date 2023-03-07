@@ -6,6 +6,8 @@ import Layout from './Layout.astro';
 const { frontmatter, headings } = Astro.props;
 const url = Astro.url.toString();
 
+// TODO figure out max length for share image text and add an ellipsis to avoid overflow
+
 const shareImage =
 	frontmatter.share.image ??
 	getShareImage({
