@@ -19,6 +19,8 @@
 		"@jlengstorf/get-share-image": "^0.8.0",
 		"@lwj/design-system": "^0.0.1",
 		"@nanostores/solid": "^0.3.2",
+		"@tanstack/query-core": "5.0.0-alpha.0",
+		"@tanstack/solid-query": "5.0.0-alpha.0",
 		"@types/react": "^18.0.25",
 		"@types/react-dom": "^18.0.9",
 		"algoliasearch": "^4.14.2",

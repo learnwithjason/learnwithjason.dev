@@ -19,6 +19,7 @@
 
 import { Handler } from '@netlify/functions';
 import { serialize } from 'cookie';
+import { CartSchema } from '@lwj/types/schema';
 import { postToShopify } from '../util/postToShopify';
 
 export const handler: Handler = async (event) => {
@@ -102,10 +103,29 @@ export const handler: Handler = async (event) => {
 		}
 
 		// clean up some GraphQL noise to make the cart easier to use
-		cart = {
+		cart = CartSchema.parse({
 			...shopifyResponse.cart,
-			lines: shopifyResponse.cart.lines.edges.map(({ node }: any) => node),
-		};
+			lines: shopifyResponse.cart.lines.edges.map(({ node }: any) => {
+				return {
+					id: node.id,
+					quantity: node.quantity,
+					merchandise: {
+						id: node.id,
+						title: node.merchandise.product.title,
+						slug: node.merchandise.product.handle,
+						price: node.merchandise.price,
+						images: node.merchandise.product.images.edges.map(
+							({ node }: { node: any }) => {
+								return {
+									src: node.src,
+									alt: node.altText,
+								};
+							}
+						),
+					},
+				};
+			}),
+		});
 
 		const cartCookie = serialize('lwj-cart-id', cart.id!, {
 			secure: true,

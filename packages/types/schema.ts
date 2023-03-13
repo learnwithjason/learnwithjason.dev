@@ -22,3 +22,40 @@ export const ProductsSchema = z.array(
 		inventory: z.number(),
 	})
 );
+
+export const CartSchema = z.object({
+	id: z.string().startsWith('gid://'),
+	lines: z.array(
+		z.object({
+			id: z.string().startsWith('gid://'),
+			quantity: z.number().int().min(1),
+			merchandise: z.object({
+				id: z.string().startsWith('gid://'),
+				title: z.string(),
+				price: z.object({
+					amount: z.string(),
+					currencyCode: z.literal('USD'), // I only have USD prices right now
+				}),
+				slug: z.string(),
+				images: z.array(
+					z.object({
+						src: z.string().url(),
+						alt: z.nullable(z.string()),
+					})
+				),
+			}),
+		})
+	),
+	estimatedCost: z.object({
+		totalAmount: z.object({
+			amount: z.string(),
+			currencyCode: z.literal('USD'),
+		}),
+		subtotalAmount: z.object({
+			amount: z.string(),
+			currencyCode: z.literal('USD'),
+		}),
+		totalTaxAmount: z.any(),
+		totalDutyAmount: z.any(),
+	}),
+});

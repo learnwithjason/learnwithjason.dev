@@ -1,28 +1,37 @@
-import { Component, createResource, createSignal, For, Show } from 'solid-js';
+import { Component, For, Show } from 'solid-js';
+import { createQuery } from '@tanstack/solid-query';
+import type { Cart as CartSchema } from '@lwj/types';
+import { client } from '../stores/cart';
 
 const API_GET_CART =
 	'http://localhost:8889/.netlify/functions/shopify-get-cart';
 const API_CHECKOUT =
 	'http://localhost:8889/.netlify/functions/shopify-create-checkout';
 
-async function getCart() {
-	const cartId = decodeURIComponent(
+function getCartIdFromCookies() {
+	return decodeURIComponent(
 		document.cookie
 			.split('; ')
-			.find((row) => row.startsWith('lwj-cart-id='))
+			.find((cookieEntry) => cookieEntry.startsWith('lwj-cart-id='))
 			?.split('=')[1] || ''
 	);
+}
 
+async function getCartById(cartId: string) {
 	const res = await fetch(API_GET_CART, {
 		method: 'POST',
 		body: JSON.stringify({ cartId }),
+	}).catch((err) => {
+		console.error(err);
 	});
 
-	if (!res.ok) {
-		throw new Error('unable to load cart');
+	if (!res?.ok) {
+		throw new Error('unable to load cart', { cause: res });
 	}
 
-	return res.json();
+	const cart: CartSchema = await res.json();
+
+	return cart;
 }
 
 function format(item: any, quantity = 1) {
@@ -41,19 +50,30 @@ const EmptyState: Component = () => {
 };
 
 export const Cart: Component = () => {
-	const [cart] = createResource(getCart);
+	const cartId = getCartIdFromCookies();
+	const cartQuery = createQuery(
+		() => ({
+			queryKey: ['cart', cartId],
+			queryFn: () => getCartById(cartId),
+		}),
+		() => client
+	);
 
 	return (
-		<Show when={!cart.loading} fallback={<p class="empty">loading...</p>}>
-			<Show when={cart()?.lines?.length > 0} fallback={<EmptyState />}>
+		<Show when={cartQuery.isFetched} fallback={<p class="empty">loading...</p>}>
+			<pre>{JSON.stringify(cartQuery.data, null, 2)}</pre>
+			<Show
+				when={cartQuery.data && cartQuery.data?.lines?.length > 0}
+				fallback={<EmptyState />}
+			>
 				<ul class="cart-items">
-					<For each={cart().lines}>
+					<For each={cartQuery.data?.lines}>
 						{(item) => {
 							const cartItem = item.merchandise;
 							return (
 								<li>
 									<p class="cart-item-details">
-										<span class="cart-item-name">{cartItem.product.title}</span>
+										<span class="cart-item-name">{cartItem.title}</span>
 										<span class="cart-item-subtotal">
 											{format(cartItem, item.quantity)}
 										</span>
@@ -71,12 +91,12 @@ export const Cart: Component = () => {
 				</ul>
 				<p class="subtotal">
 					{format({
-						price: cart().estimatedCost.totalAmount,
+						price: cartQuery.data?.estimatedCost.totalAmount,
 					})}
 				</p>
-				{cart().id && (
+				{cartQuery.data?.id && (
 					<form action={API_CHECKOUT} method="post">
-						<input type="hidden" name="cartId" value={cart().id} />
+						<input type="hidden" name="cartId" value={cartQuery.data.id} />
 						<button>Check Out</button>
 					</form>
 				)}

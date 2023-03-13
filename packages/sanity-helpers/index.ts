@@ -24,10 +24,17 @@ type SanityFetchProps =
 	| SanityFetchEpisodeByTopicProps
 	| SanityFetchEpisodeBySlugProps;
 
-type SanityFetchResponse = {
+type SanityFetchResponseEpisodeSingle = {
 	error: false | { statusCode: number; message: string };
 	data?: {
 		result: Episode;
+	};
+};
+
+type SanityFetchResponseEpisodeList = {
+	error: false | { statusCode: number; message: string };
+	data?: {
+		result: Episode[];
 	};
 };
 
@@ -112,7 +119,9 @@ export async function sanityFetch({
 	return { error: false, data };
 }
 
-export function loadAllEpisodes({ cdn = true }): Promise<SanityFetchResponse> {
+export function loadAllEpisodes({
+	cdn = true,
+}): Promise<SanityFetchResponseEpisodeList> {
 	return sanityFetch({
 		query: `
       *[_type == "episode" && hidden == false && date < now() && defined(youtubeID)] {
@@ -125,7 +134,7 @@ export function loadAllEpisodes({ cdn = true }): Promise<SanityFetchResponse> {
 
 export function loadFeaturedEpisodes({
 	cdn = true,
-}): Promise<SanityFetchResponse> {
+}): Promise<SanityFetchResponseEpisodeList> {
 	return sanityFetch({
 		query: `
       *[_type == "episode" && hidden == false && date < now() && defined(youtubeID) && featured == true][0..7] {
@@ -142,7 +151,7 @@ export function loadEpisodesByTopic({
 }: {
 	topic: string;
 	cdn: boolean;
-}): Promise<SanityFetchResponse> {
+}): Promise<SanityFetchResponseEpisodeList> {
 	if (!topic) {
 		return Promise.resolve({
 			error: {
@@ -181,7 +190,7 @@ export function loadEpisodeBySlug({
 	slug: string;
 	transcript?: boolean;
 	cdn?: boolean;
-}): Promise<SanityFetchResponse> {
+}): Promise<SanityFetchResponseEpisodeSingle> {
 	return sanityFetch({
 		query: `
       *[_type == "episode" && slug.current == $slug][0] {
@@ -194,7 +203,9 @@ export function loadEpisodeBySlug({
 	});
 }
 
-export function loadSchedule({ cdn = true }: { cdn?: boolean }) {
+export function loadSchedule(
+	{ cdn = true }: { cdn?: boolean } = { cdn: true }
+): Promise<SanityFetchResponseEpisodeList> {
 	// load episodes that start after 3 hours before now
 	// (so we don’t miss in-progress episodes)
 	return sanityFetch({
