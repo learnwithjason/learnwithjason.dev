@@ -3,7 +3,7 @@
 	background: var(--color-black);
 	display: grid;
 	gap: 1rem;
-	grid-template-columns: repeat(3, 1fr);
+	grid-template-columns: 1fr auto auto;
 	font-size: 0.875rem;
 	overflow: hidden;
 	padding: 1rem;

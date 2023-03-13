@@ -19,3 +19,11 @@
 	margin-top: 0.5rem;
 	width: min(90%, 42ch);
 }
+
+.content > :is(:first-of-type) {
+	margin-top: 1.25rem;
+}
+
+.content :is(:last-child) {
+	margin-bottom: 0;
+}

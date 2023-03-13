@@ -1,0 +1,83 @@
+import dayjs from 'dayjs';
+import Utc from 'dayjs/plugin/utc.js';
+import Timezone from 'dayjs/plugin/timezone.js';
+import AdvancedFormat from 'dayjs/plugin/advancedFormat.js';
+import { Component, JSXElement, mergeProps } from 'solid-js';
+import type { Episode } from '@lwj/types';
+
+import { TeacherPhoto } from './teacher-photo.jsx';
+import { IconInfo } from './icon-info.jsx';
+
+import styles from './episode-preview.module.css';
+
+// TODO maybe bring this back someday
+// import { ShareButton } from './share-button.jsx';
+
+dayjs.extend(Utc);
+dayjs.extend(Timezone);
+dayjs.extend(AdvancedFormat);
+
+export const EpisodePreview: Component<{
+	episode: Episode;
+	hideLinks?: boolean;
+	children?: JSXElement;
+}> = (rawProps) => {
+	const props = mergeProps({ hideLinks: false }, rawProps);
+
+	const teacher = props.episode.guest;
+	const host = props.episode.host;
+
+	console.log({ teacher });
+
+	return (
+		<div class={styles.preview}>
+			<div class={styles.teacher}>
+				<div class={styles.photo}>
+					<TeacherPhoto
+						imageURL={teacher.image}
+						alt={teacher.name}
+						width={150}
+					/>
+				</div>
+				<p>{teacher.name}</p>
+			</div>
+			<div class={styles.details}>
+				<p class="gradient-subheading">
+					{dayjs(props.episode.date).format('dddd, MMMM D @ h:mm A z')}
+				</p>
+				<h3>
+					{!props.hideLinks ? (
+						<a href={`/${props.episode.slug}`}>{props.episode.title}</a>
+					) : (
+						props.episode.title
+					)}
+				</h3>
+				<p class={styles.description}>{props.episode.description}</p>
+				{host && host.name !== 'Jason Lengstorf' && (
+					<p class={styles.description}>
+						With special guest host{' '}
+						<a href={`https://twitter.com/${host.twitter}`}>{host.name}</a>!
+					</p>
+				)}
+				{props.children
+					? props.children
+					: !props.hideLinks && (
+							<div class={styles.links}>
+								<a href={`/${props.episode.slug}`}>
+									<IconInfo /> Episode Details
+									<span class="visually-hidden">
+										{' '}
+										for {props.episode.title}
+									</span>
+								</a>
+								{/* <ShareButton
+									title={props.episode.title}
+									text={props.episode.description}
+									url={`/${props.episode.slug}`}
+								/> */}
+							</div>
+					  )}
+			</div>
+		</div>
+	);
+};
