@@ -113,11 +113,18 @@ const handlerFn: Handler = async (event) => {
 	} else if (episode.title.length < 30) {
 		titleSize = 100;
 		lineSpacing = -10;
-	} else if (episode.title.length >= 40) {
-		titleSize = 80;
+	} else if (episode.title.length >= 60) {
+		titleSize = 60;
 	} else if (episode.title.length >= 50) {
 		titleSize = 70;
+	} else if (episode.title.length >= 40) {
+		titleSize = 80;
 	}
+
+	console.log({
+		length: episode.title.length,
+		titleSize,
+	});
 
 	const posterUrl = [
 		`https://res.cloudinary.com/${process.env.CLOUDINARY_CLOUD_NAME}/image/upload`,
