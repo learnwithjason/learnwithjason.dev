@@ -11,7 +11,7 @@
 </h3>
 <p align="center">
   Fun things to do: 
-  <a href="https://twitch.tv/jlengstorf"><strong>follow on Twitch</strong></a> · 
+  <a href="https://lwj.dev/newsletter"><strong>subscribe for updates</strong></a> · 
   <a href="https://lwj.dev/schedule"><strong>see upcoming episodes</strong></a> · 
   <a href="https://www.learnwithjason.dev/calendar"><strong>add the Google Calendar</strong></a> 
   <br />
