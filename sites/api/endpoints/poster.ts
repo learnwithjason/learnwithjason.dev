@@ -17,35 +17,24 @@ const dimensions = {
 	title: {
 		width: 800,
 		height: 420,
-		left: 110,
-		top: 400,
+		left: 1035,
+		top: 475,
 	},
 	date: {
 		width: 800,
-		left: 110,
-		top: 790,
+		left: 1035,
+		top: 395,
 	},
 	guestImage: {
-		width: 600,
-		height: 600,
-		left: 940,
-		top: 150,
+		width: 950,
+		height: 1080,
+		left: 0,
+		top: 0,
 	},
 	guestName: {
 		width: 540,
-		left: 970,
-		top: 660,
-	},
-	videoGuestImage: {
-		width: 600,
-		height: 600,
-		left: 1080,
-		top: 190,
-	},
-	videoGuestName: {
-		width: 540,
-		left: 1110,
-		top: 760,
+		left: 5,
+		top: 990,
 	},
 };
 
@@ -82,30 +71,33 @@ const handlerFn: Handler = async (event) => {
 	const guest = episode?.guest ?? { name: 'Jason Lengstorf' };
 	const episodeType = guest.name === host.name ? 'solo' : 'interview';
 
-	let filename = 'episode-2023';
+	let filename = 'episode-2023-v2';
 
 	if (episode.host?.twitter === 'bencodezen') {
-		filename = 'episode-2023-ben';
+		filename = 'episode-2023-ben-v2';
 	}
 
 	if (episodeType === 'solo') {
-		filename = 'episode-2023-solo';
+		filename = 'episode-2023-v2-solo';
 	}
 
 	if (type === 'video-poster.jpg' && episodeType === 'interview') {
-		filename = 'episode-video-2023';
+		filename = 'episode-video-2023-v2';
 	}
 
 	if (type === 'video-poster.jpg' && episodeType === 'solo') {
-		filename = 'episode-video-2023-solo';
+		filename = 'episode-video-2023-v2-solo';
 	}
 
 	/*
 	 * Tweak the font styles a bit so that short titles and long titles don’t
 	 * look goofy on the cards. Not perfect, but better than it was before.
 	 */
-	let titleSize = 90;
+	let titleSize = 80;
 	let lineSpacing = 0;
+
+	episode.title =
+		'Build a Headless WordPress site with WPGraphQL, Faust.js and WPGraphQL Smart Cache';
 
 	if (episode.title.length < 25) {
 		titleSize = 120;
@@ -118,13 +110,8 @@ const handlerFn: Handler = async (event) => {
 	} else if (episode.title.length >= 50) {
 		titleSize = 70;
 	} else if (episode.title.length >= 40) {
-		titleSize = 80;
+		titleSize = 75;
 	}
-
-	console.log({
-		length: episode.title.length,
-		titleSize,
-	});
 
 	const posterUrl = [
 		`https://res.cloudinary.com/${process.env.CLOUDINARY_CLOUD_NAME}/image/upload`,
@@ -151,13 +138,6 @@ const handlerFn: Handler = async (event) => {
 		let nameTop = dimensions.guestName.top;
 		let nameLeft = dimensions.guestName.left;
 
-		if (type === 'video-poster.jpg') {
-			imageTop = dimensions.videoGuestImage.top;
-			imageLeft = dimensions.videoGuestImage.left;
-			nameTop = dimensions.videoGuestName.top;
-			nameLeft = dimensions.videoGuestName.left;
-		}
-
 		posterUrl.push(
 			`/u_fetch:${guestImageBuffer},w_${dimensions.guestImage.width},`,
 			`h_${dimensions.guestImage.height},c_fill,g_north_west,`,
@@ -169,7 +149,9 @@ const handlerFn: Handler = async (event) => {
 	}
 
 	if (type === 'schedule.jpg') {
-		const dateString = dayjs(episode.date).format('dddd, MMM D @ h:mm A z');
+		const dateString = dayjs(episode.date)
+			.tz('America/Los_Angeles')
+			.format('dddd, MMM D @ h:mm A z');
 
 		posterUrl.push(
 			`/l_text:jwf-book.otf_48_line_spacing_0:`,

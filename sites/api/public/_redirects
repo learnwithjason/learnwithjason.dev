@@ -1,4 +1,6 @@
 /*/poster.jpg                  /.netlify/builders/poster          200
+/*/video-poster.jpg                  /.netlify/builders/poster          200
+/*/schedule.jpg                /.netlify/builders/poster          200
 /api/store/*                   /.netlify/functions/shopify-:splat  200
 /.netlify/functions/store/*    /.netlify/functions/shopify-:splat  200
 /api/v2/*                      /.netlify/builders/:splat          200
