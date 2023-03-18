@@ -96,9 +96,6 @@ const handlerFn: Handler = async (event) => {
 	let titleSize = 80;
 	let lineSpacing = 0;
 
-	episode.title =
-		'Build a Headless WordPress site with WPGraphQL, Faust.js and WPGraphQL Smart Cache';
-
 	if (episode.title.length < 25) {
 		titleSize = 120;
 		lineSpacing = -10;
