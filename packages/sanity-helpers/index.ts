@@ -38,6 +38,10 @@ type SanityFetchResponseEpisodeList = {
 	};
 };
 
+type SanityFetchResponse =
+	| SanityFetchResponseEpisodeList
+	| SanityFetchResponseEpisodeSingle;
+
 const COMMON_EPISODE_FIELDS = `
   "id": _id,
   title,
@@ -121,7 +125,7 @@ export async function sanityFetch({
 
 export function loadAllEpisodes({
 	cdn = true,
-}): Promise<SanityFetchResponseEpisodeList> {
+} = {}): Promise<SanityFetchResponseEpisodeList> {
 	return sanityFetch({
 		query: `
       *[_type == "episode" && hidden == false && date < now() && defined(youtubeID)] {
@@ -129,7 +133,7 @@ export function loadAllEpisodes({
       } | order(date desc)
     `,
 		cdn,
-	});
+	}) as Promise<SanityFetchResponseEpisodeList>;
 }
 
 export function loadFeaturedEpisodes({
@@ -142,7 +146,7 @@ export function loadFeaturedEpisodes({
         } | order(date desc)
     `,
 		cdn,
-	});
+	}) as Promise<SanityFetchResponseEpisodeList>;
 }
 
 export function loadEpisodesByTopic({
@@ -179,7 +183,7 @@ export function loadEpisodesByTopic({
 			topic,
 		},
 		cdn,
-	});
+	}) as Promise<SanityFetchResponseEpisodeList>;
 }
 
 export function loadEpisodeBySlug({
@@ -200,12 +204,12 @@ export function loadEpisodeBySlug({
     `,
 		cdn,
 		variables: { slug },
-	});
+	}) as Promise<SanityFetchResponseEpisodeSingle>;
 }
 
-export function loadSchedule(
-	{ cdn = true }: { cdn?: boolean } = { cdn: true }
-): Promise<SanityFetchResponseEpisodeList> {
+export function loadSchedule({
+	cdn = true,
+}: { cdn?: boolean } = {}): Promise<SanityFetchResponseEpisodeList> {
 	// load episodes that start after 3 hours before now
 	// (so we don’t miss in-progress episodes)
 	return sanityFetch({
@@ -215,7 +219,7 @@ export function loadSchedule(
       } | order(date asc)
     `,
 		cdn,
-	});
+	}) as Promise<SanityFetchResponseEpisodeList>;
 }
 
 export function loadTagBySlug({
