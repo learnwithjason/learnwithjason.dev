@@ -59,24 +59,26 @@ export const EpisodePreview: Component<{
 						<a href={`https://twitter.com/${host.twitter}`}>{host.name}</a>!
 					</p>
 				)}
-				{props.children
-					? props.children
-					: !props.hideLinks && (
-							<div class={styles.links}>
-								<a href={`/${props.episode.slug}`}>
-									<IconInfo /> Episode Details
-									<span class="visually-hidden">
-										{' '}
-										for {props.episode.title}
-									</span>
-								</a>
-								{/* <ShareButton
+				<div class={styles.links}>
+					{props.children
+						? props.children
+						: !props.hideLinks && (
+								<>
+									<a href={`/${props.episode.slug}`}>
+										<IconInfo /> Episode Details
+										<span class="visually-hidden">
+											{' '}
+											for {props.episode.title}
+										</span>
+									</a>
+									{/* <ShareButton
 									title={props.episode.title}
 									text={props.episode.description}
 									url={`/${props.episode.slug}`}
 								/> */}
-							</div>
-					  )}
+								</>
+						  )}
+				</div>
 			</div>
 		</div>
 	);

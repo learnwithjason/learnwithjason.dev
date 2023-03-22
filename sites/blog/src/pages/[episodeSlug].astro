@@ -1,0 +1,94 @@
+---
+import type { Episode } from '@lwj/types';
+import { loadAllEpisodes, loadSchedule } from '@lwj/sanity-helpers';
+import Layout from '../layouts/Layout.astro';
+import { EpisodePreview } from '../components/episode-preview';
+import { IconYouTube } from '../components/icon-youtube';
+
+export async function getStaticPaths() {
+	const [episodes, schedule] = await Promise.all([
+		loadAllEpisodes(),
+		loadSchedule(),
+	]);
+
+	const paths: {
+		params: {
+			episodeSlug: string;
+		};
+		props: {
+			episode: Episode;
+			scheduled?: boolean;
+		};
+	}[] = [];
+
+	episodes.data?.result.forEach((episode) => {
+		paths.push({
+			params: {
+				episodeSlug: episode.slug,
+			},
+			props: {
+				episode,
+			},
+		});
+	});
+
+	schedule.data?.result.forEach((episode) => {
+		paths.push({
+			params: {
+				episodeSlug: episode.slug,
+			},
+			props: {
+				episode,
+				scheduled: true,
+			},
+		});
+	});
+
+	return paths;
+}
+
+const { episode } = Astro.props;
+---
+
+<Layout title={episode.title}>
+	<section class="episode-container">
+		<EpisodePreview episode={episode}>
+			<a href={`https://twitter.com/${episode.guest.twitter}`}>
+				<svg
+					class="link-icon"
+					viewBox="0 0 50 41"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<path
+						fill="#c10b84"
+						d="M15.724 40.628c18.868 0 29.188-15.632 29.188-29.188 0-.444 0-.886-.03-1.326A20.872 20.872 0 0050 4.804a20.475 20.475 0 01-5.892 1.614 10.294 10.294 0 004.51-5.674 20.558 20.558 0 01-6.514 2.49 10.268 10.268 0 00-17.482 9.356A29.124 29.124 0 013.48 1.872a10.266 10.266 0 003.176 13.694A10.183 10.183 0 012 14.282v.13a10.262 10.262 0 008.23 10.056c-1.51.412-3.095.472-4.632.176a10.27 10.27 0 009.584 7.124A20.583 20.583 0 010 36.02a29.042 29.042 0 0015.724 4.6"
+					></path>
+				</svg>
+				{episode.guest.name} on Twitter
+			</a>
+		</EpisodePreview>
+	</section>
+</Layout>
+
+<style>
+	.episode-container {
+		display: grid;
+		justify-content: center;
+		margin: 3rem auto 6rem;
+		max-width: min(1280px, 90vw);
+		width: 100%;
+	}
+
+	.link-icon {
+		width: 16px;
+	}
+
+	@media (min-width: 1100px) {
+		.episode-container {
+			align-items: start;
+			display: grid;
+			gap: 3rem;
+			grid-template-columns: repeat(auto-fit, min(calc(50% - 1.5rem), 600px));
+		}
+	}
+</style>
