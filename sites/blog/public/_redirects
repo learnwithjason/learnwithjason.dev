@@ -27,8 +27,12 @@ https://lwj.dev/*                       https://www.learnwithjason.dev/:splat   
 # search is a command bar now thanks to Sarah Dayan and Algolia
 /search        /?search
 
+# Q&A
+/ask           https://ask.ping.gg/ask/jlengstorf
+
 # sponsorship information
-/sponsor       https://www.notion.so/jlengstorf/Learn-With-Jason-Sponsorship-214f066473d64bddaeb6f57d155fad34
+/sponsor       https://www.notion.so/learnwithjason/Learn-With-Jason-Livestream-Sponsorship-214f066473d64bddaeb6f57d155fad34
+/custom-video  https://www.notion.so/learnwithjason/Custom-Content-Creation-882fa5e37acb47ee9c7d59a0d46b81be
 
 # sponsors
 /netlify       https://www.netlify.com/?utm_source=learnwithjason&utm_medium=lwj&utm_campaign=sponsored
