@@ -3,6 +3,7 @@ import styles from './opt-in-form.module.css';
 
 export const OptInForm: Component<{
 	heading?: string;
+	disclaimer?: string;
 	children?: JSXElement;
 }> = (rawProps) => {
 	const props = mergeProps(
@@ -37,6 +38,10 @@ export const OptInForm: Component<{
 				<input type="email" name="email" id="email" required />
 
 				<button>Subscribe</button>
+
+				<Show when={props.disclaimer}>
+					<p class={styles.disclaimer}>{props.disclaimer}</p>
+				</Show>
 			</form>
 		</aside>
 	);
