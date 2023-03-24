@@ -27,8 +27,6 @@ export const EpisodePreview: Component<{
 	const teacher = props.episode.guest;
 	const host = props.episode.host;
 
-	console.log({ teacher });
-
 	return (
 		<div class={styles.preview}>
 			<div class={styles.teacher}>
