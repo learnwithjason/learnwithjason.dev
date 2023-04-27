@@ -27,16 +27,16 @@ const PAGES = [
 		label: 'schedule',
 	},
 	{
-		url: '/store/',
-		label: 'store',
-	},
-	{
 		url: '/blog/',
 		label: 'blog',
 	},
 	{
 		url: '/newsletter/',
-		label: 'tips & insights',
+		label: 'newsletter',
+	},
+	{
+		url: 'https://learn-with-jason.myshopify.com/',
+		label: 'store',
 	},
 ];
 
@@ -57,6 +57,19 @@ const { title, mainClass = '' } = Astro.props;
 		<title>{title}</title>
 
 		<slot name="head-tags" />
+
+		<script
+			type="text/javascript"
+			src="https://cdn.addevent.com/libs/atc/1.6.1/atc.min.js"
+			async
+			defer
+		></script>
+		<script
+			type="text/javascript"
+			src="https://cdn.addevent.com/libs/stc/1.0.2/stc.min.js"
+			async
+			defer
+		></script>
 	</head>
 	<body data-theme="light">
 		<svg class="svg-defs">
@@ -686,5 +699,190 @@ const { title, mainClass = '' } = Astro.props;
 		.aa-LinkDescription {
 			-webkit-line-clamp: unset;
 		}
+	}
+
+	/* AddEvent stuff */
+	/* The button */
+	.addeventstc,
+	.addeventatc {
+		display: inline-block;
+		position: relative;
+		text-decoration: none;
+		cursor: pointer;
+	}
+
+	.addeventatc .start,
+	.addeventatc .end,
+	.addeventatc .timezone,
+	.addeventatc .title,
+	.addeventatc .description,
+	.addeventatc .location,
+	.addeventatc .organizer,
+	.addeventatc .organizer_email,
+	.addeventatc .facebook_event,
+	.addeventatc .all_day_event,
+	.addeventatc .date_format,
+	.addeventatc .alarm_reminder,
+	.addeventatc .recurring,
+	.addeventatc .attendees,
+	.addeventatc .calname,
+	.addeventatc .uid,
+	.addeventatc .status,
+	.addeventatc .method,
+	.addeventatc .client,
+	.addeventatc .transp {
+		display: none !important;
+	}
+
+	/* Drop down */
+	.addeventstc_dropdown,
+	.addeventatc_dropdown {
+		width: 230px;
+		position: absolute;
+		padding: 6px 0px 0px 0px;
+		color: var(--color-text-default);
+		font-weight: 600;
+		letter-spacing: 0;
+		line-height: 100%;
+		background: #fff;
+		font-size: 14px;
+		text-decoration: none;
+		text-align: left;
+		margin-left: -1px;
+		display: none;
+		-moz-border-radius: 3px;
+		-webkit-border-radius: 3px;
+		-webkit-box-shadow: rgba(0, 0, 0, 0.4) 0px 10px 26px;
+		-moz-box-shadow: rgba(0, 0, 0, 0.4) 0px 10px 26px;
+		box-shadow: rgba(0, 0, 0, 0.4) 0px 10px 26px;
+		transform: scale(0.98, 0.98) translateY(5px);
+		z-index: -1;
+		transition: transform 0.15s ease;
+		-webkit-user-select: none;
+		-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	}
+	.addeventstc_dropdown.topdown,
+	.addeventatc_dropdown.topdown {
+		transform: scale(0.98, 0.98) translateY(-5px) !important;
+	}
+	.addeventstc_dropdown span,
+	.addeventatc_dropdown span {
+		display: block;
+		line-height: 100%;
+		background: #fff;
+		text-decoration: none;
+		cursor: pointer;
+		font-size: 15px;
+		color: var(--color-text-default);
+		font-weight: 600;
+		padding: 14px 10px 14px 55px;
+		margin: -2px 0px;
+	}
+	.addeventstc_dropdown span:hover,
+	.addeventatc_dropdown span:hover {
+		background-color: var(--color-gray-lightest);
+		color: var(--color-black);
+		text-decoration: none;
+		font-size: 15px;
+	}
+	.addeventstc_dropdown em,
+	.addeventatc_dropdown em {
+		color: var(--color-text-muted);
+		font-size: 0.75rem;
+		font-weight: 400;
+	}
+	.addeventstc_dropdown .frs a,
+	.addeventatc_dropdown .frs a {
+		background: #fff;
+		color: #cacaca !important;
+		cursor: pointer;
+		font-size: 9px !important;
+		font-style: normal !important;
+		font-weight: 400 !important;
+		line-height: 110% !important;
+		padding-left: 10px;
+		position: absolute;
+		right: 10px;
+		text-align: right;
+		text-decoration: none;
+		top: 5px;
+		z-index: 101;
+	}
+	.addeventstc_dropdown .frs a:hover,
+	.addeventatc_dropdown .frs a:hover {
+		color: #999 !important;
+	}
+	.addeventstc_dropdown .ateappleical,
+	.addeventatc_dropdown .ateappleical {
+		background: url(https://cdn.addevent.com/libs/imgs/icon-apple-t5.svg) 18px
+			40% no-repeat;
+		background-size: 22px 100%;
+	}
+	.addeventstc_dropdown .ategoogle,
+	.addeventatc_dropdown .ategoogle {
+		background: url(https://cdn.addevent.com/libs/imgs/icon-google-t5.svg) 18px
+			50% no-repeat;
+		background-size: 22px 100%;
+	}
+	.addeventstc_dropdown .ateoffice365,
+	.addeventatc_dropdown .ateoffice365 {
+		background: url(https://cdn.addevent.com/libs/imgs/icon-office365-t5.svg)
+			19px 50% no-repeat;
+		background-size: 18px 100%;
+	}
+	.addeventstc_dropdown .ateoutlook,
+	.addeventatc_dropdown .ateoutlook {
+		background: url(https://cdn.addevent.com/libs/imgs/icon-outlook-t5.svg) 18px
+			50% no-repeat;
+		background-size: 22px 100%;
+	}
+	.addeventstc_dropdown .ateoutlookcom,
+	.addeventatc_dropdown .ateoutlookcom {
+		background: url(https://cdn.addevent.com/libs/imgs/icon-outlookcom-t5.svg)
+			18px 50% no-repeat;
+		background-size: 22px 100%;
+	}
+	.addeventstc_dropdown .ateyahoo,
+	.addeventatc_dropdown .ateyahoo {
+		background: url(https://cdn.addevent.com/libs/imgs/icon-yahoo-t5.svg) 18px
+			50% no-repeat;
+		background-size: 22px 100%;
+	}
+	.addeventstc_dropdown .atefacebook,
+	.addeventatc_dropdown .atefacebook {
+		background: url(https://cdn.addevent.com/libs/imgs/icon-facebook-t5.svg)
+			18px 50% no-repeat;
+		background-size: 22px 100%;
+	}
+	.addeventstc_dropdown .copyx,
+	.addeventatc_dropdown .copyx {
+		height: 21px;
+		display: block;
+		position: relative;
+		cursor: default;
+	}
+	.addeventstc_dropdown .brx,
+	.addeventatc_dropdown .brx {
+		height: 1px;
+		overflow: hidden;
+		background: #e8e8e8;
+		position: absolute;
+		z-index: 100;
+		left: 10px;
+		right: 10px;
+		top: 9px;
+	}
+	.addeventstc_dropdown.addeventstc-selected,
+	.addeventatc_dropdown.addeventatc-selected {
+		transform: scale(1, 1) translateY(0px);
+		z-index: 99999999999;
+	}
+	.addeventstc_dropdown.topdown.addeventstc-selected,
+	.addeventatc_dropdown.topdown.addeventatc-selected {
+		transform: scale(1, 1) translateY(0px) !important;
+	}
+	.addeventstc_dropdown .drop_markup,
+	.addeventatc_dropdown .drop_markup {
+		background-color: #f4f4f4;
 	}
 </style>

@@ -36,60 +36,60 @@
  * ```
  */
 
+//TODO THIS IS BROKEN FIX IT
+
 import { Handler } from '@netlify/functions';
+import { serialize } from 'cookie';
 
 import { createCartWithItem } from '../util/createCartWithItem';
 import { addItemToCart } from '../util/addItemToCart';
 
 export const handler: Handler = async (event) => {
-	const { cartId, itemId, quantity } = JSON.parse(event.body || '{}');
+	console.log('hello?');
+	const {
+		itemId,
+		quantity: quantityStr,
+		cartId,
+	} = JSON.parse(event.body || '{}');
 
+	const quantity = Number(quantityStr);
+	const headers: any = {
+		'Access-Control-Allow-Origin': '*',
+		'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+		'Access-Control-Allow-Headers': 'Content-Type',
+		'Content-Type': 'application/json; charset=utf8',
+	};
+
+	let cart;
 	if (cartId) {
-		console.log('--------------------------------');
-		console.log('Adding item to existing cart...');
-		console.log('--------------------------------');
-
-		const shopifyResponse = await addItemToCart({
+		const res = await addItemToCart({
 			cartId,
 			itemId,
 			quantity,
 		});
 
-		const cart = {
-			...shopifyResponse.cartLinesAdd.cart,
-			lines: shopifyResponse.cartLinesAdd.cart.lines.edges.map(
-				({ node }: { node: any }) => node
-			),
-		};
-
-		return {
-			statusCode: 200,
-			body: JSON.stringify(cart),
-		};
+		cart = res.cartLinesAdd.cart;
 	} else {
-		console.log('--------------------------------');
-		console.log('Creating new cart with item...');
-		console.log('--------------------------------');
-		const createCartResponse = await createCartWithItem({
+		const res = await createCartWithItem({
 			itemId,
 			quantity,
 		});
 
-		console.log(createCartResponse);
+		cart = res.cartCreate.cart;
 
-		const cart = {
-			...createCartResponse.cartCreate.cart,
-			lines: createCartResponse.cartCreate.cart.lines.edges.map(
-				({ node }: { node: any }) => node
-			),
-		};
+		const cartCookie = serialize('lwj-cart-id', cart.id, {
+			secure: true,
+			sameSite: 'none',
+			path: '/',
+			maxAge: 1000 * 60 * 60 * 24 * 14,
+		});
 
-		return {
-			statusCode: 200,
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(cart),
-		};
+		headers['Set-Cookie'] = cartCookie;
 	}
+
+	return {
+		statusCode: 200,
+		headers,
+		body: JSON.stringify(cart),
+	};
 };

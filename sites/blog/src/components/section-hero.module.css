@@ -1,0 +1,70 @@
+.hero {
+	background: var(--color-black-faded);
+	color: var(--color-gray-text);
+	padding-bottom: 3.5rem;
+}
+
+.hero-heading {
+	max-width: 900px;
+}
+
+.text-group {
+	font-family: var(--font-family);
+	font-size: 75px;
+	font-weight: 900;
+	letter-spacing: -0.02em;
+	line-height: 1.5;
+	stroke-linejoin: round;
+	text-anchor: middle;
+}
+
+.bigger {
+	font-size: 1.85em;
+}
+
+.hero p {
+	color: var(--color-white);
+	font-size: clamp(0.875rem, 2.75vw, 1.5rem);
+	line-height: 1.45;
+	margin: 0;
+	max-width: 90vw;
+	text-align: center;
+	width: 46ch;
+}
+
+.text {
+	stroke: var(--color-gray-text);
+	stroke-width: 2px;
+	fill: white;
+	paint-order: stroke fill;
+}
+
+.gradient-stroke {
+	fill: url(#lwj-gradient);
+	stroke: url(#lwj-gradient);
+	stroke-width: 14px;
+}
+
+.o-filler {
+	fill: #f0e563;
+}
+
+.o-filler2 {
+	fill: #dbed95;
+}
+
+.o-filler3 {
+	fill: #c4f5c3;
+}
+
+.stop1 {
+	stop-color: var(--color-pink);
+}
+
+.stop2 {
+	stop-color: var(--color-yellow);
+}
+
+.stop3 {
+	stop-color: var(--color-blue);
+}

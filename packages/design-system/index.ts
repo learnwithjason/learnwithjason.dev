@@ -1,5 +1,6 @@
 import './css/colors.css';
 
+export * from './components/button';
 export * from './components/header';
 export * from './components/footer';
 export * from './components/logo';

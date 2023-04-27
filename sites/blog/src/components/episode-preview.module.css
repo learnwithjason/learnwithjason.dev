@@ -1,0 +1,101 @@
+.preview {
+	display: block;
+	max-width: 630px;
+}
+
+.preview:not(:first-child) {
+	margin-top: 4rem;
+}
+
+.preview h3 {
+	font-weight: 600;
+	line-height: 1.1;
+	margin: 0;
+}
+
+.preview h3 a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.preview h3 a:is(:focus, :active, :hover) {
+	text-decoration: underline;
+}
+
+.description {
+	margin-top: 0.5rem;
+}
+
+.photo {
+	height: 0;
+	margin: 0 auto;
+	padding-bottom: 150px;
+	width: 150px;
+}
+
+.links {
+	color: var(--color-pink-text);
+	display: flex;
+	font-size: 0.75rem;
+	font-weight: 600;
+	gap: 1.5rem;
+	letter-spacing: 0.2em;
+	line-height: 1;
+	text-transform: uppercase;
+}
+
+.links svg {
+	min-width: 14px;
+}
+
+.links path {
+	fill: var(--color-pink-text);
+}
+
+.links a {
+	align-items: center;
+	background: transparent;
+	border: none;
+	color: inherit;
+	display: flex;
+	font-size: 0.7rem;
+	font-weight: 600;
+	gap: 0.5rem;
+	letter-spacing: 0.2em;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+
+@media (min-width: 600px) {
+	.preview {
+		display: grid;
+		gap: 1.5rem;
+		grid-template-columns: min(150px, 33%) min(410px, 66%);
+	}
+}
+
+@media (min-width: 1100px) {
+	/* .next-episode-wrapper {
+		align-items: end;
+		display: grid;
+		gap: 5rem;
+		grid-template-columns: min(590px, 60%) min(310px, 35%);
+		justify-content: center;
+	} */
+
+	.preview:not(:first-child) {
+		margin-top: 0;
+	}
+
+	.photo {
+		padding-bottom: 100%;
+		width: 100%;
+	}
+}
+
+.teacher p {
+	font-weight: 900;
+	font-size: 0.875rem;
+	margin: 0.25rem 0 0;
+	text-align: center;
+}

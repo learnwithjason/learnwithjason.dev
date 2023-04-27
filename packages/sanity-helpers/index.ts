@@ -24,12 +24,70 @@ type SanityFetchProps =
 	| SanityFetchEpisodeByTopicProps
 	| SanityFetchEpisodeBySlugProps;
 
-type SanityFetchResponse = {
+type SanityFetchResponseEpisodeSingle = {
 	error: false | { statusCode: number; message: string };
 	data?: {
 		result: Episode;
 	};
 };
+
+type SanityFetchResponseEpisodeList = {
+	error: false | { statusCode: number; message: string };
+	data?: {
+		result: Episode[];
+	};
+};
+
+type SanityFetchResponseEpisodeTranscript = {
+	error: false | { statusCode: number; message: string };
+	data?: {
+		result: {
+			transcript: string;
+		};
+	};
+};
+
+type SanityFetchResponseTag = {
+	error: false | { statusCode: number; message: string };
+	data?: {
+		result: {
+			details: {
+				description: string;
+				label: string;
+				slug: string;
+				uri: string;
+			};
+			episodes: Episode[];
+		};
+	};
+};
+
+type SanityFetchResponseTags = {
+	error: false | { statusCode: number; message: string };
+	data?: {
+		result: {
+			_id: string;
+			label: string;
+			slug: string;
+		}[];
+	};
+};
+
+type SanityFetchResponseRelatedEpisodes = {
+	error: false | { statusCode: number; message: string };
+	data?: {
+		result: {
+			related: (Episode & { count: number })[];
+		};
+	};
+};
+
+type SanityFetchResponse =
+	| SanityFetchResponseEpisodeList
+	| SanityFetchResponseEpisodeSingle
+	| SanityFetchResponseEpisodeTranscript
+	| SanityFetchResponseTag
+	| SanityFetchResponseTags;
 
 const COMMON_EPISODE_FIELDS = `
   "id": _id,
@@ -112,7 +170,9 @@ export async function sanityFetch({
 	return { error: false, data };
 }
 
-export function loadAllEpisodes({ cdn = true }): Promise<SanityFetchResponse> {
+export function loadAllEpisodes({
+	cdn = true,
+} = {}): Promise<SanityFetchResponseEpisodeList> {
 	return sanityFetch({
 		query: `
       *[_type == "episode" && hidden == false && date < now() && defined(youtubeID)] {
@@ -120,12 +180,12 @@ export function loadAllEpisodes({ cdn = true }): Promise<SanityFetchResponse> {
       } | order(date desc)
     `,
 		cdn,
-	});
+	}) as Promise<SanityFetchResponseEpisodeList>;
 }
 
 export function loadFeaturedEpisodes({
 	cdn = true,
-}): Promise<SanityFetchResponse> {
+}): Promise<SanityFetchResponseEpisodeList> {
 	return sanityFetch({
 		query: `
       *[_type == "episode" && hidden == false && date < now() && defined(youtubeID) && featured == true][0..7] {
@@ -133,7 +193,7 @@ export function loadFeaturedEpisodes({
         } | order(date desc)
     `,
 		cdn,
-	});
+	}) as Promise<SanityFetchResponseEpisodeList>;
 }
 
 export function loadEpisodesByTopic({
@@ -141,8 +201,8 @@ export function loadEpisodesByTopic({
 	cdn = true,
 }: {
 	topic: string;
-	cdn: boolean;
-}): Promise<SanityFetchResponse> {
+	cdn?: boolean;
+}): Promise<SanityFetchResponseTag> {
 	if (!topic) {
 		return Promise.resolve({
 			error: {
@@ -170,7 +230,7 @@ export function loadEpisodesByTopic({
 			topic,
 		},
 		cdn,
-	});
+	}) as Promise<SanityFetchResponseTag>;
 }
 
 export function loadEpisodeBySlug({
@@ -181,7 +241,7 @@ export function loadEpisodeBySlug({
 	slug: string;
 	transcript?: boolean;
 	cdn?: boolean;
-}): Promise<SanityFetchResponse> {
+}): Promise<SanityFetchResponseEpisodeSingle> {
 	return sanityFetch({
 		query: `
       *[_type == "episode" && slug.current == $slug][0] {
@@ -191,10 +251,62 @@ export function loadEpisodeBySlug({
     `,
 		cdn,
 		variables: { slug },
-	});
+	}) as Promise<SanityFetchResponseEpisodeSingle>;
 }
 
-export function loadSchedule({ cdn = true }: { cdn?: boolean }) {
+export function getRelatedEpisodes({
+	slug,
+	cdn = true,
+}: {
+	slug: string;
+	cdn?: boolean;
+}): Promise<SanityFetchResponseRelatedEpisodes> {
+	return sanityFetch({
+		query: `
+      *[_type == "episode" && slug.current == $slug][0] {
+        "related": *[_type == "episode" && slug.current != ^.slug.current && references(^.episodeTags[]->._id)] {
+          title,
+          "slug": slug.current,
+          "uri": "https://www.learnwithjason.dev/" + slug.current,
+          guest[0]-> {
+            ...(guestImage {
+              ...(asset-> {
+                "image": url
+              })
+            }),
+            name,
+            twitter,
+          },
+          "count": count((episodeTags[]->slug.current)[@ in ^.^.episodeTags[]->.slug.current]),
+        } | order(count desc)[0..3]
+      }
+    `,
+		variables: { slug },
+		cdn,
+	}) as Promise<SanityFetchResponseRelatedEpisodes>;
+}
+
+export function getEpisodeTranscript({
+	slug,
+	cdn = true,
+}: {
+	slug: string;
+	cdn?: boolean;
+}): Promise<SanityFetchResponseEpisodeTranscript> {
+	return sanityFetch({
+		query: `
+      *[_type == "episode" && slug.current == $slug][0] {
+        transcript
+      }
+    `,
+		variables: { slug },
+		cdn,
+	}) as Promise<SanityFetchResponseEpisodeTranscript>;
+}
+
+export function loadSchedule({
+	cdn = true,
+}: { cdn?: boolean } = {}): Promise<SanityFetchResponseEpisodeList> {
 	// load episodes that start after 3 hours before now
 	// (so we don’t miss in-progress episodes)
 	return sanityFetch({
@@ -204,7 +316,20 @@ export function loadSchedule({ cdn = true }: { cdn?: boolean }) {
       } | order(date asc)
     `,
 		cdn,
-	});
+	}) as Promise<SanityFetchResponseEpisodeList>;
+}
+
+export async function loadAllTags({ cdn = true }: { cdn?: boolean } = {}) {
+	return sanityFetch({
+		query: `
+      *[_type == "episodeTag"] {
+        _id,
+        label,
+        "slug": slug.current,
+      }
+    `,
+		cdn,
+	}) as Promise<SanityFetchResponseTags>;
 }
 
 export function loadTagBySlug({

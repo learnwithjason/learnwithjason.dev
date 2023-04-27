@@ -1,0 +1,19 @@
+.button {
+	background: transparent;
+	border: 2px solid;
+	border-radius: 0.25rem;
+	color: var(--color-pink-text);
+	display: block;
+	font-family: var(--font-family);
+	font-size: 1rem;
+	font-weight: 600;
+	margin-bottom: 2.25rem;
+	margin-top: 2rem;
+	padding: 0.25rem 1rem;
+	text-align: center;
+	text-decoration: none;
+}
+
+.button:focus {
+	background: var(--color-yellow);
+}

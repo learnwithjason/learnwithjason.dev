@@ -6,6 +6,15 @@
 	padding: 2rem min(5vw, 2rem) 2.25rem;
 }
 
+.opt-in.constrained {
+	margin-inline: 0;
+	padding-inline: 2rem;
+}
+
+.opt-in:has(.disclaimer) {
+	padding-block-end: 1.5rem;
+}
+
 @media (min-width: 716px) {
 	.opt-in {
 		border-radius: 0.25rem;
@@ -64,4 +73,12 @@
 	padding: 0.25rem;
 	text-transform: uppercase;
 	width: 100%;
+}
+
+.disclaimer {
+	color: var(--color-gray-light);
+	font-size: 0.75rem;
+	font-style: italic;
+	margin: 1.5rem 0 0;
+	max-width: 54ch;
 }

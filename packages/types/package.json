@@ -4,5 +4,8 @@
 	"version": "0.0.1",
 	"type": "module",
 	"types": "./index.d.ts",
-	"main": "./index.d.ts"
+	"main": "./index.ts",
+	"dependencies": {
+		"zod": "^3.20.2"
+	}
 }

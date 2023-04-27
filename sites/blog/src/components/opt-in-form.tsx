@@ -3,17 +3,25 @@ import styles from './opt-in-form.module.css';
 
 export const OptInForm: Component<{
 	heading?: string;
+	disclaimer?: string;
+	constrained?: boolean;
 	children?: JSXElement;
 }> = (rawProps) => {
 	const props = mergeProps(
 		{
+			constrained: false,
 			heading: 'Build better web apps',
 		},
 		rawProps
 	);
 
 	return (
-		<aside class={styles['opt-in']}>
+		<aside
+			classList={{
+				[styles['opt-in']]: true,
+				[styles.constrained]: props.constrained,
+			}}
+		>
 			<form action="/api/subscribe" method="post">
 				<Show when={!props.children} fallback={props.children}>
 					<h2>{props.heading}</h2>
@@ -37,6 +45,10 @@ export const OptInForm: Component<{
 				<input type="email" name="email" id="email" required />
 
 				<button>Subscribe</button>
+
+				<Show when={props.disclaimer}>
+					<p class={styles.disclaimer}>{props.disclaimer}</p>
+				</Show>
 			</form>
 		</aside>
 	);

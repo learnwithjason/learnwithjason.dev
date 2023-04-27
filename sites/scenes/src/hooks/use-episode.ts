@@ -26,6 +26,9 @@ export function useEpisode() {
 				'https://www.learnwithjason.dev/api/v2/schedule'
 			)
 				.then((res) => res.json())
+				.then((episodes) => {
+					return episodes.filter((e: any) => new Date(e.date) >= new Date());
+				})
 				.then((episodes) => episodes[0])
 				.catch((err) => {
 					setError(err);

@@ -1,3 +1,10 @@
+import z from 'zod';
+import { ProductsSchema as PSchema, CartSchema as CSchema } from './schema';
+
+export type Products = z.infer<typeof PSchema>;
+
+export type Cart = z.infer<typeof CSchema>;
+
 interface EpisodePerson {
 	image: string;
 	name: string;
