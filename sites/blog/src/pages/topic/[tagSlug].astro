@@ -1,28 +1,62 @@
 ---
-import { loadSchedule } from '@lwj/sanity-helpers';
-import Layout from '../layouts/Layout.astro';
+import type { Episode } from '@lwj/types';
+import { loadEpisodesByTopic, loadAllTags } from '@lwj/sanity-helpers';
 import { PageHeader } from '@lwj/design-system';
-import { EpisodePreview } from '../components/episode-preview';
+import Layout from '../../layouts/Layout.astro';
+import { EpisodePreview } from '../../components/episode-preview';
 
-const res = await loadSchedule();
-const schedule = res.data?.result;
+type TagStaticPaths = {
+	params: {
+		tagSlug: string;
+	};
+	props: {
+		topic: string;
+		episodes: Episode[];
+	};
+};
+
+export async function getStaticPaths() {
+	const topics = await loadAllTags();
+
+	let paths: TagStaticPaths[] = [];
+
+	const topicPromises = topics.data?.result.map(async (topic) => {
+		const result = await loadEpisodesByTopic({ topic: topic.slug });
+		const { details, episodes } = result.data?.result ?? {};
+
+		return {
+			params: {
+				tagSlug: topic.slug,
+			},
+			props: {
+				details,
+				episodes,
+			},
+		} as unknown as TagStaticPaths;
+	});
+
+	paths = await Promise.all<TagStaticPaths[]>(topicPromises as any);
+
+	return paths;
+}
+
+const { details, episodes } = Astro.props as {
+	details: {
+		description: string;
+		label: string;
+		slug: string;
+		uri: string;
+	};
+	episodes: Episode[];
+};
+
+const title = `Learn ${details.label} from Industry Experts`;
 ---
 
-<Layout title="Buy Goofy Boop Stuff">
-	<PageHeader
-		heading="Schedule"
-		lede="Here's who we'll be learning from next on Learn With Jason!\n\nMake sure to never miss an episode by adding the Google Calendar and subscribing on Twitch!"
-	>
+<Layout title={title}>
+	<PageHeader heading={details.label} lede={details.description}>
 		<div class="subscribe-bar">
 			<h3>Never miss an episode:</h3>
-			<a href="https://discord.gg/lwj" title="join the Discord">
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70" fill="none"
-					><path
-						fill="#97959D"
-						d="M52.35 19.02a40.96 40.96 0 0 0-10.31-3.22c-.49.89-.93 1.8-1.32 2.72-3.8-.57-7.66-.57-11.45 0-.4-.93-.83-1.83-1.32-2.72-3.57.62-7.04 1.7-10.32 3.23-6.53 9.78-8.3 19.32-7.42 28.73a41.37 41.37 0 0 0 12.65 6.44 31.03 31.03 0 0 0 2.71-4.43 26.76 26.76 0 0 1-4.26-2.06l1.04-.8a29.4 29.4 0 0 0 25.3 0c.34.28.69.55 1.04.8-1.36.81-2.79 1.5-4.27 2.06a30.75 30.75 0 0 0 2.7 4.43 41.19 41.19 0 0 0 12.67-6.43C60.83 36.86 58 27.4 52.35 19.02ZM26.7 41.98c-2.46 0-4.5-2.27-4.5-5.06 0-2.79 1.97-5.08 4.5-5.08 2.52 0 4.55 2.3 4.5 5.08-.04 2.79-1.98 5.06-4.5 5.06Zm16.62 0c-2.47 0-4.5-2.27-4.5-5.06 0-2.79 1.96-5.08 4.5-5.08 2.53 0 4.53 2.3 4.5 5.08-.05 2.79-2 5.06-4.5 5.06Z"
-					></path>
-				</svg>
-			</a>
 			<a href="/newsletter" title="Get the newsletter">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70" fill="none"
 					><path
@@ -76,7 +110,7 @@ const schedule = res.data?.result;
 
 	<section class="episode-previews">
 		{
-			schedule?.map((episode) => {
+			episodes?.map((episode) => {
 				return <EpisodePreview episode={episode} />;
 			})
 		}

@@ -30,6 +30,7 @@
 		"nanostores": "^0.7.4",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
+		"rss-parser": "^3.12.0",
 		"solid-js": "^1.4.3",
 		"zod": "^3.20.2"
 	}

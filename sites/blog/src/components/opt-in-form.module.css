@@ -6,6 +6,11 @@
 	padding: 2rem min(5vw, 2rem) 2.25rem;
 }
 
+.opt-in.constrained {
+	margin-inline: 0;
+	padding-inline: 2rem;
+}
+
 .opt-in:has(.disclaimer) {
 	padding-block-end: 1.5rem;
 }

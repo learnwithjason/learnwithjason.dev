@@ -7,3 +7,34 @@
 	white-space: nowrap;
 	width: 1px;
 }
+
+.embed-container {
+  height: 0;
+  position: relative;
+  width: 100%;
+}
+
+.embed-container:has(iframe, button) {
+  height: auto;
+  aspect-ratio: 16 / 9;
+}
+
+.embed-container > * {
+  height: 100%;
+  left: 0;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.embed-container iframe {
+  border: none;
+  display: block;
+}
+
+.embed-container button {
+  background: transparent;
+  border: 0;
+  padding: 0;
+}

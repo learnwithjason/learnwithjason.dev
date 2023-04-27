@@ -1,16 +1,20 @@
 ---
+import Markdown from '@astrojs/markdown-component';
 import type { Episode } from '@lwj/types';
-import { loadAllEpisodes, loadSchedule } from '@lwj/sanity-helpers';
+import { getEpisodeTranscript, getRelatedEpisodes, loadAllEpisodes, loadSchedule } from '@lwj/sanity-helpers';
 import Layout from '../layouts/Layout.astro';
+import SEO from '../components/seo.astro';
 import { EpisodePreview } from '../components/episode-preview';
 import dayjs from 'dayjs';
 import timezone from 'dayjs/plugin/timezone';
 import { OptInForm } from '../components/opt-in-form';
+import { VideoPlayer } from '../components/video-player';
+import { Poster } from '../components/poster';
 
 dayjs.extend(timezone);
 
 export async function getStaticPaths() {
-	const [_episodes, schedule] = await Promise.all([
+	const [episodes, schedule] = await Promise.all([
 		loadAllEpisodes(),
 		loadSchedule(),
 	]);
@@ -25,17 +29,16 @@ export async function getStaticPaths() {
 		};
 	}[] = [];
 
-	// TODO add markup for past episode display
-	// episodes.data?.result.forEach((episode) => {
-	// 	paths.push({
-	// 		params: {
-	// 			episodeSlug: episode.slug,
-	// 		},
-	// 		props: {
-	// 			episode,
-	// 		},
-	// 	});
-	// });
+	episodes.data?.result.forEach((episode) => {
+		paths.push({
+			params: {
+				episodeSlug: episode.slug,
+			},
+			props: {
+				episode,
+			},
+		});
+	});
 
 	schedule.data?.result.forEach((episode) => {
 		paths.push({
@@ -52,63 +55,154 @@ export async function getStaticPaths() {
 	return paths;
 }
 
-const { episode } = Astro.props;
+const { episode, scheduled = false } = Astro.props as { episode: Episode; scheduled: boolean; };
 
 const tz = 'America/Los_Angeles';
 const duration = episode.guest.name === 'Jason Lengstorf' ? 180 : 90;
 const datetime = dayjs(episode.date).tz(tz);
+
+const [transcriptRes, relatedRes] = await Promise.all([
+  getEpisodeTranscript({ slug: episode.slug }),
+  getRelatedEpisodes({ slug: episode.slug }),
+])
+const { transcript } = transcriptRes.data?.result ?? {};
+const { related } = relatedRes.data?.result ?? {};
 ---
 
 <Layout title={episode.title}>
-	<div class="content">
-		<p>
-			<a href="/schedule">&larr; back to the schedule</a>
-		</p>
-		<section class="episode-container">
-			<EpisodePreview episode={episode}>
-				<a href={`https://twitter.com/${episode.guest.twitter}`}>
-					<svg
-						class="link-icon"
-						viewBox="0 0 50 41"
-						xmlns="http://www.w3.org/2000/svg"
-					>
-						<path
-							fill="#c10b84"
-							d="M15.724 40.628c18.868 0 29.188-15.632 29.188-29.188 0-.444 0-.886-.03-1.326A20.872 20.872 0 0050 4.804a20.475 20.475 0 01-5.892 1.614 10.294 10.294 0 004.51-5.674 20.558 20.558 0 01-6.514 2.49 10.268 10.268 0 00-17.482 9.356A29.124 29.124 0 013.48 1.872a10.266 10.266 0 003.176 13.694A10.183 10.183 0 012 14.282v.13a10.262 10.262 0 008.23 10.056c-1.51.412-3.095.472-4.632.176a10.27 10.27 0 009.584 7.124A20.583 20.583 0 010 36.02a29.042 29.042 0 0015.724 4.6"
-						></path>
-					</svg>
-					@{episode.guest.twitter}
-				</a>
+	<Fragment slot="head-tags">
+		<SEO
+			title={episode.title}
+			description={episode.description}
+			shareImage={`${episode.uri}/poster.jpg`}
+		/>
+	</Fragment>
 
-				<!-- Button code -->
-				<div title="Add to Calendar" class="addeventatc" data-styling="none">
-					Add to Calendar
-					<span class="start">{datetime.format('YYYY-MM-DD HH:mm')}</span>
-					<span class="end"
-						>{datetime.add(duration, 'm').format('YYYY-MM-DD HH:mm')}</span
-					>
-					<span class="timezone">{tz}</span>
-					<span class="title">{episode.title}</span>
-					<span class="description">{episode.description}</span>
-					<span class="location">https://twitch.tv/jlengstorf</span>
-				</div>
-			</EpisodePreview>
-		</section>
+  {scheduled ? (
+    <div class="scheduled">
+      <p>
+        <a href="/schedule">&larr; back to the schedule</a>
+      </p>
+      <section class="episode-container">
+        <EpisodePreview episode={episode}>
+          <a href={`https://twitter.com/${episode.guest.twitter}`}>
+            <svg
+              class="link-icon"
+              viewBox="0 0 50 41"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill="#c10b84"
+                d="M15.724 40.628c18.868 0 29.188-15.632 29.188-29.188 0-.444 0-.886-.03-1.326A20.872 20.872 0 0050 4.804a20.475 20.475 0 01-5.892 1.614 10.294 10.294 0 004.51-5.674 20.558 20.558 0 01-6.514 2.49 10.268 10.268 0 00-17.482 9.356A29.124 29.124 0 013.48 1.872a10.266 10.266 0 003.176 13.694A10.183 10.183 0 012 14.282v.13a10.262 10.262 0 008.23 10.056c-1.51.412-3.095.472-4.632.176a10.27 10.27 0 009.584 7.124A20.583 20.583 0 010 36.02a29.042 29.042 0 0015.724 4.6"
+              ></path>
+            </svg>
+            @{episode.guest.twitter}
+          </a>
 
-		<OptInForm
-			disclaimer="This newsletter is free, your information will never be sold or shared, and you can unsubscribe any time."
-		>
-			<h2>Never miss an episode!</h2>
-			<p>
-				Get upcoming episodes, new tutorials, career growth advice, and more
-				delivered to your inbox each week. Maybe some jokes, too.
-			</p>
-		</OptInForm>
-	</div>
+          <!-- Button code -->
+          <div title="Add to Calendar" class="addeventatc" data-styling="none">
+            Add to Calendar
+            <span class="start">{datetime.format('YYYY-MM-DD HH:mm')}</span>
+            <span class="end"
+              >{datetime.add(duration, 'm').format('YYYY-MM-DD HH:mm')}</span
+            >
+            <span class="timezone">{tz}</span>
+            <span class="title">{episode.title}</span>
+            <span class="description">{episode.description}</span>
+            <span class="location">https://twitch.tv/jlengstorf</span>
+          </div>
+        </EpisodePreview>
+      </section>
+
+      <OptInForm
+        disclaimer="This newsletter is free, your information will never be sold or shared, and you can unsubscribe any time."
+      >
+        <h2>Never miss an episode!</h2>
+        <p>
+          Get upcoming episodes, new tutorials, career growth advice, and more
+          delivered to your inbox each week. Maybe some jokes, too.
+        </p>
+      </OptInForm>
+    </div>
+  ) : (
+    <div class="published">
+      <div class="video">
+        <VideoPlayer client:idle episode={episode} width={1280} height={720} />
+      </div>
+      <div class="details">
+        <h1 class="title">{episode.title}</h1>
+
+        {episode.tags.length > 0 ? (
+          <ul class="tags">
+            <li>Topics:</li>
+            {episode.tags.map((tag) => <li><a href={`/topic/${tag.slug}`}>{tag.label}</a></li>)}
+          </ul>
+        ) : null}
+
+        <p class="description">{episode.description}</p>
+
+        {(episode.links.demo || episode.links.repo) ? (
+          <ul class="main-links">
+            {episode.links.demo ? <li><a href={episode.links.demo}>Demo</a></li> : null}
+            {episode.links.repo ? <li><a href={episode.links.repo}>Repo</a></li> : null}
+          </ul>
+        ) : null}
+      </div>
+
+      <div class="resources">
+        <h2>Links & Resources</h2>
+        <ul class="resources">
+          {episode.links.resources.map((resource: string) => {
+            return <li><a href={resource}>{resource}</a></li>
+          })}
+        </ul>
+      </div>
+
+      <div>
+        {related ? (
+          <h2>Related Episodes</h2>
+          <ul class="related-episodes">
+          {related.map((ep: Episode) => {
+            return (
+              <li>
+                <a href={`/${ep.slug}`} title={`${ep.title} (with ${ep.guest.name})`}>
+                  <Poster
+                    slug={ep.slug}
+                    title={ep.title}
+                    guest={ep.guest}
+                    width={640}
+                    height={360}
+                    type="poster"
+                  />
+                </a>
+              </li>
+            )
+          })}</ul>
+        ) : null}
+      </div>
+
+      <div>
+        <h2>Full Transcript</h2>
+        <details>
+          <summary>Click to expand the full transcript</summary>
+
+          <Markdown>{transcript}</Markdown>
+        </details>
+      </div>
+
+      <div class="opt-in">
+        <OptInForm constrained={true} disclaimer="I will never share or sell your info (because I’m not a dick). Unsubscribe with one click at any time.">
+          <h2>Never miss an episode!</h2>
+
+          <p>New episodes of <em>Learn With Jason</em> drop every week, along with web dev tutorials, career growth insights, and more. Subscribe to the newsletter to get the latest delivered directly to your inbox.</p>
+        </OptInForm>
+      </div>
+    </div>
+  )}
 </Layout>
 
 <style>
-	.content {
+	.scheduled {
 		margin: 3rem auto 6rem;
 		max-width: min(640px, 90vw);
 		width: 100%;
@@ -120,7 +214,86 @@ const datetime = dayjs(episode.date).tz(tz);
 		margin-block: 5rem;
 	}
 
+  .episode-video {
+    max-width: 100%;
+  }
+
+  :global(.embed-container img) {
+    height: auto;
+    width: 100%;
+  }
+
+  .published {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 100%;
+    margin: 3rem auto 6rem;
+    max-width: min(1100px, 90vw);
+  }
+
+  @media (min-width: 1000px) {
+    .published {
+      grid-template-columns: 640px 1fr;
+    }
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .main-links,
+  .tags,
+  .related-episodes {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+  }
+
+  .main-links a {
+    border: 2px solid var(--color-pink-text);
+    border-radius: 0.25rem;
+    color: var(--color-pink-text);
+    display: block;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 100ms linear all;
+    padding: 0.375rem 1.5rem;
+  }
+
+  .main-links a:is(:hover, :active, :focus) {
+    background: var(--color-pink-text);
+    color: var(--color-white);
+  }
+
+  .tags {
+    margin-block: 0;
+  }
+
+  .tags li {
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  .tags a {
+    color: var(--color-pink-text);
+    text-decoration: none;
+  }
+
 	.link-icon {
 		width: 16px;
 	}
+
+  .related-episodes {
+    flex-wrap: wrap;
+  }
+
+  .related-episodes li {
+    width: calc((100% - 1rem) / 2);
+  }
+
+  :global(.related-episodes img) {
+    height: auto;
+    width: 100%;
+  }
 </style>

@@ -9,7 +9,7 @@ export const PageHeader: Component<{
 	return (
 		<header class={`block ${styles.hero}`}>
 			<h1>{props.heading}</h1>
-			<p>{props.lede}</p>
+			<p innerHTML={props.lede} />
 			<div class={styles.content}>{props.children}</div>
 		</header>
 	);

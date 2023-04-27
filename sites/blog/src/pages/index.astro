@@ -1,0 +1,377 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { PageHeader } from '@lwj/design-system';
+import SEO from '../components/seo.astro';
+import { SectionHero } from '../components/section-hero';
+import { loadAllEpisodes, loadSchedule } from '@lwj/sanity-helpers';
+import { Poster } from '../components/poster';
+import { loadYouTubePlaylist } from '../util/youtube';
+
+const title = 'Learn. Build. Grow. Together.';
+const description =
+	'Learn from the web’s leading experts. Build something new. Grow your career. Let’s do it together.';
+
+const shareTitle = 'Learn With Jason';
+
+const [scheduleResult, episodesResult, buildResult, growResult] =
+	await Promise.all([
+		loadSchedule(),
+		loadAllEpisodes(),
+		loadYouTubePlaylist({ playlistId: 'PLz8Iz-Fnk_eRrYytmxreXJfmWm8c8hTA_' }),
+		loadYouTubePlaylist({ playlistId: 'PLz8Iz-Fnk_eSBam1bi1NRGK5zTKvmo9Vd' }),
+	]);
+
+const [nextEpisode] = scheduleResult.data?.result ?? [];
+const [latestEpisode] = episodesResult.data?.result ?? [];
+const buildVideos = buildResult.slice(0, 3);
+const growVideos = growResult.slice(0, 3);
+---
+
+<Layout title={title}>
+	<Fragment slot="head-tags">
+		<SEO title={title} shareTitle={shareTitle} description={description} />
+	</Fragment>
+
+	<SectionHero lede={description}>
+		<nav class="subscribe-bar">
+			<a href="/newsletter" title="Get the newsletter">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70" fill="none"
+					><path
+						fill="#97959D"
+						fill-rule="evenodd"
+						d="M9 18.5c0-1.1.9-2 2-2h48a2 2 0 0 1 2 2v33a2 2 0 0 1-2 2H11a2 2 0 0 1-2-2v-33Zm6.8 2 18.49 18.66a1 1 0 0 0 1.42 0l18.5-18.66H15.8ZM57 23.36 45.46 35 57 46.64V23.36ZM54.2 49.5 42.65 37.84l-4.1 4.14a5 5 0 0 1-7.1 0l-4.1-4.14L15.8 49.5h38.4ZM13 46.64V23.36L24.54 35 13 46.64Z"
+						clip-rule="evenodd"></path>
+				</svg>
+			</a>
+			<a
+				href="https://youtube.com/@learnwithjason"
+				title="subscribe on YouTube"
+			>
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70" fill="none"
+					><path
+						fill="#97959D"
+						d="M30 42.5v-15L42.99 35 30 42.5Zm28.95-19.53a6.26 6.26 0 0 0-4.42-4.43C50.63 17.5 35 17.5 35 17.5s-15.64 0-19.53 1.04a6.26 6.26 0 0 0-4.43 4.43C10 26.87 10 35 10 35s0 8.14 1.04 12.03a6.26 6.26 0 0 0 4.43 4.42C19.37 52.5 35 52.5 35 52.5s15.64 0 19.53-1.05a6.26 6.26 0 0 0 4.42-4.42C60 43.13 60 35 60 35s0-8.14-1.05-12.03Z"
+					></path>
+				</svg>
+			</a>
+			<a href="https://twitch.tv/jlengstorf" title="follow on Twitch">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70" fill="none"
+					><path
+						fill="#97959D"
+						d="m22.5 14-8.92 8.93v32.14h10.7V64l8.93-8.93h7.15L56.42 39V14H22.5Zm30.35 23.21-7.14 7.15h-7.14l-6.25 6.25v-6.25H24.3V17.57h28.56v19.64Z"
+					></path><path
+						fill="#97959D"
+						d="M37.7 23.83h-3.6v10.7h3.6v-10.7ZM47.53 23.83h-3.6v10.7h3.6v-10.7Z"
+					></path>
+				</svg>
+			</a>
+			<a href="https://discord.gg/lwj" title="join the Discord">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70" fill="none"
+					><path
+						fill="#97959D"
+						d="M52.35 19.02a40.96 40.96 0 0 0-10.31-3.22c-.49.89-.93 1.8-1.32 2.72-3.8-.57-7.66-.57-11.45 0-.4-.93-.83-1.83-1.32-2.72-3.57.62-7.04 1.7-10.32 3.23-6.53 9.78-8.3 19.32-7.42 28.73a41.37 41.37 0 0 0 12.65 6.44 31.03 31.03 0 0 0 2.71-4.43 26.76 26.76 0 0 1-4.26-2.06l1.04-.8a29.4 29.4 0 0 0 25.3 0c.34.28.69.55 1.04.8-1.36.81-2.79 1.5-4.27 2.06a30.75 30.75 0 0 0 2.7 4.43 41.19 41.19 0 0 0 12.67-6.43C60.83 36.86 58 27.4 52.35 19.02ZM26.7 41.98c-2.46 0-4.5-2.27-4.5-5.06 0-2.79 1.97-5.08 4.5-5.08 2.52 0 4.55 2.3 4.5 5.08-.04 2.79-1.98 5.06-4.5 5.06Zm16.62 0c-2.47 0-4.5-2.27-4.5-5.06 0-2.79 1.96-5.08 4.5-5.08 2.53 0 4.53 2.3 4.5 5.08-.05 2.79-2 5.06-4.5 5.06Z"
+					></path>
+				</svg>
+			</a>
+		</nav>
+	</SectionHero>
+
+	<section class="block content">
+		<h2 class="heading"><mark>Learn</mark> from the web’s leading experts.</h2>
+		<p class="lede">
+			Every Thursday, Jason pair programs with the brightest minds in web
+			development to learn something new in 90 minutes.<br />
+			<a href="/schedule" class="section-link">See who’s teaching next &rarr;</a
+			>
+		</p>
+
+		<div class="episodes">
+			<div class="latest">
+				<h3>Latest episode:</h3>
+				<a href={latestEpisode.slug}>
+					<Poster
+						slug={latestEpisode.slug}
+						title={latestEpisode.title}
+						guest={latestEpisode.guest}
+						type="poster"
+						class="poster"
+					/>
+				</a>
+				<div class="details">
+					<p>{latestEpisode.description}</p>
+					<a href={latestEpisode.slug} class="big-link">Watch Now</a>
+				</div>
+			</div>
+
+			<div class="next">
+				<h3>Next episode:</h3>
+				<a href={nextEpisode.slug}>
+					<Poster
+						slug={nextEpisode.slug}
+						title={nextEpisode.title}
+						guest={nextEpisode.guest}
+						type="poster"
+						class="poster"
+					/>
+				</a>
+				<div class="details">
+					<p>{nextEpisode.description}</p>
+					<a href={nextEpisode.slug} class="big-link">See Details</a>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="block content">
+		<h2 class="heading"><mark>Build</mark> something new.</h2>
+		<p class="lede">
+			Step-by-step tutorials. Learn to create more powerful and dynamic web apps
+			using the right tool for the job.<br />
+			<a
+				href="https://www.youtube.com/playlist?list=PLz8Iz-Fnk_eRrYytmxreXJfmWm8c8hTA_"
+				class="section-link">See all tutorials &rarr;</a
+			>
+		</p>
+
+		{
+			buildVideos.length > 0 ? (
+				<div class="yt-videos">
+					{buildVideos.map((vid) => {
+						return (
+							<div class="yt-vid">
+								<a href={vid.url} rel="nofollow">
+									<img src={vid.thumbnail} alt={vid.title} />
+								</a>
+								<p>
+									<a href={vid.url} rel="nofollow">
+										{vid.title}
+									</a>
+								</p>
+							</div>
+						);
+					})}
+				</div>
+			) : null
+		}
+	</section>
+	<section class="block content">
+		<h2 class="heading"><mark>Grow</mark> your career.</h2>
+		<p class="lede">
+			Jason shares insights, lessons learned, and past mistakes. He’s been
+			building a career in web dev for 20 years. Maybe he can help you build
+			yours, too.<br />
+			<a
+				href="https://www.youtube.com/playlist?list=PLz8Iz-Fnk_eSBam1bi1NRGK5zTKvmo9Vd"
+				class="section-link">See all videos &rarr;</a
+			>
+		</p>
+
+		{
+			growVideos.length > 0 ? (
+				<div class="yt-videos">
+					{growVideos.map((vid) => {
+						return (
+							<div class="yt-vid">
+								<a href={vid.url} rel="nofollow">
+									<img src={vid.thumbnail} alt={vid.title} />
+								</a>
+								<p>
+									<a href={vid.url} rel="nofollow">
+										{vid.title}
+									</a>
+								</p>
+							</div>
+						);
+					})}
+				</div>
+			) : null
+		}
+	</section>
+	<section class="block content">
+		<h2 class="heading">Let’s get better <mark>together</mark>.</h2>
+		<p class="lede">
+			Code is more fun with friends. Join a growing collection of learners and
+			teachers who are working to build a better community together.<br />
+			<a href="https://discord.gg/lwj" class="section-link"
+				>Join the Discord &rarr;</a
+			>
+		</p>
+	</section>
+</Layout>
+
+<style>
+	.content {
+		background: var(--color-gray-lightest);
+		border-top: 1px solid var(--color-gray-lighter);
+		padding-inline: max(5vw, calc((100vw - 75ch) / 2));
+	}
+
+	.content:nth-child(even) {
+		background-color: var(--color-white);
+	}
+
+	.heading {
+		font-size: clamp(1.25rem, 4vw, 1.875rem);
+		line-height: 1.1;
+		margin: 0;
+		padding: 0;
+		text-align: left;
+		width: 100%;
+	}
+
+	.lede {
+		font-size: clamp(1rem, 2.5vw, 1.25rem);
+		margin: 0.5rem auto 0 0;
+		max-width: 54ch;
+	}
+
+	.subscribe-bar {
+		align-items: center;
+		display: flex;
+		gap: 1.5rem;
+		justify-content: center;
+		margin-top: 1rem;
+	}
+
+	.subscribe-bar a {
+		aspect-ratio: 1;
+		width: min(12%, 3.5rem);
+	}
+
+	.subscribe-bar svg {
+		aspect-ratio: 1;
+		width: 100%;
+	}
+
+	.subscribe-bar :is(a, svg) {
+		display: block;
+	}
+
+	.subscribe-bar path {
+		fill: var(--color-white);
+		transition: 150ms linear all;
+	}
+
+	.subscribe-bar svg:is(:focus, :hover, :active) path {
+		fill: var(--color-yellow);
+	}
+
+	mark {
+		background: var(--color-black);
+		color: var(--color-white);
+		display: inline-block;
+		letter-spacing: 0.025em;
+		padding-inline: 0.375rem;
+		text-transform: uppercase;
+	}
+
+	.block .heading {
+		font-size: 2.5rem;
+		margin: 0 0 1rem;
+		text-align: center;
+	}
+
+	.block .lede {
+		margin: 0 auto 1rem;
+		max-width: 45ch;
+		text-align: center;
+	}
+
+	.block .lede:last-child {
+		margin-block-end: 0;
+	}
+
+	.section-link {
+		color: var(--color-pink-text);
+		font-size: 0.875rem;
+		font-weight: 600;
+		text-decoration: none;
+	}
+
+	.episodes {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 2rem;
+		margin-top: 1rem;
+	}
+
+	.latest,
+	.next {
+		width: 100%;
+	}
+
+	.details p {
+		margin: 0.5rem 0 0;
+	}
+
+	.big-link {
+		background: transparent;
+		border: 2px solid var(--color-pink-text);
+		border-radius: 0.25rem;
+		color: var(--color-pink-text);
+		display: inline-block;
+		font-family: var(--font-family);
+		font-size: 0.875rem;
+		font-weight: 600;
+		margin: 1rem 0 0;
+		padding: 0.25rem 1rem;
+		text-decoration: none;
+	}
+
+	.poster {
+		height: auto;
+		width: 100%;
+	}
+
+	.yt-videos {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		margin: 1.5rem 0 0;
+	}
+
+	.yt-vid {
+		width: 100%;
+	}
+
+	.yt-vid > a {
+		display: block;
+	}
+
+	.yt-vid img {
+		border-radius: 0.125rem;
+		display: block;
+		width: 100%;
+	}
+
+	.yt-vid p {
+		font-size: 0.875rem;
+		font-weight: normal;
+		line-height: 1.25;
+		margin: 0;
+		padding: 0.5rem 0 0;
+	}
+
+	.yt-vid a {
+		color: inherit;
+		text-decoration: none;
+	}
+
+	.yt-vid a:is(:active, :focus, :hover) {
+		text-decoration: underline;
+	}
+
+	@media (min-width: 550px) {
+		.latest,
+		.next {
+			width: calc((100% - 2rem) / 2);
+		}
+
+		.yt-videos {
+			flex-direction: row;
+		}
+
+		.yt-vid {
+			width: calc((100% - 2rem) / 3);
+		}
+	}
+</style>

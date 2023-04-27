@@ -1,20 +1,19 @@
 ---
-import { loadSchedule } from '@lwj/sanity-helpers';
+import { loadAllEpisodes } from '@lwj/sanity-helpers';
 import Layout from '../layouts/Layout.astro';
 import { PageHeader } from '@lwj/design-system';
 import { EpisodePreview } from '../components/episode-preview';
 
-const res = await loadSchedule();
-const schedule = res.data?.result;
+const res = await loadAllEpisodes();
+const episodes = res.data?.result ?? [];
+
+const lede = `Browse ${episodes.length} episodes of <em>Learn With Jason</em> or search with ⌘+K. Then join the community and find the fun in learning!`;
 ---
 
 <Layout title="Buy Goofy Boop Stuff">
-	<PageHeader
-		heading="Schedule"
-		lede="Here's who we'll be learning from next on Learn With Jason!\n\nMake sure to never miss an episode by adding the Google Calendar and subscribing on Twitch!"
-	>
+	<PageHeader heading="Episodes" lede={lede}>
 		<div class="subscribe-bar">
-			<h3>Never miss an episode:</h3>
+			<h3>Join the community:</h3>
 			<a href="https://discord.gg/lwj" title="join the Discord">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70" fill="none"
 					><path
@@ -76,7 +75,7 @@ const schedule = res.data?.result;
 
 	<section class="episode-previews">
 		{
-			schedule?.map((episode) => {
+			episodes?.map((episode) => {
 				return <EpisodePreview episode={episode} />;
 			})
 		}
