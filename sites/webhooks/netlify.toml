@@ -2,6 +2,9 @@
   publish = "public"
   functions = "src"
 
+[functions]
+  external_node_modules = ["mjml"]
+
 [[redirects]]
   from = "/webhooks/*"
   to = "/.netlify/functions/webhook-:splat"
