@@ -7,10 +7,8 @@ https://lwj.dev/*                       https://www.learnwithjason.dev/:splat   
 /webhooks/*                 https://lwj-webhooks.netlify.app/.netlify/functions/webhook-:splat           200
 /api/v2/store/*             https://lwj-api.netlify.app/.netlify/functions/shopify-:splat                200
 /api/v2/*                   https://lwj-api.netlify.app/.netlify/builders/:splat                         200
-/:slug/poster.jpg           https://lwj-api.netlify.app/.netlify/builders/poster/:slug/poster.jpg        200
-/:slug/video-poster.jpg     https://lwj-api.netlify.app/.netlify/builders/poster/:slug/video-poster.jpg  200
-/:slug/starting-soon.jpg    https://lwj-api.netlify.app/.netlify/builders/poster/:slug/poster.jpg        200
-/:slug/schedule.jpg         https://lwj-api.netlify.app/.netlify/builders/poster/:slug/schedule.jpg      200
+/:slug/:width/:type.jpg     https://lwj-api.netlify.app/.netlify/builders/poster/:slug/:width/:type.jpg  200
+/:slug/:type.jpg            https://lwj-api.netlify.app/.netlify/builders/poster/:slug/:type.jpg         200
 
 # v1 API endpoints
 /api/tag/:tag               https://lwj-remix.netlify.app/.netlify/builders/api-tag                      200
