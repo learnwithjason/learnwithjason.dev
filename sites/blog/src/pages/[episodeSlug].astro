@@ -15,7 +15,7 @@ dayjs.extend(timezone);
 
 export async function getStaticPaths() {
 	const [episodes, schedule] = await Promise.all([
-		loadAllEpisodes({ includeRelatedEpisodes: true }),
+		loadAllEpisodes({ includeRelatedEpisodes: true, includeTranscript: true }),
 		loadSchedule(),
 	]);
 
@@ -60,9 +60,6 @@ const { episode, scheduled = false } = Astro.props as { episode: Episode; schedu
 const tz = 'America/Los_Angeles';
 const duration = episode.guest.name === 'Jason Lengstorf' ? 180 : 90;
 const datetime = dayjs(episode.date).tz(tz);
-
-const transcriptRes = await getEpisodeTranscript({ slug: episode.slug });
-const { transcript } = transcriptRes.data?.result ?? {};
 ---
 
 <Layout title={episode.title}>
@@ -182,7 +179,7 @@ const { transcript } = transcriptRes.data?.result ?? {};
         <details>
           <summary>Click to expand the full transcript</summary>
 
-          <Markdown>{transcript}</Markdown>
+          <Markdown>{episode.transcript}</Markdown>
         </details>
       </div>
 
