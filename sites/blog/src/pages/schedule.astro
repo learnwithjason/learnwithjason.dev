@@ -4,7 +4,7 @@ import Layout from '../layouts/Layout.astro';
 import { PageHeader } from '@lwj/design-system';
 import { EpisodePreview } from '../components/episode-preview';
 
-const res = await loadSchedule();
+const res = await loadSchedule({ cdn: false });
 const schedule = res.data?.result;
 
 const title = 'Upcoming Web Experts on Learn With Jason';

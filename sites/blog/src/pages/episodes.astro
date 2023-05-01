@@ -4,7 +4,7 @@ import Layout from '../layouts/Layout.astro';
 import { PageHeader } from '@lwj/design-system';
 import { EpisodePreview } from '../components/episode-preview';
 
-const res = await loadAllEpisodes();
+const res = await loadAllEpisodes({ cdn: true });
 const episodes = res.data?.result ?? [];
 
 const title = 'Learn Something New in 90 Minutes from Web Experts';
