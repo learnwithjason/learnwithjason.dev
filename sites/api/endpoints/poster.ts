@@ -1,7 +1,6 @@
 import { builder, Handler } from '@netlify/functions';
 import { loadEpisodeBySlug } from '@lwj/sanity-helpers';
 import { Episode } from '@lwj/types';
-import { parse } from 'querystring';
 import dayjs from 'dayjs/esm';
 import Utc from 'dayjs/esm/plugin/utc';
 import Timezone from 'dayjs/esm/plugin/timezone';
@@ -38,17 +37,34 @@ const dimensions = {
 	},
 };
 
+const ALLOWED_TYPES = ['poster.jpg', 'video-poster.jpg', 'schedule.jpg'];
+
 function cleanText(text: string) {
 	return encodeURIComponent(text).replace(/%(23|2C|2F|3F|5C)/g, '%25$1');
 }
 
 const handlerFn: Handler = async (event) => {
-	const { w = 1920 } = parse(event.rawQuery);
-	const [, slug, type] = event.path
+	const [, slug, maybeWidthOrType, maybeType] = event.path
 		.replace(/\/(api|.netlify\/functions|.netlify\/builders)\/poster/g, '')
 		.split('/');
 
-	if (!type) {
+	let w = 1920;
+	let type = 'poster.jpg';
+	if (maybeWidthOrType.startsWith('w_')) {
+		let width = Number(maybeWidthOrType.replace('w_', ''));
+		if (width > 0) {
+			w = width;
+		}
+
+		type = maybeType;
+	} else {
+		type = maybeWidthOrType;
+	}
+
+	// make sure the width is within bounds
+	w = Math.min(6000, Math.max(100, w));
+
+	if (!type || !ALLOWED_TYPES.includes(type)) {
 		return {
 			statusCode: 400,
 			body: JSON.stringify({
