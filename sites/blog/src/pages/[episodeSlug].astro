@@ -15,8 +15,8 @@ dayjs.extend(timezone);
 
 export async function getStaticPaths() {
 	const [episodes, schedule] = await Promise.all([
-		loadAllEpisodes({ includeRelatedEpisodes: true, includeTranscript: true }),
-		loadSchedule(),
+		loadAllEpisodes({ includeRelatedEpisodes: true, includeTranscript: true, cdn: false }),
+		loadSchedule({ cdn: false }),
 	]).catch((err) => {
     throw new Error(err);
   });
