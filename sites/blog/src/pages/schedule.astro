@@ -6,13 +6,14 @@ import { EpisodePreview } from '../components/episode-preview';
 
 const res = await loadSchedule();
 const schedule = res.data?.result;
+
+const title = 'Upcoming Web Experts on Learn With Jason';
+const lede =
+	'Here’s who we’ll be learning from next on Learn With Jason! Make sure to never miss an episode by adding the Google Calendar and subscribing on Twitch!';
 ---
 
-<Layout title="Buy Goofy Boop Stuff">
-	<PageHeader
-		heading="Schedule"
-		lede="Here's who we'll be learning from next on Learn With Jason!\n\nMake sure to never miss an episode by adding the Google Calendar and subscribing on Twitch!"
-	>
+<Layout title={title}>
+	<PageHeader heading={title} lede={lede}>
 		<div class="subscribe-bar">
 			<h3>Never miss an episode:</h3>
 			<a href="https://discord.gg/lwj" title="join the Discord">

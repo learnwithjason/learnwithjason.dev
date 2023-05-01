@@ -17,7 +17,7 @@
 .hero p {
 	font-size: 1.25rem;
 	margin-top: 0.5rem;
-	width: min(90%, 42ch);
+	width: min(90%, 45ch);
 }
 
 .content > :is(:first-of-type) {

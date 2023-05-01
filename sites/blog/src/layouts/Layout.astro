@@ -4,7 +4,7 @@ export interface Props {
 	mainClass?: string;
 }
 
-import { Header, Footer, TeacherPhoto } from '@lwj/design-system';
+import { Header, Footer, TeacherPhoto, Sponsors } from '@lwj/design-system';
 import { Search } from '../components/search';
 import '@lwj/design-system/css/index.css';
 
@@ -114,6 +114,11 @@ const { title, mainClass = '' } = Astro.props;
 
 		<main class={mainClass}>
 			<slot />
+
+			<section class="block content sponsors">
+				<p>Closed captioning and more are made possible by our sponsors:</p>
+				<Sponsors />
+			</section>
 		</main>
 		<Footer>
 			<TeacherPhoto
@@ -137,6 +142,22 @@ const { title, mainClass = '' } = Astro.props;
 		flex-direction: column;
 		justify-content: center;
 		padding: 4rem 5vw;
+	}
+
+	.sponsors {
+		padding-block: 2.25rem 1.5rem;
+	}
+
+	.sponsors p {
+		color: var(--color-gray-text-muted);
+		font-size: 0.875rem;
+		font-style: italic;
+		line-height: 1;
+		margin: 0;
+	}
+
+	.sponsors path {
+		color: var(--color-gray-text-muted);
 	}
 
 	.gradient-subheading {

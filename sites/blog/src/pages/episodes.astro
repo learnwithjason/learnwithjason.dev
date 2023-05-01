@@ -7,11 +7,12 @@ import { EpisodePreview } from '../components/episode-preview';
 const res = await loadAllEpisodes();
 const episodes = res.data?.result ?? [];
 
+const title = 'Learn Something New in 90 Minutes from Web Experts';
 const lede = `Browse ${episodes.length} episodes of <em>Learn With Jason</em> or search with ⌘+K. Then join the community and find the fun in learning!`;
 ---
 
-<Layout title="Buy Goofy Boop Stuff">
-	<PageHeader heading="Episodes" lede={lede}>
+<Layout title={title}>
+	<PageHeader heading={title} lede={lede}>
 		<div class="subscribe-bar">
 			<h3>Join the community:</h3>
 			<a href="https://discord.gg/lwj" title="join the Discord">
