@@ -196,11 +196,11 @@ export function loadAllEpisodes({
                   twitter,
                 },
                 "count": count((episodeTags[]->slug.current)[@ in ^.^.episodeTags[]->.slug.current]),
-              } | order(count desc)[0..3]
+              } | order(count desc)[0..3],
             `
 						: ''
 				}
-        ${includeTranscript ? 'transcript' : ''}
+        ${includeTranscript ? 'transcript,' : ''}
       } | order(date desc)
     `,
 		cdn,
