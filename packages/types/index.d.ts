@@ -36,4 +36,6 @@ export interface Episode {
 		id: string;
 		uri: string;
 	};
+	related?: (Episode & { count: number })[];
+	transcript?: string;
 }

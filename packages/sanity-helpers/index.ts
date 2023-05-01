@@ -171,12 +171,36 @@ export async function sanityFetch({
 }
 
 export function loadAllEpisodes({
+	includeRelatedEpisodes = false,
+	includeTranscript = false,
 	cdn = true,
 } = {}): Promise<SanityFetchResponseEpisodeList> {
 	return sanityFetch({
 		query: `
       *[_type == "episode" && hidden == false && date < now() && defined(youtubeID)] {
         ${PUBLISHED_EPISODE_FIELDS}
+        ${
+					includeRelatedEpisodes
+						? `
+              "related": *[_type == "episode" && slug.current != ^.slug.current && references(^.episodeTags[]->._id)] {
+                title,
+                "slug": slug.current,
+                "uri": "https://www.learnwithjason.dev/" + slug.current,
+                guest[0]-> {
+                  ...(guestImage {
+                    ...(asset-> {
+                      "image": url
+                    })
+                  }),
+                  name,
+                  twitter,
+                },
+                "count": count((episodeTags[]->slug.current)[@ in ^.^.episodeTags[]->.slug.current]),
+              } | order(count desc)[0..3]
+            `
+						: ''
+				}
+        ${includeTranscript ? 'transcript' : ''}
       } | order(date desc)
     `,
 		cdn,
