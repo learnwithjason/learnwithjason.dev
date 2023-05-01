@@ -17,7 +17,9 @@ export async function getStaticPaths() {
 	const [episodes, schedule] = await Promise.all([
 		loadAllEpisodes({ includeRelatedEpisodes: true, includeTranscript: true }),
 		loadSchedule(),
-	]);
+	]).catch((err) => {
+    throw new Error(err);
+  });
 
 	const paths: {
 		params: {
