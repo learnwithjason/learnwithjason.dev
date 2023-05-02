@@ -905,7 +905,8 @@ In `app/index.tsx`, use this new helper to determine the current genre and filte
 	import { getArtists } from '~/db/get-artists.server';
 +	import { getGenreFromParams } from './utils';
 
-	export async function loader({ request, params }: LoaderArgs) {
+-	export async function loader({ request }: LoaderArgs) {
++	export async function loader({ request, params }: LoaderArgs) {
 		const url = new URL(request.url);
 		const q = url.searchParams.get('q') || undefined;
 -		const data = await getArtists({ q, genres: ['escape room'] });
