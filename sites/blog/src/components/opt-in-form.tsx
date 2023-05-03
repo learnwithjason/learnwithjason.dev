@@ -22,7 +22,7 @@ export const OptInForm: Component<{
 				[styles.constrained]: props.constrained,
 			}}
 		>
-			<form action="/api/subscribe" method="post">
+			<form action="/api/v2/subscribe" method="post">
 				<Show when={!props.children} fallback={props.children}>
 					<h2>{props.heading}</h2>
 					<p>
