@@ -6,6 +6,7 @@ https://lwj.dev/*                       https://www.learnwithjason.dev/:splat   
 # stitch in the additional sites
 /webhooks/*                 https://lwj-webhooks.netlify.app/.netlify/functions/webhook-:splat           200
 /api/v2/store/*             https://lwj-api.netlify.app/.netlify/functions/shopify-:splat                200
+/api/v2/subscribe           https://lwj-api.netlify.app/.netlify/functions/:splat                        200
 /api/v2/*                   https://lwj-api.netlify.app/.netlify/builders/:splat                         200
 /:slug/:width/:type.jpg     https://lwj-api.netlify.app/.netlify/builders/poster/:slug/:width/:type.jpg  200
 /:slug/:type.jpg            https://lwj-api.netlify.app/.netlify/builders/poster/:slug/:type.jpg         200
