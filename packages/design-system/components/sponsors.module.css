@@ -6,7 +6,9 @@
 
 .sponsors {
 	display: flex;
+	flex-wrap: wrap;
 	gap: 0;
+	justify-content: center;
 }
 
 .sponsors a {
