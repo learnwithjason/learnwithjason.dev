@@ -19,6 +19,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 			<BrowserRouter>
 				<Routes>
 					<Route path="/starting-soon" element={<StartingSoon />} />
+
 					<Route path="/" element={<Layout />}>
 						<Route path="interview" element={<Interview />} />
 						<Route path="pair-programming" element={<PairProgramming />} />
