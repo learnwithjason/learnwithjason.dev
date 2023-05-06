@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { SocketStudioProvider } from '@socket-studio/react';
 
+import { StartingSoon } from './routes/starting-soon';
 import { Interview } from './routes/interview';
 import { Monologue } from './routes/monologue';
 import { PairProgramming } from './routes/pair-programming';
@@ -17,6 +18,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 		<SocketStudioProvider>
 			<BrowserRouter>
 				<Routes>
+					<Route path="/starting-soon" element={<StartingSoon />} />
 					<Route path="/" element={<Layout />}>
 						<Route path="interview" element={<Interview />} />
 						<Route path="pair-programming" element={<PairProgramming />} />
