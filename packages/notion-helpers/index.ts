@@ -26,13 +26,17 @@ export type TitleProperty = {
 	title: [{ text: { content: string } }];
 };
 
-export type RichTextProperty = {
-	rich_text: [
-		{
-			type: 'text';
-			text: { content: string };
-		}
-	];
+export type RichTextBlock = {
+	type: 'text';
+	text: { content: string; link?: { url: string } };
+	annotations?: {
+		bold?: boolean;
+		italic?: boolean;
+		strikethrough?: boolean;
+		underline?: boolean;
+		code?: boolean;
+		color?: string;
+	};
 };
 
 export type DateProperty = {
@@ -64,7 +68,7 @@ export type RequestEntry = {
 
 type ParagraphBlock = {
 	type: 'paragraph';
-	paragraph: RichTextProperty;
+	paragraph: { rich_text: RichTextBlock[] };
 };
 
 type ImageBlock = {
@@ -75,6 +79,28 @@ type ImageBlock = {
 			url: string;
 		};
 	};
+};
+
+interface Block {
+	object: 'block';
+	id: string;
+	has_children: boolean;
+}
+
+interface Paragraph extends Block {
+	type: 'paragraph';
+	paragraph: { rich_text: RichTextBlock[] };
+}
+
+interface BulletedListItem extends Block {
+	type: 'bulleted_list_item';
+	bulleted_list_item: { rich_text: RichTextBlock[] };
+}
+
+type NotionBlock = Paragraph | BulletedListItem;
+
+type BlockChildren = {
+	results: NotionBlock[];
 };
 
 export async function notionApi(endpoint: string, body?: object) {
@@ -110,7 +136,7 @@ export const properties = {
 			],
 		};
 	},
-	richText(content: string): RichTextProperty {
+	richText(content: string): { rich_text: RichTextBlock[] } {
 		return {
 			rich_text: [
 				{
@@ -161,4 +187,114 @@ export const blocks = {
 			},
 		};
 	},
+};
+
+function getRichTextAnnotations(richTextBlock: RichTextBlock) {
+	const annotations = richTextBlock.annotations!;
+	let annotationStart = '';
+	let annotationEnd = '';
+
+	const annotationTypes = {
+		bold: 'strong',
+		italic: 'em',
+		strikethrough: 'del',
+		underline: '',
+		code: 'code',
+		color: '',
+	};
+
+	Object.keys(annotationTypes).forEach((annotationType) => {
+		const type = annotationType as keyof typeof annotationTypes;
+
+		if (
+			['underline', 'color'].includes(annotationType) &&
+			annotations[type] === true
+		) {
+			console.log(`TODO: implement ${annotationType} annotation support`);
+			return;
+		}
+
+		if (annotations[type] === true) {
+			const tag = annotationTypes[type];
+
+			annotationStart = `${annotationStart}<${tag}>`;
+			annotationEnd = `</${tag}>${annotationEnd}`;
+		}
+	});
+
+	return { start: annotationStart, end: annotationEnd };
+}
+
+function getRichTextLink(richTextBlock: RichTextBlock) {
+	if (!richTextBlock.text.link) {
+		return { start: '', end: '' };
+	}
+
+	return { start: `<a href="${richTextBlock.text.link.url}">`, end: '</a>' };
+}
+
+export const blockToHtml = (notionBlocks: BlockChildren) => {
+	const blocks = notionBlocks.results;
+	let html = '';
+	let previousTag = 'p'; // to open/close lists we need to track this
+
+	blocks.forEach((block) => {
+		if (block.object !== 'block') {
+			return '';
+		}
+
+		let tag = 'span';
+		let richTextBlocks;
+
+		switch (block.type) {
+			case 'paragraph':
+				tag = 'p';
+				richTextBlocks = block[block.type].rich_text;
+				break;
+
+			case 'bulleted_list_item':
+				tag = 'li';
+				richTextBlocks = block[block.type].rich_text;
+				break;
+
+			default:
+				console.log('Unsupported block:');
+				console.log(block);
+				return;
+		}
+
+		if (!richTextBlocks) {
+			console.error('No rich text found');
+			console.log(block);
+			return;
+		}
+
+		if (tag === 'li' && previousTag !== 'li') {
+			html += '<ul>';
+		}
+
+		if (tag !== 'li' && previousTag === 'li') {
+			html += '</ul>';
+		}
+
+		html += `<${tag}>`;
+
+		richTextBlocks.forEach((richText) => {
+			const annotations = getRichTextAnnotations(richText);
+			const text = richText.text.content.replace('\n', '<br />\n');
+			const link = getRichTextLink(richText);
+
+			html += `${annotations.start}${link.start}${text}${link.end}${annotations.end}`;
+
+			previousTag = tag;
+		});
+
+		html += `</${tag}>`;
+	});
+
+	if (previousTag === 'li') {
+		html += '</ul>';
+	}
+
+	return html;
 };

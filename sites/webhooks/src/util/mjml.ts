@@ -1,38 +1,49 @@
 import mjml2html from 'mjml';
 
 type FeaturedItem = {
-    image: {
-      src: string;
-      alt: string;
-    },
-    heading: string;
-    description: string;
-    link: string;
+	image: {
+		src: string;
+		alt: string;
+	};
+	heading: string;
+	description: string;
+	link: string;
 };
 
 type GetMarkupArgs = {
-  featuredItems: FeaturedItem[];
+	ledeHtml: string;
+	previewText: string;
+	featuredItems: FeaturedItem[];
 };
 
 async function getSchedule() {
-  const date = new Date();
-  const res = await fetch('https://www.learnwithjason.dev/api/v2/schedule');
+	const date = new Date();
+	const res = await fetch('https://www.learnwithjason.dev/api/v2/schedule');
 
-  if (!res.ok) {
-    console.error(res);
-    return [];
-  }
+	if (!res.ok) {
+		console.error(res);
+		return [];
+	}
 
-  const schedule = await res.json();
+	const schedule = await res.json();
 
-  const formatted = schedule
-    .filter((ep: any) => new Date(ep.date) > date && ep.guest.name !== 'Jason Lengstorf')
-    .slice(0, 3)
-    .map((episode: any) => {
-      return `
+	const formatted = schedule
+		.filter(
+			(ep: any) =>
+				new Date(ep.date) > date && ep.guest.name !== 'Jason Lengstorf'
+		)
+		.slice(0, 4)
+		.map((episode: any, index: number) => {
+			const bottomPadding = index === 3 ? '8px' : '4px';
+			const episodeDate = new Date(episode.date).toLocaleDateString('en-US', {
+				month: 'short',
+				day: 'numeric',
+			});
+
+			return `
         <tr>
-          <td style="padding: 8px 5px 4px 0">${new Date(episode.date).toLocaleDateString('en-US', { month: "short", day: 'numeric' })}</td>
-          <td style="padding: 8px 0 4px">
+          <td style="padding: 8px 5px ${bottomPadding} 0">${episodeDate}</td>
+          <td style="padding: 8px 0 ${bottomPadding}">
             <img
               src="https://res.cloudinary.com/jlengstorf/image/fetch/w_70,h_70,c_fill,g_faces,f_auto,q_auto/${episode.guest.image}"
               alt="${episode.guest.name}"
@@ -40,16 +51,16 @@ async function getSchedule() {
               style="border-radius: 50%; vertical-align: bottom;"
             />
           </td>
-          <td style="padding: 8px 5px 4px 0">
+          <td style="padding: 8px 5px ${bottomPadding} 0">
           ${episode.guest.name}
           </td>
-          <td style="padding: 8px 0 4px"><a href="${episode.uri}">${episode.title}</a></th>
+          <td style="padding: 8px 0 ${bottomPadding}"><a href="${episode.uri}">${episode.title}</a></th>
         </tr>
       `;
-    })
-    .join('');
+		})
+		.join('');
 
-    const mjml = `
+	const mjml = `
     <!-- LWJ SCHEDULE -->
     <mj-section>
       <mj-column>
@@ -65,13 +76,13 @@ async function getSchedule() {
         <mj-table font-size="13px">
           <tr style="text-align: left; border-bottom: 1px solid;">
             <th width="55px" style="font-size: 11px; font-weight: normal; padding: 4px 0;">Date</th>
-            <th width="40px" style="font-size: 11px; font-weight: normal; padding: 4px 0;">Guest</th>
+            <th width="40px" style="font-size: 11px; font-weight: normal; padding: 4px 0;">Expert</th>
             <th width="100px" style="font-size: 11px; font-weight: normal; padding: 4px 0;"></th>
             <th style="font-size: 11px; font-weight: normal; padding: 4px 0;">Topic</th>
           </tr>
           ${formatted}
           <tr>
-            <td colspan="4" style="padding: 12px 0 0; font-size: 12px;">
+            <td colspan="4" style="padding: 8px 0 0; font-size: 12px; border-top: 1px solid;">
               Visit <a href="https://www.learnwithjason.dev/schedule">lwj.dev/schedule</a> to see all upcoming episodes.
             </td>
           </tr>
@@ -80,11 +91,13 @@ async function getSchedule() {
     </mj-section>
     `;
 
-    return mjml;
+	return mjml;
 }
 
 async function getFeaturedContent(featuredItems: FeaturedItem[]) {
-  const formatted = featuredItems.map((c) => `
+	const formatted = featuredItems
+		.map(
+			(c) => `
       <mj-column css-class="content-preview">
         <mj-image
           src="${c.image.src}"
@@ -99,9 +112,11 @@ async function getFeaturedContent(featuredItems: FeaturedItem[]) {
         </mj-text>
         <mj-button href="${c.link}">Watch the episode</mj-button>
       </mj-column>
-  `).join('');
+  `
+		)
+		.join('');
 
-  const mjml = `<!-- LWJ CONTENT -->
+	const mjml = `<!-- LWJ CONTENT -->
   <mj-section>
     <mj-column>
       <mj-spacer height="40px" />
@@ -116,15 +131,19 @@ async function getFeaturedContent(featuredItems: FeaturedItem[]) {
   </mj-section>
   `;
 
-  return mjml;
+	return mjml;
 }
 
-export async function getNewsletterTemplateMarkup({ featuredItems }: GetMarkupArgs) {
-  const schedule = await getSchedule();
-  const featured = await getFeaturedContent(featuredItems);
-  const mjml = `<mjml lang="en">
+export async function getNewsletterTemplateMarkup({
+	ledeHtml,
+	previewText,
+	featuredItems,
+}: GetMarkupArgs) {
+	const schedule = await getSchedule();
+	const featured = await getFeaturedContent(featuredItems);
+	const mjml = `<mjml lang="en">
   <mj-head>
-    <mj-preview>{{ preview_text }}</mj-preview>
+    <mj-preview>${previewText}</mj-preview>
 
     <mj-attributes>
       <mj-all color="inherit" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol" font-size="16px" line-height="1.45" />
@@ -185,7 +204,7 @@ export async function getNewsletterTemplateMarkup({ featuredItems }: GetMarkupAr
     <mj-section>
       <mj-column>
         <mj-text>
-          {{ message_content }}
+          ${ledeHtml}
         </mj-text>
       </mj-column>
     </mj-section>
@@ -196,7 +215,6 @@ export async function getNewsletterTemplateMarkup({ featuredItems }: GetMarkupAr
     <!-- FOOTER -->
     <mj-section css-class="footer">
       <mj-column padding-top="40px">
-        <mj-divider border-width="1px" />
         <mj-text mj-class="footer">
           <p>
             This message contians no gluten or sulfites. So if it gives you a headache or a tummyache it&lsquo;s either because the content is so hard-hitting that it physically affected you, or because I&lsquo;m such a doofus that you&lsquo;re taking psychic damage. So... you&lsquo;re welcome. Or, I&lsquo;m sorry.
@@ -214,6 +232,5 @@ export async function getNewsletterTemplateMarkup({ featuredItems }: GetMarkupAr
 </mjml>
 `;
 
-  return mjml2html(mjml);
+	return mjml2html(mjml);
 }
-
