@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/Blog.astro
-date: 2023-04-29
-updated: 2023-04-29
+date: 2023-05-15
+updated: 2023-05-15
 
 meta:
   title: Build a directory app with search filters using Remix and Tigris Data
@@ -18,25 +18,13 @@ share:
 import { Figure } from '../../components/figure.tsx';
 import { Aside } from '../../components/aside.tsx';
 
-Directory apps are a killer feature: they’re super valuable to customers, and every org in the company from Product to Marketing to Sales will be thrilled to have one to help with their various goals. Making a directory app useful, however, requires quite a bit of complex functionality:
+## Quick links: source code and demo
 
-- Free text search
-- Filtered/faceted search, like Amazon’s sidebar filters
-- URL-addressable results for bookmarking and sharing
-- Stackable queries, meaning free text and faceted search combine for more refined results
+If you want to get right to the code, the full source and demo are available at these links:
 
-The scope of building all of this can feel pretty daunting. Tigris Data is out to make faceted search much less difficult to implement, and in this video we'll walk through how you can build your own directory app using Tigris Data and Remix.
-
-In this tutorial, you’ll learn how to implement a full-featured search functionality using Remix and Tigris Data.
-
-<Aside>
-  Huge thanks to [Tigris Data](https://www.tigrisdata.com/) for sponsoring this
-  tutorial. They’re working on a great solution for apps that have
-  directory-like data, like e-commerce stores, product catalogs, and other big
-  data sets that would benefit from being filterable and searchable.
-</Aside>
-
-## Watch this tutorial as a video
+- [Source code](https://github.com/learnwithjason/tigris-music-list)
+- [Demo](https://aged-breeze-5399.fly.dev/)
+- [Video tutorial](https://youtu.be/PlCQmGUBKg0)
 
 <Figure aspectRatio={9 / 16}>
   <iframe
@@ -52,30 +40,30 @@ In this tutorial, you’ll learn how to implement a full-featured search functio
 
 If you learn better with video and/or want to watch me build this app, check out the [video version on YouTube](https://youtu.be/PlCQmGUBKg0).
 
-## Quick links: source code and demo
-
-If you want to get right to the code, the full source and demo are available at these links:
-
-- [Source code](https://github.com/learnwithjason/tigris-music-list)
-- [Demo](https://aged-breeze-5399.fly.dev/)
-- [Video tutorial](https://youtu.be/PlCQmGUBKg0)
-
 ## Why does search matter in web apps?
 
-Many companies would benefit from implementing a great directory search. **Whether you're working on an e-commerce store, a social media app, an aggregator service, collections of content, or any other approach that consists of interconnected entries, allowing users a way to quickly filter and search is a great way to improve their experience.**
+Directory apps are a killer feature: they’re super valuable to customers, and every org in the company from Product to Marketing to Sales will be thrilled to have one to help with their various goals. Making a directory app useful, however, requires quite a bit of complex functionality:
 
-However, it can be really challenging to build out a directory feature that works well. It always starts simple, but the feature requirements pile up fast:
+- Free text search
+- Filtered/faceted search, like Amazon’s sidebar filters
+- URL-addressable results for bookmarking and sharing
+- Stackable queries, meaning free text and faceted search combine for more refined results
 
-- Display all listings in an easy-to-scan view
-- Provide free text search to help users find exactly what they're looking for
-- Add clickable filters to narrow down the results based on what the user is interested in
-- Make filtered results URL-addressable so they can be bookmarked and shared
+The scope of building all of this can feel pretty daunting.
 
-Fortunately for us, there are a lot of companies out there working to handle implementations like these so we don't have to.
+The team over at [Tigris Data](https://www.tigrisdata.com/) has been working hard to provide an excellent faceted search experience as a built-in feature of their data store. I built a demo of how we can use their advanced search features in conjunction with [Remix](http://remix.run/) to build out a full-featured directory search without needing weeks of dev time.
 
-The team over at [Tigris Data](https://www.tigrisdata.com/) has been working hard to provide an excellent faceted search experience as a built-in component of their data store, and they reached out to me to partner on building out a demo of how we can use that faceted search query feature in conjunction with [Remix](http://remix.run/)'s features to build out a full-featured directory search without needing weeks of dev time.
+**In fact, with Tigris Data and Remix you can build out the whole search functionality from scratch in under an hour.**
 
-**In fact, with Tigris and Remix you can build out the whole search functionality from scratch in under an hour.** In this tutorial, we'll walk through the whole process of setting up a new Tigris collection, querying the data, and adding the UX features in Remix to make it all accessible to your users.
+In this tutorial, we'll walk through the whole process of setting up a new Tigris collection, querying the data, and adding the UX features in Remix to make it all accessible to your users.
+
+<Aside>
+  Huge thanks to [Tigris Data](https://www.tigrisdata.com/) for sponsoring this
+  tutorial. If you work on apps that deal with directory-like data, such as
+  e-commerce stores, product catalogs, or other big data sets that would benefit
+  from being filterable and searchable, Tigris Data is working hard to make your
+  life easier.
+</Aside>
 
 ## Project setup and prerequisites
 
