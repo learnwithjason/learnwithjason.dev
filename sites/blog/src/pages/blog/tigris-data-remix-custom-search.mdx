@@ -4,25 +4,53 @@ date: 2023-04-29
 updated: 2023-04-29
 
 meta:
-  title: Build Custom, Faceted Search for Your App with Remix and Tigris Data
+  title: Build a directory app with search filters using Remix and Tigris Data
   description: >
-    Great search experiences are complicated: text search, filters, URL-addressable results, and more. Learn how to implement a full-featured search functionality using Remix and Tigris Data in this tutorial.
+    A searchable, filterable directory is a web experience that just about every company needs. Building one yourself is complicated, but there are tools available to make it easier for the rest of us.
 
 tags: []
 share:
-  title: Build Custom, Faceted Search for Your App with Remix and Tigris Data
+  title: Build a directory app with search filters using Remix and Tigris Data
   text: >
-    Great search experiences are complicated: text search, filters, URL-addressable results, and more. Learn how to implement a full-featured search functionality using Remix and Tigris Data in this tutorial.
+    A searchable, filterable directory is so valuable, but building one is complicated. Check out these tools that make it easier.
 ---
 
 import { Figure } from '../../components/figure.tsx';
 import { Aside } from '../../components/aside.tsx';
 
+Directory apps are a killer feature: they’re super valuable to customers, and every org in the company from Product to Marketing to Sales will be thrilled to have one to help with their various goals. Making a directory app useful, however, requires quite a bit of complex functionality:
+
+- Free text search
+- Filtered/faceted search, like Amazon’s sidebar filters
+- URL-addressable results for bookmarking and sharing
+- Stackable queries, meaning free text and faceted search combine for more refined results
+
+The scope of building all of this can feel pretty daunting. Tigris Data is out to make faceted search much less difficult to implement, and in this video we'll walk through how you can build your own directory app using Tigris Data and Remix.
+
+In this tutorial, you’ll learn how to implement a full-featured search functionality using Remix and Tigris Data.
+
+<Aside>
+  Huge thanks to [Tigris Data](https://www.tigrisdata.com/) for sponsoring this
+  tutorial. They’re working on a great solution for apps that have
+  directory-like data, like e-commerce stores, product catalogs, and other big
+  data sets that would benefit from being filterable and searchable.
+</Aside>
+
 ## Watch this tutorial as a video
 
-TKTK add video
+<Figure aspectRatio={9 / 16}>
+  <iframe
+    width="560"
+    height="315"
+    src="https://www.youtube-nocookie.com/embed/PlCQmGUBKg0"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+  ></iframe>
+</Figure>
 
-If you learn better with video and/or want to watch me build this app, I have a video version up on YouTube.
+If you learn better with video and/or want to watch me build this app, check out the [video version on YouTube](https://youtu.be/PlCQmGUBKg0).
 
 ## Quick links: source code and demo
 
@@ -55,7 +83,8 @@ Clone the [`start` branch of the tutorial repo](https://github.com/learnwithjaso
 <Aside>
   **Note:** you _do not_ need this repo to follow along, but you'll need to
   build your own layouts and styles, as this tutorial only covers setting up the
-  data layer and building out the logic to use the data in the app.
+  data layer and building out the logic to display and search the data in the
+  app.
 </Aside>
 
 ```shell
@@ -79,7 +108,17 @@ The app will start on port 3000. Open `http://localhost:3000` in your browser an
   window](https://res.cloudinary.com/jlengstorf/image/upload/w_1200,f_auto,q_auto/tigris-data-remix/local-dev-init.jpg)
 </Figure>
 
-> **A quick note on the app architecture:** If you've worked with Remix before, you might be wondering why this app doesn't have a `routes` directory. Because the URLs in this app are _only_ used for filtering, we want to use the same components and logic for both the root route (`/`) and any sub-routes in the app. Rather than having an [index route](http://remix.run/docs/en/main/guides/routing#index-routes) and a [splat route](http://remix.run/docs/en/main/guides/routing#splats), we're instead using `remix.config.js` to set `app/index.tsx` as the route for all requests to this app.
+<Aside>
+  **A quick note on the app architecture:** If you've worked with Remix before,
+  you might be wondering why this app doesn't have a `routes` directory. Because
+  the URLs in this app are _only_ used for filtering, we want to use the same
+  components and logic for both the root route (`/`) and any sub-routes in the
+  app. Rather than having an [index
+  route](http://remix.run/docs/en/main/guides/routing#index-routes) and a [splat
+  route](http://remix.run/docs/en/main/guides/routing#splats), we're instead
+  using `remix.config.js` to set `app/index.tsx` as the route for all requests
+  to this app.
+</Aside>
 
 Update the `tsconfig.json` to support features needed by Tigris:
 
