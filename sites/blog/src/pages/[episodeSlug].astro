@@ -1,7 +1,7 @@
 ---
 import Markdown from '@astrojs/markdown-component';
 import type { Episode } from '@lwj/types';
-import { getEpisodeTranscript, loadAllEpisodes, loadSchedule } from '@lwj/sanity-helpers';
+import { loadAllEpisodes, loadSchedule } from '@lwj/sanity-helpers';
 import Layout from '../layouts/Layout.astro';
 import SEO from '../components/seo.astro';
 import { EpisodePreview } from '../components/episode-preview';
@@ -10,13 +10,15 @@ import timezone from 'dayjs/plugin/timezone';
 import { OptInForm } from '../components/opt-in-form';
 import { VideoPlayer } from '../components/video-player';
 import { Poster } from '../components/poster';
+import { LivePlayer } from '../components/live-player';
 
 dayjs.extend(timezone);
 
 export async function getStaticPaths() {
+  const useCdn = process.env.NODE_ENV !== 'production';
 	const [episodes, schedule] = await Promise.all([
-		loadAllEpisodes({ includeRelatedEpisodes: true, includeTranscript: true, cdn: false }),
-		loadSchedule({ cdn: false }),
+		loadAllEpisodes({ includeRelatedEpisodes: true, includeTranscript: true, cdn: useCdn }),
+		loadSchedule({ cdn: useCdn }),
 	]).catch((err) => {
     throw new Error(err);
   });
@@ -59,9 +61,12 @@ export async function getStaticPaths() {
 
 const { episode, scheduled = false } = Astro.props as { episode: Episode; scheduled: boolean; };
 
+const isSolo = episode.guest.name === 'Jason Lengstorf';
 const tz = 'America/Los_Angeles';
-const duration = episode.guest.name === 'Jason Lengstorf' ? 180 : 90;
+const duration = isSolo ? 180 : 90;
 const datetime = dayjs(episode.date).tz(tz);
+
+
 ---
 
 <Layout title={episode.title}>
@@ -107,6 +112,7 @@ const datetime = dayjs(episode.date).tz(tz);
             <span class="location">https://twitch.tv/jlengstorf</span>
           </div>
         </EpisodePreview>
+        <LivePlayer client:visible episode={episode} duration={duration} />
       </section>
 
       <OptInForm

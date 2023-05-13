@@ -10,9 +10,6 @@ import { IconInfo } from './icon-info.jsx';
 
 import styles from './episode-preview.module.css';
 
-// TODO maybe bring this back someday
-// import { ShareButton } from './share-button.jsx';
-
 dayjs.extend(Utc);
 dayjs.extend(Timezone);
 dayjs.extend(AdvancedFormat);
@@ -41,7 +38,9 @@ export const EpisodePreview: Component<{
 			</div>
 			<div class={styles.details}>
 				<p class="gradient-subheading">
-					{dayjs(props.episode.date).tz('America/Los_Angeles').format('dddd, MMMM D @ h:mm A z')}
+					{dayjs(props.episode.date)
+						.tz('America/Los_Angeles')
+						.format('dddd, MMMM D @ h:mm A z')}
 				</p>
 				<h3>
 					{!props.hideLinks ? (
@@ -69,11 +68,6 @@ export const EpisodePreview: Component<{
 											for {props.episode.title}
 										</span>
 									</a>
-									{/* <ShareButton
-									title={props.episode.title}
-									text={props.episode.description}
-									url={`/${props.episode.slug}`}
-								/> */}
 								</>
 						  )}
 				</div>
