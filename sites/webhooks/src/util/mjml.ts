@@ -64,7 +64,7 @@ async function getSchedule() {
     <!-- LWJ SCHEDULE -->
     <mj-section>
       <mj-column>
-        <mj-spacer height="40px" />
+        <mj-spacer height="20px" />
         <mj-text mj-class="heading">
           <h2>Upcoming LWJ episodes:</h2>
         </mj-text>
@@ -106,8 +106,6 @@ async function getFeaturedContent(featuredItems: FeaturedItem[]) {
         />
         <mj-text mj-class="heading" font-size="16px">
           <h3>${c.heading}</h3>
-        </mj-text>
-        <mj-text>
           <p>${c.description}</p>
         </mj-text>
         <mj-button href="${c.link}">Watch the episode</mj-button>
@@ -126,7 +124,7 @@ async function getFeaturedContent(featuredItems: FeaturedItem[]) {
     </mj-column>
   </mj-section>
 
-  <mj-section>
+  <mj-section padding-bottom="20px">
     ${formatted}
   </mj-section>
   `;
@@ -209,7 +207,18 @@ export async function getNewsletterTemplateMarkup({
       </mj-column>
     </mj-section>
 
+    <mj-section>
+      <mj-column>
+        <mj-image
+          src="https://res.cloudinary.com/jlengstorf/image/upload/f_auto,q_auto/v1684008918/lwj/discord-newsletter-banner.jpg"
+          alt="Want to connect with a community of devs who love to learn and build? Join the LWJ Discord!"
+          href="https://discord.gg/lwj"
+        />
+      </mj-column>
+    </mj-section>
+
     ${featured}
+
     ${schedule}
 
     <!-- FOOTER -->

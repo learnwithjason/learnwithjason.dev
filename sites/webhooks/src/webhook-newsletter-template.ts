@@ -84,7 +84,11 @@ export const handler: Handler = async () => {
 		(result: Result) => result.properties.entryType.select.name === 'broadcast'
 	);
 
-	const subject = lede.properties.heading.title[0].plain_text;
+	// A real bummer: the ConvertKit API mangles the HTML if you send it to the
+	// Broadcasts API. For now, a manual copy-paste into a template is the only
+	// way to make sure the formatting doesn’t blow up.
+	// ---
+	// const subject = lede.properties.heading.title[0].plain_text;
 	const previewText = lede.properties.previewText.rich_text[0].plain_text;
 	const pageData = await notionApi(`/blocks/${lede.id}/children`);
 	const ledeHtml = blockToHtml(pageData);
@@ -95,23 +99,24 @@ export const handler: Handler = async () => {
 		featuredItems,
 	});
 
-	const ckResult = await fetch('https://api.convertkit.com/v3/broadcasts', {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json; charset=utf8',
-		},
-		body: JSON.stringify({
-			api_secret: process.env.CK_API_SECRET,
-			subject,
-			content: markup.html,
-			email_layout_template: 'API Template',
-			public: true,
-		}),
-	});
+	// Uncomment the following if the ConvertKit API ever improves
+	// const ckResult = await fetch('https://api.convertkit.com/v3/broadcasts', {
+	// 	method: 'POST',
+	// 	headers: {
+	// 		'Content-Type': 'application/json; charset=utf8',
+	// 	},
+	// 	body: JSON.stringify({
+	// 		api_secret: process.env.CK_API_SECRET,
+	// 		subject,
+	// 		content: markup.html,
+	// 		email_layout_template: 'API Template',
+	// 		public: true,
+	// 	}),
+	// });
 
-	if (!ckResult.ok) {
-		console.error(ckResult);
-	}
+	// if (!ckResult.ok) {
+	// 	console.error(ckResult);
+	// }
 
 	return {
 		statusCode: 200,
