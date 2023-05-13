@@ -10,7 +10,8 @@ export const OptInForm: Component<{
 	const props = mergeProps(
 		{
 			constrained: false,
-			heading: 'Build better web apps',
+			heading:
+				'Learn from experts. Build something new. Grow your career. Let’s do it together.',
 		},
 		rawProps
 	);
@@ -26,15 +27,17 @@ export const OptInForm: Component<{
 				<Show when={!props.children} fallback={props.children}>
 					<h2>{props.heading}</h2>
 					<p>
-						I spend a lot of time thinking about how to{' '}
+						My life got way better when I stopped worrying about picking the
+						“right” thing and focused on finding the fun in learning instead.{' '}
 						<strong>
-							build web experiences that are fast, secure, maintainable,
-							scalable, and fun to build.
+							I learn as much I can, build things often, and share what I’m
+							learning with my friends.
 						</strong>
 					</p>
 					<p>
-						Join my newsletter and I’ll boop you on the brain what I’ve learned
-						about building modern web apps.
+						I consider the folks on my newsletter to be my friends — subscribe
+						and I’ll share what I’m learning and building. Let’s grow our
+						careers together!
 					</p>
 				</Show>
 
