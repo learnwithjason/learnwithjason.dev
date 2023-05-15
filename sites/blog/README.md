@@ -2,4 +2,4 @@
 
 TODO: write up some details
 
-Manual deploys: 2
+Manual deploys: 3
