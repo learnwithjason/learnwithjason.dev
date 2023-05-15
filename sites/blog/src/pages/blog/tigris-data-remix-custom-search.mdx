@@ -1,0 +1,1035 @@
+---
+layout: ../../layouts/Blog.astro
+date: 2023-05-15
+updated: 2023-05-15
+
+meta:
+  title: Build a directory app with search filters using Remix and Tigris Data
+  description: >
+    A searchable, filterable directory is a web experience that just about every company needs. Building one yourself is complicated, but there are tools available to make it easier for the rest of us.
+
+tags: []
+share:
+  title: Build a directory app with search filters using Remix and Tigris Data
+  text: >
+    A searchable, filterable directory is so valuable, but building one is complicated. Check out these tools that make it easier.
+---
+
+import { Figure } from '../../components/figure.tsx';
+import { Aside } from '../../components/aside.tsx';
+
+## Quick links: source code and demo
+
+If you want to get right to the code, the full source and demo are available at these links:
+
+- [Source code](https://github.com/learnwithjason/tigris-music-list)
+- [Demo](https://aged-breeze-5399.fly.dev/)
+- [Video tutorial](https://youtu.be/PlCQmGUBKg0)
+
+<Figure aspectRatio={9 / 16}>
+  <iframe
+    width="560"
+    height="315"
+    src="https://www.youtube-nocookie.com/embed/PlCQmGUBKg0"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+  ></iframe>
+</Figure>
+
+If you learn better with video and/or want to watch me build this app, check out the [video version on YouTube](https://youtu.be/PlCQmGUBKg0).
+
+## Why does search matter in web apps?
+
+Directory apps are a killer feature: they’re super valuable to customers, and every org in the company from Product to Marketing to Sales will be thrilled to have one to help with their various goals. Making a directory app useful, however, requires quite a bit of complex functionality:
+
+- Free text search
+- Filtered/faceted search, like Amazon’s sidebar filters
+- URL-addressable results for bookmarking and sharing
+- Stackable queries, meaning free text and faceted search combine for more refined results
+
+The scope of building all of this can feel pretty daunting.
+
+The team over at [Tigris Data](https://www.tigrisdata.com/) has been working hard to provide an excellent faceted search experience as a built-in feature of their data store. I built a demo of how we can use their advanced search features in conjunction with [Remix](http://remix.run/) to build out a full-featured directory search without needing weeks of dev time.
+
+**In fact, with Tigris Data and Remix you can build out the whole search functionality from scratch in under an hour.**
+
+In this tutorial, we'll walk through the whole process of setting up a new Tigris collection, querying the data, and adding the UX features in Remix to make it all accessible to your users.
+
+<Aside>
+  Huge thanks to [Tigris Data](https://www.tigrisdata.com/) for sponsoring this
+  tutorial. If you work on apps that deal with directory-like data, such as
+  e-commerce stores, product catalogs, or other big data sets that would benefit
+  from being filterable and searchable, Tigris Data is working hard to make your
+  life easier.
+</Aside>
+
+## Project setup and prerequisites
+
+Clone the [`start` branch of the tutorial repo](https://github.com/learnwithjason/tigris-music-list/tree/start). This repo has the basic styles and components we'll need to build the app, as well as the necessary dependencies installed and files stubbed out with `TODO` comments.
+
+<Aside>
+  **Note:** you _do not_ need this repo to follow along, but you'll need to
+  build your own layouts and styles, as this tutorial only covers setting up the
+  data layer and building out the logic to display and search the data in the
+  app.
+</Aside>
+
+```shell
+# clone the start branch of the tutorial repo
+git clone -b start git@github.com:learnwithjason/tigris-music-list.git
+
+# move into the project folder
+cd ./tigris-music-list/
+
+# install dependencies
+npm i
+
+# start the development server
+npm run dev
+```
+
+The app will start on port 3000. Open `http://localhost:3000` in your browser and it should look something like this:
+
+<Figure>
+  ![the locally running app in a browser
+  window](https://res.cloudinary.com/jlengstorf/image/upload/w_1200,f_auto,q_auto/tigris-data-remix/local-dev-init.jpg)
+</Figure>
+
+<Aside>
+  **A quick note on the app architecture:** If you've worked with Remix before,
+  you might be wondering why this app doesn't have a `routes` directory. Because
+  the URLs in this app are _only_ used for filtering, we want to use the same
+  components and logic for both the root route (`/`) and any sub-routes in the
+  app. Rather than having an [index
+  route](http://remix.run/docs/en/main/guides/routing#index-routes) and a [splat
+  route](http://remix.run/docs/en/main/guides/routing#splats), we're instead
+  using `remix.config.js` to set `app/index.tsx` as the route for all requests
+  to this app.
+</Aside>
+
+Update the `tsconfig.json` to support features needed by Tigris:
+
+```diff
+	{
+		"include": ["remix.env.d.ts", "**/*.ts", "**/*.tsx"],
+		"compilerOptions": {
++			"emitDecoratorMetadata": true,
++			"experimentalDecorators": true,
+			"lib": ["DOM", "DOM.Iterable", "ES2019"],
+			"isolatedModules": true,
+			"esModuleInterop": true,
+			"jsx": "react-jsx",
+			"moduleResolution": "node",
+			"resolveJsonModule": true,
+			"target": "ES2019",
+			"strict": true,
+			"allowJs": true,
+			"forceConsistentCasingInFileNames": true,
+			"baseUrl": ".",
+			"paths": {
+				"~/*": ["./app/*"]
+			},
+
+			// Remix takes care of building everything in `remix build`.
+			"noEmit": true
+		}
+	}
+
+```
+
+## Get started with Tigris Data
+
+Create a Tigris account
+https://console.preview.tigrisdata.cloud/signup
+
+<Figure>
+  ![the Tigris Data signup
+  page](https://res.cloudinary.com/jlengstorf/image/upload/w_1200,f_auto,q_auto/tigris-data-remix/tigris-data-signup.jpg)
+</Figure>
+
+Create your first project (call it `musicSearch` if you want the rest of this tutorial to be copy-pasteable).
+
+Go to Application Keys, then create a new key.
+
+Create a `.env` in the root of your project and add the key details and other project info:
+
+```
+TIGRIS_URI=api.preview.tigrisdata.cloud
+TIGRIS_PROJECT=musicSearch
+TIGRIS_CLIENT_ID=tid_...
+TIGRIS_CLIENT_SECRET=tsec_...
+TIGRIS_DB_BRANCH=main
+```
+
+## Define a data collection in your application
+
+For our database to know what we're storing, we need to create a data model for our collection of artists.
+
+If you're new to databases, this might feel a little jargon-heavy, so to put it very plainly: we need to decide what shape the data in our application should have and then tell Tigris about it so we can store stuff in it.
+
+In `app/db/collections/artists.ts`, let’s define our model:
+
+```ts
+import {
+  Field,
+  PrimaryKey,
+  SearchField,
+  TigrisCollection,
+  TigrisDataTypes,
+} from '@tigrisdata/core';
+
+export class ArtistImage {
+  @Field()
+  url!: string;
+
+  @Field()
+  height!: number;
+
+  @Field()
+  width!: number;
+}
+
+@TigrisCollection('artists')
+export class Artist {
+  @PrimaryKey({ order: 1, autoGenerate: true })
+  id?: string;
+
+  @SearchField({ sort: true })
+  @Field()
+  name!: string;
+
+  @Field()
+  url!: string;
+
+  @SearchField({ elements: TigrisDataTypes.STRING, facet: true })
+  @Field({ elements: TigrisDataTypes.STRING })
+  genres!: Array<string>;
+
+  @Field({ elements: ArtistImage })
+  images!: Array<ArtistImage>;
+}
+```
+
+The main class, `Artist`, is decorated with `@TigrisCollection('artists')` to let Tigris know that this is a collection.
+
+Each field is decorated with `@Field()` and typed so Tigris knows what the expected fields are.
+
+```ts
+	@Field()
+	url!: string;
+```
+
+### Creating a primary key
+
+A "primary key" is used in databases to guarantee a unique identifier for each entry in the collection. In Tigris, we define this using the `@PrimaryKey` decorator, letting Tigris know that we want these values to be automatically generated. The `order` option tells Tigris that this is the first field in the primary key — we won't cover this, but [Tigris has support for "composite primary keys"](https://www.tigrisdata.com/docs/sdkstools/typescript/database/datamodel/#composite-primary-key), which allows multiple fields to be used together to create a primary key.
+
+```ts
+	@PrimaryKey({ order: 1, autoGenerate: true })
+	id?: string;
+```
+
+### Passing custom field types and objects
+
+The `images` field needs to contain an array of custom objects, which requires adding some additional config. Specifying an array is done by telling the `@Field()` decorator that it will receive `elements`, and then telling it what types it will receive. In the case of `images`, we have defined a custom type called `ArtistImage`, so we pass that in.
+
+```ts
+export class ArtistImage {
+  @Field()
+  url!: string;
+
+  @Field()
+  height!: number;
+
+  @Field()
+  width!: number;
+}
+
+@TigrisCollection('artists')
+export class Artist {
+  // ... other fields omitted for brevity
+
+  @Field({ elements: ArtistImage })
+  images!: Array<ArtistImage>;
+}
+```
+
+### Adding search fields
+
+If we want a field to be considered when searching, we need to add an additional decorator, `@SearchField()`, and provide a bit of additional information.
+
+We want to be able to search artists by name, so we decorate the `name` field with the `@SearchField()` decorator, and since we want to be able to sort artists by name, we include `sort: true` in the config.
+
+```ts
+	@SearchField({ sort: true })
+	@Field()
+	name!: string;
+```
+
+### Adding faceted search fields
+
+A faceted search means we want to use a field as a filter, returning only items that share the selected facet value. This is extremely useful for all kinds of data sets, whether you need to:
+
+- filter by brand name or color or size in an e-commerce site
+- filter by tags or categories in a blog
+- filter posts by author on a social media site
+
+This is one of the most exciting features of Tigris, because faceted search is built in — you don't have to build the logic, figure out how to optimize queries, or any of the other hassle that goes into building a complex search filter. Tigris provides the functionality out of the box.
+
+In our application, we want to view subsets of artists grouped by genre. To accomplish this, we decorate the `genres` field with `@SearchField` as well. This field is an array of strings (which we identify with the custom Tigris type of `TigrisDataTypes.STRING`), so we pass that to the `elements` config, and also set `facet: true` to let Tigris know that we intend to perform _faceted searches_ on this field.
+
+```ts
+	@SearchField({ elements: TigrisDataTypes.STRING, facet: true })
+	@Field({ elements: TigrisDataTypes.STRING })
+	genres!: Array<string>;
+```
+
+## Create a database setup script
+
+Now that we've modeled our collection, we need to send it to Tigris. Since our collection may evolve as we work on our app, we're going to create a setup script.
+
+Inside `app/db/setup.ts`, add the following to set up our Tigris project with the artists collection:
+
+```ts
+import { Tigris } from '@tigrisdata/core';
+import { Artist } from './collections/artists';
+
+async function main() {
+  const tigrisClient = new Tigris();
+  await tigrisClient.getDatabase().initializeBranch();
+  await tigrisClient.registerSchemas([Artist]);
+}
+
+main()
+  .then(async () => {
+    console.log('Tigris setup complete!');
+    process.exit(0);
+  })
+  .catch(async (e) => {
+    console.error(e);
+    process.exit(1);
+  });
+```
+
+The Tigris client uses the env vars we added to load our project, initialize a database branch, and register the artists data model as a collection.
+
+### Run the database setup script before dev and deployment
+
+To guarantees that our database stays in sync with our codebase, we want our setup script to run before dev starts and before every deployment.
+
+Edit `package.json` to to add the following scripts:
+
+```diff
+{
+	...
+	"scripts": {
+		"build": "remix build",
+		"deploy": "fly deploy --remote-only",
+		"dev": "remix dev",
+		"start": "remix-serve build",
+		"typecheck": "tsc",
++		"db:setup": "npx ts-node app/db/setup.ts",
++		"predev": "npm run db:setup",
++		"predeploy": "npm run db:setup"
+	},
+	...
+}
+```
+
+Try it out by running the script manually with `npm run db:setup`. You should see the following output in your terminal:
+
+```shell
+❯ npm run db:setup
+
+> db:setup
+> npx ts-node app/db/setup.ts
+
+info - Using reflection to infer type of ArtistImage#url
+info - Using reflection to infer type of ArtistImage#height
+info - Using reflection to infer type of ArtistImage#width
+info - Using reflection to infer type of Artist#id
+info - Using reflection to infer type of Artist#name
+info - Using reflection to infer type of Artist#name
+info - Using reflection to infer type of Artist#url
+info - Using reflection to infer type of Artist#genres
+info - Using reflection to infer type of Artist#genres
+info - Using reflection to infer type of Artist#images
+info - Using Tigris at: api.preview.tigrisdata.cloud:443
+info - Using database branch: 'main'
+event - Creating collection: 'artists' in project: 'musicSearch'
+Tigris setup complete!
+```
+
+If you look at the Tigris dashboard, you should also see the `artists` collection now.
+
+<Figure>
+  ![the collection dashboard on Tigris Data's
+  console](https://res.cloudinary.com/jlengstorf/image/upload/w_1200,f_auto,q_auto/tigris-data-remix/tigris-collection-dashboard.jpg)
+</Figure>
+
+## Load seed data into the Tigris database
+
+Right now the `artists` collection is empty. What we're really focused on in this tutorial is the faceted search, so let's get some seed data into the collection so we can start querying.
+
+In `app/db/seed.ts`, add the following:
+
+```ts
+import type { Artist } from './collections/artists';
+
+import { z } from 'zod';
+import { Tigris } from '@tigrisdata/core';
+import artists from './data/artists.json';
+
+const tigrisClient = new Tigris();
+const db = tigrisClient.getDatabase();
+const collection = db.getCollection<Artist>('artists');
+
+const ArtistSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  url: z.string().url(),
+  genres: z.array(z.string()),
+  images: z.array(
+    z.object({
+      url: z.string().url(),
+      height: z.number(),
+      width: z.number(),
+    })
+  ),
+});
+
+async function insertArtists() {
+  const parsed: Array<Artist> = artists.map((artist) => {
+    return ArtistSchema.parse({
+      id: artist.id,
+      name: artist.name,
+      url: artist.external_urls.spotify,
+      genres: artist.genres,
+      images: artist.images,
+    });
+  });
+
+  const inserted = await collection.insertMany(parsed);
+
+  console.log(inserted);
+}
+
+insertArtists();
+```
+
+In this code, we use the `Artist` type of our data model, then use Zod and artist data from Spotify to create artist entries that match our data model.
+
+Next, we use the `insertMany` method provided by Tigris to add the artist entries into the collection.
+
+Once this is saved, we can run this command manually in our terminal:
+
+```bash
+npx ts-node app/db/seed.ts
+```
+
+After this completes, go to the `artists` collection in your Tigris dashboard, then click the Data Explorer and you should see artists in your collection.
+
+<Figure>
+  ![the data explorer in Tigris Data showing artist
+  data](https://res.cloudinary.com/jlengstorf/image/upload/w_1200,f_auto,q_auto/tigris-data-remix/tigris-data-explorer.jpg)
+</Figure>
+
+Now we've got a collection modeled and entries loaded into it — it's time to start querying data!
+
+## Query your Tigris collection
+
+Our Remix app is designed to display all artists at the root route, and filter down on sub-routes based on both the genres and a user input text query.
+
+To support this, we'll create a function that loads artists from Tigris and add optional arguments for a query string or an array of genres to filter by.
+
+## Query all artists
+
+First, let's get a list of all the artists. Open `app/db/get-artists.server.ts` and add the following:
+
+```ts
+// TODO include support for filtering by query
+// TODO include support for filtering by facet (genre)
+import type { SearchQuery } from '@tigrisdata/core';
+import type { Artist } from '~/db/collections/artists';
+
+import { Tigris } from '@tigrisdata/core';
+
+export async function getArtists() {
+  const client = new Tigris();
+  const db = client.getDatabase();
+  const artists = db.getCollection<Artist>('artists');
+
+  const query: SearchQuery<Artist> = {
+    hitsPerPage: 100,
+    sort: { field: 'name', order: '$asc' },
+  };
+
+  try {
+    const results = await artists.search(query);
+    const arr = await results.toArray();
+
+    return {
+      genres: [],
+      artists: arr[0].hits.map(({ document }) => document),
+    };
+  } catch (err) {
+    console.error(err);
+
+    return { genres: [], artists: [] };
+  }
+}
+```
+
+This helper creates a new Tigris client and accesses the `artists` collection, which we then query to get the first 100 entries sorted by name in alphabetical order.
+
+The results are then converted to an array. We simplify a bit by mapping over just the artist entries and returning only the data, which is all we need for this app. For more information on everything Tigris sends back in a query, check out the [Tigris docs on searching](https://www.tigrisdata.com/docs/sdkstools/typescript/database/search/#paginating-through-search-results) (expand the "details" block to see example results).
+
+### Run the query in a Remix loader
+
+To actually load the data, open up `app/index.tsx` and export a `loader` function that calls the `getArtists()` function we just defined.
+
+```diff
+	import { GenrePicker } from '~/components/genre-picker';
+	import { ArtistList } from '~/components/artist-list';
+	import { Search } from '~/components/search';
++	import { getArtists } from '~/db/get-artists.server';
++
++	export async function loader() {
++		const data = await getArtists();
++
++		return data;
++	}
+
+	export default function Index() {
+		return (
+			<>
+				<Search />
+				<GenrePicker />
+				<ArtistList />
+			</>
+		);
+	}
+
+```
+
+This data is now loaded, but we're not using it anywhere yet. Edit `app/components/artist-list.tsx` and edit it to use loader data instead of the hard-coded data that's currently there:
+
+```diff
++	import type { loader } from '~/index';
++
++	import { useLoaderData } from '@remix-run/react';
+
+	export const ArtistList = () => {
+-		const { artists } = {
+-			artists: [
+-				// ...omitted for brevity...
+-			],
+-		};
++		const { artists } = useLoaderData<typeof loader>();
+
+		if (artists.length < 1) {
+			return (
+				<div className="artist-list empty">
+					<p>no artists match the current filters</p>
+				</div>
+			);
+		}
+
+		return (
+			<div className="artist-list">
+				{artists.map((artist) => {
+					return (
+						<div className="artist" key={artist.id}>
+							<img src={artist.images[1].url} alt={artist.name} />
+							<div className="details">
+								<h2>{artist.name}</h2>
+								<p>
+									<a href={artist.url}>view on Spotify</a>
+								</p>
+							</div>
+						</div>
+					);
+				})}
+			</div>
+		);
+	};
+
+```
+
+Save this and start the dev server if it's not already running. Navigate to `http://localhost:3000` and you'll now see the artists stored in Tigris displayed on the page.
+
+<Figure>
+  ![the app showing artists loaded from
+  Tigris](https://res.cloudinary.com/jlengstorf/image/upload/w_1200,f_auto,q_auto/tigris-data-remix/live-data-displayed.jpg)
+</Figure>
+
+## Add support for text search
+
+Next, let's add the ability to search within our results with a query. Inside `app/db/get-artist.server.ts`, make the following changes to support text searching:
+
+```diff
+	// TODO include support for filtering by query
+	// TODO include support for filtering by facet (genre)
+	import type { SearchQuery } from '@tigrisdata/core';
+	import type { Artist } from '~/db/collections/artists';
+
+	import { Tigris } from '@tigrisdata/core';
+
+-	export async function getArtists() {
++	export async function getArtists(
++		{
++			q = '',
++		}: {
++			q?: string;
++		} = {
++			q: '',
++		}
++	) {
+		const client = new Tigris();
+		const db = client.getDatabase();
+		const artists = db.getCollection<Artist>('artists');
+
+		const query: SearchQuery<Artist> = {
++			q,
+			hitsPerPage: 100,
++			searchFields: ['name', 'genres'],
+			sort: { field: 'name', order: '$asc' },
+		};
+
+		try {
+			const results = await artists.search(query);
+			const arr = await results.toArray();
+
+			return {
+				genres: [],
+				artists: arr[0].hits.map(({ document }) => document),
+			};
+		} catch (err) {
+			console.error(err);
+
+			return { genres: [], artists: [] };
+		}
+	}
+
+```
+
+Tigris search accepts a `q` option, and we use `searchFields` to identify which fields we should be searching against with that `q` value.
+
+Save this, then make an edit to `app/index.tsx` to test that it's working. First, let's search something that we know matches at least one artist's name:
+
+```diff
+	export async function loader() {
++		const data = await getArtists({ q: 'mars' });
+
+		return data;
+	}
+```
+
+Save this and the results in the browser will update to show two matching artists.
+
+<Figure>
+  ![the app showing a filtered list of artists that match the search term
+  "mars"](https://res.cloudinary.com/jlengstorf/image/upload/w_1200,f_auto,q_auto/tigris-data-remix/manual-text-search-results.jpg)
+</Figure>
+
+Next, update the search to a genre:
+
+```diff
+	export async function loader() {
++		const data = await getArtists({ q: 'hip hop' });
+
+		return data;
+	}
+```
+
+Save, then check the browser to see the updated results:
+
+<Figure>
+  ![the app showing a filtered list of artists that match the search term "hip
+  hop"](https://res.cloudinary.com/jlengstorf/image/upload/w_1200,f_auto,q_auto/tigris-data-remix/manual-text-search-results-genre.jpg)
+</Figure>
+
+### Create a search input React component in the Remix app
+
+To allow users to search within results, we need to provide a text input.
+
+Open `app/components/search.tsx` and replace its contents with the following:
+
+```tsx
+import { Link, useLocation } from '@remix-run/react';
+
+export const Search = () => {
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const q = params.get('q') || '';
+
+  return (
+    <div className="search">
+      <form method="GET">
+        <label htmlFor="keyword-search">Search artists by name or genre:</label>
+        <input type="text" name="q" id="keyword-search" defaultValue={q} />
+
+        <button type="submit">Search</button>
+      </form>
+
+      {q.length > 1 ? (
+        <div className="search-details">
+          <span>Artists with name or genre matching “{q}”</span>
+          <Link to={location.pathname} prefetch="intent">
+            &times; clear search
+          </Link>
+        </div>
+      ) : null}
+    </div>
+  );
+};
+```
+
+To make our searches URL-addressable, we'll use the `GET` method to submit the form, which will put the search term into the URL as a query string. For example, if you search "bear", it will show up in the query string as `?q=bear`.
+
+The component checks for an existing query string and uses it to show additional info to the user if one is present. It also allows for clearing the current search in a way that will keep the user at the same pathname, which will be important when we start adding genre filtering.
+
+### Read the current search query from the query string in the Remix loader
+
+Now that we have a way to set the search query, we need Remix to use that query to update the query in the `loader`. Update `app/index.tsx` to get the current query parameters out of the URL and send those to Tigris:
+
+```diff
++	import type { LoaderArgs } from '@remix-run/node';
+
+	import { GenrePicker } from '~/components/genre-picker';
+	import { ArtistList } from '~/components/artist-list';
+	import { Search } from '~/components/search';
+	import { getArtists } from '~/db/get-artists.server';
+
+-	export async function loader() {
++	export async function loader({ request }: LoaderArgs) {
+-		const data = await getArtists({ q: 'hip hop' });
++		const url = new URL(request.url);
++		const q = url.searchParams.get('q') || undefined;
++		const data = await getArtists({ q });
+
+		return data;
+	}
+
+	export default function Index() {
+		return (
+			<>
+				<Search />
+				<GenrePicker />
+				<ArtistList />
+			</>
+		);
+	}
+```
+
+Save this, then add a search term into the input and click "Search" to see filtered results.
+
+<Figure>
+  ![the search input in the app has the input "bear" and the artists below are
+  filtered to
+  match](https://res.cloudinary.com/jlengstorf/image/upload/w_1200,f_auto,q_auto/tigris-data-remix/search-input.jpg)
+</Figure>
+
+## Add support for faceted search
+
+The last feature we need to add for our search query is the ability to filter results by facets, or specific fields that we've told Tigris we'll use for filtering.
+
+To do this, add the following changes to `app/db/get-artists.server.ts`:
+
+```diff
+	import type { SearchQuery } from '@tigrisdata/core';
+	import type { Artist } from '~/db/collections/artists';
+
+	import { Tigris } from '@tigrisdata/core';
+
+	export async function getArtists(
+		{
++			genres = [],
+			q = '',
+		}: {
++			genres?: string[];
+			q?: string;
+		} = {
++			genres: [],
+			q: '',
+		}
+	) {
+		const client = new Tigris();
+		const db = client.getDatabase();
+		const artists = db.getCollection<Artist>('artists');
+
+		const query: SearchQuery<Artist> = {
+			q,
+			hitsPerPage: 100,
+			searchFields: ['name', 'genres'],
++			filter: { genres },
+			sort: { field: 'name', order: '$asc' },
++			facets: { genres: { size: 100 } },
+		};
+
+		try {
+			const results = await artists.search(query);
+			const arr = await results.toArray();
+
++			let displayGenres = arr[0].facets.genres.counts;
++			if (displayGenres.length > 50) {
++				displayGenres = displayGenres.filter((g) => g.count > 1);
++			}
+
+			return {
+-				genres: [],
++				genres: displayGenres,
+				artists: arr[0].hits.map(({ document }) => document),
+			};
+		} catch (err) {
+			console.error(err);
+
+			return { genres: [], artists: [] };
+		}
+	}
+```
+
+The query sent to Tigris now includes a filter option, to which we send an array of genres that will narrow down results.
+
+It also now has a `facets` option, which will return up to 100 genre facets that we can use to show our users what filters are available.
+
+To test this, update the query in `app/index.tsx` with a genre:
+
+```diff
+	export async function loader({ request }: LoaderArgs) {
+		const url = new URL(request.url);
+		const q = url.searchParams.get('q') || undefined;
++		const data = await getArtists({ q, genres: ['escape room'] });
+
+		return data;
+	}
+```
+
+Upon saving, the results will show a filtered subset of artists that match the genre.
+
+<Figure>
+  ![filtered results in the app after manually setting a genre facet search to
+  "escape
+  room"](https://res.cloudinary.com/jlengstorf/image/upload/w_1200,f_auto,q_auto/tigris-data-remix/faceted-search-manual.jpg)
+</Figure>
+
+### Display genre facets as clickable filters in the Remix app
+
+The search results now contain a list of available facets along with how many results match each one. In our case, this is a list of genres.
+
+To update the app to display the genres from the query, update `app/components/genre-picker.tsx` to use the genres from the query instead of the hard-coded data that's in there now:
+
+```diff
++ 	import type { loader } from '~/index';
+
+-	import { Link, useLocation } from '@remix-run/react';
++	import { Link, useLoaderData, useLocation } from '@remix-run/react';
+	import { useState } from 'react';
+
+	export const GenrePicker = () => {
+		const location = useLocation();
+		// TODO get current genre from URL params
+		const selectedGenre = undefined;
+		const [expanded, setExpanded] = useState(false);
+-		const genres = [
+-			{
+-				value: 'hip hop',
+-				count: 2,
+-			},
+-			{
+-				value: 'indie rock',
+-				count: 1,
+-			},
+-		];
++		const { genres } = useLoaderData<typeof loader>();
+
+		const visibleGenres =
+			genres.length > 10 && !expanded ? genres.slice(0, 10) : genres;
+
+		let expanderButton = null;
+
+		if (genres.length > 10) {
+			expanderButton = expanded ? (
+				<button onClick={() => setExpanded(false)} className="control">
+					show fewer genres
+				</button>
+			) : (
+				<button onClick={() => setExpanded(true)} className="control">
+					show all genres
+				</button>
+			);
+		}
+
+		return (
+			<nav className="genre-filters">
+				{selectedGenre ? (
+					<Link to={`/${location.search}`} className="control" prefetch="intent">
+						&times; clear filters
+					</Link>
+				) : null}
+
+				{visibleGenres.map((genre: any) => {
+					return (
+						<Link
+							key={genre.value}
+							to={`/genre/${genre.value}${location.search}`}
+							className={
+								genre.value === selectedGenre
+									? 'genre-filter selected'
+									: 'genre-filter'
+							}
+							prefetch="intent"
+						>
+							<span className="genre-label" title={genre.value}>
+								{genre.value}
+							</span>{' '}
+							({genre.count})
+						</Link>
+					);
+				})}
+
+				{expanderButton}
+			</nav>
+		);
+	};
+```
+
+Save and the browser will update to show real genre info from the database.
+
+<Figure>
+  ![the app with live genre data
+  displayed](https://res.cloudinary.com/jlengstorf/image/upload/w_1200,f_auto,q_auto/tigris-data-remix/live-genre-data.jpg)
+</Figure>
+
+Clicking one of the genres will navigate to a URL that identifies with genre should be used to filter (e.g. `/genre/rock`). Currently, the results aren't filtered yet. Let's fix that.
+
+### Use the genre in the URL to filter search results in Remix
+
+Because we're using a splat route, Remix will put the entire URL pathname into the `params` object passed to loaders and other Remix utility functions under the `*` key.
+
+We'll need to get the genre from the URL in a few different places in our app, so we'll put it in its own file at `app/utils.ts` so it's easy to share. Add the following inside that file:
+
+```ts
+import type { Params } from '@remix-run/react';
+
+export function getGenreFromParams(params: Params): string | undefined {
+  const [, genre] = params['*'] ? params['*'].split('/') : [];
+
+  return genre;
+}
+```
+
+Remix allows us to access the params in a few different ways, so we'll need to pass them in as an argument. Inside, we split the URL pathname by `/`, and we know that our app only supports one URL pattern (`/genre/:genre`), so we can quickly destructure to determine the current genre.
+
+In `app/index.tsx`, use this new helper to determine the current genre and filter results accordingly:
+
+```diff
+	import type { LoaderArgs } from '@remix-run/node';
+
+	import { GenrePicker } from '~/components/genre-picker';
+	import { ArtistList } from '~/components/artist-list';
+	import { Search } from '~/components/search';
+	import { getArtists } from '~/db/get-artists.server';
++	import { getGenreFromParams } from './utils';
+
+-	export async function loader({ request }: LoaderArgs) {
++	export async function loader({ request, params }: LoaderArgs) {
+		const url = new URL(request.url);
+		const q = url.searchParams.get('q') || undefined;
+-		const data = await getArtists({ q, genres: ['escape room'] });
++		const genre = getGenreFromParams(params);
++		const genres = genre ? [genre] : undefined;
++		const data = await getArtists({ q, genres });
+
+		return data;
+	}
+
+	export default function Index() {
+		return (
+			<>
+				<Search />
+				<GenrePicker />
+				<ArtistList />
+			</>
+		);
+	}
+
+```
+
+Save this change and click one of the genres in the browser. The list of artists will be filtered according to the selected genre.
+
+<Figure>
+  ![filtered results using the genre from the
+  URL](https://res.cloudinary.com/jlengstorf/image/upload/w_1200,f_auto,q_auto/tigris-data-remix/genre-search-from-url.jpg)
+</Figure>
+
+However, there's not currently a way to clear the selected genre or see which one has been selected. To fix that, make the following edits to `app/components/genre-picker.tsx` to grab the genre from the URL and finish up the UI:
+
+```diff
+	import type { loader } from '~/index';
+
+-	import { Link, useLoaderData, useLocation } from '@remix-run/react';
++	import { Link, useLoaderData, useLocation, useParams } from '@remix-run/react';
+	import { useState } from 'react';
++	import { getGenreFromParams } from '~/utils';
+
+	export const GenrePicker = () => {
+		const location = useLocation();
+-		// TODO get current genre from URL params
+-		const selectedGenre = undefined;
++		const params = useParams();
++		const selectedGenre = getGenreFromParams(params);
+		const [expanded, setExpanded] = useState(false);
+		const { genres } = useLoaderData<typeof loader>();
+
+		const visibleGenres =
+			genres.length > 10 && !expanded ? genres.slice(0, 10) : genres;
+
+		let expanderButton = null;
+
+		if (genres.length > 10) {
+			// ... omitted for brevity ...
+		}
+
+		return (
+			<nav className="genre-filters">
+				... omitted for brevity ...
+			</nav>
+		);
+	};
+```
+
+After grabbing the current genre, we can show a clear button when a genre is selected and add a `selected` class to the currently active genre for better UX.
+
+<Figure>
+  ![same results as the previous image, but now there's an indicator of which
+  genre is selected and a button to clear the genre
+  selection](https://res.cloudinary.com/jlengstorf/image/upload/w_1200,f_auto,q_auto/tigris-data-remix/current-genre-and-clear-button.jpg)
+</Figure>
+
+Congratulations! You've just built a full-blown faceted search interface with Remix, React, and Tigris Data. Your users can now search using text input and refine results using genre filters. These can be used in conjunction, and all of the results have unique URLs to allow your users to share or bookmark their search results.
+
+## Full source code and demo
+
+- [Source code](https://github.com/learnwithjason/tigris-music-list)
+- [Demo](https://aged-breeze-5399.fly.dev/)
+- [Video tutorial](https://youtu.be/PlCQmGUBKg0)
+
+## Next steps and additional resources
+
+If you'd like to go further, here's some further reading and additional examples:
+
+- [Faceted search documentation for Tigris Data](https://www.tigrisdata.com/docs/sdkstools/typescript/database/search/#faceted-search)
+- [More implementation examples of Tigris in other frameworks](https://github.com/tigrisdata/tigris-examples-ts)
+- [Remix docs](http://remix.run/docs/en/main)
+- Ask questions in the [Learn With Jason Discord](https://discord.gg/lwj)
+- Ask questions in the [Tigris Data Discord](https://www.tigrisdata.com/discord/)
+- Ask questions in the [Remix Discord](https://rmx.as/discord)
+
+Thanks again to the Tigris Data team for sponsoring me to create this tutorial. Partnering with companies like Tigris helps me keep these tutorials free to developers.
+
+<Aside>
+  **Heads up!** If your company wants to work on a tutorial like this with me,
+  [I'm always looking for more people to work with](https://lwj.dev/partners)!
+</Aside>
