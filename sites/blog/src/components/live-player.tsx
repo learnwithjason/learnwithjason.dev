@@ -20,8 +20,8 @@ type LivePlayerProps = {
 
 export const LivePlayer = (props: LivePlayerProps) => {
 	// For testing, use a hard-coded date for the now variable
-	const now = dayjs('2023-05-24T10:00:00').tz('America/Los_Angeles', true);
-	// const now = dayjs();
+	// const now = dayjs('2023-05-24T10:00:00').tz('America/Los_Angeles', true);
+	const now = dayjs();
 
 	const tz = dayjs.tz.guess();
 	const start = dayjs(props.episode.date).tz(tz);
