@@ -112,7 +112,7 @@ const datetime = dayjs(episode.date).tz(tz);
             <span class="location">https://twitch.tv/jlengstorf</span>
           </div>
         </EpisodePreview>
-        <LivePlayer client:visible episode={episode} duration={duration} />
+        <LivePlayer client:load episode={episode} duration={duration} />
       </section>
 
       <OptInForm
