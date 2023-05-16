@@ -20,8 +20,8 @@ type LivePlayerProps = {
 
 export const LivePlayer = (props: LivePlayerProps) => {
 	// For testing, use a hard-coded date for the now variable
-	// const now = dayjs('2023-05-24T10:00:00').tz('America/Los_Angeles', true);
-	const now = dayjs();
+	const now = dayjs('2023-05-24T10:00:00').tz('America/Los_Angeles', true);
+	// const now = dayjs();
 
 	const tz = dayjs.tz.guess();
 	const start = dayjs(props.episode.date).tz(tz);
@@ -34,8 +34,6 @@ export const LivePlayer = (props: LivePlayerProps) => {
 		LIVE: start.isBefore(now) && end.isAfter(now),
 		OVER: end.isBefore(now),
 	};
-
-	console.log(now);
 
 	createEffect(() => {
 		if (!state.LIVE) {
@@ -68,7 +66,7 @@ export const LivePlayer = (props: LivePlayerProps) => {
 		<div style={{ 'margin-block-start': '2rem' }}>
 			{state.BEFORE ? (
 				<>
-					<h3>This episode airs in {dayjs().to(start)}!</h3>
+					<h3>This episode airs {now.to(start)}!</h3>
 					<p>
 						You can watch it{' '}
 						<a href="https://twitch.tv/jlengstorf">on Twitch</a> or in an
@@ -110,7 +108,7 @@ export const LivePlayer = (props: LivePlayerProps) => {
 
 			{state.OVER && !isSolo ? (
 				<>
-					<h3>This episode aired {dayjs().from(end)}.</h3>
+					<h3>This episode aired {end.from(now)}.</h3>
 					<p>
 						We’re working on the recording now and it’ll be posted here soon.
 					</p>
