@@ -23,6 +23,8 @@ export const LivePlayer = (props: LivePlayerProps) => {
 	// const now = dayjs('2023-05-24T10:00:00').tz('America/Los_Angeles', true);
 	const now = dayjs();
 
+	console.log({ now });
+
 	const tz = dayjs.tz.guess();
 	const start = dayjs(props.episode.date).tz(tz);
 	const end = start.add(props.duration, 'minutes').tz(tz);
