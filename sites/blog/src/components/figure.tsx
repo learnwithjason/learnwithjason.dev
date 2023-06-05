@@ -30,7 +30,7 @@ export function Figure(rawProps: FigureProps) {
 
 			<Show when={props.caption || props.credit}>
 				<figcaption>
-					{props.caption}
+					<span innerHTML={props.caption} />
 					<Show when={props.credit}>
 						<small>
 							{props.creditType}:
