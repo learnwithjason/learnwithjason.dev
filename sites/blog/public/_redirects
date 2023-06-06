@@ -3,6 +3,9 @@ https://learnwithjason.netlify.app/*    https://www.learnwithjason.dev/:splat   
 https://learnwithjason.netlify.com/*    https://www.learnwithjason.dev/:splat    301!
 https://lwj.dev/*                       https://www.learnwithjason.dev/:splat    301!
 
+# video shortcuts
+/feature-flags              https://youtu.be/i6j2hT7ox0c
+
 # stitch in the additional sites
 /webhooks/*                 https://lwj-webhooks.netlify.app/.netlify/functions/webhook-:splat           200
 /api/v2/store/*             https://lwj-api.netlify.app/.netlify/functions/shopify-:splat                200
