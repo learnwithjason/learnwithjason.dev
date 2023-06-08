@@ -108,7 +108,7 @@ async function getFeaturedContent(featuredItems: FeaturedItem[]) {
           <h3>${c.heading}</h3>
           <p>${c.description}</p>
         </mj-text>
-        <mj-button href="${c.link}">Watch the episode</mj-button>
+        <mj-button href="${c.link}">Check it out</mj-button>
       </mj-column>
   `
 		)
@@ -226,7 +226,7 @@ export async function getNewsletterTemplateMarkup({
       <mj-column padding-top="40px">
         <mj-text mj-class="footer">
           <p>
-            This message contians no gluten or sulfites. So if it gives you a headache or a tummyache it&lsquo;s either because the content is so hard-hitting that it physically affected you, or because I&lsquo;m such a doofus that you&lsquo;re taking psychic damage. So... you&lsquo;re welcome. Or, I&lsquo;m sorry.
+            This message contains no gluten or sulfites. So if it gives you a headache or a tummyache it&lsquo;s either because the content is so hard-hitting that it physically affected you, or because I&lsquo;m such a doofus that you&lsquo;re taking psychic damage. So... you&lsquo;re welcome. Or, I&lsquo;m sorry.
           </p>
           <p>
             You&lsquo;re receiving this because you subscribed at either <a href="https://www.learnwithjason.dev">learnwithjason.dev</a>, <a href="https://jason.af">jason.af</a>, or one of Jason Lengstorf&lsquo;s other web properties. If you&lsquo;d like to stop receiving these, you can <a href="{{ unsubscribe_url }}">unsubscribe</a> any time.
