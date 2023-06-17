@@ -8,6 +8,11 @@ import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
 import { Aside } from './aside';
 import { LiveTwitchEmbed } from './live-twitch-embed';
+import {
+	getEpisodeLiveStatus,
+	getEpisodeTimeDetails,
+	isSoloEpisode,
+} from '../util/twitch';
 
 import styles from './live-player.module.css';
 
@@ -59,35 +64,23 @@ type LivePlayerProps = {
 };
 
 export const LivePlayer: ParentComponent<LivePlayerProps> = (props) => {
-	const tz = dayjs.tz.guess();
-
 	// For testing, use a hard-coded date for the now variable
 	// const [now, setNow] = createSignal(
 	// 	dayjs('2023-06-22T11:00:00').tz('America/Los_Angeles', true)
 	// );
 	const [now, setNow] = createSignal(dayjs());
+	const { start, end } = getEpisodeTimeDetails(props.episode);
 
-	const start = dayjs(props.episode.date).tz(tz);
-	// const start = dayjs('2023-06-16T22:54:00').tz(tz);
-	const end = start.add(props.duration, 'minutes').tz(tz);
-
-	const isSolo = props.episode.guest.name === 'Jason Lengstorf';
-
-	const state = {
-		BEFORE: () => start.isAfter(now()),
-		LIVE: () => start.isBefore(now()) && end.isAfter(now()),
-		OVER: () => end.isBefore(now()),
-	};
-
-	const timeUpdate = setInterval(() => {
-		setNow(dayjs());
-	}, 1000);
-
+	const timeUpdate = setInterval(() => setNow(dayjs()), 1000);
 	onCleanup(() => clearInterval(timeUpdate));
+
+	const isSolo = isSoloEpisode(props.episode);
+	const status = () =>
+		getEpisodeLiveStatus({ episode: props.episode, currentTime: now() });
 
 	return (
 		<div class={styles.playerWrap}>
-			<Show when={state.BEFORE()}>
+			<Show when={status() === 'FUTURE'}>
 				<h2 class={styles.headingLarge}>
 					This episode airs {now().to(start)}!
 				</h2>
@@ -108,7 +101,7 @@ export const LivePlayer: ParentComponent<LivePlayerProps> = (props) => {
 						Add it to your calendar
 						<span class="start">{start.format('YYYY-MM-DD HH:mm')}</span>
 						<span class="end">{end.format('YYYY-MM-DD HH:mm')}</span>
-						<span class="timezone">{tz}</span>
+						<span class="timezone">{dayjs.tz.guess()}</span>
 						<span class="title">{props.episode.title}</span>
 						<span class="description">{props.episode.description}</span>
 						<span class="location">https://twitch.tv/jlengstorf</span>
@@ -122,7 +115,7 @@ export const LivePlayer: ParentComponent<LivePlayerProps> = (props) => {
 				</EpisodeDetails>
 			</Show>
 
-			<Show when={state.LIVE()}>
+			<Show when={status() === 'LIVE'}>
 				<h2 class={styles.headingLarge}>
 					{isSolo ? 'Jason' : 'This episode'} is live right now!
 				</h2>
@@ -146,7 +139,7 @@ export const LivePlayer: ParentComponent<LivePlayerProps> = (props) => {
 				</EpisodeDetails>
 			</Show>
 
-			<Show when={state.OVER() && !isSolo}>
+			<Show when={status() === 'ENDED'}>
 				<div>{props.children}</div>
 				<h2 class={styles.heading}>This episode aired {end.from(now())}.</h2>
 				<p>We’re working on the recording now and it’ll be posted here soon.</p>
