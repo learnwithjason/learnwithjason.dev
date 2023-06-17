@@ -1,168 +1,160 @@
 import type { Episode } from '@lwj/types';
 
+import { createSignal, onCleanup, ParentComponent, Show } from 'solid-js';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
-import { createEffect } from 'solid-js';
 import { Aside } from './aside';
+import { LiveTwitchEmbed } from './live-twitch-embed';
+
+import styles from './live-player.module.css';
 
 dayjs.extend(relativeTime);
 dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.extend(advancedFormat);
 
+const EpisodeDetails: ParentComponent<{ isSolo: boolean; isOver?: boolean }> = (
+	props
+) => {
+	return (
+		<Aside>
+			<Show when={!props.isSolo}>
+				{props.children} The recording will be uploaded to YouTube and embedded
+				on this page once it’s ready (usually by Monday). You can bookmark this
+				page and check back later, or{' '}
+				<a href="/newsletter">subscribe to the newsletter</a> to be notified
+				when it’s live.
+			</Show>
+
+			<Show when={props.isSolo}>
+				<Show
+					when={props.isOver}
+					fallback={() => (
+						<>
+							<strong>Can’t catch this session live?</strong>
+						</>
+					)}
+				>
+					<>
+						<strong>Did you miss this session?</strong>
+					</>
+				</Show>{' '}
+				Jason goes live every Tuesday, so mark your calendar and catch him next
+				time! These working sessions aren’t uploaded in full, but you can watch{' '}
+				<a href="https://www.youtube.com/playlist?list=PLz8Iz-Fnk_eSBam1bi1NRGK5zTKvmo9Vd">
+					the best moments on YouTube
+				</a>
+				.
+			</Show>
+		</Aside>
+	);
+};
+
 type LivePlayerProps = {
 	episode: Episode;
 	duration: number;
 };
 
-export const LivePlayer = (props: LivePlayerProps) => {
-	// For testing, use a hard-coded date for the now variable
-	// const now = dayjs('2023-05-24T10:00:00').tz('America/Los_Angeles', true);
-	const now = dayjs();
-
-	console.log({ now });
-
+export const LivePlayer: ParentComponent<LivePlayerProps> = (props) => {
 	const tz = dayjs.tz.guess();
-	const start = dayjs(props.episode.date).tz(tz);
+
+	// For testing, use a hard-coded date for the now variable
+	// const [now, setNow] = createSignal(
+	// 	dayjs('2023-06-22T11:00:00').tz('America/Los_Angeles', true)
+	// );
+	const [now, setNow] = createSignal(dayjs());
+
+	// const start = dayjs(props.episode.date).tz(tz);
+	const start = dayjs('2023-06-16T22:54:00').tz(tz);
 	const end = start.add(props.duration, 'minutes').tz(tz);
 
 	const isSolo = props.episode.guest.name === 'Jason Lengstorf';
 
 	const state = {
-		BEFORE: start.isAfter(now),
-		LIVE: start.isBefore(now) && end.isAfter(now),
-		OVER: end.isBefore(now),
+		BEFORE: () => start.isAfter(now()),
+		LIVE: () => start.isBefore(now()) && end.isAfter(now()),
+		OVER: () => end.isBefore(now()),
 	};
 
-	createEffect(() => {
-		if (!state.LIVE) {
-			return;
-		}
+	const timeUpdate = setInterval(() => {
+		setNow(dayjs());
+	}, 1000);
 
-		const script = document.createElement('script');
-		script.src = 'https://embed.twitch.tv/embed/v1.js';
-
-		script.onload = () => {
-			// @ts-ignore Twitch is globally defined by the above embed script
-			if (!Twitch) {
-				return;
-			}
-
-			// @ts-ignore
-			new Twitch.Embed('twitch-embed', {
-				channel: 'jlengstorf',
-				parent: ['www.learnwithjason.dev'],
-				width: '100%',
-				height: 600,
-				theme: 'light',
-			});
-		};
-
-		document.querySelector('body')?.appendChild(script);
-	});
+	onCleanup(() => clearInterval(timeUpdate));
 
 	return (
-		<div style={{ 'margin-block-start': '2rem' }}>
-			{state.BEFORE ? (
-				<>
-					<h3>This episode airs {now.to(start)}!</h3>
-					<p>
-						You can watch it{' '}
-						<a href="https://twitch.tv/jlengstorf">on Twitch</a> or in an
-						embedded player that will appear on this page while the episode is
-						live.{' '}
-						<span
-							title="Add to Calendar"
-							class="addeventatc"
-							data-styling="none"
-							style={{
-								color: 'var(--color-pink-text)',
-								'text-decoration': 'underline',
-							}}
-						>
-							Add it to your calendar
-							<span class="start">{start.format('YYYY-MM-DD HH:mm')}</span>
-							<span class="end">{end.format('YYYY-MM-DD HH:mm')}</span>
-							<span class="timezone">{tz}</span>
-							<span class="title">{props.episode.title}</span>
-							<span class="description">{props.episode.description}</span>
-							<span class="location">https://twitch.tv/jlengstorf</span>
-						</span>{' '}
-						and join live to ask questions and hang out with the wonderful folks
-						in the chat!
-					</p>
-				</>
-			) : null}
+		<div class={styles.playerWrap}>
+			<Show when={state.BEFORE()}>
+				<h2 class={styles.headingLarge}>
+					This episode airs {now().to(start)}!
+				</h2>
+				<div>{props.children}</div>
+				<p class={styles.watchDetails}>
+					You can watch it <a href="https://twitch.tv/jlengstorf">on Twitch</a>{' '}
+					or in an embedded player that will appear on this page while the
+					episode is live.{' '}
+					<span
+						title="Add to Calendar"
+						class="addeventatc"
+						data-styling="none"
+						style={{
+							color: 'var(--color-pink-text)',
+							'text-decoration': 'underline',
+						}}
+					>
+						Add it to your calendar
+						<span class="start">{start.format('YYYY-MM-DD HH:mm')}</span>
+						<span class="end">{end.format('YYYY-MM-DD HH:mm')}</span>
+						<span class="timezone">{tz}</span>
+						<span class="title">{props.episode.title}</span>
+						<span class="description">{props.episode.description}</span>
+						<span class="location">https://twitch.tv/jlengstorf</span>
+					</span>{' '}
+					and join live to ask questions and hang out with the wonderful folks
+					in the chat!
+				</p>
+				<EpisodeDetails isSolo={isSolo}>
+					<strong>Can’t watch it live? Don’t worry!</strong> This episode will
+					be recorded.
+				</EpisodeDetails>
+			</Show>
 
-			{state.LIVE ? (
-				<>
-					<h3>{isSolo ? 'Jason' : 'This episode'} is live right now!</h3>
-					<div id="twitch-embed" />
-					<p class="live-captions-credits">
-						Live captioning by{' '}
-						<a href="https://whitecoatcaptioning.com/">White Coat Captioning</a>
-					</p>
-				</>
-			) : null}
+			<Show when={state.LIVE()}>
+				<h2 class={styles.headingLarge}>
+					{isSolo ? 'Jason' : 'This episode'} is live right now!
+				</h2>
+				<details>
+					<summary>Show episode details</summary>
 
-			{state.OVER && !isSolo ? (
-				<>
-					<h3>This episode aired {end.from(now)}.</h3>
-					<p>
-						We’re working on the recording now and it’ll be posted here soon.
-					</p>
-				</>
-			) : null}
+					<div class={styles.details}>
+						<div>{props.children}</div>
+						<p class={styles.captions}>
+							Captions are written by an actual human from{' '}
+							<a href="https://whitecoatcaptioning.com/">
+								White Coat Captioning
+							</a>
+						</p>
+					</div>
+				</details>
+				<LiveTwitchEmbed />
+				<EpisodeDetails isSolo={isSolo}>
+					<strong>Can’t watch right now? Don’t worry!</strong> This episode is
+					being recorded.
+				</EpisodeDetails>
+			</Show>
 
-			{!isSolo ? (
-				<Aside>
-					{state.BEFORE ? (
-						<>
-							<strong>Can’t watch it live? Don’t worry!</strong> This episode
-							will be recorded.
-						</>
-					) : null}
-					{state.LIVE ? (
-						<>
-							<strong>Can’t watch right now? Don’t worry!</strong> This episode
-							is being recorded.
-						</>
-					) : null}
-					{state.OVER ? (
-						<>
-							<strong>Did you miss this episode live? Don’t worry!</strong> This
-							episode was recorded.
-						</>
-					) : null}{' '}
-					The recording will be uploaded to YouTube and embedded on this page
-					once it’s ready (usually by Monday). You can bookmark this page and
-					check back later, or{' '}
-					<a href="/newsletter">subscribe to the newsletter</a> to be notified
-					when it’s live.
-				</Aside>
-			) : (
-				<Aside>
-					{state.OVER ? (
-						<>
-							<strong>Did you miss this session?</strong>
-						</>
-					) : (
-						<>
-							<strong>Can’t catch this session live?</strong>
-						</>
-					)}{' '}
-					Jason goes live every Tuesday, so mark your calendar and catch him
-					next time! These working sessions aren’t uploaded in full, but you can
-					watch{' '}
-					<a href="https://www.youtube.com/playlist?list=PLz8Iz-Fnk_eSBam1bi1NRGK5zTKvmo9Vd">
-						the best moments on YouTube
-					</a>
-					.
-				</Aside>
-			)}
+			<Show when={state.OVER() && !isSolo}>
+				<div>{props.children}</div>
+				<h2 class={styles.heading}>This episode aired {end.from(now())}.</h2>
+				<p>We’re working on the recording now and it’ll be posted here soon.</p>
+				<EpisodeDetails isSolo={isSolo} isOver={true}>
+					<strong>Did you miss this episode live? Don’t worry!</strong> This
+					episode was recorded.
+				</EpisodeDetails>
+			</Show>
 		</div>
 	);
 };
