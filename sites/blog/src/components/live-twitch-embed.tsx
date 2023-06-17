@@ -13,7 +13,7 @@ export const LiveTwitchEmbed = () => {
 
 			// @ts-ignore
 			new Twitch.Embed('twitch-embed', {
-				channel: 'linustech',
+				channel: 'jlengstorf',
 				parent: ['www.learnwithjason.dev'],
 				width: '100%',
 				height: 600,
