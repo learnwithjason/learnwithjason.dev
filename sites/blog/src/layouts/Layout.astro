@@ -6,6 +6,8 @@ export interface Props {
 
 import { Header, Footer, TeacherPhoto, Sponsors } from '@lwj/design-system';
 import { Search } from '../components/search';
+import { LiveEyebrow } from '../components/live-eyebrow';
+
 import '@lwj/design-system/css/index.css';
 
 const [episodes, schedule] = await Promise.all([
@@ -88,7 +90,9 @@ const { title, mainClass = '' } = Astro.props;
 				</linearGradient>
 			</defs>
 		</svg>
-		<!-- TODO get styles for the header loaded above this element -->
+
+		<LiveEyebrow schedule={schedule} client:only="solid-js" />
+
 		<Header>
 			<nav class="main-nav">
 				{PAGES.map((p) => <a href={p.url}>{p.label}</a>)}

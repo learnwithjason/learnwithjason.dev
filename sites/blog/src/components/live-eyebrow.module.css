@@ -1,0 +1,123 @@
+.eyebrow {
+	align-items: center;
+	background: var(--color-black-faded);
+	color: var(--color-gray-light);
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	justify-content: center;
+	padding: 1rem 5%;
+	position: relative;
+}
+
+@media (min-width: 480px) {
+	.eyebrow {
+		flex-direction: row;
+	}
+}
+
+.eyebrow::after {
+	animation: var(--animation-gradient-shift);
+	animation-direction: reverse;
+	background: var(--color-gradient);
+	background-size: 200%;
+	bottom: 0;
+	content: '';
+	height: 1px;
+	left: 0;
+	position: absolute;
+	width: 100%;
+}
+
+.lede {
+	font-size: 0.875rem;
+	padding-inline-start: 1.75rem;
+	position: relative;
+}
+
+.lede::before {
+	animation: live-pulse 1000ms ease-in-out alternate infinite;
+	background: var(--color-pink);
+	border: 2px solid transparent;
+	border-radius: 50%;
+	content: '';
+	display: inline-block;
+	height: 1.125rem;
+	margin-inline-end: 0.5rem;
+	position: absolute;
+	left: 0;
+	top: 0;
+	transform-origin: center;
+	vertical-align: middle;
+	width: 1.125rem;
+}
+
+@keyframes live-pulse {
+	0% {
+		scale: 0.5;
+	}
+
+	100% {
+		scale: 0.35;
+	}
+}
+
+.lede::after {
+	animation: radiate 2000ms ease-out infinite;
+	border: 2px solid var(--color-pink);
+	border-radius: 50%;
+	content: '';
+	display: inline-block;
+	height: 1.125rem;
+	margin-inline-end: 0.5rem;
+	position: absolute;
+	left: 0;
+	top: 0;
+	transform-origin: center;
+	vertical-align: middle;
+	width: 1.125rem;
+}
+
+@keyframes radiate {
+	0% {
+		border-color: var(--color-blue);
+		opacity: 0;
+		scale: 0.6;
+	}
+
+	15% {
+		border-color: var(--color-blue);
+		opacity: 1;
+	}
+
+	40% {
+		border-color: var(--color-pink);
+		opacity: 1;
+	}
+
+	100% {
+		border-color: var(--color-yellow);
+		opacity: 0;
+		scale: 1.2;
+	}
+}
+
+.link {
+	background: transparent;
+	border: 2px solid var(--color-pink-text);
+	border-radius: 0.25rem;
+	color: var(--color-pink-text);
+	display: inline-block;
+	font-family: var(--font-family);
+	font-size: 0.875rem;
+	font-weight: 600;
+	padding: 0.25rem 1rem;
+	text-decoration: none;
+	text-wrap: nowrap;
+	transition: all linear 150ms;
+}
+
+.link:is(:hover, :focus, :active) {
+	background: var(--color-pink-text);
+	color: var(--color-black-faded);
+}
