@@ -67,8 +67,8 @@ export const LivePlayer: ParentComponent<LivePlayerProps> = (props) => {
 	// );
 	const [now, setNow] = createSignal(dayjs());
 
-	// const start = dayjs(props.episode.date).tz(tz);
-	const start = dayjs('2023-06-16T22:54:00').tz(tz);
+	const start = dayjs(props.episode.date).tz(tz);
+	// const start = dayjs('2023-06-16T22:54:00').tz(tz);
 	const end = start.add(props.duration, 'minutes').tz(tz);
 
 	const isSolo = props.episode.guest.name === 'Jason Lengstorf';
