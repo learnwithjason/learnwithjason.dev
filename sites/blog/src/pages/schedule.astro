@@ -78,7 +78,7 @@ const lede =
 	<section class="episode-previews">
 		{
 			schedule?.map((episode) => {
-				return <EpisodePreview episode={episode} />;
+				return <EpisodePreview episode={episode} client:visible />;
 			})
 		}
 	</section>

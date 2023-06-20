@@ -85,7 +85,7 @@ const datetime = dayjs(episode.date).tz(tz);
       </p>
       <section class="episode-container">
         <LivePlayer client:load episode={episode} duration={duration}>
-          <EpisodePreview episode={episode}>
+          <EpisodePreview episode={episode} client:visible>
             <a href={`https://twitter.com/${episode.guest.twitter}`}>
               <svg
                 class="link-icon"

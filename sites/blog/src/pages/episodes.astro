@@ -77,7 +77,7 @@ const lede = `Browse ${episodes.length} episodes of <em>Learn With Jason</em> or
 	<section class="episode-previews">
 		{
 			episodes?.map((episode) => {
-				return <EpisodePreview episode={episode} />;
+				return <EpisodePreview episode={episode} client:visible />;
 			})
 		}
 	</section>

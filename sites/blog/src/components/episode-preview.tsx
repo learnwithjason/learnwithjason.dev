@@ -2,7 +2,13 @@ import dayjs from 'dayjs';
 import Utc from 'dayjs/plugin/utc.js';
 import Timezone from 'dayjs/plugin/timezone.js';
 import AdvancedFormat from 'dayjs/plugin/advancedFormat.js';
-import { Component, JSXElement, mergeProps } from 'solid-js';
+import {
+	Component,
+	JSXElement,
+	createEffect,
+	createSignal,
+	mergeProps,
+} from 'solid-js';
 import type { Episode } from '@lwj/types';
 
 import { TeacherPhoto } from './teacher-photo.jsx';
@@ -19,10 +25,15 @@ export const EpisodePreview: Component<{
 	hideLinks?: boolean;
 	children?: JSXElement;
 }> = (rawProps) => {
+	const [tz, setTz] = createSignal<string>('America/Los_Angeles');
 	const props = mergeProps({ hideLinks: false }, rawProps);
 
 	const teacher = props.episode.guest;
 	const host = props.episode.host;
+
+	createEffect(() => {
+		setTz(dayjs.tz.guess());
+	});
 
 	return (
 		<div class={styles.preview}>
@@ -38,9 +49,7 @@ export const EpisodePreview: Component<{
 			</div>
 			<div class={styles.details}>
 				<p class="gradient-subheading">
-					{dayjs(props.episode.date)
-						.tz('America/Los_Angeles')
-						.format('dddd, MMMM D @ h:mm A z')}
+					{dayjs(props.episode.date).tz(tz()).format('dddd, MMMM D @ h:mm A z')}
 				</p>
 				<h3>
 					{!props.hideLinks ? (

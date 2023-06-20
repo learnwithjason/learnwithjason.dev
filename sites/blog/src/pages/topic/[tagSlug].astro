@@ -111,7 +111,7 @@ const title = `Learn ${details.label} from Industry Experts`;
 	<section class="episode-previews">
 		{
 			episodes?.map((episode) => {
-				return <EpisodePreview episode={episode} />;
+				return <EpisodePreview episode={episode} client:visible />;
 			})
 		}
 	</section>
