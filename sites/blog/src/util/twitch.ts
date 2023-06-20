@@ -11,13 +11,13 @@ dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.extend(advancedFormat);
 
-const tz = dayjs.tz.guess();
-
 export function isSoloEpisode(episode: Episode) {
 	return episode.guest.name === 'Jason Lengstorf';
 }
 
 export function getEpisodeTimeDetails(episode: Episode) {
+	const tz = dayjs.tz.guess();
+
 	const isSolo = isSoloEpisode(episode);
 	const duration = isSolo ? 180 : 90;
 
