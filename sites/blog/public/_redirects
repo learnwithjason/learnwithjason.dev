@@ -3,6 +3,10 @@ https://learnwithjason.netlify.app/*    https://www.learnwithjason.dev/:splat   
 https://learnwithjason.netlify.com/*    https://www.learnwithjason.dev/:splat    301!
 https://lwj.dev/*                       https://www.learnwithjason.dev/:splat    301!
 
+# social stuff
+/discord      https://discord.gg/lwj
+/youtube      https://youtube.com/@learnwithjason
+
 # video shortcuts
 /feature-flags              https://youtu.be/i6j2hT7ox0c
 
