@@ -167,7 +167,7 @@ const datetime = dayjs(episode.date).tz(tz);
           {episode?.related?.map((ep: Episode) => {
             return (
               <li>
-                <a href={`/${ep.slug}?utm_campaign=related&utm_source=${ep.slug}&utm_medium=link`} title={`${ep.title} (with ${ep.guest.name})`}>
+                <a href={`/${ep.slug}?utm_campaign=related-episodes&utm_source=${episode.slug}&utm_medium=banner&utm_content=${ep.slug}`} title={`${ep.title} (with ${ep.guest.name})`}>
                   <Poster
                     slug={ep.slug}
                     title={ep.title}
