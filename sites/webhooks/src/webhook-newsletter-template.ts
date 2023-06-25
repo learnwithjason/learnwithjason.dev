@@ -88,12 +88,13 @@ export const handler: Handler = async () => {
 	// Broadcasts API. For now, a manual copy-paste into a template is the only
 	// way to make sure the formatting doesn’t blow up.
 	// ---
-	// const subject = lede.properties.heading.title[0].plain_text;
+	const subject = lede.properties.heading.title[0].plain_text;
 	const previewText = lede.properties.previewText.rich_text[0].plain_text;
 	const pageData = await notionApi(`/blocks/${lede.id}/children`);
 	const ledeHtml = blockToHtml(pageData);
 
 	const markup = await getNewsletterTemplateMarkup({
+		subject,
 		ledeHtml,
 		previewText,
 		featuredItems,
