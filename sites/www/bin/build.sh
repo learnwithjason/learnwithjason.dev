@@ -7,3 +7,5 @@ if [ "$INCOMING_HOOK_BODY" = '{"skipCache":true}' ]; then
 else
   nx run www:build
 fi;
+
+exit $?
