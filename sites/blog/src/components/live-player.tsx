@@ -63,20 +63,26 @@ type LivePlayerProps = {
 	duration: number;
 };
 
+type EpisodeStatus = 'FUTURE' | 'LIVE' | 'ENDED';
+
 export const LivePlayer: ParentComponent<LivePlayerProps> = (props) => {
 	// For testing, use a hard-coded date for the now variable
 	// const [now, setNow] = createSignal(
 	// 	dayjs('2023-06-22T11:00:00').tz('America/Los_Angeles', true)
 	// );
 	const [now, setNow] = createSignal(dayjs());
+	const [status, setStatus] = createSignal<EpisodeStatus>('FUTURE');
 	const { start, end } = getEpisodeTimeDetails(props.episode);
 
-	const timeUpdate = setInterval(() => setNow(dayjs()), 1000);
+	const timeUpdate = setInterval(() => {
+		setNow(dayjs());
+		setStatus(
+			getEpisodeLiveStatus({ episode: props.episode, currentTime: now() })
+		);
+	}, 1000);
 	onCleanup(() => clearInterval(timeUpdate));
 
 	const isSolo = isSoloEpisode(props.episode);
-	const status = () =>
-		getEpisodeLiveStatus({ episode: props.episode, currentTime: now() });
 
 	return (
 		<div class={styles.playerWrap}>

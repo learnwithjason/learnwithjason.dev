@@ -22,7 +22,7 @@ export function getEpisodeTimeDetails(episode: Episode) {
 	const duration = isSolo ? 180 : 90;
 
 	const start = dayjs(episode.date).tz(tz);
-	// const start = dayjs('2023-06-17T11:22:00').tz(tz);
+	// const start = dayjs('2023-06-25T17:00:00').tz(tz);
 	const end = start.add(duration, 'minutes').tz(tz);
 
 	return { start, end, duration };
