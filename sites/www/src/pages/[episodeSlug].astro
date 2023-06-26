@@ -17,7 +17,7 @@ dayjs.extend(timezone);
 export async function getStaticPaths() {
   const useCdn = process.env.NODE_ENV !== 'production';
 	const [episodes, schedule] = await Promise.all([
-		loadAllEpisodes({ includeRelatedEpisodes: true, includeTranscript: true, cdn: useCdn }),
+		loadAllEpisodes({ includeRelatedEpisodes: false, includeTranscript: true, cdn: useCdn }),
 		loadSchedule({ cdn: useCdn }),
 	]).catch((err) => {
     throw new Error(err);
