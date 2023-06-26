@@ -115,6 +115,3 @@ https://lwj.dev/*                       https://www.learnwithjason.dev/:splat   
 /wp2/wp-includes/wlwmanifest.xml      https://jason.af/party 301
 /site/wp-includes/wlwmanifest.xml     https://jason.af/party 301
 /sito/wp-includes/wlwmanifest.xml     https://jason.af/party 301
-
-# everything else falls through to the old site
-/*      https://lwj-remix.netlify.app/:splat  200
