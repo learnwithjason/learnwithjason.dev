@@ -160,6 +160,23 @@ const datetime = dayjs(episode.date).tz(tz);
         </ul>
       </div>
 
+      <div class="opt-in">
+        <OptInForm constrained={true} disclaimer="I will never share or sell your info (because I’m not a dick). Unsubscribe with one click at any time.">
+          <h2>Never miss an episode!</h2>
+
+          <p>New episodes of <em>Learn With Jason</em> drop every week, along with web dev tutorials, career growth insights, and more. Subscribe to the newsletter to get the latest delivered directly to your inbox.</p>
+        </OptInForm>
+      </div>
+
+      <div>
+        <h2>Full Transcript</h2>
+        <details>
+          <summary>Click to expand the full transcript</summary>
+
+          <Markdown>{episode.transcript}</Markdown>
+        </details>
+      </div>
+
       <div>
         {episode.related && episode.related.length > 0 ? (
           <h2>Related Episodes</h2>
@@ -181,23 +198,6 @@ const datetime = dayjs(episode.date).tz(tz);
             )
           })}</ul>
         ) : null}
-      </div>
-
-      <div>
-        <h2>Full Transcript</h2>
-        <details>
-          <summary>Click to expand the full transcript</summary>
-
-          <Markdown>{episode.transcript}</Markdown>
-        </details>
-      </div>
-
-      <div class="opt-in">
-        <OptInForm constrained={true} disclaimer="I will never share or sell your info (because I’m not a dick). Unsubscribe with one click at any time.">
-          <h2>Never miss an episode!</h2>
-
-          <p>New episodes of <em>Learn With Jason</em> drop every week, along with web dev tutorials, career growth insights, and more. Subscribe to the newsletter to get the latest delivered directly to your inbox.</p>
-        </OptInForm>
       </div>
     </div>
   )}
