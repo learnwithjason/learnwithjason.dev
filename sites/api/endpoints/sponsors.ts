@@ -10,29 +10,37 @@ const sponsors = [
 		url: 'https://lwj.dev/netlify',
 	},
 	{
-		name: 'Nx',
+		name: 'Vets Who Code',
 		image:
-			'https://res.cloudinary.com/jlengstorf/image/upload/v1643133201/lwj/sponsors/nx.svg',
-		imageWidth: 38,
+			'https://res.cloudinary.com/jlengstorf/image/upload/v1607223004/lwj/sponsors/netlify.svg',
+		imageWidth: 115,
 		imageHeight: 36,
-		url: 'https://nx.dev/?utm_source=Learn+with+Jason&utm_medium=link&utm_id=LWJ+2022+H1',
+		url: 'https://lwj.dev/netlify',
 	},
-	{
-		name: 'New Relic',
-		image:
-			'https://res.cloudinary.com/jlengstorf/image/upload/lwj/sponsors/nr.svg',
-		imageWidth: 117,
-		imageHeight: 23,
-		url: 'https://newrelic.com/',
-	},
-	{
-		name: 'Pluralsight',
-		image:
-			'https://res.cloudinary.com/jlengstorf/image/upload/v1673921496/lwj/sponsors/pluralsight.svg',
-		imageWidth: 165,
-		imageHeight: 35,
-		url: 'https://lwj.dev/pluralsight',
-	},
+	// {
+	// 	name: 'Nx',
+	// 	image:
+	// 		'https://res.cloudinary.com/jlengstorf/image/upload/v1643133201/lwj/sponsors/nx.svg',
+	// 	imageWidth: 38,
+	// 	imageHeight: 36,
+	// 	url: 'https://nx.dev/?utm_source=Learn+with+Jason&utm_medium=link&utm_id=LWJ+2022+H1',
+	// },
+	// {
+	// 	name: 'New Relic',
+	// 	image:
+	// 		'https://res.cloudinary.com/jlengstorf/image/upload/lwj/sponsors/nr.svg',
+	// 	imageWidth: 117,
+	// 	imageHeight: 23,
+	// 	url: 'https://newrelic.com/',
+	// },
+	// {
+	// 	name: 'Pluralsight',
+	// 	image:
+	// 		'https://res.cloudinary.com/jlengstorf/image/upload/v1673921496/lwj/sponsors/pluralsight.svg',
+	// 	imageWidth: 165,
+	// 	imageHeight: 35,
+	// 	url: 'https://lwj.dev/pluralsight',
+	// },
 ];
 
 const handlerFn: Handler = async () => {

@@ -36,7 +36,7 @@
  * ```
  */
 
-//TODO THIS IS BROKEN FIX IT
+// TODO: THIS IS BROKEN, PLZ FIX
 
 import { Handler } from '@netlify/functions';
 import { serialize } from 'cookie';
@@ -45,7 +45,6 @@ import { createCartWithItem } from '../util/createCartWithItem';
 import { addItemToCart } from '../util/addItemToCart';
 
 export const handler: Handler = async (event) => {
-	console.log('hello?');
 	const {
 		itemId,
 		quantity: quantityStr,
