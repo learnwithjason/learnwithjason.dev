@@ -2,9 +2,6 @@ import rss from '@astrojs/rss';
 import type { AstroConfig } from 'astro';
 import { getCollection } from 'astro:content';
 import sanitizeHtml from 'sanitize-html';
-import MarkdownIt from 'markdown-it';
-
-const parser = new MarkdownIt();
 
 export async function get(context: AstroConfig) {
 	const blog = await getCollection('blog');
@@ -29,7 +26,9 @@ export async function get(context: AstroConfig) {
 					pubDate: post.data.date,
 					description: post.data.meta.description,
 					link: `/blog/${post.slug}`,
-					content: sanitizeHtml(parser.render(post.body)),
+					content: sanitizeHtml(
+						`<p>${post.data.meta.description}</p><p><a href="${context.site}/blog/${post.slug}/">Read the full post on lwj.dev</a>`
+					),
 				};
 			}),
 	});
