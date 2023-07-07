@@ -1,12 +1,12 @@
 ---
-import Markdown from '@astrojs/markdown-component';
 import type { Episode } from '@lwj/types';
 import { loadAllEpisodes, loadInBetweeners, loadSchedule } from '@lwj/sanity-helpers';
+import MarkdownIt from 'markdown-it';
+import dayjs from 'dayjs';
+import timezone from 'dayjs/plugin/timezone';
 import Layout from '../layouts/Layout.astro';
 import SEO from '../components/seo.astro';
 import { EpisodePreview } from '../components/episode-preview';
-import dayjs from 'dayjs';
-import timezone from 'dayjs/plugin/timezone';
 import { OptInForm } from '../components/opt-in-form';
 import { VideoPlayer } from '../components/video-player';
 import { Poster } from '../components/poster';
@@ -24,6 +24,8 @@ export async function getStaticPaths() {
     throw new Error(err);
   });
 
+  const parser = new MarkdownIt();
+
 	const paths: {
 		params: {
 			episodeSlug: string;
@@ -34,7 +36,9 @@ export async function getStaticPaths() {
 		};
 	}[] = [];
 
-	episodes.data?.result.forEach((episode) => {
+	episodes.data?.result.map((ep) => {
+    return { ...ep, transcript: ep.transcript ? parser.render(ep.transcript) : ep.transcript };
+  }).forEach((episode) => {
 		paths.push({
 			params: {
 				episodeSlug: episode.slug,
@@ -78,8 +82,6 @@ const isSolo = episode.guest.name === 'Jason Lengstorf';
 const tz = 'America/Los_Angeles';
 const duration = isSolo ? 180 : 90;
 const datetime = dayjs(episode.date).tz(tz);
-
-
 ---
 
 <Layout title={episode.title}>
@@ -186,7 +188,7 @@ const datetime = dayjs(episode.date).tz(tz);
         <details>
           <summary>Click to expand the full transcript</summary>
 
-          <Markdown>{episode.transcript}</Markdown>
+          <div set:html={episode.transcript} />
         </details>
       </div>
 
