@@ -13,6 +13,7 @@ interface SanityFetchEpisodeBySlugProps {
 	cdn: boolean;
 	variables: { slug: string };
 }
+
 interface SanityFetchEpisodeByTopicProps {
 	query: string;
 	cdn: boolean;
@@ -326,6 +327,19 @@ export function getEpisodeTranscript({
 		variables: { slug },
 		cdn,
 	}) as Promise<SanityFetchResponseEpisodeTranscript>;
+}
+
+export function loadInBetweeners({
+	cdn = true,
+}: { cdn?: boolean } = {}): Promise<SanityFetchResponseEpisodeList> {
+	return sanityFetch({
+		query: `
+      *[_type == "episode" && hidden == false && dateTime(date) < dateTime(now()) - 60 * 60 * 3 && !defined(youtubeID)] {
+        ${COMMON_EPISODE_FIELDS}
+      } | order(date asc)
+    `,
+		cdn,
+	}) as Promise<SanityFetchResponseEpisodeList>;
 }
 
 export function loadSchedule({

@@ -1,7 +1,7 @@
 ---
 import Markdown from '@astrojs/markdown-component';
 import type { Episode } from '@lwj/types';
-import { loadAllEpisodes, loadSchedule } from '@lwj/sanity-helpers';
+import { loadAllEpisodes, loadInBetweeners, loadSchedule } from '@lwj/sanity-helpers';
 import Layout from '../layouts/Layout.astro';
 import SEO from '../components/seo.astro';
 import { EpisodePreview } from '../components/episode-preview';
@@ -16,9 +16,10 @@ dayjs.extend(timezone);
 
 export async function getStaticPaths() {
   const useCdn = process.env.NODE_ENV !== 'production';
-	const [episodes, schedule] = await Promise.all([
+	const [episodes, schedule, inBetweeners] = await Promise.all([
 		loadAllEpisodes({ includeRelatedEpisodes: false, includeTranscript: true, cdn: useCdn }),
 		loadSchedule({ cdn: useCdn }),
+    loadInBetweeners({ cdn: useCdn }),
 	]).catch((err) => {
     throw new Error(err);
   });
@@ -45,6 +46,18 @@ export async function getStaticPaths() {
 	});
 
 	schedule.data?.result.forEach((episode) => {
+		paths.push({
+			params: {
+				episodeSlug: episode.slug,
+			},
+			props: {
+				episode,
+				scheduled: true,
+			},
+		});
+	});
+
+  inBetweeners.data?.result.forEach((episode) => {
 		paths.push({
 			params: {
 				episodeSlug: episode.slug,
