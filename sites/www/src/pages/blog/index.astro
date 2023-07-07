@@ -23,7 +23,7 @@ const blogs = await getCollection('blog', ({ data }) => {
               new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf()
           )
           .map((blog) => {
-            const url = `/test/${blog.slug}`;
+            const url = `/blog/${blog.slug}`;
             const img =
               blog.data.share.image?.replace(
                 'f_auto',
