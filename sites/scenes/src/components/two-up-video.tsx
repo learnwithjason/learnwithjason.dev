@@ -9,8 +9,8 @@ export function TwoUpVideo({ size = 'interview' }) {
 
 	return (
 		<>
-			<VideoContainer name={host?.name} twitter={host?.twitter} size={size} />
 			<VideoContainer name={guest?.name} twitter={guest?.twitter} size={size} />
+			<VideoContainer name={host?.name} twitter={host?.twitter} size={size} />
 		</>
 	);
 }

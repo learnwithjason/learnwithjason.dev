@@ -11,6 +11,6 @@
 		"rehype": "^12.0.1",
 		"rehype-sanitize": "^5.0.1",
 		"subscriptions-transport-ws": "^0.11.0",
-		"urql": "^3.0.3"
+		"urql": "^4.0.4"
 	}
 }
