@@ -11,6 +11,7 @@ export async function get(context: AstroConfig) {
 	}
 
 	return rss({
+		xmlns: { media: 'http://search.yahoo.com/mrss/' },
 		title: 'Learn With Jason Episodes RSS Feed',
 		description:
 			'Learn from the web’s leading experts. Build something new. Grow your career. Let’s do it together.',
