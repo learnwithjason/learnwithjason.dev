@@ -60,6 +60,13 @@ const { title, mainClass = '' } = Astro.props;
 
     <slot name="head-tags" />
 
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Blog RSS Feed for learnwithjason.dev"
+      href="/blog/rss.xml"
+    />
+
     <script
       type="text/javascript"
       src="https://cdn.addevent.com/libs/atc/1.6.1/atc.min.js"
