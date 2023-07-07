@@ -12,6 +12,7 @@
 	"dependencies": {
 		"@lwj/design-system": "*",
 		"@socket-studio/react": "*",
+		"graphql": "^16.7.1",
 		"react-router-dom": "^6.3.0"
 	},
 	"devDependencies": {
