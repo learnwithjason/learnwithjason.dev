@@ -3,6 +3,7 @@ import type { Episode } from '@lwj/types';
 import { loadAllEpisodes, loadInBetweeners, loadSchedule } from '@lwj/sanity-helpers';
 import MarkdownIt from 'markdown-it';
 import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
 import Layout from '../layouts/Layout.astro';
 import SEO from '../components/seo.astro';
@@ -12,6 +13,7 @@ import { VideoPlayer } from '../components/video-player';
 import { Poster } from '../components/poster';
 import { LivePlayer } from '../components/live-player';
 
+dayjs.extend(utc);
 dayjs.extend(timezone);
 
 export async function getStaticPaths() {
