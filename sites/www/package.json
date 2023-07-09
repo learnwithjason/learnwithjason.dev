@@ -20,6 +20,7 @@
 		"@jlengstorf/get-share-image": "^0.8.0",
 		"@lwj/design-system": "^0.0.1",
 		"@nanostores/solid": "^0.4.2",
+		"@sendgrid/mail": "^7.7.0",
 		"@tanstack/query-core": "^4.29.19",
 		"@tanstack/solid-query": "^4.29.19",
 		"@types/react": "^18.0.25",

@@ -18,6 +18,16 @@ const blog = defineCollection({
 	}),
 });
 
+const newsletter = defineCollection({
+	type: 'content',
+	schema: z.object({
+		date: z.date(),
+		subject: z.string(),
+		preview: z.string(),
+	}),
+});
+
 export const collections = {
 	blog,
+	newsletter,
 };
