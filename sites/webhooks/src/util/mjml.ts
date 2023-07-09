@@ -19,19 +19,19 @@ type GetMarkupArgs = {
 
 function getUtmLink({
 	url,
-	campaign = 'newsletter',
-	source,
+	campaign,
+	source = 'newsletter',
 	medium,
 }: {
 	url: string;
-	campaign?: string;
-	source: string;
+	campaign: string;
+	source?: string;
 	medium: string;
 }) {
 	const utmUrl = new URL(url);
 
 	if (!utmUrl.searchParams.get('utm_campaign')) {
-		//  https://lwj.dev/blog/get-hired-devrel?utm_campaign=newsletter&utm_source=200k-dev
+		//  https://lwj.dev/blog/get-hired-devrel?utm_source=newsletter&utm_campaign=200k-dev
 		utmUrl.searchParams.set('utm_campaign', campaign);
 		utmUrl.searchParams.set('utm_source', source);
 		utmUrl.searchParams.set('utm_medium', medium);
@@ -40,7 +40,7 @@ function getUtmLink({
 	return utmUrl.toString();
 }
 
-async function getSchedule({ utm_source }: { utm_source: string }) {
+async function getSchedule({ utm_campaign }: { utm_campaign: string }) {
 	const date = new Date();
 	const res = await fetch('https://www.learnwithjason.dev/api/v2/schedule');
 
@@ -65,7 +65,7 @@ async function getSchedule({ utm_source }: { utm_source: string }) {
 			});
 			const link = getUtmLink({
 				url: episode.uri,
-				source: utm_source,
+				campaign: utm_campaign,
 				medium: 'schedule-link',
 			});
 
@@ -125,16 +125,16 @@ async function getSchedule({ utm_source }: { utm_source: string }) {
 
 async function getFeaturedContent({
 	featuredItems,
-	utm_source,
+	utm_campaign,
 }: {
 	featuredItems: FeaturedItem[];
-	utm_source: string;
+	utm_campaign: string;
 }) {
 	const formatted = featuredItems
 		.map((c) => {
 			const link = getUtmLink({
 				url: c.link,
-				source: utm_source,
+				campaign: utm_campaign,
 				medium: 'featured-link',
 			});
 
@@ -179,14 +179,14 @@ export async function getNewsletterTemplateMarkup({
 	previewText,
 	featuredItems,
 }: GetMarkupArgs) {
-	const utm_source = subject
+	const utm_campaign = subject
 		.toLowerCase()
 		.trim()
 		.replace(/\s+/g, '-')
 		.replace(/^-+|[^a-z0-9-\s]|-+$/gi, '')
 		.replace(/-+/g, '-');
-	const schedule = await getSchedule({ utm_source });
-	const featured = await getFeaturedContent({ featuredItems, utm_source });
+	const schedule = await getSchedule({ utm_campaign });
+	const featured = await getFeaturedContent({ featuredItems, utm_campaign });
 	const mjml = `<mjml lang="en">
 	<mj-head>
 		<mj-preview>${previewText}</mj-preview>
@@ -274,10 +274,10 @@ export async function getNewsletterTemplateMarkup({
 			<mj-column padding-top="40px">
 				<mj-text mj-class="footer">
 					<p>
-						This message contains no gluten or sulfites. So if it gives you a headache or a tummyache it&lsquo;s either because the content is so hard-hitting that it physically affected you, or because I&lsquo;m such a doofus that you&lsquo;re taking psychic damage. So... you&lsquo;re welcome. Or, I&lsquo;m sorry.
+						This message contains no gluten or sulfites. So if it gives you a headache or a tummyache it&lsquo;s either because the content is so good it hurts, or because I&lsquo;m such a doofus that you&lsquo;re taking psychic damage. So... you&lsquo;re welcome. Or, I&lsquo;m sorry.
 					</p>
 					<p>
-						You&lsquo;re receiving this because you subscribed at either <a href="https://www.learnwithjason.dev">learnwithjason.dev</a>, <a href="https://jason.af">jason.af</a>, or one of Jason Lengstorf&lsquo;s other web properties. If you&lsquo;d like to stop receiving these, you can <a href="{{ unsubscribe_url }}">unsubscribe</a> any time.
+						You&lsquo;re receiving this because you subscribed at either <a href="https://www.learnwithjason.dev">learnwithjason.dev</a>, <a href="https://jason.energy">jason.energy</a>, or one of Jason Lengstorf&lsquo;s other web properties. If you&lsquo;d like to stop receiving these, you can <a href="{{ unsubscribe_url }}">unsubscribe</a> any time.
 					</p>
 					<p>
 						{{ address }}
