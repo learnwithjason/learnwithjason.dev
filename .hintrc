@@ -8,7 +8,8 @@
       "default",
       {
         "ignore": [
-          "iframe[allow]"
+          "iframe[allow]",
+          "img[loading]"
         ]
       }
     ]
