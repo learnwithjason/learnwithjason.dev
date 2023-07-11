@@ -20,6 +20,7 @@
 }
 
 .aside::after {
+	animation-direction: reverse;
 	bottom: 0;
 }
 
