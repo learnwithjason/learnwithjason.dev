@@ -67,7 +67,7 @@ https://lwj.dev/*                       https://www.learnwithjason.dev/:splat   
 /graphql       https://learnwithjason.hasura.app/v1/graphql  200
 
 # this article was moved to another site
-/progressive-disclosure-of-complexity   https://www.jason.af/progressive-disclosure-of-complexity 301!
+/progressive-disclosure-of-complexity   https://www.jason.energy/progressive-disclosure-of-complexity 301!
 
 # moved and/or typoed URLs
 /add-apple-pay-google-pay-to-jamstack-sites                               /add-apple-pay-and-google-pay-to-jamstack-sites
@@ -104,17 +104,17 @@ https://lwj.dev/*                       https://www.learnwithjason.dev/:splat   
 /how-to-write-really-good-docs                                            /episodes
 
 # hi bots
-/wp-login.php                         https://jason.af/party 301
-/.env                                 https://jason.af/party 301
-/xmlrpc.php                           https://jason.af/party 301
-/xmlrpc.php                           https://jason.af/party 301
-/web/wp-includes/wlwmanifest.xml      https://jason.af/party 301
-/wp-includes/wlwmanifest.xml          https://jason.af/party 301
-/website/wp-includes/wlwmanifest.xml  https://jason.af/party 301
-/news/wp-includes/wlwmanifest.xml     https://jason.af/party 301
-/2019/wp-includes/wlwmanifest.xml     https://jason.af/party 301
-/wp1/wp-includes/wlwmanifest.xml      https://jason.af/party 301
-/cms/wp-includes/wlwmanifest.xml      https://jason.af/party 301
-/wp2/wp-includes/wlwmanifest.xml      https://jason.af/party 301
-/site/wp-includes/wlwmanifest.xml     https://jason.af/party 301
-/sito/wp-includes/wlwmanifest.xml     https://jason.af/party 301
+/wp-login.php                         https://jason.energy/party 301
+/.env                                 https://jason.energy/party 301
+/xmlrpc.php                           https://jason.energy/party 301
+/xmlrpc.php                           https://jason.energy/party 301
+/web/wp-includes/wlwmanifest.xml      https://jason.energy/party 301
+/wp-includes/wlwmanifest.xml          https://jason.energy/party 301
+/website/wp-includes/wlwmanifest.xml  https://jason.energy/party 301
+/news/wp-includes/wlwmanifest.xml     https://jason.energy/party 301
+/2019/wp-includes/wlwmanifest.xml     https://jason.energy/party 301
+/wp1/wp-includes/wlwmanifest.xml      https://jason.energy/party 301
+/cms/wp-includes/wlwmanifest.xml      https://jason.energy/party 301
+/wp2/wp-includes/wlwmanifest.xml      https://jason.energy/party 301
+/site/wp-includes/wlwmanifest.xml     https://jason.energy/party 301
+/sito/wp-includes/wlwmanifest.xml     https://jason.energy/party 301

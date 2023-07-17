@@ -13,7 +13,8 @@ export const Footer: Component<{ children: JSXElement }> = (props) => {
 					<p>
 						<strong>Jason Lengstorf</strong> is a developer, teacher, lifelong
 						learner, and a huge doofus. He helps companies build world-class
-						devrel teams and blogs at <a href="https://jason.af">jason.af</a>.
+						devrel teams and blogs at{' '}
+						<a href="https://jason.energy">jason.energy</a>.
 					</p>
 				</div>
 			</div>

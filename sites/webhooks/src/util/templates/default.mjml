@@ -78,7 +78,7 @@
             This message contians no gluten or sulfites. So if it gives you a headache or a tummyache it&lsquo;s either because the content is so hard-hitting that it physically affected you, or because I&lsquo;m such a doofus that you&lsquo;re taking psychic damage. So... you&lsquo;re welcome. Or, I&lsquo;m sorry.
           </p>
           <p>
-            You&lsquo;re receiving this because you subscribed at either <a href="https://www.learnwithjason.dev">learnwithjason.dev</a>, <a href="https://jason.af">jason.af</a>, or one of Jason Lengstorf&lsquo;s other web properties. If you&lsquo;d like to stop receiving these, you can <a href="{{ unsubscribe_url }}">unsubscribe</a> any time.
+            You&lsquo;re receiving this because you subscribed at either <a href="https://www.learnwithjason.dev">learnwithjason.dev</a>, <a href="https://jason.energy">jason.energy</a>, or one of Jason Lengstorf&lsquo;s other web properties. If you&lsquo;d like to stop receiving these, you can <a href="{{ unsubscribe_url }}">unsubscribe</a> any time.
           </p>
           <p>
             {{ address }}
