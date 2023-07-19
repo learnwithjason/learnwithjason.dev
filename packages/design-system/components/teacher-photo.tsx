@@ -33,7 +33,6 @@ export const TeacherPhoto: Component<{
 		  },h_${props.width * 2},c_fill,g_face,q_auto,f_auto/${props.imageURL}`;
 
 	onMount(() => {
-		console.log('hi');
 		if (!props.animate) {
 			return;
 		}
