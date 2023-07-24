@@ -3,18 +3,18 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 import Layout from '../../layouts/Blog.astro';
 
 export async function getStaticPaths() {
-  const blogs = await getCollection('blog');
+	const blogs = await getCollection('blog');
 
-  return blogs.map((blog) => {
-    return {
-      params: { slug: blog.slug },
-      props: { blog },
-    };
-  });
+	return blogs.map((blog) => {
+		return {
+			params: { slug: blog.slug },
+			props: { blog },
+		};
+	});
 }
 
 interface Props {
-  blog: CollectionEntry<'blog'>;
+	blog: CollectionEntry<'blog'>;
 }
 
 const { blog } = Astro.props;
@@ -22,20 +22,5 @@ const { headings, Content } = await blog.render();
 ---
 
 <Layout frontmatter={blog.data} headings={headings}>
-  <Content />
+	<Content />
 </Layout>
-
-<script type="module">
-Sentry.init({
-  dsn: 'https://dc6e7609562b40abb3583d9fe9d3f5d0@o530194.ingest.sentry.io/4505558193930240',
-
-  // This sets the sample rate to be 10%. You may want this to be 100% while
-  // in development and sample at a lower rate in production
-  replaysSessionSampleRate: 0.1,
-  // If the entire session is not sampled, use the below sample rate to sample
-  // sessions when an error occurs.
-  replaysOnErrorSampleRate: 1.0,
-
-  integrations: [new Sentry.Replay()],
-});
-</script>
