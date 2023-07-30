@@ -16,6 +16,7 @@ https://lwj.dev/*                       https://www.learnwithjason.dev/:splat   
 
 # video shortcuts
 /feature-flags              /blog/feature-flags-react-devcycle
+/convex-actions             /blog/react-sms-to-database-convex-twilio-clerk
 
 # stitch in the additional sites
 /webhooks/*                 https://lwj-webhooks.netlify.app/.netlify/functions/webhook-:splat           200
@@ -51,6 +52,7 @@ https://lwj.dev/*                       https://www.learnwithjason.dev/:splat   
 /auth0         https://auth0.com/?utm_source=learnwithjason&utm_medium=lwj&utm_campaign=sponsored
 /vetswhocode   https://vetswhocode.io/?utm_source=learnwithjason&utm_medium=lwj&utm_campaign=sponsored
 /airplane      https://www.airplane.dev/?utm_source=learnwithjason&utm_medium=tutorial&utm_campaign=content-moderation-dashboard
+/convex        https://www.convex.dev/?utm_source=learnwithjason&utm_medium=tutorial&utm_campaign=twilio-actions
 
 # affiliate links
 /daskeyboard   https://click.linksynergy.com/fs-bin/click?id=2xZxGRnahIM&offerid=1008802.89&type=3&subid=0&LSNSUBSITE=LSNSUBSITE  301
