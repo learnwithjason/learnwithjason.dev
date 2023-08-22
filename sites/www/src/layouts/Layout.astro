@@ -93,18 +93,6 @@ const { title, mainClass = '' } = Astro.props;
 		<script
 			src="https://js.sentry-cdn.com/dc6e7609562b40abb3583d9fe9d3f5d0.min.js"
 			crossorigin="anonymous"></script>
-
-		<script>
-			var script = document.createElement('script');
-			script.src = 'https://app.krunchdata.io/assets/js/k2.js';
-			script.dataset.api = 'https://api.krunchdata.io/traffic/web/record';
-			script.dataset.id =
-				'XfbiPFBWr61JROFdR3PGJqs0670pyfDAAaut2JHfvY8OH10NSfAWl02da1voKfaY';
-			script.defer = true;
-			script.type = 'module';
-
-			document.head.appendChild(script);
-		</script>
 	</head>
 	<body data-theme="light">
 		<svg class="svg-defs">
