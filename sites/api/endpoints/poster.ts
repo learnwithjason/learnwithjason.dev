@@ -87,22 +87,22 @@ const handlerFn: Handler = async (event) => {
 	const guest = episode?.guest ?? { name: 'Jason Lengstorf' };
 	const episodeType = guest.name === host.name ? 'solo' : 'interview';
 
-	let filename = 'episode-2023-v2';
+	let filename = 'episode-2023-v3';
 
 	if (episode.host?.twitter === 'bencodezen') {
 		filename = 'episode-2023-ben-v2';
 	}
 
 	if (episodeType === 'solo') {
-		filename = 'episode-2023-v2-solo';
+		filename = 'episode-2023-v3-solo';
 	}
 
 	if (type === 'video-poster.jpg' && episodeType === 'interview') {
-		filename = 'episode-video-2023-v2';
+		filename = 'episode-video-2023-v3';
 	}
 
 	if (type === 'video-poster.jpg' && episodeType === 'solo') {
-		filename = 'episode-video-2023-v2-solo';
+		filename = 'episode-video-2023-v3-solo';
 	}
 
 	/*
