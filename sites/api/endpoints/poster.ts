@@ -90,7 +90,7 @@ const handlerFn: Handler = async (event) => {
 	let filename = 'episode-2023-v3';
 
 	if (episode.host?.twitter === 'bencodezen') {
-		filename = 'episode-2023-ben-v2';
+		filename = 'episode-2023-ben-v3';
 	}
 
 	if (episodeType === 'solo') {
