@@ -10,14 +10,22 @@ import { LiveEyebrow } from '../components/live-eyebrow';
 
 import '@lwj/design-system/css/index.css';
 
-const [episodes, schedule] = await Promise.all([
-	fetch('https://www.learnwithjason.dev/api/v2/episodes').then((res) =>
-		res.json()
-	),
-	fetch('https://www.learnwithjason.dev/api/v2/schedule').then((res) =>
-		res.json()
-	),
-]);
+let episodes, schedule;
+try {
+	const results = await Promise.all([
+		fetch('https://www.learnwithjason.dev/api/v2/episodes').then((res) =>
+			res.json()
+		),
+		fetch('https://www.learnwithjason.dev/api/v2/schedule').then((res) =>
+			res.json()
+		),
+	]);
+	episodes = results.at(0);
+	schedule = results.at(1);
+} catch (err) {
+	episodes = [];
+	schedule = [];
+}
 
 const PAGES = [
 	{
