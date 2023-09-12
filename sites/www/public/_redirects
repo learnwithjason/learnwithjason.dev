@@ -62,6 +62,10 @@ https://lwj.dev/*                       https://www.learnwithjason.dev/:splat   
 /calendar      https://calendar.google.com/calendar?cid=bGVuZ3N0b3JmLmNvbV85cGxqMW02dTl2dGRkbGRvaW5sMGhzMnZna0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t 301!
 /cal           https://calendar.google.com/calendar?cid=bGVuZ3N0b3JmLmNvbV85cGxqMW02dTl2dGRkbGRvaW5sMGhzMnZna0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t 301!
 /book          https://calendly.com/learnwithjason/livestream
+/30min         https://calendly.com/learnwithjason/30min
+
+# miscellaneous links
+/4d1a          https://learnwithjason.notion.site/4-Developers-1-App-Idea-c4163491bee3453a8bdc0caf16f73a84?pvs=4
 
 # the old live viewer is now on the home page
 /live          /
