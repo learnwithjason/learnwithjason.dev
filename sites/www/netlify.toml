@@ -1,2 +1,3 @@
 [dev]
-  framework = "astro"
+framework = "astro"
+targetPort = 3000
