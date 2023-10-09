@@ -4,7 +4,7 @@
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
-		"dev": "ntl dev",
+		"dev": "npx netlify-cli@15 dev --targetPort 3000",
 		"start": "astro dev",
 		"build": "astro build",
 		"preview": "astro preview",
