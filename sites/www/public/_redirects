@@ -56,6 +56,7 @@ https://lwj.dev/*                       https://www.learnwithjason.dev/:splat   
 /airplane      https://www.airplane.dev/?utm_source=learnwithjason&utm_medium=tutorial&utm_campaign=content-moderation-dashboard
 /convex        https://www.convex.dev/?utm_source=learnwithjason&utm_medium=tutorial&utm_campaign=twilio-actions
 /courier       https://www.courier.com//?utm_source=learnwithjason&utm_medium=tutorial&utm_campaign=notifications-tutorial
+/workos        https://workos.com/?utm_source=learnwithjason&utm_medium=tutorial&utm_campaign=six-figure-saas
 
 # affiliate links
 /daskeyboard   https://click.linksynergy.com/fs-bin/click?id=2xZxGRnahIM&offerid=1008802.89&type=3&subid=0&LSNSUBSITE=LSNSUBSITE  301
@@ -64,6 +65,7 @@ https://lwj.dev/*                       https://www.learnwithjason.dev/:splat   
 /calendar      https://calendar.google.com/calendar?cid=bGVuZ3N0b3JmLmNvbV85cGxqMW02dTl2dGRkbGRvaW5sMGhzMnZna0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t 301!
 /cal           https://calendar.google.com/calendar?cid=bGVuZ3N0b3JmLmNvbV85cGxqMW02dTl2dGRkbGRvaW5sMGhzMnZna0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t 301!
 /book          https://calendly.com/learnwithjason/livestream
+/30min         https://calendly.com/learnwithjason/30min
 
 # the old live viewer is now on the home page
 /live          /
