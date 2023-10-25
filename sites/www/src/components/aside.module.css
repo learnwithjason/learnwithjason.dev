@@ -46,6 +46,6 @@
 	margin-top: 0;
 }
 
-.content :last-child {
+.content > :last-child {
 	padding-bottom: 1rem;
 }

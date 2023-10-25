@@ -4,7 +4,7 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"dev": "ntl dev"
+		"dev": "npx netlify-cli@15 dev"
 	},
 	"author": "",
 	"license": "MIT",
