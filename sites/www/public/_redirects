@@ -58,6 +58,13 @@ https://lwj.dev/*                       https://www.learnwithjason.dev/:splat   
 /courier       https://www.courier.com//?utm_source=learnwithjason&utm_medium=tutorial&utm_campaign=notifications-tutorial
 /workos        https://workos.com/?utm_source=learnwithjason&utm_medium=tutorial&utm_campaign=six-figure-saas
 
+# Sentry shorts series
+/sentry-rage-click      https://blog.sentry.io/introducing-rage-and-dead-click-detection-for-session-replay/?utm_source=lwj&utm_medium=organic-social&utm_campaign=replay-fy24q4-evergreen&utm_content=video-lwj1-learnmore
+/sentry-replay          https://docs.sentry.io/product/session-replay/?utm_source=lwj&utm_medium=organic-social&utm_campaign=replay-fy24q4-evergreen&utm_content=video-lwj1-learnmore
+/sentry-codecov         https://sentry.io/for/code-coverage/?utm_source=lwj&utm_medium=organic-social&utm_campaign=codecov-fy24q4-evergreen&utm_content=video-lwj1-learnmore
+/sentry-cron-monitoring https://sentry.io/for/crons-monitoring/?utm_source=lwj&utm_medium=organic-social&utm_campaign=crons-fy24q4-evergreen&utm_content=video-lwj1-learnmore
+/sentry-alerts          https://docs.sentry.io/product/alerts/?utm_source=lwj&utm_medium=organic-social&utm_campaign=alerts-fy24q4-evergreen&utm_content=video-lwj1-learnmore
+
 # affiliate links
 /daskeyboard   https://click.linksynergy.com/fs-bin/click?id=2xZxGRnahIM&offerid=1008802.89&type=3&subid=0&LSNSUBSITE=LSNSUBSITE  301
 
