@@ -237,7 +237,7 @@ const datetime = dayjs(episode.date).tz(tz);
     max-width: 100%;
   }
 
-  :global(.embed-container img) {
+  :global(.embed-container :is(img, video)) {
     height: auto;
     width: 100%;
   }
