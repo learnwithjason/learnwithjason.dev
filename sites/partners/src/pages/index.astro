@@ -35,19 +35,55 @@ import Layout from '../components/layout.astro';
 	</section>
 
 	<section class="panel brand-awareness">
-		<h2>Brand Awareness Campaigns</h2>
+		<div class="panel-info">
+			<h2>Brand Awareness Campaigns</h2>
+			<p>
+				Every company has different needs, so each project is a little
+				different. The following examples are not an exhaustive list of the
+				types of projects we can build together — they’re instead intended to
+				show what I’ve helped create in the past in hopes of sparking ideas for
+				even more creative projects in the future.
+			</p>
+		</div>
 	</section>
 
 	<section class="panel education-video">
-		<h2>Educational Video</h2>
+		<div class="panel-info">
+			<h2>Educational Video</h2>
+			<p>
+				Every company has different needs, so each project is a little
+				different. The following examples are not an exhaustive list of the
+				types of projects we can build together — they’re instead intended to
+				show what I’ve helped create in the past in hopes of sparking ideas for
+				even more creative projects in the future.
+			</p>
+		</div>
 	</section>
 
 	<section class="panel live-events">
-		<h2>Live Events</h2>
+		<div class="panel-info">
+			<h2>Live Events</h2>
+			<p>
+				Every company has different needs, so each project is a little
+				different. The following examples are not an exhaustive list of the
+				types of projects we can build together — they’re instead intended to
+				show what I’ve helped create in the past in hopes of sparking ideas for
+				even more creative projects in the future.
+			</p>
+		</div>
 	</section>
 
 	<section class="panel community-fun">
-		<h2>Community Fun</h2>
+		<div class="panel-info">
+			<h2>Community Fun</h2>
+			<p>
+				Every company has different needs, so each project is a little
+				different. The following examples are not an exhaustive list of the
+				types of projects we can build together — they’re instead intended to
+				show what I’ve helped create in the past in hopes of sparking ideas for
+				even more creative projects in the future.
+			</p>
+		</div>
 	</section>
 </Layout>
 
@@ -231,17 +267,50 @@ import Layout from '../components/layout.astro';
 	}
 
 	.panel {
+		--image: url('https://images.unsplash.com/photo-1587893143314-972249555d65?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8ZnJlbmNoJTIwYnVsbGRvZ3xlbnwwfHwwfHx8MA%3D%3D');
+
+		background: linear-gradient(
+				to right in oklch,
+				color-mix(in oklch, var(--black) 20%, transparent) 350px,
+				color-mix(in oklch, var(--black) 20%, transparent) 350px
+			),
+			var(--image);
+		background-position-x: center 225px;
+		background-position-y: center;
+		background-size: cover;
+		display: grid;
+		grid-template:
+			'info portfolio portfolio'
+			'info portfolio portfolio'
+			/ min(100vw, 450px) 1fr;
+		padding: 0;
+
 		&.brand-awareness {
-			background: red;
+			--image: url('https://res.cloudinary.com/jlengstorf/image/upload/v1699989274/lwj/partners/lwj-brand-awareness.jpg');
 		}
+
 		&.education-video {
-			background: yellow;
+			--image: url('https://res.cloudinary.com/jlengstorf/image/upload/v1699989636/lwj/partners/jason-studio-full.jpg');
 		}
+
 		&.live-events {
-			background: purple;
 		}
+
 		&.community-fun {
-			background: blue;
+		}
+
+		& .panel-info {
+			background: color-mix(in oklch, var(--black) 80%, transparent);
+			color: white;
+			grid-area: info;
+			padding: 2rem;
+
+			& h2 {
+				font-family: 'mallory-ultra';
+				font-size: 2.5rem;
+				line-height: 1;
+				text-transform: uppercase;
+			}
 		}
 	}
 </style>
