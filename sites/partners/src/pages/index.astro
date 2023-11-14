@@ -1,0 +1,236 @@
+---
+import Layout from '../components/layout.astro';
+---
+
+<Layout title="Dev-Focused Media Production — Partner with Learn With Jason">
+	<header></header>
+
+	<section class="hero">
+		<h1><span>Partners</span></h1>
+	</section>
+
+	<section class="intro">
+		<p>
+			<em>Learn With Jason</em> teams up with developer-focused companies to make
+			video developers actually want to watch.
+		</p>
+		<p>
+			Some of the biggest companies in the devtools space partner with *Learn
+			With Jason* on creative campaigns, including:
+		</p>
+		<div class="partners">
+			<ul>
+				<li>GitHub</li>
+				<li>Slack</li>
+				<li>Sentry</li>
+				<li>Netlify</li>
+				<li>Wix</li>
+				<li>WorkOS</li>
+				<li>DevCycle</li>
+				<li>Clerk</li>
+				<li>Convex</li>
+				<li>MongoDB</li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="panel brand-awareness">
+		<h2>Brand Awareness Campaigns</h2>
+	</section>
+
+	<section class="panel education-video">
+		<h2>Educational Video</h2>
+	</section>
+
+	<section class="panel live-events">
+		<h2>Live Events</h2>
+	</section>
+
+	<section class="panel community-fun">
+		<h2>Community Fun</h2>
+	</section>
+</Layout>
+
+<style>
+	@property --gradient-angle {
+		inherits: false;
+		initial-value: 0deg;
+		syntax: '<angle>';
+	}
+
+	* {
+		box-sizing: border-box;
+	}
+
+	:root {
+		--black: oklch(17.7% 0.105 262.48);
+		--purple: oklch(60% 0.307 294.7);
+		--orange: oklch(60% 0.177 64.65);
+		--yellow: oklch(60% 0.2247 109.08);
+		--blue: oklch(60% 0.1664 237.06);
+		--black-alpha-50: color-mix(in oklch, var(--black), transparent);
+
+		--vignette-gradient: radial-gradient(
+			circle,
+			color-mix(in oklch, var(--black), transparent 20%),
+			color-mix(in oklch, var(--black), transparent 5%)
+		);
+		--conic-gradient: conic-gradient(
+			in oklch from var(--gradient-angle),
+			var(--purple),
+			var(--orange),
+			var(--yellow),
+			var(--blue),
+			var(--purple)
+		);
+	}
+
+	@keyframes spin {
+		to {
+			--gradient-angle: 360deg;
+		}
+	}
+
+	@keyframes rotate {
+		to {
+			rotate: -2deg;
+		}
+	}
+
+	@property --scale {
+		inherits: true;
+		initial-value: 1;
+		syntax: '<number>';
+	}
+
+	@property --frame {
+		inherits: false;
+		initial-value: 0;
+		syntax: '<integer>';
+	}
+
+	@keyframes header-shrink {
+		to {
+			height: 10vh;
+			/* TODO figure out how to animate scale */
+			--scale: 0.2;
+		}
+	}
+
+	@keyframes scroll-frames {
+		to {
+			--frame: 3;
+		}
+	}
+
+	html {
+		scroll-snap-type: y mandatory;
+	}
+
+	section {
+		height: 100svh;
+		padding: 3rem min(2rem, 5vw);
+		scroll-snap-align: start;
+	}
+
+	.hero {
+		/* animation: header-shrink linear forwards;
+		animation-timeline: scroll();
+		animation-range: 0vh 80svh; */
+		background: var(--vignette-gradient),
+			linear-gradient(
+				in oklch 63deg,
+				color-mix(in oklch, var(--yellow), var(--black) 0%),
+				color-mix(in oklch, var(--blue), var(--black) 0%),
+				color-mix(in oklch, var(--purple), var(--black) 0%)
+			);
+		background-blend-mode: multiply, normal;
+		container: section / size;
+		display: grid;
+		height: 50svh;
+		padding-block-start: 0;
+		place-content: center;
+		z-index: 100;
+
+		& h1 {
+			animation: rotate 0.2s ease-out forwards, spin 6s linear infinite;
+			background: linear-gradient(to bottom, var(--black) 0 0) padding-box,
+				conic-gradient(
+						in oklch from var(--gradient-angle),
+						var(--purple),
+						var(--orange),
+						var(--yellow),
+						var(--blue),
+						var(--purple)
+					)
+					border-box;
+			border: 0.25rem solid transparent;
+			border-radius: 1rem;
+			color: white;
+			font-family: 'Mallory Ultra';
+			font-size: clamp(2.25rem, 1rem + 10cqw, 8rem);
+			letter-spacing: -0.05em;
+			line-height: 1;
+			padding: 1rem 2rem;
+			position: relative;
+			text-shadow: 0 0 0.25rem var(--black-alpha-50);
+			text-transform: uppercase;
+			transform: scale(var(--scale));
+
+			& span {
+				position: relative;
+				z-index: 10;
+			}
+
+			&::before {
+				background: var(--black);
+				border-radius: 0.75rem;
+				content: '';
+				inset: 0;
+				position: absolute;
+				z-index: 5;
+			}
+
+			&::after {
+				animation: spin 6s linear infinite;
+				background: conic-gradient(
+					in oklch from var(--gradient-angle),
+					var(--purple),
+					var(--orange),
+					var(--yellow),
+					var(--blue),
+					var(--purple)
+				);
+				border-radius: 0.75rem;
+				content: '';
+				filter: blur(3rem);
+				inset: 0;
+				opacity: 0.75;
+				position: absolute;
+				z-index: 1;
+			}
+		}
+	}
+
+	.intro {
+		display: grid;
+		height: auto;
+		min-height: 50svh;
+		place-content: center;
+	}
+
+	.partners {
+		& ul {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 1rem;
+			justify-content: center;
+			list-style: none;
+			padding: 2rem min(2rem, 5vw);
+		}
+	}
+
+	.panel {
+		background: red;
+	}
+</style>
