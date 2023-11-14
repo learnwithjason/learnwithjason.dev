@@ -128,7 +128,7 @@ import Layout from '../components/layout.astro';
 	}
 
 	section {
-		height: 100svh;
+		height: 100dvh;
 		padding: 3rem min(2rem, 5vw);
 		scroll-snap-align: start;
 	}
@@ -136,7 +136,7 @@ import Layout from '../components/layout.astro';
 	.hero {
 		/* animation: header-shrink linear forwards;
 		animation-timeline: scroll();
-		animation-range: 0vh 80svh; */
+		animation-range: 0vh 80dvh; */
 		background: var(--vignette-gradient),
 			linear-gradient(
 				in oklch 63deg,
@@ -147,7 +147,7 @@ import Layout from '../components/layout.astro';
 		background-blend-mode: multiply, normal;
 		container: section / size;
 		display: grid;
-		height: 50svh;
+		height: 50dvh;
 		padding-block-start: 0;
 		place-content: center;
 		z-index: 100;
@@ -215,7 +215,7 @@ import Layout from '../components/layout.astro';
 	.intro {
 		display: grid;
 		height: auto;
-		min-height: 50svh;
+		min-height: 50dvh;
 		place-content: center;
 	}
 
