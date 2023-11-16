@@ -356,7 +356,7 @@ function getBlogComments(postId) {
 // -------------------------------------------------------------------
 function loadContent() {
   getBlogPosts().then((posts) => {
-    for (post of posts) {
+    for (const post of posts) {
       getBlogComments(post.id).then((comments) => {
         console.log({ ...post, comments });
       });
