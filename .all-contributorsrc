@@ -202,6 +202,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "tgrecojs",
+      "name": "Thomas Greco",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6646552?v=4",
+      "profile": "https://egghead.io/q/resources-by-thomas-greco",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "contributorsPerLine": 7,
@@ -210,5 +219,6 @@
   "repoType": "github",
   "repoHost": "https://github.com",
   "skipCi": true,
-  "commitConvention": "angular"
+  "commitConvention": "angular",
+  "commitType": "docs"
 }
