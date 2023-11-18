@@ -1,0 +1,159 @@
+---
+import { type CollectionEntry } from 'astro:content';
+
+interface Props {
+	service: CollectionEntry<'services'>;
+}
+
+const { service } = Astro.props;
+const { Content } = await service.render();
+---
+
+<section
+	class:list={['panel', service.slug]}
+	style={{
+		'--image': `url('https://res.cloudinary.com/jlengstorf/image/upload/q_auto,f_auto,w_1280/lwj/partners/panel-${service.slug}.jpg')`,
+		'--part1-size': service.data.heading.part1.size,
+		'--part2-size': service.data.heading.part2.size,
+	}}
+>
+	<div class="panel-info">
+		<h2>
+			<span>{service.data.heading.part1.text}</span>
+			{service.data.heading.part2.text}
+		</h2>
+
+		<Content />
+
+		{
+			service.data.examples?.highlighted ? (
+				<iframe
+					width="560"
+					height="315"
+					src={`https://www.youtube.com/embed/${service.data.examples.highlighted}`}
+					title="YouTube video player"
+					frameborder="0"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+					allowfullscreen
+				/>
+			) : null
+		}
+
+		{
+			service.data.examples?.playlist ? (
+				<p>
+					<a href={service.data.examples.playlist}>more examples &rarr;</a>
+				</p>
+			) : null
+		}
+
+		<p>
+			<a class="button" href="#start"><span>{service.data.buttonText}</span></a>
+		</p>
+	</div>
+</section>
+
+<style>
+	.panel {
+		--image: url('https://images.unsplash.com/photo-1587893143314-972249555d65?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8ZnJlbmNoJTIwYnVsbGRvZ3xlbnwwfHwwfHx8MA%3D%3D');
+		--part1-size: 3rem;
+		--part2-size: 4rem;
+
+		background: var(--vignette-gradient), var(--purple);
+		display: grid;
+		min-height: 80dvh;
+		padding: 0;
+		place-content: center;
+
+		@media (min-width: 600px) {
+			background: linear-gradient(
+					to right in oklch,
+					color-mix(in oklch, var(--black) 20%, transparent) 350px,
+					color-mix(in oklch, var(--black) 20%, transparent) 350px
+				),
+				var(--image);
+			background-position-x: center 225px;
+			background-position-y: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+			container: section / size;
+			grid-template:
+				'info portfolio portfolio'
+				'info portfolio portfolio'
+				/ min(100vw, 450px) 1fr;
+			height: 100dvh;
+			scroll-snap-align: start;
+		}
+
+		& .panel-info {
+			color: var(--text);
+			display: grid;
+			grid-area: info;
+			padding: 3rem 2rem;
+			place-content: center;
+			text-align: center;
+
+			@media (min-width: 600px) {
+				backdrop-filter: blur(6px);
+				background: color-mix(
+					in oklch,
+					var(--black-desaturated) 80%,
+					transparent
+				);
+				height: 100dvh;
+				text-align: left;
+			}
+		}
+
+		& h2 {
+			color: var(--white);
+			font-family: 'mallory-ultra';
+			font-size: var(--part2-size);
+			letter-spacing: -0.025em;
+			line-height: 0.9;
+			margin-block: 0;
+			text-transform: uppercase;
+
+			& span {
+				display: block;
+				font-size: var(--part1-size);
+			}
+
+			@media (min-width: 600px) {
+				font-size: var(--part2-size);
+
+				& span {
+					font-size: var(--part1-size);
+				}
+			}
+		}
+
+		&.live-events h2 {
+			line-height: 0.8;
+		}
+
+		& p {
+			margin-block: 0.75rem;
+
+			&:has(.button) {
+				text-align: center;
+			}
+
+			& a:not(.button) {
+				color: var(--white);
+			}
+		}
+
+		& iframe {
+			aspect-ratio: 16 / 9;
+			height: auto;
+			width: 100%;
+		}
+
+		& .button {
+			display: inline-block;
+			font-size: clamp(1.25rem, 1rem + 2.5cqw, 1.75rem);
+			margin: 0 auto;
+		}
+	}
+</style>

@@ -15,18 +15,140 @@ const { title } = Astro.props;
 	</body>
 </html>
 
-<style>
-* {
-  box-sizing: border-box;
-}
+<style is:global>
+	* {
+		box-sizing: border-box;
+	}
 
-html {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  font-size: 18px;
-  line-height: 1.45;
-}
+	:root {
+		--white: white;
+		--black: oklch(17.7% 0.105 262.48);
+		--black-desaturated: oklch(16.29% 0.015 262.48);
+		--purple: oklch(60% 0.307 294.7);
+		--orange: oklch(60% 0.177 64.65);
+		--yellow: oklch(60% 0.2247 109.08);
+		--blue: oklch(60% 0.1664 237.06);
+		--black-alpha-50: color-mix(in oklch, var(--black), transparent);
+		--text: color-mix(in oklch, var(--black), var(--white) 85%);
 
-body {
-  margin: 0;
-}
+		--vignette-gradient: radial-gradient(
+			circle,
+			color-mix(in oklch, var(--black), transparent 20%),
+			color-mix(in oklch, var(--black), transparent 5%)
+		);
+		--conic-gradient: conic-gradient(
+			in oklch from var(--gradient-angle),
+			var(--purple),
+			var(--orange),
+			var(--yellow),
+			var(--blue),
+			var(--purple)
+		);
+	}
+
+	html {
+		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+			Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+			'Segoe UI Symbol';
+		font-size: 14px;
+		line-height: 1.45;
+
+		@media (min-width: 400px) {
+			font-size: 18px;
+		}
+	}
+
+	body {
+		margin: 0;
+	}
+
+	@property --gradient-angle {
+		inherits: false;
+		initial-value: 0deg;
+		syntax: '<angle>';
+	}
+
+	@keyframes spin {
+		to {
+			--gradient-angle: 360deg;
+		}
+	}
+
+	.button {
+		animation: spin 6s linear infinite;
+		display: block;
+		background: var(--vignette-gradient) padding-box,
+			conic-gradient(
+					in oklch from var(--gradient-angle),
+					var(--purple),
+					var(--orange),
+					var(--yellow),
+					var(--blue),
+					var(--purple)
+				)
+				border-box;
+		border: 2px solid transparent;
+		border-radius: 0.5rem;
+		color: var(--white);
+		font-family: 'mallory-ultra';
+		font-size: clamp(1rem, 4cqw, 2.5rem);
+		margin: 1.5rem auto;
+		padding: 1rem 2rem;
+		position: relative;
+		text-decoration: none;
+		text-shadow: 0 0.2rem 0.5rem var(--black);
+		text-transform: uppercase;
+		transition: border 0.2s linear;
+
+		/* @media (min-width: 400px) {
+			font-size: clamp(1.5rem, 1rem + 3cqw, 2.5rem);
+		} */
+
+		& span {
+			position: relative;
+			z-index: 10;
+		}
+
+		&::before {
+			--bg-color: var(--orange);
+
+			background: var(--vignette-gradient), var(--bg-color);
+			border-radius: 0.75rem;
+			content: '';
+			inset: 0;
+			position: absolute;
+			transition: 0.2s linear all;
+			z-index: 5;
+		}
+
+		&::after {
+			animation: spin 6s linear infinite;
+			background: conic-gradient(
+				in oklch from var(--gradient-angle),
+				var(--purple),
+				var(--orange),
+				var(--yellow),
+				var(--blue),
+				var(--purple)
+			);
+			border-radius: 0.75rem;
+			content: '';
+			filter: blur(3rem);
+			inset: 0;
+			opacity: 0.75;
+			position: absolute;
+			transition: 0.2s linear all;
+			z-index: 1;
+		}
+
+		&:is(:hover, :focus) {
+			&::before {
+				--bg-color: var(--blue);
+			}
+
+			&::after {
+				filter: blur(2rem);
+			}
+		}
+	}
 </style>

@@ -1,316 +1,217 @@
 ---
+import { getCollection } from 'astro:content';
 import Layout from '../components/layout.astro';
+import ServicePanel from '../components/service-panel.astro';
+
+const services = await getCollection('services');
+const partners = [
+	'github',
+	'slack',
+	'sentry',
+	'netlify',
+	'wix',
+	'workos',
+	'devcycle',
+	'clerk',
+	'convex',
+	'mongodb',
+];
 ---
 
 <Layout title="Dev-Focused Media Production — Partner with Learn With Jason">
-	<header></header>
-
 	<section class="hero">
 		<h1><span>Partners</span></h1>
+
+		<div class="intro">
+			<p>
+				<em>Learn With Jason</em> teams up with developer-focused companies to make
+				stuff developers actually want to watch.
+			</p>
+			<a class="button" href="#start"><span>Let’s Talk Ideas</span></a>
+			<p>
+				We’ve worked with some of the biggest companies in the devtools space,
+				including:
+			</p>
+			<div class="partners">
+				<ul>
+					{
+						partners.map((partner) => (
+							<li>
+								<img
+									src={`https://res.cloudinary.com/jlengstorf/image/upload/q_auto,f_auto/lwj/partners/partner-${partner}.png`}
+									alt={partner}
+								/>
+							</li>
+						))
+					}
+				</ul>
+			</div>
+			<p>
+				<a class="scroll-nudge" href="#dev-tv">
+					scroll to see examples
+					<span>&darr;</span>
+				</a>
+			</p>
+		</div>
 	</section>
 
-	<section class="intro">
+	{services.map((service) => <ServicePanel service={service} />)}
+
+	<section id="start" class="contact">
+		<h2>Something awesome starts here.</h2>
 		<p>
-			<em>Learn With Jason</em> teams up with developer-focused companies to make
-			video developers actually want to watch.
+			Your next amazing project begins with discussing your goals and ideas. The
+			easiest way to get started is to book a call.
 		</p>
 		<p>
-			Some of the biggest companies in the devtools space partner with *Learn
-			With Jason* on creative campaigns, including:
+			<a class="button" href="https://calendly.com/learnwithjason/new-project">
+				<span>Book a Call</span>
+			</a>
 		</p>
-		<div class="partners">
-			<ul>
-				<li>GitHub</li>
-				<li>Slack</li>
-				<li>Sentry</li>
-				<li>Netlify</li>
-				<li>Wix</li>
-				<li>WorkOS</li>
-				<li>DevCycle</li>
-				<li>Clerk</li>
-				<li>Convex</li>
-				<li>MongoDB</li>
-			</ul>
-		</div>
+
+		<p>
+			Or, if you prefer, send me an email at <a
+				href="mailto:info@learnwithjason.dev">info@learnwithjason.dev</a
+			>.
+		</p>
 	</section>
 
-	<section class="panel brand-awareness">
-		<div class="panel-info">
-			<h2>Brand Awareness Campaigns</h2>
-			<p>
-				Every company has different needs, so each project is a little
-				different. The following examples are not an exhaustive list of the
-				types of projects we can build together — they’re instead intended to
-				show what I’ve helped create in the past in hopes of sparking ideas for
-				even more creative projects in the future.
-			</p>
-		</div>
-	</section>
-
-	<section class="panel education-video">
-		<div class="panel-info">
-			<h2>Educational Video</h2>
-			<p>
-				Every company has different needs, so each project is a little
-				different. The following examples are not an exhaustive list of the
-				types of projects we can build together — they’re instead intended to
-				show what I’ve helped create in the past in hopes of sparking ideas for
-				even more creative projects in the future.
-			</p>
-		</div>
-	</section>
-
-	<section class="panel live-events">
-		<div class="panel-info">
-			<h2>Live Events</h2>
-			<p>
-				Every company has different needs, so each project is a little
-				different. The following examples are not an exhaustive list of the
-				types of projects we can build together — they’re instead intended to
-				show what I’ve helped create in the past in hopes of sparking ideas for
-				even more creative projects in the future.
-			</p>
-		</div>
-	</section>
-
-	<section class="panel community-fun">
-		<div class="panel-info">
-			<h2>Community Fun</h2>
-			<p>
-				Every company has different needs, so each project is a little
-				different. The following examples are not an exhaustive list of the
-				types of projects we can build together — they’re instead intended to
-				show what I’ve helped create in the past in hopes of sparking ideas for
-				even more creative projects in the future.
-			</p>
-		</div>
-	</section>
-</Layout>
-
-<style>
-	@property --gradient-angle {
-		inherits: false;
-		initial-value: 0deg;
-		syntax: '<angle>';
-	}
-
-	* {
-		box-sizing: border-box;
-	}
-
-	:root {
-		--black: oklch(17.7% 0.105 262.48);
-		--purple: oklch(60% 0.307 294.7);
-		--orange: oklch(60% 0.177 64.65);
-		--yellow: oklch(60% 0.2247 109.08);
-		--blue: oklch(60% 0.1664 237.06);
-		--black-alpha-50: color-mix(in oklch, var(--black), transparent);
-
-		--vignette-gradient: radial-gradient(
-			circle,
-			color-mix(in oklch, var(--black), transparent 20%),
-			color-mix(in oklch, var(--black), transparent 5%)
-		);
-		--conic-gradient: conic-gradient(
-			in oklch from var(--gradient-angle),
-			var(--purple),
-			var(--orange),
-			var(--yellow),
-			var(--blue),
-			var(--purple)
-		);
-	}
-
-	@keyframes spin {
-		to {
-			--gradient-angle: 360deg;
-		}
-	}
-
-	@keyframes rotate {
-		to {
-			rotate: -2deg;
-		}
-	}
-
-	@property --scale {
-		inherits: true;
-		initial-value: 1;
-		syntax: '<number>';
-	}
-
-	@property --frame {
-		inherits: false;
-		initial-value: 0;
-		syntax: '<integer>';
-	}
-
-	@keyframes header-shrink {
-		to {
-			height: 10vh;
-			/* TODO figure out how to animate scale */
-			--scale: 0.2;
-		}
-	}
-
-	@keyframes scroll-frames {
-		to {
-			--frame: 3;
-		}
-	}
-
-	html {
-		scroll-snap-type: y mandatory;
-	}
-
-	section {
-		height: 100dvh;
-		padding: 3rem min(2rem, 5vw);
-		scroll-snap-align: start;
-	}
-
-	.hero {
-		/* animation: header-shrink linear forwards;
-		animation-timeline: scroll();
-		animation-range: 0vh 80dvh; */
-		background: var(--vignette-gradient),
-			linear-gradient(
-				in oklch 63deg,
-				color-mix(in oklch, var(--yellow), var(--black) 0%),
-				color-mix(in oklch, var(--blue), var(--black) 0%),
-				color-mix(in oklch, var(--purple), var(--black) 0%)
-			);
-		background-blend-mode: multiply, normal;
-		container: section / size;
-		display: grid;
-		height: 50dvh;
-		padding-block-start: 0;
-		place-content: center;
-		z-index: 100;
-
-		& h1 {
-			animation: rotate 0.2s ease-out forwards, spin 6s linear infinite;
-			background: linear-gradient(to bottom, var(--black) 0 0) padding-box,
-				conic-gradient(
-						in oklch from var(--gradient-angle),
-						var(--purple),
-						var(--orange),
-						var(--yellow),
-						var(--blue),
-						var(--purple)
-					)
-					border-box;
-			border: 0.25rem solid transparent;
-			border-radius: 1rem;
-			color: white;
-			font-family: 'Mallory Ultra';
-			font-size: clamp(2.25rem, 1rem + 10cqw, 8rem);
-			letter-spacing: -0.05em;
-			line-height: 1;
-			padding: 1rem 2rem;
-			position: relative;
-			text-shadow: 0 0 0.25rem var(--black-alpha-50);
-			text-transform: uppercase;
-			transform: scale(var(--scale));
-
-			& span {
-				position: relative;
-				z-index: 10;
+	<style>
+		@media (min-width: 600px) {
+			html {
+				scroll-behavior: smooth;
+				scroll-snap-type: y mandatory;
 			}
 
-			&::before {
-				background: var(--black);
-				border-radius: 0.75rem;
-				content: '';
-				inset: 0;
-				position: absolute;
-				z-index: 5;
-			}
-
-			&::after {
-				animation: spin 6s linear infinite;
-				background: conic-gradient(
-					in oklch from var(--gradient-angle),
-					var(--purple),
-					var(--orange),
-					var(--yellow),
-					var(--blue),
-					var(--purple)
-				);
-				border-radius: 0.75rem;
-				content: '';
-				filter: blur(3rem);
-				inset: 0;
-				opacity: 0.75;
-				position: absolute;
-				z-index: 1;
+			section {
+				height: 100dvh;
+				padding: 3rem min(2rem, 5vw);
+				scroll-snap-align: start;
 			}
 		}
-	}
 
-	.intro {
-		display: grid;
-		height: auto;
-		min-height: 50dvh;
-		place-content: center;
-	}
+		.hero {
+			background: var(--vignette-gradient),
+				url('https://res.cloudinary.com/jlengstorf/image/upload/q_auto,f_auto/lwj/partners/panel-educational-video.jpg');
+			background-blend-mode: multiply, normal;
+			background-position-x: 200px;
+			background-position-y: center;
+			background-size: calc(100% + 200px);
+			padding-block: 3rem;
+			text-align: center;
+			z-index: 100;
 
-	.partners {
-		& ul {
-			display: flex;
-			flex-wrap: wrap;
-			gap: 1rem;
-			justify-content: center;
-			list-style: none;
-			padding: 2rem min(2rem, 5vw);
-		}
-	}
+			@media (min-width: 600px) {
+				container: section / size;
+				display: grid;
+				height: 100dvh;
+				padding-block: 0;
+				place-content: center start;
+			}
 
-	.panel {
-		--image: url('https://images.unsplash.com/photo-1587893143314-972249555d65?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8ZnJlbmNoJTIwYnVsbGRvZ3xlbnwwfHwwfHx8MA%3D%3D');
-
-		background: linear-gradient(
-				to right in oklch,
-				color-mix(in oklch, var(--black) 20%, transparent) 350px,
-				color-mix(in oklch, var(--black) 20%, transparent) 350px
-			),
-			var(--image);
-		background-position-x: center 225px;
-		background-position-y: center;
-		background-size: cover;
-		display: grid;
-		grid-template:
-			'info portfolio portfolio'
-			'info portfolio portfolio'
-			/ min(100vw, 450px) 1fr;
-		padding: 0;
-
-		&.brand-awareness {
-			--image: url('https://res.cloudinary.com/jlengstorf/image/upload/v1699989274/lwj/partners/lwj-brand-awareness.jpg');
-		}
-
-		&.education-video {
-			--image: url('https://res.cloudinary.com/jlengstorf/image/upload/v1699989636/lwj/partners/jason-studio-full.jpg');
-		}
-
-		&.live-events {
-		}
-
-		&.community-fun {
-		}
-
-		& .panel-info {
-			background: color-mix(in oklch, var(--black) 80%, transparent);
-			color: white;
-			grid-area: info;
-			padding: 2rem;
-
-			& h2 {
-				font-family: 'mallory-ultra';
-				font-size: 2.5rem;
+			& h1 {
+				color: var(--white);
+				font-family: 'Mallory Ultra';
+				font-size: clamp(2.25rem, 1rem + 10cqw, 8rem);
+				letter-spacing: -0.05em;
 				line-height: 1;
+				margin: 0 auto;
+				padding: 1rem 2rem;
+				text-shadow: 0 0.25rem 0.5rem var(--black);
 				text-transform: uppercase;
 			}
 		}
-	}
-</style>
+
+		.intro {
+			display: grid;
+			height: auto;
+			place-content: center;
+			position: relative;
+			z-index: 10;
+
+			& p {
+				color: var(--text);
+				font-size: clamp(1rem, 2.25vw, 1.5rem);
+				margin: 0 auto;
+				width: min(90vw, 45ch);
+
+				&:not(:first-of-type) {
+					font-size: 1rem;
+					width: min(90vw, 65ch);
+					margin-block-start: 1rem;
+				}
+			}
+
+			& .scroll-nudge {
+				color: inherit;
+				font-size: 0.75rem;
+				text-align: center;
+				text-decoration: none;
+
+				& span {
+					display: block;
+					font-size: 1rem;
+				}
+			}
+		}
+
+		.partners {
+			margin: 0 auto;
+
+			& ul {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.25rem 1rem;
+				justify-content: center;
+				list-style: none;
+				margin: 0;
+				max-width: 55ch;
+				padding: 0.75rem min(2rem, 5vw) 1.5rem;
+			}
+
+			& img {
+				height: 30px;
+				width: auto;
+
+				@media (min-width: 500px) {
+					height: 35px;
+				}
+			}
+		}
+
+		.contact {
+			background: var(--black-desaturated);
+			display: grid;
+			padding: 3rem;
+			place-content: center;
+			text-align: center;
+
+			& h2 {
+				color: var(--white);
+				font-family: 'mallory-ultra';
+				font-size: clamp(1.5rem, 4vw, 3rem);
+				margin: 0;
+			}
+
+			& p {
+				color: var(--text);
+				margin: 1rem auto;
+				width: min(90vw, 45ch);
+
+				& a:not(.button) {
+					color: inherit;
+
+					&:is(:focus, :hover) {
+						color: var(--white);
+					}
+				}
+			}
+
+			& .button {
+				display: inline-block;
+				margin: 0;
+				width: auto;
+			}
+		}
+	</style>
+</Layout>
