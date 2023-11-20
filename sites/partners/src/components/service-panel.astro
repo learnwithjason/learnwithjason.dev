@@ -43,7 +43,7 @@ const { Content } = await service.render();
 
 						<div class="modal-controls">
 							<form method="dialog">
-								<button autofocus>
+								<button class="close-dialog" autofocus>
 									<span>&times;</span> close
 								</button>
 							</form>
@@ -87,6 +87,23 @@ const { Content } = await service.render();
 			) as HTMLDialogElement;
 
 			dialog?.showModal();
+		});
+	});
+
+	const iframes = document.querySelectorAll('iframe');
+	const videos = document.querySelectorAll('video');
+	const closeBtns = document.querySelectorAll('.close-dialog');
+
+	closeBtns.forEach((btn) => {
+		btn.addEventListener('click', () => {
+			iframes.forEach((iframe) => {
+				const iframeSrc = iframe.src;
+				iframe.src = iframeSrc;
+			});
+
+			videos.forEach((video) => {
+				video.pause();
+			});
 		});
 	});
 </script>
