@@ -30,40 +30,53 @@ const { Content } = await service.render();
 		{
 			service.data.examples?.highlighted ? (
 				<>
-					<dialog id={service.slug}>
-						<iframe
-							width="560"
-							height="315"
-							src={`https://www.youtube.com/embed/${service.data.examples.highlighted}`}
-							title="YouTube video player"
-							frameborder="0"
-							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-							allowfullscreen
-						/>
+					<>
+						<dialog id={service.slug}>
+							<iframe
+								width="560"
+								height="315"
+								src={`https://www.youtube.com/embed/${service.data.examples.highlighted}`}
+								title="YouTube video player"
+								frameborder="0"
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+								allowfullscreen
+							/>
 
-						<div class="modal-controls">
-							<form method="dialog">
-								<button class="close-dialog" autofocus>
-									<span>&times;</span> close
-								</button>
-							</form>
+							<div class="modal-controls">
+								<form method="dialog">
+									<button class="close-dialog" autofocus>
+										<span>&times;</span> close
+									</button>
+								</form>
 
-							{service.data.examples?.playlist ? (
-								<p>
-									<a href={service.data.examples.playlist}>
-										more examples on YouTube &rarr;
-									</a>
-								</p>
-							) : null}
-						</div>
-					</dialog>
+								{service.data.examples?.playlist ? (
+									<p>
+										<a href={service.data.examples.playlist}>
+											more examples on YouTube &rarr;
+										</a>
+									</p>
+								) : null}
+							</div>
+						</dialog>
+					</>
+
+					<button class="example-button hide button" data-dialog={service.slug}>
+						<span>Watch an example</span>
+					</button>
 				</>
 			) : null
 		}
-
-		<button class="example-button button" data-dialog={service.slug}>
-			<span>Watch an example</span>
-		</button>
+		<noscript>
+			{
+				service.data.examples?.playlist ? (
+					<p>
+						<a href={service.data.examples.playlist}>
+							Watch examples on YouTube
+						</a>
+					</p>
+				) : null
+			}
+		</noscript>
 
 		<p>
 			<a href="#start">{service.data.buttonText} &rarr;</a>
@@ -77,6 +90,7 @@ const { Content } = await service.render();
 	) as NodeListOf<HTMLButtonElement>;
 
 	btns.forEach((btn) => {
+		btn.classList.remove('hide');
 		btn.addEventListener('click', () => {
 			if (!btn.dataset.dialog) {
 				return;
@@ -238,6 +252,10 @@ const { Content } = await service.render();
 			display: inline-block;
 			font-size: clamp(1rem, 9cqw, 1.25rem);
 			margin: 0 auto;
+
+			&.hide {
+				display: none;
+			}
 		}
 	}
 
