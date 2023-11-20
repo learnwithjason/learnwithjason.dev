@@ -26,7 +26,16 @@ const { title } = Astro.props;
 		/>
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
+
 		<title>{title}</title>
+		<meta
+			property="og:description"
+			content="Developers want to watch content that’s entertaining and high-quality. LWJ helps companies like yours create videos that devs actually want to watch."
+		/>
+		<meta
+			property="og:image"
+			content="https://res.cloudinary.com/jlengstorf/image/upload/f_auto,q_auto,w_1600/lwj/partners/partner-with-jason-lengstorf.jpg"
+		/>
 	</head>
 	<body>
 		<slot />
