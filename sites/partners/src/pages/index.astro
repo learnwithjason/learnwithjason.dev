@@ -5,16 +5,16 @@ import ServicePanel from '../components/service-panel.astro';
 
 const services = await getCollection('services');
 const partners = [
-	'github',
-	'slack',
-	'sentry',
-	'netlify',
-	'wix',
-	'workos',
-	'devcycle',
-	'clerk',
-	'convex',
-	'mongodb',
+	{ name: 'github', width: 52, height: 35 },
+	{ name: 'slack', width: 80, height: 35 },
+	{ name: 'sentry', width: 97, height: 35 },
+	{ name: 'netlify', width: 88, height: 35 },
+	{ name: 'wix', width: 38, height: 35 },
+	{ name: 'workos', width: 110, height: 35 },
+	{ name: 'devcycle', width: 100, height: 35 },
+	{ name: 'clerk', width: 67, height: 35 },
+	{ name: 'convex', width: 81, height: 35 },
+	{ name: 'mongodb', width: 82, height: 35 },
 ];
 ---
 
@@ -38,8 +38,10 @@ const partners = [
 						partners.map((partner) => (
 							<li>
 								<img
-									src={`https://res.cloudinary.com/jlengstorf/image/upload/q_auto,f_auto/lwj/partners/partner-${partner}.png`}
-									alt={partner}
+									src={`https://res.cloudinary.com/jlengstorf/image/upload/q_auto,f_auto/lwj/partners/partner-${partner.name}.png`}
+									alt={partner.name}
+									height={partner.height}
+									width={partner.width}
 								/>
 							</li>
 						))
