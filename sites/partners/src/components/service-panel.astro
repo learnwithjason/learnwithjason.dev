@@ -29,41 +29,12 @@ const { Content } = await service.render();
 
 		{
 			service.data.examples?.highlighted ? (
-				<>
-					<>
-						<dialog id={service.slug}>
-							<iframe
-								width="560"
-								height="315"
-								src={`https://www.youtube.com/embed/${service.data.examples.highlighted}`}
-								title="YouTube video player"
-								frameborder="0"
-								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-								allowfullscreen
-							/>
-
-							<div class="modal-controls">
-								<form method="dialog">
-									<button class="close-dialog" autofocus>
-										<span>&times;</span> close
-									</button>
-								</form>
-
-								{service.data.examples?.playlist ? (
-									<p>
-										<a href={service.data.examples.playlist}>
-											more examples on YouTube &rarr;
-										</a>
-									</p>
-								) : null}
-							</div>
-						</dialog>
-					</>
-
-					<button class="example-button hide button" data-dialog={service.slug}>
-						<span>Watch an example</span>
-					</button>
-				</>
+				<button
+					class="example-button hide button"
+					data-yt-id={service.data.examples.highlighted}
+				>
+					<span>Watch an example</span>
+				</button>
 			) : null
 		}
 		<noscript>
@@ -83,44 +54,6 @@ const { Content } = await service.render();
 		</p>
 	</div>
 </section>
-
-<script>
-	const btns = document.querySelectorAll(
-		'.example-button'
-	) as NodeListOf<HTMLButtonElement>;
-
-	btns.forEach((btn) => {
-		btn.classList.remove('hide');
-		btn.addEventListener('click', () => {
-			if (!btn.dataset.dialog) {
-				return;
-			}
-
-			const dialog = document.getElementById(
-				btn.dataset.dialog
-			) as HTMLDialogElement;
-
-			dialog?.showModal();
-		});
-	});
-
-	const iframes = document.querySelectorAll('iframe');
-	const videos = document.querySelectorAll('video');
-	const closeBtns = document.querySelectorAll('.close-dialog');
-
-	closeBtns.forEach((btn) => {
-		btn.addEventListener('click', () => {
-			iframes.forEach((iframe) => {
-				const iframeSrc = iframe.src;
-				iframe.src = iframeSrc;
-			});
-
-			videos.forEach((video) => {
-				video.pause();
-			});
-		});
-	});
-</script>
 
 <style>
 	.panel {
@@ -263,70 +196,6 @@ const { Content } = await service.render();
 		to {
 			opacity: 1;
 			translate: 0;
-		}
-	}
-
-	dialog {
-		aspect-ratio: 16 / 10;
-		background: oklch(16.29% 0.015 262.48 / 1);
-		opacity: 0;
-		padding: 3rem 0 0;
-		translate: 20% 0;
-		width: min(90vw, 1000px);
-
-		&[open] {
-			animation: 0.5s slide-in ease-out forwards;
-			animation-delay: 0.2s;
-		}
-
-		& iframe {
-			display: block;
-			height: 100%;
-			margin: 0;
-			width: 100%;
-		}
-
-		& .modal-controls {
-			position: fixed;
-			left: 0;
-			right: 0;
-			top: 0;
-			align-items: baseline;
-			display: flex;
-			height: 3rem;
-			justify-content: space-between;
-			line-height: 1;
-			padding: 1rem;
-
-			& p {
-				animation: none;
-				color: white;
-				font-size: 0.875rem;
-				line-height: 1;
-				margin: 0;
-
-				& a {
-					text-decoration: none;
-				}
-			}
-
-			& button {
-				background: none;
-				border: none;
-				color: white;
-				font-size: 0.875rem;
-				line-height: 1;
-
-				& span {
-					font-size: 1rem;
-					position: relative;
-					top: 0.12em;
-				}
-			}
-		}
-
-		&::backdrop {
-			background: oklch(16.29% 0.015 262.48 / 0.9);
 		}
 	}
 </style>
