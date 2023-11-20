@@ -23,45 +23,92 @@ const { Content } = await service.render();
 			{service.data.heading.part2.text}
 		</h2>
 
-		<Content />
+		<div class="content">
+			<Content />
+		</div>
 
 		{
 			service.data.examples?.highlighted ? (
-				<iframe
-					width="560"
-					height="315"
-					src={`https://www.youtube.com/embed/${service.data.examples.highlighted}`}
-					title="YouTube video player"
-					frameborder="0"
-					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-					allowfullscreen
-				/>
+				<>
+					<dialog id={service.slug}>
+						<iframe
+							width="560"
+							height="315"
+							src={`https://www.youtube.com/embed/${service.data.examples.highlighted}`}
+							title="YouTube video player"
+							frameborder="0"
+							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+							allowfullscreen
+						/>
+
+						<div class="modal-controls">
+							<form method="dialog">
+								<button autofocus>
+									<span>&times;</span> close
+								</button>
+							</form>
+
+							{service.data.examples?.playlist ? (
+								<p>
+									<a href={service.data.examples.playlist}>
+										more examples on YouTube &rarr;
+									</a>
+								</p>
+							) : null}
+						</div>
+					</dialog>
+				</>
 			) : null
 		}
 
-		{
-			service.data.examples?.playlist ? (
-				<p>
-					<a href={service.data.examples.playlist}>more examples &rarr;</a>
-				</p>
-			) : null
-		}
+		<button class="example-button button" data-dialog={service.slug}>
+			<span>Watch an example</span>
+		</button>
 
 		<p>
-			<a class="button" href="#start"><span>{service.data.buttonText}</span></a>
+			<a href="#start">{service.data.buttonText} &rarr;</a>
 		</p>
 	</div>
 </section>
 
+<script>
+	const btns = document.querySelectorAll(
+		'.example-button'
+	) as NodeListOf<HTMLButtonElement>;
+
+	btns.forEach((btn) => {
+		btn.addEventListener('click', () => {
+			if (!btn.dataset.dialog) {
+				return;
+			}
+
+			const dialog = document.getElementById(
+				btn.dataset.dialog
+			) as HTMLDialogElement;
+
+			dialog?.showModal();
+		});
+	});
+</script>
+
 <style>
 	.panel {
+		--image-vignette: radial-gradient(
+			ellipse in oklch,
+			color-mix(in oklch, var(--black-desaturated) 10%, transparent) 50%,
+			var(--black-desaturated) 90%
+		);
 		--image: url('https://images.unsplash.com/photo-1587893143314-972249555d65?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8ZnJlbmNoJTIwYnVsbGRvZ3xlbnwwfHwwfHx8MA%3D%3D');
 		--part1-size: 3rem;
 		--part2-size: 4rem;
 
+		scroll-timeline: --panel y;
 		background: var(--vignette-gradient), var(--purple);
 		display: grid;
-		min-height: 80dvh;
+		margin-inline: auto;
+		max-height: 1100px;
+		max-width: 1600px;
+		min-height: 700px;
 		padding: 0;
 		place-content: center;
 
@@ -71,8 +118,9 @@ const { Content } = await service.render();
 					color-mix(in oklch, var(--black) 20%, transparent) 350px,
 					color-mix(in oklch, var(--black) 20%, transparent) 350px
 				),
-				var(--image);
-			background-position-x: center 225px;
+				var(--image-vignette), var(--image);
+			background-blend-mode: normal, mulitply, normal;
+			background-position-x: center, center, center 225px;
 			background-position-y: center;
 			background-repeat: no-repeat;
 			background-size: cover;
@@ -100,15 +148,25 @@ const { Content } = await service.render();
 					var(--black-desaturated) 80%,
 					transparent
 				);
-				height: 100dvh;
+				height: max(100dvh, 700px);
+				max-height: 1100px;
 				text-align: left;
+			}
+		}
+
+		@media (prefers-reduced-motion: no-preference) {
+			& :is(h2, .content, button, p) {
+				animation: ease-out reveal both;
+				animation-timeline: view();
+				animation-range: entry 25% contain 20%;
 			}
 		}
 
 		& h2 {
 			color: var(--white);
-			font-family: 'mallory-ultra';
+			font-family: jwf;
 			font-size: var(--part2-size);
+			font-weight: 900;
 			letter-spacing: -0.025em;
 			line-height: 0.9;
 			margin-block: 0;
@@ -132,10 +190,15 @@ const { Content } = await service.render();
 			line-height: 0.8;
 		}
 
+		&.educational-video {
+			background-position-x: right;
+		}
+
 		& p {
 			margin-block: 0.75rem;
 
-			&:has(.button) {
+			&:has(a:only-child) {
+				margin-top: 2rem;
 				text-align: center;
 			}
 
@@ -144,16 +207,81 @@ const { Content } = await service.render();
 			}
 		}
 
+		& .button {
+			display: inline-block;
+			font-size: clamp(1rem, 9cqw, 1.25rem);
+			margin: 0 auto;
+		}
+	}
+
+	@keyframes slide-in {
+		to {
+			opacity: 1;
+			translate: 0;
+		}
+	}
+
+	dialog {
+		aspect-ratio: 16 / 10;
+		background: oklch(16.29% 0.015 262.48 / 1);
+		opacity: 0;
+		padding: 3rem 0 0;
+		translate: 20% 0;
+		width: min(90vw, 1000px);
+
+		&[open] {
+			animation: 0.5s slide-in ease-out forwards;
+			animation-delay: 0.2s;
+		}
+
 		& iframe {
-			aspect-ratio: 16 / 9;
-			height: auto;
+			display: block;
+			height: 100%;
+			margin: 0;
 			width: 100%;
 		}
 
-		& .button {
-			display: inline-block;
-			font-size: clamp(1.25rem, 1rem + 2.5cqw, 1.75rem);
-			margin: 0 auto;
+		& .modal-controls {
+			position: fixed;
+			left: 0;
+			right: 0;
+			top: 0;
+			align-items: baseline;
+			display: flex;
+			height: 3rem;
+			justify-content: space-between;
+			line-height: 1;
+			padding: 1rem;
+
+			& p {
+				animation: none;
+				color: white;
+				font-size: 0.875rem;
+				line-height: 1;
+				margin: 0;
+
+				& a {
+					text-decoration: none;
+				}
+			}
+
+			& button {
+				background: none;
+				border: none;
+				color: white;
+				font-size: 0.875rem;
+				line-height: 1;
+
+				& span {
+					font-size: 1rem;
+					position: relative;
+					top: 0.12em;
+				}
+			}
+		}
+
+		&::backdrop {
+			background: oklch(16.29% 0.015 262.48 / 0.9);
 		}
 	}
 </style>

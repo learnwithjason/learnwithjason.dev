@@ -24,8 +24,8 @@ const partners = [
 
 		<div class="intro">
 			<p>
-				<em>Learn With Jason</em> teams up with developer-focused companies to make
-				stuff developers actually want to watch.
+				Jason Lengstorf team up with developer-focused companies to make videos
+				developers actually want to watch.
 			</p>
 			<a class="button" href="#start"><span>Let’s Talk Ideas</span></a>
 			<p>
@@ -58,7 +58,7 @@ const partners = [
 	{services.map((service) => <ServicePanel service={service} />)}
 
 	<section id="start" class="contact">
-		<h2>Something awesome starts here.</h2>
+		<h2>Let’s change how companies talk to developers together.</h2>
 		<p>
 			Your next amazing project begins with discussing your goals and ideas. The
 			easiest way to get started is to book a call.
@@ -79,12 +79,15 @@ const partners = [
 	<style>
 		@media (min-width: 600px) {
 			html {
+				background: var(--black-desaturated);
 				scroll-behavior: smooth;
 				scroll-snap-type: y mandatory;
 			}
 
 			section {
-				height: 100dvh;
+				height: max(100dvh, 650px);
+				margin-inline: auto;
+				max-height: 1100px;
 				padding: 3rem min(2rem, 5vw);
 				scroll-snap-align: start;
 			}
@@ -92,27 +95,36 @@ const partners = [
 
 		.hero {
 			background: var(--vignette-gradient),
-				url('https://res.cloudinary.com/jlengstorf/image/upload/q_auto,f_auto/lwj/partners/panel-educational-video.jpg');
+				linear-gradient(7deg, var(--purple), var(--yellow), var(--blue));
 			background-blend-mode: multiply, normal;
-			background-position-x: 200px;
-			background-position-y: center;
-			background-size: calc(100% + 200px);
+			max-width: 1600px;
 			padding-block: 3rem;
 			text-align: center;
 			z-index: 100;
 
-			@media (min-width: 600px) {
+			@media (min-width: 1000px) {
+				background: linear-gradient(
+						107deg in oklch,
+						var(--black) 40%,
+						color-mix(in oklch, var(--black) 20%, transparent) 70%
+					),
+					url('https://res.cloudinary.com/jlengstorf/image/upload/q_auto,f_auto/lwj/partners/panel-hero.jpg');
+				background-position-x: 0, 200px;
+				background-position-y: center;
+				background-size: cover, calc(100% + 300px);
+
 				container: section / size;
 				display: grid;
-				height: 100dvh;
+				height: max(100dvh, 750px);
 				padding-block: 0;
 				place-content: center start;
 			}
 
 			& h1 {
 				color: var(--white);
-				font-family: 'Mallory Ultra';
+				font-family: jwf;
 				font-size: clamp(2.25rem, 1rem + 10cqw, 8rem);
+				font-weight: 900;
 				letter-spacing: -0.05em;
 				line-height: 1;
 				margin: 0 auto;
@@ -186,11 +198,22 @@ const partners = [
 			place-content: center;
 			text-align: center;
 
+			@media (prefers-reduced-motion: no-preference) {
+				& :is(h2, p, iframe) {
+					animation: ease-out reveal both;
+					animation-timeline: view();
+					animation-range: entry 100% contain 40%;
+				}
+			}
+
 			& h2 {
 				color: var(--white);
-				font-family: 'mallory-ultra';
+				font-family: jwf;
 				font-size: clamp(1.5rem, 4vw, 3rem);
+				font-weight: 900;
+				line-height: 1.1;
 				margin: 0;
+				text-wrap: balance;
 			}
 
 			& p {

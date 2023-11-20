@@ -10,7 +10,7 @@ heading:
 examples:
   highlighted: X0r-6wMzGMA
   playlist: https://youtube.com/playlist?list=PLz8Iz-Fnk_eQGt4-VFFCXYuYcuKaw4F07&si=eH-Ox3WB9w2I6id2
-buttonText: Book Me
+buttonText: Book me for your event
 ---
 
-Need a keynote speaker? An emcee? Want to try something new at your event? I gotchu.
+Need a keynote? An emcee? Want to try something new at your event? Let’s go!

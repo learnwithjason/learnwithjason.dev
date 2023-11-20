@@ -7,6 +7,7 @@ heading:
   part2:
     text: (Fun) Chaos
     size: 3rem
+buttonText: Let’s make something memorable
 ---
 
 If you wanna get weird, I am ready to get weird. Professionally.

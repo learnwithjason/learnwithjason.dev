@@ -10,7 +10,7 @@ heading:
 examples:
   highlighted: b4HZpv61V1U
   playlist: https://lwj.dev/4d1a
-buttonText: Start Here
+buttonText: Let’s make something great
 ---
 
 If you want developers to tune in, you have to think beyond the webinar.
