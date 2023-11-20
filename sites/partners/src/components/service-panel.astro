@@ -164,7 +164,9 @@ const { Content } = await service.render();
 
 		& h2 {
 			color: var(--white);
-			font-family: jwf;
+			font-family: jwf, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+				Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+				sans-serif;
 			font-size: var(--part2-size);
 			font-weight: 900;
 			letter-spacing: -0.025em;
@@ -175,6 +177,14 @@ const { Content } = await service.render();
 			& span {
 				display: block;
 				font-size: var(--part1-size);
+			}
+
+			@media (max-width: 330px) {
+				font-size: calc(0.75 * var(--part2-size));
+
+				& span {
+					font-size: calc(0.75 * var(--part1-size));
+				}
 			}
 
 			@media (min-width: 600px) {
