@@ -10,6 +10,7 @@
 		"@types/react-dom": "^18.0.6",
 		"@vitejs/plugin-react": "^4.0.4",
 		"nx": "^16.5.0",
+		"postcss-nesting": "^12.0.1",
 		"vite": "^4.4.9"
 	},
 	"dependencies": {
