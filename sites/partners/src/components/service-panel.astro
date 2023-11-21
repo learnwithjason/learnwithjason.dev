@@ -1,5 +1,6 @@
 ---
 import { type CollectionEntry } from 'astro:content';
+import YouTube from './youtube.astro';
 
 interface Props {
 	service: CollectionEntry<'services'>;
@@ -12,7 +13,7 @@ const { Content } = await service.render();
 <section
 	class:list={['panel', service.slug]}
 	style={{
-		'--image': `url('https://res.cloudinary.com/jlengstorf/image/upload/q_25,f_auto,w_1280/lwj/partners/panel-${service.slug}.jpg')`,
+		'--image': `url('https://res.cloudinary.com/jlengstorf/image/upload/q_40,f_auto,w_2000/lwj/partners/panel-${service.slug}.jpg')`,
 		'--part1-size': service.data.heading.part1.size,
 		'--part2-size': service.data.heading.part2.size,
 	}}
@@ -23,39 +24,53 @@ const { Content } = await service.render();
 			{service.data.heading.part2.text}
 		</h2>
 
-		<div class="content">
-			<Content />
-		</div>
-
-		{
-			service.data.examples?.highlighted ? (
-				<button
-					class="example-button hide button"
-					data-yt-id={service.data.examples.highlighted}
-				>
-					<span>Watch an example</span>
-				</button>
-			) : null
-		}
-		<noscript>
-			{
-				service.data.examples?.playlist ? (
-					<p>
-						<a href={service.data.examples.playlist}>
-							Watch examples on YouTube
-						</a>
-					</p>
-				) : null
-			}
-		</noscript>
+		<p>{service.data.lede}</p>
 
 		<p>
-			<a href="#start">{service.data.buttonText} &rarr;</a>
+			<a href="#start" class="button"><span>{service.data.buttonText}</span></a>
 		</p>
+	</div>
+
+	<div class="main-content">
+		{
+			service.data.examples?.highlighted ? (
+				<>
+					<h3>Watch an example video</h3>
+					<YouTube
+						videoid={service.data.examples?.highlighted}
+						playLabel="4 web devs build the same app idea"
+					/>
+				</>
+			) : null
+		}
+
+		{
+			service.data.examples?.playlist ? (
+				<p>
+					<a href={service.data.examples.playlist}>
+						more examples on YouTube &rarr;
+					</a>
+				</p>
+			) : null
+		}
+
+		<Content />
 	</div>
 </section>
 
 <style>
+	@property --alpha {
+		inherits: false;
+		initial-value: 20%;
+		syntax: '<percentage>';
+	}
+
+	@keyframes fade-in {
+		to {
+			--alpha: 90%;
+		}
+	}
+
 	.panel {
 		--image-vignette: radial-gradient(
 			ellipse in oklch,
@@ -67,45 +82,54 @@ const { Content } = await service.render();
 		--part2-size: 4rem;
 
 		scroll-timeline: --panel y;
+		animation: fade-in linear both;
+		animation-range: entry 90% contain 50%;
+		animation-timeline: view();
 		background: var(--vignette-gradient), var(--purple);
-		display: grid;
 		margin-inline: auto;
-		max-height: 1100px;
 		max-width: 1600px;
 		min-height: 700px;
 		padding: 0;
-		place-content: center;
 
-		@media (min-width: 600px) {
+		@media (min-width: 1000px) {
 			background: linear-gradient(
 					to right in oklch,
-					color-mix(in oklch, var(--black) 20%, transparent) 350px,
-					color-mix(in oklch, var(--black) 20%, transparent) 350px
+					color-mix(
+							in oklch,
+							var(--black-desaturated) var(--alpha),
+							transparent
+						)
+						350px,
+					color-mix(
+							in oklch,
+							var(--black-desaturated) var(--alpha),
+							transparent
+						)
+						350px
 				),
 				var(--image-vignette), var(--image);
+			background-attachment: fixed;
 			background-blend-mode: normal, mulitply, normal;
 			background-position-x: center, center, center 225px;
 			background-position-y: center;
 			background-repeat: no-repeat;
 			background-size: cover;
-			container: section / size;
-			grid-template:
-				'info portfolio portfolio'
-				'info portfolio portfolio'
-				/ min(100vw, 450px) 1fr;
-			height: 100dvh;
-			scroll-snap-align: start;
+			display: flex;
+			gap: 2rem;
+			justify-content: start;
 		}
 
 		& .panel-info {
 			color: var(--text);
 			display: grid;
 			grid-area: info;
+			margin-inline: auto;
 			padding: 3rem 2rem;
 			place-content: center;
 			text-align: center;
+			width: 100vw;
 
-			@media (min-width: 600px) {
+			@media (min-width: 1000px) {
 				backdrop-filter: blur(6px);
 				background: color-mix(
 					in oklch,
@@ -113,8 +137,12 @@ const { Content } = await service.render();
 					transparent
 				);
 				height: max(100dvh, 700px);
-				max-height: 1100px;
+				margin-inline: initial;
+				position: sticky;
 				text-align: left;
+				top: 0;
+				left: 0;
+				width: 450px;
 			}
 		}
 
@@ -151,7 +179,7 @@ const { Content } = await service.render();
 				}
 			}
 
-			@media (min-width: 600px) {
+			@media (min-width: 1000px) {
 				font-size: var(--part2-size);
 
 				& span {
@@ -189,6 +217,47 @@ const { Content } = await service.render();
 			&.hide {
 				display: none;
 			}
+		}
+	}
+
+	.main-content {
+		border-radius: 0.25rem;
+		color: var(--text);
+		margin-inline: auto;
+		padding: 2rem;
+		max-width: 550px;
+
+		@media (min-width: 1000px) {
+			background: color-mix(in oklch, var(--white) 70%, transparent);
+			color: var(--black-desaturated);
+			margin: 90dvh 2rem 30dvh 0;
+		}
+
+		@media (min-width: 1200px) {
+			margin-inline-end: auto;
+		}
+
+		& lite-youtube {
+			max-width: 550px;
+		}
+
+		& :global(img) {
+			display: block;
+			height: auto;
+			width: 100%;
+		}
+
+		& :global(h3) {
+			font-size: 1.75rem;
+		}
+
+		& p:has(a:only-child) {
+			font-size: 0.875rem;
+			margin-block-start: 0.5rem;
+			text-align: right;
+		}
+		& p a:only-child {
+			color: var(--blue);
 		}
 	}
 

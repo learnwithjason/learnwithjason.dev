@@ -60,7 +60,7 @@ const partners = [
 	{services.map((service) => <ServicePanel service={service} />)}
 
 	<section id="start" class="contact">
-		<h2>Let’s change how companies talk to developers together.</h2>
+		<h2>Let’s change how companies talk to developers. together.</h2>
 		<p>
 			Your next amazing project begins with discussing your goals and ideas. The
 			easiest way to get started is to book a call.
@@ -78,71 +78,11 @@ const partners = [
 		</p>
 	</section>
 
-	<dialog>
-		<div id="yt-player"></div>
-
-		<div class="modal-controls">
-			<form method="dialog">
-				<button class="close-dialog" autofocus>
-					<span>&times;</span> close
-				</button>
-			</form>
-
-			<p>
-				<a href="https://youtube.com/@learnwithjason" class="more-examples">
-					more examples on YouTube &rarr;
-				</a>
-			</p>
-		</div>
-	</dialog>
-
-	<script is:inline>
-		/**
-		 * @see https://developers.google.com/youtube/iframe_api_reference
-		 */
-		const tag = document.createElement('script');
-		const firstScriptTag = document.getElementsByTagName('script')[0];
-
-		tag.src = 'https://www.youtube.com/iframe_api';
-		firstScriptTag?.parentNode?.insertBefore(tag, firstScriptTag);
-
-		let player;
-
-		// this function is magically called by YouTube when the API loads
-		function onYouTubeIframeAPIReady() {
-			player = new YT.Player('yt-player', {
-				height: '390',
-				width: '640',
-				videoId: 'b4HZpv61V1U',
-				playerVars: {
-					playsinline: 1,
-				},
-			});
-		}
-
-		const dialog = document.querySelector('dialog');
-		const btns = document.querySelectorAll('.example-button');
-		const closeBtn = document.querySelector('.close-dialog');
-
-		btns.forEach((btn) => {
-			btn.classList.remove('hide');
-			btn.addEventListener('click', () => {
-				dialog?.showModal();
-				player.loadVideoById(btn.dataset.ytId);
-			});
-		});
-
-		closeBtn.addEventListener('click', () => {
-			player.stopVideo();
-		});
-	</script>
-
 	<style>
 		@media (min-width: 600px) {
 			html {
 				background: var(--black-desaturated);
 				scroll-behavior: smooth;
-				scroll-snap-type: y mandatory;
 			}
 
 			section {
@@ -150,7 +90,6 @@ const partners = [
 				margin-inline: auto;
 				max-height: 1100px;
 				padding: 3rem min(2rem, 5vw);
-				scroll-snap-align: start;
 			}
 		}
 
@@ -300,70 +239,6 @@ const partners = [
 				display: inline-block;
 				margin: 0;
 				width: auto;
-			}
-		}
-
-		dialog {
-			aspect-ratio: 16 / 10;
-			background: oklch(16.29% 0.015 262.48 / 1);
-			opacity: 0;
-			padding: 3rem 0 0;
-			translate: 20% 0;
-			width: min(90vw, 1000px);
-
-			&[open] {
-				animation: 0.5s slide-in ease-out forwards;
-				animation-delay: 0.2s;
-			}
-
-			& :global(iframe) {
-				display: block;
-				height: 100%;
-				margin: 0;
-				width: 100%;
-			}
-
-			& .modal-controls {
-				position: fixed;
-				left: 0;
-				right: 0;
-				top: 0;
-				align-items: baseline;
-				display: flex;
-				height: 3rem;
-				justify-content: space-between;
-				line-height: 1;
-				padding: 1rem;
-
-				& p {
-					animation: none;
-					color: white;
-					font-size: 0.875rem;
-					line-height: 1;
-					margin: 0;
-
-					& a {
-						text-decoration: none;
-					}
-				}
-
-				& button {
-					background: none;
-					border: none;
-					color: white;
-					font-size: 0.875rem;
-					line-height: 1;
-
-					& span {
-						font-size: 1rem;
-						position: relative;
-						top: 0.12em;
-					}
-				}
-			}
-
-			&::backdrop {
-				background: oklch(16.29% 0.015 262.48 / 0.9);
 			}
 		}
 	</style>

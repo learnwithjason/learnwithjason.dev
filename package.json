@@ -14,10 +14,12 @@
 	},
 	"dependencies": {
 		"@astrojs/markdown-component": "^1.0.3",
+		"@astrojs/mdx": "^1.1.5",
 		"@netlify/functions": "^2.0.2",
 		"@sentry/browser": "^7.59.3",
 		"@tanstack/query-core": "^5.0.0-alpha.3",
 		"dotenv": "^16.0.3",
+		"lite-youtube-embed": "^0.3.0",
 		"mjml": "^4.14.1",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",

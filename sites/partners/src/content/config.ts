@@ -14,6 +14,7 @@ export const collections = {
 					size: z.string(),
 				}),
 			}),
+			lede: z.string().optional(),
 			examples: z
 				.object({
 					highlighted: z.string(),

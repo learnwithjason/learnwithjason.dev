@@ -1,0 +1,11 @@
+---
+import 'lite-youtube-embed/src/lite-yt-embed.css';
+
+const { videoid, playLabel } = Astro.props;
+---
+
+<script>
+	import 'lite-youtube-embed/src/lite-yt-embed.js';
+</script>
+
+<lite-youtube videoid={videoid} playLabel={playLabel}></lite-youtube>
