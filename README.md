@@ -17,7 +17,7 @@
   <br />
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-23-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-24-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 </p>
@@ -130,6 +130,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://www.darrik.dev"><img src="https://avatars.githubusercontent.com/u/30670444?v=4?s=100" width="100px;" alt="Darrik Moberg"/><br /><sub><b>Darrik Moberg</b></sub></a><br /><a href="https://github.com/learnwithjason/learnwithjason.dev/commits?author=mdarrik" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://egghead.io/q/resources-by-thomas-greco"><img src="https://avatars.githubusercontent.com/u/6646552?v=4?s=100" width="100px;" alt="Thomas Greco"/><br /><sub><b>Thomas Greco</b></sub></a><br /><a href="#content-tgrecojs" title="Content">🖋</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://horacioh.com"><img src="https://avatars.githubusercontent.com/u/725120?v=4?s=100" width="100px;" alt="Horacio Herrera"/><br /><sub><b>Horacio Herrera</b></sub></a><br /><a href="https://github.com/learnwithjason/learnwithjason.dev/commits?author=horacioh" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
