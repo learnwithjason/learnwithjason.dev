@@ -2,6 +2,6 @@
 import algoliasearch from 'algoliasearch/lite';
 
 export const searchClient = algoliasearch(
-	'MU9BHW5MNS',
-	'4a0927c9a6b57b94c6b7601a3cc7c41f'
+	'B96THCSQEK',
+	'b3d490351405331ec7f0584e6325c08e'
 );
