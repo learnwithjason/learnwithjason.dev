@@ -74,8 +74,8 @@ https://lwj.dev/*                       https://www.learnwithjason.dev/:splat   
 /book          https://calendly.com/learnwithjason/livestream
 /30min         https://calendly.com/learnwithjason/30min
 
-# the old live viewer is now on the home page
-/live          /
+# this link goes to the active or next-scheduled live stream
+/live          https://youtube.com/@learnwithjason/live
 
 # TODO decommission this
 /graphql       https://learnwithjason.hasura.app/v1/graphql  200
