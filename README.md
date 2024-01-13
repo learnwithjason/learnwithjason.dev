@@ -26,7 +26,6 @@
 
 This site is home to _Learn With Jason_’s episode back catalog, upcoming schedule, and written posts. It’s an [Nx](https://nx.dev) monorepo housing multiple sites built with:
 
-- [Remix](https://remix.run)
 - [Astro](https://astro.build)
 - [Netlify Functions](https://www.netlify.com/products/functions/)
 
