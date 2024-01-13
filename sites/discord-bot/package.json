@@ -4,14 +4,15 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"dev": "ntl dev --live",
+		"dev": "ntl dev --live=lwj-discord-bot",
 		"build": "echo \"no build\""
 	},
 	"author": "",
 	"license": "MIT",
 	"dependencies": {
-		"@netlify/functions": "^1.2.0",
-		"discord-interactions": "^3.2.0",
+		"@netlify/functions": "^2.4.1",
+		"discord-interactions": "^3.4.0",
+		"netlify-cli": "^15.11.0",
 		"node-fetch": "^3.2.10",
 		"tweetnacl": "^1.0.3"
 	}
