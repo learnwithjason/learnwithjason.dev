@@ -1,13 +1,37 @@
 import type { Handler, HandlerResponse } from '@netlify/functions';
 import { InteractionResponseType, InteractionType } from 'discord-interactions';
-import fetch from 'node-fetch';
 import { components, discordApi, verifyRequest } from '../../util/discord';
+
+function handleSlashCommand(command: string) {
+	let message = {
+		type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+		data: {
+			content: '',
+		},
+	};
+
+	switch (command) {
+		case 'boop':
+			message.data.content = 'Boop!';
+			break;
+
+		case 'wifi':
+			message.data.content = 'wifi';
+			break;
+
+		default:
+			message.data.content = `I don’t know how to handle ${command}`;
+	}
+
+	return message;
+}
 
 export const handler: Handler = async (event) => {
 	// make sure the request is legitimate
 	const { valid, errorResponse } = verifyRequest(event);
 
 	if (!valid) {
+		console.error({ errorResponse });
 		return errorResponse as HandlerResponse;
 	}
 
@@ -28,35 +52,18 @@ export const handler: Handler = async (event) => {
 				break;
 
 			case InteractionType.APPLICATION_COMMAND:
-				await discordApi(`/interactions/${data.id}/${data.token}/callback`, {
-					type: InteractionResponseType.APPLICATION_MODAL,
-					data: {
-						custom_id: 'socket-studio_request_form',
-						title: 'Request a guest for LWJ',
-						components: [
-							components.input({
-								custom_id: 'name',
-								label: 'Name',
-							}),
-							components.input({
-								custom_id: 'twitter',
-								label: 'Twitter URL',
-								placeholder: 'https://twitter.com/LWJShow',
-							}),
-						],
-					},
-				});
+				const message = handleSlashCommand(data.data.name);
+				await discordApi(
+					`/interactions/${data.id}/${data.token}/callback`,
+					message
+				);
 
 				response.body = JSON.stringify({ message: 'responded to a command' });
 				break;
 
-			case InteractionType.APPLICATION_MODAL_SUBMIT:
-				console.log(JSON.stringify(JSON.parse(event.body as string), null, 2));
+			default:
 				response.body = JSON.stringify({
-					type: 4,
-					data: {
-						// an empty data object means nothing happens
-					},
+					message: `unknown command ${data.data.name}`,
 				});
 		}
 	} catch (error) {

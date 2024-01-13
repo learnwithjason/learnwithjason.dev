@@ -2,7 +2,7 @@ import { HandlerEvent, HandlerResponse } from '@netlify/functions';
 import { verifyKey } from 'discord-interactions';
 
 const DISCORD_CLIENT_PUBLIC_KEY =
-	'3698db90c66be0e51e47b334a80c14090fd3ae87475a206b859f4a9d0424032e';
+	'3e8b5021b63143ace2be88b6dcf5a5e1d400f42de1d5cdea4013494cfe0473a4';
 
 type DiscordInteractionsResponse = {
 	type: number;
