@@ -8,7 +8,6 @@ meta:
   description: >
     Hey, friends! Big news!
 
-tags: []
 share:
   title: I’m going full-time on Learn With Jason
   text: Hey, friends! Big news!
@@ -16,19 +15,17 @@ share:
 showOptin: false
 ---
 
-import { Aside } from '../../components/aside.tsx';
-import { Image } from '../../components/image.jsx';
-import { OptInForm } from '../../components/opt-in-form.tsx';
+
+import Figure from '../../components/figure.astro';
+import { OptInForm } from '../../components/opt-in-form.solid.tsx';
 
 **I’m now full-time on _Learn With Jason_!**
 
 Since the show started in 2018, I’ve made over 300 episodes with close to 250 experts from around the web development community. Episodes of LWJ are now watched more than half a million times every year, with tens of thousands of developers subscribing to the show on YouTube, Twitch, and [the _Learn With Jason_ newsletter](/newsletter).
 
-<Image
-  src="https://res.cloudinary.com/jlengstorf/image/upload/q_auto,f_auto/v1670193784/lwj/blog/then-and-now-comparison.jpg"
-  alt="A comparison of Jason’s streaming setup in 2018 for the first episode of Learn With Jason and in December 2022 for the most recent episode before this article was published. The 2018 image has a blurry image of the potato emoji underneath it. The 2022 image has an in-focus potato wearing sunglasses with sparkles around it."
-  caption="What 4 years of incrementally improving streaming quality looks like."
-/>
+<Figure caption="What 4 years of incrementally improving streaming quality looks like.">
+  ![A comparison of Jason’s streaming setup in 2018 for the first episode of Learn With Jason and in December 2022 for the most recent episode before this article was published. The 2018 image has a blurry image of the potato emoji underneath it. The 2022 image has an in-focus potato wearing sunglasses with sparkles around it.](https://res.cloudinary.com/jlengstorf/image/upload/q_auto,f_auto/v1670193784/lwj/blog/then-and-now-comparison.jpg)
+</Figure>
 
 But until now, the show has always been what I’ve done _in addition to_ my day job. Most weeks I only had enough time to show up and record the episodes — there was no time left over for making the show better or exploring new ideas.
 

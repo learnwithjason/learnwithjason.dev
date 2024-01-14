@@ -16,10 +16,10 @@ share:
     Learn how to create beautiful, CSS-only gradient borders. Combine custom properties, OKLCH, and background-origin — and zero hacks.
 ---
 
-import { YouTube } from '../../components/youtube.tsx';
-import { Figure } from '../../components/figure.tsx';
-import { Aside } from '../../components/aside.tsx';
-import { CodePen } from '../../components/codepen.tsx';
+import YouTube from '../../components/youtube.astro';
+import Figure from '../../components/figure.astro';
+import Aside from '../../components/aside.astro';
+import CodePen from '../../components/codepen.astro';
 
 <YouTube id="M4p29o3KveQ" />
 
@@ -27,12 +27,10 @@ So much cool stuff has been happening in CSS lately — if you haven’t looked 
 
 Here’s what you’ll build by the end of this article.
 
-<Figure>
-  <CodePen
-    slug="WNPGMJo"
-    title="Gorgeous animated gradient borders using only CSS"
-  />
-</Figure>
+<CodePen
+  slug="WNPGMJo"
+  title="Gorgeous animated gradient borders using only CSS"
+/>
 
 To follow along, [create your own CodePen](https://codepen.io/pen) or open an HTML document where you can modify the HTML and CSS.
 
@@ -311,12 +309,10 @@ Update the `conic-gradient()` to use the custom property and add the animation �
 
 Once you’ve made these changes, you should see the gradient borders and they’ll animate when you hover!
 
-<Figure>
-  <CodePen
-    slug="WNPGMJo"
-    title="Gorgeous animated gradient borders using only CSS"
-  />
-</Figure>
+<CodePen
+  slug="WNPGMJo"
+  title="Gorgeous animated gradient borders using only CSS"
+/>
 
 It blows my mind that this kind of stuff is not only possible in CSS these days, but that we can do it without complex hacks, pseudo-elements, hidden elements, or other messy implementations that always felt fragile to me.
 

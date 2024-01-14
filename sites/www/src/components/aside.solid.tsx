@@ -84,7 +84,7 @@ const LightBulb = () => {
 };
 
 export const Aside: Component<{
-	style: 'heart' | 'default';
+	style?: 'heart' | 'default';
 	children: JSXElement;
 }> = (props) => {
 	const { style } = mergeProps({ style: 'default' }, props);

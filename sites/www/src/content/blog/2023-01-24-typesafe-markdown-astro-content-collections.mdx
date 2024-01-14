@@ -8,14 +8,14 @@ meta:
   description: >
     Typesafe Markdown might sound like an oxymoron, but with the new content collections released in Astro 2.0, you can now specify a schema for your Markdown frontmatter using Zod and get all the delicious validation and autocomplete that comes with it.
 
-tags: []
 share:
   title: Typesafe Markdown With Astro Content Collections
   text: Typesafe Markdown might sound like an oxymoron, but with the new content collections released in Astro 2.0, you can now specify a schema for your Markdown frontmatter using Zod and get all the delicious validation and autocomplete that comes with it.
 ---
 
-import { Figure } from '../../components/figure.tsx';
-import { Aside } from '../../components/aside.tsx';
+import YouTube from '../../components/youtube.astro';
+import Figure from '../../components/figure.astro';
+import Aside from '../../components/aside.astro';
 
 If you want to learn how to get typesafety and autocomplete into your Markdown blog, we'll go through the whole process of creating a brand new blog powered by Astro content collections in this article.
 
@@ -23,17 +23,7 @@ If you want to learn how to get typesafety and autocomplete into your Markdown b
 
 If you prefer learning by watching something get built, I recorded building the demo app in this post as a video tutorial. [Learn about Astro content collections and typesafe Markdown on YouTube.](https://youtu.be/TfD4RW2gR-s)
 
-<Figure aspectRatio={9 / 16}>
-  <iframe
-    width="560"
-    height="315"
-    src="https://www.youtube-nocookie.com/embed/TfD4RW2gR-s"
-    title="YouTube video player"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    allowfullscreen
-  ></iframe>
-</Figure>
+<YouTube id="TfD4RW2gR-s" />
 
 ## Skip to the end
 
@@ -426,10 +416,10 @@ After saving, the homepage is now showing an error!
 
 The error message says:
 
-> <kbd>
->   blog → good-advice.md frontmatter does not match collection schema.
->   "category" is required.
-> </kbd>
+```
+blog → good-advice.md frontmatter does not match collection schema.
+"category" is required.
+```
 
 What a great error message! We forgot to add a `category` field to the frontmatter, and since that one is required the schema validation fails.
 

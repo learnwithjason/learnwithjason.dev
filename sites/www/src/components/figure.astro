@@ -1,0 +1,51 @@
+---
+export interface Props {
+	caption?: string;
+	credit?: string;
+	creditLink?: string;
+	creditType?: string;
+	aspectRatio?: number;
+}
+
+const {
+	caption,
+	credit,
+	creditLink,
+	creditType = 'Credit',
+	aspectRatio = -1,
+} = Astro.props;
+---
+
+<figure class="post-figure">
+	{
+		aspectRatio > 0 ? (
+			<div
+				class="embed-container"
+				style={{ 'padding-bottom': aspectRatio * 100 + '%' }}
+			>
+				<slot />
+			</div>
+		) : (
+			<slot />
+		)
+	}
+
+	{
+		caption || credit ? (
+			<figcaption>
+				<span set:html={caption} />
+
+				{credit ? (
+					<small>
+						{creditType}:
+						{creditLink ? (
+							<a href={creditLink}>{credit}</a>
+						) : (
+							<span>{credit}</span>
+						)}
+					</small>
+				) : null}
+			</figcaption>
+		) : null
+	}
+</figure>

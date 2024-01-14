@@ -1,6 +1,6 @@
 import type { Episode } from '@lwj/types';
 import { createSignal, mergeProps } from 'solid-js';
-import { Poster } from './poster';
+import { Poster } from './poster.solid';
 
 type VideoPlayerProps = {
 	episode: Episode;

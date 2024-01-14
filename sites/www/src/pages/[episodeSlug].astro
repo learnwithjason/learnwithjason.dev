@@ -7,11 +7,11 @@ import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
 import Layout from '../layouts/Layout.astro';
 import SEO from '../components/seo.astro';
-import { EpisodePreview } from '../components/episode-preview';
-import { OptInForm } from '../components/opt-in-form';
-import { VideoPlayer } from '../components/video-player';
-import { Poster } from '../components/poster';
-import { LivePlayer } from '../components/live-player';
+import { EpisodePreview } from '../components/episode-preview.solid';
+import { OptInForm } from '../components/opt-in-form.solid';
+import { VideoPlayer } from '../components/video-player.solid';
+import { Poster } from '../components/poster.solid';
+import { LivePlayer } from '../components/live-player.solid';
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
@@ -316,3 +316,4 @@ const datetime = dayjs(episode.date).tz(tz);
     width: 100%;
   }
 </style>
+../components/episode-preview.solid

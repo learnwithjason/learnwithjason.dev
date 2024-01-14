@@ -6,8 +6,8 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
-import { Aside } from './aside';
-import { LiveTwitchEmbed } from './live-twitch-embed';
+import { Aside } from './aside.solid';
+import { LiveTwitchEmbed } from './live-twitch-embed.solid';
 import {
 	getEpisodeLiveStatus,
 	getEpisodeTimeDetails,
@@ -37,11 +37,7 @@ const EpisodeDetails: ParentComponent<{ isSolo: boolean; isOver?: boolean }> = (
 			<Show when={props.isSolo}>
 				<Show
 					when={props.isOver}
-					fallback={() => (
-						<>
-							<strong>Can’t catch this session live?</strong>
-						</>
-					)}
+					fallback={<strong>Can’t catch this session live?</strong>}
 				>
 					<>
 						<strong>Did you miss this session?</strong>
