@@ -15,8 +15,8 @@ share:
   text: Use built-in APIs for zero-dependency form handling!
 ---
 
-import Figure from '../../components/figure.astro';
 import Aside from '../../components/aside.astro';
+import CodePen from '../../components/codepen.astro';
 
 Getting form values as a JSON object can be a little confusing, but there’s good news! Browsers have implemented a built-in API for getting form values that makes this straightforward and approachable!
 
@@ -60,31 +60,34 @@ If we run this code and submit the form, the value we enter into the email input
 
 If we want to get _all_ of the values from a form, there’s an extra step. Let’s expand our form with a name field:
 
-```diff
-  <form>
-+   <label for="name">Name</label>
-+   <input type="text" name="name" id="name" />
-+
-    <label for="email">Email</label>
-    <input type="email" name="email" id="email" />
+```html ins={2-4}
+<form>
+  <label for="name">Name</label>
+  <input type="text" name="name" id="name" />
 
-    <button type="submit">Submit</button>
-  </form>
+  <label for="email">Email</label>
+  <input type="email" name="email" id="email" />
+
+  <button type="submit">Submit</button>
+</form>
 ```
 
-```diff
-  function handleSubmit(event) {
-    event.preventDefault();
+To access all entries,
 
-    const data = new FormData(event.target);
+```js mark={6-7}
+function handleSubmit(event) {
+  event.preventDefault();
 
-+   const value = Object.fromEntries(data.entries());
+  const data = new FormData(event.target);
 
-    console.log({ value });
-  }
+  // Do a bit of work to convert the entries to a plain JS object
+  const value = Object.fromEntries(data.entries());
 
-  const form = document.querySelector('form');
-  form.addEventListener('submit', handleSubmit);
+  console.log({ value });
+}
+
+const form = document.querySelector('form');
+form.addEventListener('submit', handleSubmit);
 ```
 
 The FormData API doesn’t directly convert form values to JSON, but we can get there by using the [`entries`](https://developer.mozilla.org/en-US/docs/Web/API/FormData/entries) method and passing its return value to [`Object.fromEntries`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/fromEntries), which returns a plain JavaScript object.
@@ -99,44 +102,46 @@ Fortunately, the workaround for this only requires one more line of JavaScript f
 
 Let's add a field with multiple potential values to our form:
 
-```diff
-  <form>
-    <label for="name">Name</label>
-    <input type="text" name="name" id="name" />
+```html ins={7-17}
+<form>
+  <label for="name">Name</label>
+  <input type="text" name="name" id="name" />
 
-    <label for="email">Email</label>
-    <input type="email" name="email" id="email" />
-+
-+   <p>
-+     <input type="checkbox" name="topics" id="javascript" value="javascript" />
-+     <label for="javascript">JavaScript</label>
-+
-+     <input type="checkbox" name="topics" id="html" value="html" />
-+     <label for="html">HTML</label>
-+
-+     <input type="checkbox" name="topics" id="css" value="css" />
-+     <label for="css">CSS</label>
-+   </p>
+  <label for="email">Email</label>
+  <input type="email" name="email" id="email" />
 
-    <button type="submit">Submit</button>
-  </form>
+  <p>
+    <input type="checkbox" name="topics" id="javascript" value="javascript" />
+    <label for="javascript">JavaScript</label>
+
+    <input type="checkbox" name="topics" id="html" value="html" />
+    <label for="html">HTML</label>
+
+    <input type="checkbox" name="topics" id="css" value="css" />
+    <label for="css">CSS</label>
+  </p>
+
+  <button type="submit">Submit</button>
+</form>
 ```
 
-```diff
-  function handleSubmit(event) {
-    event.preventDefault();
+Getting all the topics requires using the `.getAll()` method:
 
-    const data = new FormData(event.target);
+```js ins={7-8}
+function handleSubmit(event) {
+  event.preventDefault();
 
-    const value = Object.fromEntries(data.entries());
-+
-+   value.topics = data.getAll("topics");
+  const data = new FormData(event.target);
 
-    console.log({ value });
-  }
+  const value = Object.fromEntries(data.entries());
 
-  const form = document.querySelector("form");
-  form.addEventListener("submit", handleSubmit);
+  value.topics = data.getAll("topics");
+
+  console.log({ value });
+}
+
+const form = document.querySelector("form");
+form.addEventListener("submit", handleSubmit);
 ```
 
 Now the object contains an array in `topics` that contains all checked values!

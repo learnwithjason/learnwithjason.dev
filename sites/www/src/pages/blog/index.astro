@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
-import { PageHeader } from '@lwj/design-system';
-import { IconArrow } from '@lwj/design-system';
+import PageHeader from '../../components/page-header.astro';
+import IconArrow from '../../components/icon-arrow.astro';
 import Layout from '../../layouts/Layout.astro';
 
 const blogs = await getCollection('blog', ({ data }) => {
@@ -20,14 +20,14 @@ const blogs = await getCollection('blog', ({ data }) => {
 				blogs
 					.sort(
 						(a, b) =>
-							new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf()
+							new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf(),
 					)
 					.map((blog) => {
 						const url = `/blog/${blog.slug}`;
 						const img =
 							blog.data.share.image?.replace(
 								'f_auto',
-								'f_auto,w_600,ar_16:9,c_fill'
+								'f_auto,w_600,ar_16:9,c_fill',
 							) ?? false;
 						return (
 							<article class="post-preview">

@@ -1,7 +1,7 @@
 ---
 import { loadSchedule } from '@lwj/sanity-helpers';
 import Layout from '../layouts/Layout.astro';
-import { PageHeader } from '@lwj/design-system';
+import PageHeader from '../components/page-header.astro';
 import { EpisodePreview } from '../components/episode-preview.solid';
 
 const res = await loadSchedule({ cdn: false });

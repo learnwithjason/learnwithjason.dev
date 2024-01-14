@@ -96,59 +96,59 @@ Open `http://localhost:3000` to see the running site.
 
 Our first step is to get the URL that sends a user to AuthKit's hosted sign in/sign up flow. To do that, make the following changes in `src/auth.ts`:
 
-```diff
-  import { cookies } from "next/headers";
-  import { redirect } from "next/navigation";
-  import WorkOS, { User } from "@workos-inc/node";
-  import { jwtVerify } from "jose";
+```ts title="src/auth.ts" del={6,20} ins={7,8,21-36}
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
+import WorkOS, { User } from "@workos-inc/node";
+import { jwtVerify } from "jose";
 
-- // TODO Initialize the WorkOS client
-+ // Initialize the WorkOS client
-+ export const workos = new WorkOS(process.env.WORKOS_API_KEY);
+// TODO Initialize the WorkOS client
+// Initialize the WorkOS client
+export const workos = new WorkOS(process.env.WORKOS_API_KEY);
 
-  export function getClientId() {
-    const clientId = process.env.WORKOS_CLIENT_ID;
+export function getClientId() {
+  const clientId = process.env.WORKOS_CLIENT_ID;
 
-    if (!clientId) {
-      throw new Error("WORKOS_CLIENT_ID is not set");
-    }
-
-    return clientId;
+  if (!clientId) {
+    throw new Error("WORKOS_CLIENT_ID is not set");
   }
 
-- // TODO get the authorization URL for logging in and signing up with AuthKit
-+ export async function getAuthorizationUrl() {
-+   const redirectUri = process.env.WORKOS_REDIRECT_URI;
-+
-+   if (!redirectUri) {
-+     throw new Error("WORKOS_REDIRECT_URI is not set");
-+   }
-+
-+   const authorizationUrl = workos.userManagement.getAuthorizationUrl({
-+     provider: "authkit",
-+     clientId: getClientId(),
-+     // The endpoint that WorkOS will redirect to after a user authenticates
-+     redirectUri,
-+   });
-+
-+   return authorizationUrl;
-+ }
+  return clientId;
+}
 
-  export function getJwtSecretKey() {
-    const secret = process.env.JWT_SECRET_KEY;
+// TODO get the authorization URL for logging in and signing up with AuthKit
+export async function getAuthorizationUrl() {
+  const redirectUri = process.env.WORKOS_REDIRECT_URI;
 
-    if (!secret) {
-      throw new Error("JWT_SECRET_KEY is not set");
-    }
-
-    return new Uint8Array(Buffer.from(secret, "base64"));
+  if (!redirectUri) {
+    throw new Error("WORKOS_REDIRECT_URI is not set");
   }
 
-  // TODO verify that the JWT is valid
+  const authorizationUrl = workos.userManagement.getAuthorizationUrl({
+    provider: "authkit",
+    clientId: getClientId(),
+    // The endpoint that WorkOS will redirect to after a user authenticates
+    redirectUri,
+  });
 
-  // TODO determine whether a user is authenticated and return user details if so
+  return authorizationUrl;
+}
 
-  // TODO log the user out by deleting their token
+export function getJwtSecretKey() {
+  const secret = process.env.JWT_SECRET_KEY;
+
+  if (!secret) {
+    throw new Error("JWT_SECRET_KEY is not set");
+  }
+
+  return new Uint8Array(Buffer.from(secret, "base64"));
+}
+
+// TODO verify that the JWT is valid
+
+// TODO determine whether a user is authenticated and return user details if so
+
+// TODO log the user out by deleting their token
 
 ```
 
@@ -158,41 +158,41 @@ This function uses the [user management API](https://workos.com/docs/reference/u
 
 Put this authorization URL to work by making the following changes in `src/app/components/sign-in-button.tsx`:
 
-```diff
-  import { Button, Flex } from "@radix-ui/themes";
-+ import { getAuthorizationUrl } from '../../auth';
+```ts title="src/app/components/sign-in-button.tsx" ins={3,11} del={8-10}
+import { Button, Flex } from "@radix-ui/themes";
+import { getAuthorizationUrl } from '../../auth';
 
-  export async function SignInButton({ large }: { large?: boolean }) {
-    // TODO determine login status from AuthKit
-    const isAuthenticated = false;
--
--   // TODO get AuthKit authorization URL
--   const authorizationUrl = "#login";
-+   const authorizationUrl = await getAuthorizationUrl();
+export async function SignInButton({ large }: { large?: boolean }) {
+  // TODO determine login status from AuthKit
+  const isAuthenticated = false;
 
-    if (isAuthenticated) {
-      return (
-        <Flex gap="3">
-          <form
-            action={async () => {
-              "use server";
-              // TODO log the user out
-            }}
-          >
-            <Button type="submit" size={large ? "3" : "2"}>
-              Sign Out
-            </Button>
-          </form>
-        </Flex>
-      );
-    }
+  // TODO get AuthKit authorization URL
+  const authorizationUrl = "#login";
+  const authorizationUrl = await getAuthorizationUrl();
 
+  if (isAuthenticated) {
     return (
-      <Button asChild size={large ? "3" : "2"}>
-        <a href={authorizationUrl}>Sign In {large && "with AuthKit"}</a>
-      </Button>
+      <Flex gap="3">
+        <form
+          action={async () => {
+            "use server";
+            // TODO log the user out
+          }}
+        >
+          <Button type="submit" size={large ? "3" : "2"}>
+            Sign Out
+          </Button>
+        </form>
+      </Flex>
     );
   }
+
+  return (
+    <Button asChild size={large ? "3" : "2"}>
+      <a href={authorizationUrl}>Sign In {large && "with AuthKit"}</a>
+    </Button>
+  );
+}
 ```
 
 Save these changes, then click the "Sign In with AuthKit" button on the home page. You'll be redirected to the hosted sign in/sign up flow
@@ -207,7 +207,7 @@ The user is authorizing the app, but there's no handler in place to turn the aut
 
 Exchange the code for user details by replacing the contents of `src/app/callback/route.tsx` with the following code:
 
-```ts
+```ts title="src/app/callback/route.tsx"
 import { SignJWT } from "jose";
 import { NextRequest, NextResponse } from "next/server";
 import { getJwtSecretKey, workos, getClientId } from "../../auth";
@@ -281,54 +281,54 @@ With the user token set, the next step is to read it and update the UI based on 
 
 Now that a token is set when a user is logged in, add the logic to check and verify that token by making the following changes in `src/auth.ts`:
 
-```diff
-  import { cookies } from "next/headers";
-  import { redirect } from "next/navigation";
-  import WorkOS, { User } from "@workos-inc/node";
-  import { jwtVerify } from "jose";
+```ts title="src/auth.ts" ins={16-23,26-41,44-47} del={15,25,43}
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
+import WorkOS, { User } from "@workos-inc/node";
+import { jwtVerify } from "jose";
 
-  // Initialize the WorkOS client
-  export const workos = new WorkOS(process.env.WORKOS_API_KEY);
+// Initialize the WorkOS client
+export const workos = new WorkOS(process.env.WORKOS_API_KEY);
 
-  export function getClientId() { /* unchanged */ }
+export function getClientId() { /* unchanged */ }
 
-  export async function getAuthorizationUrl() { /* unchanged */ }
+export async function getAuthorizationUrl() { /* unchanged */ }
 
-  export function getJwtSecretKey() { /* unchanged */ }
+export function getJwtSecretKey() { /* unchanged */ }
 
-- // TODO verify that the JWT is valid
-+ export async function verifyJwtToken(token: string) {
-+   try {
-+     const { payload } = await jwtVerify(token, getJwtSecretKey());
-+     return payload;
-+   } catch (error) {
-+     return null;
-+   }
-+ }
+// TODO verify that the JWT is valid
+export async function verifyJwtToken(token: string) {
+  try {
+    const { payload } = await jwtVerify(token, getJwtSecretKey());
+    return payload;
+  } catch (error) {
+    return null;
+  }
+}
 
-- // TODO determine whether a user is authenticated and return user details if so
-+ export async function getUser(): Promise<{
-+   isAuthenticated: boolean;
-+   user?: User | null;
-+ }> {
-+   const token = cookies().get("token")?.value;
-+   const verifiedToken = token && (await verifyJwtToken(token));
-+
-+   if (verifiedToken) {
-+     return {
-+       isAuthenticated: true,
-+       user: verifiedToken.user as User | null,
-+     };
-+   }
-+
-+   return { isAuthenticated: false };
-+ }
+// TODO determine whether a user is authenticated and return user details if so
+export async function getUser(): Promise<{
+  isAuthenticated: boolean;
+  user?: User | null;
+}> {
+  const token = cookies().get("token")?.value;
+  const verifiedToken = token && (await verifyJwtToken(token));
 
-- // TODO log the user out by deleting their token
-+ export async function clearCookie() {
-+   cookies().delete("token");
-+   redirect("/");
-+ }
+  if (verifiedToken) {
+    return {
+      isAuthenticated: true,
+      user: verifiedToken.user as User | null,
+    };
+  }
+
+  return { isAuthenticated: false };
+}
+
+// TODO log the user out by deleting their token
+export async function clearCookie() {
+  cookies().delete("token");
+  redirect("/");
+}
 ```
 
 The `verifyJwtToken()` function uses the `jose` package to make sure the token was created using the secret key set in `.env.local`.
@@ -341,7 +341,7 @@ The `clearCookie()` function deletes the cookie and redirects the user to the ho
 
 For protected routes, such as the account details page, use Next.js middleware to check for a valid token and, if none is found, redirect the user to the authorization URL. Replace the contents of `src/middleware.ts` with the following code:
 
-```ts
+```ts title="src/middleware.ts"
 import { NextRequest, NextResponse } from "next/server";
 import { getAuthorizationUrl, verifyJwtToken } from "./auth";
 
@@ -378,57 +378,57 @@ The last step is to make the UI react to the presence of a logged in user.
 
 First, make the following changes to `src/app/account/page.tsx`:
 
-```diff
-  import { Text, Heading, TextFieldInput, Flex, Box } from "@radix-ui/themes";
-+ import { getUser } from "../../auth";
+```ts title="src/app/account/page.tsx" ins={2,6} del={5}
+import { Text, Heading, TextFieldInput, Flex, Box } from "@radix-ui/themes";
+import { getUser } from "../../auth";
 
-  export default async function AccountPage() {
--   const user: any = {};
-+   const { user } = await getUser();
+export default async function AccountPage() {
+  const user: any = {};
+  const { user } = await getUser();
 
-    const userFields = user && [
-      ["First name", user.firstName],
-      ["Last name", user.lastName],
-      ["Email", user.email],
-      ["Id", user.id],
-    ];
+  const userFields = user && [
+    ["First name", user.firstName],
+    ["Last name", user.lastName],
+    ["Email", user.email],
+    ["Id", user.id],
+  ];
 
-    return (
-      <>
-        <Flex direction="column" gap="2" mb="7">
-          <Heading size="8" align="center">
-            Account details
-          </Heading>
-          <Text size="5" align="center" color="gray">
-            Below are your account details
-          </Text>
+  return (
+    <>
+      <Flex direction="column" gap="2" mb="7">
+        <Heading size="8" align="center">
+          Account details
+        </Heading>
+        <Text size="5" align="center" color="gray">
+          Below are your account details
+        </Text>
+      </Flex>
+
+      {userFields && (
+        <Flex
+          direction="column"
+          gap="3"
+          style={{ width: 400 }}
+          justify="center"
+        >
+          {userFields.map(([label, value]) => (
+            <Flex asChild align="center" gap="6" key={value}>
+              <label>
+                <Text weight="bold" size="3" style={{ width: 100 }}>
+                  {label}
+                </Text>
+
+                <Box grow="1">
+                  <TextFieldInput value={value || ""} readOnly />
+                </Box>
+              </label>
+            </Flex>
+          ))}
         </Flex>
-
-        {userFields && (
-          <Flex
-            direction="column"
-            gap="3"
-            style={{ width: 400 }}
-            justify="center"
-          >
-            {userFields.map(([label, value]) => (
-              <Flex asChild align="center" gap="6" key={value}>
-                <label>
-                  <Text weight="bold" size="3" style={{ width: 100 }}>
-                    {label}
-                  </Text>
-
-                  <Box grow="1">
-                    <TextFieldInput value={value || ""} readOnly />
-                  </Box>
-                </label>
-              </Flex>
-            ))}
-          </Flex>
-        )}
-      </>
-    );
-  }
+      )}
+    </>
+  );
+}
 ```
 
 The account page is only available to logged in accounts, so all it needs is the `user` details returned by `getUser()`.
@@ -437,41 +437,41 @@ The account page is only available to logged in accounts, so all it needs is the
 
 Next, make the following changes to `src/app/components/sign-in-button.tsx`:
 
-```diff
-- import { getAuthorizationUrl } from "../../auth";
-+ import { clearCookie, getAuthorizationUrl, getUser } from "../../auth";
-  import { Button, Flex } from "@radix-ui/themes";
+```ts title="src/app/components/sign-in-button.tsx" del={1,6-7,17} ins={2,8,18}
+import { getAuthorizationUrl } from "../../auth";
+import { clearCookie, getAuthorizationUrl, getUser } from "../../auth";
+import { Button, Flex } from "@radix-ui/themes";
 
-  export async function SignInButton({ large }: { large?: boolean }) {
--   // TODO determine login status from AuthKit
--   const isAuthenticated = false;
-+   const { isAuthenticated } = await getUser();
-    const authorizationUrl = await getAuthorizationUrl();
+export async function SignInButton({ large }: { large?: boolean }) {
+  // TODO determine login status from AuthKit
+  const isAuthenticated = false;
+  const { isAuthenticated } = await getUser();
+  const authorizationUrl = await getAuthorizationUrl();
 
-    if (isAuthenticated) {
-      return (
-        <Flex gap="3">
-          <form
-            action={async () => {
-              "use server";
--             // TODO log the user out
-+             await clearCookie();
-            }}
-          >
-            <Button type="submit" size={large ? "3" : "2"}>
-              Sign Out
-            </Button>
-          </form>
-        </Flex>
-      );
-    }
-
+  if (isAuthenticated) {
     return (
-      <Button asChild size={large ? "3" : "2"}>
-        <a href={authorizationUrl}>Sign In {large && "with AuthKit"}</a>
-      </Button>
+      <Flex gap="3">
+        <form
+          action={async () => {
+            "use server";
+            // TODO log the user out
+            await clearCookie();
+          }}
+        >
+          <Button type="submit" size={large ? "3" : "2"}>
+            Sign Out
+          </Button>
+        </form>
+      </Flex>
     );
   }
+
+  return (
+    <Button asChild size={large ? "3" : "2"}>
+      <a href={authorizationUrl}>Sign In {large && "with AuthKit"}</a>
+    </Button>
+  );
+}
 ```
 
 This change uses the actual authenticated status to show a "sign out" button when a user is logged in. It also uses a server action to delete the token cookie when clicked, allowing the user to log out and be redirected to the home page.
@@ -480,49 +480,49 @@ This change uses the actual authenticated status to show a "sign out" button whe
 
 Finally, make the following changes to `src/app/page.tsx`:
 
-```diff
-  import { Button, Flex, Heading, Text } from "@radix-ui/themes";
-  import NextLink from "next/link";
-  import { SignInButton } from "./components/sign-in-button";
-+ import { getUser } from "../auth";
+```ts title="src/app/page.tsx" ins={4,12} del={7-11}
+import { Button, Flex, Heading, Text } from "@radix-ui/themes";
+import NextLink from "next/link";
+import { SignInButton } from "./components/sign-in-button";
+import { getUser } from "../auth";
 
-  export default async function HomePage() {
--   // TODO determine login status from AuthKit
--   const isAuthenticated = false;
--
--   // TODO load user details from AuthKit when logged in
--   const user: any = {};
-+   const { isAuthenticated, user } = await getUser();
+export default async function HomePage() {
+  // TODO determine login status from AuthKit
+  const isAuthenticated = false;
 
-    return (
-      <Flex direction="column" align="center" gap="2">
-        {isAuthenticated ? (
-          <>
-            <Heading size="8">
-              Welcome back{user?.firstName && `, ${user?.firstName}`}
-            </Heading>
-            <Text size="5" color="gray">
-              You are now authenticated into the application
-            </Text>
-            <Flex align="center" gap="3" mt="4">
-              <Button asChild size="3" variant="soft">
-                <NextLink href="/account">View account</NextLink>
-              </Button>
-              <SignInButton large />
-            </Flex>
-          </>
-        ) : (
-          <>
-            <Heading size="8">AuthKit authentication example</Heading>
-            <Text size="5" color="gray" mb="4">
-              Sign in to view your account details
-            </Text>
+  // TODO load user details from AuthKit when logged in
+  const user: any = {};
+  const { isAuthenticated, user } = await getUser();
+
+  return (
+    <Flex direction="column" align="center" gap="2">
+      {isAuthenticated ? (
+        <>
+          <Heading size="8">
+            Welcome back{user?.firstName && `, ${user?.firstName}`}
+          </Heading>
+          <Text size="5" color="gray">
+            You are now authenticated into the application
+          </Text>
+          <Flex align="center" gap="3" mt="4">
+            <Button asChild size="3" variant="soft">
+              <NextLink href="/account">View account</NextLink>
+            </Button>
             <SignInButton large />
-          </>
-        )}
-      </Flex>
-    );
-  }
+          </Flex>
+        </>
+      ) : (
+        <>
+          <Heading size="8">AuthKit authentication example</Heading>
+          <Text size="5" color="gray" mb="4">
+            Sign in to view your account details
+          </Text>
+          <SignInButton large />
+        </>
+      )}
+    </Flex>
+  );
+}
 ```
 
 This swaps out the hard-coded values for real login status and user details. Save to see the user details displayed on the home page when a user is logged in.
