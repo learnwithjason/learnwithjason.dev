@@ -1,0 +1,110 @@
+---
+
+---
+
+<footer class="footer">
+	<h2>About the Host</h2>
+	<div class="bio">
+		<div class="photo"><slot /></div>
+		<div class="details">
+			<p>
+				<strong>Jason Lengstorf</strong> is a developer, teacher, lifelong learner,
+				and a huge doofus. He helps companies build world-class devrel teams and
+				blogs at{' '}
+				<a href="https://jason.energy">jason.energy</a>.
+			</p>
+		</div>
+	</div>
+	<nav class="links">
+		<a href="https://github.com/learnwithjason/learnwithjason.dev">
+			Source Code
+		</a>{' '}
+		· <a href="/code-of-conduct">Code of Conduct</a>
+	</nav>
+</footer>
+
+<style>
+	.footer {
+		align-items: center;
+		background: var(--color-black);
+		display: flex;
+		flex-direction: column;
+		padding: 3rem 5vw 1rem;
+		position: relative;
+	}
+
+	.footer::after {
+		background: var(--color-gradient);
+		background-size: 200%;
+		top: 1px;
+		content: '';
+		height: 4px;
+		left: 0;
+		position: absolute;
+		width: 100%;
+	}
+
+	.footer h2 {
+		color: var(--color-white);
+		font-size: 2rem;
+	}
+
+	.bio {
+		display: block;
+		max-width: 510px;
+		width: 90vw;
+		color: var(--color-gray-medium);
+	}
+
+	.details a {
+		color: var(--color-pink);
+	}
+
+	.details strong {
+		color: var(--color-gray-lighter);
+	}
+
+	.photo {
+		height: 0;
+		margin: 0 auto 1.5rem;
+		padding-bottom: 150px;
+		width: 150px;
+	}
+
+	@media (min-width: 650px) {
+		.bio {
+			align-items: center;
+			display: grid;
+			grid-template-columns: min(160px, 25%) min(340px, 70%);
+			gap: 1.5rem;
+		}
+
+		.photo {
+			height: 0;
+			margin: 0;
+			padding-bottom: 100%;
+			width: 100%;
+		}
+	}
+
+	.photo use {
+		stroke: var(--color-text-emphasized);
+	}
+
+	.details p {
+		margin: 0;
+	}
+
+	.links {
+		color: var(--color-gray-medium);
+		font-size: 0.625rem;
+		letter-spacing: 0.2em;
+		margin-top: 3rem;
+		text-transform: uppercase;
+	}
+
+	.links a {
+		color: inherit;
+		text-decoration: none;
+	}
+</style>

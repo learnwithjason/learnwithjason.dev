@@ -11,8 +11,8 @@ import {
 } from 'solid-js';
 import type { Episode } from '@lwj/types';
 
-import { TeacherPhoto } from './teacher-photo.jsx';
-import { IconInfo } from './icon-info.jsx';
+import { TeacherPhoto } from './teacher-photo.solid.tsx';
+import { IconInfo } from './icon-info.solid.tsx';
 
 import styles from './episode-preview.module.css';
 

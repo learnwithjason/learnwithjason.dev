@@ -9,14 +9,14 @@ meta:
     Use built-in browser APIs to get form values as JSON. Zero dependencies and only a few lines of code!
 
 image: ./images/convert-form-data-to-json.jpg
-tags: [front-end, javascript, reduce, forms, ajax]
+
 share:
   title: Get Form Data as JSON
   text: Use built-in APIs for zero-dependency form handling!
 ---
 
-import { Aside } from '../../components/aside.tsx';
-import { Figure } from '../../components/figure.tsx';
+import Aside from '../../components/aside.astro';
+import CodePen from '../../components/codepen.astro';
 
 Getting form values as a JSON object can be a little confusing, but there’s good news! Browsers have implemented a built-in API for getting form values that makes this straightforward and approachable!
 
@@ -60,31 +60,34 @@ If we run this code and submit the form, the value we enter into the email input
 
 If we want to get _all_ of the values from a form, there’s an extra step. Let’s expand our form with a name field:
 
-```diff
-  <form>
-+   <label for="name">Name</label>
-+   <input type="text" name="name" id="name" />
-+
-    <label for="email">Email</label>
-    <input type="email" name="email" id="email" />
+```html ins={2-4}
+<form>
+  <label for="name">Name</label>
+  <input type="text" name="name" id="name" />
 
-    <button type="submit">Submit</button>
-  </form>
+  <label for="email">Email</label>
+  <input type="email" name="email" id="email" />
+
+  <button type="submit">Submit</button>
+</form>
 ```
 
-```diff
-  function handleSubmit(event) {
-    event.preventDefault();
+To access all entries,
 
-    const data = new FormData(event.target);
+```js mark={6-7}
+function handleSubmit(event) {
+  event.preventDefault();
 
-+   const value = Object.fromEntries(data.entries());
+  const data = new FormData(event.target);
 
-    console.log({ value });
-  }
+  // Do a bit of work to convert the entries to a plain JS object
+  const value = Object.fromEntries(data.entries());
 
-  const form = document.querySelector('form');
-  form.addEventListener('submit', handleSubmit);
+  console.log({ value });
+}
+
+const form = document.querySelector('form');
+form.addEventListener('submit', handleSubmit);
 ```
 
 The FormData API doesn’t directly convert form values to JSON, but we can get there by using the [`entries`](https://developer.mozilla.org/en-US/docs/Web/API/FormData/entries) method and passing its return value to [`Object.fromEntries`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/fromEntries), which returns a plain JavaScript object.
@@ -99,44 +102,46 @@ Fortunately, the workaround for this only requires one more line of JavaScript f
 
 Let's add a field with multiple potential values to our form:
 
-```diff
-  <form>
-    <label for="name">Name</label>
-    <input type="text" name="name" id="name" />
+```html ins={7-17}
+<form>
+  <label for="name">Name</label>
+  <input type="text" name="name" id="name" />
 
-    <label for="email">Email</label>
-    <input type="email" name="email" id="email" />
-+
-+   <p>
-+     <input type="checkbox" name="topics" id="javascript" value="javascript" />
-+     <label for="javascript">JavaScript</label>
-+
-+     <input type="checkbox" name="topics" id="html" value="html" />
-+     <label for="html">HTML</label>
-+
-+     <input type="checkbox" name="topics" id="css" value="css" />
-+     <label for="css">CSS</label>
-+   </p>
+  <label for="email">Email</label>
+  <input type="email" name="email" id="email" />
 
-    <button type="submit">Submit</button>
-  </form>
+  <p>
+    <input type="checkbox" name="topics" id="javascript" value="javascript" />
+    <label for="javascript">JavaScript</label>
+
+    <input type="checkbox" name="topics" id="html" value="html" />
+    <label for="html">HTML</label>
+
+    <input type="checkbox" name="topics" id="css" value="css" />
+    <label for="css">CSS</label>
+  </p>
+
+  <button type="submit">Submit</button>
+</form>
 ```
 
-```diff
-  function handleSubmit(event) {
-    event.preventDefault();
+Getting all the topics requires using the `.getAll()` method:
 
-    const data = new FormData(event.target);
+```js ins={7-8}
+function handleSubmit(event) {
+  event.preventDefault();
 
-    const value = Object.fromEntries(data.entries());
-+
-+   value.topics = data.getAll("topics");
+  const data = new FormData(event.target);
 
-    console.log({ value });
-  }
+  const value = Object.fromEntries(data.entries());
 
-  const form = document.querySelector("form");
-  form.addEventListener("submit", handleSubmit);
+  value.topics = data.getAll("topics");
+
+  console.log({ value });
+}
+
+const form = document.querySelector("form");
+form.addEventListener("submit", handleSubmit);
 ```
 
 Now the object contains an array in `topics` that contains all checked values!
@@ -145,20 +150,11 @@ Now the object contains an array in `topics` that contains all checked values!
 
 For a full example of using the FormData API with lots of different input types, check out [this CodePen](https://codepen.io/jlengstorf/pen/rNMpJNy) (the form values get printed below the form on submission).
 
-<Figure aspectRatio={646 / 1000}>
-  <iframe
-    height="1000"
-    width="646"
-    title="[UPDATED] How to Get Form Field Data as JSON Using Plain JavaScript"
-    src="https://codepen.io/jlengstorf/embed/preview/rNMpJNy?height=1000&theme-id=light&default-tab=result"
-    frameBorder="no"
-    loading="lazy"
-    allowtransparency="true"
-    allowFullScreen={true}
-  >
-    <a href="https://codepen.io/jlengstorf/pen/rNMpJNy">view on CodePen</a>
-  </iframe>
-</Figure>
+<CodePen
+  slug="rNMpJNy"
+  title="[UPDATED] How to Get Form Field Data as JSON Using Plain JavaScript"
+  height={1000}
+/>
 
 <Aside>
 
@@ -182,15 +178,12 @@ So in this walkthrough, we’ll be writing our own script — in plain JavaScrip
 
 At the end of this walkthrough, we’ll have built the form shown in this pen:
 
-<Figure aspectRatio={646 / 1000}>
-  <iframe
-    src="https://codepen.io/jlengstorf/embed/YWJLwz/?height=990&theme-id=dark&default-tab=result&embed-version=2"
-    width="646"
-    height="1000"
-    frameBorder="0"
-    title="Finished code on Codepen."
-  />
-</Figure>
+
+<CodePen
+  slug="YWJLwz"
+  title="Finished code on Codepen."
+  height={990}
+/>
 
 If you fill the form and hit the “Send It!” button, the form data will be output as JSON in the “Form Data” section below.
 
@@ -259,15 +252,12 @@ To avoid the hassle of setting up front-end tooling (we’re using Babel to tran
 
 To start, create a fork of [this pen](http://codepen.io/jlengstorf/pen/GqYZra/), which contains form markup with common inputs, and some styles to make it display nicely.
 
-<Figure aspectRatio={646 / 1000}>
-  <iframe
-    width="646"
-    height="1000"
-    frameBorder="0"
-    title="Starting code on Codepen."
-    src="https://codepen.io/jlengstorf/embed/GqYZra/?height=990&theme-id=dark&default-tab=result&embed-version=2"
-  />
-</Figure>
+
+<CodePen
+  slug="GqYZra"
+  title="Starting code on Codepen."
+  height={1000}
+/>
 
 <Aside>
 
@@ -915,15 +905,11 @@ We can test by filling out our form with dummy data and submitting it.
 
 Use your own fork of the pen, or enter dummy data in the form below:
 
-<Figure aspectRatio={646 / 1000}>
-  <iframe
-    width="646"
-    height="1000"
-    frameBorder="0"
-    title="Work in progress on Codepen."
-    src="https://codepen.io/jlengstorf/embed/YWJLwz/?height=990&theme-id=dark&default-tab=result&embed-version=2"
-  />
-</Figure>
+<CodePen
+  slug="YWJLwz"
+  title="Work in progress on Codepen."
+  height={1000}
+/>
 
 After submitting, we’ll see the info we entered, and it’ll look something like the following:
 

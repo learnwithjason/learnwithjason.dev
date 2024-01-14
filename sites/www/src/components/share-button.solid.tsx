@@ -1,5 +1,5 @@
 import { Component, splitProps } from 'solid-js';
-import { IconShare } from './icon-share.jsx';
+import { IconShare } from './icon-share.solid.tsx';
 
 export const ShareButton: Component<{
 	title: string;

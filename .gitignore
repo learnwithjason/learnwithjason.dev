@@ -46,6 +46,8 @@ public/build
 
 .turbo
 
+.nx
+
 # Local Netlify folder
 .netlify
 

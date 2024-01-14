@@ -116,6 +116,7 @@ https://lwj.dev/*                       https://www.learnwithjason.dev/:splat   
 /set-up-a-new-gatsby-shopify-ecommerce-sites-pt-2                         /set-up-a-new-gatsby-shopify-ecommerce-site
 /building-with-twilio                                                     /send-transactional-emails-with-twilio-sendgrid
 /how-to-write-really-good-docs                                            /episodes
+/tigris-data-remix-custom-search                                          /blog
 
 # hi bots
 /wp-login.php                         https://jason.energy/party 301

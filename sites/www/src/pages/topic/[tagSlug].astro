@@ -1,9 +1,9 @@
 ---
 import type { Episode } from '@lwj/types';
 import { loadEpisodesByTopic, loadAllTags } from '@lwj/sanity-helpers';
-import { PageHeader } from '@lwj/design-system';
+import PageHeader from '../../components/page-header.astro';
 import Layout from '../../layouts/Layout.astro';
-import { EpisodePreview } from '../../components/episode-preview';
+import { EpisodePreview } from '../../components/episode-preview.solid';
 
 type TagStaticPaths = {
 	params: {
@@ -174,4 +174,4 @@ const title = `Learn ${details.label} from Industry Experts`;
 			grid-template-columns: repeat(auto-fit, min(calc(50% - 1.5rem), 600px));
 		}
 	}
-</style>
+</style>../../components/episode-preview.solid

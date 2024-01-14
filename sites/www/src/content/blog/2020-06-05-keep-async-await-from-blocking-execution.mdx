@@ -8,14 +8,13 @@ meta:
   description: >
     When writing asynchronous code, async/await is a powerful tool — but it comes with risks! Learn how to avoid code slowdowns in this tutorial.
 
-tags: [front-end, javascript, performance]
 share:
   title: Keep your async calls fast with Promise.all
   text: Async/await is powerful, but it has some gotchas! Learn how to avoid them in this tutorial.
 ---
 
-import { Aside } from '../../components/aside.tsx';
-import { Figure } from '../../components/figure.tsx';
+import Figure from '../../components/figure.astro';
+import Aside from '../../components/aside.astro';
 
 Promises are extremely powerful for handling asynchronous operations in JavaScript. Async functions make them easier to read and reason about. However, they also introduce some sneaky traps that can lead to slowdowns if we're not careful.
 

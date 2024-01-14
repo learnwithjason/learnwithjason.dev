@@ -4,9 +4,12 @@ export interface Props {
 	mainClass?: string;
 }
 
-import { Header, Footer, TeacherPhoto, Sponsors } from '@lwj/design-system';
+import Sponsors from '../components/sponsors.astro';
+import Header from '../components/header.astro';
+import Footer from '../components/footer.astro';
+import { TeacherPhoto } from '../components/teacher-photo.solid';
 import { Search } from '../components/search';
-import { LiveEyebrow } from '../components/live-eyebrow';
+import { LiveEyebrow } from '../components/live-eyebrow.solid';
 
 import '@lwj/design-system/css/index.css';
 
@@ -14,10 +17,10 @@ let episodes, schedule;
 try {
 	const results = await Promise.all([
 		fetch('https://www.learnwithjason.dev/api/v2/episodes').then((res) =>
-			res.json()
+			res.json(),
 		),
 		fetch('https://www.learnwithjason.dev/api/v2/schedule').then((res) =>
-			res.json()
+			res.json(),
 		),
 	]);
 	episodes = results.at(0);
@@ -305,7 +308,9 @@ const { title, mainClass = '' } = Astro.props;
 		background: var(--color-white);
 		margin: 0 auto;
 		border-radius: 0.5rem;
-		box-shadow: rgb(17 17 26 / 10%) 0 1px 0, rgb(17 17 26 / 10%) 0 8px 24px,
+		box-shadow:
+			rgb(17 17 26 / 10%) 0 1px 0,
+			rgb(17 17 26 / 10%) 0 8px 24px,
 			rgb(17 17 26 / 10%) 0 16px 48px;
 		z-index: 10000;
 	}

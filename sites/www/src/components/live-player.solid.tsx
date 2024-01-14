@@ -6,8 +6,8 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
-import { Aside } from './aside';
-import { LiveTwitchEmbed } from './live-twitch-embed';
+import { Aside } from './aside.solid';
+import { LiveTwitchEmbed } from './live-twitch-embed.solid';
 import {
 	getEpisodeLiveStatus,
 	getEpisodeTimeDetails,
@@ -26,34 +26,33 @@ const EpisodeDetails: ParentComponent<{ isSolo: boolean; isOver?: boolean }> = (
 ) => {
 	return (
 		<Aside>
-			<Show when={!props.isSolo}>
-				{props.children} The recording will be uploaded to YouTube and embedded
-				on this page once it’s ready (usually by Monday). You can bookmark this
-				page and check back later, or{' '}
-				<a href="/newsletter">subscribe to the newsletter</a> to be notified
-				when it’s live.
-			</Show>
+			<p>
+				<Show when={!props.isSolo}>
+					{props.children} The recording will be uploaded to YouTube and
+					embedded on this page once it’s ready (usually by Monday). You can
+					bookmark this page and check back later, or{' '}
+					<a href="/newsletter">subscribe to the newsletter</a> to be notified
+					when it’s live.
+				</Show>
 
-			<Show when={props.isSolo}>
-				<Show
-					when={props.isOver}
-					fallback={() => (
+				<Show when={props.isSolo}>
+					<Show
+						when={props.isOver}
+						fallback={<strong>Can’t catch this session live?</strong>}
+					>
 						<>
-							<strong>Can’t catch this session live?</strong>
+							<strong>Did you miss this session?</strong>
 						</>
-					)}
-				>
-					<>
-						<strong>Did you miss this session?</strong>
-					</>
-				</Show>{' '}
-				Jason goes live every Tuesday, so mark your calendar and catch him next
-				time! These working sessions aren’t uploaded in full, but you can watch{' '}
-				<a href="https://www.youtube.com/playlist?list=PLz8Iz-Fnk_eSBam1bi1NRGK5zTKvmo9Vd">
-					the best moments on YouTube
-				</a>
-				.
-			</Show>
+					</Show>{' '}
+					Jason goes live every Tuesday, so mark your calendar and catch him
+					next time! These working sessions aren’t uploaded in full, but you can
+					watch{' '}
+					<a href="https://www.youtube.com/playlist?list=PLz8Iz-Fnk_eSBam1bi1NRGK5zTKvmo9Vd">
+						the best moments on YouTube
+					</a>
+					.
+				</Show>
+			</p>
 		</Aside>
 	);
 };

@@ -1,8 +1,8 @@
 ---
 import { loadSchedule } from '@lwj/sanity-helpers';
 import Layout from '../layouts/Layout.astro';
-import { PageHeader } from '@lwj/design-system';
-import { EpisodePreview } from '../components/episode-preview';
+import PageHeader from '../components/page-header.astro';
+import { EpisodePreview } from '../components/episode-preview.solid';
 
 const res = await loadSchedule({ cdn: false });
 const schedule = res.data?.result;
@@ -141,4 +141,4 @@ const lede =
 			grid-template-columns: repeat(auto-fit, min(calc(50% - 1.5rem), 600px));
 		}
 	}
-</style>
+</style>../components/episode-preview.solid

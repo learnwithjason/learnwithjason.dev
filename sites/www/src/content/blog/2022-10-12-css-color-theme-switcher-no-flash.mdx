@@ -8,14 +8,13 @@ meta:
   description: >
     Many JavaScript and CSS theme switchers have a momentary flash of the wrong theme. With edge functions, we can make that a thing of the past.
 
-tags: []
 share:
   title: Buid a CSS Theme Switcher With No Flash of the Wrong Theme
   text: Many JavaScript and CSS theme switchers have a momentary flash of the wrong theme. With edge functions, we can make that a thing of the past.
 ---
 
-import { Aside } from '../../components/aside.tsx';
-import { Image } from '../../components/image.tsx';
+import Figure from '../../components/figure.astro';
+import Aside from '../../components/aside.astro';
 
 Not too long ago, the introduction of React Context led to a wave of color theme switchers. For a brief, glorious moment, color theme switchers dethroned TODO apps as the default tutorial.
 
@@ -74,10 +73,9 @@ ntl dev
 
 This will start the site at `localhost:8888`:
 
-<Image
-  src="/images/css-theme-switcher-01.png"
-  alt="The CSS theme switcher demo running locally"
-/>
+<Figure>
+  ![The CSS theme switcher demo running locally](/images/css-theme-switcher-01.png)
+</Figure>
 
 There is a theme selection dropdown in the sidebar. Right now, choosing a new theme doesn't change anything — it just adds a `?theme=<selected_theme>` to the URL.
 
@@ -151,10 +149,9 @@ By targeting the `html` element using the `data-theme` attribute, we're able to 
 
 To see this in action, open the inspector in your browser and edit the attribute to `data-theme="pink"`. This will cause the site's theme to change.
 
-<Image
-  src="/images/css-theme-switcher-02.png"
-  alt="CSS theme switcher showing the pink theme"
-/>
+<Figure>
+  ![CSS theme switcher showing the pink theme](/images/css-theme-switcher-02.png)
+</Figure>
 
 For our color switcher to work, we need to handle form submissions from the theme chooser, store that value somewhere, then use the value to update the `data-theme` attribute.
 
@@ -195,10 +192,9 @@ Open `netlify.toml` at the root of your project and add the following:
 
 Stop the server (`ctrl + C` in your terminal), then restart it using `ntl dev` — `localhost:8888` is replaced by the response from our edge function.
 
-<Image
-  src="/images/css-theme-switcher-03.png"
-  alt="output of the edge function taking over the local dev site"
-/>
+<Figure>
+  ![output of the edge function taking over the local dev site](/images/css-theme-switcher-03.png)
+</Figure>
 
 ### Return the original response through the edge function
 

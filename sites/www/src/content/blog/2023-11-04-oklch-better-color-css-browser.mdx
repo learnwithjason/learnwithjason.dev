@@ -16,9 +16,8 @@ share:
     Why I’ll (probably) never use hex colors in CSS again, and what I’m doing instead. With visual examples!
 ---
 
-import { Figure } from '../../components/figure.tsx';
-import { Aside } from '../../components/aside.tsx';
-import { CodePen } from '../../components/codepen.tsx';
+import Figure from '../../components/figure.astro';
+import CodePen from '../../components/codepen.astro';
 
 Something that has always bugged me about CSS is the dullness of most gradients.
 
@@ -87,13 +86,11 @@ The long version is far better explained in [Lea Verou’s post on LCH in CSS](h
 
 I threw together a quick CodePen showing how a gradient looks in all the different color spaces. Edit this to change out the colors and see how each color space handles it.
 
-<Figure>
-  <CodePen
-    slug="ZEwBdVq"
-    title="Visualizing all CSS color-interpolation-methods in gradients"
-    height={600}
-  />
-</Figure>
+<CodePen
+  slug="ZEwBdVq"
+  title="Visualizing all CSS color-interpolation-methods in gradients"
+  height={600}
+/>
 
 I’ll let you draw your own conclusions since this all comes down to preference, but for me, OKLCH will be my new default choice for colors in the browser.
 

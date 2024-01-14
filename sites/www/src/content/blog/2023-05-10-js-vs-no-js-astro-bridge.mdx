@@ -8,27 +8,16 @@ meta:
   description: >
     There’s a heated debate over JS vs. no-JS. Astro rejects it as a false choice and says, “Let’s just build great websites!”
 
-tags: []
 share:
   image: https://res.cloudinary.com/jlengstorf/image/upload/f_auto,q_auto/v1683734135/lwj/blog/astro-why-not-both.jpg
   title: JS vs. No-JS for Websites & How Astro Bridges the Gap
   text: There’s a heated debate over JS vs. no-JS. Astro rejects it as a false choice and says, “Let’s just build great websites!”
 ---
 
-import { Figure } from '../../components/figure.tsx';
-import { Aside } from '../../components/aside.tsx';
+import YouTube from '../../components/youtube.astro';
+import Aside from '../../components/aside.astro';
 
-<Figure aspectRatio={9 / 16}>
-  <iframe
-    width="560"
-    height="315"
-    src="https://www.youtube-nocookie.com/embed/28TEWzieygU"
-    title="YouTube video player"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    allowfullscreen
-  ></iframe>
-</Figure>
+<YouTube id="28TEWzieygU" />
 
 ## Why am I so excited about Astro?
 

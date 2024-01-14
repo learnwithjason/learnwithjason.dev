@@ -16,9 +16,9 @@ share:
     Landing large customers for your SaaS app means adding enterprise-level features. Learn how to add audit logging & log streams to a Node/Express app.
 ---
 
-import { YouTube } from '../../components/youtube.jsx';
-import { Figure } from '../../components/figure.jsx';
-import { Aside } from '../../components/aside.jsx';
+import YouTube from '../../components/youtube.astro';
+import Figure from '../../components/figure.astro';
+import Aside from '../../components/aside.astro';
 
 In this tutorial, we're going to learn how to add audit logging and log streams to an existing Node app built with Express using WorkOS.
 
@@ -226,7 +226,7 @@ Now that we've got this set up, let's add it to the app.
 
 In `src/index.js`, add the following code:
 
-```diff
+```diff lang="js"
 	const { join } = require('node:path');
 	const express = require('express');
 	const session = require('express-session');
@@ -278,7 +278,7 @@ Because we want to attach audit logging events to both the user _and_ the user's
 
 Inside `src/routes/auth.js`, find the `req.get('/callback', ...)` route and make the following changes:
 
-```diff
+```diff lang="js"
 	router.get('/callback', async (req, res) => {
 		const { code } = req.query;
 
@@ -331,7 +331,7 @@ In any route that should be logged, add a new call to the `req.log` method.
 
 In `src/routes/api.js`, update the `/delete-post/:post_id` route:
 
-```diff
+```diff lang="js"
 	router.get('/invite/:id', async (req, res) => {
 		// TODO implement invite system
 		console.log(`Invited user: ${req.params.id}`);
@@ -363,7 +363,7 @@ In `src/routes/api.js`, update the `/delete-post/:post_id` route:
 
 In `src/routes/auth.js`, update the `/callback` and `/logout` routes:
 
-```diff
+```diff lang="js"
 	router.get('/callback', async (req, res) => {
 		const { code } = req.query;
 
@@ -404,7 +404,7 @@ In `src/routes/auth.js`, update the `/callback` and `/logout` routes:
 
 And finally, in `src/routes/dashboard.js`, update the `/new` route for `POST` requests:
 
-```diff
+```diff lang="js"
 	router.post('/new', async (req, res) => {
 		const { title, content } = req.body;
 		const user_id = req.session.user.id;

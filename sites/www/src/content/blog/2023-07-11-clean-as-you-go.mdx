@@ -8,27 +8,16 @@ meta:
   description: >
     A story about a habit I picked up working in restaurants, and how the lesson I learned still helps me write better software to this day.
 
-tags: []
 share:
   image: https://res.cloudinary.com/jlengstorf/image/upload/f_auto,q_auto/lwj/blog/clean-as-you-go.jpg
   title: Clean as you go (a life hack)
   text: A story about a habit I picked up working in restaurants, and how the lesson I learned still helps me write better software to this day.
 ---
 
-import { Figure } from '../../components/figure.tsx';
-import { Aside } from '../../components/aside.tsx';
+import YouTube from '../../components/youtube.astro';
+import Aside from '../../components/aside.astro';
 
-<Figure aspectRatio={9 / 16}>
-  <iframe
-    width="560"
-    height="315"
-    src="https://www.youtube-nocookie.com/embed/a7_kghlRfeI"
-    title="YouTube video player"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    allowfullscreen
-  ></iframe>
-</Figure>
+<YouTube id="a7_kghlRfeI" />
 
 I learned to cook in a restaurant. I was a prep cook.
 
