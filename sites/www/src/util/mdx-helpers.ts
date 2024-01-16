@@ -1,18 +1,18 @@
 /**
- * I hate that there's not a solution for this. Sucks that RSS gets pushed out
- * to the fringes.
+ * Have you ever found yourself doing something that repulses you to the very
+ * core of your being? Something so gross that you’re worried if other people
+ * knew about it they’d never look at you the same way again?
+ *
+ * Yeah, this file is one of those things.
  */
 
-import * as fs from 'node:fs';
-import { basename, dirname, resolve } from 'node:path';
 import type { CollectionEntry } from 'astro:content';
-import * as runtime from 'react/jsx-runtime';
+import type { Plugin } from 'esbuild';
+import { basename, dirname, resolve } from 'node:path';
 import { renderToString } from 'react-dom/server';
-import { evaluate } from '@mdx-js/mdx';
 import { createElement } from 'react';
 import { getMDXComponent } from 'mdx-bundler/client';
 import { bundleMDX } from 'mdx-bundler';
-import type { Plugin } from 'esbuild';
 
 const loadAstroAsJsx = {
 	name: 'loadAstroAsJsx',
@@ -31,16 +31,8 @@ const loadAstroAsJsx = {
 					break;
 
 				case 'figure.astro':
-					contents = `
-            export default function Figure({ children }) {
-              if (children.props.children?.props.src) {
-                const { src, alt } = children.props.children.props;
-                return <img src={src} alt={alt} />
-              }
-
-              return <p>(Something is here in the original article that I couldn’t get to show up in RSS. Check my website to see it.)</p>;
-            }
-          `;
+					contents =
+						'export default function Figure({ children }) { return <figure>{children}</figure>; }';
 					break;
 
 				case 'youtube.astro':

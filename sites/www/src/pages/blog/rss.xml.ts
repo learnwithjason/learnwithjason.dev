@@ -2,10 +2,7 @@ import rss from '@astrojs/rss';
 import type { AstroConfig } from 'astro';
 import { getCollection } from 'astro:content';
 import sanitizeHtml from 'sanitize-html';
-import MarkdownIt from 'markdown-it';
 import { getHtmlFromContentCollectionEntry } from '../../util/mdx-helpers';
-
-const parser = new MarkdownIt();
 
 export async function GET(context: AstroConfig) {
 	const blog = await getCollection('blog');
@@ -36,12 +33,23 @@ export async function GET(context: AstroConfig) {
 					new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf()
 			)
 			.map((post) => {
+				const img = post.data.share?.image ?? false;
+
+				let html = '';
+				if (img) {
+					html += `<p><img src="${img}" alt="${post.data.meta.title}" /></p>`;
+				}
+
+				html += post.html;
+
 				return {
 					title: post.data.meta.title,
 					pubDate: post.data.date,
 					description: post.data.meta.description,
 					link: `/blog/${post.slug}`,
-					content: sanitizeHtml(post.html),
+					content: sanitizeHtml(html, {
+						allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img']),
+					}),
 				};
 			}),
 	});
