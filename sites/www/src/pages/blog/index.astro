@@ -25,7 +25,7 @@ const blogs = await getCollection('blog', ({ data }) => {
 					.map((blog) => {
 						const url = `/blog/${blog.slug}`;
 						const img =
-							blog.data.share.image?.replace(
+							blog.data.share?.image?.replace(
 								'f_auto',
 								'f_auto,w_600,ar_16:9,c_fill',
 							) ?? false;

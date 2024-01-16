@@ -1,15 +1,16 @@
 ---
-import getShareImage from '@jlengstorf/get-share-image';
+import { generateSocialImage } from '@jlengstorf/get-share-image';
 
-const { title, description, shareTitle, shareDescription, shareImage, url } = Astro.props;
+const { title, description, shareTitle, shareDescription, shareImage, url } =
+	Astro.props;
 const seoTitle = shareTitle ?? title;
 const seoDescription = shareDescription ?? description;
 
 let seoImage;
 if (shareImage) {
-  seoImage = shareImage;
+	seoImage = shareImage;
 } else {
-  seoImage = getShareImage({
+	seoImage = generateSocialImage({
 		title: seoTitle,
 		tagline: seoDescription,
 		cloudName: 'jlengstorf',
@@ -27,6 +28,7 @@ if (shareImage) {
 	});
 }
 ---
+
 <meta name="twitter:title" content={seoTitle} />
 
 <meta name="description" content={description} />
@@ -43,4 +45,3 @@ if (shareImage) {
 <meta name="twitter:dnt" content="on" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:creator" content="@LWJShow" />
-

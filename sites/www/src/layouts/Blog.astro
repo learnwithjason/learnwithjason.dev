@@ -6,13 +6,18 @@ import Layout from './Layout.astro';
 const { frontmatter, headings } = Astro.props;
 const url = Astro.url.toString();
 
-// TODO figure out max length for share image text and add an ellipsis to avoid overflow
+const { title, description } = frontmatter.meta;
 
-const shareImage =
-	frontmatter.share.image ??
+const og: { title: string; description: string; image?: string } = {
+	title: frontmatter.share?.title ?? title,
+	description: frontmatter.share?.text ?? description,
+};
+
+og.image =
+	frontmatter.share?.image ??
 	generateSocialImage({
-		title: frontmatter.share.title,
-		tagline: frontmatter.share.text,
+		title: og.title,
+		tagline: og.description,
 		cloudName: 'jlengstorf',
 		imagePublicID: 'lwj/post-share-2022',
 		titleColor: 'ffffff',
@@ -26,21 +31,23 @@ const shareImage =
 		taglineTopOffset: 375,
 		textAreaWidth: 813,
 	});
+
+// TODO figure out max length for share image text and add an ellipsis to avoid overflow
 ---
 
-<Layout title={frontmatter.meta.title} mainClass="post-container">
+<Layout title={title} mainClass="post-container">
 	<Fragment slot="head-tags">
-		<meta name="twitter:title" content={frontmatter.share.title} />
+		<meta name="twitter:title" content={og.title} />
 
-		<meta name="description" content={frontmatter.share.text} />
-		<meta property="og:description" content={frontmatter.share.text} />
-		<meta name="twitter:description" content={frontmatter.share.text} />
+		<meta name="description" content={og.description} />
+		<meta property="og:description" content={og.description} />
+		<meta name="twitter:description" content={og.description} />
 
 		<meta property="og:url" content={url} />
 
-		<meta name="image" content={shareImage} />
-		<meta property="og:image" content={shareImage} />
-		<meta name="twitter:image" content={shareImage} />
+		<meta name="image" content={og.image} />
+		<meta property="og:image" content={og.image} />
+		<meta name="twitter:image" content={og.image} />
 
 		<meta property="og:type" content="article" />
 		<meta name="twitter:dnt" content="on" />
@@ -51,8 +58,8 @@ const shareImage =
 	</Fragment>
 	<article class="post">
 		<header>
-			<h1>{frontmatter.meta.title}</h1>
-			<p>{frontmatter.meta.description}</p>
+			<h1>{title}</h1>
+			<p>{description}</p>
 		</header>
 		<aside class="table-of-contents" data-section="table-of-contents">
 			<div class="toc-sticky-container">
@@ -62,7 +69,7 @@ const shareImage =
 				>
 					Table of Contents
 				</h2>
-				<ol>
+				<ol class="gradient-underline">
 					{
 						headings.map(
 							(heading: { depth: number; slug: string; text: string }) => {
@@ -79,6 +86,10 @@ const shareImage =
 						)
 					}
 				</ol>
+				<p class="sidebar-links">
+					<a href="/newsletter">get updates</a>
+					<a href="/blog/rss.xml">blog RSS</a>
+				</p>
 			</div>
 		</aside>
 
@@ -222,6 +233,25 @@ const shareImage =
 		background: var(--color-pink-faded);
 		border-color: var(--color-pink-text);
 	}
+
+	.sidebar-links {
+		color: var(--color-pink-text);
+		display: flex;
+		font-size: 0.625rem;
+		gap: 1rem;
+		letter-spacing: 0.2em;
+		text-transform: uppercase;
+
+		& a {
+			color: inherit;
+			margin-block: 0;
+
+			&:hover,
+			&:focus {
+				text-decoration: underline;
+			}
+		}
+	}
 </style>
 <style is:global>
 	.post-content h2 {
@@ -242,10 +272,6 @@ const shareImage =
 
 	.post-content a strong {
 		color: inherit;
-	}
-
-	.post-figure {
-		margin: 2rem max(-5vw, -2rem);
 	}
 
 	.post-content pre {
@@ -269,32 +295,44 @@ const shareImage =
 			monospace;
 	}
 
-	.post-figure > * {
-		display: block;
-	}
+	.post-figure {
+		margin: 2rem max(-5vw, -2rem);
 
-	.post-figure img {
-		border-radius: 0.25rem 0.25rem 0 0;
-		display: block;
-		width: 100%;
-	}
+		& img {
+			border-radius: 0.25rem 0.25rem 0 0;
+			display: block;
+			width: 100%;
+		}
 
-	.post-figure:not(:has(figcaption)) img {
-		border-radius: 0.25rem;
-	}
+		&:not(:has(figcaption)) img {
+			border-radius: 0.25rem;
+		}
 
-	.post-figure p {
-		margin: 0;
-	}
+		& > * {
+			display: block;
+		}
 
-	.post-figure figcaption {
-		background: var(--color-black-faded-alpha);
-		border-radius: 0 0 0.25rem 0.25rem;
-		color: var(--color-white);
-		font-size: 0.75rem;
-		font-style: italic;
-		margin: 0;
-		padding: 0.375rem min(5vw, 2rem);
+		& p {
+			margin: 0;
+		}
+
+		& figcaption {
+			background: var(--color-black-faded-alpha);
+			border-radius: 0 0 0.25rem 0.25rem;
+			color: var(--color-white);
+			font-size: 0.75rem;
+			font-style: italic;
+			margin: 0;
+			padding: 0.375rem min(5vw, 2rem);
+
+			& a {
+				color: inherit;
+			}
+		}
+		& blockquote + figcaption {
+			background: transparent;
+			color: var(--color-text-muted);
+		}
 	}
 
 	.post-content :not(pre) > code {
@@ -309,5 +347,22 @@ const shareImage =
 
 	.post-content .post-aside :not(pre) code {
 		font-size: 0.875rem;
+	}
+
+	blockquote {
+		border-inline-start: 0.5rem var(--color-gray-lightest) solid;
+		color: var(--color-text-emphasized);
+		font-size: 1.125rem;
+		font-style: italic;
+		font-weight: 400;
+		margin-block: 0;
+		margin-inline-start: 0;
+		padding-inline-start: 1.5rem;
+		text-indent: -0.45rem; /* a lil magic number action */
+
+		@supports (hanging-punctuation: first;) {
+			hanging-punctuation: first;
+			text-indent: 0;
+		}
 	}
 </style>
