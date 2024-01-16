@@ -24,7 +24,7 @@ Something that has always bugged me about CSS is the dullness of most gradients.
 You’d have this beautiful idea for your design, set up the gradient in your CSS, and when it rendered in the browser it was just... _blech_.
 
 <Figure caption="<tt>linear-gradient(to right, #de72c6, #2dcde4)</tt>">
-  <div style="width: 100%; aspect-ratio: 8 / 1; background: linear-gradient(to right, #de72c6, #2dcde4)"></div>
+  <div style={{ width: '100%', aspectRatio: '8 / 1', background: 'linear-gradient(to right, #de72c6, #2dcde4)' }}></div>
 </Figure>
 
 The middle gets all muddy and the whole thing just feels kinda flat and lifeless.
@@ -32,7 +32,7 @@ The middle gets all muddy and the whole thing just feels kinda flat and lifeless
 But watch what happens when you do the _exact same gradient_, but in the OKLCH color space, which I learned was available to use from [Chris Coyier’s post crowning OKLCH as the “winner” for color in CSS](https://chriscoyier.net/2023/01/22/ok-oklch-%f0%9f%91%91/):
 
 <Figure caption="<tt>linear-gradient(in oklch to right, #de72c6, #2dcde4)</tt>">
-  <div style="width: 100%; aspect-ratio: 8 / 1; background: linear-gradient(in oklch to right, #de72c6, #2dcde4)"></div>
+  <div style={{ width: '100%', aspectRatio: '8 / 1', background: 'linear-gradient(in oklch to right, #de72c6, #2dcde4)' }}></div>
 </Figure>
 
 Now _that_ looks great!

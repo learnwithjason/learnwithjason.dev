@@ -1,5 +1,5 @@
 ---
-import getShareImage from '@jlengstorf/get-share-image';
+import { generateSocialImage } from '@jlengstorf/get-share-image';
 import { OptInForm } from '../components/opt-in-form.solid';
 import Layout from './Layout.astro';
 
@@ -10,7 +10,7 @@ const url = Astro.url.toString();
 
 const shareImage =
 	frontmatter.share.image ??
-	getShareImage({
+	generateSocialImage({
 		title: frontmatter.share.title,
 		tagline: frontmatter.share.text,
 		cloudName: 'jlengstorf',
@@ -75,7 +75,7 @@ const shareImage =
 										<a href={`#${heading.slug}`}>{heading.text}</a>
 									</li>
 								);
-							}
+							},
 						)
 					}
 				</ol>
@@ -91,13 +91,13 @@ const shareImage =
 <script>
 	function setActiveHeading() {
 		const headingElements = document.querySelectorAll(
-			'[data-section=post-content] h2'
+			'[data-section=post-content] h2',
 		);
 
 		const observerCallback: IntersectionObserverCallback = ([entry]) => {
 			const activeHeading = entry.target;
 			const links = Array.from(
-				document.querySelectorAll('[data-section=table-of-contents] a')
+				document.querySelectorAll('[data-section=table-of-contents] a'),
 			);
 
 			links.forEach((link) => {

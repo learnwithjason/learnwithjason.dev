@@ -2,9 +2,24 @@ import rss from '@astrojs/rss';
 import type { AstroConfig } from 'astro';
 import { getCollection } from 'astro:content';
 import sanitizeHtml from 'sanitize-html';
+import MarkdownIt from 'markdown-it';
+import { getHtmlFromContentCollectionEntry } from '../../util/mdx-helpers';
 
-export async function get(context: AstroConfig) {
+const parser = new MarkdownIt();
+
+export async function GET(context: AstroConfig) {
 	const blog = await getCollection('blog');
+
+	const mdxPosts = await Promise.all(
+		blog.map(async (post) => {
+			const html = await getHtmlFromContentCollectionEntry(post);
+
+			return {
+				...post,
+				html,
+			};
+		})
+	);
 
 	if (!context.site) {
 		throw new Error('Setting a `site` in astro.config.mjs is required for RSS');
@@ -15,7 +30,7 @@ export async function get(context: AstroConfig) {
 		description:
 			'Articles and tutorials about web dev, career growth, and more.',
 		site: context.site,
-		items: blog
+		items: mdxPosts
 			.sort(
 				(a, b) =>
 					new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf()
@@ -26,9 +41,7 @@ export async function get(context: AstroConfig) {
 					pubDate: post.data.date,
 					description: post.data.meta.description,
 					link: `/blog/${post.slug}`,
-					content: sanitizeHtml(
-						`<p>${post.data.meta.description}</p><p><a href="${context.site}/blog/${post.slug}/">Read the full post on lwj.dev</a>`
-					),
+					content: sanitizeHtml(post.html),
 				};
 			}),
 	});

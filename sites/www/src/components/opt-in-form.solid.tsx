@@ -1,4 +1,4 @@
-import { Component, JSXElement, mergeProps, Show } from 'solid-js';
+import { type Component, type JSXElement, mergeProps, Show } from 'solid-js';
 import styles from './opt-in-form.module.css';
 
 export const OptInForm: Component<{

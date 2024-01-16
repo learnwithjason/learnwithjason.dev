@@ -2,7 +2,7 @@ import rss from '@astrojs/rss';
 import type { AstroConfig } from 'astro';
 import { loadAllEpisodes } from '@lwj/sanity-helpers';
 
-export async function get(context: AstroConfig) {
+export async function GET(context: AstroConfig) {
 	const res = await loadAllEpisodes({ cdn: true });
 	const episodes = res.data?.result ?? [];
 

@@ -1,15 +1,15 @@
 ---
 export interface Props {
-	style?: 'heart' | 'default';
+	variant?: 'heart' | 'default';
 }
 
-const { style = 'default' } = Astro.props;
+const { variant = 'default' } = Astro.props;
 ---
 
 <aside class="aside">
-	<div class="icon" data-style={style}>
+	<div class="icon" data-variant={variant}>
 		{
-			style === 'heart' ? (
+			variant === 'heart' ? (
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					fill="none"
@@ -134,7 +134,7 @@ const { style = 'default' } = Astro.props;
 		padding: 0;
 	}
 
-	.icon[data-style='default'] {
+	.icon[data-variant='default'] {
 		margin-top: -0.375rem;
 	}
 
