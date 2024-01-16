@@ -220,6 +220,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "jr-cologne",
+      "name": "JR Cologne",
+      "avatar_url": "https://avatars.githubusercontent.com/u/18489354?v=4",
+      "profile": "https://jr-cologne.de/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
