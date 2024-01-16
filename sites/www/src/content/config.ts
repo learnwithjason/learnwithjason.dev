@@ -4,17 +4,18 @@ const blog = defineCollection({
 	type: 'content',
 	schema: z.object({
 		date: z.date(),
-		updated: z.date(),
+		updated: z.date().optional(),
 		meta: z.object({
 			title: z.string(),
 			description: z.string(),
 		}),
-		share: z.object({
-			title: z.string(),
-			image: z.string().url().optional(),
-			text: z.string(),
-		}),
-		tags: z.array(z.string()).optional(),
+		share: z
+			.object({
+				title: z.string().optional(),
+				image: z.string().url().optional(),
+				text: z.string().optional(),
+			})
+			.optional(),
 	}),
 });
 
