@@ -6,7 +6,7 @@ import Layout from './Layout.astro';
 const { frontmatter, headings } = Astro.props;
 const url = Astro.url.toString();
 
-const { title, description } = frontmatter.meta;
+const { title, description } = frontmatter;
 
 const og: { title: string; description: string; image?: string } = {
 	title: frontmatter.share?.title ?? title,

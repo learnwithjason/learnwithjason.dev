@@ -30,24 +30,28 @@ export async function GET(context: AstroConfig) {
 		items: mdxPosts
 			.sort(
 				(a, b) =>
-					new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf()
+					new Date(b.data.pubDate).valueOf() -
+					new Date(a.data.pubDate).valueOf()
 			)
 			.map((post) => {
 				const img = post.data.share?.image ?? false;
 
 				let html = '';
+
+				// if a sharing image was set, put it at the top of the post
 				if (img) {
-					html += `<p><img src="${img}" alt="${post.data.meta.title}" /></p>`;
+					html += `<p><img src="${img}" alt="${post.data.title}" /></p>`;
 				}
 
 				html += post.html;
 
 				return {
-					title: post.data.meta.title,
-					pubDate: post.data.date,
-					description: post.data.meta.description,
+					title: post.data.title,
+					pubDate: post.data.pubDate,
+					description: post.data.description,
 					link: `/blog/${post.slug}`,
 					content: sanitizeHtml(html, {
+						// images are stripped by default
 						allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img']),
 					}),
 				};

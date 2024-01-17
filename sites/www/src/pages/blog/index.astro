@@ -5,7 +5,7 @@ import IconArrow from '../../components/icon-arrow.astro';
 import Layout from '../../layouts/Layout.astro';
 
 const blogs = await getCollection('blog', ({ data }) => {
-	return import.meta.env.DEV === true || new Date(data.date) < new Date();
+	return import.meta.env.DEV === true || new Date(data.pubDate) < new Date();
 });
 ---
 
@@ -20,7 +20,8 @@ const blogs = await getCollection('blog', ({ data }) => {
 				blogs
 					.sort(
 						(a, b) =>
-							new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf(),
+							new Date(b.data.pubDate).valueOf() -
+							new Date(a.data.pubDate).valueOf(),
 					)
 					.map((blog) => {
 						const url = `/blog/${blog.slug}`;
@@ -36,7 +37,7 @@ const blogs = await getCollection('blog', ({ data }) => {
 										<a href={url}>
 											<img
 												src={img}
-												alt={blog.data.share.title}
+												alt={blog.data.share?.title ?? blog.data.title}
 												width="200"
 												height="112"
 												loading="lazy"
@@ -46,9 +47,9 @@ const blogs = await getCollection('blog', ({ data }) => {
 								) : null}
 								<div class="details">
 									<h2>
-										<a href={url}>{blog.data.meta.title}</a>
+										<a href={url}>{blog.data.title}</a>
 									</h2>
-									<p>{blog.data.meta.description}</p>
+									<p>{blog.data.description}</p>
 									<a href={url} class="read-more">
 										read this post <IconArrow />
 									</a>

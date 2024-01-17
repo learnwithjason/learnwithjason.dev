@@ -187,8 +187,8 @@ const datetime = dayjs(episode.date).tz(tz);
 
       <div>
         <h2>Full Transcript</h2>
-        <details>
-          <summary>Click to expand the full transcript</summary>
+        <details open>
+          <summary>Click to toggle the visibility of the transcript</summary>
 
           <div set:html={episode.transcript} />
         </details>
@@ -315,5 +315,9 @@ const datetime = dayjs(episode.date).tz(tz);
     height: auto;
     width: 100%;
   }
+
+  .opt-in {
+    position: sticky;
+    top: 1rem;
+  }
 </style>
-../components/episode-preview.solid

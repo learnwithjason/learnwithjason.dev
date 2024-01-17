@@ -26,6 +26,7 @@
 		"@types/react-dom": "^18.0.9",
 		"algoliasearch": "^4.14.2",
 		"astro": "^4.1.2",
+		"astro-carton": "^0.1.0",
 		"dayjs": "^1.11.7",
 		"esbuild": "^0.19.11",
 		"gsap": "^3.11.4",
