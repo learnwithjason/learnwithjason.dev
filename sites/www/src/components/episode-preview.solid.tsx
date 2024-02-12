@@ -49,7 +49,7 @@ export const EpisodePreview: Component<{
 			</div>
 			<div class={styles.details}>
 				<p class="gradient-subheading">
-					{dayjs(props.episode.date).tz(tz()).format('dddd, MMMM D @ h:mm A z')}
+					{dayjs(props.episode.date).tz(tz()).format('dddd, MMMM D YYYY @ h:mm A z')}
 				</p>
 				<h3>
 					{!props.hideLinks ? (
