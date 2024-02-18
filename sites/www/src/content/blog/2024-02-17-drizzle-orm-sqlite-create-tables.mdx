@@ -137,30 +137,20 @@ Right now, the schema is defined but the tables haven't been created in the SQLi
 
 This is where I got stuck. I tried to run my app, but I kept getting a `SqliteError: no such table: users` error. I couldn't find any reference to how to actually create the database tables in the Drizzle docs.
 
-After searching around, I figured out one way to get the SQLite tables created using Drizzle. There are two steps:
+After searching around, I figured out two ways to get the SQLite tables created using Drizzle:
 
-1. Generate a migration (the SQL query to create the tables as defined in your schema)
-2. Push the changes (actually run the SQL query)
+1. [Generate a migration](https://orm.drizzle.team/kit-docs/commands#generate-migrations) (the SQL query to create the tables as defined in your schema), which can be applied manually, using Drizzle's `migrate` helper, or with third-party tools — this is a production-friendly approach
+2. Push the schema changes directly, which is exactly what I was looking for to set up my local database and is what I'll cover in this tutorial.
 
-Both steps can be done using Drizzle's CLI helper, [Drizzle Kit](https://orm.drizzle.team/kit-docs/overview).
-
-### Generate a SQLite migration using Drizzle Kit
-
-```sh
-npm run db:generate
-```
-
-Under the hood, this runs `drizzle-kit generate:sqlite` ([docs](https://orm.drizzle.team/kit-docs/commands#generate-migrations)), which reads the schema and creates a migration file. A migration file is a set of SQL queries that update the database to match the current schema from its previous state. The first migration creates the tables in the first place, since the previous state was _nothing_.
+Both generating migrations and pushing schemas can be done using Drizzle's CLI helper, [Drizzle Kit](https://orm.drizzle.team/kit-docs/overview).
 
 ### Push the SQLite database changes using Drizzle Kit
 
-Generating the migration doesn't actually change the database — it only creates the queries and stores them in a file. To update the database, we actually have to _run_ the migration.
+For prototyping, local dev, or initializing a new database, the [`push` command](https://orm.drizzle.team/kit-docs/commands#prototype--push) will use the defined schema to update the database — which, in our case, will create the missing tables.
 
 ```sh
-npm run db:push
+npx drizzle-kit push:sqlite
 ```
-
-Under the hood, this runs `drizzle-kit push:sqlite` ([docs](https://orm.drizzle.team/kit-docs/commands#prototype--push)), which executes any migrations it finds to bring the database up to the correct current state. In this case, it will create the tables defined in `db/schema.ts` using the SQL queries that were generated in the previous step.
 
 ## View the SQLite database in Drizzle Studio
 
@@ -265,3 +255,7 @@ This creates both a user and an idea, then does a [partial select](https://orm.d
 If you're like me and this is your first time using Drizzle and SQLite: congratulations! You just created and interacted with a database in a Node and TypeScript project, and you're ready to build your data-powered app.
 
 Happy building!
+
+<Aside>
+  **NOTE:** A previous version of this article incorrectly stated that it was necessary to use both generate and push together. The [Drizzle team clarified how generate and push work](https://twitter.com/DrizzleORM/status/1759037941182042527) and this post has been updated accordingly.
+</Aside>
