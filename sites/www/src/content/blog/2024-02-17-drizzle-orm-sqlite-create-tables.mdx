@@ -33,9 +33,9 @@ npm i -D @types/better-sqlite3 @types/node drizzle-kit ts-node typescript
 
 ### Update `package.json`
 
-In `package.json`, make the highlighted changes. The commands prefixed with `db:` let us create and update the database. More on how they work later in this tutorial.
+In `package.json`, make the highlighted changes. More on the command prefixed with `db:`  later in this tutorial.
 
-```json title="package.json" mark={2-5,11-15}
+```json title="package.json" mark={2-5,11-13}
 {
 	"engines": {
 		"node": ">=20.6.0"
@@ -46,8 +46,6 @@ In `package.json`, make the highlighted changes. The commands prefixed with `db:
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"db:generate": "drizzle-kit generate:sqlite",
-		"db:push": "drizzle-kit push:sqlite",
 		"db:studio": "drizzle-kit studio",
 		"build": "npx tsc",
 		"dev": "node --env-file=.env --watch --loader ts-node/esm index.ts",
