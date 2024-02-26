@@ -17,7 +17,7 @@
   <br />
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-25-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-26-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 </p>
@@ -131,6 +131,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://egghead.io/q/resources-by-thomas-greco"><img src="https://avatars.githubusercontent.com/u/6646552?v=4?s=100" width="100px;" alt="Thomas Greco"/><br /><sub><b>Thomas Greco</b></sub></a><br /><a href="#content-tgrecojs" title="Content">🖋</a></td>
       <td align="center" valign="top" width="14.28%"><a href="http://horacioh.com"><img src="https://avatars.githubusercontent.com/u/725120?v=4?s=100" width="100px;" alt="Horacio Herrera"/><br /><sub><b>Horacio Herrera</b></sub></a><br /><a href="https://github.com/learnwithjason/learnwithjason.dev/commits?author=horacioh" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://jr-cologne.de/"><img src="https://avatars.githubusercontent.com/u/18489354?v=4?s=100" width="100px;" alt="JR Cologne"/><br /><sub><b>JR Cologne</b></sub></a><br /><a href="https://github.com/learnwithjason/learnwithjason.dev/commits?author=jr-cologne" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://www.adamcowley.co.uk"><img src="https://avatars.githubusercontent.com/u/1372869?v=4?s=100" width="100px;" alt="Adam Cowley"/><br /><sub><b>Adam Cowley</b></sub></a><br /><a href="https://github.com/learnwithjason/learnwithjason.dev/commits?author=adam-cowley" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
