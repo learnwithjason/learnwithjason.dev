@@ -8,6 +8,7 @@ Sentry.init({
 		Sentry.feedbackIntegration({
 			// Additional SDK configuration goes in here, for example:
 			colorScheme: 'system',
+			formTitle: 'Spotted a bug? Let us know!',
 		}),
 	],
 });
