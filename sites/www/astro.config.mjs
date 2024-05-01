@@ -16,7 +16,7 @@ export default defineConfig({
 		}),
 		mdx(),
 		react({
-			include: ['**/components/search/*'],
+			include: ['**/*.react.tsx', '**/components/search/*'],
 		}),
 		solid({
 			include: ['**/*.solid.tsx', '**/@lwj/design-system/*'],

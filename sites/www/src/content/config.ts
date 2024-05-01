@@ -14,6 +14,7 @@ const blog = defineCollection({
 				text: z.string().optional(),
 			})
 			.optional(),
+		showOptin: z.boolean().default(true).optional(),
 	}),
 });
 
