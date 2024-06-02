@@ -4,6 +4,42 @@ https://learnwithjason.netlify.app/*    https://www.learnwithjason.dev/:splat   
 https://learnwithjason.netlify.com/*    https://www.learnwithjason.dev/:splat    301!
 https://lwj.dev/*                       https://www.learnwithjason.dev/:splat    301!
 
+# moved and/or typoed URLs
+/add-apple-pay-google-pay-to-jamstack-sites                               /add-apple-pay-and-google-pay-to-jamstack-sites
+/create-a-static-site-using-angular-scully                                /create-static-site-angular-scully
+/contentful-graphql-paid-content                                          /contentful-graphql-and-paid-content
+/build-a-toast-site-using-mdx-tailwind                                    /build-a-toast-site-using-mdx-and-tailwind
+/let-s-learn-eleventy                                                     /lets-learn-eleventy
+/let-s-learn-vite                                                         /lets-learn-esbuild
+/hiring-getting-hired-in-tech                                             /hiring-and-getting-hired-in-tech
+/use-gatsby-wordpress-for-dynamic-sites                                   /use-gatsby-and-wordpress-for-dynamic-sites
+/set-up-strapi-as-a-cms-for-gatsby                                        /strapi-gatsby-cms
+/write-tests-for-gatsby-sites-apps                                        /write-tests-for-gatsby-sites-and-apps
+/advanced-graphql-techniques-in-gatsby                                    /advanced-graphql-gatsby
+/jamstack-cms-ecommerce                                                   /jamstack-cms-and-ecommerce
+/image-video-magic-with-cloudinary                                        /image-and-video-magic-with-cloudinary
+/running-state-machines-on-kubernetes                                     /episodes
+/sketching-illustration-and-logo-creation                                 /sketching-illustration-logo-creation
+/lets-learn-trpc                                                          /let-s-learn-trpc
+/build-your-own-live-music-visualization                                  /build-your-own-audio-visualization-in-a-shader
+/simply--unify-data-access-with-netlify-graph                             /simplify-and-unify-data-access-with-netlify-graph
+/simply-and-unify-data-access-with-netlify-graph                          /simplify-and-unify-data-access-with-netlify-graph
+/let-s-learn-apollo-client-v3-part-1                                      /let-s-learn-apollo-client-v3
+/building-with-sentry                                                     /monitor-errors-and-performance-with-sentry
+/building-with-algolia                                                    /custom-command-bar-using-autocomplete-with-algolia
+/automated-manual-accessibility-testing                                   /automated-and-manual-accessibility-testing
+/create-apps-using-a-component-library                                    /material-ui-gatsby
+/turning-an-app-idea-into-a-plan-with-ux-design-workflows-and-prototypes  /ux-design-workflows-and-prototypes
+/create-a-custom-alexa-skill                                              /episodes
+/make-a-beat-from-scratch-in-logic-pro-x                                  /make-a-beat-logic-pro-x
+/code/learn-rollup-js                                                     /blog/learn-rollup-js
+/facial-recognition-machine-learning-in-react-gatsby                      /facial-recognition-and-machine-learning-in-react-and-gatsby
+/set-up-a-new-gatsby-shopify-ecommerce-sites-pt-2                         /set-up-a-new-gatsby-shopify-ecommerce-site
+/building-with-twilio                                                     /send-transactional-emails-with-twilio-sendgrid
+/how-to-write-really-good-docs                                            /episodes
+/tigris-data-remix-custom-search                                          /blog
+/blog/work-archetype-pioneer-settler-town-planner                         /blog/work-archetype-explorer-villager-town-planner
+
 # quick links
 /discord       https://discord.gg/lwj
 /youtube       https://youtube.com/@learnwithjason
@@ -88,42 +124,6 @@ https://lwj.dev/*                       https://www.learnwithjason.dev/:splat   
 
 # this article was moved to another site
 /progressive-disclosure-of-complexity   https://www.jason.energy/progressive-disclosure-of-complexity 301!
-
-# moved and/or typoed URLs
-/add-apple-pay-google-pay-to-jamstack-sites                               /add-apple-pay-and-google-pay-to-jamstack-sites
-/create-a-static-site-using-angular-scully                                /create-static-site-angular-scully
-/contentful-graphql-paid-content                                          /contentful-graphql-and-paid-content
-/build-a-toast-site-using-mdx-tailwind                                    /build-a-toast-site-using-mdx-and-tailwind
-/let-s-learn-eleventy                                                     /lets-learn-eleventy
-/let-s-learn-vite                                                         /lets-learn-esbuild
-/hiring-getting-hired-in-tech                                             /hiring-and-getting-hired-in-tech
-/use-gatsby-wordpress-for-dynamic-sites                                   /use-gatsby-and-wordpress-for-dynamic-sites
-/set-up-strapi-as-a-cms-for-gatsby                                        /strapi-gatsby-cms
-/write-tests-for-gatsby-sites-apps                                        /write-tests-for-gatsby-sites-and-apps
-/advanced-graphql-techniques-in-gatsby                                    /advanced-graphql-gatsby
-/jamstack-cms-ecommerce                                                   /jamstack-cms-and-ecommerce
-/image-video-magic-with-cloudinary                                        /image-and-video-magic-with-cloudinary
-/running-state-machines-on-kubernetes                                     /episodes
-/sketching-illustration-and-logo-creation                                 /sketching-illustration-logo-creation
-/lets-learn-trpc                                                          /let-s-learn-trpc
-/build-your-own-live-music-visualization                                  /build-your-own-audio-visualization-in-a-shader
-/simply--unify-data-access-with-netlify-graph                             /simplify-and-unify-data-access-with-netlify-graph
-/simply-and-unify-data-access-with-netlify-graph                          /simplify-and-unify-data-access-with-netlify-graph
-/let-s-learn-apollo-client-v3-part-1                                      /let-s-learn-apollo-client-v3
-/building-with-sentry                                                     /monitor-errors-and-performance-with-sentry
-/building-with-algolia                                                    /custom-command-bar-using-autocomplete-with-algolia
-/automated-manual-accessibility-testing                                   /automated-and-manual-accessibility-testing
-/create-apps-using-a-component-library                                    /material-ui-gatsby
-/turning-an-app-idea-into-a-plan-with-ux-design-workflows-and-prototypes  /ux-design-workflows-and-prototypes
-/create-a-custom-alexa-skill                                              /episodes
-/make-a-beat-from-scratch-in-logic-pro-x                                  /make-a-beat-logic-pro-x
-/code/learn-rollup-js                                                     /blog/learn-rollup-js
-/facial-recognition-machine-learning-in-react-gatsby                      /facial-recognition-and-machine-learning-in-react-and-gatsby
-/set-up-a-new-gatsby-shopify-ecommerce-sites-pt-2                         /set-up-a-new-gatsby-shopify-ecommerce-site
-/building-with-twilio                                                     /send-transactional-emails-with-twilio-sendgrid
-/how-to-write-really-good-docs                                            /episodes
-/tigris-data-remix-custom-search                                          /blog
-/blog/work-archetype-pioneer-settler-town-planner                         /blog/work-archetype-explorer-villager-town-planner
 
 # hi bots
 /wp-login.php                         https://jason.energy/party 301
