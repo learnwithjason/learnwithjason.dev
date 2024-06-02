@@ -123,6 +123,7 @@ https://lwj.dev/*                       https://www.learnwithjason.dev/:splat   
 /building-with-twilio                                                     /send-transactional-emails-with-twilio-sendgrid
 /how-to-write-really-good-docs                                            /episodes
 /tigris-data-remix-custom-search                                          /blog
+/blog/work-archetype-pioneer-settler-town-planner                         /blog/work-archetype-explorer-villager-town-planner
 
 # hi bots
 /wp-login.php                         https://jason.energy/party 301
