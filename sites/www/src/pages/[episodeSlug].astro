@@ -316,8 +316,10 @@ const datetime = dayjs(episode.date).tz(tz);
     width: 100%;
   }
 
-  .opt-in {
-    position: sticky;
-    top: 1rem;
+  @media (min-width: 1000px) {
+    .opt-in {
+      position: sticky;
+      top: 1rem;
+    }
   }
 </style>
