@@ -58,6 +58,7 @@ https://lwj.dev/*                       https://www.learnwithjason.dev/:splat   
 # video shortcuts
 /feature-flags              /blog/feature-flags-react-devcycle
 /convex-actions             /blog/react-sms-to-database-convex-twilio-clerk
+/show-up                    https://youtu.be/Y5ENi-4Nrh0
 
 # stitch in the additional sites
 /webhooks/*                 https://lwj-webhooks.netlify.app/.netlify/functions/webhook-:splat           200
