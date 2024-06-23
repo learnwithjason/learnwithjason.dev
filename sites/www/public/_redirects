@@ -99,7 +99,7 @@ https://lwj.dev/*                       https://www.learnwithjason.dev/:splat   
 /workos        https://workos.com/?utm_source=learnwithjason&utm_medium=tutorial&utm_campaign=six-figure-saas
 /partykit      https://www.partykit.io/?utm_source=learnwithjason&utm_medium=video&utm_campaign=4d1a
 /datastax      https://www.datastax.com/?utm_source=learnwithjason&utm_medium=video&utm_campaign=4d1a
-/astra-db      https://www.datastax.com/products/datastax-astra?utm_source=learnwithjason&utm_medium=video&utm_campaign=4d1a
+/astra-db      https://docs.datastax.com/en/astra-db-serverless/index.html?utm_source=learnwithjason&utm_medium=video&utm_campaign=4d1a
 /cloudinary    https://cloudinary.com/?ap=lwj
 /launchdarkly  https://launchdarkly.com/?utm_source=learnwithjason&utm_medium=video&utm_campaign=galaxy-doc
 
