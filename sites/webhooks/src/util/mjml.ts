@@ -50,11 +50,12 @@ async function getSchedule({ utm_campaign }: { utm_campaign: string }) {
 	}
 
 	const schedule = await res.json();
+	console.log(schedule);
 
 	const formatted = schedule
 		.filter(
 			(ep: any) =>
-				new Date(ep.date) > date && ep.guest.name !== 'Jason Lengstorf'
+				new Date(ep.date) >= date && ep.guest.name !== 'Jason Lengstorf'
 		)
 		.slice(0, 4)
 		.map((episode: any, index: number) => {
@@ -88,6 +89,10 @@ async function getSchedule({ utm_campaign }: { utm_campaign: string }) {
 			`;
 		})
 		.join('');
+
+	if (formatted.length < 1) {
+		return '';
+	}
 
 	const mjml = `
 		<!-- LWJ SCHEDULE -->

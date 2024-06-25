@@ -1,13 +1,13 @@
 ---
 slug: {{name}}
-date: {{date}}
+pubDate: {{date}}
 
-meta:
-  title: TKTK title
-  description: >
-    TKTK description
+title: >
+  TKTK title
+description: >
+  TKTK description
 
-share:
+# share:
   # image: [optional] will be generated if left blank
   # title: [optional] use this to customize the title on social media previews
   # text: [optional] use this to customize the description on social media previews

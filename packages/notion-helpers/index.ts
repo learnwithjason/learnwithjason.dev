@@ -97,7 +97,17 @@ interface BulletedListItem extends Block {
 	bulleted_list_item: { rich_text: RichTextBlock[] };
 }
 
-type NotionBlock = Paragraph | BulletedListItem;
+interface ImageItem extends Block {
+	type: 'image';
+	image: {
+		type: 'file';
+		file: {
+			url: string;
+		};
+	};
+}
+
+type NotionBlock = Paragraph | BulletedListItem | ImageItem;
 
 type BlockChildren = {
 	results: NotionBlock[];
@@ -256,6 +266,10 @@ export const blockToHtml = (notionBlocks: BlockChildren) => {
 				tag = 'li';
 				richTextBlocks = block[block.type].rich_text;
 				break;
+
+			case 'image':
+				tag = 'img';
+				richTextBlocks = block[block.type].file.url;
 
 			default:
 				console.log('Unsupported block:');
