@@ -46,6 +46,7 @@ https://lwj.dev/*                       https://www.learnwithjason.dev/:splat   
 /ask           https://ask.ping.gg/ask/jlengstorf
 /store         https://learn-with-jason.myshopify.com/
 /4d1a          https://www.youtube.com/playlist?list=PLz8Iz-Fnk_eRtJeLjx9CxPQw6MzbDgaEu
+/wdc           https://www.youtube.com/playlist?list=PLz8Iz-Fnk_eTkZvSNWXW_TKZ2UwVirT2M
 /4d1a/info     https://learnwithjason.notion.site/4-Web-Devs-1-App-Overview-6338ba80550245e8aeac90a89276c344?pvs=4
 /join          https://youtube.com/@learnwithjason/join
 /partners      https://partners.learnwithjason.dev/
@@ -102,6 +103,8 @@ https://lwj.dev/*                       https://www.learnwithjason.dev/:splat   
 /astra-db      https://docs.datastax.com/en/astra-db-serverless/index.html?utm_source=learnwithjason&utm_medium=video&utm_campaign=4d1a
 /cloudinary    https://cloudinary.com/?ap=lwj
 /launchdarkly  https://launchdarkly.com/?utm_source=learnwithjason&utm_medium=video&utm_campaign=galaxy-doc
+/aws           https://aws.amazon.com/?utm_source=learnwithjason&utm_medium=video&utm_campaign=wdc
+/amplify       https://docs.amplify.aws/?utm_source=learnwithjason&utm_medium=video&utm_campaign=wdc
 
 # Sentry shorts series
 /sentry-rage-click      https://blog.sentry.io/introducing-rage-and-dead-click-detection-for-session-replay/?utm_source=lwj&utm_medium=organic-social&utm_campaign=replay-fy24q4-evergreen&utm_content=video-lwj1-learnmore
