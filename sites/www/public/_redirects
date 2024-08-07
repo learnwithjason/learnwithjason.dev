@@ -62,6 +62,7 @@ https://lwj.dev/*                       https://www.learnwithjason.dev/:splat   
 /feature-flags              /blog/feature-flags-react-devcycle
 /convex-actions             /blog/react-sms-to-database-convex-twilio-clerk
 /show-up                    https://youtu.be/Y5ENi-4Nrh0
+/manufacture-luck           https://youtu.be/YKeVeG6h4AA
 
 # stitch in the additional sites
 /webhooks/*                 https://lwj-webhooks.netlify.app/.netlify/functions/webhook-:splat           200
@@ -85,6 +86,9 @@ https://lwj.dev/*                       https://www.learnwithjason.dev/:splat   
 
 # search is a command bar now thanks to Sarah Dayan and Algolia
 /search        /?search
+
+# Web Dev Challenge hackathon short links
+/wdc-hackathon-3-submit     https://forms.gle/hPkGDCb1R66TGocw9
 
 # sponsors
 /netlify       https://www.netlify.com/?utm_source=learnwithjason&utm_medium=lwj&utm_campaign=sponsored
@@ -110,7 +114,7 @@ https://lwj.dev/*                       https://www.learnwithjason.dev/:splat   
 /slack         https://slack.com/?utm_source=learnwithjason&utm_medium=video&utm_campaign=renderatl
 /reactiflux    https://www.reactiflux.com/tmir/?utm_source=learnwithjason&utm_medium=video&utm_campaign=renderatl
 /tuple         https://tuple.app/?utm_source=learnwithjason&utm_medium=video&utm_campaign=lwj
-/algolia       https://www.algolia.com/?utm_source=learnwithjason&utm_medium=video&utm_campaign=lwj
+/algolia       https://www.algolia.com/?utm_source=learnwithjason&utm_medium=video&utm_campaign=web-dev-challenge
 
 # Sentry shorts series
 /sentry-rage-click      https://blog.sentry.io/introducing-rage-and-dead-click-detection-for-session-replay/?utm_source=lwj&utm_medium=organic-social&utm_campaign=replay-fy24q4-evergreen&utm_content=video-lwj1-learnmore
