@@ -20,7 +20,7 @@ const partners = [
 
 <Layout title="Dev-Focused Media Production — Partner with Learn With Jason">
 	<section class="hero">
-		<h1><span>Partners</span></h1>
+		<h1><span>Tell a story worth watching</span></h1>
 
 		<div class="intro">
 			<p>
@@ -55,12 +55,20 @@ const partners = [
 				</a>
 			</p>
 		</div>
+
+		<script src="https://cdn.jsdelivr.net/npm/@mux/mux-player"></script>
+		<mux-player
+			stream-type="on-demand"
+			playback-id="bYUbVdQsLvn88yRjwVnjCel29AVzFlvbUVS00PnrW9F8"
+			loop
+			muted
+			autoplay></mux-player>
 	</section>
 
 	{services.map((service) => <ServicePanel service={service} />)}
 
 	<section id="start" class="contact">
-		<h2>Let’s change how companies talk to developers. together.</h2>
+		<h2>Let’s change how companies talk to developers. Together.</h2>
 		<p>
 			Your next amazing project begins with discussing your goals and ideas. The
 			easiest way to get started is to book a call.
@@ -94,24 +102,52 @@ const partners = [
 		}
 
 		.hero {
-			background: var(--vignette-gradient),
-				linear-gradient(7deg, var(--purple), var(--yellow), var(--blue));
-			background-blend-mode: multiply, normal;
-			max-width: 1600px;
+			inline-size: 100dvi;
 			padding-block: 3rem;
 			text-align: center;
-			z-index: 100;
+
+			&::after {
+				content: '';
+				background: var(--vignette-gradient),
+					linear-gradient(7deg, var(--purple), var(--yellow), var(--blue));
+				mix-blend-mode: multiply, normal;
+				position: absolute;
+				inset: 0;
+				z-index: 1;
+			}
+
+			mux-player {
+				--controls: none;
+				--media-object-fit: cover;
+
+				display: none;
+				position: absolute;
+				inset: 0;
+				z-index: 0;
+			}
+
+			mux-player::part(gesture-layer) {
+				display: none;
+			}
 
 			@media (min-width: 1000px) {
-				background: linear-gradient(
+				mux-player {
+					display: block;
+				}
+
+				&::after {
+					background: linear-gradient(
 						107deg in oklch,
-						var(--black) 40%,
+						black 0%,
+						var(--black) 20%,
 						color-mix(in oklch, var(--black) 20%, transparent) 70%
-					),
-					url('https://res.cloudinary.com/jlengstorf/image/upload/q_35,f_auto/lwj/partners/panel-hero.jpg');
-				background-position-x: 0, 200px;
-				background-position-y: center;
-				background-size: cover, calc(100% + 300px);
+					);
+					background-position-x: 0;
+					background-position-y: center;
+					background-repeat: repeat-x;
+					background-size: cover;
+					mix-blend-mode: multiply;
+				}
 
 				container: section / size;
 				display: grid;
@@ -122,17 +158,34 @@ const partners = [
 
 			& h1 {
 				color: var(--white);
-				font-family: jwf, system-ui, -apple-system, BlinkMacSystemFont,
-					'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
-					'Helvetica Neue', sans-serif;
-				font-size: clamp(2.25rem, 1rem + 10cqw, 8rem);
+				font-family:
+					jwf,
+					system-ui,
+					-apple-system,
+					BlinkMacSystemFont,
+					'Segoe UI',
+					Roboto,
+					Oxygen,
+					Ubuntu,
+					Cantarell,
+					'Open Sans',
+					'Helvetica Neue',
+					sans-serif;
+				font-size: clamp(1.75rem, 4.5cqi, 8rem);
 				font-weight: 900;
 				letter-spacing: -0.05em;
 				line-height: 1;
 				margin: 0 auto;
-				padding: 1rem 2rem;
+				padding: 1rem 2cqi;
+				position: relative;
 				text-shadow: 0 0.25rem 0.5rem var(--black);
 				text-transform: uppercase;
+				z-index: 10;
+
+				@media (min-width: 1000px) {
+					max-inline-size: 48cqi;
+					padding-inline: 0;
+				}
 			}
 		}
 
@@ -145,13 +198,13 @@ const partners = [
 
 			& p {
 				color: var(--text);
-				font-size: clamp(1rem, 2.25vw, 1.5rem);
+				font-size: clamp(1rem, 1.5cqi, 1.5rem);
 				margin: 0 auto;
-				width: min(90vw, 45ch);
+				inline-size: min(90cqi, 45ch);
 
 				&:not(:first-of-type) {
 					font-size: 1rem;
-					width: min(90vw, 65ch);
+					width: min(90cqi, 65ch);
 					margin-block-start: 1rem;
 				}
 			}
@@ -211,9 +264,19 @@ const partners = [
 
 			& h2 {
 				color: var(--white);
-				font-family: jwf, system-ui, -apple-system, BlinkMacSystemFont,
-					'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
-					'Helvetica Neue', sans-serif;
+				font-family:
+					jwf,
+					system-ui,
+					-apple-system,
+					BlinkMacSystemFont,
+					'Segoe UI',
+					Roboto,
+					Oxygen,
+					Ubuntu,
+					Cantarell,
+					'Open Sans',
+					'Helvetica Neue',
+					sans-serif;
 				font-size: clamp(1.5rem, 4vw, 3rem);
 				font-weight: 900;
 				line-height: 1.1;
