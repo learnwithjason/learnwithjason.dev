@@ -1,0 +1,2377 @@
+---
+slug: temp-astro-party-workshop
+pubDate: 2024-09-16
+
+title: >
+  TEMP: Astro Party Workshop
+description: >
+  This is only here so I can look at the deploy preview while I give this workshop.
+
+# share:
+  # image: [optional] will be generated if left blank
+  # title: [optional] use this to customize the title on social media previews
+  # text: [optional] use this to customize the description on social media previews
+---
+
+## Why Astro?
+
+TKTK
+
+> **NOTE:** A few of the files in this workshop are easier to copy-paste because they aren't directly related to learning Astro. You can find those files here: https://gist.github.com/jlengstorf/21fde6166c440bb2f21e2e0f647c5524
+
+## Create a new Astro site
+
+```sh
+# set up a new Astro site
+npm create astro@latest astro-party-workshop
+```
+
+Choose the empty template, then select the defaults to create the project. Once it's complete, follow the instructions it prints on the screen to move into the new project, install dependencies, and start the dev server.
+
+```sh
+cd astro-party-workshop/
+npm i
+```
+
+## Optional: configure auto-formatting
+
+In IDEs like VS Code, there's an Astro extension that will be auto-suggested when you create a new Astro project. For many setups, this will enable formatting automatically.
+
+However, if your setup is non-standard like mine, this might not work out of the box and you'll need a couple extra steps to get it working.
+
+First, install Prettier and the plugin for Astro:
+
+```sh
+npm i prettier prettier-plugin-astro
+```
+
+Next, add a `.prettierrc.mjs` to your project (available in the [copy-paste gist][gist]):
+
+```js title=".prettierrc.mjs"
+/** @type {import("prettier").Config} */
+export default {
+	tabWidth: 2,
+	useTabs: true,
+	plugins: ["prettier-plugin-astro"],
+	overrides: [
+		{
+			files: "*.astro",
+			options: {
+				parser: "astro",
+			},
+		},
+	],
+};
+```
+
+Full installation and configuration instructions: https://github.com/withastro/prettier-plugin-astro?tab=readme-ov-file#installation
+
+## Start the dev server
+
+To run the site locally, use the `dev` command in npm:
+
+```sh
+npm run dev
+```
+
+Open the running site in your browser by visiting `http://localhost:4321`.
+
+## Frontmatter in Astro
+
+Astro templates are broken into two sections:
+
+1. Frontmatter, where we put code and data that will be evaluated at render time, which is during the build by default, but can be on each request if we opt into that behavior
+2. The template body, where we put the markup, components, styles, scripts, and anything else that should be rendered on the client
+
+Frontmatter is contained in fenced blocks using leading and trailing triple hyphens:
+
+```jsx title="src/pages/index.astro" mark={1-3}
+---
+// anything in here is frontmatter
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro</title>
+	</head>
+	<body>
+		<h1>Astro</h1>
+	</body>
+</html>
+```
+
+One of the most basic use cases is to set a variable in frontmatter that we can then use in our frontend code. For example, the title of the page.
+
+For our first task, add a new variable called `title` and use it as the text content for both the `<title>` and `<h1>` tags in `src/pages/index.astro`.
+
+```jsx title="src/pages/index.astro" ins={2,11,14}
+---
+const title = 'Astro Party';
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<h1>{title}</h1>
+	</body>
+</html>
+```
+
+After saving, you'll see that the new title is displayed both at the top of the page in the browser and as the browser tab's title.
+
+We'll get into a _whole lot more_ that we can do with frontmatter in Astro later on.
+
+## CSS
+
+CSS in Astro can be added in a few ways:
+
+1. Through standard HTML `<link>` tags in the `<head>`
+2. By importing the CSS file in the frontmatter of a `.astro` file
+3. By adding a `<style>` block at the bottom of a `.astro` file
+
+The `<link>` tag and import approaches result in standard CSS behavior. Often times this is all that's needed.
+
+### Global styles
+
+Let's start by adding global styles to the site by creating `src/styles/global.css` ([copy paste from this gist][gist]):
+
+```css title="src/styles/global.css"
+:root {
+	color: #444;
+	font-family: system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+		"Segoe UI Symbol";
+	font-size: 18px;
+	line-height: 1.45;
+}
+
+body {
+	margin: 0;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+:is(h1, h2, h3, h4, h5, h6) {
+	color: #111;
+	font-family: "Urbanist Variable", sans-serif;
+	line-height: 1.1;
+}
+
+h1 {
+	margin: 0;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin: 0 0 0.75rem;
+}
+
+p {
+	margin: 0.75rem 0 0;
+}
+
+img {
+	block-size: auto;
+	border-radius: 0.125rem;
+	inline-size: 100%;
+
+	+ h2 {
+		margin-block-start: 0.5rem;
+	}
+}
+
+section:not(:first-child) {
+	margin-block-start: 2rem;
+}
+
+.subnav {
+	margin-block-end: 2rem;
+
+	a {
+		background: #fbfbfe;
+		border: 1px solid #eee;
+		border-radius: 0.25rem;
+		color: #005;
+		padding: 0.5rem 1rem;
+		text-decoration: none;
+
+		&:is(:hover, :active, :focus) {
+			background: #f2f2fd;
+			text-decoration: underline;
+		}
+	}
+}
+
+.flex {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 2rem;
+
+	.box {
+		inline-size: calc(50% - 1rem);
+	}
+}
+
+.box {
+	background: #fbfbfe;
+	border: 1px solid #eee;
+	border-radius: 0.25rem;
+	padding: 1rem;
+}
+
+.list {
+	list-style: none;
+	margin-block: 1rem 0;
+	padding: 0;
+
+	&.flex {
+		gap: 0.75rem;
+		justify-content: center;
+	}
+
+	li {
+		background: #fff;
+		border: 1px solid #eee;
+		border-radius: 0.25rem;
+		margin-block: 0.5rem 0;
+		padding: 0.5rem 1rem;
+
+		&.with-controls {
+			align-items: center;
+			display: flex;
+			justify-content: space-between;
+		}
+	}
+}
+
+label,
+input,
+button {
+	font-family: system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+		"Segoe UI Symbol";
+	font-size: 1rem;
+}
+
+label[for="text"],
+input[type="text"] {
+	display: block;
+	inline-size: 54ch;
+}
+
+input[type="text"] {
+	border: 1px solid #005;
+	border-radius: 0.25rem;
+	padding: 0.5rem;
+}
+
+fieldset {
+	border: none;
+	margin: 0.75rem 0 0;
+	padding: 0;
+
+	legend {
+		padding: 0;
+	}
+
+	label:not(:first-of-type) {
+		margin-inline-start: 1rem;
+	}
+}
+
+button {
+	background: #ddd;
+	border: 1px solid #005;
+	border-radius: 0.25rem;
+	color: #005;
+	font-size: 1rem;
+	font-weight: bold;
+	margin-block-start: 1rem;
+	padding: 0.25rem 1rem;
+
+	&.icon {
+		background: none;
+		border: none;
+		cursor: pointer;
+		font-size: 0.75rem;
+		margin: 0;
+		padding: 0;
+	}
+}
+
+div:has(.poke-placeholder-text) {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+}
+
+.poke-placeholder-img,
+.poke-placeholder-text {
+	background: #0001;
+	border-radius: 0.25rem;
+	display: block;
+}
+
+.poke-placeholder-img {
+	block-size: 100px;
+	inline-size: 100px;
+}
+
+.poke-placeholder-text {
+	block-size: 1rem;
+	inline-size: 8ch;
+}
+
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border-width: 0;
+}
+```
+
+Then, in `src/pages/index.astro`, import the new stylesheet:
+
+```tsx title="src/pages/index.astro" ins={2-3}
+---
+import '../styles/global.css';
+
+const title = 'Astro Party';
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<h1>{title}</h1>
+	</body>
+</html>
+```
+
+### Scoped styles
+
+In some cases — such as with page- or component-specific styles, it can be useful to ensure those styles are scoped to the given component to avoid unintended CSS issues elsewhere in the site. For those cases, using a `<style>` tag in the `.astro` file will automatically scope any styles to the given file.
+
+Let's add some basic structure to our site by putting in a header and wrapping the page content in a `<main>` tag:
+
+```tsx title="src/pages/index.astro" ins={17-29,31}
+---
+import '../styles/global.css';
+
+const title = 'Astro Party';
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		
+		<title>{title}</title>
+	</head>
+	<body>
+		<header>
+			<a href="/" rel="home">Astro Party</a>
+
+			<nav>
+				<a href="/">Home</a>
+				<a href="/about">About</a>
+				<a href="/holidays">Holidays</a>
+				<a href="/pokemon">Pokémon</a>
+				<a href="/ideas">Ideas</a>
+			</nav>
+		</header>
+
+		<main>
+			<h1>{title}</h1>
+		</main>
+	</body>
+</html>
+```
+
+Next, let's add some styles at the bottom of `src/pages/index.astro`, after the closing `</html>` tag, that are scoped only to this page.
+
+```tsx title="src/pages/index.astro" ins={34-59}
+---
+import '../styles/global.css';
+
+const title = 'Astro Party';
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+
+		<title>{title}</title>
+	</head>
+	<body>
+		<header>
+			<a href="/" rel="home">Astro Party</a>
+
+			<nav>
+				<a href="/">Home</a>
+				<a href="/about">About</a>
+				<a href="/holidays">Holidays</a>
+				<a href="/pokemon">Pokémon</a>
+				<a href="/ideas">Ideas</a>
+			</nav>
+		</header>
+
+		<main>
+			<h1>{title}</h1>
+		</main>
+	</body>
+</html>
+
+<style>
+	header {
+		background: #005;
+		color: #ddd;
+		display: flex;
+		justify-content: space-between;
+		padding: 1rem max(5dvi, 2rem);
+
+		nav {
+			display: flex;
+			gap: 1rem;
+		}
+
+		a {
+			color: inherit;
+			text-decoration: none;
+		}
+	}
+
+	main {
+		inline-size: min(800px, 90dvi);
+		margin-inline: auto;
+		padding: 3rem 0;
+	}
+</style>
+```
+
+The styles will appear in the browser, and if you open your inspector you'll see that Astro has added a data attribute to allow scoping the CSS styles to _only_ the elements in this page. For example, the header styles will be scoped with an attribute that looks something like this:
+
+```css
+header[data-astro-cid-j7pv25f6] {
+	background: #005;
+	color: #ddd;
+	display: flex;
+	justify-content: space-between;
+	padding: 1rem max(5dvi, 2rem);
+}
+```
+
+## Custom fonts
+
+Custom fonts work more or less exactly the same in Astro as they do in any web project. We can use Google Fonts, npm packages, local `.woff` files, etc. by following the instructions on the font provider's site.
+
+Let's use the [Urbanist font from Fontsource](https://fontsource.org/fonts/urbanist) in our project. First, install the font package:
+
+```sh
+npm i @fontsource-variable/urbanist
+```
+
+Next, import the font package at the top of `src/pages/index.astro`:
+
+```tsx title="src/pages/index.astro" ins={2}
+---
+import '@fontsource-variable/urbanist';
+import '../styles/global.css';
+
+const title = 'Astro Party';
+---
+
+<html lang="en">
+  ...
+```
+
+Finally, use the font in `src/styles/global.css` (this is already done if you copied the stylesheet):
+
+```css title="src/styles/global.css" ins={5}
+...
+
+:is(h1, h2, h3, h4, h5, h6) {
+	color: #111;
+	font-family: "Urbanist Variable", sans-serif;
+	line-height: 1.1;
+}
+
+...
+```
+
+## Components
+
+Astro supports components very similarly to many other frontend frameworks. Components can accept input for customization via props, and we're able to give them their own logic, styles, and markup to make it straightforward to place components anywhere we want across our site.
+
+Let's start with a simple component to see how it all works. Create a new file at `src/components/callout.astro` and place the following inside:
+
+```tsx title="src/components/callout.astro"
+---
+export interface Props {
+	icon?: string;
+	iconDescription?: string;
+}
+
+const { icon = '👻', iconDescription = 'ghost' } = Astro.props;
+---
+
+<div class="callout">
+	<span role="img" aria-label={iconDescription}>{icon}</span>
+	<div class="content">
+		<slot />
+	</div>
+</div>
+
+<style>
+	.callout {
+		align-items: center;
+		background: lightyellow;
+		border: 1px solid #dd0;
+		border-radius: 0.25rem;
+		display: flex;
+		gap: 1rem;
+		margin: 1rem 0;
+		padding: 0.5rem;
+
+		span {
+			display: inline-block;
+			font-size: 1.25rem;
+			inline-size: 1.5rem;
+			line-height: 1;
+		}
+
+		p {
+			margin: 0;
+		}
+	}
+</style>
+```
+
+Then, import the `Callout` component into `src/pages/index.astro` and use it inside the `<main>` tag:
+
+```tsx title="src/pages/index.astro" ins={2,33-36}
+---
+import Callout from '../components/callout.astro';
+import '@fontsource-variable/urbanist';
+import '../styles/global.css';
+
+const title = 'Astro Party';
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+
+		<title>{title}</title>
+	</head>
+	<body>
+		<header>
+			<a href="/" rel="home">Astro Party</a>
+
+			<nav>
+				<a href="/">Home</a>
+				<a href="/about">About</a>
+				<a href="/holidays">Holidays</a>
+				<a href="/pokemon">Pokémon</a>
+				<a href="/ideas">Ideas</a>
+			</nav>
+		</header>
+
+		<main>
+			<h1>{title}</h1>
+			
+			<Callout icon="🔥" iconDescription="fire">
+				<p>Oh dang, look at this!</p>
+			</Callout>
+		</main>
+	</body>
+</html>
+
+<style>
+	header {
+		background: #005;
+		color: #ddd;
+		display: flex;
+		justify-content: space-between;
+		padding: 1rem max(5dvi, 2rem);
+
+		nav {
+			display: flex;
+			gap: 1rem;
+		}
+
+		a {
+			color: inherit;
+			text-decoration: none;
+		}
+	}
+
+	main {
+		inline-size: min(800px, 90dvi);
+		margin-inline: auto;
+		padding: 3rem 0;
+	}
+</style>
+```
+
+## Layouts
+
+At this point, we're almost ready to start adding new pages to this site — but before we can do that, we'll need a way to share the styles and global components like the header.
+
+Astro lets us use components as layouts, without any special handling. I like the approach because there's nothing magical happening: you define a component, you import the component, and you wrap your page content with that component.
+
+The only real difference is that, by convention, layout components go into their own folder in the project.
+
+Astro takes advantage of HTML standard `<slot />` elements to allow us to choose where within the layout our additional content should appear.
+
+Let's create a new file at `src/layouts/default.astro` and copy all of to the contents of `src/pages/index.astro` into it, with a few changes:
+
+1. Don't include the `Callout` component import
+2. Convert the `title` to a prop
+3. Replace the `<h1>` tag and its content with a `<slot />` tag.
+
+```tsx title="src/layouts/default.astro" mark={5-9,35}
+---
+import '@fontsource-variable/urbanist';
+import '../styles/global.css';
+
+export interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+
+		<title>{title}</title>
+	</head>
+	<body>
+		<header>
+			<a href="/" rel="home">Astro Party</a>
+
+			<nav>
+				<a href="/">Home</a>
+				<a href="/about">About</a>
+				<a href="/holidays">Holidays</a>
+				<a href="/pokemon">Pokémon</a>
+				<a href="/ideas">Ideas</a>
+			</nav>
+		</header>
+
+		<main>
+			<slot />
+		</main>
+	</body>
+</html>
+
+<style>
+	header {
+		background: #005;
+		color: #ddd;
+		display: flex;
+		justify-content: space-between;
+		padding: 1rem max(5dvi, 2rem);
+
+		nav {
+			display: flex;
+			gap: 1rem;
+		}
+
+		a {
+			color: inherit;
+			text-decoration: none;
+		}
+	}
+
+	main {
+		inline-size: min(800px, 90dvi);
+		margin-inline: auto;
+		padding: 3rem 0;
+	}
+</style>
+```
+
+Next, use the layout in `src/pages/index.astro` by importing the layout component, removing the markup that is now in the layout, and wrapping our page-specific content in the layout:
+
+```tsx title="src/pages/index.astro"
+---
+import Layout from '../layouts/default.astro';
+import Callout from '../components/callout.astro';
+
+const title = 'Astro Party';
+---
+
+<Layout title={title}>
+	<h1>{title}</h1>
+
+	<Callout icon="🔥" iconDescription="fire">
+		Oh dang, look at this!
+	</Callout>
+</Layout>
+```
+
+## Basic routing and Markdown in Astro
+
+Any `.astro` file placed in the `src/pages` directory will be treated as a route, with the name of the file (minus extension) used as the pathname. Folder names are included in the pathname.
+
+This is how `src/pages/index.astro` has been working so far: it generates the index file in the root directory, which is why it renders at the root of our site.
+
+In cases where a page has only simple text and images, it may be worth using Markdown to simplify the authoring experience. Astro treats Markdown as a first-class file type, which means we don't have to change anything to use it.
+
+Let's add an about page to this site by creating `src/pages/about.md` and placing the following content inside:
+
+```md title="src/pages/about.md"
+---
+layout: ../layouts/default.astro
+title: About
+---
+
+# About this site
+
+Nice and easy to write!
+```
+
+We can specify a layout component using the special `layout` frontmatter field. However, we need to make a small tweak to our layout to support Markdown: Astro passes in a `frontmatter` prop, so we need to look for that and use it if it's there.
+
+Make the following changes to `src/layouts/default.astro`:
+
+```tsx title="src/layouts/default.astro" ins={7,10,20}
+---
+import '@fontsource-variable/urbanist';
+import '../styles/global.css';
+
+export interface Props {
+	title: string;
+	frontmatter?: { title: string };
+}
+
+const { title, frontmatter } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+	
+		<title>{title ?? frontmatter?.title}</title>
+	</head>
+	<body>
+		<header>
+			<a href="/" rel="home">Astro Party</a>
+
+			<nav>
+				<a href="/">Home</a>
+				<a href="/about">About</a>
+				<a href="/holidays">Holidays</a>
+				<a href="/pokemon">Pokémon</a>
+				<a href="/ideas">Ideas</a>
+			</nav>
+		</header>
+
+		<main>
+			<slot />
+		</main>
+	</body>
+</html>
+
+<style>
+	header {
+		background: #005;
+		color: #ddd;
+		display: flex;
+		justify-content: space-between;
+		padding: 1rem max(5dvi, 2rem);
+
+		nav {
+			display: flex;
+			gap: 1rem;
+		}
+
+		a {
+			color: inherit;
+			text-decoration: none;
+		}
+	}
+
+	main {
+		inline-size: min(800px, 90dvi);
+		margin-inline: auto;
+		padding: 3rem 0;
+	}
+</style>
+```
+
+## Working with other frontend libraries
+
+If you're porting a site over from another framework, you may not want to convert all of your existing components to Astro components right away. And the good news is: you don't have to!
+
+Astro has support for most frontend libraries using plugins. To show how this works, let's bring in a React component on our home page.
+
+First, create a new file at `src/components/counter.react.tsx` and place the following inside:
+
+```tsx title="src/components/counter.react.tsx"
+import { useState } from "react";
+
+export const Counter = () => {
+	const [count, setCount] = useState(0);
+
+	return (
+		<button onClick={() => setCount((currentCount) => currentCount + 1)}>
+			Count ({count})
+		</button>
+	);
+};
+```
+
+Your editor will likely start complaining. That's okay! We'll fix it in the next step.
+
+Open your terminal and use the Astro CLI to add React support to the site:
+
+```sh
+npx astro add react
+```
+
+This command will install the required dependencies, update your `astro.config.mjs`, and configure TypeScript automatically.
+
+Finally, import and use the component in `src/pages/index.astro`:
+
+```tsx title="src/pages/index.astro" ins={4,11-15}
+---
+import Layout from '../layouts/default.astro';
+import Callout from '../components/callout.astro';
+import { Counter } from '../components/counter.react';
+
+const title = 'Astro Party Workshop';
+---
+
+<Layout title={title}>
+	<h1>{title}</h1>
+
+	<p>
+		Click this button for luck:
+		<Counter />
+	</p>
+
+	<Callout icon="🔥" iconDescription="fire">
+		<p>Oh dang, look at this!</p>
+	</Callout>
+</Layout>
+```
+
+Open the browser and you'll see that the component has rendered — but wait! If you click on it, nothing happens.
+
+**This is by design.** By default, Astro will render all components into static HTML and won't hydrate them on the client side. This might sound counterintuitive at first, but in many codebases there are a shocking number of components that don't require any interactivity, yet are being loaded and rendered in the browser unnecessarily. Astro's position here is that we'll know when we need interactivity, and we should opt into it explicitly to keep our pages lightweight by default.
+
+In the next section, we'll learn how to make client-side interactivity work in Astro.
+
+## Client islands
+
+To make the button in our `Counter` component work, add the `client:visible` directive to it.
+
+```tsx title="src/pages/index.astro" ins={14}
+---
+import Layout from '../layouts/default.astro';
+import Callout from '../components/callout.astro';
+import { Counter } from '../components/counter.react';
+
+const title = 'Astro Party';
+---
+
+<Layout title={title}>
+	<h1>{title}</h1>
+
+	<p>
+		Click this button for luck:
+		<Counter client:visible />
+	</p>
+
+	<Callout icon="🔥" iconDescription="fire">
+		<p>Oh dang, look at this!</p>
+	</Callout>
+</Layout>
+```
+
+That's it. It works now.
+
+## BREAK 1
+
+Take 15 minutes to yourself. When we get back, we'll dive into Content Collections, static routing, image handling, and view transitions.
+
+## Content Collections
+
+There are many ways to get data into an Astro site, from writing it directly in `.astro` or Markdown files, to fetching from external APIs (which we'll cover soon), to databases (also coming later in this workshop). For content that's managed in source control, like documentation, developer blogs, and so on, Astro offers Content Collections, which allow us to define and validate the schema for Markdown frontmatter and query the collections in a database-like way.
+
+### Create a content collection schema
+
+Let's try them out by adding a list of holidays to our site. Create a new file at `src/content/config.ts` with the following content:
+
+```ts title="src/content/config.ts"
+import { defineCollection, z } from "astro:content";
+
+export const collections = {
+	holidays: defineCollection({
+		type: "content",
+		schema: z.object({
+			title: z.string(),
+			image: z.object({
+				src: z.string().url(),
+				alt: z.string(),
+				credit: z.string(),
+			}),
+			date: z.date(),
+			tags: z.array(z.string()),
+		}),
+	}),
+};
+```
+
+Astro includes [Zod](https://zod.dev/) for defining and validating schema types, which we import as `z` from the `astro:content` import.
+
+> **NOTE:** The `astro:*` convention will show up in many advanced Astro features. This naming convention mirrors the [approach taken by Node.js](https://nodejs.org/api/esm.html#node-imports).
+
+### Add content to the collection
+
+Next, create a new file at `src/content/holidays/halloween.md` with the following content (available in the [copy-paste gist][gist]):
+
+```md title="src/content/holidays/halloween.md"
+---
+title: Halloween
+image:
+  src: https://images.unsplash.com/photo-1508361001413-7a9dca21d08a?q=80&w=800&h=500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+  alt: two jackolanterns lit up from within against a dark background
+  credit: David Menidrey on Unsplash
+date: 2024-10-31
+tags: [spooky, pumpkins]
+---
+
+Watch out for skellingtons.
+```
+
+Add a second holiday by creating a new file at `src/content/holidays/valentines.md` with the following content (also in the [copy-paste gist][gist]):
+
+```md title="src/content/holidays/valentines.md"
+---
+title: Valentine’s Day
+image:
+  src: https://images.unsplash.com/photo-1484979045040-0ab3854b6acb?q=80&w=800&h=500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+  alt: colorful candy hearts with romantic messages printed on them
+  credit: Laura Ockel on Unsplash
+date: 2024-02-14
+tags: [hearts, snuggles]
+---
+
+Can anybody find me somebody to love?
+```
+
+### Use content from the collection in a page
+
+Now that we have content in a collection, let's render it on a page.
+
+Create a new file at `src/pages/holidays/index.astro` with the following inside:
+
+```tsx title="src/pages/holidays/index.astro"
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/default.astro';
+
+const holidays = await getCollection('holidays');
+---
+
+<Layout title="Holidays">
+	<h1>Holidays</h1>
+
+	<section class="holidays flex">
+		{
+			holidays.map(async (holiday) => {
+				return (
+					<div class="box">
+						<h2>
+							<a href={`/holidays/${holiday.slug}`}>{holiday.data.title}</a>
+						</h2>
+
+						<p>{holiday.data.tags.map((tag) => `#${tag}`).join(' ')}</p>
+					</div>
+				);
+			})
+		}
+	</section>
+</Layout>
+```
+
+This displays the two holidays we entered on the screen.
+
+The links don't work and the images are missing — so let's fix that.
+
+## Images
+
+By default, we _can_ use the standard `<img>` tag in Astro and there's nothing at all wrong with that. However, we can get a lot of image optimization for free if we take advantage of Astro's built-in `Image` component, so let's use that.
+
+Inside `src/pages/holidays/index.astro`, import the `Image` component and use it to display the holiday image.
+
+```tsx title="src/pages/holidays/index.astro" ins={3,17-23}
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import Layout from '../../layouts/default.astro';
+
+const holidays = await getCollection('holidays');
+---
+
+<Layout title="Holidays">
+	<h1>Holidays</h1>
+
+	<section class="holidays flex">
+		{
+			holidays.map(async (holiday) => {
+				return (
+					<div class="box">
+						<Image
+							src={holiday.data.image.src}
+							alt={holiday.data.image.alt}
+							width="800"
+							height="500"
+						/>
+
+						<h2>
+							<a href={`/holidays/${holiday.slug}`}>{holiday.data.title}</a>
+						</h2>
+
+						<p>{holiday.data.tags.map((tag) => `#${tag}`).join(' ')}</p>
+					</div>
+				);
+			})
+		}
+	</section>
+</Layout>
+```
+
+This adds helpful attributes to boost the performance of these images in the browser.
+
+> **NOTE:** There's more we can do for images in Astro, but that's outside the scope of this workshop. If you want to go further on your own, check out [this video on how to optimize images in Astro using Unpic + Cloudinary][images].
+
+## Statically generate routes
+
+Our links to the holidays' individual pages still don't work, so let's fix that.
+
+Create a new file at `src/pages/holidays/[slug].astro` with the following content:
+
+```tsx title="src/pages/holidays/[slug].astro"
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/default.astro';
+
+export async function getStaticPaths() {
+	const holidays = await getCollection('holidays');
+
+	return holidays.map((holiday) => {
+		return {
+			params: { slug: holiday.slug },
+			props: {
+				holiday,
+				holidays,
+			},
+		};
+	});
+}
+
+const { holiday, holidays } = Astro.props;
+const { Content } = await holiday.render();
+---
+
+<Layout title={holiday.data.title}>
+	<nav class="subnav flex">
+		<a href="/holidays">&larr; All holidays</a>
+		{holidays?.map((h) => <a href={`/holidays/${h.slug}`}>{h.data.title}</a>)}
+	</nav>
+
+	<figure>
+		<Image
+			src={holiday.data.image.src}
+			alt={holiday.data.image.alt}
+			width="800"
+			height="500"
+			loading="eager"
+		/>
+		<figcaption>{holiday.data.image.credit}</figcaption>
+	</figure>
+
+	<h1>
+		{holiday.data.title}
+	</h1>
+
+	<Content />
+</Layout>
+```
+
+The filename lets us define parameters that will be used to determine which page we should be showing to the user. In this case, `[slug]` will correspond to a `slug` parameter that Astro will look for in the array returned from `getStaticPaths`.
+
+This style of routing is great if we know all the data ahead of time and are okay moving the work to the build step. In my opinion, this should be the default, and dynamic rendering should _only_ be introduced in cases where the pages have very specific needs — we'll discuss a few of these scenarios later in this workshop.
+
+## View Transitions
+
+When people talk about why they do or don't use a given framework, one of the most common baseline features developers request is single-page app (SPA) navigation, meaning the page doesn't fully refresh when the user navigates between pages.
+
+This tends to feel a little more app-like, so I understand why this is often considered table stakes.
+
+By default, Astro uses a multi-page app (MPA) style of routing, where page navigations result in a full reload of the page. This is the browser's default behavior, and as an added bonus, it works before JavaScript has loaded — and even when JavaScript is completely disabled.
+
+To get SPA-like navigation in Astro, we lean on another browser standard feature: [view transitions][view-transitions].
+
+Astro makes this a two-step process: first, import the `ViewTransitions` component from `astro:transitions` in your main layout, then add the `ViewTransitions` component to the bottom of your `<head>` tag.
+
+Update `src/layouts/default.astro` to enable SPA-style navigation in your app:
+
+```tsx title="src/layouts/default.astro" ins={2,21-22}
+---
+import { ViewTransitions } from 'astro:transitions';
+import '@fontsource-variable/urbanist';
+import '../styles/global.css';
+
+export interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+
+		<title>{title}</title>
+
+		<ViewTransitions />
+	</head>
+	<body>
+		<header>
+			<a href="/" rel="home">Astro Party</a>
+
+			<nav>
+				<a href="/">Home</a>
+				<a href="/about">About</a>
+				<a href="/holidays">Holidays</a>
+				<a href="/pokemon">Pokémon</a>
+				<a href="/ideas">Ideas</a>
+			</nav>
+		</header>
+
+		<main>
+			<slot />
+		</main>
+	</body>
+</html>
+
+<style>
+	header {
+		background: #005;
+		color: #ddd;
+		display: flex;
+		justify-content: space-between;
+		padding: 1rem max(5dvi, 2rem);
+
+		nav {
+			display: flex;
+			gap: 1rem;
+		}
+
+		a {
+			color: inherit;
+			text-decoration: none;
+		}
+	}
+
+	main {
+		inline-size: min(800px, 90dvi);
+		margin-inline: auto;
+		padding: 3rem 0;
+	}
+</style>
+```
+
+## Add element transitions to animate between pages
+
+SPA-like navigation is cool and all, but the View Transitions API goes one step further, and since Astro is using built-in browser features that don't add weight to our page, why not take advantage of them?
+
+Let's have our image and title animate between pages on our holidays page. This will require adding two attributes to each element we want to animate.
+
+First, update `src/pages/holidays/index.astro` to add the `transition:name` and `transition:animate` attributes to both the `<Image>` and `<h1>` tags:
+
+```tsx title="src/pages/holidays/index.astro" ins={22-23,27-28}
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import Layout from '../../layouts/default.astro';
+
+const holidays = await getCollection('holidays');
+---
+
+<Layout title="Holidays">
+	<h1>Holidays</h1>
+
+	<section class="holidays flex">
+		{
+			holidays.map(async (holiday) => {
+				return (
+					<div class="box">
+						<Image
+							src={holiday.data.image.src}
+							alt={holiday.data.image.alt}
+							width="800"
+							height="500"
+							transition:name={`holiday-img-${holiday.slug}`}
+							transition:animate="initial"
+						/>
+
+						<h2
+							transition:name={`holiday-title-${holiday.slug}`}
+							transition:animate="initial"
+						>
+							<a href={`/holidays/${holiday.slug}`}>{holiday.data.title}</a>
+						</h2>
+
+						<p>{holiday.data.tags.map((tag) => `#${tag}`).join(' ')}</p>
+					</div>
+				);
+			})
+		}
+	</section>
+</Layout>
+```
+
+We use the slug to make sure the element's name is unique. Setting `transition:animate` to `initial` tells Astro to use the browser's default transition animation, which looks great for our current goals.
+
+Next, update `src/pages/holidays/[slug].astro` to add the same attributes to the image and title there:
+
+```tsx title="src/pages/holidays/[slug].astro" ins={37-38,44-45}
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/default.astro';
+
+export async function getStaticPaths() {
+	const holidays = await getCollection('holidays');
+
+	return holidays.map((holiday) => {
+		return {
+			params: { slug: holiday.slug },
+			props: {
+				holiday,
+				holidays,
+			},
+		};
+	});
+}
+
+const { holiday, holidays } = Astro.props;
+const { Content } = await holiday.render();
+---
+
+<Layout title={holiday.data.title}>
+	<nav class="subnav flex">
+		<a href="/holidays">&larr; All holidays</a>
+		{holidays?.map((h) => <a href={`/holidays/${h.slug}`}>{h.data.title}</a>)}
+	</nav>
+
+	<figure>
+		<Image
+			src={holiday.data.image.src}
+			alt={holiday.data.image.alt}
+			width="800"
+			height="500"
+			loading="eager"
+			transition:name={`holiday-img-${holiday.slug}`}
+			transition:animate="initial"
+		/>
+		<figcaption>{holiday.data.image.credit}</figcaption>
+	</figure>
+
+	<h1
+		transition:name={`holiday-title-${holiday.slug}`}
+		transition:animate="initial"
+	>
+		{holiday.data.title}
+	</h1>
+
+	<Content />
+</Layout>
+```
+
+Now try navigating from the holidays listing page to an individual holiday. Looks pretty slick, right? And we're using browser standards!
+
+## LUNCH BREAK
+
+Go grab something to eat and we'll see you back here in 30 minutes. When we get back, we'll look at loading data from external APIs, server rendering pages in Astro, how to set up dynamic routing, and learn what "server islands" are and why we might use them.
+
+## Environment variables
+
+Astro uses Vite under the hood, which is how most modern meta-frameworks are built. Handling environment variables requires two steps:
+
+1. Loading data into the environment
+2. Accessing environment variables
+
+For production, your hosting platform will have specific guides for how to add environment variables. For development, we'll use a `.env` file.
+
+Create a file at the project root called `.env` and add the following inside:
+
+```sh
+ITEMS_PER_PAGE=50
+```
+
+Upon saving, Astro will automatically restart and the variable is now available.
+
+To access environment variables, we use `import.meta.env` — this is an object with the available env vars as properties. So, to access our `ITEMS_PER_PAGE` env var, we'd use `import.meta.env.ITEMS_PER_PAGE`.
+
+By default, env vars are _only_ accessible on the server (meaning in Astro frontmatter) and will not be defined in the client environment. However, if we're sure an env var is safe to be exposed on the client side, we can prefix it with `PUBLIC_` and it will be available in client code as well.
+
+> **NOTE:** We're using a contrived example for this workshop to avoid spending time on registering for and generating credentials that would typically be placed in environment variables.
+
+## Load data from external APIs
+
+Many modern websites rely on data from third-party APIs. For this workshop we're going to use the Pokémon API because it doesn't require an API key, but you can load data any API into Astro using this approach.
+
+First, create a component to display the preview of each Pokémon. Add a new file at `src/components/pokemon-preview.astro` with the following contents:
+
+```tsx title="src/components/pokemon-preview.astro"
+---
+import { Image } from 'astro:assets';
+
+export interface Props {
+	pokemon: string;
+}
+
+const { pokemon } = Astro.props;
+
+const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
+
+if (!response.ok) {
+	throw new Error('failed to fetch Pokémon');
+}
+
+const pokemonData = await response.json();
+---
+
+<a href={`/pokemon/${pokemonData.name}`}>
+	<Image
+		src={pokemonData.sprites.front_default}
+		alt={pokemonData.name}
+		width="50"
+		height="50"
+	/>
+	<span>{pokemonData.name}</span>
+</a>
+
+<style>
+	a {
+		align-items: center;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		text-decoration: none;
+
+		img {
+			block-size: 100px;
+			display: block;
+			inline-size: 100px;
+		}
+	}
+</style>
+```
+
+You can see here that this component is performing a fetch — hello, top-level `await`! — for the Pokémon that's passed into it. This is the standard [Fetch API][fetch-api], which is all we need when loading external data into Astro.
+
+Next, create a new file at `src/pages/pokemon/index.astro` and place the following inside:
+
+```tsx
+---
+import Layout from '../../layouts/default.astro';
+import PokemonPreview from '../../components/pokemon-preview.astro';
+
+const ITEMS_PER_PAGE = import.meta.env.ITEMS_PER_PAGE;
+
+const apiUrl = new URL('https://pokeapi.co/api/v2/pokemon');
+apiUrl.searchParams.set('limit', ITEMS_PER_PAGE);
+
+const response = await fetch(apiUrl);
+
+if (!response.ok) {
+	throw new Error('failed to fetch Pokémon');
+}
+
+const title = 'Pokémon';
+const pokemonList = await response.json();
+---
+
+<Layout title={title}>
+	<h1>{title}</h1>
+
+	<section class="box">
+		<ul class="list flex">
+			{
+				pokemonList.results.map((pokemon: { name: string }) => {
+					return (
+						<li>
+							<PokemonPreview pokemon={pokemon.name} />
+						</li>
+					);
+				})
+			}
+		</ul>
+	</section>
+</Layout>
+```
+
+This prints the first 50 Pokémon on the page.
+
+In some cases, this might be enough, but in many sites we'd want to go much further. For this workshop, we're going to:
+
+1. Create a unique URL for each Pokémon to make them easier to share
+2. Allow users to navigate through pages of Pokémon so they can see everything provided by the API
+
+To do this, we _could_ statically render it all. However, we don't control this API and we don't know when Pokémon will be added or updated, so we'd either need to rebuild the site on a schedule (which would likely mean that there would be periods of time where the API would be out of sync), or we want to dynamically render these pages to make sure users are always seeing the most up-to-date information.
+
+## Enabling server rendering in Astro
+
+A powerful feature of Astro is that it renders everything to static files by default. However, when we need server rendering, Astro supports that as well. But we don't necessarily want to _always_ server render — often times we only need a few pages on a site to be server rendered while the rest would be better managed as a statically generated site.
+
+In Astro, we have options. If we want the _entire_ site to be server rendered, we can update our Astro config to use the `server` output mode.
+
+But if we want to opt into server rendering only on the pages where its necessary, we can instead use the `hybrid` output mode. This is my default choice — I only opt for `server` mode when there's a very clear need for it.
+
+To enable server rendering on the pages we need it for, update `astro.config.mjs` with the following changes:
+
+```js title="astro.config.mjs" ins={8}
+// @ts-check
+import { defineConfig } from "astro/config";
+import react from "@astrojs/react";
+
+// https://astro.build/config
+export default defineConfig({
+	output: "hybrid",
+	integrations: [react()],
+});
+```
+
+## Dynamic routes
+
+To get individual URLs working for each Pokémon, create a new file called `src/pages/pokemon/[pokemon].astro` with the following inside:
+
+```tsx title="src/pages/pokemon/[pokemon].astro"
+---
+import { Image } from 'astro:assets';
+import Layout from '../../layouts/default.astro';
+
+export const prerender = false;
+
+const { pokemon } = Astro.params;
+
+const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
+
+if (!response.ok) {
+	throw new Error('failed to fetch Pokémon');
+}
+
+const pokemonData = await response.json();
+
+const backUrl = new URL(Astro.url);
+backUrl.pathname = '/pokemon';
+
+const title = pokemonData.name;
+
+let imgUrl;
+const images = pokemonData.sprites;
+
+if (images.other?.['official-artwork']?.front_default) {
+	imgUrl = images.other['official-artwork'].front_default;
+} else if (images.other?.dream_world?.front_default) {
+	imgUrl = pokemonData.sprites.other.dream_world.front_default;
+} else {
+	imgUrl = pokemonData.sprites.front_default;
+}
+---
+
+<Layout title={title}>
+	<nav class="subnav flex">
+		<a href={backUrl}>&larr; All Pokémon</a>
+	</nav>
+
+	<Image src={imgUrl} alt={title} width="200" height="200" />
+	<h1>{title}</h1>
+</Layout>
+```
+
+To make this page server-rendered, we export a variable called `prerender` and set it to `false`, which tells Astro that this page needs to be rendered fresh on every request (i.e. server rendered).
+
+Then, instead of exporting a `getStaticPaths` function, we grab the `pokemon` param out of `Astro.params` and use it to make a fetch request to load the data we need to display the page.
+
+## Handling query params on URLs for pagination
+
+Right now we can only see the first 50 Pokémon returned from the API. The API itself allows us to pass an `offset` param to retrieve additional Pokémon, so we can leverage that in our own page as well.
+
+To do that, make the following changes to `src/pages/pokemon/index.astro`:
+
+```tsx title="src/pages/pokemon/index.astro" ins={5-6,12-14,23-32,51-57}
+---
+import Layout from '../../layouts/default.astro';
+import PokemonPreview from '../../components/pokemon-preview.astro';
+
+export const prerender = false;
+
+const ITEMS_PER_PAGE = Number(import.meta.env.ITEMS_PER_PAGE);
+
+const apiUrl = new URL('https://pokeapi.co/api/v2/pokemon');
+apiUrl.searchParams.set('limit', ITEMS_PER_PAGE.toString());
+
+const page = Number(Astro.url.searchParams.get('page') ?? 1);
+apiUrl.searchParams.set('offset', ((page - 1) * ITEMS_PER_PAGE).toString());
+
+const response = await fetch(apiUrl);
+
+if (!response.ok) {
+	throw new Error('failed to fetch Pokémon');
+}
+
+const title = 'Pokémon';
+const pokemonList = await response.json();
+
+const maxPages = Math.floor(pokemonList.count / ITEMS_PER_PAGE);
+
+const prevPage = page > 1 ? Math.max(page - 1, 1) : false;
+const prevUrl = new URL(Astro.url);
+prevUrl.searchParams.set('page', prevPage.toString());
+
+const nextPage = page < maxPages ? Math.min(page + 1, maxPages) : false;
+const nextUrl = new URL(Astro.url);
+nextUrl.searchParams.set('page', nextPage.toString());
+---
+
+<Layout title={title}>
+	<h1>{title}</h1>
+
+	<section class="box">
+		<ul class="list flex">
+			{
+				pokemonList.results.map((pokemon: { name: string }) => {
+					return (
+						<li>
+							<PokemonPreview pokemon={pokemon.name} />
+						</li>
+					);
+				})
+			}
+		</ul>
+	</section>
+
+	<section>
+		<nav class="subnav flex">
+			{prevPage !== false ? <a href={prevUrl}>&larr; previous page</a> : null}
+			{nextPage !== false ? <a href={nextUrl}>next page &rarr;</a> : null}
+		</nav>
+	</section>
+</Layout>
+```
+
+By enabling server rendering, we're able to get the query parameters from `Astro.url`. Once we have that, we can do the math to determine the appropriate `offset` to pass to the API, as well as building the previous and next page URLs when appropriate.
+
+Next, we need to make sure to figure out the correct offset for the "back" button on individual Pokémon pages. Update `src/pages/pokemon/[pokemon].astro` with the following:
+
+```tsx title="src/pages/pokemon/[pokemon].astro" ins={6-7,21-24}
+---
+import { Image } from 'astro:assets';
+import Layout from '../../layouts/default.astro';
+
+export const prerender = false;
+
+const ITEMS_PER_PAGE = Number(import.meta.env.ITEMS_PER_PAGE);
+
+const { pokemon } = Astro.params;
+
+const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
+
+if (!response.ok) {
+	throw new Error('failed to fetch Pokémon');
+}
+
+const pokemonData = await response.json();
+
+const backUrl = new URL(Astro.url);
+backUrl.pathname = '/pokemon';
+backUrl.searchParams.set(
+	'page',
+	Math.floor(pokemonData.id / ITEMS_PER_PAGE + 1).toString(),
+);
+
+const title = pokemonData.name;
+
+let imgUrl;
+const images = pokemonData.sprites;
+
+if (images.other?.['official-artwork']?.front_default) {
+	imgUrl = images.other['official-artwork'].front_default;
+} else if (images.other?.dream_world?.front_default) {
+	imgUrl = pokemonData.sprites.other.dream_world.front_default;
+} else {
+	imgUrl = pokemonData.sprites.front_default;
+}
+---
+
+<Layout title={title}>
+	<nav class="subnav flex">
+		<a href={backUrl}>&larr; All Pokémon</a>
+	</nav>
+
+	<Image src={imgUrl} alt={title} width="200" height="200" />
+	<h1>{title}</h1>
+</Layout>
+```
+
+For these pages, we can use the Pokémon's ID, which is a sequential integer, to figure out which page we're on, then set that as the `page` search param on the back link.
+
+## Use server islands for faster page loads
+
+Some modern meta-frameworks, such as React, have introduced the ability to server render a component and deliver it to the browser asynchronously. Astro has introduced the ability to do the same thing, using an attribute very similar to the `client:*` directives: [a `server:defer` directive][server-islands].
+
+When used, this causes the component with the attribute to render on the server asynchronously, which makes a couple cool things possible:
+
+1. The containing page can be cached because the customized content in the deferred server component isn't part of its initial payload
+2. The containing page can get its initial load on screen more quickly
+
+### Enable server islands in your Astro site
+
+At the time of this workshop, server islands are still experimental, so we need to enable a flag in `astro.config.mjs` to use them. Make the following changes to your config:
+
+```ts title="astro.config.mjs" ins={9-11}
+// @ts-check
+import { defineConfig } from "astro/config";
+import react from "@astrojs/react";
+
+// https://astro.build/config
+export default defineConfig({
+	output: "hybrid",
+	integrations: [react()],
+	experimental: {
+		serverIslands: true,
+	},
+});
+```
+
+### Defer loading of a server component
+
+To turn a component into a server island, add the `server:defer` directive to it.
+
+To keep our Pokémon preview cards from blocking the initial page render, let's defer their rendering by making the following changes to `src/pages/pokemon/index.astro`:
+
+```tsx title="src/pages/pokemon/index.astro" ins={44}
+---
+import Layout from '../../layouts/default.astro';
+import PokemonPreview from '../../components/pokemon-preview.astro';
+
+export const prerender = false;
+
+const ITEMS_PER_PAGE = Number(import.meta.env.ITEMS_PER_PAGE);
+
+const apiUrl = new URL('https://pokeapi.co/api/v2/pokemon');
+apiUrl.searchParams.set('limit', ITEMS_PER_PAGE.toString());
+
+const page = Number(Astro.url.searchParams.get('page') ?? 1);
+apiUrl.searchParams.set('offset', ((page - 1) * ITEMS_PER_PAGE).toString());
+
+const response = await fetch(apiUrl);
+
+if (!response.ok) {
+	throw new Error('failed to fetch Pokémon');
+}
+
+const title = 'Pokémon';
+const pokemonList = await response.json();
+
+const maxPages = Math.floor(pokemonList.count / ITEMS_PER_PAGE);
+
+const prevPage = page > 1 ? Math.max(page - 1, 1) : false;
+const prevUrl = new URL(Astro.url);
+prevUrl.searchParams.set('page', prevPage.toString());
+
+const nextPage = page < maxPages ? Math.min(page + 1, maxPages) : false;
+const nextUrl = new URL(Astro.url);
+nextUrl.searchParams.set('page', nextPage.toString());
+---
+
+<Layout title={title}>
+	<h1>{title}</h1>
+
+	<section class="box">
+		<ul class="list flex">
+			{
+				pokemonList.results.map((pokemon: { name: string }) => {
+					return (
+						<li>
+							<PokemonPreview pokemon={pokemon.name} server:defer />
+						</li>
+					);
+				})
+			}
+		</ul>
+	</section>
+
+	<section>
+		<nav class="subnav flex">
+			{prevPage !== false ? <a href={prevUrl}>&larr; previous page</a> : null}
+			{nextPage !== false ? <a href={nextUrl}>next page &rarr;</a> : null}
+		</nav>
+	</section>
+</Layout>
+```
+
+To test this, open your browser devtools, go to the Network tab, and throttle the bandwidth down to 3G speeds. Reload the page and you'll see that the initial page loads quickly, with the Pokémon previews loading in asynchronously.
+
+However, this looks a little goofy as-is. A placeholder would keep the page from jumping around and make it clear that things are still loading.
+
+Astro components using `server:defer` allow us to pass placeholder content into a named slot called `fallback`. We'll use this to add some placeholder loading bars. Make the following updates to the `<PokemonPreview>` component in `src/pages/pokemon/index.astro`:
+
+```tsx
+<PokemonPreview pokemon={pokemon.name} server:defer>
+	<div slot="fallback">
+		<div class="poke-placeholder-img" />
+		<span class="poke-placeholder-text" />
+	</div>
+</PokemonPreview>
+```
+
+## BREAK 2
+
+Take 15 minutes for yourself. When we get back, we'll go into the final section where we'll learn about Astro DB, how to handle user input from forms, how to use Astro actions, and how to create custom endpoints and middleware.
+
+## Set up Astro DB
+
+If you need custom data, Astro provides a built-in SQLite solution that lets us define and manage our own database.
+
+Let's give it a try by building a small app in this Astro site that will let us:
+
+- Add ideas to the database
+- Mark whether those ideas are good or bad
+- Display two lists of ideas: one for good, one for bad
+
+To do that, we'll need to create a database, define our database schema, load some dummy data, read that data into our lists, create a form for capturing new ideas, and turn that form input into new database entries.
+
+### Add Astro DB to the site
+
+Let's start by enabling Astro DB on our project. In the terminal, run the following command:
+
+```sh
+npx astro add db
+```
+
+This will add the dependencies, update the Astro config, and create a new folder, `db`, with the configuration file and a `seed.ts` that lets us add dummy data for development.
+
+### Configure the database schema
+
+Our database will be a single table that stores ideas. Configure that by updating `db/config.ts` with the following:
+
+```ts title="db/config.ts"
+import { column, defineDb, defineTable } from "astro:db";
+
+// https://astro.build/db/config
+export default defineDb({
+	tables: {
+		Idea: defineTable({
+			columns: {
+				id: column.number({ primaryKey: true }),
+				text: column.text(),
+				good: column.boolean(),
+			},
+		}),
+	},
+});
+```
+
+The `Idea` table will house all of our app's data. Astro provides a `column` helper that's _sort of_ like Zod to allow us to define the types of each piece of data we want to store.
+
+### Seed the database with development data
+
+Astro DB creates a local SQLite instance for development. This is extremely cool because we don't need to set up any credentials or worry about causing problems with production data or for our teammates — but it also means that the database will start empty.
+
+To address that, Astro DB will look for a `db/seed.ts` file when the dev server starts, which can be used to add data to the development database. Beyond giving us a starting point, it also means we can test adding and deleting data safely because every time we restart our dev server, the data will reset to what's in the seed file.
+
+Add a couple ideas to the database by making the following changes to `db/seed.ts`:
+
+```ts title="db/seed.ts"
+import { db, Idea } from "astro:db";
+
+export default async function () {
+	await db.insert(Idea).values([
+		{ id: 1, text: "Set up a dinner for friends", good: true },
+		{ id: 2, text: "Eat an entire block of cheese", good: false },
+	]);
+}
+```
+
+## Use Astro DB data to build a page
+
+To get data displayed on the page, we'll start by displaying the two types of ideas in lists. Since these lists will be very similar, let's make a new component that we can reuse for both of them.
+
+Create a new file at `src/components/idea-list.astro` with the following content:
+
+```tsx title="src/components/idea-list.astro"
+---
+export interface Props {
+	title: string;
+	ideas: Array<{ id: number; text: string; good: boolean }>;
+}
+
+const { title, ideas } = Astro.props;
+---
+
+<div class="box">
+	<h2>{title}</h2>
+	<ul class="list">
+		{
+			ideas.map((idea) => (
+				<li class="with-controls">
+					<div>{idea.text}</div>
+				</li>
+			))
+		}
+	</ul>
+</div>
+```
+
+Next, we can create a new page to load the data from the DB and render it using the component we just created. Add a new file at `src/pages/ideas.astro` and add the following code:
+
+```tsx title="src/pages/ideas.astro"
+---
+import { db, Idea } from 'astro:db';
+import Layout from '../layouts/default.astro';
+import IdeaList from '../components/idea-list.astro';
+
+export const prerender = false;
+
+const title = 'Astro DB';
+
+const ideas = await db.select().from(Idea);
+---
+
+<Layout title={title}>
+	<h1>{title}</h1>
+
+	<section class="idea-lists flex">
+		<IdeaList title="Good ideas" ideas={ideas.filter((idea) => idea.good)} />
+		<IdeaList title="Bad ideas" ideas={ideas.filter((idea) => !idea.good)} />
+	</section>
+</Layout>
+```
+
+## Handle user input with Astro Actions
+
+Now that we're able to display items from the database, let's add support for adding new ones.
+
+### Create a form to accept user input
+
+Let's add a form to `src/pages/ideas.astro` by making the following changes:
+
+```tsx title="src/pages/ideas.astro" ins={16-40}
+---
+import { db, Idea } from 'astro:db';
+import Layout from '../layouts/default.astro';
+import IdeaList from '../components/idea-list.astro';
+
+export const prerender = false;
+
+const title = 'Astro DB';
+
+const ideas = await db.select().from(Idea);
+---
+
+<Layout title={title}>
+	<h1>{title}</h1>
+
+	<section class="idea-form box">
+		<h2>Add an idea</h2>
+
+		<form method="POST">
+			<label for="text">
+				Idea
+				<input type="text" name="text" id="text" required />
+			</label>
+
+			<fieldset>
+				<legend>Is this idea any good?</legend>
+				<label for="yes">
+					<input type="radio" name="good" id="yes" value="true" />
+					Yes
+				</label>
+				<label for="no">
+					<input type="radio" name="good" id="no" value="false" />
+					No
+				</label>
+			</fieldset>
+
+			<button type="submit">Add</button>
+		</form>
+	</section>
+
+	<section class="idea-lists flex">
+		<IdeaList title="Good ideas" ideas={ideas.filter((idea) => idea.good)} />
+		<IdeaList title="Bad ideas" ideas={ideas.filter((idea) => !idea.good)} />
+	</section>
+</Layout>
+```
+
+### Define the action to handle user input
+
+Right now this form doesn't do anything when we submit it. To fix that, we're going to create an [action][astro-actions]. Actions are a way for us to define server-side handlers in a type-safe way.
+
+We _could_ also handle things directly in Astro frontmatter by checking if the `Astro.request.method` is a `POST`, but actions will automatically handle parsing our form data and throwing helpful errors if it's incorrect, so it's worth the extra setup.
+
+Create a new file at `src/actions/index.ts` and add the following:
+
+```ts
+import { defineAction } from "astro:actions";
+import { db, Idea } from "astro:db";
+import { z } from "astro:schema";
+
+export const server = {
+	ideas: {
+		save: defineAction({
+			accept: "form",
+			input: z.object({
+				text: z.string(),
+				good: z.coerce.boolean(),
+			}),
+			handler: async (input) => {
+				await db.insert(Idea).values(input);
+
+				return `Success! New ${input.good ? "good" : "bad"} idea added.`;
+			},
+		}),
+	},
+};
+```
+
+This namespaces the action by placing it in an `ideas` object, then defines and action called `save`.
+
+By setting `accept` to "form", the action will automatically turn the form's submitted data into JavaScript object.
+
+The `input` object lets us define a Zod schema for parsing the submitted data. Note that the names of the fields (`text` and `good`) match the `name` attributes of the inputs where the user will enter those values — these have to match or the action won't work as expected!
+
+Finally, the `handler` is a function where we define our input handling logic. In this case, we insert the submitted data into Astro DB and return a success message.
+
+### Set the form to use the action
+
+Back in `src/pages/ideas.astro`, update the form with an `action` that points to the action we just created.
+
+```tsx title="src/pages/ideas.astro" ins={2,20}
+---
+import { actions } from 'astro:actions';
+import { db, Idea } from 'astro:db';
+import Layout from '../layouts/default.astro';
+import IdeaList from '../components/idea-list.astro';
+
+export const prerender = false;
+
+const title = 'Astro DB';
+
+const ideas = await db.select().from(Idea);
+---
+
+<Layout title={title}>
+	<h1>{title}</h1>
+
+	<section class="idea-form box">
+		<h2>Add an idea</h2>
+
+		<form method="POST" action={actions.ideas.save}>
+			<label for="text">
+				Idea
+				<input type="text" name="text" id="text" required />
+			</label>
+
+			<fieldset>
+				<legend>Is this idea any good?</legend>
+				<label for="yes">
+					<input type="radio" name="good" id="yes" value="true" />
+					Yes
+				</label>
+				<label for="no">
+					<input type="radio" name="good" id="no" value="false" />
+					No
+				</label>
+			</fieldset>
+
+			<button type="submit">Add</button>
+		</form>
+	</section>
+
+	<section class="idea-lists flex">
+		<IdeaList title="Good ideas" ideas={ideas.filter((idea) => idea.good)} />
+		<IdeaList title="Bad ideas" ideas={ideas.filter((idea) => !idea.good)} />
+	</section>
+</Layout>
+```
+
+Try adding a new idea using the form and you'll see it appear in the appropriate list.
+
+### Display a message on action success or failure
+
+Next, let's show a message to the user based on the action result. To do that, we use a helper called `Astro.getActionResult`. That returns either the data returned from the action, or the error message if something went wrong.
+
+Add the updates by making the following changes to `src/pages/ideas.astro`:
+
+```tsx title="src/pages/ideas.astro" ins={6,14,23-38}
+---
+import { actions } from 'astro:actions';
+import { db, Idea } from 'astro:db';
+import Layout from '../layouts/default.astro';
+import IdeaList from '../components/idea-list.astro';
+import Callout from '../components/callout.astro';
+
+export const prerender = false;
+
+const title = 'Astro DB';
+
+const ideas = await db.select().from(Idea);
+
+const result = Astro.getActionResult(actions.ideas.save);
+---
+
+<Layout title={title}>
+	<h1>{title}</h1>
+
+	<section class="idea-form box">
+		<h2>Add an idea</h2>
+
+		{
+			result && !result.error ? (
+				<Callout icon="✅" iconDescription="green checkbox">
+					<p>{result.data}</p>
+				</Callout>
+			) : null
+		}
+
+		{
+			result && result.error ? (
+				<Callout icon="🚨" iconDescription="alarm">
+					<p>{result.error}</p>
+				</Callout>
+			) : null
+		}
+
+		<form method="POST" action={actions.ideas.save}>
+			<label for="text">
+				Idea
+				<input type="text" name="text" id="text" />
+			</label>
+
+			<fieldset>
+				<legend>Is this idea any good?</legend>
+				<label for="yes">
+					<input type="radio" name="good" id="yes" value="true" />
+					Yes
+				</label>
+				<label for="no">
+					<input type="radio" name="good" id="no" value="false" />
+					No
+				</label>
+			</fieldset>
+
+			<button type="submit">Add</button>
+		</form>
+	</section>
+
+	<section class="idea-lists flex">
+		<IdeaList title="Good ideas" ideas={ideas.filter((idea) => idea.good)} />
+		<IdeaList title="Bad ideas" ideas={ideas.filter((idea) => !idea.good)} />
+	</section>
+</Layout>
+```
+
+Now submissions let the user know whether they succeeded or not.
+
+### Allow deletion of items
+
+To make this app a little more app-like, let's add the ability to delete things.
+
+Update `src/actions/index.ts` with an action called `delete`:
+
+```ts title="src/actions/index.ts" ins={2,19-27}
+import { defineAction } from "astro:actions";
+import { db, eq, Idea } from "astro:db";
+import { z } from "astro:schema";
+
+export const server = {
+	ideas: {
+		save: defineAction({
+			accept: "form",
+			input: z.object({
+				text: z.string(),
+				good: z.coerce.boolean(),
+			}),
+			handler: async (input) => {
+				await db.insert(Idea).values(input);
+
+				return `Success! New ${input.good ? "good" : "bad"} idea added.`;
+			},
+		}),
+		delete: defineAction({
+			accept: "form",
+			input: z.object({
+				id: z.number(),
+			}),
+			handler: async (input) => {
+				await db.delete(Idea).where(eq(Idea.id, input.id));
+			},
+		}),
+	},
+};
+```
+
+Next, inside `src/components/idea-list.astro`, add a form for deleting items that calls the new action:
+
+```tsx title="src/components/idea-list.astro" ins={2-3,19-27}
+---
+import { actions } from 'astro:actions';
+
+export interface Props {
+	title: string;
+	ideas: Array<{ id: number; text: string; good: boolean }>;
+}
+
+const { title, ideas } = Astro.props;
+---
+
+<div class="box">
+	<h2>{title}</h2>
+	<ul class="list">
+		{
+			ideas.map((idea) => (
+				<li class="with-controls">
+					<div>{idea.text}</div>
+					<form method="POST" action={actions.ideas.delete}>
+						<input type="hidden" name="id" value={idea.id} />
+						<button type="submit" class="icon">
+							<span role="img" aria-label="trash can">
+								🗑️
+							</span>
+							<span class="sr-only">delete</span>
+						</button>
+					</form>
+				</li>
+			))
+		}
+	</ul>
+</div>
+```
+
+The app now lets you create and delete items. Who says Astro's only for static sites?
+
+## Add an endpoint
+
+For the last bit of functionality to wrap up for today, let's add the base components of user accounts and protected routes. We won't get into actually managing auth, but we'll touch on the building blocks.
+
+First, let's add an endpoint to our site. In Astro, we can define an endpoint by creating a file with a `.ts` extension. There are a lot of different ways to set up endpoints, but for this workshop we're going to add an API endpoint for toggling the user's `logged-in` cookie between `true` and `false`, which will let us simulate a login/logout flow.
+
+Create a new file at `src/pages/api/toggle-auth.ts` and add the following :
+
+```ts title="src/pages/api/toggle-auth.ts"
+import type { APIRoute } from "astro";
+
+export const prerender = false;
+
+export const POST: APIRoute = ({ cookies, redirect }) => {
+	const loggedIn = cookies.get("logged-in")?.boolean();
+	const newState = !loggedIn;
+
+	cookies.set("logged-in", newState.toString(), { path: "/" });
+
+	return redirect("/ideas", 302);
+};
+```
+
+We set this endpoint to be server rendered, then export a `POST` function to handle `POST` requests. We can export additional functions with HTTP method names to handle those as well, but for this example we're only going to use `POST`.
+
+The API route functions in Astro receive a context object that gives access to, among other things, `cookies` and `redirect` helpers. Using these, we can update the user's `logged-in` cookie, then redirect them to the ideas page in our app.
+
+Next, create a new file called `src/pages/login.astro` and put the following inside:
+
+```tsx title="src/pages/login.astro"
+---
+import Layout from '../layouts/default.astro';
+
+export const prerender = false;
+
+const title = 'Log In';
+---
+
+<Layout title={title}>
+	<h1>{title}</h1>
+
+	<form action="/api/toggle-auth" method="POST">
+		<button type="submit">Log In</button>
+	</form>
+</Layout>
+```
+
+Visit this page and open your browser's devtools. Open the Application tab, then find the current URL's cookies. Click the "Log In" button and you'll be redirected to the `/ideas` page, and a `logged-in` cookie will show up that's set to `true`. Visit the login page again, click the button, and you'll see that the cookie is now set to `false`.
+
+As our last step, let's set up Astro middleware to check whether the user is logged in and redirect them to the appropriate page.
+
+## Add Astro middleware
+
+To finish up our app, we want to add a check for whether or not the user has a `logged-in` cookie set to `true`. If they do, they should be able to see the `/ideas` page; if not, they should be redirected to `/login`.
+
+To do this, create a new file at `src/middleware.ts` and add the following:
+
+```ts title="src/middleware.ts"
+import { defineMiddleware } from "astro:middleware";
+
+export const onRequest = defineMiddleware((context, next) => {
+	const loggedIn = context.cookies.get("logged-in")?.boolean();
+
+	if (!loggedIn && context.url.pathname === "/ideas") {
+		return context.redirect("/login");
+	}
+
+	if (loggedIn && context.url.pathname === "/login") {
+		return context.redirect("/ideas");
+	}
+
+	return next();
+});
+```
+
+Stop and restart the dev server to make sure the middleware takes effect, then visit the `/login` page. If your `logged-in` cookie is toggled to `true`, you'll immediately be redirected to `/ideas`. If not, click "Log In" and then try again.
+
+Finally, add a log out button to `src/pages/ideas.astro` page by making the following changes:
+
+```tsx title="src/pages/ideas.astro" ins={20-22}
+---
+import { actions } from 'astro:actions';
+import { db, Idea } from 'astro:db';
+import Layout from '../layouts/default.astro';
+import IdeaList from '../components/idea-list.astro';
+import Callout from '../components/callout.astro';
+
+export const prerender = false;
+
+const title = 'Astro DB';
+
+const ideas = await db.select().from(Idea);
+
+const result = Astro.getActionResult(actions.ideas.save);
+---
+
+<Layout title={title}>
+	<h1>{title}</h1>
+
+	<form action="/api/toggle-auth" method="POST">
+		<button type="submit">Log Out</button>
+	</form>
+
+	<section class="idea-form box">
+		<h2>Add an idea</h2>
+
+		{
+			result && !result.error ? (
+				<Callout icon="✅" iconDescription="green checkbox">
+					<p>{result.data}</p>
+				</Callout>
+			) : null
+		}
+
+		{
+			result && result.error ? (
+				<Callout icon="🚨" iconDescription="alarm">
+					<p>{result.error}</p>
+				</Callout>
+			) : null
+		}
+
+		<form method="POST" action={actions.ideas.save}>
+			<label for="text">
+				Idea
+				<input type="text" name="text" id="text" />
+			</label>
+
+			<fieldset>
+				<legend>Is this idea any good?</legend>
+				<label for="yes">
+					<input type="radio" name="good" id="yes" value="true" />
+					Yes
+				</label>
+				<label for="no">
+					<input type="radio" name="good" id="no" value="false" />
+					No
+				</label>
+			</fieldset>
+
+			<button type="submit">Add</button>
+		</form>
+	</section>
+
+	<section class="idea-lists flex">
+		<IdeaList title="Good ideas" ideas={ideas.filter((idea) => idea.good)} />
+		<IdeaList title="Bad ideas" ideas={ideas.filter((idea) => !idea.good)} />
+	</section>
+</Layout>
+```
+
+With that, we're done for now!
+
+## Next steps
+
+This workshop is a speedrun of Astro's most exciting features, but it's far from a complete walkthrough of everything Astro can do.
+
+Hopefully you're feeling confident that you can build just about anything you can imagine using Astro.
+
+To go further, make sure to take a look through [Astro's excellent documentation][docs], and join their Discord to get support from their team and Astro's very active community. 
+
+## Questions?
+
+Hit me with 'em!
+
+[gist]: https://gist.github.com/jlengstorf/21fde6166c440bb2f21e2e0f647c5524
+[images]: https://youtu.be/ucQwTI5qMlE
+[view-transitions]: https://mdn.io/view-transitions
+[fetch-api]: https://mdn.io/fetch-api
+[server-islands]: https://astro.build/blog/future-of-astro-server-islands/
+[astro-actions]: https://docs.astro.build/en/guides/actions/
+[docs]: https://docs.astro.**build**
