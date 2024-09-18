@@ -47,8 +47,8 @@ https://lwj.dev/*                       https://www.learnwithjason.dev/:splat   
 /store         https://learn-with-jason.myshopify.com/
 /4d1a          https://www.youtube.com/playlist?list=PLz8Iz-Fnk_eRtJeLjx9CxPQw6MzbDgaEu
 /wdc           https://www.youtube.com/playlist?list=PLz8Iz-Fnk_eTkZvSNWXW_TKZ2UwVirT2M
-/wdc-giveaway  https://www.learnwithjason.dev/blog/web-dev-challenge-hackathon-monsters
-/wdc-hackathon https://www.learnwithjason.dev/blog/web-dev-challenge-hackathon-monsters
+/wdc-giveaway  https://www.learnwithjason.dev/blog/web-dev-challenge-s1e5-food-scene-hackathon
+/wdc-hackathon https://www.learnwithjason.dev/blog/web-dev-challenge-s1e5-food-scene-hackathon
 /4d1a/info     https://learnwithjason.notion.site/4-Web-Devs-1-App-Overview-6338ba80550245e8aeac90a89276c344?pvs=4
 /join          https://youtube.com/@learnwithjason/join
 /partners      https://partners.learnwithjason.dev/
@@ -91,6 +91,7 @@ https://lwj.dev/*                       https://www.learnwithjason.dev/:splat   
 # Web Dev Challenge hackathon short links
 /wdc-hackathon-3-submit     https://forms.gle/hPkGDCb1R66TGocw9
 /wdc-hackathon-4-submit     https://forms.gle/BfQtaRbpZhZDAMKx6
+/wdc-hackathon-4-submit     https://forms.gle/We6oHZMYGE6Ua7wq6
 
 # sponsors
 /netlify       https://www.netlify.com/?utm_source=learnwithjason&utm_medium=lwj&utm_campaign=sponsored
