@@ -238,6 +238,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "BKokay",
+      "name": "Brittany Keith",
+      "avatar_url": "https://avatars.githubusercontent.com/u/95773709?v=4",
+      "profile": "http://brittanykeith.dev",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "contributorsPerLine": 7,
