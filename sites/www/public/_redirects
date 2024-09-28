@@ -46,13 +46,36 @@ https://lwj.dev/*                       https://www.learnwithjason.dev/:splat   
 /ask           https://ask.ping.gg/ask/jlengstorf
 /store         https://learn-with-jason.myshopify.com/
 /4d1a          https://www.youtube.com/playlist?list=PLz8Iz-Fnk_eRtJeLjx9CxPQw6MzbDgaEu
-/wdc           https://www.youtube.com/playlist?list=PLz8Iz-Fnk_eTkZvSNWXW_TKZ2UwVirT2M
-/wdc-giveaway  https://www.learnwithjason.dev/blog/web-dev-challenge-s1e5-food-scene-hackathon
-/wdc-hackathon https://www.learnwithjason.dev/blog/web-dev-challenge-s1e5-food-scene-hackathon
 /4d1a/info     https://learnwithjason.notion.site/4-Web-Devs-1-App-Overview-6338ba80550245e8aeac90a89276c344?pvs=4
 /join          https://youtube.com/@learnwithjason/join
 /partners      https://partners.learnwithjason.dev/
 /uses          https://learnwithjason.notion.site/Recommended-Gear-Software-Books-etc-by-Jason-Lengstorf-fc2854ecfad74c77a87de7e9238763eb
+
+# Web Dev Challenge
+/wdc                        https://www.youtube.com/playlist?list=PLz8Iz-Fnk_eTkZvSNWXW_TKZ2UwVirT2M
+/wdc/s1e1                   https://www.youtube.com/watch?v=8RCL5neas_M&list=PLz8Iz-Fnk_eTkZvSNWXW_TKZ2UwVirT2M&index=1
+/wdc/s1e2                   https://www.youtube.com/watch?v=jVHoffCdKa4&list=PLz8Iz-Fnk_eTkZvSNWXW_TKZ2UwVirT2M&index=2
+/wdc/s1e3                   https://www.youtube.com/watch?v=wPL13VR88iY&list=PLz8Iz-Fnk_eTkZvSNWXW_TKZ2UwVirT2M&index=3
+/wdc/s1e4                   https://www.youtube.com/watch?v=D9lWrkpVUm0&list=PLz8Iz-Fnk_eTkZvSNWXW_TKZ2UwVirT2M&index=4
+/wdc/s1e5                   https://www.youtube.com/watch?v=8Oxy6WV7zag&list=PLz8Iz-Fnk_eTkZvSNWXW_TKZ2UwVirT2M&index=5
+
+/wdc/hackathon              https://www.learnwithjason.dev/blog/web-dev-challenge-s1e5-food-scene-hackathon
+/wdc/hackathon/submit       https://forms.gle/48BA8qeHykdN5pXp9
+
+/wdc-giveaway               https://www.learnwithjason.dev/blog/web-dev-challenge-s1e5-food-scene-hackathon
+/wdc-hackathon              https://www.learnwithjason.dev/blog/web-dev-challenge-s1e5-food-scene-hackathon
+/wdc-hackathon-3-submit     https://forms.gle/hPkGDCb1R66TGocw9
+/wdc-hackathon-4-submit     https://forms.gle/BfQtaRbpZhZDAMKx6
+/wdc-hackathon-5-submit     https://forms.gle/48BA8qeHykdN5pXp9
+
+
+# Web Lunch
+/web-lunch        https://www.youtube.com/playlist?list=PLz8Iz-Fnk_eQKzDS0xO6FEA6ho8i3E3o2
+/web-lunch/s1e1   https://www.youtube.com/watch?v=hlRVMknHSqM&list=PLz8Iz-Fnk_eQKzDS0xO6FEA6ho8i3E3o2&index=1
+/web-lunch/s1e2   https://www.youtube.com/watch?v=mRd_1Bt9qrs&list=PLz8Iz-Fnk_eQKzDS0xO6FEA6ho8i3E3o2&index=2
+/web-lunch/s1e3   https://www.youtube.com/watch?v=PbWt0fdjvJo&list=PLz8Iz-Fnk_eQKzDS0xO6FEA6ho8i3E3o2&index=3
+/web-lunch/s1e4   https://www.youtube.com/watch?v=mMnm2BzOk1w&list=PLz8Iz-Fnk_eQKzDS0xO6FEA6ho8i3E3o2&index=4
+/web-lunch/s1e5   https://www.youtube.com/watch?v=VxltuByxdCo&list=PLz8Iz-Fnk_eQKzDS0xO6FEA6ho8i3E3o2&index=5
 
 # sponsorship information
 /sponsor       https://www.notion.so/learnwithjason/Learn-With-Jason-Livestream-Sponsorship-214f066473d64bddaeb6f57d155fad34
@@ -87,11 +110,6 @@ https://lwj.dev/*                       https://www.learnwithjason.dev/:splat   
 
 # search is a command bar now thanks to Sarah Dayan and Algolia
 /search        /?search
-
-# Web Dev Challenge hackathon short links
-/wdc-hackathon-3-submit     https://forms.gle/hPkGDCb1R66TGocw9
-/wdc-hackathon-4-submit     https://forms.gle/BfQtaRbpZhZDAMKx6
-/wdc-hackathon-5-submit     https://forms.gle/48BA8qeHykdN5pXp9
 
 # sponsors
 /netlify       https://www.netlify.com/?utm_source=learnwithjason&utm_medium=lwj&utm_campaign=sponsored
