@@ -4,6 +4,8 @@ import Layout from '../layouts/default.astro';
 import { getAllSeries } from '../util/sanity';
 import { createImageUrl } from '../util/cloudinary';
 
+export const prerender = true;
+
 const allSeries = await getAllSeries();
 ---
 

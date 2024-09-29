@@ -2,6 +2,8 @@
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/default.astro';
 
+export const prerender = true;
+
 const blogs = await getCollection('blog', ({ data }) => {
 	return import.meta.env.DEV === true || new Date(data.pubDate) < new Date();
 });
