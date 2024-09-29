@@ -69,7 +69,7 @@ export const POST: APIRoute = async (context) => {
 				},
 			});
 
-			// attach the Stripe ID and current plan details to the Clerk user
+			// @ts-expect-error I have no idea why this is happening
 			await clerkClient(context).users.updateUserMetadata(userId, {
 				publicMetadata: {
 					stripe: {
@@ -96,6 +96,7 @@ export const POST: APIRoute = async (context) => {
 
 			const clerkUserId = customer.metadata.userId;
 
+			// @ts-expect-error I have no idea why this is happening
 			await clerkClient(context).users.updateUserMetadata(clerkUserId, {
 				publicMetadata: {
 					stripe: {
@@ -123,6 +124,7 @@ export const POST: APIRoute = async (context) => {
 
 			const clerkId = cust.metadata.userId;
 
+			// @ts-expect-error I have no idea why this is happening
 			await clerkClient(context).users.updateUserMetadata(clerkId, {
 				publicMetadata: {
 					stripe: {

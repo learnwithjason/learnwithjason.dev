@@ -1,5 +1,5 @@
 /** @jsxImportSource react */
-export function SearchIcon(props) {
+export function SearchIcon(props: any) {
 	return (
 		<svg {...props} viewBox="0 0 20 20">
 			<path

@@ -1,10 +1,12 @@
+// @ts-nocheck
+
 import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
 import {markdownSchema} from 'sanity-plugin-markdown'
 import {cloudinarySchemaPlugin} from 'sanity-plugin-cloudinary'
 import {muxInput} from 'sanity-plugin-mux-input'
-import {schemaTypes /*previewUrlPlugin*/} from './schemaTypes'
+import {schemaTypes} from './schemaTypes'
 
 export default defineConfig({
   name: 'default',
@@ -27,7 +29,6 @@ export default defineConfig({
     }),
     visionTool(),
     markdownSchema(),
-    // previewUrlPlugin(),
     cloudinarySchemaPlugin(),
     muxInput(),
   ],

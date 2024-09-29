@@ -1,29 +1,15 @@
-/** @jsxImportSource react */
 import { getAlgoliaResults } from '@algolia/autocomplete-preset-algolia';
 import { useState } from 'react';
 
-// @ts-ignore
 import { searchClient } from './search-client';
 import {
-	ButtonItem,
-	EmptyQueryEpisodeItem,
 	LinkItem,
 	QueryEpisodeItem,
-	// @ts-ignore
 } from './items.jsx';
-// @ts-ignore
 import { GoogleCalendarLogo } from './logos/google-calendar-logo.jsx';
-// @ts-ignore
-import { TwitchLogo } from './logos/twitch-logo.jsx';
-// @ts-ignore
 import { YouTubeLogo } from './logos/youtube-logo.jsx';
-// @ts-ignore
 import { SearchIcon } from './icons/search-icon.tsx';
-// @ts-ignore
 import { NewsletterIcon } from './icons/newsletter-icon.jsx';
-// @ts-ignore
-import { isLink } from './utils/is-link.js';
-// @ts-ignore
 import { Autocomplete } from './autocomplete.jsx';
 
 type AlgoliaItem = {
@@ -165,7 +151,6 @@ export function Search() {
 									{
 										indexName:
 											'netlify_c55763f8-efc8-4ed9-841a-186a011ed84b_main_all',
-										// @ts-expect-error nothing has changed, so not sure why this is mad
 										query,
 										params: {
 											hitsPerPage: 12,
