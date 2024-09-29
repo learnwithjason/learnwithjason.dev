@@ -32,6 +32,7 @@
 	},
 	"workspaces": [
 		"sites/*",
-		"packages/*"
+		"packages/*",
+		"sites/www-v2/*"
 	]
 }
