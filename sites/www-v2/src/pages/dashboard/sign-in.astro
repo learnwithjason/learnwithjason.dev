@@ -1,0 +1,14 @@
+---
+import { SignIn as ClerkSignIn } from '@clerk/astro/components';
+import Layout from '../../layouts/default.astro';
+---
+
+<Layout>
+	<ClerkSignIn />
+</Layout>
+
+<style>
+	:global(.cl-rootBox) {
+		margin: 4rem auto 0;
+	}
+</style>

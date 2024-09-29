@@ -1,0 +1,28 @@
+---
+import { Image } from '@unpic/astro';
+
+export const prerender = false;
+
+const user = await Astro.locals.currentUser();
+---
+
+{
+	user ? (
+		<a href="/dashboard">
+			Manage your profile
+			<Image
+				src={user.imageUrl}
+				alt={user.fullName}
+				aspectRatio={1}
+				width={60}
+				layout="fixed"
+				unstyled
+			/>
+		</a>
+	) : (
+		<>
+			<a href="/dashboard/sign-in">Sign In</a>
+			<a href="/dashboard/sign-up">Create Account</a>
+		</>
+	)
+}

@@ -1,0 +1,21 @@
+---
+import { YOUTUBE_CHANNEL_ID, GOOGLE_CLOUD_API_KEY } from 'astro:env/server';
+
+const url = new URL('https://www.googleapis.com');
+url.pathname = '/youtube/v3/search';
+url.searchParams.set('part', 'snippet');
+url.searchParams.set('channelId', YOUTUBE_CHANNEL_ID);
+url.searchParams.set('eventType', 'upcoming');
+url.searchParams.set('type', 'video');
+url.searchParams.set('key', GOOGLE_CLOUD_API_KEY);
+
+const res = await fetch(url);
+
+if (!res.ok) {
+	console.log(await res.text());
+	throw new Error('unable to fetch');
+}
+const data = await res.json();
+---
+
+<pre>{JSON.stringify(data, null, 2)}</pre>

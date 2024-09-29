@@ -1,0 +1,134 @@
+---
+import { Image } from '@unpic/astro';
+import { format } from 'date-fns';
+import {
+	createImageUrl,
+	generateEpisodePoster,
+	getYouTubeThumbnail,
+} from '../util/cloudinary';
+
+export interface Props {
+	episode: any;
+	episodeUrl: string;
+	episodeNumber: string;
+	class?: string;
+}
+
+const { class: className, episode, episodeUrl, episodeNumber } = Astro.props;
+
+let episodeImage;
+if (episode.thumbnail.public_id) {
+	episodeImage = createImageUrl(episode.thumbnail.public_id, {
+		width: 340,
+		aspect_ratio: '340:190',
+		crop: 'fill',
+	});
+} else if (episode.video.youtube_id) {
+	episodeImage = getYouTubeThumbnail(episode.video.youtube_id);
+} else {
+	episodeImage = generateEpisodePoster();
+}
+
+const MAX_DESC_LENGTH = 18;
+const desc_words = episode.short_description.split(' ');
+const description =
+	desc_words.length <= MAX_DESC_LENGTH
+		? episode.short_description
+		: episode.short_description.split(' ').slice(0, MAX_DESC_LENGTH).join(' ') +
+			'&hellip;';
+---
+
+<div class:list={['episode', className]}>
+	<a href={episodeUrl}>
+		<Image
+			src={episodeImage}
+			alt={episode.title}
+			width={340}
+			height={190}
+			placeholder="blurhash"
+		/>
+	</a>
+	<div class="info">
+		<div class="episode-meta">
+			<span class="episode-number">
+				{episodeNumber}
+			</span>
+			<span class="episode-date">
+				{format(episode.publish_date, 'MMM d, yyyy')}
+			</span>
+		</div>
+		<h2>
+			<a href={episodeUrl}>
+				{episode.title}
+			</a>
+		</h2>
+		<p set:html={description} />
+	</div>
+</div>
+
+<style>
+	.episode {
+		background: var(--white);
+		border-radius: 0.125rem;
+		display: block;
+		inline-size: 200px;
+		transition: 200ms linear background;
+
+		&:is(:focus-within, :hover) {
+			background: var(--gray-100);
+		}
+
+		& img {
+			border-radius: 0.125rem;
+			inline-size: 100%;
+			display: block;
+		}
+
+		.info {
+			padding: 0.25rem 1rem 0.75rem;
+		}
+
+		& h2 {
+			font-family: mallory-medium;
+			font-size: 0.875rem;
+			line-height: 1.1;
+			margin-block: 0.25rem;
+
+			.compact & {
+				font-size: 0.75rem;
+			}
+
+			& a {
+				color: inherit;
+				text-decoration: none;
+
+				&:focus-visible,
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+		}
+
+		& p {
+			font-size: 0.75rem;
+			line-height: 1.25;
+		}
+	}
+
+	.episode-meta {
+		display: flex;
+		font-family: mallory-light;
+		font-size: 0.75rem;
+		gap: 0.5rem;
+		margin-block-start: 0.25rem;
+	}
+
+	.episode-number {
+		font-family: mallory-medium;
+		text-transform: uppercase;
+	}
+
+	.episode-date {
+		margin-inline-start: auto;
+	}
+</style>

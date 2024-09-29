@@ -1,0 +1,144 @@
+---
+import { Image } from '@unpic/astro';
+import Layout from '../layouts/default.astro';
+import { getAllSeries } from '../util/sanity';
+import { createImageUrl } from '../util/cloudinary';
+
+const allSeries = await getAllSeries();
+---
+
+<Layout>
+	<main>
+		<section>
+			<h2>Choose a series to watch</h2>
+			<div class="series-list">
+				{
+					allSeries.map((series) => {
+						if (!series.image || !series.image.public_id) {
+							console.error(`Series "${series.slug}" is missing an image.`);
+							return null;
+						}
+
+						if (!series.collections || series.collections.length < 1) {
+							console.error(`Series "${series.slug}" has no collections.`);
+							return null;
+						}
+
+						const collection = series.collections.at(0);
+
+						if (!collection || !collection.slug) {
+							console.error(
+								`Series "${series.slug}" has an invalid collection.`,
+							);
+							return null;
+						}
+
+						const imgUrl = createImageUrl(series.image.public_id, {
+							width: 600,
+							aspect_ratio: '16:9',
+							crop: 'fill',
+						});
+
+						const seasons =
+							series.collections.length === 1
+								? '1 season'
+								: series.collections.length + ' seasons';
+
+						const episodes =
+							series.total_episode_count === 1
+								? '1 episode'
+								: series.total_episode_count + ' episodes';
+
+						return (
+							<div class="series">
+								<a href={`/series/${series.slug}/${collection.slug}`}>
+									<Image
+										src={imgUrl}
+										alt={series.title}
+										aspectRatio={16 / 9}
+										width={600}
+									/>
+								</a>
+								<div class="details">
+									<div class="title-bar">
+										<h2>
+											<a href={`/series/${series.slug}/${collection.slug}`}>
+												{series.title}
+											</a>
+										</h2>
+										<span class="season-count">{seasons}</span>
+										<span class="episode-count">{episodes}</span>
+									</div>
+									<p>{series.description}</p>
+								</div>
+							</div>
+						);
+					})
+				}
+			</div>
+		</section>
+	</main>
+</Layout>
+
+<style>
+	main {
+		inline-size: min(90dvi, calc((300px + 2rem) * 4 - 2rem));
+		margin-inline: auto;
+	}
+
+	.series-list {
+		display: grid;
+		gap: 0.125rem;
+		grid-template-columns: repeat(auto-fit, calc(100% / 3 - 0.25rem / 3));
+		justify-content: start;
+
+		.series {
+			background: var(--white);
+			border-radius: 0.125rem;
+			transition: 200ms linear background;
+
+			&:is(:focus-within, :hover) {
+				background: var(--gray-100);
+			}
+		}
+
+		img {
+			border-radius: 0.125rem;
+		}
+
+		.details {
+			padding: 0 1rem 0.75rem;
+		}
+
+		.title-bar {
+			align-items: baseline;
+			display: flex;
+			font-family: mallory-light;
+			font-size: 0.75rem;
+			gap: 0.5rem;
+			margin-block: 0.25rem;
+		}
+
+		h2 {
+			font-family: mallory-medium;
+			font-size: 1rem;
+			line-height: 1.1;
+			margin-inline-end: auto;
+
+			a {
+				color: inherit;
+				text-decoration: none;
+
+				&:focus-visible,
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+		}
+
+		& p {
+			font-size: 0.75rem;
+			line-height: 1.25;
+		}
+	}
+</style>

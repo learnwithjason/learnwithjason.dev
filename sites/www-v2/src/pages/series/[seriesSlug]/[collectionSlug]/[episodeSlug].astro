@@ -1,0 +1,365 @@
+---
+import { format } from 'date-fns';
+import { marked } from 'marked';
+import { getEpisodeBySlug } from '../../../../util/sanity';
+import { createImageUrl } from '../../../../util/cloudinary';
+import { getSubscriptionStatus } from '../../../../util/stripe';
+import { loadUsersByIDs } from '../../../../util/clerk';
+import Layout from '../../../../layouts/default.astro';
+import VideoPlayer from '../../../../components/video-player.astro';
+import EpisodePreview from '../../../../components/episode-preview.astro';
+import ShareInput from '../../../../components/share-input.astro';
+import Heart from '../../../../components/heart.astro';
+
+const { episodeSlug } = Astro.params;
+
+const user = await Astro.locals.currentUser();
+const status = await getSubscriptionStatus(user);
+
+const episode = await getEpisodeBySlug({ episode: episodeSlug! });
+
+const people = episode.people ?? [];
+const description = marked.parse(episode.description ?? '');
+
+const userIds = people.map((p) => p.user_id).filter((p) => p !== null);
+const clerkUsers = await loadUsersByIDs(userIds);
+const peopleWithUsername = people.map((person) => {
+	const user = clerkUsers.find((u) => u.id === person.user_id);
+
+	return {
+		...person,
+		username: user?.username,
+	};
+});
+
+const episodeIndex =
+	episode.related_episodes?.findIndex((e) => e.slug === episode.slug) ?? 0;
+
+const episodeNumber = (
+	episode.collection?.slug + `E${episodeIndex + 1}`
+).toUpperCase();
+
+const relatedEpisodes = episode.related_episodes ?? [];
+---
+
+<Layout>
+	<VideoPlayer
+		video={{
+			...episode.video,
+			thumbnail: episode.thumbnail,
+			title: episode.title,
+			publish_date: episode.publish_date,
+		}}
+	/>
+
+	<div class="wrapper">
+		<section class="header">
+			<div class="episode-details">
+				<h1>
+					{episode.title}
+				</h1>
+				<div class="episode-meta">
+					<a
+						href={`/series/${episode.series?.slug}/${episode.collection?.slug}/`}
+						class="season-link">{episode.series?.title}</a
+					>
+					<span class="episode-number">
+						{episodeNumber}
+					</span>
+					<span class="episode-date">
+						{format(episode.publish_date!, 'MMM d, yyyy')}
+					</span>
+				</div>
+			</div>
+
+			<nav class="episode-links">
+				<ShareInput
+					label="Share this episode:"
+					url={`https://lwj.dev/series/${episode.series?.slug}/${episode.collection?.slug}/${episode.slug}`}
+				/>
+
+				{
+					status === 'active' ? null : (
+						<a href="/dashboard" class="button">
+							<Heart /> Become a Supporter
+						</a>
+					)
+				}
+			</nav>
+		</section>
+
+		<section class="description" set:html={description} />
+
+		{
+			peopleWithUsername.length > 0 ? (
+				<section class="people">
+					<h2>People in this episode</h2>
+
+					<div class="people-list">
+						{peopleWithUsername.map((person) => {
+							if (!person.photo || !person.photo.public_id) {
+								return null;
+							}
+
+							const imgUrl = createImageUrl(person.photo.public_id, {
+								width: 180,
+								aspect_ratio: 1,
+								crop: 'thumb',
+								gravity: 'face',
+							});
+
+							return (
+								<div class="person">
+									<a href={`/profile/${person.username}`}>
+										<img src={imgUrl} alt={person.name} />
+									</a>
+									<h4>{person.name}</h4>
+								</div>
+							);
+						})}
+					</div>
+				</section>
+			) : null
+		}
+
+		{
+			relatedEpisodes.length > 0 ? (
+				<section class="related-episodes">
+					<h2>
+						More episodes from {episode.series?.title}{' '}
+						{episode.collection?.title}
+					</h2>
+
+					<div class="more-episodes">
+						{relatedEpisodes.map((related, index) => {
+							const minIndex = Math.max(0, episodeIndex - 3);
+							const maxIndex = Math.min(relatedEpisodes.length, minIndex + 6);
+							if (
+								related.slug === episode.slug ||
+								index < minIndex ||
+								index > maxIndex
+							) {
+								return null;
+							}
+
+							return (
+								<EpisodePreview
+									class="compact"
+									episode={related}
+									episodeNumber={`${episode.collection?.slug}E${index + 1}`.toUpperCase()}
+									episodeUrl={`/series/${episode.series?.slug}/${episode.collection?.slug}/${related.slug}`}
+								/>
+							);
+						})}
+					</div>
+				</section>
+			) : null
+		}
+
+		<section class="supporters">
+			<h2>Supporters for this episode</h2>
+			<p>
+				<a href="/dashboard"
+					>Become a supporter to see your name here on future episodes!</a
+				>
+			</p>
+			<p class="name-list">
+				{(episode.supporters ?? '').split('\n').map((n) => <span>{n}</span>)}
+			</p>
+		</section>
+	</div>
+
+	<style>
+		.wrapper {
+			padding: 1rem 5cqw 4rem;
+
+			@media (min-width: 750px) {
+				display: grid;
+				gap: 2rem;
+				grid-template-columns: repeat(2, calc(50% - 1rem));
+			}
+		}
+
+		.header {
+			@media (min-width: 750px) {
+				display: flex;
+				grid-column: 1 / 3;
+				justify-content: space-between;
+			}
+		}
+
+		.episode-details {
+			& h1 {
+				font-family: mallory-medium;
+				font-size: 1.5rem;
+				line-height: 1.1;
+				margin-block: 0.25rem 0.5rem;
+			}
+
+			& p {
+				font-size: 0.75rem;
+				line-height: 1.25;
+			}
+		}
+
+		.episode-links {
+			align-items: center;
+			display: flex;
+			font-size: 0.75rem;
+			gap: 1rem;
+			justify-content: center;
+			margin-block-start: 1rem;
+
+			@media (min-width: 1000px) {
+				margin-block-start: 0;
+			}
+
+			label {
+				color: var(--text-muted);
+
+				input {
+					display: block;
+					font-family: mallory-book;
+					font-size: 16px;
+					inline-size: 300px;
+				}
+			}
+
+			.button {
+				background: var(--yellow-500);
+				border: 1px solid var(--gray-300);
+				block-size: min-content;
+				color: var(--black);
+				font-size: 0.875rem;
+				margin: 0;
+				text-decoration: none;
+			}
+
+			.inline-heart {
+				margin-inline-end: 0.5rem;
+			}
+		}
+
+		.episode-meta {
+			display: flex;
+			font-family: mallory-light;
+			font-size: 0.75rem;
+			gap: 0.5rem;
+			margin-block: 0.25rem;
+		}
+
+		.season-link {
+			color: var(--text-strong);
+			font-family: mallory-medium;
+			text-decoration: none;
+
+			&:is(:focus, :hover, :active) {
+				text-decoration: underline;
+			}
+		}
+
+		.episode-number {
+			font-family: mallory-medium;
+			text-transform: uppercase;
+		}
+
+		section,
+		.description {
+			h2 {
+				font-family: mallory-book;
+				font-size: 0.875rem;
+				line-height: 1.1;
+				margin-block: 0.25rem;
+			}
+
+			p {
+				font-size: 0.75rem;
+			}
+		}
+
+		.description {
+			margin-block: 3rem;
+			max-inline-size: 54ch;
+
+			@media (min-width: 1000px) {
+				margin-block-start: 0;
+			}
+
+			h2 {
+				margin-block: 1.5rem 0.5rem;
+			}
+		}
+
+		.people-list {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 1rem;
+			justify-content: center;
+			margin-block-end: 3rem;
+			margin-block-start: 1rem;
+
+			@media (min-width: 750px) {
+				justify-content: start;
+			}
+		}
+
+		.person {
+			inline-size: 100px;
+
+			& img {
+				block-size: auto;
+				border-radius: 50%;
+				display: block;
+				inline-size: 90px;
+				margin-inline: auto;
+			}
+
+			& h4 {
+				color: var(--text-muted);
+				font-family: mallory-book;
+				font-size: 0.675rem;
+				font-weight: normal;
+				line-height: 1.1;
+				margin-block-start: 0.25rem;
+				text-align: center;
+
+				& a {
+					color: inherit;
+					text-decoration: none;
+
+					&:is(:hover, :focus) {
+						text-decoration: underline;
+					}
+				}
+			}
+		}
+
+		.related-episodes,
+		.supporters {
+			@media (min-width: 1000px) {
+				grid-column: 1 / 3;
+				margin-block-end: 3rem;
+			}
+		}
+
+		.more-episodes {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 2rem;
+			justify-content: center;
+			margin-block-start: 0.25rem;
+
+			@media (min-width: 1000px) {
+				justify-content: start;
+			}
+		}
+
+		.name-list {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, 140px);
+			justify-content: center;
+			margin-block-start: 1rem;
+			white-space: pre;
+		}
+	</style>
+</Layout>

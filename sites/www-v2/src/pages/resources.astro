@@ -1,0 +1,66 @@
+---
+import { db, sql } from 'astro:db';
+
+const data = await db.run(sql`
+  SELECT
+    r.id,
+    r.type,
+    r.fields,
+    r.createdAt,
+    r.updatedAt,
+    r.deletedAt,
+
+    -- return child resources as a JSON array
+    CASE 
+      WHEN child.id IS NULL
+        THEN JSON('[]')
+      ELSE JSON_GROUP_ARRAY(
+            JSON_OBJECT(
+              'id', child.id,
+              'type', child.type,
+              'fields', JSON(child.fields),
+              'position', children.position
+            )
+            ORDER BY children.position
+          )
+    END AS resources,
+
+    -- if a parent resource exists, return it as a JSON object (null otherwise)
+    CASE 
+      WHEN parent.id NOT null
+        THEN JSON_OBJECT(
+          'id', parent.id,
+          'type', parent.type,
+          'fields', JSON(parent.fields)
+        )
+      ELSE null
+    END AS parent
+
+  FROM "Resource" AS r
+
+  -- get any child resources
+  LEFT JOIN "ResourceRelationships" AS children
+    ON r.id = children.parentId
+    -- ON r.id = (
+    --    SELECT childId FROM "ResourceRelationships" WHERE children.parentId = r.id ORDER BY position ASC
+    --  )
+    LEFT JOIN "Resource" AS child
+      ON children.childId = child.id
+
+  -- get the parent resource, if one is set
+  LEFT JOIN "ResourceRelationships" AS parents
+    ON r.id = parents.childId
+    LEFT JOIN "Resource" AS parent
+      ON parents.parentId = parent.id
+      
+  WHERE r.type = 'collection'
+  GROUP BY r.id;
+`);
+
+const collection = data.rows;
+// const details = JSON.parse(collection?.fields as string);
+// const series = JSON.parse((collection?.parent as string) ?? '{}');
+// const episodes = JSON.parse((collection?.resources as string) ?? '{}');
+---
+
+<pre>{JSON.stringify(collection, null, 2)}</pre>
