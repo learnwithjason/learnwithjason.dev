@@ -8,7 +8,7 @@ import react from '@astrojs/react';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://betas.learnwithjason.dev',
+	site: 'https://beta.learnwithjason.dev',
 	output: 'server',
 	integrations: [
 		clerk({
