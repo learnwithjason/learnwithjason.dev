@@ -101,14 +101,6 @@ export default defineConfig({
 				access: 'secret',
 				context: 'server',
 			}),
-			YOUTUBE_CHANNEL_ID: envField.string({
-				access: 'secret',
-				context: 'server',
-			}),
-			GOOGLE_CLOUD_API_KEY: envField.string({
-				access: 'secret',
-				context: 'server',
-			}),
 		},
 	},
 });
