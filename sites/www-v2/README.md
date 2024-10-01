@@ -13,3 +13,4 @@ TODO:
 - [ ] Add schedule
 - [ ] Check responsive styles
 - [ ] Dark mode
+- [ ] Figure out deployment
