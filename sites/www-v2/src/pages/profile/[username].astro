@@ -7,13 +7,9 @@ import { createImageUrl } from '../../util/cloudinary';
 import { getPersonById } from '../../util/sanity';
 import EpisodePreview from '../../components/episode-preview.astro';
 
-export function getStaticPaths() {
-	return [{ params: { username: 'jlengstorf' } }];
-}
-
 const { username } = Astro.params;
 
-const clerkUser = await getUserByUsername(username);
+const clerkUser = await getUserByUsername(username as string);
 if (!clerkUser || !clerkUser.id) {
 	throw new Error('no user found');
 }
