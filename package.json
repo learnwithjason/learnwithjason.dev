@@ -3,6 +3,9 @@
 	"version": "0.0.0",
 	"license": "MIT",
 	"private": true,
+	"scripts": {
+		"build": "./sites/www/bin/build.sh"
+	},
 	"devDependencies": {
 		"@nrwl/nx-cloud": "^16.0.5",
 		"@types/node": "^20.5.6",
