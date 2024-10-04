@@ -3,8 +3,8 @@ import Mux from '@mux/mux-node';
 import {
 	MUX_TOKEN_ID,
 	MUX_TOKEN_SECRET,
-	// MUX_JWT_SIGNING_KEY,
-	// MUX_JWT_PRIVATE_KEY,
+	MUX_JWT_SIGNING_KEY,
+	MUX_JWT_PRIVATE_KEY,
 } from 'astro:env/server';
 import { createImageUrl } from '../util/cloudinary';
 import Heart from './heart.astro';
@@ -28,8 +28,8 @@ const mux = new Mux({
 
 	// for signed asset access
 	// TODO figure out how to get this big ass key without exceeding lambda limits
-	// jwtSigningKey: MUX_JWT_SIGNING_KEY,
-	// jwtPrivateKey: MUX_JWT_PRIVATE_KEY,
+	jwtSigningKey: MUX_JWT_SIGNING_KEY,
+	jwtPrivateKey: MUX_JWT_PRIVATE_KEY,
 });
 
 const user = await Astro.locals.currentUser();
