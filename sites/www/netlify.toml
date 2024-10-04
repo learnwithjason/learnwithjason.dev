@@ -1,2 +1,5 @@
+[dev]
+framework = "astro"
+
 [build]
 publish = "sites/www/dist"
