@@ -58,15 +58,17 @@ https://lwj.dev/*                       https://www.learnwithjason.dev/:splat   
 /wdc/s1e3                   https://www.youtube.com/watch?v=wPL13VR88iY&list=PLz8Iz-Fnk_eTkZvSNWXW_TKZ2UwVirT2M&index=3
 /wdc/s1e4                   https://www.youtube.com/watch?v=D9lWrkpVUm0&list=PLz8Iz-Fnk_eTkZvSNWXW_TKZ2UwVirT2M&index=4
 /wdc/s1e5                   https://www.youtube.com/watch?v=8Oxy6WV7zag&list=PLz8Iz-Fnk_eTkZvSNWXW_TKZ2UwVirT2M&index=5
+/wdc/s1e6                   https://www.youtube.com/watch?v=V96_3fBgvPA&list=PLz8Iz-Fnk_eTkZvSNWXW_TKZ2UwVirT2M&index=6
 
-/wdc/hackathon              https://www.learnwithjason.dev/blog/web-dev-challenge-s1e5-food-scene-hackathon
-/wdc/hackathon/submit       https://forms.gle/48BA8qeHykdN5pXp9
+/wdc/hackathon              https://www.learnwithjason.dev/blog/web-dev-challenge-s1e6-memories-hackathon
+/wdc/hackathon/submit       https://forms.gle/qcCCEsHje82Te18w5
 
-/wdc-giveaway               https://www.learnwithjason.dev/blog/web-dev-challenge-s1e5-food-scene-hackathon
-/wdc-hackathon              https://www.learnwithjason.dev/blog/web-dev-challenge-s1e5-food-scene-hackathon
+/wdc-giveaway               https://www.learnwithjason.dev/blog/web-dev-challenge-s1e6-memories-hackathon
+/wdc-hackathon              https://www.learnwithjason.dev/blog/web-dev-challenge-s1e6-memories-hackathon
 /wdc-hackathon-3-submit     https://forms.gle/hPkGDCb1R66TGocw9
 /wdc-hackathon-4-submit     https://forms.gle/BfQtaRbpZhZDAMKx6
 /wdc-hackathon-5-submit     https://forms.gle/48BA8qeHykdN5pXp9
+/wdc-hackathon-6-submit     https://forms.gle/qcCCEsHje82Te18w5
 
 
 # Web Lunch
@@ -136,6 +138,8 @@ https://lwj.dev/*                       https://www.learnwithjason.dev/:splat   
 /reactiflux    https://www.reactiflux.com/tmir/?utm_source=learnwithjason&utm_medium=video&utm_campaign=renderatl
 /tuple         https://tuple.app/?utm_source=learnwithjason&utm_medium=video&utm_campaign=lwj
 /algolia       https://www.algolia.com/?utm_source=learnwithjason&utm_medium=video&utm_campaign=web-dev-challenge
+/tigris        https://www.tigrisdata.com/?utm_source=learnwithjason&utm_medium=video&utm_campaign=web-dev-challenge
+/fly           https://fly.io/?utm_source=learnwithjason&utm_medium=video&utm_campaign=web-dev-challenge
 
 # Sentry shorts series
 /sentry-rage-click      https://blog.sentry.io/introducing-rage-and-dead-click-detection-for-session-replay/?utm_source=lwj&utm_medium=organic-social&utm_campaign=replay-fy24q4-evergreen&utm_content=video-lwj1-learnmore
