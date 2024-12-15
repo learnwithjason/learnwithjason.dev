@@ -62,8 +62,9 @@ https://lwj.dev/*                       https://www.learnwithjason.dev/:splat   
 /wdc/s1e7                   https://www.youtube.com/watch?v=fNDSDWJaj2M&list=PLz8Iz-Fnk_eTkZvSNWXW_TKZ2UwVirT2M&index=7
 /wdc/s1e8                   https://www.youtube.com/watch?v=pn5Jju4FNG4&list=PLz8Iz-Fnk_eTkZvSNWXW_TKZ2UwVirT2M&index=8
 /wdc/s1e9                   https://www.youtube.com/watch?v=ICpQQxD8vc4&list=PLz8Iz-Fnk_eTkZvSNWXW_TKZ2UwVirT2M&index=9
+/wdc/s1e10                  https://www.youtube.com/watch?v=_H5pnNeCJWQ&list=PLz8Iz-Fnk_eTkZvSNWXW_TKZ2UwVirT2M&index=10
 
-/wdc/hackathon              https://www.learnwithjason.dev/blog/web-dev-challenge-hackathon-s1e9-blvck-spades
+/wdc/hackathon              https://www.learnwithjason.dev/blog/web-dev-challenge-hackathon-s1e10-workshop-woes
 /wdc/hackathon/submit       https://forms.gle/ipSKpMXB58kS8z8M6
 
 /wdc-giveaway               https://www.learnwithjason.dev/blog/web-dev-challenge-hackathon-s1e9-blvck-spades
@@ -74,6 +75,7 @@ https://lwj.dev/*                       https://www.learnwithjason.dev/:splat   
 /wdc-hackathon-6-submit     https://forms.gle/qcCCEsHje82Te18w5
 /wdc-hackathon-7-submit     https://forms.gle/qgTgA1qhaAhgGcvZ6
 /wdc-hackathon-9-submit     https://forms.gle/ipSKpMXB58kS8z8M6
+/wdc-hackathon-10-submit    https://forms.gle/8Ftkir4ASAqXq3rQ7
 
 # Google hackathon
 /google-hackathon           https://shortclick.link/amf3t5
@@ -154,6 +156,7 @@ https://lwj.dev/*                       https://www.learnwithjason.dev/:splat   
 /gemini        https://gemini.google.com/?utm_source=learnwithjason&utm_medium=video&utm_campaign=web-dev-challenge
 /mailchimp        https://mailchimp.com/?utm_source=learnwithjason&utm_medium=video&utm_campaign=web-dev-challenge
 /renderatl     https://www.renderatl.com/?utm_source=learnwithjason&utm_medium=video&utm_campaign=web-dev-challenge
+/sanity        https://www.sanity.io/?utm_source=learnwithjason&utm_medium=video&utm_campaign=web-dev-challenge
 
 # Sentry shorts series
 /sentry-rage-click      https://blog.sentry.io/introducing-rage-and-dead-click-detection-for-session-replay/?utm_source=lwj&utm_medium=organic-social&utm_campaign=replay-fy24q4-evergreen&utm_content=video-lwj1-learnmore
