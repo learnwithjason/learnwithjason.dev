@@ -48,428 +48,428 @@ https://lwj.dev/*                       https://www.learnwithjason.dev/:splat   
 /blog/work-archetype-pioneer-settler-town-planner                         /blog/work-archetype-explorer-villager-town-planner
 
 # site migration to CodeTV
-/marketing-automation-with-customer-io-next-js		https://codetv.dev/series/learn-with-jason/s5/marketing-automation-with-customer-io-next-js
-/build-an-app-with-supabase-and-nextjs		https://codetv.dev/series/learn-with-jason/s5/build-an-app-with-supabase-and-nextjs
-/what-can-you-automate-with-n8n		https://codetv.dev/series/learn-with-jason/s5/what-can-you-automate-with-n8n
-/make-music-with-code		https://codetv.dev/series/learn-with-jason/s5/make-music-with-code
-/build-your-own-audio-visualization-in-a-shader		https://codetv.dev/series/learn-with-jason/s5/build-your-own-audio-visualization-in-a-shader
-/learn-about-islands-architecture-with-slinkity		https://codetv.dev/series/learn-with-jason/s5/learn-about-islands-architecture-with-slinkity
-/set-up-a-better-content-editing-experience		https://codetv.dev/series/learn-with-jason/s5/set-up-a-better-content-editing-experience
-/scheduled-functions-cron-jobs-with-netlify		https://codetv.dev/series/learn-with-jason/s5/scheduled-functions-cron-jobs-with-netlify
-/build-neo4j-applications-with-node-js		https://codetv.dev/series/learn-with-jason/s5/build-neo4j-applications-with-node-js
-/simplify-and-unify-data-access-with-netlify-graph		https://codetv.dev/series/learn-with-jason/s5/simplify-and-unify-data-access-with-netlify-graph
-/build-a-color-contrast-checker-with-eleventy-serverless		https://codetv.dev/series/learn-with-jason/s5/build-a-color-contrast-checker-with-eleventy-serverless
-/ama-coding-q-and-a		https://codetv.dev/series/learn-with-jason/s5/ama-coding-q-and-a
-/visually-create-state-machines		https://codetv.dev/series/learn-with-jason/s5/visually-create-state-machines
-/find-your-next-open-source-contribution		https://codetv.dev/series/learn-with-jason/s5/find-your-next-open-source-contribution
-/automatic-image-creation-from-a-figma-template		https://codetv.dev/series/learn-with-jason/s5/automatic-image-creation-from-a-figma-template
-/create-playful-interactive-animations		https://codetv.dev/series/learn-with-jason/s5/create-playful-interactive-animations
-/remix-stacks		https://codetv.dev/series/learn-with-jason/s5/remix-stacks
-/planning-and-publishing-better-content		https://codetv.dev/series/learn-with-jason/s5/planning-and-publishing-better-content
-/redwoodjs-1-0		https://codetv.dev/series/learn-with-jason/s5/redwoodjs-1-0
-/build-a-page-speed-100-e-commerce-site		https://codetv.dev/series/learn-with-jason/s5/build-a-page-speed-100-e-commerce-site
-/let-s-learn-commandbar		https://codetv.dev/series/learn-with-jason/s5/let-s-learn-commandbar
-/let-s-learn-trpc		https://codetv.dev/series/learn-with-jason/s5/let-s-learn-trpc
-/build-a-live-voting-app		https://codetv.dev/series/learn-with-jason/s5/build-a-live-voting-app
-/build-an-esbuild-plugin		https://codetv.dev/series/learn-with-jason/s5/build-an-esbuild-plugin
-/generate-dynamic-images-with-node-canvas		https://codetv.dev/series/learn-with-jason/s5/generate-dynamic-images-with-node-canvas
-/deploy-a-site-with-self-hosted-analytics		https://codetv.dev/series/learn-with-jason/s5/deploy-a-site-with-self-hosted-analytics
-/build-and-deploy-a-react-app-from-a-monorepo		https://codetv.dev/series/learn-with-jason/s5/build-and-deploy-a-react-app-from-a-monorepo
-/build-resumable-apps-with-qwik		https://codetv.dev/series/learn-with-jason/s5/build-resumable-apps-with-qwik
-/let-s-learn-netlify-edge-functions		https://codetv.dev/series/learn-with-jason/s5/let-s-learn-netlify-edge-functions
-/convert-markdown-and-cms-content-into-type-safe-json		https://codetv.dev/series/learn-with-jason/s5/convert-markdown-and-cms-content-into-type-safe-json
-/build-ui-components-with-state-machines		https://codetv.dev/series/learn-with-jason/s5/build-ui-components-with-state-machines
-/build-a-custom-app-dashboard		https://codetv.dev/series/learn-with-jason/s5/build-a-custom-app-dashboard
-/generate-figma-ui-kits-from-code		https://codetv.dev/series/learn-with-jason/s5/generate-figma-ui-kits-from-code
-/lets-play-with-realtime		https://codetv.dev/series/learn-with-jason/s5/lets-play-with-realtime
-/automate-performance-boosts-using-experiments		https://codetv.dev/series/learn-with-jason/s5/automate-performance-boosts-using-experiments
-/let-s-learn-blender		https://codetv.dev/series/learn-with-jason/s5/let-s-learn-blender
-/lets-play-with-realtime-pt-2		https://codetv.dev/series/learn-with-jason/s5/lets-play-with-realtime-pt-2
-/what-is-edge-computing		https://codetv.dev/series/learn-with-jason/s5/what-is-edge-computing
-/level-up-as-a-developer-through-practice		https://codetv.dev/series/learn-with-jason/s5/level-up-as-a-developer-through-practice
-/use-script-kit-to-automate-your-daily-workflows		https://codetv.dev/series/learn-with-jason/s5/use-script-kit-to-automate-your-daily-workflows
-/personalization-using-storyblok		https://codetv.dev/series/learn-with-jason/s5/personalization-using-storyblok
-/let-s-learn-motion-devtools		https://codetv.dev/series/learn-with-jason/s5/let-s-learn-motion-devtools
-/visual-page-building-with-plasmic		https://codetv.dev/series/learn-with-jason/s5/visual-page-building-with-plasmic
-/rust-for-javascript-developers		https://codetv.dev/series/learn-with-jason/s5/rust-for-javascript-developers
-/ecommerce-nextjs-shopify		https://codetv.dev/series/learn-with-jason/s5/ecommerce-nextjs-shopify
-/automate-accessibility-tests-with-storybook		https://codetv.dev/series/learn-with-jason/s5/automate-accessibility-tests-with-storybook
-/what-s-new-in-astro-v1		https://codetv.dev/series/learn-with-jason/s5/what-s-new-in-astro-v1
-/build-custom-interfaces-using-css-open-props		https://codetv.dev/series/learn-with-jason/s5/build-custom-interfaces-using-css-open-props
-/planetscale-serverless-driver-netlify-edge-functions-nextjs		https://codetv.dev/series/learn-with-jason/s5/planetscale-serverless-driver-netlify-edge-functions-nextjs
-/next-js-middleware		https://codetv.dev/series/learn-with-jason/s5/next-js-middleware
-/use-xstate-with-netlify-edge-functions		https://codetv.dev/series/learn-with-jason/s5/use-xstate-with-netlify-edge-functions
-/make-static-pages-dynamic-with-netlify-edge-functions		https://codetv.dev/series/learn-with-jason/s5/make-static-pages-dynamic-with-netlify-edge-functions
-/advanced-typescript-let-s-learn-generics		https://codetv.dev/series/learn-with-jason/s5/advanced-typescript-let-s-learn-generics
-/build-a-dynamic-links-page-for-social-bios		https://codetv.dev/series/learn-with-jason/s5/build-a-dynamic-links-page-for-social-bios
-/custom-media-players-with-media-chrome		https://codetv.dev/series/learn-with-jason/s5/custom-media-players-with-media-chrome
-/smooth-page-transitions-with-astro-and-the-shared-element-transition-api		https://codetv.dev/series/learn-with-jason/s5/smooth-page-transitions-with-astro-and-the-shared-element-transition-api
-/build-a-reactive-backend-for-a-web-app		https://codetv.dev/series/learn-with-jason/s5/build-a-reactive-backend-for-a-web-app
-/chatops-slack		https://codetv.dev/series/learn-with-jason/s5/chatops-slack
-/react-router-6-4		https://codetv.dev/series/learn-with-jason/s5/react-router-6-4
-/build-a-scalable-design-system-for-enterprise-websites		https://codetv.dev/series/learn-with-jason/s5/build-a-scalable-design-system-for-enterprise-websites
-/how-to-add-component-tests-to-web-apps		https://codetv.dev/series/learn-with-jason/s5/how-to-add-component-tests-to-web-apps
-/build-web-standards-based-sites-with-enhance		https://codetv.dev/series/learn-with-jason/s5/build-web-standards-based-sites-with-enhance
-/better-images-in-next-js-with-cloudinary		https://codetv.dev/series/learn-with-jason/s5/better-images-in-next-js-with-cloudinary
-/webauthn-fido2-and-project-fugu		https://codetv.dev/series/learn-with-jason/s5/webauthn-fido2-and-project-fugu
-/build-full-stack-apps-with-xata		https://codetv.dev/series/learn-with-jason/s5/build-full-stack-apps-with-xata
-/2022-11-29-casual-coworking-session		https://codetv.dev/series/learn-with-jason/s5/2022-11-29-casual-coworking-session
-/optimize-react-app-performance		https://codetv.dev/series/learn-with-jason/s5/optimize-react-app-performance
-/qwik-city-for-resumable-dynamic-apps		https://codetv.dev/series/learn-with-jason/s5/qwik-city-for-resumable-dynamic-apps
-/port-a-blog-to-astro		https://codetv.dev/series/learn-with-jason/s5/port-a-blog-to-astro
-/let-s-learn-auth0-actions		https://codetv.dev/series/learn-with-jason/s5/let-s-learn-auth0-actions
-/coworking-session-with-jason-lengstorf		https://codetv.dev/series/learn-with-jason/s5/coworking-session-with-jason-lengstorf
-/tanstack-query-v4		https://codetv.dev/series/learn-with-jason/s5/tanstack-query-v4
-/deploy-a-site-with-the-aws-amplify-cli		https://codetv.dev/series/learn-with-jason/s1/deploy-a-site-with-the-aws-amplify-cli
-/build-a-podcast-mashup-app-using-onegraph-gatsby		https://codetv.dev/series/learn-with-jason/s1/build-a-podcast-mashup-app-using-onegraph-gatsby
-/katie-builds-her-first-gatsby-website		https://codetv.dev/series/learn-with-jason/s1/katie-builds-her-first-gatsby-website
-/facial-recognition-and-machine-learning-in-react-and-gatsby		https://codetv.dev/series/learn-with-jason/s1/facial-recognition-and-machine-learning-in-react-and-gatsby
-/build-a-cosmic-js-powered-blog-using-gatsby		https://codetv.dev/series/learn-with-jason/s1/build-a-cosmic-js-powered-blog-using-gatsby
-/let-s-learn-typescript		https://codetv.dev/series/learn-with-jason/s4/let-s-learn-typescript
-/build-a-custom-twitch-overlay-with-html-css-and-js		https://codetv.dev/series/learn-with-jason/s4/build-a-custom-twitch-overlay-with-html-css-and-js
-/let-s-learn-react		https://codetv.dev/series/learn-with-jason/s4/let-s-learn-react
-/let-s-learn-next-js		https://codetv.dev/series/learn-with-jason/s4/let-s-learn-next-js
-/let-s-learn-vue-s-composition-api		https://codetv.dev/series/learn-with-jason/s4/let-s-learn-vue-s-composition-api
-/hiring-and-getting-hired-in-tech		https://codetv.dev/series/learn-with-jason/s4/hiring-and-getting-hired-in-tech
-/the-final-taco-showdown		https://codetv.dev/series/learn-with-jason/s4/the-final-taco-showdown
-/build-your-own-babel-plugin		https://codetv.dev/series/learn-with-jason/s4/build-your-own-babel-plugin
-/build-flexible-cms-layouts-with-slice-machine		https://codetv.dev/series/learn-with-jason/s4/build-flexible-cms-layouts-with-slice-machine
-/serverless-marketing-automation-for-react		https://codetv.dev/series/learn-with-jason/s4/serverless-marketing-automation-for-react
-/use-wordpress-with-next-js		https://codetv.dev/series/learn-with-jason/s4/use-wordpress-with-next-js
-/monitoring-and-error-tracking-in-serverless-functions		https://codetv.dev/series/learn-with-jason/s4/monitoring-and-error-tracking-in-serverless-functions
-/use-state-machines-to-build-a-queue-for-custom-twitch-overlays		https://codetv.dev/series/learn-with-jason/s4/use-state-machines-to-build-a-queue-for-custom-twitch-overlays
-/vue-3-hasura-and-serverless-functions		https://codetv.dev/series/learn-with-jason/s4/vue-3-hasura-and-serverless-functions
-/lets-learn-esbuild		https://codetv.dev/series/learn-with-jason/s4/lets-learn-esbuild
-/make-video-with-code		https://codetv.dev/series/learn-with-jason/s4/make-video-with-code
-/custom-twitch-overlays-and-interactions		https://codetv.dev/series/learn-with-jason/s4/custom-twitch-overlays-and-interactions
-/create-a-timewarp-filter-in-tensorflow-js		https://codetv.dev/series/learn-with-jason/s4/create-a-timewarp-filter-in-tensorflow-js
-/build-better-apps-with-state-machines		https://codetv.dev/series/learn-with-jason/s4/build-better-apps-with-state-machines
-/about-streaming		https://codetv.dev/series/learn-with-jason/s4/about-streaming
-/running-state-machines-on-kubernetes		https://codetv.dev/series/learn-with-jason/s4/running-state-machines-on-kubernetes
-/create-an-ecommerce-site-using-shopify-next-js-and-builder-io		https://codetv.dev/series/learn-with-jason/s4/create-an-ecommerce-site-using-shopify-next-js-and-builder-io
-/real-time-notifications-with-the-twitch-api		https://codetv.dev/series/learn-with-jason/s4/real-time-notifications-with-the-twitch-api
-/troll-your-boss-with-the-jamstack		https://codetv.dev/series/learn-with-jason/s4/troll-your-boss-with-the-jamstack
-/let-s-learn-prisma		https://codetv.dev/series/learn-with-jason/s4/let-s-learn-prisma
-/visual-editing-with-storyblok		https://codetv.dev/series/learn-with-jason/s4/visual-editing-with-storyblok
-/build-forms-in-angular		https://codetv.dev/series/learn-with-jason/s4/build-forms-in-angular
-/build-a-custom-ivr-using-twilio		https://codetv.dev/series/learn-with-jason/s4/build-a-custom-ivr-using-twilio
-/functional-react-with-styled-components		https://codetv.dev/series/learn-with-jason/s4/functional-react-with-styled-components
-/custom-workflow-automation-with-n8n		https://codetv.dev/series/learn-with-jason/s4/custom-workflow-automation-with-n8n
-/building-a-second-brain-with-obsidian		https://codetv.dev/series/learn-with-jason/s4/building-a-second-brain-with-obsidian
-/prototyping-with-framer		https://codetv.dev/series/learn-with-jason/s4/prototyping-with-framer
-/distributed-persistent-rendering		https://codetv.dev/series/learn-with-jason/s4/distributed-persistent-rendering
-/github-automation-with-octokit		https://codetv.dev/series/learn-with-jason/s4/github-automation-with-octokit
-/let-s-learn-kotlin-js		https://codetv.dev/series/learn-with-jason/s4/let-s-learn-kotlin-js
-/user-defined-functions-in-fauna		https://codetv.dev/series/learn-with-jason/s4/user-defined-functions-in-fauna
-/let-s-learn-modern-redux		https://codetv.dev/series/learn-with-jason/s4/let-s-learn-modern-redux
-/testing-accessibility		https://codetv.dev/series/learn-with-jason/s4/testing-accessibility
-/first-look-at-gatsby-functions		https://codetv.dev/series/learn-with-jason/s4/first-look-at-gatsby-functions
-/measure-deployments-with-sleuth-io		https://codetv.dev/series/learn-with-jason/s4/measure-deployments-with-sleuth-io
-/ship-less-javascript-with-astro		https://codetv.dev/series/learn-with-jason/s4/ship-less-javascript-with-astro
-/animating-a-smashburger-using-gsap		https://codetv.dev/series/learn-with-jason/s4/animating-a-smashburger-using-gsap
-/better-screenreader-experiences-with-css		https://codetv.dev/series/learn-with-jason/s4/better-screenreader-experiences-with-css
-/javascript-autocomplete		https://codetv.dev/series/learn-with-jason/s4/javascript-autocomplete
-/github-actions-with-forked-prs		https://codetv.dev/series/learn-with-jason/s4/github-actions-with-forked-prs
-/let-s-learn-flutterflow		https://codetv.dev/series/learn-with-jason/s4/let-s-learn-flutterflow
-/let-s-learn-blitz-js		https://codetv.dev/series/learn-with-jason/s4/let-s-learn-blitz-js
-/web-performance-auditing		https://codetv.dev/series/learn-with-jason/s4/web-performance-auditing
-/build-a-command-line-interface-in-rust		https://codetv.dev/series/learn-with-jason/s4/build-a-command-line-interface-in-rust
-/serverless-functions-and-typescript-on-netlify		https://codetv.dev/series/learn-with-jason/s4/serverless-functions-and-typescript-on-netlify
-/realtime-jamstack-apps-with-ably		https://codetv.dev/series/learn-with-jason/s4/realtime-jamstack-apps-with-ably
-/jamstack-headless-cms-sites-using-strapi		https://codetv.dev/series/learn-with-jason/s4/jamstack-headless-cms-sites-using-strapi
-/jamstack-and-headless-cms-sites-using-strapi		https://codetv.dev/series/learn-with-jason/s4/jamstack-and-headless-cms-sites-using-strapi
-/right-to-left-rtl-support-for-websites		https://codetv.dev/series/learn-with-jason/s4/right-to-left-rtl-support-for-websites
-/microservices-and-red-hat-openshift		https://codetv.dev/series/learn-with-jason/s4/microservices-and-red-hat-openshift
-/automating-tasks-with-node-clis		https://codetv.dev/series/learn-with-jason/s4/automating-tasks-with-node-clis
-/html-and-css-best-practices-for-beginners		https://codetv.dev/series/learn-with-jason/s4/html-and-css-best-practices-for-beginners
-/local-development-of-serverless-functions-on-netlify		https://codetv.dev/series/learn-with-jason/s4/local-development-of-serverless-functions-on-netlify
-/let-s-learn-mongodb-atlas		https://codetv.dev/series/learn-with-jason/s4/let-s-learn-mongodb-atlas
-/manage-third-party-data-with-takeshape-s-api-mesh		https://codetv.dev/series/learn-with-jason/s4/manage-third-party-data-with-takeshape-s-api-mesh
-/limit-access-to-web-pages-for-twitch-subscriptions		https://codetv.dev/series/learn-with-jason/s4/limit-access-to-web-pages-for-twitch-subscriptions
-/reactive-state-management-using-ngrx-and-angular		https://codetv.dev/series/learn-with-jason/s4/reactive-state-management-using-ngrx-and-angular
-/turn-any-data-source-into-graphql-with-stepzen		https://codetv.dev/series/learn-with-jason/s4/turn-any-data-source-into-graphql-with-stepzen
-/battlesnake		https://codetv.dev/series/learn-with-jason/s4/battlesnake
-/build-a-streaming-data-model-with-pytorch		https://codetv.dev/series/learn-with-jason/s4/build-a-streaming-data-model-with-pytorch
-/experimenting-with-sveltekit		https://codetv.dev/series/learn-with-jason/s4/experimenting-with-sveltekit
-/build-your-own-twilioquest-content		https://codetv.dev/series/learn-with-jason/s4/build-your-own-twilioquest-content
-/modern-css-grid-aspect-ratio-container-queries-and-more		https://codetv.dev/series/learn-with-jason/s4/modern-css-grid-aspect-ratio-container-queries-and-more
-/let-s-learn-tensorflow-js		https://codetv.dev/series/learn-with-jason/s4/let-s-learn-tensorflow-js
-/improve-your-app-s-ui-and-ux		https://codetv.dev/series/learn-with-jason/s4/improve-your-app-s-ui-and-ux
-/manage-team-workflows-in-notion		https://codetv.dev/series/learn-with-jason/s4/manage-team-workflows-in-notion
-/next-js-dynamic-routes-with-contentful-s-graphql-api		https://codetv.dev/series/learn-with-jason/s4/next-js-dynamic-routes-with-contentful-s-graphql-api
-/personalization-on-the-jamstack		https://codetv.dev/series/learn-with-jason/s4/personalization-on-the-jamstack
-/building-a-composable-text-editor-with-react		https://codetv.dev/series/learn-with-jason/s4/building-a-composable-text-editor-with-react
-/custom-cart-with-shopify-storefront-api		https://codetv.dev/series/learn-with-jason/s4/custom-cart-with-shopify-storefront-api
-/custom-discount-codes-with-fauna-tito-and-shopify		https://codetv.dev/series/learn-with-jason/s4/custom-discount-codes-with-fauna-tito-and-shopify
-/custom-command-bar-using-autocomplete-with-algolia		https://codetv.dev/series/learn-with-jason/s4/custom-command-bar-using-autocomplete-with-algolia
-/optimize-your-development-workflow		https://codetv.dev/series/learn-with-jason/s4/optimize-your-development-workflow
-/send-transactional-emails-with-twilio-sendgrid		https://codetv.dev/series/learn-with-jason/s4/send-transactional-emails-with-twilio-sendgrid
-/monitor-errors-and-performance-with-sentry		https://codetv.dev/series/learn-with-jason/s4/monitor-errors-and-performance-with-sentry
-/understanding-color-contrast-for-accessibility		https://codetv.dev/series/learn-with-jason/s4/understanding-color-contrast-for-accessibility
-/add-observability-to-jamstack-sites-using-new-relic		https://codetv.dev/series/learn-with-jason/s4/add-observability-to-jamstack-sites-using-new-relic
-/ama-developer-experience-devrel-jamstack-javascript		https://codetv.dev/series/learn-with-jason/s4/ama-developer-experience-devrel-jamstack-javascript
-/create-a-pwa-from-scratch		https://codetv.dev/series/learn-with-jason/s4/create-a-pwa-from-scratch
-/let-s-learn-chakra-ui		https://codetv.dev/series/learn-with-jason/s4/let-s-learn-chakra-ui
-/add-a-login-to-your-svelte-site-with-auth0		https://codetv.dev/series/learn-with-jason/s4/add-a-login-to-your-svelte-site-with-auth0
-/styling-with-attribute-selectors		https://codetv.dev/series/learn-with-jason/s4/styling-with-attribute-selectors
-/serverless-databases-with-planetscale-and-next-js		https://codetv.dev/series/learn-with-jason/s4/serverless-databases-with-planetscale-and-next-js
-/gatsby-wordpress-themes		https://codetv.dev/series/learn-with-jason/s4/gatsby-wordpress-themes
-/let-s-learn-remix		https://codetv.dev/series/learn-with-jason/s4/let-s-learn-remix
-/lets-learn-solid-js		https://codetv.dev/series/learn-with-jason/s4/lets-learn-solid-js
-/build-your-own-design-system		https://codetv.dev/series/learn-with-jason/s4/build-your-own-design-system
-/distributed-databases-on-the-jamstack		https://codetv.dev/series/learn-with-jason/s4/distributed-databases-on-the-jamstack
-/let-s-learn-passwordless-auth		https://codetv.dev/series/learn-with-jason/s4/let-s-learn-passwordless-auth
-/diagnose-and-fix-ux-ui-problems		https://codetv.dev/series/learn-with-jason/s4/diagnose-and-fix-ux-ui-problems
-/faster-graphql-with-graphcdn		https://codetv.dev/series/learn-with-jason/s4/faster-graphql-with-graphcdn
-/build-a-full-stack-serverless-app-with-next-js-and-fauna		https://codetv.dev/series/learn-with-jason/s4/build-a-full-stack-serverless-app-with-next-js-and-fauna
-/what-s-new-in-redux-toolkit-2-0		https://codetv.dev/series/learn-with-jason/s7/what-s-new-in-redux-toolkit-2-0
-/defer-and-other-reasons-to-try-angular-again		https://codetv.dev/series/learn-with-jason/s7/defer-and-other-reasons-to-try-angular-again
-/qwik-astro-perf-on-perf-on-perf		https://codetv.dev/series/learn-with-jason/s7/qwik-astro-perf-on-perf-on-perf
-/learn-with-jason-live-live-the-css-stravaganza		https://codetv.dev/series/learn-with-jason/s7/learn-with-jason-live-live-the-css-stravaganza
-/build-web-apis-using-python-and-fastapi		https://codetv.dev/series/learn-with-jason/s7/build-web-apis-using-python-and-fastapi
-/make-react-faster-with-million		https://codetv.dev/series/learn-with-jason/s7/make-react-faster-with-million
-/what-is-genai-and-can-we-do-it-with-javascript		https://codetv.dev/series/learn-with-jason/s7/what-is-genai-and-can-we-do-it-with-javascript
-/go-rust-javascript-wasm-extism		https://codetv.dev/series/learn-with-jason/s7/go-rust-javascript-wasm-extism
-/react-suspense-in-graphql-with-apollo-client		https://codetv.dev/series/learn-with-jason/s7/react-suspense-in-graphql-with-apollo-client
-/astro-s-biggest-release-yet		https://codetv.dev/series/learn-with-jason/s7/astro-s-biggest-release-yet
-/fixing-async-await-in-javascript-and-typescript		https://codetv.dev/series/learn-with-jason/s7/fixing-async-await-in-javascript-and-typescript
-/val-town-wants-to-make-serverless-javascript-easier		https://codetv.dev/series/learn-with-jason/s7/val-town-wants-to-make-serverless-javascript-easier
-/figma-dev-mode-plugins-api		https://codetv.dev/series/learn-with-jason/s7/figma-dev-mode-plugins-api
-/adding-state-to-serverless-applications		https://codetv.dev/series/learn-with-jason/s7/adding-state-to-serverless-applications
-/auth-rbac-multi-tenant-react-apps		https://codetv.dev/series/learn-with-jason/s7/auth-rbac-multi-tenant-react-apps
-/node-js-v22-many-new-features		https://codetv.dev/series/learn-with-jason/s7/node-js-v22-many-new-features
-/run-next-js-without-vercel		https://codetv.dev/series/learn-with-jason/s7/run-next-js-without-vercel
-/analogjs-is-the-full-stack-meta-framework-for-angular		https://codetv.dev/series/learn-with-jason/s7/analogjs-is-the-full-stack-meta-framework-for-angular
-/css-design-system		https://codetv.dev/series/learn-with-jason/s7/css-design-system
-/build-your-own-metaframework-with-vinxi		https://codetv.dev/series/learn-with-jason/s7/build-your-own-metaframework-with-vinxi
-/put-videos-behind-auth		https://codetv.dev/series/learn-with-jason/s7/put-videos-behind-auth
-/build-a-web-version-of-a-board-game		https://codetv.dev/series/learn-with-jason/s7/build-a-web-version-of-a-board-game
-/let-s-learn-ember-js		https://codetv.dev/series/learn-with-jason/s7/let-s-learn-ember-js
-/3d-on-the-web-with-react		https://codetv.dev/series/learn-with-jason/s7/3d-on-the-web-with-react
-/let-s-learn-solidstart		https://codetv.dev/series/learn-with-jason/s7/let-s-learn-solidstart
-/let-s-learn-waku-for-react		https://codetv.dev/series/learn-with-jason/s7/let-s-learn-waku-for-react
-/use-vitest-with-browser-mode		https://codetv.dev/series/learn-with-jason/s7/use-vitest-with-browser-mode
-/first-look-at-astro-5-beta		https://codetv.dev/series/learn-with-jason/s7/first-look-at-astro-5-beta
-/ai-should-do-chores-not-the-fun-stuff		https://codetv.dev/series/learn-with-jason/s7/ai-should-do-chores-not-the-fun-stuff
-/ship-native-apps-with-web-tech-using-tauri		https://codetv.dev/series/learn-with-jason/s7/ship-native-apps-with-web-tech-using-tauri
-/create-consistent-designs-in-react-using-tailwind-css		https://codetv.dev/series/learn-with-jason/s7/create-consistent-designs-in-react-using-tailwind-css
-/debugging-complicated-apps		https://codetv.dev/series/learn-with-jason/s7/debugging-complicated-apps
-/devtools-showcase-warp-graphite-and-reflex		https://codetv.dev/series/learn-with-jason/s7/devtools-showcase-warp-graphite-and-reflex
-/using-tests-for-cleaner-code-with-constant-refactoring		https://codetv.dev/series/learn-with-jason/s7/using-tests-for-cleaner-code-with-constant-refactoring
-/recreate-a-cool-shuffling-effect-in-pure-css		https://codetv.dev/series/learn-with-jason/s8/recreate-a-cool-shuffling-effect-in-pure-css
-/let-s-learn-rspack		https://codetv.dev/series/learn-with-jason/s8/let-s-learn-rspack
-/sqlite-and-turso		https://codetv.dev/series/learn-with-jason/s8/sqlite-and-turso
-/high-performance-images-using-gatsby		https://codetv.dev/series/learn-with-jason/s2/high-performance-images-using-gatsby
-/build-an-ecommerce-site-using-stripe-gatsby		https://codetv.dev/series/learn-with-jason/s2/build-an-ecommerce-site-using-stripe-gatsby
-/build-a-portfolio-site-with-sanity-io-and-gatsby		https://codetv.dev/series/learn-with-jason/s2/build-a-portfolio-site-with-sanity-io-and-gatsby
-/build-a-gatsby-theme		https://codetv.dev/series/learn-with-jason/s2/build-a-gatsby-theme
-/learn-how-react-hooks-work-with-gatsby		https://codetv.dev/series/learn-with-jason/s2/learn-how-react-hooks-work-with-gatsby
-/multi-language-websites-with-graphcms-and-gatsby		https://codetv.dev/series/learn-with-jason/s2/multi-language-websites-with-graphcms-and-gatsby
-/add-authentication-to-your-apps-using-okta		https://codetv.dev/series/learn-with-jason/s2/add-authentication-to-your-apps-using-okta
-/write-tests-for-gatsby-sites-and-apps		https://codetv.dev/series/learn-with-jason/s2/write-tests-for-gatsby-sites-and-apps
-/create-realtime-web-apps-with-hasura-and-gatsby		https://codetv.dev/series/learn-with-jason/s2/create-realtime-web-apps-with-hasura-and-gatsby
-/add-auth0-to-your-gatsby-app		https://codetv.dev/series/learn-with-jason/s2/add-auth0-to-your-gatsby-app
-/build-an-accessible-customer-feedback-widget		https://codetv.dev/series/learn-with-jason/s2/build-an-accessible-customer-feedback-widget
-/convert-an-existing-gatsby-site-to-a-theme		https://codetv.dev/series/learn-with-jason/s2/convert-an-existing-gatsby-site-to-a-theme
-/what-the-heck-is-glitch		https://codetv.dev/series/learn-with-jason/s2/what-the-heck-is-glitch
-/let-s-learn-state-machines		https://codetv.dev/series/learn-with-jason/s2/let-s-learn-state-machines
-/automated-and-manual-accessibility-testing		https://codetv.dev/series/learn-with-jason/s2/automated-and-manual-accessibility-testing
-/how-to-use-ionic-with-react		https://codetv.dev/series/learn-with-jason/s2/how-to-use-ionic-with-react
-/what-can-aws-amplify-do		https://codetv.dev/series/learn-with-jason/s2/what-can-aws-amplify-do
-/add-algolia-search-for-your-gatsby-site		https://codetv.dev/series/learn-with-jason/s2/add-algolia-search-for-your-gatsby-site
-/how-to-use-netlify-identity-and-netlify-functions		https://codetv.dev/series/learn-with-jason/s2/how-to-use-netlify-identity-and-netlify-functions
-/use-airtable-as-a-cms-for-gatsby		https://codetv.dev/series/learn-with-jason/s2/use-airtable-as-a-cms-for-gatsby
-/how-to-use-kentico-cloud-gatsby		https://codetv.dev/series/learn-with-jason/s2/how-to-use-kentico-cloud-gatsby
-/build-a-gatsby-theme-for-podcast-websites		https://codetv.dev/series/learn-with-jason/s2/build-a-gatsby-theme-for-podcast-websites
-/user-auth-and-roles-with-hasura		https://codetv.dev/series/learn-with-jason/s2/user-auth-and-roles-with-hasura
-/composing-and-styling-gatsby-themes		https://codetv.dev/series/learn-with-jason/s2/composing-and-styling-gatsby-themes
-/building-your-first-gatsby-theme		https://codetv.dev/series/learn-with-jason/s2/building-your-first-gatsby-theme
-/microfront-ends-in-gatsby		https://codetv.dev/series/learn-with-jason/s2/microfront-ends-in-gatsby
-/docs-and-examples-in-gatsby-themes		https://codetv.dev/series/learn-with-jason/s2/docs-and-examples-in-gatsby-themes
-/build-an-rss-feed-powered-podcast-site		https://codetv.dev/series/learn-with-jason/s2/build-an-rss-feed-powered-podcast-site
-/gatsby-wordpress-with-wpgraphql		https://codetv.dev/series/learn-with-jason/s2/gatsby-wordpress-with-wpgraphql
-/building-websites-with-gatsby		https://codetv.dev/series/learn-with-jason/s2/building-websites-with-gatsby
-/build-a-gatsby-drupal-website		https://codetv.dev/series/learn-with-jason/s2/build-a-gatsby-drupal-website
-/cron-jobs-and-scheduling-gatsby-builds		https://codetv.dev/series/learn-with-jason/s2/cron-jobs-and-scheduling-gatsby-builds
-/loading-and-filtering-api-data-in-gatsby		https://codetv.dev/series/learn-with-jason/s2/loading-and-filtering-api-data-in-gatsby
-/serverless-graphql-functions-in-aws		https://codetv.dev/series/learn-with-jason/s2/serverless-graphql-functions-in-aws
-/build-a-video-app-with-twilio-gatsby		https://codetv.dev/series/learn-with-jason/s2/build-a-video-app-with-twilio-gatsby
-/design-systems-and-mdx-in-gatsby		https://codetv.dev/series/learn-with-jason/s2/design-systems-and-mdx-in-gatsby
-/data-visualization-in-react-using-gatsby		https://codetv.dev/series/learn-with-jason/s2/data-visualization-in-react-using-gatsby
-/using-contentful-and-gatsby-together		https://codetv.dev/series/learn-with-jason/s2/using-contentful-and-gatsby-together
-/build-your-own-meme-website		https://codetv.dev/series/learn-with-jason/s2/build-your-own-meme-website
-/make-a-beat-logic-pro-x		https://codetv.dev/series/learn-with-jason/s2/make-a-beat-logic-pro-x
-/strapi-gatsby-cms		https://codetv.dev/series/learn-with-jason/s2/strapi-gatsby-cms
-/animation-and-3d-in-react-three-fiber		https://codetv.dev/series/learn-with-jason/s2/animation-and-3d-in-react-three-fiber
-/image-and-video-magic-with-cloudinary		https://codetv.dev/series/learn-with-jason/s2/image-and-video-magic-with-cloudinary
-/client-side-graphql-urql		https://codetv.dev/series/learn-with-jason/s2/client-side-graphql-urql
-/advanced-graphql-gatsby		https://codetv.dev/series/learn-with-jason/s2/advanced-graphql-gatsby
-/introduction-to-three-js		https://codetv.dev/series/learn-with-jason/s2/introduction-to-three-js
-/ux-design-workflows-and-prototypes		https://codetv.dev/series/learn-with-jason/s2/ux-design-workflows-and-prototypes
-/deploy-a-gatsby-site-api-using-zeit-now		https://codetv.dev/series/learn-with-jason/s2/deploy-a-gatsby-site-api-using-zeit-now
-/build-a-gatsby-transformer-plugin-for-cloudinary		https://codetv.dev/series/learn-with-jason/s2/build-a-gatsby-transformer-plugin-for-cloudinary
-/material-ui-gatsby		https://codetv.dev/series/learn-with-jason/s2/material-ui-gatsby
-/sketching-illustration-logo-creation		https://codetv.dev/series/learn-with-jason/s2/sketching-illustration-logo-creation
-/generative-data-visualization-design-and-planning		https://codetv.dev/series/learn-with-jason/s2/generative-data-visualization-design-and-planning
-/build-a-chatbot-with-graphql-and-fauna		https://codetv.dev/series/learn-with-jason/s2/build-a-chatbot-with-graphql-and-fauna
-/getting-started-with-netlify-cms		https://codetv.dev/series/learn-with-jason/s2/getting-started-with-netlify-cms
-/fun-with-machine-learning-pt-2		https://codetv.dev/series/learn-with-jason/s2/fun-with-machine-learning-pt-2
-/fun-with-machine-learning-pt-1		https://codetv.dev/series/learn-with-jason/s2/fun-with-machine-learning-pt-1
-/what-the-heck-are-variable-fonts		https://codetv.dev/series/learn-with-jason/s2/what-the-heck-are-variable-fonts
-/taking-action-with-github-actions		https://codetv.dev/series/learn-with-jason/s2/taking-action-with-github-actions
-/build-a-gatsby-site-with-nest-js		https://codetv.dev/series/learn-with-jason/s2/build-a-gatsby-site-with-nest-js
-/generative-data-visualization-design-and-planning-part-2		https://codetv.dev/series/learn-with-jason/s2/generative-data-visualization-design-and-planning-part-2
-/art-direction-for-developers		https://codetv.dev/series/learn-with-jason/s2/art-direction-for-developers
-/netlify-functions-sound-board-in-gatsby		https://codetv.dev/series/learn-with-jason/s2/netlify-functions-sound-board-in-gatsby
-/transform-content-with-abstract-syntax-trees		https://codetv.dev/series/learn-with-jason/s2/transform-content-with-abstract-syntax-trees
-/more-fun-with-ast-transformations		https://codetv.dev/series/learn-with-jason/s2/more-fun-with-ast-transformations
-/build-a-cross-platform-twitch-extension		https://codetv.dev/series/learn-with-jason/s2/build-a-cross-platform-twitch-extension
-/build-a-personal-site-using-gatsby-themes		https://codetv.dev/series/learn-with-jason/s2/build-a-personal-site-using-gatsby-themes
-/introduction-to-vue		https://codetv.dev/series/learn-with-jason/s2/introduction-to-vue
-/advent-of-code-learn-reasonml		https://codetv.dev/series/learn-with-jason/s2/advent-of-code-learn-reasonml
-/automate-image-performance-using-asts		https://codetv.dev/series/learn-with-jason/s2/automate-image-performance-using-asts
-/let-s-learn-svelte		https://codetv.dev/series/learn-with-jason/s2/let-s-learn-svelte
-/build-a-party-corgi-gatsby-website		https://codetv.dev/series/learn-with-jason/s2/build-a-party-corgi-gatsby-website
-/create-static-site-angular-scully		https://codetv.dev/series/learn-with-jason/s2/create-static-site-angular-scully
-/build-your-own-developer-training-quest		https://codetv.dev/series/learn-with-jason/s6/build-your-own-developer-training-quest
-/nuxt-3-and-nitro		https://codetv.dev/series/learn-with-jason/s6/nuxt-3-and-nitro
-/create-and-deploy-a-documentation-website		https://codetv.dev/series/learn-with-jason/s6/create-and-deploy-a-documentation-website
-/what-s-new-in-astro-2-0		https://codetv.dev/series/learn-with-jason/s6/what-s-new-in-astro-2-0
-/fast-unit-testing-with-vitest		https://codetv.dev/series/learn-with-jason/s6/fast-unit-testing-with-vitest
-/sanity-studio-v3		https://codetv.dev/series/learn-with-jason/s6/sanity-studio-v3
-/visual-editing-w-next-js-contentful-and-stackbit		https://codetv.dev/series/learn-with-jason/s6/visual-editing-w-next-js-contentful-and-stackbit
-/troubleshooting-react-native-apps-with-new-relic		https://codetv.dev/series/learn-with-jason/s6/troubleshooting-react-native-apps-with-new-relic
-/why-should-web-developers-care-about-logging		https://codetv.dev/series/learn-with-jason/s6/why-should-web-developers-care-about-logging
-/location-based-next-js-middleware-with-new-relic-synthetics		https://codetv.dev/series/learn-with-jason/s6/location-based-next-js-middleware-with-new-relic-synthetics
-/code-your-own-generative-art		https://codetv.dev/series/learn-with-jason/s6/code-your-own-generative-art
-/shared-state-between-multiple-frameworks		https://codetv.dev/series/learn-with-jason/s6/shared-state-between-multiple-frameworks
-/build-an-internal-app-without-learning-mobile-app-dev		https://codetv.dev/series/learn-with-jason/s6/build-an-internal-app-without-learning-mobile-app-dev
-/build-a-headless-wordpress-site-with-wpgraphql-faust-js-and-wpgraphql-smart-cache		https://codetv.dev/series/learn-with-jason/s6/build-a-headless-wordpress-site-with-wpgraphql-faust-js-and-wpgraphql-smart-cache
-/let-s-play-with-web-dev-chat-and-project-work		https://codetv.dev/series/learn-with-jason/s6/let-s-play-with-web-dev-chat-and-project-work
-/travel-through-time-to-debug-javascript		https://codetv.dev/series/learn-with-jason/s6/travel-through-time-to-debug-javascript
-/boost-core-web-vitals-score-with-rum		https://codetv.dev/series/learn-with-jason/s6/boost-core-web-vitals-score-with-rum
-/how-to-write-really-good-docs		https://codetv.dev/series/learn-with-jason/s6/how-to-write-really-good-docs
-/advanced-effects-for-live-streaming		https://codetv.dev/series/learn-with-jason/s6/advanced-effects-for-live-streaming
-/catch-visual-bugs-before-they-ship		https://codetv.dev/series/learn-with-jason/s6/catch-visual-bugs-before-they-ship
-/collaborative-real-time-apps-with-partykit		https://codetv.dev/series/learn-with-jason/s6/collaborative-real-time-apps-with-partykit
-/why-is-svelte-js-is-the-most-loved-js-framework		https://codetv.dev/series/learn-with-jason/s6/why-is-svelte-js-is-the-most-loved-js-framework
-/how-wundergraph-simplifies-api-development		https://codetv.dev/series/learn-with-jason/s6/how-wundergraph-simplifies-api-development
-/improving-the-database-experience-of-your-deploy-previews-with-xata		https://codetv.dev/series/learn-with-jason/s6/improving-the-database-experience-of-your-deploy-previews-with-xata
-/redux-in-2023-what-you-need-to-know		https://codetv.dev/series/learn-with-jason/s6/redux-in-2023-what-you-need-to-know
-/build-a-custom-code-editor-using-the-webcontainer-api		https://codetv.dev/series/learn-with-jason/s6/build-a-custom-code-editor-using-the-webcontainer-api
-/seamless-page-navigation-with-the-view-transitions-api		https://codetv.dev/series/learn-with-jason/s6/seamless-page-navigation-with-the-view-transitions-api
-/qwik-1-0-and-beyond		https://codetv.dev/series/learn-with-jason/s6/qwik-1-0-and-beyond
-/make-the-fetch-api-type-safe-with-fets		https://codetv.dev/series/learn-with-jason/s6/make-the-fetch-api-type-safe-with-fets
-/component-driven-development-with-faker-js		https://codetv.dev/series/learn-with-jason/s6/component-driven-development-with-faker-js
-/build-multiplayer-saas-apps-with-liveblocks		https://codetv.dev/series/learn-with-jason/s6/build-multiplayer-saas-apps-with-liveblocks
-/add-full-text-search-to-your-couchbase-data		https://codetv.dev/series/learn-with-jason/s6/add-full-text-search-to-your-couchbase-data
-/does-astro-make-heavy-js-frameworks-obsolete		https://codetv.dev/series/learn-with-jason/s6/does-astro-make-heavy-js-frameworks-obsolete
-/what-s-new-in-html-and-css-in-2023		https://codetv.dev/series/learn-with-jason/s6/what-s-new-in-html-and-css-in-2023
-/unify-data-sources-with-graphql		https://codetv.dev/series/learn-with-jason/s6/unify-data-sources-with-graphql
-/demystifying-css-container-queries		https://codetv.dev/series/learn-with-jason/s6/demystifying-css-container-queries
-/css-only-scroll-driven-animation-and-other-impossible-things		https://codetv.dev/series/learn-with-jason/s6/css-only-scroll-driven-animation-and-other-impossible-things
-/what-sucks-about-building-apis-and-how-to-make-it-better		https://codetv.dev/series/learn-with-jason/s6/what-sucks-about-building-apis-and-how-to-make-it-better
-/3d-in-react-with-triplex-a-visual-editor-for-react-three-fiber		https://codetv.dev/series/learn-with-jason/s6/3d-in-react-with-triplex-a-visual-editor-for-react-three-fiber
-/going-deep-on-svelte-5		https://codetv.dev/series/learn-with-jason/s6/going-deep-on-svelte-5
-/lets-learn-htmx		https://codetv.dev/series/learn-with-jason/s6/lets-learn-htmx
-/build-emails-using-jsx		https://codetv.dev/series/learn-with-jason/s6/build-emails-using-jsx
-/can-you-actually-own-your-identity-and-content-on-the-web		https://codetv.dev/series/learn-with-jason/s6/can-you-actually-own-your-identity-and-content-on-the-web
-/fun-festive-interactive-web-animation		https://codetv.dev/series/learn-with-jason/s6/fun-festive-interactive-web-animation
-/how-to-use-coding-ai-assistants-effectively		https://codetv.dev/series/learn-with-jason/s6/how-to-use-coding-ai-assistants-effectively
-/angular-is-so-back		https://codetv.dev/series/learn-with-jason/s6/angular-is-so-back
-/lets-learn-eleventy		https://codetv.dev/series/learn-with-jason/s3/lets-learn-eleventy
-/add-subscription-support-to-websites-using-stripe		https://codetv.dev/series/learn-with-jason/s3/add-subscription-support-to-websites-using-stripe
-/fun-with-custom-maps-and-animation		https://codetv.dev/series/learn-with-jason/s3/fun-with-custom-maps-and-animation
-/visual-testing-using-cypress-and-applitools		https://codetv.dev/series/learn-with-jason/s3/visual-testing-using-cypress-and-applitools
-/combine-rest-apis-in-graphql-using-8base		https://codetv.dev/series/learn-with-jason/s3/combine-rest-apis-in-graphql-using-8base
-/how-to-write-a-scope-for-a-website-project		https://codetv.dev/series/learn-with-jason/s3/how-to-write-a-scope-for-a-website-project
-/generate-custom-party-corgi-gifs		https://codetv.dev/series/learn-with-jason/s3/generate-custom-party-corgi-gifs
-/automatic-deploys-with-nuxt-on-netlify		https://codetv.dev/series/learn-with-jason/s3/automatic-deploys-with-nuxt-on-netlify
-/set-up-a-new-gatsby-shopify-ecommerce-site		https://codetv.dev/series/learn-with-jason/s3/set-up-a-new-gatsby-shopify-ecommerce-site
-/write-song-parodies-using-javascript		https://codetv.dev/series/learn-with-jason/s3/write-song-parodies-using-javascript
-/set-up-a-new-gatsby-shopify-ecommerce-sites-pt-2		https://codetv.dev/series/learn-with-jason/s3/set-up-a-new-gatsby-shopify-ecommerce-sites-pt-2
-/rest-apollo-data-sources-and-graphql		https://codetv.dev/series/learn-with-jason/s3/rest-apollo-data-sources-and-graphql
-/build-a-personal-blog-using-gridsome		https://codetv.dev/series/learn-with-jason/s3/build-a-personal-blog-using-gridsome
-/cross-platform-twitch-extensions-pt-2		https://codetv.dev/series/learn-with-jason/s3/cross-platform-twitch-extensions-pt-2
-/jamstack-cms-and-ecommerce		https://codetv.dev/series/learn-with-jason/s3/jamstack-cms-and-ecommerce
-/creating-css-and-variable-font-text-effects		https://codetv.dev/series/learn-with-jason/s3/creating-css-and-variable-font-text-effects
-/custom-css-animations-with-splitting-js		https://codetv.dev/series/learn-with-jason/s3/custom-css-animations-with-splitting-js
-/use-gatsby-and-wordpress-for-dynamic-sites		https://codetv.dev/series/learn-with-jason/s3/use-gatsby-and-wordpress-for-dynamic-sites
-/lets-build-a-game		https://codetv.dev/series/learn-with-jason/s3/lets-build-a-game
-/build-a-cart-powered-by-state-machines		https://codetv.dev/series/learn-with-jason/s3/build-a-cart-powered-by-state-machines
-/sell-products-on-your-jamstack-site		https://codetv.dev/series/learn-with-jason/s3/sell-products-on-your-jamstack-site
-/let-s-learn-css-grid		https://codetv.dev/series/learn-with-jason/s3/let-s-learn-css-grid
-/sell-products-on-the-jamstack		https://codetv.dev/series/learn-with-jason/s3/sell-products-on-the-jamstack
-/internationalization-in-gatsby-sites		https://codetv.dev/series/learn-with-jason/s3/internationalization-in-gatsby-sites
-/create-a-jamstack-registration-form		https://codetv.dev/series/learn-with-jason/s3/create-a-jamstack-registration-form
-/let-s-learn-ghost-on-the-jamstack		https://codetv.dev/series/learn-with-jason/s3/let-s-learn-ghost-on-the-jamstack
-/let-s-learn-design-systems		https://codetv.dev/series/learn-with-jason/s3/let-s-learn-design-systems
-/generative-data-visualization-part-3		https://codetv.dev/series/learn-with-jason/s3/generative-data-visualization-part-3
-/better-assets-with-cloudinary-and-graphql		https://codetv.dev/series/learn-with-jason/s3/better-assets-with-cloudinary-and-graphql
-/accept-donations-on-jamstack-sites		https://codetv.dev/series/learn-with-jason/s3/accept-donations-on-jamstack-sites
-/let-s-learn-framer-motion		https://codetv.dev/series/learn-with-jason/s3/let-s-learn-framer-motion
-/let-s-make-web-video-fast		https://codetv.dev/series/learn-with-jason/s3/let-s-make-web-video-fast
-/rapid-dataviz-in-observable		https://codetv.dev/series/learn-with-jason/s3/rapid-dataviz-in-observable
-/let-s-learn-apollo-client-v3		https://codetv.dev/series/learn-with-jason/s3/let-s-learn-apollo-client-v3
-/build-jamstack-apps-with-custom-apis		https://codetv.dev/series/learn-with-jason/s3/build-jamstack-apps-with-custom-apis
-/let-s-create-a-netlify-build-plugin		https://codetv.dev/series/learn-with-jason/s3/let-s-create-a-netlify-build-plugin
-/create-a-custom-alexa-skill		https://codetv.dev/series/learn-with-jason/s3/create-a-custom-alexa-skill
-/add-apple-pay-and-google-pay-to-jamstack-sites		https://codetv.dev/series/learn-with-jason/s3/add-apple-pay-and-google-pay-to-jamstack-sites
-/protect-secret-keys-in-jamstack-apps		https://codetv.dev/series/learn-with-jason/s3/protect-secret-keys-in-jamstack-apps
-/designing-secret-sandwich		https://codetv.dev/series/learn-with-jason/s3/designing-secret-sandwich
-/build-a-realtime-twitch-game		https://codetv.dev/series/learn-with-jason/s3/build-a-realtime-twitch-game
-/subscription-management-in-jamstack-apps		https://codetv.dev/series/learn-with-jason/s3/subscription-management-in-jamstack-apps
-/introduction-to-figma-for-developers		https://codetv.dev/series/learn-with-jason/s3/introduction-to-figma-for-developers
-/end-to-end-testing-with-cypress		https://codetv.dev/series/learn-with-jason/s3/end-to-end-testing-with-cypress
-/service-worker-science-lab		https://codetv.dev/series/learn-with-jason/s3/service-worker-science-lab
-/contribute-to-open-source-projects		https://codetv.dev/series/learn-with-jason/s3/contribute-to-open-source-projects
-/store-user-generated-content-in-sanity		https://codetv.dev/series/learn-with-jason/s3/store-user-generated-content-in-sanity
-/text-to-play-games-with-twilio		https://codetv.dev/series/learn-with-jason/s3/text-to-play-games-with-twilio
-/control-apps-with-your-thoughts		https://codetv.dev/series/learn-with-jason/s3/control-apps-with-your-thoughts
-/serverless-graphql-with-hasura		https://codetv.dev/series/learn-with-jason/s3/serverless-graphql-with-hasura
-/let-s-bring-secret-sandwich-to-life		https://codetv.dev/series/learn-with-jason/s3/let-s-bring-secret-sandwich-to-life
-/build-custom-twitch-bots-and-overlays		https://codetv.dev/series/learn-with-jason/s3/build-custom-twitch-bots-and-overlays
-/lets-learn-spatial-design		https://codetv.dev/series/learn-with-jason/s3/lets-learn-spatial-design
-/caching-jamstack-sites-with-github-actions		https://codetv.dev/series/learn-with-jason/s3/caching-jamstack-sites-with-github-actions
-/make-animations-feel-pro		https://codetv.dev/series/learn-with-jason/s3/make-animations-feel-pro
-/what-is-apollo-federation		https://codetv.dev/series/learn-with-jason/s3/what-is-apollo-federation
-/graphql-jamstack-for-enterprise-apps		https://codetv.dev/series/learn-with-jason/s3/graphql-jamstack-for-enterprise-apps
-/let-s-learn-firebase		https://codetv.dev/series/learn-with-jason/s3/let-s-learn-firebase
-/text-to-play-games-with-twilio-part-2		https://codetv.dev/series/learn-with-jason/s3/text-to-play-games-with-twilio-part-2
-/create-a-plugin-for-11ty		https://codetv.dev/series/learn-with-jason/s3/create-a-plugin-for-11ty
-/dev-improv-tell-us-what-to-build		https://codetv.dev/series/learn-with-jason/s3/dev-improv-tell-us-what-to-build
-/contentful-graphql-and-paid-content		https://codetv.dev/series/learn-with-jason/s3/contentful-graphql-and-paid-content
-/create-cross-platform-apps-with-expo		https://codetv.dev/series/learn-with-jason/s3/create-cross-platform-apps-with-expo
-/get-weird-with-audio-on-the-web		https://codetv.dev/series/learn-with-jason/s3/get-weird-with-audio-on-the-web
-/machine-learning-with-tensorflow-in-javascript		https://codetv.dev/series/learn-with-jason/s3/machine-learning-with-tensorflow-in-javascript
-/let-s-learn-toast		https://codetv.dev/series/learn-with-jason/s3/let-s-learn-toast
-/build-jamstack-apps-with-gatsby		https://codetv.dev/series/learn-with-jason/s3/build-jamstack-apps-with-gatsby
-/what-is-rust		https://codetv.dev/series/learn-with-jason/s3/what-is-rust
-/build-a-web-store-with-shopify		https://codetv.dev/series/learn-with-jason/s3/build-a-web-store-with-shopify
-/let-s-learn-d3-js		https://codetv.dev/series/learn-with-jason/s3/let-s-learn-d3-js
-/build-your-own-content-hub-with-graphql		https://codetv.dev/series/learn-with-jason/s3/build-your-own-content-hub-with-graphql
-/what-the-h-ck-is-observability		https://codetv.dev/series/learn-with-jason/s3/what-the-h-ck-is-observability
-/webmention-next-js		https://codetv.dev/series/learn-with-jason/s3/webmention-next-js
-/power-up-react-with-typescript		https://codetv.dev/series/learn-with-jason/s3/power-up-react-with-typescript
-/build-apps-with-vue-3-apollo-client-3		https://codetv.dev/series/learn-with-jason/s3/build-apps-with-vue-3-apollo-client-3
-/pushing-the-limits-of-static-sites-with-sanity		https://codetv.dev/series/learn-with-jason/s3/pushing-the-limits-of-static-sites-with-sanity
-/all-about-react-query		https://codetv.dev/series/learn-with-jason/s3/all-about-react-query
-/build-a-no-framework-javascript-drag-n-drop		https://codetv.dev/series/learn-with-jason/s3/build-a-no-framework-javascript-drag-n-drop
-/build-a-toast-site-using-mdx-and-tailwind		https://codetv.dev/series/learn-with-jason/s3/build-a-toast-site-using-mdx-and-tailwind
-/a-single-spooky-div		https://codetv.dev/series/learn-with-jason/s3/a-single-spooky-div
-/let-s-learn-nuxt		https://codetv.dev/series/learn-with-jason/s3/let-s-learn-nuxt
-/build-a-custom-accessible-audio-player		https://codetv.dev/series/learn-with-jason/s3/build-a-custom-accessible-audio-player
-/faster-static-site-workflows-with-nx		https://codetv.dev/series/learn-with-jason/s3/faster-static-site-workflows-with-nx
-/build-a-multiplayer-soundboard-using-firebase		https://codetv.dev/series/learn-with-jason/s3/build-a-multiplayer-soundboard-using-firebase
-/interactive-svg-animations-using-greensock		https://codetv.dev/series/learn-with-jason/s3/interactive-svg-animations-using-greensock
-/databases-for-jamstack-sites-and-apps		https://codetv.dev/series/learn-with-jason/s3/databases-for-jamstack-sites-and-apps
-/writing-shell-scripts-with-modern-javascript		https://codetv.dev/series/learn-with-jason/s3/writing-shell-scripts-with-modern-javascript
-/let-s-learn-redwoodjs		https://codetv.dev/series/learn-with-jason/s3/let-s-learn-redwoodjs
-/let-s-learn-vue-3		https://codetv.dev/series/learn-with-jason/s3/let-s-learn-vue-3
-/we-need-to-taco-bout-your-choices		https://codetv.dev/series/learn-with-jason/s3/we-need-to-taco-bout-your-choices
-/let-s-learn-minecraft		https://codetv.dev/series/learn-with-jason/s3/let-s-learn-minecraft
-/whimsical-svg-animations-using-gsap		https://codetv.dev/series/learn-with-jason/s3/whimsical-svg-animations-using-gsap
-/animation-with-svelte		https://codetv.dev/series/learn-with-jason/s3/animation-with-svelte
+/marketing-automation-with-customer-io-next-js		https://codetv.dev/series/learn-with-jason/s5/marketing-automation-with-customer-io-next-js 301!
+/build-an-app-with-supabase-and-nextjs		https://codetv.dev/series/learn-with-jason/s5/build-an-app-with-supabase-and-nextjs 301!
+/what-can-you-automate-with-n8n		https://codetv.dev/series/learn-with-jason/s5/what-can-you-automate-with-n8n 301!
+/make-music-with-code		https://codetv.dev/series/learn-with-jason/s5/make-music-with-code 301!
+/build-your-own-audio-visualization-in-a-shader		https://codetv.dev/series/learn-with-jason/s5/build-your-own-audio-visualization-in-a-shader 301!
+/learn-about-islands-architecture-with-slinkity		https://codetv.dev/series/learn-with-jason/s5/learn-about-islands-architecture-with-slinkity 301!
+/set-up-a-better-content-editing-experience		https://codetv.dev/series/learn-with-jason/s5/set-up-a-better-content-editing-experience 301!
+/scheduled-functions-cron-jobs-with-netlify		https://codetv.dev/series/learn-with-jason/s5/scheduled-functions-cron-jobs-with-netlify 301!
+/build-neo4j-applications-with-node-js		https://codetv.dev/series/learn-with-jason/s5/build-neo4j-applications-with-node-js 301!
+/simplify-and-unify-data-access-with-netlify-graph		https://codetv.dev/series/learn-with-jason/s5/simplify-and-unify-data-access-with-netlify-graph 301!
+/build-a-color-contrast-checker-with-eleventy-serverless		https://codetv.dev/series/learn-with-jason/s5/build-a-color-contrast-checker-with-eleventy-serverless 301!
+/ama-coding-q-and-a		https://codetv.dev/series/learn-with-jason/s5/ama-coding-q-and-a 301!
+/visually-create-state-machines		https://codetv.dev/series/learn-with-jason/s5/visually-create-state-machines 301!
+/find-your-next-open-source-contribution		https://codetv.dev/series/learn-with-jason/s5/find-your-next-open-source-contribution 301!
+/automatic-image-creation-from-a-figma-template		https://codetv.dev/series/learn-with-jason/s5/automatic-image-creation-from-a-figma-template 301!
+/create-playful-interactive-animations		https://codetv.dev/series/learn-with-jason/s5/create-playful-interactive-animations 301!
+/remix-stacks		https://codetv.dev/series/learn-with-jason/s5/remix-stacks 301!
+/planning-and-publishing-better-content		https://codetv.dev/series/learn-with-jason/s5/planning-and-publishing-better-content 301!
+/redwoodjs-1-0		https://codetv.dev/series/learn-with-jason/s5/redwoodjs-1-0 301!
+/build-a-page-speed-100-e-commerce-site		https://codetv.dev/series/learn-with-jason/s5/build-a-page-speed-100-e-commerce-site 301!
+/let-s-learn-commandbar		https://codetv.dev/series/learn-with-jason/s5/let-s-learn-commandbar 301!
+/let-s-learn-trpc		https://codetv.dev/series/learn-with-jason/s5/let-s-learn-trpc 301!
+/build-a-live-voting-app		https://codetv.dev/series/learn-with-jason/s5/build-a-live-voting-app 301!
+/build-an-esbuild-plugin		https://codetv.dev/series/learn-with-jason/s5/build-an-esbuild-plugin 301!
+/generate-dynamic-images-with-node-canvas		https://codetv.dev/series/learn-with-jason/s5/generate-dynamic-images-with-node-canvas 301!
+/deploy-a-site-with-self-hosted-analytics		https://codetv.dev/series/learn-with-jason/s5/deploy-a-site-with-self-hosted-analytics 301!
+/build-and-deploy-a-react-app-from-a-monorepo		https://codetv.dev/series/learn-with-jason/s5/build-and-deploy-a-react-app-from-a-monorepo 301!
+/build-resumable-apps-with-qwik		https://codetv.dev/series/learn-with-jason/s5/build-resumable-apps-with-qwik 301!
+/let-s-learn-netlify-edge-functions		https://codetv.dev/series/learn-with-jason/s5/let-s-learn-netlify-edge-functions 301!
+/convert-markdown-and-cms-content-into-type-safe-json		https://codetv.dev/series/learn-with-jason/s5/convert-markdown-and-cms-content-into-type-safe-json 301!
+/build-ui-components-with-state-machines		https://codetv.dev/series/learn-with-jason/s5/build-ui-components-with-state-machines 301!
+/build-a-custom-app-dashboard		https://codetv.dev/series/learn-with-jason/s5/build-a-custom-app-dashboard 301!
+/generate-figma-ui-kits-from-code		https://codetv.dev/series/learn-with-jason/s5/generate-figma-ui-kits-from-code 301!
+/lets-play-with-realtime		https://codetv.dev/series/learn-with-jason/s5/lets-play-with-realtime 301!
+/automate-performance-boosts-using-experiments		https://codetv.dev/series/learn-with-jason/s5/automate-performance-boosts-using-experiments 301!
+/let-s-learn-blender		https://codetv.dev/series/learn-with-jason/s5/let-s-learn-blender 301!
+/lets-play-with-realtime-pt-2		https://codetv.dev/series/learn-with-jason/s5/lets-play-with-realtime-pt-2 301!
+/what-is-edge-computing		https://codetv.dev/series/learn-with-jason/s5/what-is-edge-computing 301!
+/level-up-as-a-developer-through-practice		https://codetv.dev/series/learn-with-jason/s5/level-up-as-a-developer-through-practice 301!
+/use-script-kit-to-automate-your-daily-workflows		https://codetv.dev/series/learn-with-jason/s5/use-script-kit-to-automate-your-daily-workflows 301!
+/personalization-using-storyblok		https://codetv.dev/series/learn-with-jason/s5/personalization-using-storyblok 301!
+/let-s-learn-motion-devtools		https://codetv.dev/series/learn-with-jason/s5/let-s-learn-motion-devtools 301!
+/visual-page-building-with-plasmic		https://codetv.dev/series/learn-with-jason/s5/visual-page-building-with-plasmic 301!
+/rust-for-javascript-developers		https://codetv.dev/series/learn-with-jason/s5/rust-for-javascript-developers 301!
+/ecommerce-nextjs-shopify		https://codetv.dev/series/learn-with-jason/s5/ecommerce-nextjs-shopify 301!
+/automate-accessibility-tests-with-storybook		https://codetv.dev/series/learn-with-jason/s5/automate-accessibility-tests-with-storybook 301!
+/what-s-new-in-astro-v1		https://codetv.dev/series/learn-with-jason/s5/what-s-new-in-astro-v1 301!
+/build-custom-interfaces-using-css-open-props		https://codetv.dev/series/learn-with-jason/s5/build-custom-interfaces-using-css-open-props 301!
+/planetscale-serverless-driver-netlify-edge-functions-nextjs		https://codetv.dev/series/learn-with-jason/s5/planetscale-serverless-driver-netlify-edge-functions-nextjs 301!
+/next-js-middleware		https://codetv.dev/series/learn-with-jason/s5/next-js-middleware 301!
+/use-xstate-with-netlify-edge-functions		https://codetv.dev/series/learn-with-jason/s5/use-xstate-with-netlify-edge-functions 301!
+/make-static-pages-dynamic-with-netlify-edge-functions		https://codetv.dev/series/learn-with-jason/s5/make-static-pages-dynamic-with-netlify-edge-functions 301!
+/advanced-typescript-let-s-learn-generics		https://codetv.dev/series/learn-with-jason/s5/advanced-typescript-let-s-learn-generics 301!
+/build-a-dynamic-links-page-for-social-bios		https://codetv.dev/series/learn-with-jason/s5/build-a-dynamic-links-page-for-social-bios 301!
+/custom-media-players-with-media-chrome		https://codetv.dev/series/learn-with-jason/s5/custom-media-players-with-media-chrome 301!
+/smooth-page-transitions-with-astro-and-the-shared-element-transition-api		https://codetv.dev/series/learn-with-jason/s5/smooth-page-transitions-with-astro-and-the-shared-element-transition-api 301!
+/build-a-reactive-backend-for-a-web-app		https://codetv.dev/series/learn-with-jason/s5/build-a-reactive-backend-for-a-web-app 301!
+/chatops-slack		https://codetv.dev/series/learn-with-jason/s5/chatops-slack 301!
+/react-router-6-4		https://codetv.dev/series/learn-with-jason/s5/react-router-6-4 301!
+/build-a-scalable-design-system-for-enterprise-websites		https://codetv.dev/series/learn-with-jason/s5/build-a-scalable-design-system-for-enterprise-websites 301!
+/how-to-add-component-tests-to-web-apps		https://codetv.dev/series/learn-with-jason/s5/how-to-add-component-tests-to-web-apps 301!
+/build-web-standards-based-sites-with-enhance		https://codetv.dev/series/learn-with-jason/s5/build-web-standards-based-sites-with-enhance 301!
+/better-images-in-next-js-with-cloudinary		https://codetv.dev/series/learn-with-jason/s5/better-images-in-next-js-with-cloudinary 301!
+/webauthn-fido2-and-project-fugu		https://codetv.dev/series/learn-with-jason/s5/webauthn-fido2-and-project-fugu 301!
+/build-full-stack-apps-with-xata		https://codetv.dev/series/learn-with-jason/s5/build-full-stack-apps-with-xata 301!
+/2022-11-29-casual-coworking-session		https://codetv.dev/series/learn-with-jason/s5/2022-11-29-casual-coworking-session 301!
+/optimize-react-app-performance		https://codetv.dev/series/learn-with-jason/s5/optimize-react-app-performance 301!
+/qwik-city-for-resumable-dynamic-apps		https://codetv.dev/series/learn-with-jason/s5/qwik-city-for-resumable-dynamic-apps 301!
+/port-a-blog-to-astro		https://codetv.dev/series/learn-with-jason/s5/port-a-blog-to-astro 301!
+/let-s-learn-auth0-actions		https://codetv.dev/series/learn-with-jason/s5/let-s-learn-auth0-actions 301!
+/coworking-session-with-jason-lengstorf		https://codetv.dev/series/learn-with-jason/s5/coworking-session-with-jason-lengstorf 301!
+/tanstack-query-v4		https://codetv.dev/series/learn-with-jason/s5/tanstack-query-v4 301!
+/deploy-a-site-with-the-aws-amplify-cli		https://codetv.dev/series/learn-with-jason/s1/deploy-a-site-with-the-aws-amplify-cli 301!
+/build-a-podcast-mashup-app-using-onegraph-gatsby		https://codetv.dev/series/learn-with-jason/s1/build-a-podcast-mashup-app-using-onegraph-gatsby 301!
+/katie-builds-her-first-gatsby-website		https://codetv.dev/series/learn-with-jason/s1/katie-builds-her-first-gatsby-website 301!
+/facial-recognition-and-machine-learning-in-react-and-gatsby		https://codetv.dev/series/learn-with-jason/s1/facial-recognition-and-machine-learning-in-react-and-gatsby 301!
+/build-a-cosmic-js-powered-blog-using-gatsby		https://codetv.dev/series/learn-with-jason/s1/build-a-cosmic-js-powered-blog-using-gatsby 301!
+/let-s-learn-typescript		https://codetv.dev/series/learn-with-jason/s4/let-s-learn-typescript 301!
+/build-a-custom-twitch-overlay-with-html-css-and-js		https://codetv.dev/series/learn-with-jason/s4/build-a-custom-twitch-overlay-with-html-css-and-js 301!
+/let-s-learn-react		https://codetv.dev/series/learn-with-jason/s4/let-s-learn-react 301!
+/let-s-learn-next-js		https://codetv.dev/series/learn-with-jason/s4/let-s-learn-next-js 301!
+/let-s-learn-vue-s-composition-api		https://codetv.dev/series/learn-with-jason/s4/let-s-learn-vue-s-composition-api 301!
+/hiring-and-getting-hired-in-tech		https://codetv.dev/series/learn-with-jason/s4/hiring-and-getting-hired-in-tech 301!
+/the-final-taco-showdown		https://codetv.dev/series/learn-with-jason/s4/the-final-taco-showdown 301!
+/build-your-own-babel-plugin		https://codetv.dev/series/learn-with-jason/s4/build-your-own-babel-plugin 301!
+/build-flexible-cms-layouts-with-slice-machine		https://codetv.dev/series/learn-with-jason/s4/build-flexible-cms-layouts-with-slice-machine 301!
+/serverless-marketing-automation-for-react		https://codetv.dev/series/learn-with-jason/s4/serverless-marketing-automation-for-react 301!
+/use-wordpress-with-next-js		https://codetv.dev/series/learn-with-jason/s4/use-wordpress-with-next-js 301!
+/monitoring-and-error-tracking-in-serverless-functions		https://codetv.dev/series/learn-with-jason/s4/monitoring-and-error-tracking-in-serverless-functions 301!
+/use-state-machines-to-build-a-queue-for-custom-twitch-overlays		https://codetv.dev/series/learn-with-jason/s4/use-state-machines-to-build-a-queue-for-custom-twitch-overlays 301!
+/vue-3-hasura-and-serverless-functions		https://codetv.dev/series/learn-with-jason/s4/vue-3-hasura-and-serverless-functions 301!
+/lets-learn-esbuild		https://codetv.dev/series/learn-with-jason/s4/lets-learn-esbuild 301!
+/make-video-with-code		https://codetv.dev/series/learn-with-jason/s4/make-video-with-code 301!
+/custom-twitch-overlays-and-interactions		https://codetv.dev/series/learn-with-jason/s4/custom-twitch-overlays-and-interactions 301!
+/create-a-timewarp-filter-in-tensorflow-js		https://codetv.dev/series/learn-with-jason/s4/create-a-timewarp-filter-in-tensorflow-js 301!
+/build-better-apps-with-state-machines		https://codetv.dev/series/learn-with-jason/s4/build-better-apps-with-state-machines 301!
+/about-streaming		https://codetv.dev/series/learn-with-jason/s4/about-streaming 301!
+/running-state-machines-on-kubernetes		https://codetv.dev/series/learn-with-jason/s4/running-state-machines-on-kubernetes 301!
+/create-an-ecommerce-site-using-shopify-next-js-and-builder-io		https://codetv.dev/series/learn-with-jason/s4/create-an-ecommerce-site-using-shopify-next-js-and-builder-io 301!
+/real-time-notifications-with-the-twitch-api		https://codetv.dev/series/learn-with-jason/s4/real-time-notifications-with-the-twitch-api 301!
+/troll-your-boss-with-the-jamstack		https://codetv.dev/series/learn-with-jason/s4/troll-your-boss-with-the-jamstack 301!
+/let-s-learn-prisma		https://codetv.dev/series/learn-with-jason/s4/let-s-learn-prisma 301!
+/visual-editing-with-storyblok		https://codetv.dev/series/learn-with-jason/s4/visual-editing-with-storyblok 301!
+/build-forms-in-angular		https://codetv.dev/series/learn-with-jason/s4/build-forms-in-angular 301!
+/build-a-custom-ivr-using-twilio		https://codetv.dev/series/learn-with-jason/s4/build-a-custom-ivr-using-twilio 301!
+/functional-react-with-styled-components		https://codetv.dev/series/learn-with-jason/s4/functional-react-with-styled-components 301!
+/custom-workflow-automation-with-n8n		https://codetv.dev/series/learn-with-jason/s4/custom-workflow-automation-with-n8n 301!
+/building-a-second-brain-with-obsidian		https://codetv.dev/series/learn-with-jason/s4/building-a-second-brain-with-obsidian 301!
+/prototyping-with-framer		https://codetv.dev/series/learn-with-jason/s4/prototyping-with-framer 301!
+/distributed-persistent-rendering		https://codetv.dev/series/learn-with-jason/s4/distributed-persistent-rendering 301!
+/github-automation-with-octokit		https://codetv.dev/series/learn-with-jason/s4/github-automation-with-octokit 301!
+/let-s-learn-kotlin-js		https://codetv.dev/series/learn-with-jason/s4/let-s-learn-kotlin-js 301!
+/user-defined-functions-in-fauna		https://codetv.dev/series/learn-with-jason/s4/user-defined-functions-in-fauna 301!
+/let-s-learn-modern-redux		https://codetv.dev/series/learn-with-jason/s4/let-s-learn-modern-redux 301!
+/testing-accessibility		https://codetv.dev/series/learn-with-jason/s4/testing-accessibility 301!
+/first-look-at-gatsby-functions		https://codetv.dev/series/learn-with-jason/s4/first-look-at-gatsby-functions 301!
+/measure-deployments-with-sleuth-io		https://codetv.dev/series/learn-with-jason/s4/measure-deployments-with-sleuth-io 301!
+/ship-less-javascript-with-astro		https://codetv.dev/series/learn-with-jason/s4/ship-less-javascript-with-astro 301!
+/animating-a-smashburger-using-gsap		https://codetv.dev/series/learn-with-jason/s4/animating-a-smashburger-using-gsap 301!
+/better-screenreader-experiences-with-css		https://codetv.dev/series/learn-with-jason/s4/better-screenreader-experiences-with-css 301!
+/javascript-autocomplete		https://codetv.dev/series/learn-with-jason/s4/javascript-autocomplete 301!
+/github-actions-with-forked-prs		https://codetv.dev/series/learn-with-jason/s4/github-actions-with-forked-prs 301!
+/let-s-learn-flutterflow		https://codetv.dev/series/learn-with-jason/s4/let-s-learn-flutterflow 301!
+/let-s-learn-blitz-js		https://codetv.dev/series/learn-with-jason/s4/let-s-learn-blitz-js 301!
+/web-performance-auditing		https://codetv.dev/series/learn-with-jason/s4/web-performance-auditing 301!
+/build-a-command-line-interface-in-rust		https://codetv.dev/series/learn-with-jason/s4/build-a-command-line-interface-in-rust 301!
+/serverless-functions-and-typescript-on-netlify		https://codetv.dev/series/learn-with-jason/s4/serverless-functions-and-typescript-on-netlify 301!
+/realtime-jamstack-apps-with-ably		https://codetv.dev/series/learn-with-jason/s4/realtime-jamstack-apps-with-ably 301!
+/jamstack-headless-cms-sites-using-strapi		https://codetv.dev/series/learn-with-jason/s4/jamstack-headless-cms-sites-using-strapi 301!
+/jamstack-and-headless-cms-sites-using-strapi		https://codetv.dev/series/learn-with-jason/s4/jamstack-and-headless-cms-sites-using-strapi 301!
+/right-to-left-rtl-support-for-websites		https://codetv.dev/series/learn-with-jason/s4/right-to-left-rtl-support-for-websites 301!
+/microservices-and-red-hat-openshift		https://codetv.dev/series/learn-with-jason/s4/microservices-and-red-hat-openshift 301!
+/automating-tasks-with-node-clis		https://codetv.dev/series/learn-with-jason/s4/automating-tasks-with-node-clis 301!
+/html-and-css-best-practices-for-beginners		https://codetv.dev/series/learn-with-jason/s4/html-and-css-best-practices-for-beginners 301!
+/local-development-of-serverless-functions-on-netlify		https://codetv.dev/series/learn-with-jason/s4/local-development-of-serverless-functions-on-netlify 301!
+/let-s-learn-mongodb-atlas		https://codetv.dev/series/learn-with-jason/s4/let-s-learn-mongodb-atlas 301!
+/manage-third-party-data-with-takeshape-s-api-mesh		https://codetv.dev/series/learn-with-jason/s4/manage-third-party-data-with-takeshape-s-api-mesh 301!
+/limit-access-to-web-pages-for-twitch-subscriptions		https://codetv.dev/series/learn-with-jason/s4/limit-access-to-web-pages-for-twitch-subscriptions 301!
+/reactive-state-management-using-ngrx-and-angular		https://codetv.dev/series/learn-with-jason/s4/reactive-state-management-using-ngrx-and-angular 301!
+/turn-any-data-source-into-graphql-with-stepzen		https://codetv.dev/series/learn-with-jason/s4/turn-any-data-source-into-graphql-with-stepzen 301!
+/battlesnake		https://codetv.dev/series/learn-with-jason/s4/battlesnake 301!
+/build-a-streaming-data-model-with-pytorch		https://codetv.dev/series/learn-with-jason/s4/build-a-streaming-data-model-with-pytorch 301!
+/experimenting-with-sveltekit		https://codetv.dev/series/learn-with-jason/s4/experimenting-with-sveltekit 301!
+/build-your-own-twilioquest-content		https://codetv.dev/series/learn-with-jason/s4/build-your-own-twilioquest-content 301!
+/modern-css-grid-aspect-ratio-container-queries-and-more		https://codetv.dev/series/learn-with-jason/s4/modern-css-grid-aspect-ratio-container-queries-and-more 301!
+/let-s-learn-tensorflow-js		https://codetv.dev/series/learn-with-jason/s4/let-s-learn-tensorflow-js 301!
+/improve-your-app-s-ui-and-ux		https://codetv.dev/series/learn-with-jason/s4/improve-your-app-s-ui-and-ux 301!
+/manage-team-workflows-in-notion		https://codetv.dev/series/learn-with-jason/s4/manage-team-workflows-in-notion 301!
+/next-js-dynamic-routes-with-contentful-s-graphql-api		https://codetv.dev/series/learn-with-jason/s4/next-js-dynamic-routes-with-contentful-s-graphql-api 301!
+/personalization-on-the-jamstack		https://codetv.dev/series/learn-with-jason/s4/personalization-on-the-jamstack 301!
+/building-a-composable-text-editor-with-react		https://codetv.dev/series/learn-with-jason/s4/building-a-composable-text-editor-with-react 301!
+/custom-cart-with-shopify-storefront-api		https://codetv.dev/series/learn-with-jason/s4/custom-cart-with-shopify-storefront-api 301!
+/custom-discount-codes-with-fauna-tito-and-shopify		https://codetv.dev/series/learn-with-jason/s4/custom-discount-codes-with-fauna-tito-and-shopify 301!
+/custom-command-bar-using-autocomplete-with-algolia		https://codetv.dev/series/learn-with-jason/s4/custom-command-bar-using-autocomplete-with-algolia 301!
+/optimize-your-development-workflow		https://codetv.dev/series/learn-with-jason/s4/optimize-your-development-workflow 301!
+/send-transactional-emails-with-twilio-sendgrid		https://codetv.dev/series/learn-with-jason/s4/send-transactional-emails-with-twilio-sendgrid 301!
+/monitor-errors-and-performance-with-sentry		https://codetv.dev/series/learn-with-jason/s4/monitor-errors-and-performance-with-sentry 301!
+/understanding-color-contrast-for-accessibility		https://codetv.dev/series/learn-with-jason/s4/understanding-color-contrast-for-accessibility 301!
+/add-observability-to-jamstack-sites-using-new-relic		https://codetv.dev/series/learn-with-jason/s4/add-observability-to-jamstack-sites-using-new-relic 301!
+/ama-developer-experience-devrel-jamstack-javascript		https://codetv.dev/series/learn-with-jason/s4/ama-developer-experience-devrel-jamstack-javascript 301!
+/create-a-pwa-from-scratch		https://codetv.dev/series/learn-with-jason/s4/create-a-pwa-from-scratch 301!
+/let-s-learn-chakra-ui		https://codetv.dev/series/learn-with-jason/s4/let-s-learn-chakra-ui 301!
+/add-a-login-to-your-svelte-site-with-auth0		https://codetv.dev/series/learn-with-jason/s4/add-a-login-to-your-svelte-site-with-auth0 301!
+/styling-with-attribute-selectors		https://codetv.dev/series/learn-with-jason/s4/styling-with-attribute-selectors 301!
+/serverless-databases-with-planetscale-and-next-js		https://codetv.dev/series/learn-with-jason/s4/serverless-databases-with-planetscale-and-next-js 301!
+/gatsby-wordpress-themes		https://codetv.dev/series/learn-with-jason/s4/gatsby-wordpress-themes 301!
+/let-s-learn-remix		https://codetv.dev/series/learn-with-jason/s4/let-s-learn-remix 301!
+/lets-learn-solid-js		https://codetv.dev/series/learn-with-jason/s4/lets-learn-solid-js 301!
+/build-your-own-design-system		https://codetv.dev/series/learn-with-jason/s4/build-your-own-design-system 301!
+/distributed-databases-on-the-jamstack		https://codetv.dev/series/learn-with-jason/s4/distributed-databases-on-the-jamstack 301!
+/let-s-learn-passwordless-auth		https://codetv.dev/series/learn-with-jason/s4/let-s-learn-passwordless-auth 301!
+/diagnose-and-fix-ux-ui-problems		https://codetv.dev/series/learn-with-jason/s4/diagnose-and-fix-ux-ui-problems 301!
+/faster-graphql-with-graphcdn		https://codetv.dev/series/learn-with-jason/s4/faster-graphql-with-graphcdn 301!
+/build-a-full-stack-serverless-app-with-next-js-and-fauna		https://codetv.dev/series/learn-with-jason/s4/build-a-full-stack-serverless-app-with-next-js-and-fauna 301!
+/what-s-new-in-redux-toolkit-2-0		https://codetv.dev/series/learn-with-jason/s7/what-s-new-in-redux-toolkit-2-0 301!
+/defer-and-other-reasons-to-try-angular-again		https://codetv.dev/series/learn-with-jason/s7/defer-and-other-reasons-to-try-angular-again 301!
+/qwik-astro-perf-on-perf-on-perf		https://codetv.dev/series/learn-with-jason/s7/qwik-astro-perf-on-perf-on-perf 301!
+/learn-with-jason-live-live-the-css-stravaganza		https://codetv.dev/series/learn-with-jason/s7/learn-with-jason-live-live-the-css-stravaganza 301!
+/build-web-apis-using-python-and-fastapi		https://codetv.dev/series/learn-with-jason/s7/build-web-apis-using-python-and-fastapi 301!
+/make-react-faster-with-million		https://codetv.dev/series/learn-with-jason/s7/make-react-faster-with-million 301!
+/what-is-genai-and-can-we-do-it-with-javascript		https://codetv.dev/series/learn-with-jason/s7/what-is-genai-and-can-we-do-it-with-javascript 301!
+/go-rust-javascript-wasm-extism		https://codetv.dev/series/learn-with-jason/s7/go-rust-javascript-wasm-extism 301!
+/react-suspense-in-graphql-with-apollo-client		https://codetv.dev/series/learn-with-jason/s7/react-suspense-in-graphql-with-apollo-client 301!
+/astro-s-biggest-release-yet		https://codetv.dev/series/learn-with-jason/s7/astro-s-biggest-release-yet 301!
+/fixing-async-await-in-javascript-and-typescript		https://codetv.dev/series/learn-with-jason/s7/fixing-async-await-in-javascript-and-typescript 301!
+/val-town-wants-to-make-serverless-javascript-easier		https://codetv.dev/series/learn-with-jason/s7/val-town-wants-to-make-serverless-javascript-easier 301!
+/figma-dev-mode-plugins-api		https://codetv.dev/series/learn-with-jason/s7/figma-dev-mode-plugins-api 301!
+/adding-state-to-serverless-applications		https://codetv.dev/series/learn-with-jason/s7/adding-state-to-serverless-applications 301!
+/auth-rbac-multi-tenant-react-apps		https://codetv.dev/series/learn-with-jason/s7/auth-rbac-multi-tenant-react-apps 301!
+/node-js-v22-many-new-features		https://codetv.dev/series/learn-with-jason/s7/node-js-v22-many-new-features 301!
+/run-next-js-without-vercel		https://codetv.dev/series/learn-with-jason/s7/run-next-js-without-vercel 301!
+/analogjs-is-the-full-stack-meta-framework-for-angular		https://codetv.dev/series/learn-with-jason/s7/analogjs-is-the-full-stack-meta-framework-for-angular 301!
+/css-design-system		https://codetv.dev/series/learn-with-jason/s7/css-design-system 301!
+/build-your-own-metaframework-with-vinxi		https://codetv.dev/series/learn-with-jason/s7/build-your-own-metaframework-with-vinxi 301!
+/put-videos-behind-auth		https://codetv.dev/series/learn-with-jason/s7/put-videos-behind-auth 301!
+/build-a-web-version-of-a-board-game		https://codetv.dev/series/learn-with-jason/s7/build-a-web-version-of-a-board-game 301!
+/let-s-learn-ember-js		https://codetv.dev/series/learn-with-jason/s7/let-s-learn-ember-js 301!
+/3d-on-the-web-with-react		https://codetv.dev/series/learn-with-jason/s7/3d-on-the-web-with-react 301!
+/let-s-learn-solidstart		https://codetv.dev/series/learn-with-jason/s7/let-s-learn-solidstart 301!
+/let-s-learn-waku-for-react		https://codetv.dev/series/learn-with-jason/s7/let-s-learn-waku-for-react 301!
+/use-vitest-with-browser-mode		https://codetv.dev/series/learn-with-jason/s7/use-vitest-with-browser-mode 301!
+/first-look-at-astro-5-beta		https://codetv.dev/series/learn-with-jason/s7/first-look-at-astro-5-beta 301!
+/ai-should-do-chores-not-the-fun-stuff		https://codetv.dev/series/learn-with-jason/s7/ai-should-do-chores-not-the-fun-stuff 301!
+/ship-native-apps-with-web-tech-using-tauri		https://codetv.dev/series/learn-with-jason/s7/ship-native-apps-with-web-tech-using-tauri 301!
+/create-consistent-designs-in-react-using-tailwind-css		https://codetv.dev/series/learn-with-jason/s7/create-consistent-designs-in-react-using-tailwind-css 301!
+/debugging-complicated-apps		https://codetv.dev/series/learn-with-jason/s7/debugging-complicated-apps 301!
+/devtools-showcase-warp-graphite-and-reflex		https://codetv.dev/series/learn-with-jason/s7/devtools-showcase-warp-graphite-and-reflex 301!
+/using-tests-for-cleaner-code-with-constant-refactoring		https://codetv.dev/series/learn-with-jason/s7/using-tests-for-cleaner-code-with-constant-refactoring 301!
+/recreate-a-cool-shuffling-effect-in-pure-css		https://codetv.dev/series/learn-with-jason/s8/recreate-a-cool-shuffling-effect-in-pure-css 301!
+/let-s-learn-rspack		https://codetv.dev/series/learn-with-jason/s8/let-s-learn-rspack 301!
+/sqlite-and-turso		https://codetv.dev/series/learn-with-jason/s8/sqlite-and-turso 301!
+/high-performance-images-using-gatsby		https://codetv.dev/series/learn-with-jason/s2/high-performance-images-using-gatsby 301!
+/build-an-ecommerce-site-using-stripe-gatsby		https://codetv.dev/series/learn-with-jason/s2/build-an-ecommerce-site-using-stripe-gatsby 301!
+/build-a-portfolio-site-with-sanity-io-and-gatsby		https://codetv.dev/series/learn-with-jason/s2/build-a-portfolio-site-with-sanity-io-and-gatsby 301!
+/build-a-gatsby-theme		https://codetv.dev/series/learn-with-jason/s2/build-a-gatsby-theme 301!
+/learn-how-react-hooks-work-with-gatsby		https://codetv.dev/series/learn-with-jason/s2/learn-how-react-hooks-work-with-gatsby 301!
+/multi-language-websites-with-graphcms-and-gatsby		https://codetv.dev/series/learn-with-jason/s2/multi-language-websites-with-graphcms-and-gatsby 301!
+/add-authentication-to-your-apps-using-okta		https://codetv.dev/series/learn-with-jason/s2/add-authentication-to-your-apps-using-okta 301!
+/write-tests-for-gatsby-sites-and-apps		https://codetv.dev/series/learn-with-jason/s2/write-tests-for-gatsby-sites-and-apps 301!
+/create-realtime-web-apps-with-hasura-and-gatsby		https://codetv.dev/series/learn-with-jason/s2/create-realtime-web-apps-with-hasura-and-gatsby 301!
+/add-auth0-to-your-gatsby-app		https://codetv.dev/series/learn-with-jason/s2/add-auth0-to-your-gatsby-app 301!
+/build-an-accessible-customer-feedback-widget		https://codetv.dev/series/learn-with-jason/s2/build-an-accessible-customer-feedback-widget 301!
+/convert-an-existing-gatsby-site-to-a-theme		https://codetv.dev/series/learn-with-jason/s2/convert-an-existing-gatsby-site-to-a-theme 301!
+/what-the-heck-is-glitch		https://codetv.dev/series/learn-with-jason/s2/what-the-heck-is-glitch 301!
+/let-s-learn-state-machines		https://codetv.dev/series/learn-with-jason/s2/let-s-learn-state-machines 301!
+/automated-and-manual-accessibility-testing		https://codetv.dev/series/learn-with-jason/s2/automated-and-manual-accessibility-testing 301!
+/how-to-use-ionic-with-react		https://codetv.dev/series/learn-with-jason/s2/how-to-use-ionic-with-react 301!
+/what-can-aws-amplify-do		https://codetv.dev/series/learn-with-jason/s2/what-can-aws-amplify-do 301!
+/add-algolia-search-for-your-gatsby-site		https://codetv.dev/series/learn-with-jason/s2/add-algolia-search-for-your-gatsby-site 301!
+/how-to-use-netlify-identity-and-netlify-functions		https://codetv.dev/series/learn-with-jason/s2/how-to-use-netlify-identity-and-netlify-functions 301!
+/use-airtable-as-a-cms-for-gatsby		https://codetv.dev/series/learn-with-jason/s2/use-airtable-as-a-cms-for-gatsby 301!
+/how-to-use-kentico-cloud-gatsby		https://codetv.dev/series/learn-with-jason/s2/how-to-use-kentico-cloud-gatsby 301!
+/build-a-gatsby-theme-for-podcast-websites		https://codetv.dev/series/learn-with-jason/s2/build-a-gatsby-theme-for-podcast-websites 301!
+/user-auth-and-roles-with-hasura		https://codetv.dev/series/learn-with-jason/s2/user-auth-and-roles-with-hasura 301!
+/composing-and-styling-gatsby-themes		https://codetv.dev/series/learn-with-jason/s2/composing-and-styling-gatsby-themes 301!
+/building-your-first-gatsby-theme		https://codetv.dev/series/learn-with-jason/s2/building-your-first-gatsby-theme 301!
+/microfront-ends-in-gatsby		https://codetv.dev/series/learn-with-jason/s2/microfront-ends-in-gatsby 301!
+/docs-and-examples-in-gatsby-themes		https://codetv.dev/series/learn-with-jason/s2/docs-and-examples-in-gatsby-themes 301!
+/build-an-rss-feed-powered-podcast-site		https://codetv.dev/series/learn-with-jason/s2/build-an-rss-feed-powered-podcast-site 301!
+/gatsby-wordpress-with-wpgraphql		https://codetv.dev/series/learn-with-jason/s2/gatsby-wordpress-with-wpgraphql 301!
+/building-websites-with-gatsby		https://codetv.dev/series/learn-with-jason/s2/building-websites-with-gatsby 301!
+/build-a-gatsby-drupal-website		https://codetv.dev/series/learn-with-jason/s2/build-a-gatsby-drupal-website 301!
+/cron-jobs-and-scheduling-gatsby-builds		https://codetv.dev/series/learn-with-jason/s2/cron-jobs-and-scheduling-gatsby-builds 301!
+/loading-and-filtering-api-data-in-gatsby		https://codetv.dev/series/learn-with-jason/s2/loading-and-filtering-api-data-in-gatsby 301!
+/serverless-graphql-functions-in-aws		https://codetv.dev/series/learn-with-jason/s2/serverless-graphql-functions-in-aws 301!
+/build-a-video-app-with-twilio-gatsby		https://codetv.dev/series/learn-with-jason/s2/build-a-video-app-with-twilio-gatsby 301!
+/design-systems-and-mdx-in-gatsby		https://codetv.dev/series/learn-with-jason/s2/design-systems-and-mdx-in-gatsby 301!
+/data-visualization-in-react-using-gatsby		https://codetv.dev/series/learn-with-jason/s2/data-visualization-in-react-using-gatsby 301!
+/using-contentful-and-gatsby-together		https://codetv.dev/series/learn-with-jason/s2/using-contentful-and-gatsby-together 301!
+/build-your-own-meme-website		https://codetv.dev/series/learn-with-jason/s2/build-your-own-meme-website 301!
+/make-a-beat-logic-pro-x		https://codetv.dev/series/learn-with-jason/s2/make-a-beat-logic-pro-x 301!
+/strapi-gatsby-cms		https://codetv.dev/series/learn-with-jason/s2/strapi-gatsby-cms 301!
+/animation-and-3d-in-react-three-fiber		https://codetv.dev/series/learn-with-jason/s2/animation-and-3d-in-react-three-fiber 301!
+/image-and-video-magic-with-cloudinary		https://codetv.dev/series/learn-with-jason/s2/image-and-video-magic-with-cloudinary 301!
+/client-side-graphql-urql		https://codetv.dev/series/learn-with-jason/s2/client-side-graphql-urql 301!
+/advanced-graphql-gatsby		https://codetv.dev/series/learn-with-jason/s2/advanced-graphql-gatsby 301!
+/introduction-to-three-js		https://codetv.dev/series/learn-with-jason/s2/introduction-to-three-js 301!
+/ux-design-workflows-and-prototypes		https://codetv.dev/series/learn-with-jason/s2/ux-design-workflows-and-prototypes 301!
+/deploy-a-gatsby-site-api-using-zeit-now		https://codetv.dev/series/learn-with-jason/s2/deploy-a-gatsby-site-api-using-zeit-now 301!
+/build-a-gatsby-transformer-plugin-for-cloudinary		https://codetv.dev/series/learn-with-jason/s2/build-a-gatsby-transformer-plugin-for-cloudinary 301!
+/material-ui-gatsby		https://codetv.dev/series/learn-with-jason/s2/material-ui-gatsby 301!
+/sketching-illustration-logo-creation		https://codetv.dev/series/learn-with-jason/s2/sketching-illustration-logo-creation 301!
+/generative-data-visualization-design-and-planning		https://codetv.dev/series/learn-with-jason/s2/generative-data-visualization-design-and-planning 301!
+/build-a-chatbot-with-graphql-and-fauna		https://codetv.dev/series/learn-with-jason/s2/build-a-chatbot-with-graphql-and-fauna 301!
+/getting-started-with-netlify-cms		https://codetv.dev/series/learn-with-jason/s2/getting-started-with-netlify-cms 301!
+/fun-with-machine-learning-pt-2		https://codetv.dev/series/learn-with-jason/s2/fun-with-machine-learning-pt-2 301!
+/fun-with-machine-learning-pt-1		https://codetv.dev/series/learn-with-jason/s2/fun-with-machine-learning-pt-1 301!
+/what-the-heck-are-variable-fonts		https://codetv.dev/series/learn-with-jason/s2/what-the-heck-are-variable-fonts 301!
+/taking-action-with-github-actions		https://codetv.dev/series/learn-with-jason/s2/taking-action-with-github-actions 301!
+/build-a-gatsby-site-with-nest-js		https://codetv.dev/series/learn-with-jason/s2/build-a-gatsby-site-with-nest-js 301!
+/generative-data-visualization-design-and-planning-part-2		https://codetv.dev/series/learn-with-jason/s2/generative-data-visualization-design-and-planning-part-2 301!
+/art-direction-for-developers		https://codetv.dev/series/learn-with-jason/s2/art-direction-for-developers 301!
+/netlify-functions-sound-board-in-gatsby		https://codetv.dev/series/learn-with-jason/s2/netlify-functions-sound-board-in-gatsby 301!
+/transform-content-with-abstract-syntax-trees		https://codetv.dev/series/learn-with-jason/s2/transform-content-with-abstract-syntax-trees 301!
+/more-fun-with-ast-transformations		https://codetv.dev/series/learn-with-jason/s2/more-fun-with-ast-transformations 301!
+/build-a-cross-platform-twitch-extension		https://codetv.dev/series/learn-with-jason/s2/build-a-cross-platform-twitch-extension 301!
+/build-a-personal-site-using-gatsby-themes		https://codetv.dev/series/learn-with-jason/s2/build-a-personal-site-using-gatsby-themes 301!
+/introduction-to-vue		https://codetv.dev/series/learn-with-jason/s2/introduction-to-vue 301!
+/advent-of-code-learn-reasonml		https://codetv.dev/series/learn-with-jason/s2/advent-of-code-learn-reasonml 301!
+/automate-image-performance-using-asts		https://codetv.dev/series/learn-with-jason/s2/automate-image-performance-using-asts 301!
+/let-s-learn-svelte		https://codetv.dev/series/learn-with-jason/s2/let-s-learn-svelte 301!
+/build-a-party-corgi-gatsby-website		https://codetv.dev/series/learn-with-jason/s2/build-a-party-corgi-gatsby-website 301!
+/create-static-site-angular-scully		https://codetv.dev/series/learn-with-jason/s2/create-static-site-angular-scully 301!
+/build-your-own-developer-training-quest		https://codetv.dev/series/learn-with-jason/s6/build-your-own-developer-training-quest 301!
+/nuxt-3-and-nitro		https://codetv.dev/series/learn-with-jason/s6/nuxt-3-and-nitro 301!
+/create-and-deploy-a-documentation-website		https://codetv.dev/series/learn-with-jason/s6/create-and-deploy-a-documentation-website 301!
+/what-s-new-in-astro-2-0		https://codetv.dev/series/learn-with-jason/s6/what-s-new-in-astro-2-0 301!
+/fast-unit-testing-with-vitest		https://codetv.dev/series/learn-with-jason/s6/fast-unit-testing-with-vitest 301!
+/sanity-studio-v3		https://codetv.dev/series/learn-with-jason/s6/sanity-studio-v3 301!
+/visual-editing-w-next-js-contentful-and-stackbit		https://codetv.dev/series/learn-with-jason/s6/visual-editing-w-next-js-contentful-and-stackbit 301!
+/troubleshooting-react-native-apps-with-new-relic		https://codetv.dev/series/learn-with-jason/s6/troubleshooting-react-native-apps-with-new-relic 301!
+/why-should-web-developers-care-about-logging		https://codetv.dev/series/learn-with-jason/s6/why-should-web-developers-care-about-logging 301!
+/location-based-next-js-middleware-with-new-relic-synthetics		https://codetv.dev/series/learn-with-jason/s6/location-based-next-js-middleware-with-new-relic-synthetics 301!
+/code-your-own-generative-art		https://codetv.dev/series/learn-with-jason/s6/code-your-own-generative-art 301!
+/shared-state-between-multiple-frameworks		https://codetv.dev/series/learn-with-jason/s6/shared-state-between-multiple-frameworks 301!
+/build-an-internal-app-without-learning-mobile-app-dev		https://codetv.dev/series/learn-with-jason/s6/build-an-internal-app-without-learning-mobile-app-dev 301!
+/build-a-headless-wordpress-site-with-wpgraphql-faust-js-and-wpgraphql-smart-cache		https://codetv.dev/series/learn-with-jason/s6/build-a-headless-wordpress-site-with-wpgraphql-faust-js-and-wpgraphql-smart-cache 301!
+/let-s-play-with-web-dev-chat-and-project-work		https://codetv.dev/series/learn-with-jason/s6/let-s-play-with-web-dev-chat-and-project-work 301!
+/travel-through-time-to-debug-javascript		https://codetv.dev/series/learn-with-jason/s6/travel-through-time-to-debug-javascript 301!
+/boost-core-web-vitals-score-with-rum		https://codetv.dev/series/learn-with-jason/s6/boost-core-web-vitals-score-with-rum 301!
+/how-to-write-really-good-docs		https://codetv.dev/series/learn-with-jason/s6/how-to-write-really-good-docs 301!
+/advanced-effects-for-live-streaming		https://codetv.dev/series/learn-with-jason/s6/advanced-effects-for-live-streaming 301!
+/catch-visual-bugs-before-they-ship		https://codetv.dev/series/learn-with-jason/s6/catch-visual-bugs-before-they-ship 301!
+/collaborative-real-time-apps-with-partykit		https://codetv.dev/series/learn-with-jason/s6/collaborative-real-time-apps-with-partykit 301!
+/why-is-svelte-js-is-the-most-loved-js-framework		https://codetv.dev/series/learn-with-jason/s6/why-is-svelte-js-is-the-most-loved-js-framework 301!
+/how-wundergraph-simplifies-api-development		https://codetv.dev/series/learn-with-jason/s6/how-wundergraph-simplifies-api-development 301!
+/improving-the-database-experience-of-your-deploy-previews-with-xata		https://codetv.dev/series/learn-with-jason/s6/improving-the-database-experience-of-your-deploy-previews-with-xata 301!
+/redux-in-2023-what-you-need-to-know		https://codetv.dev/series/learn-with-jason/s6/redux-in-2023-what-you-need-to-know 301!
+/build-a-custom-code-editor-using-the-webcontainer-api		https://codetv.dev/series/learn-with-jason/s6/build-a-custom-code-editor-using-the-webcontainer-api 301!
+/seamless-page-navigation-with-the-view-transitions-api		https://codetv.dev/series/learn-with-jason/s6/seamless-page-navigation-with-the-view-transitions-api 301!
+/qwik-1-0-and-beyond		https://codetv.dev/series/learn-with-jason/s6/qwik-1-0-and-beyond 301!
+/make-the-fetch-api-type-safe-with-fets		https://codetv.dev/series/learn-with-jason/s6/make-the-fetch-api-type-safe-with-fets 301!
+/component-driven-development-with-faker-js		https://codetv.dev/series/learn-with-jason/s6/component-driven-development-with-faker-js 301!
+/build-multiplayer-saas-apps-with-liveblocks		https://codetv.dev/series/learn-with-jason/s6/build-multiplayer-saas-apps-with-liveblocks 301!
+/add-full-text-search-to-your-couchbase-data		https://codetv.dev/series/learn-with-jason/s6/add-full-text-search-to-your-couchbase-data 301!
+/does-astro-make-heavy-js-frameworks-obsolete		https://codetv.dev/series/learn-with-jason/s6/does-astro-make-heavy-js-frameworks-obsolete 301!
+/what-s-new-in-html-and-css-in-2023		https://codetv.dev/series/learn-with-jason/s6/what-s-new-in-html-and-css-in-2023 301!
+/unify-data-sources-with-graphql		https://codetv.dev/series/learn-with-jason/s6/unify-data-sources-with-graphql 301!
+/demystifying-css-container-queries		https://codetv.dev/series/learn-with-jason/s6/demystifying-css-container-queries 301!
+/css-only-scroll-driven-animation-and-other-impossible-things		https://codetv.dev/series/learn-with-jason/s6/css-only-scroll-driven-animation-and-other-impossible-things 301!
+/what-sucks-about-building-apis-and-how-to-make-it-better		https://codetv.dev/series/learn-with-jason/s6/what-sucks-about-building-apis-and-how-to-make-it-better 301!
+/3d-in-react-with-triplex-a-visual-editor-for-react-three-fiber		https://codetv.dev/series/learn-with-jason/s6/3d-in-react-with-triplex-a-visual-editor-for-react-three-fiber 301!
+/going-deep-on-svelte-5		https://codetv.dev/series/learn-with-jason/s6/going-deep-on-svelte-5 301!
+/lets-learn-htmx		https://codetv.dev/series/learn-with-jason/s6/lets-learn-htmx 301!
+/build-emails-using-jsx		https://codetv.dev/series/learn-with-jason/s6/build-emails-using-jsx 301!
+/can-you-actually-own-your-identity-and-content-on-the-web		https://codetv.dev/series/learn-with-jason/s6/can-you-actually-own-your-identity-and-content-on-the-web 301!
+/fun-festive-interactive-web-animation		https://codetv.dev/series/learn-with-jason/s6/fun-festive-interactive-web-animation 301!
+/how-to-use-coding-ai-assistants-effectively		https://codetv.dev/series/learn-with-jason/s6/how-to-use-coding-ai-assistants-effectively 301!
+/angular-is-so-back		https://codetv.dev/series/learn-with-jason/s6/angular-is-so-back 301!
+/lets-learn-eleventy		https://codetv.dev/series/learn-with-jason/s3/lets-learn-eleventy 301!
+/add-subscription-support-to-websites-using-stripe		https://codetv.dev/series/learn-with-jason/s3/add-subscription-support-to-websites-using-stripe 301!
+/fun-with-custom-maps-and-animation		https://codetv.dev/series/learn-with-jason/s3/fun-with-custom-maps-and-animation 301!
+/visual-testing-using-cypress-and-applitools		https://codetv.dev/series/learn-with-jason/s3/visual-testing-using-cypress-and-applitools 301!
+/combine-rest-apis-in-graphql-using-8base		https://codetv.dev/series/learn-with-jason/s3/combine-rest-apis-in-graphql-using-8base 301!
+/how-to-write-a-scope-for-a-website-project		https://codetv.dev/series/learn-with-jason/s3/how-to-write-a-scope-for-a-website-project 301!
+/generate-custom-party-corgi-gifs		https://codetv.dev/series/learn-with-jason/s3/generate-custom-party-corgi-gifs 301!
+/automatic-deploys-with-nuxt-on-netlify		https://codetv.dev/series/learn-with-jason/s3/automatic-deploys-with-nuxt-on-netlify 301!
+/set-up-a-new-gatsby-shopify-ecommerce-site		https://codetv.dev/series/learn-with-jason/s3/set-up-a-new-gatsby-shopify-ecommerce-site 301!
+/write-song-parodies-using-javascript		https://codetv.dev/series/learn-with-jason/s3/write-song-parodies-using-javascript 301!
+/set-up-a-new-gatsby-shopify-ecommerce-sites-pt-2		https://codetv.dev/series/learn-with-jason/s3/set-up-a-new-gatsby-shopify-ecommerce-sites-pt-2 301!
+/rest-apollo-data-sources-and-graphql		https://codetv.dev/series/learn-with-jason/s3/rest-apollo-data-sources-and-graphql 301!
+/build-a-personal-blog-using-gridsome		https://codetv.dev/series/learn-with-jason/s3/build-a-personal-blog-using-gridsome 301!
+/cross-platform-twitch-extensions-pt-2		https://codetv.dev/series/learn-with-jason/s3/cross-platform-twitch-extensions-pt-2 301!
+/jamstack-cms-and-ecommerce		https://codetv.dev/series/learn-with-jason/s3/jamstack-cms-and-ecommerce 301!
+/creating-css-and-variable-font-text-effects		https://codetv.dev/series/learn-with-jason/s3/creating-css-and-variable-font-text-effects 301!
+/custom-css-animations-with-splitting-js		https://codetv.dev/series/learn-with-jason/s3/custom-css-animations-with-splitting-js 301!
+/use-gatsby-and-wordpress-for-dynamic-sites		https://codetv.dev/series/learn-with-jason/s3/use-gatsby-and-wordpress-for-dynamic-sites 301!
+/lets-build-a-game		https://codetv.dev/series/learn-with-jason/s3/lets-build-a-game 301!
+/build-a-cart-powered-by-state-machines		https://codetv.dev/series/learn-with-jason/s3/build-a-cart-powered-by-state-machines 301!
+/sell-products-on-your-jamstack-site		https://codetv.dev/series/learn-with-jason/s3/sell-products-on-your-jamstack-site 301!
+/let-s-learn-css-grid		https://codetv.dev/series/learn-with-jason/s3/let-s-learn-css-grid 301!
+/sell-products-on-the-jamstack		https://codetv.dev/series/learn-with-jason/s3/sell-products-on-the-jamstack 301!
+/internationalization-in-gatsby-sites		https://codetv.dev/series/learn-with-jason/s3/internationalization-in-gatsby-sites 301!
+/create-a-jamstack-registration-form		https://codetv.dev/series/learn-with-jason/s3/create-a-jamstack-registration-form 301!
+/let-s-learn-ghost-on-the-jamstack		https://codetv.dev/series/learn-with-jason/s3/let-s-learn-ghost-on-the-jamstack 301!
+/let-s-learn-design-systems		https://codetv.dev/series/learn-with-jason/s3/let-s-learn-design-systems 301!
+/generative-data-visualization-part-3		https://codetv.dev/series/learn-with-jason/s3/generative-data-visualization-part-3 301!
+/better-assets-with-cloudinary-and-graphql		https://codetv.dev/series/learn-with-jason/s3/better-assets-with-cloudinary-and-graphql 301!
+/accept-donations-on-jamstack-sites		https://codetv.dev/series/learn-with-jason/s3/accept-donations-on-jamstack-sites 301!
+/let-s-learn-framer-motion		https://codetv.dev/series/learn-with-jason/s3/let-s-learn-framer-motion 301!
+/let-s-make-web-video-fast		https://codetv.dev/series/learn-with-jason/s3/let-s-make-web-video-fast 301!
+/rapid-dataviz-in-observable		https://codetv.dev/series/learn-with-jason/s3/rapid-dataviz-in-observable 301!
+/let-s-learn-apollo-client-v3		https://codetv.dev/series/learn-with-jason/s3/let-s-learn-apollo-client-v3 301!
+/build-jamstack-apps-with-custom-apis		https://codetv.dev/series/learn-with-jason/s3/build-jamstack-apps-with-custom-apis 301!
+/let-s-create-a-netlify-build-plugin		https://codetv.dev/series/learn-with-jason/s3/let-s-create-a-netlify-build-plugin 301!
+/create-a-custom-alexa-skill		https://codetv.dev/series/learn-with-jason/s3/create-a-custom-alexa-skill 301!
+/add-apple-pay-and-google-pay-to-jamstack-sites		https://codetv.dev/series/learn-with-jason/s3/add-apple-pay-and-google-pay-to-jamstack-sites 301!
+/protect-secret-keys-in-jamstack-apps		https://codetv.dev/series/learn-with-jason/s3/protect-secret-keys-in-jamstack-apps 301!
+/designing-secret-sandwich		https://codetv.dev/series/learn-with-jason/s3/designing-secret-sandwich 301!
+/build-a-realtime-twitch-game		https://codetv.dev/series/learn-with-jason/s3/build-a-realtime-twitch-game 301!
+/subscription-management-in-jamstack-apps		https://codetv.dev/series/learn-with-jason/s3/subscription-management-in-jamstack-apps 301!
+/introduction-to-figma-for-developers		https://codetv.dev/series/learn-with-jason/s3/introduction-to-figma-for-developers 301!
+/end-to-end-testing-with-cypress		https://codetv.dev/series/learn-with-jason/s3/end-to-end-testing-with-cypress 301!
+/service-worker-science-lab		https://codetv.dev/series/learn-with-jason/s3/service-worker-science-lab 301!
+/contribute-to-open-source-projects		https://codetv.dev/series/learn-with-jason/s3/contribute-to-open-source-projects 301!
+/store-user-generated-content-in-sanity		https://codetv.dev/series/learn-with-jason/s3/store-user-generated-content-in-sanity 301!
+/text-to-play-games-with-twilio		https://codetv.dev/series/learn-with-jason/s3/text-to-play-games-with-twilio 301!
+/control-apps-with-your-thoughts		https://codetv.dev/series/learn-with-jason/s3/control-apps-with-your-thoughts 301!
+/serverless-graphql-with-hasura		https://codetv.dev/series/learn-with-jason/s3/serverless-graphql-with-hasura 301!
+/let-s-bring-secret-sandwich-to-life		https://codetv.dev/series/learn-with-jason/s3/let-s-bring-secret-sandwich-to-life 301!
+/build-custom-twitch-bots-and-overlays		https://codetv.dev/series/learn-with-jason/s3/build-custom-twitch-bots-and-overlays 301!
+/lets-learn-spatial-design		https://codetv.dev/series/learn-with-jason/s3/lets-learn-spatial-design 301!
+/caching-jamstack-sites-with-github-actions		https://codetv.dev/series/learn-with-jason/s3/caching-jamstack-sites-with-github-actions 301!
+/make-animations-feel-pro		https://codetv.dev/series/learn-with-jason/s3/make-animations-feel-pro 301!
+/what-is-apollo-federation		https://codetv.dev/series/learn-with-jason/s3/what-is-apollo-federation 301!
+/graphql-jamstack-for-enterprise-apps		https://codetv.dev/series/learn-with-jason/s3/graphql-jamstack-for-enterprise-apps 301!
+/let-s-learn-firebase		https://codetv.dev/series/learn-with-jason/s3/let-s-learn-firebase 301!
+/text-to-play-games-with-twilio-part-2		https://codetv.dev/series/learn-with-jason/s3/text-to-play-games-with-twilio-part-2 301!
+/create-a-plugin-for-11ty		https://codetv.dev/series/learn-with-jason/s3/create-a-plugin-for-11ty 301!
+/dev-improv-tell-us-what-to-build		https://codetv.dev/series/learn-with-jason/s3/dev-improv-tell-us-what-to-build 301!
+/contentful-graphql-and-paid-content		https://codetv.dev/series/learn-with-jason/s3/contentful-graphql-and-paid-content 301!
+/create-cross-platform-apps-with-expo		https://codetv.dev/series/learn-with-jason/s3/create-cross-platform-apps-with-expo 301!
+/get-weird-with-audio-on-the-web		https://codetv.dev/series/learn-with-jason/s3/get-weird-with-audio-on-the-web 301!
+/machine-learning-with-tensorflow-in-javascript		https://codetv.dev/series/learn-with-jason/s3/machine-learning-with-tensorflow-in-javascript 301!
+/let-s-learn-toast		https://codetv.dev/series/learn-with-jason/s3/let-s-learn-toast 301!
+/build-jamstack-apps-with-gatsby		https://codetv.dev/series/learn-with-jason/s3/build-jamstack-apps-with-gatsby 301!
+/what-is-rust		https://codetv.dev/series/learn-with-jason/s3/what-is-rust 301!
+/build-a-web-store-with-shopify		https://codetv.dev/series/learn-with-jason/s3/build-a-web-store-with-shopify 301!
+/let-s-learn-d3-js		https://codetv.dev/series/learn-with-jason/s3/let-s-learn-d3-js 301!
+/build-your-own-content-hub-with-graphql		https://codetv.dev/series/learn-with-jason/s3/build-your-own-content-hub-with-graphql 301!
+/what-the-h-ck-is-observability		https://codetv.dev/series/learn-with-jason/s3/what-the-h-ck-is-observability 301!
+/webmention-next-js		https://codetv.dev/series/learn-with-jason/s3/webmention-next-js 301!
+/power-up-react-with-typescript		https://codetv.dev/series/learn-with-jason/s3/power-up-react-with-typescript 301!
+/build-apps-with-vue-3-apollo-client-3		https://codetv.dev/series/learn-with-jason/s3/build-apps-with-vue-3-apollo-client-3 301!
+/pushing-the-limits-of-static-sites-with-sanity		https://codetv.dev/series/learn-with-jason/s3/pushing-the-limits-of-static-sites-with-sanity 301!
+/all-about-react-query		https://codetv.dev/series/learn-with-jason/s3/all-about-react-query 301!
+/build-a-no-framework-javascript-drag-n-drop		https://codetv.dev/series/learn-with-jason/s3/build-a-no-framework-javascript-drag-n-drop 301!
+/build-a-toast-site-using-mdx-and-tailwind		https://codetv.dev/series/learn-with-jason/s3/build-a-toast-site-using-mdx-and-tailwind 301!
+/a-single-spooky-div		https://codetv.dev/series/learn-with-jason/s3/a-single-spooky-div 301!
+/let-s-learn-nuxt		https://codetv.dev/series/learn-with-jason/s3/let-s-learn-nuxt 301!
+/build-a-custom-accessible-audio-player		https://codetv.dev/series/learn-with-jason/s3/build-a-custom-accessible-audio-player 301!
+/faster-static-site-workflows-with-nx		https://codetv.dev/series/learn-with-jason/s3/faster-static-site-workflows-with-nx 301!
+/build-a-multiplayer-soundboard-using-firebase		https://codetv.dev/series/learn-with-jason/s3/build-a-multiplayer-soundboard-using-firebase 301!
+/interactive-svg-animations-using-greensock		https://codetv.dev/series/learn-with-jason/s3/interactive-svg-animations-using-greensock 301!
+/databases-for-jamstack-sites-and-apps		https://codetv.dev/series/learn-with-jason/s3/databases-for-jamstack-sites-and-apps 301!
+/writing-shell-scripts-with-modern-javascript		https://codetv.dev/series/learn-with-jason/s3/writing-shell-scripts-with-modern-javascript 301!
+/let-s-learn-redwoodjs		https://codetv.dev/series/learn-with-jason/s3/let-s-learn-redwoodjs 301!
+/let-s-learn-vue-3		https://codetv.dev/series/learn-with-jason/s3/let-s-learn-vue-3 301!
+/we-need-to-taco-bout-your-choices		https://codetv.dev/series/learn-with-jason/s3/we-need-to-taco-bout-your-choices 301!
+/let-s-learn-minecraft		https://codetv.dev/series/learn-with-jason/s3/let-s-learn-minecraft 301!
+/whimsical-svg-animations-using-gsap		https://codetv.dev/series/learn-with-jason/s3/whimsical-svg-animations-using-gsap 301!
+/animation-with-svelte		https://codetv.dev/series/learn-with-jason/s3/animation-with-svelte 301!
 
 # quick links
 /discord       https://discord.gg/lwj
