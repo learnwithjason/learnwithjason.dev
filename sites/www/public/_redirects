@@ -511,6 +511,10 @@ https://lwj.dev/*                       https://www.learnwithjason.dev/:splat   
 # Google hackathon
 /google-hackathon           https://shortclick.link/amf3t5
 
+# Learn With Jason
+/lwj                        https://codetv.dev/series/learn-with-jason
+/learn-with-jason           https://codetv.dev/series/learn-with-jason
+
 # Web Lunch
 /web-lunch        https://www.youtube.com/playlist?list=PLz8Iz-Fnk_eQKzDS0xO6FEA6ho8i3E3o2
 /web-lunch/s1e1   https://www.youtube.com/watch?v=hlRVMknHSqM&list=PLz8Iz-Fnk_eQKzDS0xO6FEA6ho8i3E3o2&index=1
