@@ -11,6 +11,8 @@ https://lwj.dev/*                       https://www.learnwithjason.dev/:splat   
 /confirm                                https://codetv.dev/confirm          301!
 /confirmed                              https://codetv.dev/confirmed        301!
 
+/topic/:topic                           https://codetv.dev/search?q=:topic 301!
+
 # moved and/or typoed URLs
 /add-apple-pay-google-pay-to-jamstack-sites                               /add-apple-pay-and-google-pay-to-jamstack-sites
 /create-a-static-site-using-angular-scully                                /create-static-site-angular-scully
