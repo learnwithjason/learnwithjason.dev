@@ -475,12 +475,12 @@ https://lwj.dev/*                       https://www.learnwithjason.dev/:splat   
 
 # quick links
 /discord       https://discord.gg/lwj
-/youtube       https://youtube.com/@learnwithjason
+/youtube       https://youtube.com/@codetv-dev
 /ask           https://ask.ping.gg/ask/jlengstorf
 /store         https://learn-with-jason.myshopify.com/
 /4d1a          https://www.youtube.com/playlist?list=PLz8Iz-Fnk_eRtJeLjx9CxPQw6MzbDgaEu
 /4d1a/info     https://learnwithjason.notion.site/4-Web-Devs-1-App-Overview-6338ba80550245e8aeac90a89276c344?pvs=4
-/join          https://youtube.com/@learnwithjason/join
+/join          https://youtube.com/@codetv-dev/join
 /partners      https://partners.learnwithjason.dev/
 /uses          https://learnwithjason.notion.site/Recommended-Gear-Software-Books-etc-by-Jason-Lengstorf-fc2854ecfad74c77a87de7e9238763eb
 
@@ -617,7 +617,7 @@ https://lwj.dev/*                       https://www.learnwithjason.dev/:splat   
 /30min         https://calendly.com/codetv/30min
 
 # this link goes to the active or next-scheduled live stream
-/live          https://youtube.com/@learnwithjason/live
+/live          https://youtube.com/@codetv-dev/live
 
 # TODO decommission this
 /graphql       https://learnwithjason.hasura.app/v1/graphql  200
