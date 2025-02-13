@@ -485,17 +485,18 @@ https://lwj.dev/*                       https://www.learnwithjason.dev/:splat   
 /uses          https://learnwithjason.notion.site/Recommended-Gear-Software-Books-etc-by-Jason-Lengstorf-fc2854ecfad74c77a87de7e9238763eb
 
 # Web Dev Challenge
-/wdc                        https://www.youtube.com/playlist?list=PLz8Iz-Fnk_eTkZvSNWXW_TKZ2UwVirT2M
-/wdc/s1e1                   https://www.youtube.com/watch?v=8RCL5neas_M&list=PLz8Iz-Fnk_eTkZvSNWXW_TKZ2UwVirT2M&index=1
-/wdc/s1e2                   https://www.youtube.com/watch?v=jVHoffCdKa4&list=PLz8Iz-Fnk_eTkZvSNWXW_TKZ2UwVirT2M&index=2
-/wdc/s1e3                   https://www.youtube.com/watch?v=wPL13VR88iY&list=PLz8Iz-Fnk_eTkZvSNWXW_TKZ2UwVirT2M&index=3
-/wdc/s1e4                   https://www.youtube.com/watch?v=D9lWrkpVUm0&list=PLz8Iz-Fnk_eTkZvSNWXW_TKZ2UwVirT2M&index=4
-/wdc/s1e5                   https://www.youtube.com/watch?v=8Oxy6WV7zag&list=PLz8Iz-Fnk_eTkZvSNWXW_TKZ2UwVirT2M&index=5
-/wdc/s1e6                   https://www.youtube.com/watch?v=V96_3fBgvPA&list=PLz8Iz-Fnk_eTkZvSNWXW_TKZ2UwVirT2M&index=6
-/wdc/s1e7                   https://www.youtube.com/watch?v=fNDSDWJaj2M&list=PLz8Iz-Fnk_eTkZvSNWXW_TKZ2UwVirT2M&index=7
-/wdc/s1e8                   https://www.youtube.com/watch?v=pn5Jju4FNG4&list=PLz8Iz-Fnk_eTkZvSNWXW_TKZ2UwVirT2M&index=8
-/wdc/s1e9                   https://www.youtube.com/watch?v=ICpQQxD8vc4&list=PLz8Iz-Fnk_eTkZvSNWXW_TKZ2UwVirT2M&index=9
-/wdc/s1e10                  https://www.youtube.com/watch?v=_H5pnNeCJWQ&list=PLz8Iz-Fnk_eTkZvSNWXW_TKZ2UwVirT2M&index=10
+/wdc/sponsor                https://learnwithjason.notion.site/Web-Dev-Challenge-Sponsorship-Season-2-19822b3cab0280a5b3d2d7f5a5c064bb
+/wdc                        https://codetv.dev/series/web-dev-challenge/s1
+/wdc/s1e1                   https://codetv.dev/series/web-dev-challenge/s1/dont-build-another-effin-chatbot
+/wdc/s1e2                   https://codetv.dev/series/web-dev-challenge/s1/build-a-retro-gaming-app
+/wdc/s1e3                   https://codetv.dev/series/web-dev-challenge/s1/build-an-e-commerce-site-with-a-twist
+/wdc/s1e4                   https://codetv.dev/series/web-dev-challenge/s1/build-an-app-for-monsters
+/wdc/s1e5                   https://codetv.dev/series/web-dev-challenge/s1/build-an-app-to-help-the-local-food-scene
+/wdc/s1e6                   https://codetv.dev/series/web-dev-challenge/s1/build-an-app-to-capture-memories
+/wdc/s1e7                   https://codetv.dev/series/web-dev-challenge/s1/build-a-spooky-app
+/wdc/s1e8                   https://codetv.dev/series/web-dev-challenge/s1/build-an-app-to-show-gratitude
+/wdc/s1e9                   https://codetv.dev/series/web-dev-challenge/s1/build-a-connected-e-commerce-app
+/wdc/s1e10                  https://codetv.dev/series/web-dev-challenge/s1/build-an-app-to-save-santas-workshop
 
 /wdc/hackathon              https://www.learnwithjason.dev/blog/web-dev-challenge-hackathon-s1e10-workshop-woes
 /wdc/hackathon/submit       https://forms.gle/ipSKpMXB58kS8z8M6
@@ -527,9 +528,10 @@ https://lwj.dev/*                       https://www.learnwithjason.dev/:splat   
 
 # Leet Heat
 /leet-heat/apply  https://learnwithjason.notion.site/Web-Dev-Game-Show-Casting-Call-14622b3cab02803f9590ec00287fc50f?pvs=4
-/leet-heat        https://www.youtube.com/playlist?list=PLz8Iz-Fnk_eQwPfZx8lixhpBg22KCCZzo
-/leet-heat/s1e1   https://www.youtube.com/watch?v=POzGAQ7XyZg&list=PLz8Iz-Fnk_eQwPfZx8lixhpBg22KCCZzo&index=1
-/leet-heat/s1e2   https://www.youtube.com/watch?v=SlRmQxlg-1I&list=PLz8Iz-Fnk_eQwPfZx8lixhpBg22KCCZzo&index=1
+/lh               https://codetv.dev/series/leet-heat/s1
+/leet-heat        https://codetv.dev/series/leet-heat/s1
+/leet-heat/s1e1   https://codetv.dev/series/leet-heat/s1/e1-austin-vs-sheng
+/leet-heat/s1e2   https://codetv.dev/series/leet-heat/s1/e2-joel-vs-shruti
 
 # sponsorship information
 /sponsor       https://www.notion.so/learnwithjason/Learn-With-Jason-Livestream-Sponsorship-214f066473d64bddaeb6f57d155fad34
