@@ -10,8 +10,11 @@ https://lwj.dev/*                       https://www.learnwithjason.dev/:splat   
 /about                                  https://codetv.dev/about            301!
 /confirm                                https://codetv.dev/confirm          301!
 /confirmed                              https://codetv.dev/confirmed        301!
+/partners                               https://partners.codetv.dev         301!
 
 /topic/:topic                           https://codetv.dev/search?q=:topic 301!
+
+/episodes                               https://codetv.dev/series/learn-with-jason/s8 301!
 
 # moved and/or typoed URLs
 /add-apple-pay-google-pay-to-jamstack-sites                               /add-apple-pay-and-google-pay-to-jamstack-sites
