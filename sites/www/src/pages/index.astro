@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import SEO from '../components/seo.astro';
 import { SectionHero } from '../components/section-hero.solid';
-import { loadAllEpisodes, loadSchedule } from '@lwj/sanity-helpers';
+import { getLatestEpisode, getNextEpisode } from '../util/sanity';
 import { Poster } from '../components/poster.solid';
 import { loadYouTubePlaylist } from '../util/youtube';
 
@@ -12,16 +12,15 @@ const description =
 
 const shareTitle = 'Learn With Jason';
 
-const [scheduleResult, episodesResult, buildResult, growResult] =
-	await Promise.all([
-		loadSchedule(),
-		loadAllEpisodes(),
+const [latestEpisode, nextEpisode, buildResult, growResult] = await Promise.all(
+	[
+		getLatestEpisode(),
+		getNextEpisode(),
 		loadYouTubePlaylist({ playlistId: 'PLz8Iz-Fnk_eRrYytmxreXJfmWm8c8hTA_' }),
 		loadYouTubePlaylist({ playlistId: 'PLz8Iz-Fnk_eSBam1bi1NRGK5zTKvmo9Vd' }),
-	]);
+	],
+);
 
-const [nextEpisode] = scheduleResult.data?.result ?? [];
-const [latestEpisode] = episodesResult.data?.result ?? [];
 const buildVideos = buildResult.slice(0, 3);
 const growVideos = growResult.slice(0, 3);
 ---
@@ -89,6 +88,7 @@ const growVideos = growResult.slice(0, 3);
 						slug={latestEpisode.slug}
 						title={latestEpisode.title}
 						guest={latestEpisode.guest}
+						youtube_id={latestEpisode.youtube_id}
 						type="poster"
 						class="poster"
 					/>
@@ -99,22 +99,29 @@ const growVideos = growResult.slice(0, 3);
 				</div>
 			</div>
 
-			<div class="next">
-				<h3>Next episode:</h3>
-				<a href={nextEpisode.slug}>
-					<Poster
-						slug={nextEpisode.slug}
-						title={nextEpisode.title}
-						guest={nextEpisode.guest}
-						type="poster"
-						class="poster"
-					/>
-				</a>
-				<div class="details">
-					<p>{nextEpisode.description}</p>
-					<a href={nextEpisode.slug} class="big-link">See Details</a>
-				</div>
-			</div>
+			{
+				nextEpisode ? (
+					<div class="next">
+						<h3>Next episode:</h3>
+						<a href={nextEpisode.slug}>
+							<Poster
+								slug={nextEpisode.slug}
+								title={nextEpisode.title}
+								guest={nextEpisode.guest}
+								youtube_id={latestEpisode.youtube_id}
+								type="poster"
+								class="poster"
+							/>
+						</a>
+						<div class="details">
+							<p>{nextEpisode.description}</p>
+							<a href={nextEpisode.slug} class="big-link">
+								See Details
+							</a>
+						</div>
+					</div>
+				) : null
+			}
 		</div>
 	</section>
 

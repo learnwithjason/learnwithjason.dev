@@ -4,6 +4,7 @@ type PosterProps = {
 	slug: string;
 	title: string;
 	guest: { name: string };
+	youtube_id?: string;
 	type?: 'video-poster' | 'poster';
 	width?: number;
 	height?: number;
@@ -18,7 +19,7 @@ export const Poster = (rawProps: PosterProps) => {
 			height: 280,
 			class: '',
 		},
-		rawProps
+		rawProps,
 	);
 
 	// add max size to avoid huge images + teacher images are rarely hi-res enough
@@ -27,17 +28,32 @@ export const Poster = (rawProps: PosterProps) => {
 	// for srcSet, go from half-size up to 3x for various viewports
 	const widths = [0.5, 1, 1.5, 2, 3].map((w) => w * width);
 
-	const src = `https://www.learnwithjason.dev/${props.slug}/${props.type}.jpg`;
-	const imageAttributes = {
-		src,
-		srcSet: widths
-			.map((w) => {
-				return `https://www.learnwithjason.dev/${props.slug}/w_${w}/${props.type}.jpg ${w}w`;
-			})
-			.join(', '),
-		alt: `${props.title} (with ${props.guest.name})`,
-		sizes: `(min-width: ${width}px) ${width}px, 90vw`,
-	};
+	let src, imageAttributes;
+	if (props.youtube_id) {
+		src = `https://res.cloudinary.com/jlengstorf/image/youtube/w_340,h_190,f_auto,c_lfill/${props.youtube_id}`;
+		imageAttributes = {
+			src,
+			srcSet: widths
+				.map((w) => {
+					return `https://res.cloudinary.com/jlengstorf/image/youtube/w_${w},f_auto,c_lfill/${props.youtube_id} ${w}w`;
+				})
+				.join(', '),
+			alt: `${props.title} (with ${props.guest.name})`,
+			sizes: `(min-width: ${width}px) ${width}px, 90vw`,
+		};
+	} else {
+		src = `https://www.learnwithjason.dev/${props.slug}/${props.type}.jpg`;
+		imageAttributes = {
+			src,
+			srcSet: widths
+				.map((w) => {
+					return `https://www.learnwithjason.dev/${props.slug}/w_${w}/${props.type}.jpg ${w}w`;
+				})
+				.join(', '),
+			alt: `${props.title} (with ${props.guest.name})`,
+			sizes: `(min-width: ${width}px) ${width}px, 90vw`,
+		};
+	}
 
 	return (
 		<img
