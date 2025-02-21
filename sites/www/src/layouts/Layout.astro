@@ -137,12 +137,6 @@ const { title, mainClass = '' } = Astro.props;
 				{PAGES.map((p) => <a href={p.url}>{p.label}</a>)}
 			</nav>
 
-			<Search
-				episodes={episodes.slice(0, 4)}
-				schedule={schedule.slice(0, 4)}
-				client:only="react"
-			/>
-
 			<button class="nav-toggle"> menu</button>
 		</Header>
 
@@ -157,12 +151,8 @@ const { title, mainClass = '' } = Astro.props;
 
 		<main class={mainClass}>
 			<slot />
-
-			<section class="block content sponsors">
-				<p>Learn With Jason is made possible by our sponsors:</p>
-				<Sponsors />
-			</section>
 		</main>
+
 		<Footer>
 			<TeacherPhoto
 				imageURL="https://res.cloudinary.com/jlengstorf/image/upload/q_auto,f_auto,w_300,h_300,c_thumb,g_face,z_0.6/press/jason-lengstorf-ac-alley3.jpg"
