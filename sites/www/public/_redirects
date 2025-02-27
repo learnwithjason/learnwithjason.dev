@@ -625,7 +625,7 @@ https://lwj.dev/*                       https://www.learnwithjason.dev/:splat   
 # calendar stuff
 /calendar      https://calendar.google.com/calendar?cid=bGVuZ3N0b3JmLmNvbV85cGxqMW02dTl2dGRkbGRvaW5sMGhzMnZna0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t 301!
 /cal           https://calendar.google.com/calendar?cid=bGVuZ3N0b3JmLmNvbV85cGxqMW02dTl2dGRkbGRvaW5sMGhzMnZna0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t 301!
-/book          https://calendly.com/learnwithjason/livestream
+/book          https://calendly.com/codetv/livestream
 /30min         https://calendly.com/codetv/30min
 
 # this link goes to the active or next-scheduled live stream
