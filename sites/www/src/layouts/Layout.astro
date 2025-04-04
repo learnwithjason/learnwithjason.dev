@@ -4,54 +4,7 @@ export interface Props {
 	mainClass?: string;
 }
 
-import Sponsors from '../components/sponsors.astro';
-import Header from '../components/header.astro';
-import Footer from '../components/footer.astro';
-import { TeacherPhoto } from '../components/teacher-photo.solid';
-import { Search } from '../components/search';
-import { LiveEyebrow } from '../components/live-eyebrow.solid';
-
 import '@lwj/design-system/css/index.css';
-
-let episodes, schedule;
-try {
-	const results = await Promise.all([
-		fetch('https://www.learnwithjason.dev/api/v2/episodes').then((res) =>
-			res.json(),
-		),
-		fetch('https://www.learnwithjason.dev/api/v2/schedule').then((res) =>
-			res.json(),
-		),
-	]);
-	episodes = results.at(0);
-	schedule = results.at(1);
-} catch (err) {
-	episodes = [];
-	schedule = [];
-}
-
-const PAGES = [
-	{
-		url: 'https://codetv.dev/series/learn-with-jason/s8',
-		label: 'episodes',
-	},
-	{
-		url: '/schedule/',
-		label: 'schedule',
-	},
-	{
-		url: 'https://codetv.dev/blog/',
-		label: 'blog',
-	},
-	{
-		url: 'https://codetv.dev/newsletter/',
-		label: 'newsletter',
-	},
-	// {
-	// 	url: 'https://learn-with-jason.myshopify.com/',
-	// 	label: 'store',
-	// },
-];
 
 const url = new URL('https://www.learnwithjason.dev');
 url.pathname = Astro.url.pathname;
@@ -79,33 +32,6 @@ const { title, mainClass = '' } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 
-		<slot name="head-tags" />
-
-		<link
-			rel="alternate"
-			type="application/rss+xml"
-			title="Blog RSS Feed for learnwithjason.dev"
-			href="/blog/rss.xml"
-		/>
-
-		<link
-			rel="alternate"
-			type="application/rss+xml"
-			title="Episodes RSS Feed for learnwithjason.dev"
-			href="/episodes/rss.xml"
-		/>
-
-		<script
-			type="text/javascript"
-			src="https://cdn.addevent.com/libs/atc/1.6.1/atc.min.js"
-			async
-			defer></script>
-		<script
-			type="text/javascript"
-			src="https://cdn.addevent.com/libs/stc/1.0.2/stc.min.js"
-			async
-			defer></script>
-
 		<script
 			src="https://cdn.usefathom.com/script.js"
 			data-spa="auto"
@@ -113,54 +39,9 @@ const { title, mainClass = '' } = Astro.props;
 			defer></script>
 	</head>
 	<body data-theme="light">
-		<svg class="svg-defs">
-			<defs>
-				<linearGradient
-					id="lwj-gradient"
-					x1="0"
-					x2="100%"
-					y1="100%"
-					y2="100%"
-					gradientUnits="objectBoundingBox"
-				>
-					<stop offset="0" stop-color="#D459AB"></stop>
-					<stop offset=".5" stop-color="#FFDF37"></stop>
-					<stop offset="1" stop-color="#A6FFFA"></stop>
-				</linearGradient>
-			</defs>
-		</svg>
-
-		<LiveEyebrow schedule={schedule} client:only="solid-js" />
-
-		<Header>
-			<nav class="main-nav">
-				{PAGES.map((p) => <a href={p.url}>{p.label}</a>)}
-			</nav>
-
-			<button class="nav-toggle"> menu</button>
-		</Header>
-
-		<script>
-			const btn = document.querySelector('.nav-toggle');
-			const nav = document.querySelector('.main-nav');
-
-			btn?.addEventListener('click', () => {
-				nav?.classList.toggle('open');
-			});
-		</script>
-
 		<main class={mainClass}>
 			<slot />
 		</main>
-
-		<Footer>
-			<TeacherPhoto
-				imageURL="https://res.cloudinary.com/jlengstorf/image/upload/q_auto,f_auto,w_300,h_300,c_thumb,g_face,z_0.6/press/jason-lengstorf-ac-alley3.jpg"
-				alt="Jason Lengstorf"
-				width={125}
-				skipFetch
-			/>
-		</Footer>
 	</body>
 </html>
 

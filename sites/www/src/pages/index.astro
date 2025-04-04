@@ -1,27 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import SEO from '../components/seo.astro';
-import { SectionHero } from '../components/section-hero.solid';
-import { getLatestEpisode, getNextEpisode } from '../util/sanity';
-import { Poster } from '../components/poster.solid';
 
 const title = 'Learn. Build. Grow. Together.';
-const description =
-	'Learn from the web’s leading experts. Build something new. Grow your career. Let’s do it together.';
-
-const shareTitle = 'Learn With Jason';
-
-const [latestEpisode, nextEpisode] = await Promise.all([
-	getLatestEpisode(),
-	getNextEpisode(),
-]);
 ---
 
 <Layout title={title}>
-	<Fragment slot="head-tags">
-		<SEO title={title} shareTitle={shareTitle} description={description} />
-	</Fragment>
-
 	<section class="block content">
 		<h2 class="heading"><mark>Learn</mark> from the web’s leading experts.</h2>
 		<p class="lede">
@@ -30,50 +13,6 @@ const [latestEpisode, nextEpisode] = await Promise.all([
 			<a href="/schedule" class="section-link">See who’s teaching next &rarr;</a
 			>
 		</p>
-
-		<div class="episodes">
-			<div class="latest">
-				<h3>Latest episode:</h3>
-				<a href={latestEpisode.slug}>
-					<Poster
-						slug={latestEpisode.slug}
-						title={latestEpisode.title}
-						guest={latestEpisode.guest}
-						youtube_id={latestEpisode.youtube_id}
-						type="poster"
-						class="poster"
-					/>
-				</a>
-				<div class="details">
-					<p>{latestEpisode.description}</p>
-					<a href={latestEpisode.slug} class="big-link">Watch Now</a>
-				</div>
-			</div>
-
-			{
-				nextEpisode ? (
-					<div class="next">
-						<h3>Next episode:</h3>
-						<a href={nextEpisode.slug}>
-							<Poster
-								slug={nextEpisode.slug}
-								title={nextEpisode.title}
-								guest={nextEpisode.guest}
-								youtube_id={latestEpisode.youtube_id}
-								type="poster"
-								class="poster"
-							/>
-						</a>
-						<div class="details">
-							<p>{nextEpisode.description}</p>
-							<a href={nextEpisode.slug} class="big-link">
-								See Details
-							</a>
-						</div>
-					</div>
-				) : null
-			}
-		</div>
 	</section>
 </Layout>
 
