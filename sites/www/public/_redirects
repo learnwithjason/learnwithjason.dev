@@ -11,10 +11,11 @@ https://lwj.dev/*                       https://www.learnwithjason.dev/:splat   
 /confirm                                https://codetv.dev/confirm          301!
 /confirmed                              https://codetv.dev/confirmed        301!
 /partners                               https://partners.codetv.dev         301!
+/schedule                               https://codetv.dev/series/learn-with-jason 301!
 
 /topic/:topic                           https://codetv.dev/search?q=:topic 301!
 
-/episodes                               https://codetv.dev/series/learn-with-jason/s8 301!
+/episodes                               https://codetv.dev/series/learn-with-jason 301!
 
 # moved and/or typoed URLs
 /add-apple-pay-google-pay-to-jamstack-sites                               /add-apple-pay-and-google-pay-to-jamstack-sites
@@ -659,3 +660,5 @@ https://lwj.dev/*                       https://www.learnwithjason.dev/:splat   
 /wp2/wp-includes/wlwmanifest.xml      https://jason.energy/party 301
 /site/wp-includes/wlwmanifest.xml     https://jason.energy/party 301
 /sito/wp-includes/wlwmanifest.xml     https://jason.energy/party 301
+
+/                                     https://codetv.dev/series/learn-with-jason 301!
