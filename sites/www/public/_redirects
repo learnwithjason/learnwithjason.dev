@@ -505,8 +505,8 @@ https://lwj.dev/*                       https://www.learnwithjason.dev/:splat   
 /wdc/s2e1                   https://codetv.dev/series/web-dev-challenge/s2/e1-build-a-custom-api-postman
 /wdc/s2e2                   https://codetv.dev/series/web-dev-challenge/s2/e2-build-a-game-played-on-2-devices
 
-/wdc/hackathon              https://codetv.dev/blog/web-dev-challenge-hackathon-s2e1-custom-api-postman
-/wdc/hackathon/submit       https://forms.gle/wCKLbCaiQHHFvYax7
+/wdc/hackathon              https://codetv.dev/blog/web-dev-challenge-hackathon-s2e2-multi-device-game-temporal
+/wdc/hackathon/submit       https://forms.gle/esXkSsNCLA3fDqdt5
 
 /wdc-giveaway               /wdc/hackathon
 /wdc-hackathon              /wdc/hackathon
@@ -518,6 +518,7 @@ https://lwj.dev/*                       https://www.learnwithjason.dev/:splat   
 /wdc-hackathon-9-submit     https://forms.gle/ipSKpMXB58kS8z8M6
 /wdc-hackathon-10-submit    https://forms.gle/8Ftkir4ASAqXq3rQ7
 /wdc-hackathon-s2e1-submit  https://forms.gle/wCKLbCaiQHHFvYax7
+/wdc-hackathon-s2e2-submit  https://forms.gle/esXkSsNCLA3fDqdt5
 
 /wdc-slc                    https://ti.to/epicweb/epicweb-conf-2025/with/web-dev-challenge#tickets
 
