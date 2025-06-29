@@ -506,9 +506,10 @@ https://lwj.dev/*                       https://www.learnwithjason.dev/:splat   
 /wdc/s2e2                   https://codetv.dev/series/web-dev-challenge/s2/e2-build-a-game-played-on-2-devices
 /wdc/s2e3                   https://codetv.dev/series/web-dev-challenge/s2/e3-worst-video-player
 /wdc/s2e4                   https://codetv.dev/series/web-dev-challenge/s2/e4-no-business-value
+/wdc/s2e5                   https://codetv.dev/series/web-dev-challenge/s2/e5-worst-developer-urges
 
 /wdc/hackathon              https://worst.player.style/
-/wdc/hackathon/submit       https://forms.gle/7aKhquYNduXTaJrE8
+/wdc/hackathon/submit       https://forms.gle/k1AwazF2KriwXTTm7
 
 /wdc-giveaway               /wdc/hackathon
 /wdc-hackathon              /wdc/hackathon
@@ -522,6 +523,7 @@ https://lwj.dev/*                       https://www.learnwithjason.dev/:splat   
 /wdc-hackathon-s2e1-submit  https://forms.gle/wCKLbCaiQHHFvYax7
 /wdc-hackathon-s2e2-submit  https://forms.gle/esXkSsNCLA3fDqdt5
 /wdc-hackathon-s2e3-submit  https://forms.gle/7aKhquYNduXTaJrE8
+/wdc-hackathon-s2e5-submit  https://forms.gle/k1AwazF2KriwXTTm7
 
 /wdc-slc                    https://ti.to/epicweb/epicweb-conf-2025/with/web-dev-challenge#tickets
 
@@ -562,6 +564,8 @@ https://lwj.dev/*                       https://www.learnwithjason.dev/:splat   
 /lh/s1e8          https://codetv.dev/series/leet-heat/s1/e8-potch-vs-tru
 /leet-heat/s1e9   https://codetv.dev/series/leet-heat/s1/e9-andy-vs-alexis
 /lh/s1e9          https://codetv.dev/series/leet-heat/s1/e9-andy-vs-alexis
+/leet-heat/s1e10  https://codetv.dev/series/leet-heat/s1/e10-charles-vs-brittany
+/lh/s1e10         https://codetv.dev/series/leet-heat/s1/e10-charles-vs-brittany
 
 # sponsorship information
 /sponsor       https://www.notion.so/learnwithjason/Learn-With-Jason-Livestream-Sponsorship-214f066473d64bddaeb6f57d155fad34
@@ -637,6 +641,7 @@ https://lwj.dev/*                       https://www.learnwithjason.dev/:splat   
 /temporal      https://temporal.io/?utm_source=codetv&utm_medium=video&utm_campaign=web-dev-challenge
 /g2i           https://www.g2i.co/why-g2i?utm_source=Youtube&utm_medium=Video&utm_campaign=Influencer+Campaign&utm_id=Jason+Lengstorf
 /nordcraft     https://nordcraft.com/?utm_source=codetv&utm_medium=video&utm_campaign=web-dev-challenge
+/intuit        https://intuit.avature.net/eventlisting?pipelineId=13447
 
 /benq          https://www.benq.com/en-us/campaign/best-coding-monitor-for-programmers.html?utm_source=influencer_codetv&utm_medium=affiliate&utm_campaign=lcd_programming_rd280u_na_2025_us_awareness
 /uplift        https://www.upliftdesk.com/?utm_source=codetv&utm_medium=video&utm_campaign=web-dev-challenge
